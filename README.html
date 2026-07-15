@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sakina ✦ — Documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Nunito:wght@300;400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --a:#C9A96E;--a2:#E8C98A;--a-glow:rgba(201,169,110,0.28);--a-dim:rgba(201,169,110,0.13);--a-rgb:201,169,110;
+  --bg:#08090C;--sur:#131518;--sur2:#1C1E22;--sur3:#22252A;
+  --bor:rgba(255,255,255,0.11);--bor2:rgba(255,255,255,0.06);--shine:rgba(255,255,255,0.22);
+  --t1:#F0EDE8;--t2:#9A9590;--t3:#5A5754;--ok:#4ade80;
+  --ff-d:"Cinzel",serif;--ff-b:"Nunito",sans-serif;--ff-a:"Noto Naskh Arabic",sans-serif;--ff-m:"DM Mono",monospace;
+  --r-xl:22px;--r-lg:16px;--r-md:11px;--r-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{background:var(--bg);}
+body{font-family:var(--ff-b);background:var(--bg);color:var(--t1);line-height:1.6;
+  background-image:radial-gradient(ellipse 70% 50% at 15% 0%,rgba(201,169,110,0.14) 0%,transparent 70%),
+                    radial-gradient(ellipse 50% 45% at 85% 100%,rgba(96,165,250,0.07) 0%,transparent 65%);
+  background-attachment:fixed;}
+.wrap{max-width:860px;margin:0 auto;padding:56px 24px 100px;}
+
+/* ── Hero ── */
+.hero{text-align:center;padding:24px 0 40px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--a-dim);border:1px solid var(--a-glow);
+  border-radius:999px;padding:6px 16px;font-size:0.72rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--a);margin-bottom:20px;}
+.hero h1{font-family:var(--ff-d);font-size:clamp(2.2rem,6vw,3.2rem);letter-spacing:0.03em;
+  background:linear-gradient(135deg,var(--a2),var(--a));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero .ar{font-family:var(--ff-a);font-size:1.5rem;color:var(--t2);margin-top:8px;display:block;}
+.hero p{max-width:600px;margin:20px auto 0;color:var(--t2);font-size:1rem;}
+.hero .quote{margin-top:22px;font-style:italic;color:var(--t3);font-size:0.88rem;max-width:520px;margin-left:auto;margin-right:auto;}
+
+/* ── Cartes de verre ── */
+.gc{background:var(--sur);border:1px solid var(--bor);border-radius:var(--r-xl);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.1);
+  backdrop-filter:blur(20px);position:relative;overflow:hidden;padding:28px;margin-bottom:20px;}
+.gc::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 5%,var(--shine) 40%,var(--shine) 60%,transparent 95%);}
+
+h2{font-family:var(--ff-d);font-size:1.3rem;letter-spacing:0.04em;color:var(--t1);
+  display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+h2 .num{font-family:var(--ff-m);font-size:0.75rem;color:var(--a);background:var(--a-dim);
+  border:1px solid var(--a-glow);border-radius:999px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+h3{font-size:0.95rem;color:var(--t1);margin:18px 0 8px;font-weight:700;}
+p{color:var(--t2);font-size:0.9rem;}
+strong{color:var(--t1);}
+a{color:var(--a);text-decoration:none;border-bottom:1px solid var(--a-glow);}
+a:hover{border-bottom-color:var(--a);}
+
+/* ── Code ── */
+pre{background:var(--sur2);border:1px solid var(--bor);border-radius:var(--r-md);
+  padding:16px 18px;overflow-x:auto;margin:12px 0;box-shadow:inset 0 1px 0 rgba(255,255,255,0.05);}
+code{font-family:var(--ff-m);font-size:0.82rem;color:var(--a2);}
+p code,li code{background:var(--sur3);border:1px solid var(--bor2);border-radius:5px;padding:1px 6px;color:var(--a2);}
+.tree{font-family:var(--ff-m);font-size:0.78rem;line-height:1.85;color:var(--t2);white-space:pre;}
+.tree .file{color:var(--t1);}
+.tree .dir{color:var(--a);font-weight:600;}
+.tree .cmt{color:var(--t3);}
+
+/* ── Alerte ── */
+.note{display:flex;gap:12px;background:var(--a-dim);border:1px solid var(--a-glow);border-radius:var(--r-md);
+  padding:14px 16px;margin:14px 0;font-size:0.85rem;color:var(--t1);}
+.note .ic{flex-shrink:0;font-size:1.1rem;}
+
+/* ── Grille de features ── */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px;}
+.feat{background:var(--sur2);border:1px solid var(--bor2);border-radius:var(--r-lg);padding:16px;}
+.feat .ic{font-size:1.4rem;margin-bottom:8px;display:block;}
+.feat .t{font-weight:700;font-size:0.88rem;color:var(--t1);margin-bottom:4px;}
+.feat .d{font-size:0.78rem;color:var(--t3);}
+
+/* ── Table architecture ── */
+table{width:100%;border-collapse:collapse;font-size:0.83rem;margin-top:10px;}
+th{text-align:left;color:var(--t3);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;
+  padding:8px 10px;border-bottom:1px solid var(--bor);}
+td{padding:9px 10px;border-bottom:1px solid var(--bor2);color:var(--t2);vertical-align:top;}
+td:first-child{font-family:var(--ff-m);color:var(--a2);white-space:nowrap;}
+tr:last-child td{border-bottom:none;}
+
+/* ── Badges de statut ── */
+.badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px;}
+.badge{background:var(--sur2);border:1px solid var(--bor);border-radius:999px;padding:5px 13px;
+  font-size:0.7rem;font-weight:700;color:var(--t2);font-family:var(--ff-m);}
+.badge.ok{color:var(--ok);border-color:rgba(74,222,128,0.25);}
+
+footer{text-align:center;margin-top:40px;color:var(--t3);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-badge">✦ Documentation du projet</div>
+    <h1>Sakina</h1>
+    <span class="ar">سَكِينَة</span>
+    <p><strong>Compagnon spirituel tout-en-un</strong> : tasbih, horaires de prière, qibla, Coran (tajwid, favoris, notes), invocations, et outils (Qadâ', Rak'ah, Zakat, calendrier hégirien &amp; du jeûne). PWA installable, hors-ligne, sans publicité.</p>
+    <div class="quote">« Sakina : la quiétude que Dieu fait descendre dans les cœurs — l'émotion que l'app cherche à susciter. »</div>
+    <div class="badges">
+      <span class="badge ok">● PWA installable</span>
+      <span class="badge ok">● Hors-ligne</span>
+      <span class="badge">Vanilla JS · ES Modules</span>
+      <span class="badge">Sans publicité</span>
+    </div>
+  </div>
+
+  <div class="gc">
+    <h2><span class="num">▶</span>Lancer l'app</h2>
+    <p>Les modules ES exigent un serveur HTTP — <strong>impossible d'ouvrir <code>index.html</code> en double-clic</strong> (protocole <code>file://</code> bloqué par le navigateur).</p>
+    <pre><code>python -m http.server 8642
+<span style="color:var(--t3)"># puis ouvrir</span> http://localhost:8642</code></pre>
+    <div class="note"><span class="ic">💡</span><div>Le service worker (mode hors-ligne) ne s'active qu'en <strong>HTTPS</strong> — déployez sur GitHub Pages, Netlify ou Vercel pour la PWA complète et installable.</div></div>
+  </div>
+
+  <div class="gc">
+    <h2><span class="num">2</span>Fonctionnalités</h2>
+    <div class="grid">
+      <div class="feat"><span class="ic">📿</span><div class="t">Tasbih modulaire</div><div class="d">Dhikrs personnalisés épinglables, objectifs, streak quotidien</div></div>
+      <div class="feat"><span class="ic">🕌</span><div class="t">Horaires de prière</div><div class="d">Astronomie réelle, 6 méthodes dont UOIF (France)</div></div>
+      <div class="feat"><span class="ic">🧭</span><div class="t">Qibla</div><div class="d">Boussole matérielle + distance jusqu'à la Ka'ba</div></div>
+      <div class="feat"><span class="ic">📖</span><div class="t">Coran</div><div class="d">Tajwid coloré, favoris, notes, traduction Hamidullah</div></div>
+      <div class="feat"><span class="ic">🤲</span><div class="t">Douas</div><div class="d">25 invocations classées, recherche, phonétique</div></div>
+      <div class="feat"><span class="ic">🛠️</span><div class="t">Outils fiqh</div><div class="d">Qadâ', Rak'ah, Zakat, hégirien, calendrier du jeûne</div></div>
+    </div>
+  </div>
+
+  <div class="gc">
+    <h2><span class="num">3</span>Architecture</h2>
+    <div class="tree"><span class="file">index.html</span>              <span class="cmt">Coquille HTML (pages + sheets), zéro logique</span>
+<span class="file">manifest.webmanifest</span>    <span class="cmt">PWA (installable, standalone)</span>
+<span class="file">sw.js</span>                   <span class="cmt">Offline : shell cache-first, API Coran réseau→cache</span>
+<span class="dir">css/</span>
+  <span class="file">tokens.css</span>            <span class="cmt">Thème sombre/clair/nuit OLED, 8 accents</span>
+  <span class="file">base.css</span>              <span class="cmt">Reset, glassmorphism, composants partagés</span>
+  <span class="file">pages.css</span>             <span class="cmt">Styles par écran</span>
+<span class="dir">js/</span>
+  <span class="file">app.js</span>                <span class="cmt">Point d'entrée : câblage des modules</span>
+  <span class="dir">core/</span>
+    <span class="file">store.js</span>            <span class="cmt">État persistant + migration auto (tpv5)</span>
+    <span class="file">router.js</span>           <span class="cmt">Navigation par pages + hooks d'affichage</span>
+    <span class="file">ui.js</span>               <span class="cmt">Toast, burst, sheets, confirmation (Promise)</span>
+    <span class="file">audio.js</span>            <span class="cmt">Sons WebAudio synthétisés + haptique</span>
+  <span class="dir">lib/</span>
+    <span class="file">astro.js</span>            <span class="cmt">Horaires de prière, qibla, distance Ka'ba</span>
+    <span class="file">hijri.js</span>            <span class="cmt">Calendrier hégirien tabulaire</span>
+  <span class="dir">data/</span>                 <span class="cmt">Dhikrs, douas, 114 sourates, méthodes de calcul</span>
+  <span class="dir">features/</span>             <span class="cmt">Un module par écran (tasbih, salat, qibla…)</span>
+<span class="dir">legacy/v8.html</span>          <span class="cmt">Ancien monolithe (référence, ne plus modifier)</span></div>
+
+    <h3>Communication inter-modules</h3>
+    <p>Imports directs quand la dépendance est naturelle, <code>CustomEvent</code> DOM (<code>stats-changed</code>, <code>location-changed</code>) pour éviter les cycles.</p>
+
+    <h3>Données utilisateur</h3>
+    <p><code>localStorage</code> clé <code>sakina.v1</code>. Au premier lancement, les données de l'ancienne app (<code>tpv5</code> + <code>qdata</code>) sont migrées automatiquement. Écritures groupées (80 ms) avec sauvegarde garantie sur fermeture/mise en arrière-plan.</p>
+  </div>
+
+  <div class="gc">
+    <h2><span class="num">4</span>APIs externes</h2>
+    <table>
+      <tr><th>Service</th><th>Usage</th></tr>
+      <tr><td>api.quran.com</td><td>Texte uthmani + traduction Hamidullah (fr, id 136) — mis en cache pour la lecture hors-ligne</td></tr>
+      <tr><td>nominatim.osm.org</td><td>Géocodage inverse &amp; recherche manuelle de ville</td></tr>
+    </table>
+  </div>
+
+  <footer>Sakina v1.0 · سَكِينَة ✦</footer>
+</div>
+</body>
+</html>

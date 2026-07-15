@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Générateur d'icônes — Sakina</title>
+<style>
+  body{font-family:sans-serif;background:#08090C;color:#F0EDE8;padding:40px;text-align:center;}
+  h1{font-weight:600;margin-bottom:8px;}
+  p{color:#9A9590;font-size:0.9rem;margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto;}
+  .row{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
+  .card{background:#131518;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:16px;}
+  canvas{display:block;border-radius:8px;margin-bottom:10px;background:#000;}
+  button{background:#C9A96E;color:#000;border:none;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;font-size:0.85rem;}
+  button:hover{opacity:0.85;}
+  #status{margin-top:20px;color:#4ade80;font-weight:600;min-height:1.2em;white-space:pre-line;}
+  .err{color:#f87171 !important;}
+</style>
+</head>
+<body>
+<h1>🕋 Générateur d'icônes Sakina</h1>
+<p>Ce générateur est autonome (le SVG est intégré directement dans la page, aucun fichier externe à charger) — il fonctionne même en double-clic, sans serveur.</p>
+<p>Clique sur « Tout télécharger », puis déplace les 4 fichiers <code>.png</code> téléchargés à côté de ce fichier, dans <code>assets/</code>.</p>
+
+<div class="row" id="cards"></div>
+<button id="all" style="font-size:1rem;padding:14px 28px;">⬇ Tout télécharger</button>
+<div id="status"></div>
+
+<script>
+// Copies exactes de assets/icon.svg et assets/icon-maskable.svg, intégrées ici
+// pour éviter tout chargement de fichier externe (source des blocages précédents).
+const SVG_NORMAL=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="20%" r="120%">
+      <stop offset="0%" stop-color="#1C1E22"/>
+      <stop offset="100%" stop-color="#08090C"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8C98A"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <path d="M 330 116 A 150 150 0 1 0 330 396 A 118 118 0 1 1 330 116 Z" fill="url(#gold)"/>
+  <circle cx="330" cy="256" r="34" fill="none" stroke="url(#gold)" stroke-width="10"/>
+  <circle cx="330" cy="256" r="12" fill="url(#gold)"/>
+</svg>`;
+
+const SVG_MASKABLE=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="bg2" cx="30%" cy="20%" r="120%">
+      <stop offset="0%" stop-color="#1C1E22"/>
+      <stop offset="100%" stop-color="#08090C"/>
+    </radialGradient>
+    <linearGradient id="gold2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8C98A"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg2)"/>
+  <g transform="translate(256,256) scale(0.62) translate(-330,-256)">
+    <path d="M 330 116 A 150 150 0 1 0 330 396 A 118 118 0 1 1 330 116 Z" fill="url(#gold2)"/>
+    <circle cx="330" cy="256" r="34" fill="none" stroke="url(#gold2)" stroke-width="10"/>
+    <circle cx="330" cy="256" r="12" fill="url(#gold2)"/>
+  </g>
+</svg>`;
+
+const TARGETS=[
+  {file:'icon-192.png',          size:192, svg:SVG_NORMAL},
+  {file:'icon-512.png',          size:512, svg:SVG_NORMAL},
+  {file:'icon-192-maskable.png', size:192, svg:SVG_MASKABLE},
+  {file:'icon-512-maskable.png', size:512, svg:SVG_MASKABLE},
+];
+
+function loadImage(svgString){
+  return new Promise((resolve,reject)=>{
+    const img=new Image();
+    img.onload=()=>resolve(img);
+    img.onerror=()=>reject(new Error('Échec du rendu SVG'));
+    // Data URI : jamais de blocage CORS/tainted-canvas, contrairement à un fichier externe
+    img.src='data:image/svg+xml;base64,'+btoa(svgString);
+  });
+}
+
+function download(canvas,file){
+  const a=document.createElement('a');
+  a.download=file;
+  a.href=canvas.toDataURL('image/png');
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+async function build(){
+  const cardsEl=document.getElementById('cards');
+  const status=document.getElementById('status');
+  const canvases=[];
+  try{
+    for(const t of TARGETS){
+      const img=await loadImage(t.svg);
+      const canvas=document.createElement('canvas');
+      canvas.width=t.size;canvas.height=t.size;
+      const ctx=canvas.getContext('2d');
+      ctx.imageSmoothingEnabled=true;
+      ctx.imageSmoothingQuality='high';
+      ctx.drawImage(img,0,0,t.size,t.size);
+      // Vérifie tout de suite que l'export fonctionne, avant même que l'utilisateur clique
+      canvas.toDataURL('image/png');
+
+      const card=document.createElement('div');card.className='card';
+      canvas.style.width='120px';canvas.style.height='120px';
+      const label=document.createElement('div');
+      label.textContent=`${t.file} (${t.size}×${t.size})`;
+      label.style.cssText='font-size:0.72rem;color:#9A9590;margin:8px 0;';
+      const btn=document.createElement('button');
+      btn.textContent='Télécharger';
+      btn.addEventListener('click',()=>download(canvas,t.file));
+      card.appendChild(canvas);card.appendChild(label);card.appendChild(btn);
+      cardsEl.appendChild(card);
+      canvases.push({canvas,file:t.file});
+    }
+  }catch(e){
+    status.textContent='✗ '+e.message;
+    status.classList.add('err');
+    return;
+  }
+
+  document.getElementById('all').addEventListener('click',()=>{
+    canvases.forEach((c,i)=>setTimeout(()=>download(c.canvas,c.file),i*350));
+    status.classList.remove('err');
+    status.textContent='✓ 4 fichiers envoyés au téléchargement — regarde ta barre de téléchargements du navigateur (ou le dossier Téléchargements), puis déplace-les dans assets/.\nSi rien n\'apparaît, ton navigateur bloque peut-être les téléchargements multiples : autorise-les via le petit popup en haut de la fenêtre, ou clique les 4 boutons "Télécharger" un par un.';
+  });
+}
+build();
+</script>
+</body>
+</html>

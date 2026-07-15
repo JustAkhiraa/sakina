@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sakina ✦ — Politique de confidentialité</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --a:#C9A96E;--a2:#E8C98A;--a-glow:rgba(201,169,110,0.28);--a-dim:rgba(201,169,110,0.13);
+  --bg:#08090C;--sur:#131518;--sur2:#1C1E22;--bor:rgba(255,255,255,0.11);--bor2:rgba(255,255,255,0.06);
+  --t1:#F0EDE8;--t2:#9A9590;--t3:#5A5754;--ok:#4ade80;
+  --ff-d:"Cinzel",serif;--ff-b:"Nunito",sans-serif;--r-xl:22px;--r-md:11px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--ff-b);background:var(--bg);color:var(--t1);line-height:1.7;
+  background-image:radial-gradient(ellipse 70% 50% at 15% 0%,rgba(201,169,110,0.12) 0%,transparent 70%);
+  background-attachment:fixed;}
+.wrap{max-width:720px;margin:0 auto;padding:56px 24px 100px;}
+h1{font-family:var(--ff-d);font-size:1.9rem;letter-spacing:0.03em;color:var(--a2);margin-bottom:6px;}
+.updated{color:var(--t3);font-size:0.78rem;margin-bottom:32px;}
+.gc{background:var(--sur);border:1px solid var(--bor);border-radius:var(--r-xl);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);padding:26px 28px;margin-bottom:18px;}
+h2{font-size:1.05rem;color:var(--t1);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+p,li{color:var(--t2);font-size:0.88rem;}
+ul{padding-left:20px;margin-top:8px;}
+li{margin-bottom:6px;}
+strong{color:var(--t1);}
+code{font-family:monospace;background:var(--sur2);border:1px solid var(--bor2);border-radius:5px;padding:1px 6px;color:var(--a2);font-size:0.82rem;}
+.ok-badge{display:inline-flex;align-items:center;gap:6px;color:var(--ok);font-weight:700;font-size:0.85rem;}
+a{color:var(--a);}
+footer{text-align:center;margin-top:36px;color:var(--t3);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Politique de confidentialité — Sakina</h1>
+  <div class="updated">Dernière mise à jour : 2026</div>
+
+  <div class="gc">
+    <h2>🔒 En résumé</h2>
+    <p><span class="ok-badge">✓ Aucun compte requis</span> · <span class="ok-badge">✓ Aucune publicité</span> · <span class="ok-badge">✓ Aucun tracking</span> · <span class="ok-badge">✓ Aucune revente de données</span></p>
+    <p style="margin-top:10px;">Sakina fonctionne <strong>sans serveur propre</strong> : toutes vos données restent sur votre appareil. L'application n'a pas de compte, ne vous demande jamais votre identité, et ne contient aucun traceur publicitaire ou analytique.</p>
+  </div>
+
+  <div class="gc">
+    <h2>📦 Données stockées sur votre appareil</h2>
+    <p>Sakina enregistre localement (<code>localStorage</code>, jamais transmis à un serveur) :</p>
+    <ul>
+      <li>Votre compteur de dhikr, historique de sessions, dhikrs personnalisés</li>
+      <li>Vos préférences (thème, couleur, sons, format d'heure)</li>
+      <li>Votre position géographique <strong>si vous l'autorisez</strong> (voir ci-dessous), pour calculer les horaires de prière et la direction de la Qibla</li>
+      <li>Votre suivi Qadâ' (prières à rattraper), vos favoris et notes sur les versets du Coran</li>
+    </ul>
+    <p style="margin-top:10px;">Ces données restent sur votre téléphone. Désinstaller l'application ou vider les données du navigateur les efface définitivement. Un export JSON manuel est disponible dans <em>Réglages → Exporter mes données</em>.</p>
+  </div>
+
+  <div class="gc">
+    <h2>📍 Géolocalisation</h2>
+    <p>Si vous l'autorisez, votre position sert uniquement à :</p>
+    <ul>
+      <li>Calculer les horaires de prière et la direction de la Qibla localement, sur votre appareil</li>
+      <li>Retrouver le nom de votre ville via le service public <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap (Nominatim)</a>, qui reçoit vos coordonnées pour cette seule requête</li>
+    </ul>
+    <p style="margin-top:10px;">Vous pouvez refuser le GPS et saisir votre ville manuellement. La position n'est jamais partagée avec un tiers autre que ce service de géocodage.</p>
+  </div>
+
+  <div class="gc">
+    <h2>📖 Services externes utilisés</h2>
+    <ul>
+      <li><strong>api.quran.com</strong> — fournit le texte du Coran et sa traduction française. Aucune donnée personnelle n'y est envoyée.</li>
+      <li><strong>nominatim.openstreetmap.org</strong> — géocodage de ville (recherche manuelle ou position GPS).</li>
+      <li><strong>fonts.googleapis.com</strong> — police de caractères, chargée une fois puis mise en cache.</li>
+    </ul>
+    <p style="margin-top:10px;">Ces requêtes réseau contiennent l'adresse IP de votre appareil, comme pour toute connexion Internet, mais aucune information identifiante n'est ajoutée par Sakina.</p>
+  </div>
+
+  <div class="gc">
+    <h2>✉️ Contact</h2>
+    <p>Pour toute question sur cette politique, contactez le développeur via la fiche de l'application sur le Google Play Store.</p>
+  </div>
+
+  <footer>Sakina · سَكِينَة</footer>
+</div>
+</body>
+</html>

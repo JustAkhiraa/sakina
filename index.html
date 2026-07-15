@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark" style="background:#08090C;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Sakina ✦ — Compagnon spirituel</title>
+<meta name="description" content="Sakina — tasbih, horaires de prière, qibla, Coran, douas et outils islamiques. Sans publicité.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sakina">
+<meta name="theme-color" id="theme-color-meta" content="#08090C">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Nunito:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+<div id="app">
+
+<!-- ════════════════ PAGE TASBIH ════════════════ -->
+<div class="page active" id="page-tasbih">
+  <div id="t-hd">
+    <button class="ib" id="btn-hst" aria-label="Historique">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    </button>
+    <div id="t-title-wrap">
+      <div id="t-title">Subhanallah</div>
+      <div id="t-sub">Rappel · 33</div>
+      <div id="prog-track"><div id="prog-fill"></div></div>
+    </div>
+    <button class="ib" id="btn-edit" aria-label="Configurer">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+    </button>
+  </div>
+  <div id="dhikr-bar"></div>
+  <div id="czone">
+    <div id="ring-wrap">
+      <svg id="ring-svg" viewBox="0 0 220 220" width="220" height="220">
+        <circle id="ring-bg" cx="110" cy="110" r="104"/>
+        <circle id="ring-arc" cx="110" cy="110" r="104"/>
+      </svg>
+      <button id="tap-btn">
+        <div id="cnum">0</div>
+        <div id="clabel">APPUYER</div>
+        <div id="lap-badge">Tour 1</div>
+      </button>
+    </div>
+    <div id="stats-row">
+      <div class="sp"><span class="sp-lbl">Tours</span><span class="sp-val" id="sp-laps">0</span></div>
+      <div class="sp"><span class="sp-lbl">Session</span><span class="sp-val" id="sp-total">0</span></div>
+      <div class="sp"><span class="sp-lbl">Objectif</span><span class="sp-val" id="sp-goal">99</span></div>
+    </div>
+    <div id="ctrls">
+      <div class="ctrl" id="btn-undo">
+        <div class="ctrl-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg></div>
+        <span class="ctrl-lbl">Annuler</span>
+      </div>
+      <div class="ctrl" id="btn-reset">
+        <div class="ctrl-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div>
+        <span class="ctrl-lbl">Reset</span>
+      </div>
+      <div class="ctrl" id="btn-save-s">
+        <div class="ctrl-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+        <span class="ctrl-lbl">Sauver</span>
+      </div>
+      <div class="ctrl" id="btn-hlist">
+        <div class="ctrl-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+        <span class="ctrl-lbl">Historique</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ PAGE SALAT ════════════════ -->
+<div class="page" id="page-salat">
+  <div class="phd">
+    <div><div class="phd-title">Horaires</div><div class="phd-sub" id="salat-sub">Position requise</div></div>
+    <button class="ib" id="btn-locate" aria-label="Me localiser">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+    </button>
+  </div>
+  <div class="pscroll">
+    <div id="date-card" class="gc">
+      <div id="hijri-date">—</div>
+      <div id="greg-date">—</div>
+      <div id="next-banner"><span id="next-name">PROCHAINE</span><span id="next-cd">--:--:--</span></div>
+    </div>
+    <div id="loc-bar" class="gc">
+      <div id="loc-icon">📍</div><div id="loc-txt">Appuyer pour choisir ma position</div>
+      <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </div>
+    <div class="sl">Prières du jour</div>
+    <div id="prayers-grid"></div>
+    <div class="sl">Jeûne du jour</div>
+    <div id="ramadan-row" class="gc" style="margin:0 16px;border-radius:var(--r-xl);overflow:hidden;"></div>
+    <div class="sl">Méthode de calcul</div>
+    <div class="gc" style="margin:0 16px;border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row" id="btn-calc">
+        <div class="row-ic">🕌</div>
+        <div class="row-body"><div class="row-name" id="calc-name">Muslim World League</div><div class="row-sub">Méthode de calcul des horaires</div></div>
+        <div class="row-right"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ PAGE QIBLA ════════════════ -->
+<div class="page" id="page-qibla">
+  <div class="phd">
+    <div><div class="phd-title">Direction Qibla</div><div class="phd-sub">Vers la Ka'ba — La Mecque</div></div>
+    <button class="ib" id="btn-qref" aria-label="Recalculer">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+    </button>
+  </div>
+  <div id="qibla-zone">
+    <div style="position:relative;display:flex;align-items:center;justify-content:center;">
+      <div id="compass-ring" class="gc" style="width:260px;height:260px;border-radius:50%;">
+        <div class="cd n">N</div><div class="cd s">S</div><div class="cd e">E</div><div class="cd w">O</div>
+        <div id="qn"><div class="nt"></div><div class="nb"></div></div>
+        <div id="cdot"></div>
+      </div>
+    </div>
+    <div id="qinfo" class="gc">
+      <div id="q-deg">---°</div><div id="q-lbl">Direction vers La Mecque</div>
+      <div id="q-city">Position non détectée</div>
+      <div id="q-status" class="searching">⟳ Recherche…</div>
+      <div id="q-hint"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ PAGE DOUAS ════════════════ -->
+<div class="page" id="page-duas">
+  <div class="phd">
+    <div><div class="phd-title">Invocations</div><div class="phd-sub">Doua's & Adhkâr</div></div>
+    <button class="ib" id="btn-dsearch" aria-label="Rechercher">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+    </button>
+  </div>
+  <div class="pscroll">
+    <div id="cat-bar"></div>
+    <div id="duas-list"></div>
+  </div>
+</div>
+
+<!-- ════════════════ PAGE CORAN ════════════════ -->
+<div class="page" id="page-quran">
+  <div id="quran-hd">
+    <div id="quran-hd-top">
+      <button class="ib" id="btn-quran-list" aria-label="Liste des sourates">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"/></svg>
+      </button>
+      <div id="quran-surah-title">
+        <div id="quran-surah-name">Al-Fatiha</div>
+        <div id="quran-surah-info">Sourate 1 · 7 versets · La Mecque</div>
+      </div>
+      <button class="ib" id="btn-quran-bookmarks" aria-label="Favoris et notes">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      </button>
+    </div>
+    <div id="tajwid-legend">
+      <div class="tj-item"><span class="tj-dot" style="background:#E53E3E"></span><span>Madd</span></div>
+      <div class="tj-item"><span class="tj-dot" style="background:#38A169"></span><span>Ghunna</span></div>
+      <div class="tj-item"><span class="tj-dot" style="background:#3182CE"></span><span>Qalqala</span></div>
+      <div class="tj-item"><span class="tj-dot" style="background:#D69E2E"></span><span>Ikhfa</span></div>
+      <div class="tj-item"><span class="tj-dot" style="background:#718096"></span><span>Idgham</span></div>
+    </div>
+  </div>
+  <div id="quran-scroll">
+    <div id="quran-basmala">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+    <div id="quran-verses"></div>
+    <div id="quran-loading">
+      <div class="q-spinner"></div>
+      <div style="font-size:0.8rem;color:var(--t2);margin-top:12px;">Chargement du Coran…</div>
+    </div>
+    <div id="quran-error" style="display:none;text-align:center;padding:32px 20px;">
+      <div style="font-size:2rem;margin-bottom:8px;">📵</div>
+      <div style="font-size:0.85rem;color:var(--t2);margin-bottom:16px;">Connexion requise pour charger le Coran</div>
+      <div class="ok-b" id="btn-quran-retry" style="width:auto;padding:10px 24px;margin:0 auto;display:flex;align-items:center;gap:6px;font-size:0.82rem;">Réessayer</div>
+    </div>
+  </div>
+  <div id="verse-action-bar">
+    <div class="v-act" id="vact-transl">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+      Traduction
+    </div>
+    <div class="v-act" id="vact-note">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+      Note
+    </div>
+    <div class="v-act" id="vact-fav">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      Favori
+    </div>
+    <div class="v-act" id="vact-copy">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+      Copier
+    </div>
+  </div>
+  <div id="transl-panel">
+    <div id="transl-panel-hd">
+      <div id="transl-ayah-ref"></div>
+      <button class="close-b" id="btn-close-transl" style="width:28px;height:28px"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
+    <div id="transl-arabic"></div>
+    <div id="transl-text"></div>
+  </div>
+</div>
+
+<!-- ════════════════ PAGE RÉGLAGES ════════════════ -->
+<div class="page" id="page-settings">
+  <div class="phd"><div><div class="phd-title">Paramètres</div></div><div style="width:40px"></div></div>
+  <div class="pscroll">
+
+    <!-- Profil -->
+    <div id="prof-card" class="gc">
+      <div id="prof-av">🕋</div>
+      <div><div id="prof-name">Sakina</div><div id="prof-sub">0 sessions</div></div>
+    </div>
+
+    <!-- Stats -->
+    <div class="sl">Statistiques</div>
+    <div id="my-stats">
+      <div class="ms-card gc"><div class="ms-val" id="st-total">0</div><div class="ms-lbl">Dhikrs</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-sess">0</div><div class="ms-lbl">Sessions</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-streak">0</div><div class="ms-lbl">Jours 🔥</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-qada">0</div><div class="ms-lbl">Qadâ'</div></div>
+    </div>
+
+    <!-- Outils -->
+    <div class="sl">Outils islamiques</div>
+    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row" id="btn-open-qada">
+        <div class="row-ic">🤲</div>
+        <div class="row-body"><div class="row-name">Rattrapage des Prières (Qadâ')</div><div class="row-sub">Suivre les prières manquées à rattraper</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="row" id="btn-open-rakah">
+        <div class="row-ic">🕌</div>
+        <div class="row-body"><div class="row-name">Compteur Rak'ah</div><div class="row-sub">Compter les rak'ahs de la prière</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="row" id="btn-open-zakat">
+        <div class="row-ic">💰</div>
+        <div class="row-body"><div class="row-name">Calcul de la Zakat</div><div class="row-sub">Calculer votre zakat sur les biens</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="row" id="btn-open-hijri">
+        <div class="row-ic">📅</div>
+        <div class="row-body"><div class="row-name">Convertisseur de date hégirien</div><div class="row-sub">Calendrier grégorien ↔ hégirien</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="row" style="border-bottom:none" id="btn-open-fasting">
+        <div class="row-ic">🌙</div>
+        <div class="row-body"><div class="row-name">Calendrier du Jeûne</div><div class="row-sub">Ramadan, jours blancs &amp; recommandés</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+
+    <!-- Apparence -->
+    <div class="sl">Apparence</div>
+    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row" style="cursor:default;">
+        <div class="row-ic">🌓</div>
+        <div class="row-body"><div class="row-name">Thème</div><div class="row-sub">Clair ou sombre</div></div>
+        <div class="seg-ctrl" id="theme-seg">
+          <div class="seg-opt active" data-thm="dark">🌙 Sombre</div>
+          <div class="seg-opt" data-thm="light">☀️ Clair</div>
+        </div>
+      </div>
+      <div class="row" style="cursor:default;border-bottom:none">
+        <div class="row-ic">🎨</div>
+        <div class="row-body"><div class="row-name">Couleur d'accent</div></div>
+      </div>
+      <div style="padding:4px 16px 14px;"><div class="tgrid" id="theme-grid"></div></div>
+    </div>
+
+    <!-- Format heure -->
+    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row" style="cursor:default;border-bottom:none">
+        <div class="row-ic">🕐</div>
+        <div class="row-body"><div class="row-name">Format d'heure</div><div class="row-sub">Affiché dans les horaires de prière</div></div>
+        <div class="seg-ctrl" id="fmt-seg">
+          <div class="seg-opt" data-fmt="24">24H</div>
+          <div class="seg-opt" data-fmt="12">12H</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Son -->
+    <div class="sl">Son du compteur</div>
+    <div class="gc" id="sound-list" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;"></div>
+
+    <!-- Préférences -->
+    <div class="sl">Préférences</div>
+    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row"><div class="row-ic">🔊</div><div class="row-body"><div class="row-name">Son</div><div class="row-sub">Retour sonore à chaque appui</div></div><div class="tog" id="tog-sound"></div></div>
+      <div class="row"><div class="row-ic">📳</div><div class="row-body"><div class="row-name">Vibration haptique</div><div class="row-sub">Retour tactile</div></div><div class="tog" id="tog-vib"></div></div>
+      <div class="row"><div class="row-ic">🔁</div><div class="row-body"><div class="row-name">Boucle automatique</div><div class="row-sub">Reprend à 0 après l'objectif</div></div><div class="tog" id="tog-loop"></div></div>
+      <div class="row"><div class="row-ic">🌑</div><div class="row-body"><div class="row-name">Nuit profonde (OLED)</div><div class="row-sub">Fond noir absolu, économie d'écran</div></div><div class="tog" id="tog-night"></div></div>
+      <div class="row" style="border-bottom:none"><div class="row-ic">🔒</div><div class="row-body"><div class="row-name">Verrouillage écran</div><div class="row-sub">Évite les appuis accidentels</div></div><div class="tog" id="tog-lock"></div></div>
+    </div>
+
+    <!-- Données -->
+    <div class="sl">Données</div>
+    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row" id="btn-export"><div class="row-ic">📤</div><div class="row-body"><div class="row-name">Exporter mes données</div><div class="row-sub">Télécharger en JSON</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+      <div class="row" style="border-bottom:none" id="btn-reset-all"><div class="row-ic">🗑️</div><div class="row-body"><div class="row-name" style="color:var(--err)">Tout réinitialiser</div><div class="row-sub">Efface compteur et historique</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+    </div>
+
+    <!-- À propos -->
+    <div class="sl">À propos</div>
+    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+      <a class="row" style="border-bottom:none;text-decoration:none;color:inherit;" href="privacy-policy.html" target="_blank" rel="noopener">
+        <div class="row-ic">🔏</div>
+        <div class="row-body"><div class="row-name">Politique de confidentialité</div><div class="row-sub">Aucun compte, aucune publicité, aucun tracking</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div style="text-align:center;font-size:0.6rem;color:var(--t3);letter-spacing:0.1em;padding:14px 0 6px;">SAKINA v1.0 · سَكِينَة ✦</div>
+
+  </div>
+</div>
+
+<!-- ════════════════ NAVBAR ════════════════ -->
+<nav id="navbar">
+  <div class="nv active" data-page="page-tasbih">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 8v4l3 3"/></svg>
+    <span class="nv-lbl">Tasbih</span>
+  </div>
+  <div class="nv" data-page="page-salat">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1M4.22 4.22l.707.707m12.728 12.728l.707.707M1 12h1m20 0h1M4.22 19.78l.707-.707M18.364 5.636l.707-.707"/><circle cx="12" cy="12" r="4"/></svg>
+    <span class="nv-lbl">Salat</span>
+  </div>
+  <div class="nv" data-page="page-qibla">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+    <span class="nv-lbl">Qibla</span>
+  </div>
+  <div class="nv" data-page="page-duas">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+    <span class="nv-lbl">Douas</span>
+  </div>
+  <div class="nv" data-page="page-quran">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg>
+    <span class="nv-lbl">Coran</span>
+  </div>
+  <div class="nv" data-page="page-settings">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+    <span class="nv-lbl">Réglages</span>
+  </div>
+</nav>
+</div><!-- /#app -->
+
+<!-- ════════════════ SHEETS ════════════════ -->
+<div class="overlay" id="overlay"></div>
+
+<!-- ÉDITION DHIKR -->
+<div class="sheet" id="sh-edit">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Configurer le Dhikr</div>
+    <button class="ok-b" id="btn-save-edit">✓</button>
+  </div>
+  <div class="sh-bd">
+    <div style="margin-bottom:16px"><div class="sl" style="margin:0 0 8px">Nom</div><input class="inp" type="text" id="inp-title" placeholder="ex: Subhanallah"></div>
+    <div style="margin-bottom:16px"><div class="sl" style="margin:0 0 8px">Valeur de départ</div>
+      <div class="stepper"><div class="step-b" id="ss-m">−</div><input type="number" id="inp-start" value="0" min="0"><div class="step-b" id="ss-p">+</div></div>
+    </div>
+    <div style="margin-bottom:12px"><div class="sl" style="margin:0 0 8px">Rappel</div>
+      <div class="stepper"><div class="step-b" id="sr-m">−</div><input type="number" id="inp-rem" value="33" min="0"><div class="step-b" id="sr-p">+</div></div>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        <span class="chip" data-for="inp-rem" data-val="11">11</span><span class="chip" data-for="inp-rem" data-val="33">33</span><span class="chip" data-for="inp-rem" data-val="99">99</span><span class="chip" data-for="inp-rem" data-val="100">100</span><span class="chip" data-for="inp-rem" data-val="0">Aucun</span>
+      </div>
+    </div>
+    <div style="margin-bottom:14px"><div class="sl" style="margin:0 0 8px">Objectif</div>
+      <div class="stepper"><div class="step-b" id="sg-m">−</div><input type="number" id="inp-goal" value="99" min="0"><div class="step-b" id="sg-p">+</div></div>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        <span class="chip" data-for="inp-goal" data-val="33">33</span><span class="chip" data-for="inp-goal" data-val="99">99</span><span class="chip" data-for="inp-goal" data-val="100">100</span><span class="chip" data-for="inp-goal" data-val="1000">1000</span><span class="chip" data-for="inp-goal" data-val="0">Infini</span>
+      </div>
+    </div>
+    <div class="qada-ok" id="btn-pin-dhikr" style="text-align:center;margin-bottom:14px;">☆ Épingler comme préréglage</div>
+    <div class="sl" style="margin:0 0 4px">Mes préréglages</div>
+    <div id="custom-presets"></div>
+  </div>
+</div>
+
+<!-- HISTORIQUE -->
+<div class="sheet" id="sh-hist">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Historique</div>
+    <button class="close-b" id="btn-clr-hist" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2)"><svg width="12" height="12" fill="none" stroke="#f87171" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
+  </div>
+  <div class="sh-bd" id="hist-bd"></div>
+</div>
+
+<!-- MÉTHODE DE CALCUL -->
+<div class="sheet" id="sh-calc">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Méthode de calcul</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd" id="calc-bd"></div>
+</div>
+
+<!-- CHOIX DE VILLE -->
+<div class="sheet" id="sh-city">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Ma position</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <div class="qada-ok" id="btn-gps" style="text-align:center;margin-bottom:14px;">📍 Détecter par GPS</div>
+    <div class="sl" style="margin:0 0 8px">Ou chercher une ville</div>
+    <input class="inp" type="text" id="city-inp" placeholder="ex: Lyon, Casablanca, Istanbul…" autocomplete="off">
+    <div id="city-results" style="margin-top:10px"></div>
+  </div>
+</div>
+
+<!-- RECHERCHE DOUAS -->
+<div class="sheet" id="sh-dsearch">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Rechercher</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <input class="inp" type="text" id="dsearch-inp" placeholder="Chercher une invocation…" autocomplete="off">
+    <div id="dsearch-res" style="margin-top:14px"></div>
+  </div>
+</div>
+
+<!-- QADÂ' -->
+<div class="sheet" id="sh-qada">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Qadâ' — Rattrapage</div>
+    <button class="ib" id="btn-qada-info2" style="width:32px;height:32px;border-radius:50%;font-size:0.9rem;">ℹ</button>
+  </div>
+  <div class="sh-bd" id="qada-zone"></div>
+</div>
+
+<!-- INFO QADÂ' -->
+<div class="sheet" id="sh-qada-info-inner">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">À propos du Qadâ'</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <div style="font-family:var(--ff-a);font-size:1.4rem;color:var(--a);text-align:right;direction:rtl;padding:10px 0 16px;line-height:2;">وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ</div>
+    <p style="font-size:0.82rem;color:var(--t2);line-height:1.7;margin-bottom:14px;">Le <strong style="color:var(--t1)">Qadâ'</strong> consiste à rattraper les prières obligatoires manquées. Selon les savants, il est obligatoire de les rattraper dès que possible.</p>
+    <p style="font-size:0.82rem;color:var(--t2);line-height:1.7;margin-bottom:14px;"><strong style="color:var(--t1)">Comment utiliser :</strong> Entrez le nombre de jours ou d'années pendant lesquels vous avez manqué vos prières. Le nombre de prières manquées par prière sera calculé automatiquement.</p>
+    <p style="font-size:0.82rem;color:var(--t2);line-height:1.7;">Pour chaque prière rattrapée, appuyez sur <strong style="color:var(--a)">−</strong>. Votre progression est sauvegardée automatiquement.</p>
+  </div>
+</div>
+
+<!-- COMPTEUR RAK'AH -->
+<div class="sheet" id="sh-rakah">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Compteur Rak'ah</div>
+    <button class="ok-b" id="btn-reset-rakah" style="background:rgba(239,68,68,0.15);color:#f87171;font-size:0.7rem;width:auto;padding:0 10px;font-weight:700;box-shadow:none;">Reset</button>
+  </div>
+  <div class="sh-bd">
+    <div class="sl" style="margin:0 0 10px">Prière en cours</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px" id="rakah-prayer-sel"></div>
+    <div class="gc" style="border-radius:var(--r-xl);padding:28px;text-align:center;margin-bottom:14px;position:relative;">
+      <div style="font-family:var(--ff-a);font-size:1.1rem;color:var(--a);margin-bottom:6px;" id="rakah-prayer-ar">الفجر</div>
+      <div style="font-family:var(--ff-m);font-size:5rem;color:var(--t1);line-height:1;" id="rakah-count">0</div>
+      <div style="font-size:0.65rem;color:var(--t2);margin-top:6px;text-transform:uppercase;letter-spacing:0.1em;">Rak'ahs</div>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:14px;" id="rakah-dots"></div>
+    </div>
+    <div style="display:flex;gap:12px;margin-bottom:14px;">
+      <div style="flex:1;height:64px;border-radius:var(--r-lg);background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.6rem;color:#f87171;transition:all 0.15s;" id="rakah-minus">−</div>
+      <div style="flex:2;height:64px;border-radius:var(--r-lg);background:var(--a-dim);border:1px solid var(--a-glow);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;font-weight:800;color:var(--a);transition:all 0.15s;letter-spacing:0.06em;" id="rakah-plus">+ 1 Rak'ah</div>
+    </div>
+    <div class="gc" style="border-radius:var(--r-lg);padding:14px 16px;display:flex;align-items:center;gap:12px;">
+      <div style="flex:1">
+        <div style="font-size:0.85rem;font-weight:700;">Sujoud</div>
+        <div style="font-size:0.68rem;color:var(--t2);margin-top:1px;">Prosternations dans la rak'ah</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:var(--r-sm);background:var(--sur2);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;color:var(--t2);" id="sujoud-minus">−</div>
+        <div style="font-family:var(--ff-m);font-size:1.2rem;color:var(--a);min-width:28px;text-align:center;" id="sujoud-count">0</div>
+        <div style="width:32px;height:32px;border-radius:var(--r-sm);background:var(--a-dim);border:1px solid var(--a-glow);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;color:var(--a);" id="sujoud-plus">+</div>
+      </div>
+    </div>
+    <div class="sl" style="margin-top:16px;margin-bottom:8px">Référence — Nombre de Rak'ahs</div>
+    <div class="gc" style="border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row" style="cursor:default"><div class="row-ic">🌙</div><div class="row-body"><div class="row-name">Fajr</div><div class="row-sub">Prière de l'aube</div></div><div class="row-right gold">2</div></div>
+      <div class="row" style="cursor:default"><div class="row-ic">☀️</div><div class="row-body"><div class="row-name">Dhouhr</div><div class="row-sub">Prière du midi</div></div><div class="row-right gold">4</div></div>
+      <div class="row" style="cursor:default"><div class="row-ic">🌤️</div><div class="row-body"><div class="row-name">Asr</div><div class="row-sub">Prière de l'après-midi</div></div><div class="row-right gold">4</div></div>
+      <div class="row" style="cursor:default"><div class="row-ic">🌅</div><div class="row-body"><div class="row-name">Maghrib</div><div class="row-sub">Prière du coucher du soleil</div></div><div class="row-right gold">3</div></div>
+      <div class="row" style="cursor:default;border-bottom:none"><div class="row-ic">🌃</div><div class="row-body"><div class="row-name">Icha</div><div class="row-sub">Prière du soir</div></div><div class="row-right gold">4</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ZAKAT -->
+<div class="sheet" id="sh-zakat">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Calcul de la Zakat</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <div style="font-family:var(--ff-a);font-size:1.2rem;color:var(--a);text-align:right;direction:rtl;padding:8px 0 14px;line-height:2;">وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ</div>
+    <div class="sl" style="margin:0 0 8px">Devise</div>
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap" id="zakat-currency">
+      <span class="chip" data-cur="EUR" data-sym="€">€ EUR</span>
+      <span class="chip" data-cur="USD" data-sym="$">$ USD</span>
+      <span class="chip" data-cur="GBP" data-sym="£">£ GBP</span>
+      <span class="chip" data-cur="MAD" data-sym="DH">DH MAD</span>
+      <span class="chip" data-cur="DZD" data-sym="DA">DA DZD</span>
+      <span class="chip" data-cur="TND" data-sym="DT">DT TND</span>
+    </div>
+    <div class="sl" style="margin:0 0 8px">Nisab — Prix de l'or (85g) en <span id="zakat-cur-lbl">EUR</span></div>
+    <div style="margin-bottom:16px">
+      <div class="stepper">
+        <div class="step-b" id="z-nisab-m">−</div>
+        <input type="number" id="z-nisab" value="5000" min="0" step="100">
+        <div class="step-b" id="z-nisab-p">+</div>
+      </div>
+      <div style="font-size:0.68rem;color:var(--t3);margin-top:6px;">Valeur actuelle estimée de 85g d'or. À vérifier selon le cours du jour.</div>
+    </div>
+    <div class="sl" style="margin:0 0 8px">Votre patrimoine total (<span id="zakat-sym-lbl">€</span>)</div>
+    <div style="margin-bottom:8px">
+      <div class="stepper">
+        <div class="step-b" id="z-wealth-m">−</div>
+        <input type="number" id="z-wealth" value="0" min="0" step="100">
+        <div class="step-b" id="z-wealth-p">+</div>
+      </div>
+    </div>
+    <div style="font-size:0.68rem;color:var(--t3);margin-bottom:16px;line-height:1.5;">Incluez : épargne, investissements, stocks commerciaux, créances récupérables. Déduisez : dettes, besoins essentiels.</div>
+    <div class="gc" id="zakat-result" style="border-radius:var(--r-xl);padding:20px;text-align:center;margin-top:4px;">
+      <div style="font-size:0.65rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.12em;font-weight:800;margin-bottom:8px;">ZAKAT DUE (2.5%)</div>
+      <div style="font-family:var(--ff-m);font-size:2.4rem;color:var(--a);" id="zakat-amount">0 €</div>
+      <div style="font-size:0.72rem;color:var(--t2);margin-top:8px;" id="zakat-status">Entrez votre patrimoine pour calculer</div>
+    </div>
+    <div style="font-size:0.72rem;color:var(--t3);line-height:1.6;margin-top:14px;padding:12px;background:var(--sur2);border-radius:var(--r-md);border:1px solid var(--bor2);">
+      <strong style="color:var(--t2);">Note :</strong> Ce calcul est une estimation basée sur le fiqh de la majorité. La Zakat est due sur tout patrimoine dépassant le Nisab, détenu pendant un an lunaire (hawl). Consultez un imam pour votre situation personnelle.
+    </div>
+  </div>
+</div>
+
+<!-- CONVERTISSEUR HÉGIRIEN -->
+<div class="sheet" id="sh-hijri">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Calendrier Hégirien</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <div class="gc" style="border-radius:var(--r-xl);padding:18px;text-align:center;margin-bottom:16px;">
+      <div style="font-size:0.62rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;font-weight:800;">AUJOURD'HUI</div>
+      <div style="font-family:var(--ff-a);font-size:1.6rem;color:var(--a);line-height:1.5;" id="hconv-hijri-today">---</div>
+      <div style="font-size:0.78rem;color:var(--t2);margin-top:4px;" id="hconv-greg-today">---</div>
+    </div>
+    <div class="sl" style="margin:0 0 8px">Convertir une date grégorienne</div>
+    <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center;">
+      <input class="inp" type="date" id="hconv-inp" style="flex:1">
+      <div class="ok-b" id="btn-hconv" style="width:auto;padding:0 16px;height:46px;border-radius:var(--r-md);font-size:0.82rem;">OK</div>
+    </div>
+    <div class="gc" id="hconv-result" style="border-radius:var(--r-xl);padding:18px;text-align:center;display:none;">
+      <div style="font-family:var(--ff-a);font-size:1.4rem;color:var(--a);line-height:1.5;" id="hconv-result-hijri"></div>
+      <div style="font-size:0.78rem;color:var(--t2);margin-top:6px;" id="hconv-result-greg"></div>
+    </div>
+    <div class="sl" style="margin-top:18px;margin-bottom:8px">Les mois du calendrier hégirien</div>
+    <div class="gc" style="border-radius:var(--r-xl);overflow:hidden;" id="hijri-months-list"></div>
+  </div>
+</div>
+
+<!-- LISTE DES SOURATES -->
+<div class="sheet" id="sh-quran-list" style="max-height:96vh;">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Sourates du Coran</div>
+    <div style="width:32px"></div>
+  </div>
+  <div style="padding:0 16px 4px;flex-shrink:0;">
+    <input class="inp" type="text" id="surah-search" placeholder="Rechercher une sourate…" autocomplete="off" style="margin-bottom:8px;">
+    <div id="quran-tabs"></div>
+  </div>
+  <div class="sh-bd" id="surah-list-bd" style="padding-left:0;padding-right:0;"></div>
+</div>
+
+<!-- FAVORIS & NOTES CORAN -->
+<div class="sheet" id="sh-quran-bk">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Favoris & Notes</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <div class="seg-ctrl" style="margin-bottom:14px;">
+      <div class="seg-opt active" id="bk-tab-fav" style="flex:1;text-align:center;">❤️ Favoris</div>
+      <div class="seg-opt" id="bk-tab-notes" style="flex:1;text-align:center;">✏️ Notes</div>
+    </div>
+    <div id="bk-favs-list"></div>
+    <div id="bk-notes-list" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- ÉDITEUR DE NOTE -->
+<div class="sheet" id="sh-quran-note">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title" id="note-sheet-title">Ajouter une note</div>
+    <button class="ok-b" id="btn-save-note">✓</button>
+  </div>
+  <div class="sh-bd">
+    <div id="note-ayah-preview" style="font-family:var(--ff-a);font-size:1.1rem;color:var(--a);direction:rtl;text-align:right;padding:12px 0;border-bottom:1px solid var(--bor2);margin-bottom:12px;line-height:1.9;"></div>
+    <div class="sl" style="margin:0 0 8px;">Votre note</div>
+    <textarea id="note-textarea" placeholder="Notez vos réflexions, mémorisations ou enseignements…"></textarea>
+  </div>
+</div>
+
+<!-- CALENDRIER DU JEÛNE -->
+<div class="sheet" id="sh-fasting" style="max-height:96vh;">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Calendrier du Jeûne</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd" id="fasting-bd"></div>
+</div>
+
+<div id="toast"></div>
+<div id="confirm-box">
+  <div id="confirm-msg"></div>
+  <div id="confirm-acts">
+    <div class="cf-btn cf-cancel" id="cf-cancel">Annuler</div>
+    <div class="cf-btn cf-ok" id="cf-ok">Confirmer</div>
+  </div>
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

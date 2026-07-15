@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "REMPLACE_MOI_com.tondomaine.sakina",
+      "sha256_cert_fingerprints": ["REMPLACE_MOI_PAR_TON_EMPREINTE_SHA256"]
+    }
+  }
+]

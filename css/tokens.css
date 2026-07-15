@@ -1,0 +1,59 @@
+/* ════════════════════════════════════════
+   SAKINA — DESIGN TOKENS
+   Thème sombre par défaut, clair via [data-theme="light"],
+   nuit profonde via [data-night="true"], accents via [data-accent].
+════════════════════════════════════════ */
+:root{
+  --a:#C9A96E;--a2:#E8C98A;
+  --a-glow:rgba(201,169,110,0.28);
+  --a-dim:rgba(201,169,110,0.13);
+  --a-soft:rgba(201,169,110,0.06);
+  --a-rgb:201,169,110;
+  --bg:#08090C;
+  --sur:#131518;--sur2:#1C1E22;--sur3:#22252A;
+  --bor:rgba(255,255,255,0.11);--bor2:rgba(255,255,255,0.06);
+  --shine:rgba(255,255,255,0.22);
+  --t1:#F0EDE8;--t2:#9A9590;--t3:#5A5754;
+  --ok:#4ade80;--ok-rgb:74,222,128;
+  --err:#f87171;--err-rgb:239,68,68;
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(201,169,110,0.18) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(96,165,250,0.09) 0%,transparent 65%);
+  --sh1:0 8px 32px rgba(0,0,0,0.45),inset 0 1px 0 rgba(255,255,255,0.10);
+  --sh2:0 20px 60px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.12);
+  --blur:blur(20px) saturate(160%);
+  --ff-d:"Cinzel","Palatino Linotype","Georgia",serif;
+  --ff-b:"Nunito","Helvetica Neue","Arial",sans-serif;
+  --ff-a:"Noto Naskh Arabic","Traditional Arabic","Arial Unicode MS",sans-serif;
+  --ff-m:"DM Mono","Courier New","Courier",monospace;
+  --r-pill:9999px;--r-xl:26px;--r-lg:18px;--r-md:13px;--r-sm:9px;
+  --ease:cubic-bezier(0.32,0.72,0,1);
+}
+/* ── ACCENTS ── */
+[data-accent="jade"]    {--a:#16A34A;--a2:#4ADE80;--a-glow:rgba(22,163,74,0.28);--a-dim:rgba(22,163,74,0.12);--a-rgb:22,163,74;}
+[data-accent="sapphire"]{--a:#2563EB;--a2:#60A5FA;--a-glow:rgba(37,99,235,0.28);--a-dim:rgba(37,99,235,0.12);--a-rgb:37,99,235;}
+[data-accent="rose"]    {--a:#BE185D;--a2:#F472B6;--a-glow:rgba(190,24,93,0.28);--a-dim:rgba(190,24,93,0.12);--a-rgb:190,24,93;}
+[data-accent="violet"]  {--a:#6D28D9;--a2:#A78BFA;--a-glow:rgba(109,40,217,0.28);--a-dim:rgba(109,40,217,0.12);--a-rgb:109,40,217;}
+[data-accent="ember"]   {--a:#C2410C;--a2:#FB923C;--a-glow:rgba(194,65,12,0.28);--a-dim:rgba(194,65,12,0.12);--a-rgb:194,65,12;}
+[data-accent="teal"]    {--a:#0F766E;--a2:#2DD4BF;--a-glow:rgba(15,118,110,0.28);--a-dim:rgba(15,118,110,0.12);--a-rgb:15,118,110;}
+[data-accent="pearl"]   {--a:#6B7280;--a2:#9CA3AF;--a-glow:rgba(107,114,128,0.28);--a-dim:rgba(107,114,128,0.12);--a-rgb:107,114,128;}
+/* ── MODE CLAIR ── */
+[data-theme="light"]{
+  --bg:#F5F4F0;--sur:#FFFFFF;--sur2:#EEECEA;--sur3:#E4E1DB;
+  --bor:rgba(0,0,0,0.09);--bor2:rgba(0,0,0,0.05);
+  --shine:rgba(255,255,255,0.9);
+  --t1:#1A1814;--t2:#6B6760;--t3:#ADA9A4;
+  --sh1:0 4px 20px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.8);
+  --sh2:0 10px 40px rgba(0,0,0,0.10),inset 0 1px 0 rgba(255,255,255,0.9);
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(201,169,110,0.10) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(96,165,250,0.05) 0%,transparent 65%);
+}
+/* ── NUIT PROFONDE (OLED) ── */
+[data-night="true"]:not([data-theme="light"]){
+  --bg:#000000;--sur:#0A0B0D;--sur2:#111214;--sur3:#17181B;
+  --bor:rgba(255,255,255,0.08);--bor2:rgba(255,255,255,0.04);
+  --orb1:none;--orb2:none;
+}
+/* ── ACCESSIBILITÉ ── */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}
+}
