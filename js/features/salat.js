@@ -4,12 +4,13 @@ import {S,save,emit} from '../core/store.js';
 import {toast,openSheet,closeSheet} from '../core/ui.js';
 import {computeTimes,fmtTime} from '../lib/astro.js';
 import {toHijri,hijriLabelAr} from '../lib/hijri.js';
-import {CALC_METHODS} from '../data/catalog.js';
+import {CALC_METHODS,MADHABS} from '../data/catalog.js';
 
 const $=id=>document.getElementById(id);
 let _cdI=null;
 
 const methodById=id=>CALC_METHODS.find(m=>m.id===id)||CALC_METHODS[0];
+const asrFactor=()=>(MADHABS.find(m=>m.id===S.madhab)||MADHABS[0]).asrFactor;
 
 const PRAYER_DEFS=[
   {key:'fajr',   name:'Fajr',   arabic:'الفجر'},
@@ -30,7 +31,7 @@ function timeToDate(base,hours){
 /* Prochaine prière : aujourd'hui, sinon Fajr de demain */
 function findNext(now){
   const m=methodById(S.calcMethod);
-  const today=computeTimes(S.lat,S.lon,now,m);
+  const today=computeTimes(S.lat,S.lon,now,m,asrFactor());
   for(const p of PRAYER_DEFS){
     const t=today[p.key];
     if(t!==null){
@@ -39,7 +40,7 @@ function findNext(now){
     }
   }
   const tomorrow=new Date(now);tomorrow.setDate(tomorrow.getDate()+1);
-  const t2=computeTimes(S.lat,S.lon,tomorrow,m);
+  const t2=computeTimes(S.lat,S.lon,tomorrow,m,asrFactor());
   if(t2.fajr!==null)return{...PRAYER_DEFS[0],at:timeToDate(tomorrow,t2.fajr),today:false};
   return null;
 }
@@ -48,7 +49,7 @@ export function renderPrayers(){
   if(S.lat===null)return;
   const now=new Date();
   const m=methodById(S.calcMethod);
-  const T=computeTimes(S.lat,S.lon,now,m);
+  const T=computeTimes(S.lat,S.lon,now,m,asrFactor());
 
   $('hijri-date').textContent=hijriLabelAr(toHijri(now));
   $('greg-date').textContent=now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
@@ -89,12 +90,17 @@ export function renderPrayers(){
 }
 
 /* ── Localisation ── */
-async function reverseGeocode(lat,lon){
+export async function reverseGeocode(lat,lon){
   try{
     const res=await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=fr`);
     const d=await res.json();
     return d.address?.city||d.address?.town||d.address?.village||d.address?.municipality||'';
   }catch{return'';}
+}
+
+export async function geocodeCity(q){
+  const res=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=6&accept-language=fr`);
+  return res.json();
 }
 
 export function requestGPS(){
@@ -122,8 +128,7 @@ async function searchCity(q){
   if(!q.trim()){box.innerHTML='';return;}
   box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:10px 0;">Recherche…</div>';
   try{
-    const res=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=6&accept-language=fr`);
-    const items=await res.json();
+    const items=await geocodeCity(q);
     box.innerHTML='';
     if(!items.length){box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:10px 0;">Aucun résultat</div>';return;}
     items.forEach(it=>{

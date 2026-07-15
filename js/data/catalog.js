@@ -41,6 +41,27 @@ export const CALC_METHODS=[
   {id:1, name:'Université de Karachi', desc:'Pakistan',                          fajr:18,   isha:18},
 ];
 
+/* Écoles juridiques — asrFactor : longueur d'ombre pour l'heure de l'Asr
+   (2 pour l'école hanafite, 1 pour la majorité) */
+export const MADHABS=[
+  {id:'maliki', name:'Malikite', ar:'مالكي', asrFactor:1},
+  {id:'hanafi', name:'Hanafite', ar:'حنفي',  asrFactor:2},
+  {id:'shafii', name:'Chaféite', ar:'شافعي', asrFactor:1},
+  {id:'hanbali',name:'Hanbalite',ar:'حنبلي', asrFactor:1},
+];
+
+/* Langues de l'interface */
+export const LANGS=[
+  {code:'fr',name:'Français', flag:'🇫🇷'},
+  {code:'ar',name:'العربية',  flag:'🇸🇦',rtl:true},
+  {code:'en',name:'English',  flag:'🇬🇧'},
+  {code:'es',name:'Español',  flag:'🇪🇸'},
+  {code:'ru',name:'Русский',  flag:'🇷🇺'},
+  {code:'zh',name:'中文',      flag:'🇨🇳'},
+  {code:'ja',name:'日本語',    flag:'🇯🇵'},
+  {code:'hi',name:'हिन्दी',    flag:'🇮🇳'},
+];
+
 export const QADA_PRAYERS=[
   {key:'fajr',    name:'Fajr',    arabic:'الفجر',  icon:'🌙'},
   {key:'dhuhr',   name:'Dhouhr',  arabic:'الظهر',  icon:'☀️'},

@@ -8,6 +8,9 @@ import {initDuas} from './features/duas.js';
 import {initQuran,onQuranShow} from './features/quran.js';
 import {initSettings} from './features/settings.js';
 import {initTools} from './features/tools.js';
+import {initOnboarding} from './features/onboarding.js';
+import {initPlaces} from './features/places.js';
+import {initHalal,stopCamera} from './features/halal.js';
 
 initUI();
 initRouter();
@@ -18,6 +21,13 @@ initQibla();
 initDuas();
 initQuran();
 initTools();
+initPlaces();
+initHalal();
+initOnboarding(); // en dernier : peut afficher l'assistant par-dessus l'app prête
+
+// Coupe la caméra du scanner si l'utilisateur ferme la sheet Vérif' Halal
+document.getElementById('overlay').addEventListener('click',stopCamera);
+document.addEventListener('click',e=>{if(e.target.closest('[data-close-sheet]'))stopCamera();});
 
 registerPageHook('page-salat',onSalatShow);
 registerPageHook('page-qibla',onQiblaShow);

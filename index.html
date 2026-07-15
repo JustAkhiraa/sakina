@@ -45,7 +45,7 @@
       </svg>
       <button id="tap-btn">
         <div id="cnum">0</div>
-        <div id="clabel">APPUYER</div>
+        <div id="clabel" data-i18n="tap.label">APPUYER</div>
         <div id="lap-badge">Tour 1</div>
       </button>
     </div>
@@ -57,19 +57,19 @@
     <div id="ctrls">
       <div class="ctrl" id="btn-undo">
         <div class="ctrl-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg></div>
-        <span class="ctrl-lbl">Annuler</span>
+        <span class="ctrl-lbl" data-i18n="ctrl.undo">Annuler</span>
       </div>
       <div class="ctrl" id="btn-reset">
         <div class="ctrl-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div>
-        <span class="ctrl-lbl">Reset</span>
+        <span class="ctrl-lbl" data-i18n="ctrl.reset">Reset</span>
       </div>
       <div class="ctrl" id="btn-save-s">
         <div class="ctrl-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
-        <span class="ctrl-lbl">Sauver</span>
+        <span class="ctrl-lbl" data-i18n="ctrl.save">Sauver</span>
       </div>
       <div class="ctrl" id="btn-hlist">
         <div class="ctrl-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
-        <span class="ctrl-lbl">Historique</span>
+        <span class="ctrl-lbl" data-i18n="ctrl.history">Historique</span>
       </div>
     </div>
   </div>
@@ -78,7 +78,7 @@
 <!-- ════════════════ PAGE SALAT ════════════════ -->
 <div class="page" id="page-salat">
   <div class="phd">
-    <div><div class="phd-title">Horaires</div><div class="phd-sub" id="salat-sub">Position requise</div></div>
+    <div><div class="phd-title" data-i18n="salat.title">Horaires</div><div class="phd-sub" id="salat-sub">Position requise</div></div>
     <button class="ib" id="btn-locate" aria-label="Me localiser">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
     </button>
@@ -93,11 +93,11 @@
       <div id="loc-icon">📍</div><div id="loc-txt">Appuyer pour choisir ma position</div>
       <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     </div>
-    <div class="sl">Prières du jour</div>
+    <div class="sl" data-i18n="salat.prayers">Prières du jour</div>
     <div id="prayers-grid"></div>
-    <div class="sl">Jeûne du jour</div>
+    <div class="sl" data-i18n="salat.fast">Jeûne du jour</div>
     <div id="ramadan-row" class="gc" style="margin:0 16px;border-radius:var(--r-xl);overflow:hidden;"></div>
-    <div class="sl">Méthode de calcul</div>
+    <div class="sl" data-i18n="salat.method">Méthode de calcul</div>
     <div class="gc" style="margin:0 16px;border-radius:var(--r-xl);overflow:hidden;">
       <div class="row" id="btn-calc">
         <div class="row-ic">🕌</div>
@@ -111,7 +111,7 @@
 <!-- ════════════════ PAGE QIBLA ════════════════ -->
 <div class="page" id="page-qibla">
   <div class="phd">
-    <div><div class="phd-title">Direction Qibla</div><div class="phd-sub">Vers la Ka'ba — La Mecque</div></div>
+    <div><div class="phd-title" data-i18n="qibla.title">Direction Qibla</div><div class="phd-sub" data-i18n="qibla.sub">Vers la Ka'ba — La Mecque</div></div>
     <button class="ib" id="btn-qref" aria-label="Recalculer">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
     </button>
@@ -136,7 +136,7 @@
 <!-- ════════════════ PAGE DOUAS ════════════════ -->
 <div class="page" id="page-duas">
   <div class="phd">
-    <div><div class="phd-title">Invocations</div><div class="phd-sub">Doua's & Adhkâr</div></div>
+    <div><div class="phd-title" data-i18n="duas.title">Invocations</div><div class="phd-sub" data-i18n="duas.sub">Doua's & Adhkâr</div></div>
     <button class="ib" id="btn-dsearch" aria-label="Rechercher">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
     </button>
@@ -213,7 +213,7 @@
 
 <!-- ════════════════ PAGE RÉGLAGES ════════════════ -->
 <div class="page" id="page-settings">
-  <div class="phd"><div><div class="phd-title">Paramètres</div></div><div style="width:40px"></div></div>
+  <div class="phd"><div><div class="phd-title" data-i18n="settings.title">Paramètres</div></div><div style="width:40px"></div></div>
   <div class="pscroll">
 
     <!-- Profil -->
@@ -223,50 +223,75 @@
     </div>
 
     <!-- Stats -->
-    <div class="sl">Statistiques</div>
+    <div class="sl" data-i18n="sec.stats">Statistiques</div>
     <div id="my-stats">
-      <div class="ms-card gc"><div class="ms-val" id="st-total">0</div><div class="ms-lbl">Dhikrs</div></div>
-      <div class="ms-card gc"><div class="ms-val" id="st-sess">0</div><div class="ms-lbl">Sessions</div></div>
-      <div class="ms-card gc"><div class="ms-val" id="st-streak">0</div><div class="ms-lbl">Jours 🔥</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-total">0</div><div class="ms-lbl" data-i18n="stat.dhikrs">Dhikrs</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-sess">0</div><div class="ms-lbl" data-i18n="stat.sessions">Sessions</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-streak">0</div><div class="ms-lbl" data-i18n="stat.days">Jours 🔥</div></div>
       <div class="ms-card gc"><div class="ms-val" id="st-qada">0</div><div class="ms-lbl">Qadâ'</div></div>
     </div>
 
     <!-- Outils -->
-    <div class="sl">Outils islamiques</div>
+    <div class="sl" data-i18n="sec.tools">Outils islamiques</div>
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
       <div class="row" id="btn-open-qada">
         <div class="row-ic">🤲</div>
-        <div class="row-body"><div class="row-name">Rattrapage des Prières (Qadâ')</div><div class="row-sub">Suivre les prières manquées à rattraper</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="row.qada">Rattrapage des Prières (Qadâ')</div><div class="row-sub">Suivre les prières manquées à rattraper</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
       <div class="row" id="btn-open-rakah">
         <div class="row-ic">🕌</div>
-        <div class="row-body"><div class="row-name">Compteur Rak'ah</div><div class="row-sub">Compter les rak'ahs de la prière</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="row.rakah">Compteur Rak'ah</div><div class="row-sub">Compter les rak'ahs de la prière</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
       <div class="row" id="btn-open-zakat">
         <div class="row-ic">💰</div>
-        <div class="row-body"><div class="row-name">Calcul de la Zakat</div><div class="row-sub">Calculer votre zakat sur les biens</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="row.zakat">Calcul de la Zakat</div><div class="row-sub">Calculer votre zakat sur les biens</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
       <div class="row" id="btn-open-hijri">
         <div class="row-ic">📅</div>
-        <div class="row-body"><div class="row-name">Convertisseur de date hégirien</div><div class="row-sub">Calendrier grégorien ↔ hégirien</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="row.hijri">Convertisseur de date hégirien</div><div class="row-sub">Calendrier grégorien ↔ hégirien</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
-      <div class="row" style="border-bottom:none" id="btn-open-fasting">
+      <div class="row" id="btn-open-fasting">
         <div class="row-ic">🌙</div>
-        <div class="row-body"><div class="row-name">Calendrier du Jeûne</div><div class="row-sub">Ramadan, jours blancs &amp; recommandés</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="row.fasting">Calendrier du Jeûne</div><div class="row-sub">Ramadan, jours blancs, événements &amp; notes</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="row" id="btn-open-places">
+        <div class="row-ic">🗺️</div>
+        <div class="row-body"><div class="row-name" data-i18n="row.places">À proximité — Mosquées &amp; Halal</div><div class="row-sub">Autour de votre position (OpenStreetMap)</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="row" style="border-bottom:none" id="btn-open-halal">
+        <div class="row-ic">🔍</div>
+        <div class="row-body"><div class="row-name" data-i18n="row.halal">Vérif' Halal — Scan &amp; Additifs</div><div class="row-sub">Scanner un produit, vérifier un additif E</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+
+    <!-- Pratique religieuse -->
+    <div class="sl" data-i18n="sec.practice">Pratique religieuse</div>
+    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row" id="btn-open-madhab">
+        <div class="row-ic">🕌</div>
+        <div class="row-body"><div class="row-name" data-i18n="row.madhab">École juridique (madhhab)</div><div class="row-sub" id="madhab-current">Malikite</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="row" style="border-bottom:none" id="btn-open-lang">
+        <div class="row-ic">🌐</div>
+        <div class="row-body"><div class="row-name" data-i18n="row.lang">Langue</div><div class="row-sub" id="lang-current">Français</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
     </div>
 
     <!-- Apparence -->
-    <div class="sl">Apparence</div>
+    <div class="sl" data-i18n="sec.appearance">Apparence</div>
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
       <div class="row" style="cursor:default;">
         <div class="row-ic">🌓</div>
-        <div class="row-body"><div class="row-name">Thème</div><div class="row-sub">Clair ou sombre</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="row.theme">Thème</div><div class="row-sub">Clair ou sombre</div></div>
         <div class="seg-ctrl" id="theme-seg">
           <div class="seg-opt active" data-thm="dark">🌙 Sombre</div>
           <div class="seg-opt" data-thm="light">☀️ Clair</div>
@@ -274,7 +299,7 @@
       </div>
       <div class="row" style="cursor:default;border-bottom:none">
         <div class="row-ic">🎨</div>
-        <div class="row-body"><div class="row-name">Couleur d'accent</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="row.accent">Couleur d'accent</div></div>
       </div>
       <div style="padding:4px 16px 14px;"><div class="tgrid" id="theme-grid"></div></div>
     </div>
@@ -283,7 +308,7 @@
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
       <div class="row" style="cursor:default;border-bottom:none">
         <div class="row-ic">🕐</div>
-        <div class="row-body"><div class="row-name">Format d'heure</div><div class="row-sub">Affiché dans les horaires de prière</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="row.hourfmt">Format d'heure</div><div class="row-sub">Affiché dans les horaires de prière</div></div>
         <div class="seg-ctrl" id="fmt-seg">
           <div class="seg-opt" data-fmt="24">24H</div>
           <div class="seg-opt" data-fmt="12">12H</div>
@@ -292,32 +317,32 @@
     </div>
 
     <!-- Son -->
-    <div class="sl">Son du compteur</div>
+    <div class="sl" data-i18n="sec.sound">Son du compteur</div>
     <div class="gc" id="sound-list" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;"></div>
 
     <!-- Préférences -->
-    <div class="sl">Préférences</div>
+    <div class="sl" data-i18n="sec.prefs">Préférences</div>
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
-      <div class="row"><div class="row-ic">🔊</div><div class="row-body"><div class="row-name">Son</div><div class="row-sub">Retour sonore à chaque appui</div></div><div class="tog" id="tog-sound"></div></div>
-      <div class="row"><div class="row-ic">📳</div><div class="row-body"><div class="row-name">Vibration haptique</div><div class="row-sub">Retour tactile</div></div><div class="tog" id="tog-vib"></div></div>
-      <div class="row"><div class="row-ic">🔁</div><div class="row-body"><div class="row-name">Boucle automatique</div><div class="row-sub">Reprend à 0 après l'objectif</div></div><div class="tog" id="tog-loop"></div></div>
-      <div class="row"><div class="row-ic">🌑</div><div class="row-body"><div class="row-name">Nuit profonde (OLED)</div><div class="row-sub">Fond noir absolu, économie d'écran</div></div><div class="tog" id="tog-night"></div></div>
-      <div class="row" style="border-bottom:none"><div class="row-ic">🔒</div><div class="row-body"><div class="row-name">Verrouillage écran</div><div class="row-sub">Évite les appuis accidentels</div></div><div class="tog" id="tog-lock"></div></div>
+      <div class="row"><div class="row-ic">🔊</div><div class="row-body"><div class="row-name" data-i18n="row.sound">Son</div><div class="row-sub">Retour sonore à chaque appui</div></div><div class="tog" id="tog-sound"></div></div>
+      <div class="row"><div class="row-ic">📳</div><div class="row-body"><div class="row-name" data-i18n="row.vib">Vibration haptique</div><div class="row-sub">Retour tactile</div></div><div class="tog" id="tog-vib"></div></div>
+      <div class="row"><div class="row-ic">🔁</div><div class="row-body"><div class="row-name" data-i18n="row.loop">Boucle automatique</div><div class="row-sub">Reprend à 0 après l'objectif</div></div><div class="tog" id="tog-loop"></div></div>
+      <div class="row"><div class="row-ic">🌑</div><div class="row-body"><div class="row-name" data-i18n="row.night">Nuit profonde (OLED)</div><div class="row-sub">Fond noir absolu, économie d'écran</div></div><div class="tog" id="tog-night"></div></div>
+      <div class="row" style="border-bottom:none"><div class="row-ic">🔒</div><div class="row-body"><div class="row-name" data-i18n="row.lock">Verrouillage écran</div><div class="row-sub">Évite les appuis accidentels</div></div><div class="tog" id="tog-lock"></div></div>
     </div>
 
     <!-- Données -->
-    <div class="sl">Données</div>
+    <div class="sl" data-i18n="sec.data">Données</div>
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
-      <div class="row" id="btn-export"><div class="row-ic">📤</div><div class="row-body"><div class="row-name">Exporter mes données</div><div class="row-sub">Télécharger en JSON</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
-      <div class="row" style="border-bottom:none" id="btn-reset-all"><div class="row-ic">🗑️</div><div class="row-body"><div class="row-name" style="color:var(--err)">Tout réinitialiser</div><div class="row-sub">Efface compteur et historique</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+      <div class="row" id="btn-export"><div class="row-ic">📤</div><div class="row-body"><div class="row-name" data-i18n="row.export">Exporter mes données</div><div class="row-sub">Télécharger en JSON</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+      <div class="row" style="border-bottom:none" id="btn-reset-all"><div class="row-ic">🗑️</div><div class="row-body"><div class="row-name" style="color:var(--err)" data-i18n="row.reset">Tout réinitialiser</div><div class="row-sub">Efface compteur et historique</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
     </div>
 
     <!-- À propos -->
-    <div class="sl">À propos</div>
+    <div class="sl" data-i18n="sec.about">À propos</div>
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
       <a class="row" style="border-bottom:none;text-decoration:none;color:inherit;" href="privacy-policy.html" target="_blank" rel="noopener">
         <div class="row-ic">🔏</div>
-        <div class="row-body"><div class="row-name">Politique de confidentialité</div><div class="row-sub">Aucun compte, aucune publicité, aucun tracking</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="row.privacy">Politique de confidentialité</div><div class="row-sub">Aucun compte, aucune publicité, aucun tracking</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -330,27 +355,27 @@
 <nav id="navbar">
   <div class="nv active" data-page="page-tasbih">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 8v4l3 3"/></svg>
-    <span class="nv-lbl">Tasbih</span>
+    <span class="nv-lbl" data-i18n="nav.tasbih">Tasbih</span>
   </div>
   <div class="nv" data-page="page-salat">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1M4.22 4.22l.707.707m12.728 12.728l.707.707M1 12h1m20 0h1M4.22 19.78l.707-.707M18.364 5.636l.707-.707"/><circle cx="12" cy="12" r="4"/></svg>
-    <span class="nv-lbl">Salat</span>
+    <span class="nv-lbl" data-i18n="nav.salat">Salat</span>
   </div>
   <div class="nv" data-page="page-qibla">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-    <span class="nv-lbl">Qibla</span>
+    <span class="nv-lbl" data-i18n="nav.qibla">Qibla</span>
   </div>
   <div class="nv" data-page="page-duas">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-    <span class="nv-lbl">Douas</span>
+    <span class="nv-lbl" data-i18n="nav.duas">Douas</span>
   </div>
   <div class="nv" data-page="page-quran">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg>
-    <span class="nv-lbl">Coran</span>
+    <span class="nv-lbl" data-i18n="nav.quran">Coran</span>
   </div>
   <div class="nv" data-page="page-settings">
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-    <span class="nv-lbl">Réglages</span>
+    <span class="nv-lbl" data-i18n="nav.settings">Réglages</span>
   </div>
 </nav>
 </div><!-- /#app -->
@@ -635,6 +660,112 @@
   </div>
 </div>
 
+<!-- ÉCOLE JURIDIQUE -->
+<div class="sheet" id="sh-madhab">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">École juridique</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <p style="font-size:0.8rem;color:var(--t2);line-height:1.6;margin-bottom:14px;">Les quatre écoles sunnites sont toutes valides. Ce choix influence <strong style="color:var(--t1)">l'heure de l'Asr</strong> : l'école hanafite attend que l'ombre atteigne deux fois la taille de l'objet (Asr plus tardif).</p>
+    <div id="madhab-list"></div>
+  </div>
+</div>
+
+<!-- LANGUE -->
+<div class="sheet" id="sh-lang">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Langue / Language</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <div id="lang-list"></div>
+    <div style="font-size:0.72rem;color:var(--t3);line-height:1.6;margin-top:14px;padding:12px;background:var(--sur2);border-radius:var(--r-md);border:1px solid var(--bor2);" data-i18n="com.contentNote">Le contenu religieux (douas, traduction du Coran) reste en français/arabe pour le moment.</div>
+  </div>
+</div>
+
+<!-- À PROXIMITÉ -->
+<div class="sheet" id="sh-places" style="max-height:96vh;">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">À proximité</div>
+    <div style="width:32px"></div>
+  </div>
+  <div style="padding:0 20px 8px;flex-shrink:0;">
+    <div class="seg-ctrl" id="places-mode" style="width:100%;margin-bottom:10px;">
+      <div class="seg-opt active" data-mode="mosques" style="flex:1;text-align:center;">🕌 Mosquées</div>
+      <div class="seg-opt" data-mode="halal" style="flex:1;text-align:center;">🍽️ Restos &amp; Halal</div>
+    </div>
+    <div style="display:flex;gap:8px;" id="places-radius">
+      <span class="chip" data-km="2">2 km</span>
+      <span class="chip sel" data-km="5">5 km</span>
+      <span class="chip" data-km="10">10 km</span>
+      <span class="chip" data-km="20">20 km</span>
+    </div>
+    <div id="places-disclaimer" style="display:none;font-size:0.68rem;color:#fb923c;line-height:1.5;margin-top:10px;padding:9px 11px;background:rgba(251,146,60,0.08);border:1px dashed rgba(251,146,60,0.3);border-radius:var(--r-sm);">
+      ⚠ Mention « halal » déclarée sur OpenStreetMap — <strong>vérifiez toujours vous-même</strong> la certification : mode d'abattage, étourdissement, traçabilité de la viande.
+    </div>
+  </div>
+  <div class="sh-bd" id="places-list" style="padding-left:16px;padding-right:16px;"></div>
+</div>
+
+<!-- VÉRIF' HALAL -->
+<div class="sheet" id="sh-halal" style="max-height:96vh;">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Vérif' Halal</div>
+    <div style="width:32px"></div>
+  </div>
+  <div style="padding:0 20px 8px;flex-shrink:0;">
+    <div class="seg-ctrl" id="halal-tabs" style="width:100%;">
+      <div class="seg-opt active" data-tab="scan" style="flex:1;text-align:center;">📷 Scanner un produit</div>
+      <div class="seg-opt" data-tab="add" style="flex:1;text-align:center;">🧪 Additifs E</div>
+    </div>
+  </div>
+  <div class="sh-bd">
+    <div id="halal-tab-scan">
+      <video id="halal-video" style="display:none;width:100%;border-radius:var(--r-md);margin-bottom:8px;" muted playsinline></video>
+      <div id="halal-cam-hint" style="font-size:0.72rem;color:var(--t2);text-align:center;min-height:1.2em;margin-bottom:8px;"></div>
+      <div style="display:flex;gap:8px;margin-bottom:6px;">
+        <input class="inp" type="text" inputmode="numeric" id="halal-barcode-inp" placeholder="Code-barres (ex : 3017620422003)" autocomplete="off" style="flex:1;">
+        <div class="ok-b" id="btn-halal-lookup" style="width:auto;padding:0 16px;height:46px;border-radius:var(--r-md);font-size:0.82rem;flex-shrink:0;">OK</div>
+      </div>
+      <div class="qada-ok" id="btn-halal-cam" style="text-align:center;margin-bottom:12px;">📷 Scanner avec la caméra</div>
+      <div id="halal-scan-result"></div>
+      <div style="font-size:0.68rem;color:var(--t3);line-height:1.5;margin-top:12px;padding:9px 11px;background:var(--sur2);border-radius:var(--r-sm);border:1px solid var(--bor2);">
+        Analyse indicative basée sur la composition (OpenFoodFacts). Elle ne détecte pas le mode d'abattage d'une viande : <strong style="color:var(--t2)">un produit « sans indicateur » n'est pas forcément certifié halal.</strong>
+      </div>
+    </div>
+    <div id="halal-tab-add" style="display:none;">
+      <input class="inp" type="text" id="halal-add-inp" placeholder="Code E ou nom (ex : E471, gélatine…)" autocomplete="off" style="margin-bottom:10px;">
+      <div id="halal-add-results"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ÉVÉNEMENT DU CALENDRIER -->
+<div class="sheet" id="sh-cal-event">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title" id="cal-event-title">Événement</div>
+    <button class="ok-b" id="btn-save-cal-event">✓</button>
+  </div>
+  <div class="sh-bd">
+    <div id="cal-event-date" style="font-size:0.8rem;color:var(--a);font-weight:700;margin-bottom:4px;"></div>
+    <div id="cal-event-hijri" style="font-size:0.72rem;color:var(--t2);margin-bottom:12px;"></div>
+    <div class="sl" style="margin:0 0 8px;">Note / événement</div>
+    <textarea id="cal-event-text" placeholder="ex : Jeûne prévu, invitation iftar, aqiqa, rappel…" style="width:100%;background:var(--sur2);border:1px solid var(--bor);border-radius:var(--r-md);padding:12px;color:var(--t1);font-family:var(--ff-b);font-size:0.88rem;line-height:1.6;outline:none;resize:none;min-height:100px;"></textarea>
+    <div class="qada-reset-btn" id="btn-del-cal-event" style="margin-top:12px;display:none;">Supprimer cet événement</div>
+  </div>
+</div>
+
 <!-- CALENDRIER DU JEÛNE -->
 <div class="sheet" id="sh-fasting" style="max-height:96vh;">
   <div class="sh-grip"></div>
@@ -644,6 +775,79 @@
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd" id="fasting-bd"></div>
+</div>
+
+<!-- ════════════════ ASSISTANT DE BIENVENUE (1er lancement) ════════════════ -->
+<div id="onboard">
+  <div class="ob-card gc">
+    <div class="ob-dots" id="ob-dots"></div>
+
+    <!-- Étape 0 — Bienvenue -->
+    <div class="ob-step active" data-step="0">
+      <div class="ob-logo">
+        <svg viewBox="0 0 512 512" width="76" height="76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="obg" cx="30%" cy="20%" r="120%"><stop offset="0%" stop-color="#1C1E22"/><stop offset="100%" stop-color="#08090C"/></radialGradient>
+            <linearGradient id="ogold" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#E8C98A"/><stop offset="100%" stop-color="#C9A96E"/></linearGradient>
+          </defs>
+          <rect width="512" height="512" rx="112" fill="url(#obg)"/>
+          <path d="M 330 116 A 150 150 0 1 0 330 396 A 118 118 0 1 1 330 116 Z" fill="url(#ogold)"/>
+          <circle cx="330" cy="256" r="34" fill="none" stroke="url(#ogold)" stroke-width="10"/>
+          <circle cx="330" cy="256" r="12" fill="url(#ogold)"/>
+        </svg>
+      </div>
+      <div class="ob-title" data-i18n="ob.welcomeTitle">Bienvenue sur Sakina</div>
+      <div class="ob-ar">سَكِينَة</div>
+      <p class="ob-sub" data-i18n="ob.welcomeSub">Votre compagnon spirituel : tasbih, horaires de prière, qibla, Coran et invocations — sans publicité, sans compte.</p>
+      <div class="sl" style="margin:16px 0 6px;text-align:center;" data-i18n="ob.langLabel">Langue de l’interface</div>
+      <div id="ob-lang-grid"></div>
+      
+    </div>
+
+    <!-- Étape 1 — Apparence -->
+    <div class="ob-step" data-step="1">
+      <div class="ob-title" data-i18n="ob.ambTitle">Votre ambiance</div>
+      <p class="ob-sub" data-i18n="ob.ambSub">Choisissez le thème et la couleur — modifiables à tout moment dans les Réglages.</p>
+      <div class="sl" style="margin:14px 0 8px">Thème</div>
+      <div class="seg-ctrl" id="ob-theme-seg" style="width:100%;">
+        <div class="seg-opt active" data-thm="dark" style="flex:1;text-align:center;">🌙 Sombre</div>
+        <div class="seg-opt" data-thm="light" style="flex:1;text-align:center;">☀️ Clair</div>
+      </div>
+      <div class="sl" style="margin:16px 0 4px">Couleur d'accent</div>
+      <div class="tgrid" id="ob-accent-grid"></div>
+    </div>
+
+    <!-- Étape 2 — Méthode de calcul -->
+    <div class="ob-step" data-step="2">
+      <div class="ob-title" data-i18n="ob.prayTitle">Horaires de prière</div>
+      <p class="ob-sub" data-i18n="ob.praySub">Quelle méthode de calcul suit votre mosquée ou votre pays ?</p>
+      <div id="ob-method-list" style="margin-top:12px;"></div>
+      <div class="sl" style="margin:14px 0 6px" data-i18n="ob.madhabLabel">École juridique (heure de l’Asr)</div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:4px;" id="ob-madhab-row"></div>
+      <div class="sl" style="margin:14px 0 8px">Format d'heure</div>
+      <div class="seg-ctrl" id="ob-fmt-seg" style="width:100%;">
+        <div class="seg-opt active" data-fmt="24" style="flex:1;text-align:center;">24H</div>
+        <div class="seg-opt" data-fmt="12" style="flex:1;text-align:center;">12H</div>
+      </div>
+    </div>
+
+    <!-- Étape 3 — Position -->
+    <div class="ob-step" data-step="3">
+      <div class="ob-title" data-i18n="ob.locTitle">Votre position</div>
+      <p class="ob-sub" data-i18n="ob.locSub">Nécessaire pour calculer vos horaires de prière et la direction de la Qibla. Elle reste sur votre appareil.</p>
+      <div class="qada-ok" id="ob-gps" style="text-align:center;margin:16px 0 10px;" data-i18n="ob.gps">📍 Détecter par GPS</div>
+      <div id="ob-loc-status" style="text-align:center;font-size:0.78rem;color:var(--t2);min-height:1.4em;margin-bottom:12px;"></div>
+      <div class="sl" style="margin:0 0 8px" data-i18n="ob.searchCity">Ou chercher une ville</div>
+      <input class="inp" type="text" id="ob-city-inp" placeholder="ex: Lyon, Casablanca, Istanbul…" autocomplete="off">
+      <div id="ob-city-results" style="margin-top:8px;max-height:180px;overflow-y:auto;"></div>
+    </div>
+
+    <div class="ob-nav">
+      <div class="ob-btn ghost" id="ob-back" style="display:none;">Retour</div>
+      <div class="ob-btn primary" id="ob-next">Commencer</div>
+    </div>
+    <div class="ob-skip" id="ob-skip" style="display:none;" data-i18n="ob.skip">Passer cette étape — je choisirai plus tard</div>
+  </div>
 </div>
 
 <div id="toast"></div>
