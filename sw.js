@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v2';
+const VERSION='sakina-v4';
 const SHELL=[
   './',
   './index.html',
@@ -9,10 +9,11 @@ const SHELL=[
   './css/tokens.css','./css/base.css','./css/pages.css',
   './js/app.js',
   './js/core/store.js','./js/core/ui.js','./js/core/audio.js','./js/core/router.js',
-  './js/lib/astro.js','./js/lib/hijri.js',
-  './js/data/catalog.js','./js/data/duas.js','./js/data/surahs.js',
+  './js/lib/astro.js','./js/lib/hijri.js','./js/lib/i18n.js',
+  './js/data/catalog.js','./js/data/duas.js','./js/data/surahs.js','./js/data/additives.js',
   './js/features/tasbih.js','./js/features/salat.js','./js/features/qibla.js',
   './js/features/duas.js','./js/features/quran.js','./js/features/settings.js','./js/features/tools.js',
+  './js/features/onboarding.js','./js/features/places.js','./js/features/halal.js',
 ];
 
 self.addEventListener('install',e=>{

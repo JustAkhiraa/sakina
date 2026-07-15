@@ -6,6 +6,8 @@ const LEGACY_KEY='tpv5';
 const LEGACY_QURAN='qdata';
 
 const DEFAULTS={
+  // Première configuration (assistant de bienvenue)
+  onboarded:false,
   // Compteur
   count:0,lapCount:0,sessTot:0,allTime:0,sessCount:0,
   title:'Subhanallah',startVal:0,reminder:33,goal:33,
@@ -18,6 +20,9 @@ const DEFAULTS={
   hourFmt:'24',
   // Localisation & prières
   calcMethod:3,lat:null,lon:null,city:'',
+  madhab:'maliki',               // école juridique (hanafi → Asr ombre ×2)
+  lang:'fr',                     // langue de l'interface
+  calEvents:{},                  // { 'YYYY-MM-DD': 'texte de l'événement' }
   // Qadâ'
   qada:{fajr:0,dhuhr:0,asr:0,maghrib:0,isha:0},
   qdone:{fajr:0,dhuhr:0,asr:0,maghrib:0,isha:0},
@@ -37,6 +42,7 @@ function migrateLegacy(){
     const q=JSON.parse(localStorage.getItem(LEGACY_QURAN)||'{}');
     old.quranFavs=q.favs||{};
     old.quranNotes=q.notes||{};
+    old.onboarded=true; // utilisateur existant : déjà configuré, pas d'assistant
     return old;
   }catch{return null;}
 }
@@ -53,7 +59,7 @@ function load(){
 
 export const S=load();
 // Sécurise les sous-objets pour les anciennes sauvegardes
-for(const k of ['qada','qdone','daily','quranFavs','quranNotes','quranLast'])
+for(const k of ['qada','qdone','daily','quranFavs','quranNotes','quranLast','calEvents'])
   if(!S[k]||typeof S[k]!=='object')S[k]=structuredClone(DEFAULTS[k]);
 if(!Array.isArray(S.customDhikrs))S.customDhikrs=[];
 if(!Array.isArray(S.history))S.history=[];

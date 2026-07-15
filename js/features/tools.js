@@ -152,8 +152,22 @@ function openHijriSheet(){
   });
 }
 
-/* ══════════ CALENDRIER DU JEÛNE ══════════ */
+/* ══════════ CALENDRIER DU JEÛNE + ÉVÉNEMENTS ══════════ */
 let _fastYear=new Date().getFullYear(),_fastMonth=new Date().getMonth();
+let _evtDate=null; // 'YYYY-MM-DD' en cours d'édition
+
+const dateKey=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+
+function openEventEditor(y,m,d){
+  _evtDate=dateKey(y,m,d);
+  const dt=new Date(y,m,d);
+  $('cal-event-title').textContent='Événement';
+  $('cal-event-date').textContent=dt.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  $('cal-event-hijri').textContent=hijriLabelFr(toHijri(dt));
+  $('cal-event-text').value=S.calEvents[_evtDate]||'';
+  $('btn-del-cal-event').style.display=S.calEvents[_evtDate]?'block':'none';
+  openSheet('sh-cal-event');
+}
 
 function renderFastingCalendar(){
   const bd=$('fasting-bd');
@@ -193,6 +207,7 @@ function renderFastingCalendar(){
   dayInfo.forEach(info=>{
     const isToday=(info.d===now.getDate()&&m===now.getMonth()&&y===now.getFullYear());
     const isMon=info.dow===1,isThu=info.dow===4,isWE=info.dow===0||info.dow===6;
+    const hasEvt=!!S.calEvents[dateKey(y,m,info.d)];
     let cls='fc-day';
     if(isToday)cls+=' today';
     if(info.ram)cls+=' ramadan';
@@ -203,10 +218,25 @@ function renderFastingCalendar(){
     else if(isThu)cls+=' thursday';
     if(isWE)cls+=' weekend';
     const dot=(info.ram||info.white||isMon||isThu||info.ash||info.araf)?'<div class="fc-dot"></div>':'';
-    html+=`<div class="${cls}" title="${hijriLabelFr(info.h)}"><span>${info.d}</span><span class="fc-hijri">${toArabicNum(info.h.day)}</span>${dot}</div>`;
+    html+=`<div class="${cls}" data-day="${info.d}" title="${hijriLabelFr(info.h)}">${hasEvt?'<div class="fc-evt">✦</div>':''}<span>${info.d}</span><span class="fc-hijri">${toArabicNum(info.h.day)}</span>${dot}</div>`;
   });
   html+=`</div>
-  <div class="fasting-legend">
+  <div style="font-size:0.68rem;color:var(--t3);text-align:center;margin-top:8px;">Appuyez sur un jour pour ajouter un événement ou une note ✦</div>`;
+
+  // Événements du mois affiché
+  const monthEvents=Object.entries(S.calEvents)
+    .filter(([k])=>k.startsWith(`${y}-${String(m+1).padStart(2,'0')}-`))
+    .sort(([a],[b])=>a.localeCompare(b));
+  if(monthEvents.length){
+    html+=`<div class="sl" style="margin:14px 0 6px;">Événements du mois</div><div class="cal-events">`;
+    monthEvents.forEach(([k,txt])=>{
+      const d=parseInt(k.slice(8));
+      html+=`<div class="cal-event-row" data-day="${d}"><div class="cal-event-day">${d}</div><div class="cal-event-txt">${txt.replace(/</g,'&lt;')}</div></div>`;
+    });
+    html+='</div>';
+  }
+
+  html+=`<div class="fasting-legend">
     <div class="fl-item"><div class="fl-dot" style="background:rgba(201,169,110,0.5)"></div>Ramadan</div>
     <div class="fl-item"><div class="fl-dot" style="background:rgba(212,195,140,0.7)"></div>Jours blancs 13-14-15</div>
     <div class="fl-item"><div class="fl-dot" style="background:rgba(22,163,74,0.5)"></div>Lundi / Jeudi</div>
@@ -219,6 +249,10 @@ function renderFastingCalendar(){
   bd.innerHTML=html;
   $('fast-prev').addEventListener('click',()=>{_fastMonth--;if(_fastMonth<0){_fastMonth=11;_fastYear--;}renderFastingCalendar();});
   $('fast-next').addEventListener('click',()=>{_fastMonth++;if(_fastMonth>11){_fastMonth=0;_fastYear++;}renderFastingCalendar();});
+  // Clic sur un jour ou sur un événement listé → éditeur
+  bd.querySelectorAll('.fc-day[data-day], .cal-event-row[data-day]').forEach(el=>{
+    el.addEventListener('click',()=>openEventEditor(y,m,parseInt(el.dataset.day)));
+  });
 }
 
 /* ══════════ INIT ══════════ */
@@ -290,6 +324,22 @@ export function initTools(){
   // Calendrier du jeûne
   $('btn-open-fasting').addEventListener('click',()=>{
     _fastYear=new Date().getFullYear();_fastMonth=new Date().getMonth();
+    openSheet('sh-fasting',renderFastingCalendar);
+  });
+
+  // Éditeur d'événement du calendrier
+  $('btn-save-cal-event').addEventListener('click',()=>{
+    if(!_evtDate)return;
+    const txt=$('cal-event-text').value.trim();
+    if(txt){S.calEvents[_evtDate]=txt;toast('✦ Événement enregistré');}
+    else{delete S.calEvents[_evtDate];}
+    save();vib([30,15,30]);
+    openSheet('sh-fasting',renderFastingCalendar);
+  });
+  $('btn-del-cal-event').addEventListener('click',()=>{
+    if(!_evtDate)return;
+    delete S.calEvents[_evtDate];
+    save();toast('Événement supprimé');vib(30);
     openSheet('sh-fasting',renderFastingCalendar);
   });
 }

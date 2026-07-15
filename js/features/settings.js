@@ -1,8 +1,9 @@
 /* SAKINA — Réglages : thème, accents, sons, préférences, stats, données */
 import {S,save,streak,on} from '../core/store.js';
-import {toast,confirmDlg} from '../core/ui.js';
+import {toast,confirmDlg,openSheet,closeSheet} from '../core/ui.js';
 import {playSound,vib} from '../core/audio.js';
-import {THEMES,SOUNDS,QADA_PRAYERS} from '../data/catalog.js';
+import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS} from '../data/catalog.js';
+import {applyI18n} from '../lib/i18n.js';
 import {renderTasbih,buildDhikrBar} from './tasbih.js';
 import {renderPrayers} from './salat.js';
 
@@ -59,12 +60,54 @@ export function renderStats(){
   $('prof-sub').textContent=`${S.sessCount||0} sessions · ${S.allTime||0} dhikrs · série de ${streak()} j`;
 }
 
+/* ── École juridique ── */
+function buildMadhabList(){
+  const list=document.getElementById('madhab-list');list.innerHTML='';
+  MADHABS.forEach(m=>{
+    const row=document.createElement('div');
+    row.className='ob-method-row'+(S.madhab===m.id?' sel':'');
+    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${m.name} <span style="font-family:var(--ff-a);color:var(--t2);font-weight:400;">${m.ar}</span></div><div class="ob-method-desc">${m.asrFactor===2?'Asr : ombre ×2 (plus tardif)':'Asr : ombre ×1 (majorité)'}</div></div>`;
+    row.addEventListener('click',()=>{
+      S.madhab=m.id;save();buildMadhabList();syncPracticeRows();
+      if(S.lat!==null)renderPrayers();
+      vib(16);toast(`École ${m.name.toLowerCase()}`);
+    });
+    list.appendChild(row);
+  });
+}
+
+/* ── Langue ── */
+function buildLangList(){
+  const list=document.getElementById('lang-list');list.innerHTML='';
+  LANGS.forEach(l=>{
+    const row=document.createElement('div');
+    row.className='ob-method-row'+(S.lang===l.code?' sel':'');
+    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${l.flag} ${l.name}</div></div>`;
+    row.addEventListener('click',()=>{
+      S.lang=l.code;save();applyI18n();buildLangList();syncPracticeRows();vib(16);
+    });
+    list.appendChild(row);
+  });
+}
+
+function syncPracticeRows(){
+  const m=MADHABS.find(x=>x.id===S.madhab)||MADHABS[0];
+  const l=LANGS.find(x=>x.code===S.lang)||LANGS[0];
+  document.getElementById('madhab-current').textContent=`${m.name} · ${m.ar}`;
+  document.getElementById('lang-current').textContent=`${l.flag} ${l.name}`;
+}
+
 export function initSettings(){
   applyTheme();
+  applyI18n();
   buildThemeGrid();
   buildSoundList();
   renderStats();
+  syncPracticeRows();
   on('stats-changed',renderStats);
+
+  document.getElementById('btn-open-madhab').addEventListener('click',()=>openSheet('sh-madhab',buildMadhabList));
+  document.getElementById('btn-open-lang').addEventListener('click',()=>openSheet('sh-lang',buildLangList));
 
   // Toggles de préférences
   const keyMap={'tog-sound':'soundOn','tog-vib':'vibOn','tog-loop':'autoLoop','tog-night':'nightMode','tog-lock':'screenLock'};
