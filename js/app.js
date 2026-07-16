@@ -1,6 +1,6 @@
 /* SAKINA — Point d'entrée : câblage des modules + PWA */
 import {initUI} from './core/ui.js';
-import {initRouter,registerPageHook} from './core/router.js';
+import {initRouter,registerPageHook,goPage} from './core/router.js';
 import {initTasbih} from './features/tasbih.js';
 import {initSalat,onSalatShow} from './features/salat.js';
 import {initQibla,onQiblaShow} from './features/qibla.js';
@@ -12,6 +12,7 @@ import {initOnboarding} from './features/onboarding.js';
 import {initPlaces} from './features/places.js';
 import {initHalal,stopCamera} from './features/halal.js';
 import {initRoutines} from './features/routines.js';
+import {initBooks} from './features/books.js';
 
 initUI();
 initRouter();
@@ -25,6 +26,11 @@ initTools();
 initPlaces();
 initHalal();
 initRoutines();
+initBooks();
+
+// Engrenage (page Outils) → Réglages · flèche retour → Outils
+document.getElementById('btn-open-settings').addEventListener('click',()=>goPage('page-settings'));
+document.getElementById('btn-back-tools').addEventListener('click',()=>goPage('page-tools'));
 initOnboarding(); // en dernier : peut afficher l'assistant par-dessus l'app prête
 
 // Coupe la caméra du scanner si l'utilisateur ferme la sheet Vérif' Halal

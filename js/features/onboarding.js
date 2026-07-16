@@ -191,6 +191,14 @@ export function initOnboarding(){
   wireLocation();
   showStep(0);
 
+  document.querySelectorAll('#ob-translit-seg .seg-opt').forEach(opt=>{
+    opt.classList.toggle('active',opt.dataset.tr===S.translit);
+    opt.addEventListener('click',()=>{
+      S.translit=opt.dataset.tr;save();vib(14);
+      document.querySelectorAll('#ob-translit-seg .seg-opt').forEach(o=>o.classList.toggle('active',o.dataset.tr===S.translit));
+      document.querySelectorAll('#translit-seg .seg-opt').forEach(o=>o.classList.toggle('active',o.dataset.tr===S.translit));
+    });
+  });
   document.querySelectorAll('#ob-fmt-seg .seg-opt').forEach(opt=>{
     opt.addEventListener('click',()=>{
       S.hourFmt=opt.dataset.fmt;

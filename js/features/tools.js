@@ -216,7 +216,8 @@ function renderFastingCalendar(){
     if(info.ash||info.araf)fastCount++;
   }
 
-  let html=`<div class="fasting-stats">
+  let html=`<div class="cal-help">💡 <strong>Comment ça marche :</strong> les couleurs indiquent les jours de jeûne recommandés. <strong>Appuyez sur n'importe quel jour</strong> pour y écrire un événement ou une note — il sera marqué d'un point rouge. En bas : générez des séries entières (jours blancs, Achoura…) et exportez tout vers le calendrier de votre téléphone.</div>
+  <div class="fasting-stats">
     <div class="fs-card"><div class="fs-val">${ramCount||'—'}</div><div class="fs-lbl">Ramadan</div></div>
     <div class="fs-card"><div class="fs-val">${whiteCount}</div><div class="fs-lbl">Jours blancs</div></div>
     <div class="fs-card"><div class="fs-val">${fastCount}</div><div class="fs-lbl">Recommandés</div></div>
@@ -250,7 +251,7 @@ function renderFastingCalendar(){
 
   // Ajout en série (jours blancs, Achoura… entre deux dates)
   const today=new Date();
-  const in1y=new Date();in1y.setFullYear(in1y.getFullYear()+1);
+  const in1y=new Date();in1y.setMonth(in1y.getMonth()+1); // 1 mois par défaut
   const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
   html+=`<div class="sl" style="margin:16px 0 8px;">Ajouter une série de jeûnes</div>
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="serie-types">

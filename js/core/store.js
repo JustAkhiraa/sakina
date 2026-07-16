@@ -22,6 +22,7 @@ const DEFAULTS={
   // Localisation & prières
   calcMethod:3,lat:null,lon:null,city:'',
   madhab:'maliki',               // école juridique (hanafi → Asr ombre ×2)
+  translit:'ar',                 // adhkâr des routines : 'ar' (arabe) ou 'ph' (phonétique)
   lang:'fr',                     // langue de l'interface
   calEvents:{},                  // { 'YYYY-MM-DD': 'texte de l'événement' }
   // Qadâ'

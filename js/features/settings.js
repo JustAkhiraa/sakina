@@ -148,6 +148,17 @@ export function initSettings(){
     });
   });
 
+  // Écriture des adhkâr : arabe / phonétique
+  document.querySelectorAll('#translit-seg .seg-opt').forEach(opt=>{
+    opt.classList.toggle('active',opt.dataset.tr===S.translit);
+    opt.addEventListener('click',()=>{
+      S.translit=opt.dataset.tr;
+      document.querySelectorAll('#translit-seg .seg-opt').forEach(o=>o.classList.toggle('active',o.dataset.tr===S.translit));
+      save();vib(14);
+      toast(S.translit==='ph'?'abc Adhkâr en phonétique':'عربي Adhkâr en arabe');
+    });
+  });
+
   // Format 12H/24H — scopé et réellement appliqué aux horaires
   document.querySelectorAll('#fmt-seg .seg-opt').forEach(opt=>{
     opt.classList.toggle('active',opt.dataset.fmt===S.hourFmt);

@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v6';
+const VERSION='sakina-v7';
 const SHELL=[
   './',
   './index.html',
@@ -14,7 +14,7 @@ const SHELL=[
   './js/data/routines.js','./js/data/halal-certifs.js',
   './js/features/tasbih.js','./js/features/salat.js','./js/features/qibla.js',
   './js/features/duas.js','./js/features/quran.js','./js/features/settings.js','./js/features/tools.js',
-  './js/features/onboarding.js','./js/features/places.js','./js/features/halal.js','./js/features/routines.js',
+  './js/features/onboarding.js','./js/features/places.js','./js/features/halal.js','./js/features/routines.js','./js/features/books.js',
 ];
 
 self.addEventListener('install',e=>{
@@ -56,8 +56,11 @@ self.addEventListener('fetch',e=>{
     return;
   }
 
-  // App shell : cache-first
+  // App shell + fichiers locaux (livres…) : cache-first, mise en cache au vol
   if(url.origin===location.origin){
-    e.respondWith(caches.match(e.request).then(hit=>hit||fetch(e.request)));
+    e.respondWith(caches.match(e.request).then(hit=>hit||fetch(e.request).then(res=>{
+      if(res.ok){const copy=res.clone();caches.open(VERSION+'-rt').then(c=>c.put(e.request,copy));}
+      return res;
+    })));
   }
 });

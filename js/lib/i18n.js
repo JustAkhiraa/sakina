@@ -11,6 +11,7 @@ const D={
   'nav.qibla':    {fr:'Qibla',ar:'القبلة',en:'Qibla',es:'Qibla',ru:'Кибла',zh:'朝向',ja:'キブラ',hi:'क़िबला'},
   'nav.duas':     {fr:'Douas',ar:'أدعية',en:'Duas',es:'Duas',ru:'Дуа',zh:'祈祷文',ja:'ドゥアー',hi:'दुआएं'},
   'nav.quran':    {fr:'Coran',ar:'القرآن',en:'Quran',es:'Corán',ru:'Коран',zh:'古兰经',ja:'クルアーン',hi:'क़ुरआन'},
+  'nav.tools':    {fr:'Outils',ar:'أدوات',en:'Tools',es:'Herramientas',ru:'Инструменты',zh:'工具',ja:'ツール',hi:'उपकरण'},
   'nav.settings': {fr:'Réglages',ar:'الإعدادات',en:'Settings',es:'Ajustes',ru:'Настройки',zh:'设置',ja:'設定',hi:'सेटिंग्स'},
 
   'salat.title':      {fr:'Horaires',ar:'مواقيت الصلاة',en:'Prayer Times',es:'Horarios',ru:'Время намаза',zh:'礼拜时间',ja:'礼拝時間',hi:'नमाज़ के समय'},
