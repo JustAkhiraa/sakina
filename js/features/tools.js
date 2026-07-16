@@ -2,7 +2,7 @@
 import {S,save,emit} from '../core/store.js';
 import {toast,burst,openSheet,closeSheet,confirmDlg} from '../core/ui.js';
 import {playSound,vib} from '../core/audio.js';
-import {QADA_PRAYERS,RAKAH_REF} from '../data/catalog.js';
+import {QADA_PRAYERS} from '../data/catalog.js';
 import {toHijri,hijriLabelAr,hijriLabelFr,toArabicNum,HIJRI_MONTHS_FR,HIJRI_MONTHS_AR,HIJRI_SACRED,isRamadan,isWhiteDay,isAshura,isArafat} from '../lib/hijri.js';
 
 const $=id=>document.getElementById(id);
@@ -86,37 +86,6 @@ function renderQada(){
   });
 }
 
-/* ══════════ RAK'AH ══════════ */
-let _rkPrayer='fajr',_rkCount=0,_rkSujoud=0;
-
-function renderRakahUI(){
-  const total=RAKAH_REF[_rkPrayer]||4;
-  const p=QADA_PRAYERS.find(x=>x.key===_rkPrayer);
-  $('rakah-count').textContent=_rkCount;
-  $('rakah-prayer-ar').textContent=p?p.arabic:'';
-  $('sujoud-count').textContent=_rkSujoud;
-  const dots=$('rakah-dots');dots.innerHTML='';
-  for(let i=0;i<total;i++){
-    const d=document.createElement('div');
-    d.className='rakah-dot'+(i<_rkCount?' done':i===_rkCount?' current':'');
-    dots.appendChild(d);
-  }
-  document.querySelectorAll('#rakah-prayer-sel .chip').forEach((el,i)=>{
-    el.classList.toggle('sel',QADA_PRAYERS[i].key===_rkPrayer);
-  });
-}
-function renderRakah(){
-  const sel=$('rakah-prayer-sel');sel.innerHTML='';
-  QADA_PRAYERS.forEach(p=>{
-    const el=document.createElement('div');
-    el.className='chip'+(_rkPrayer===p.key?' sel':'');
-    el.innerHTML=`${p.icon} ${p.name}`;
-    el.addEventListener('click',()=>{_rkPrayer=p.key;_rkCount=0;_rkSujoud=0;renderRakahUI();});
-    sel.appendChild(el);
-  });
-  renderRakahUI();
-}
-
 /* ══════════ ZAKAT ══════════ */
 let _zSym='€';
 function calcZakat(){
@@ -157,6 +126,33 @@ let _fastYear=new Date().getFullYear(),_fastMonth=new Date().getMonth();
 let _evtDate=null; // 'YYYY-MM-DD' en cours d'édition
 
 const dateKey=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+
+/* Export des événements au format iCalendar (importable partout) */
+function exportICS(){
+  const esc=t=>t.replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\n/g,'\\n');
+  const stamp=new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z';
+  const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Sakina//Calendrier//FR','CALSCALE:GREGORIAN'];
+  Object.entries(S.calEvents).sort(([a],[b])=>a.localeCompare(b)).forEach(([k,txt])=>{
+    const d=k.replace(/-/g,'');
+    const next=new Date(k+'T12:00:00');next.setDate(next.getDate()+1);
+    const dEnd=`${next.getFullYear()}${String(next.getMonth()+1).padStart(2,'0')}${String(next.getDate()).padStart(2,'0')}`;
+    lines.push('BEGIN:VEVENT',
+      `UID:sakina-${k}@sakina.app`,
+      `DTSTAMP:${stamp}`,
+      `DTSTART;VALUE=DATE:${d}`,
+      `DTEND;VALUE=DATE:${dEnd}`,
+      `SUMMARY:${esc(txt)}`,
+      'END:VEVENT');
+  });
+  lines.push('END:VCALENDAR');
+  const blob=new Blob([lines.join('\r\n')],{type:'text/calendar;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='sakina-evenements.ics';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast('📤 Calendrier exporté — ouvrez le fichier pour l\'importer');
+}
 
 function openEventEditor(y,m,d){
   _evtDate=dateKey(y,m,d);
@@ -223,6 +219,12 @@ function renderFastingCalendar(){
   html+=`</div>
   <div style="font-size:0.68rem;color:var(--t3);text-align:center;margin-top:8px;">Appuyez sur un jour pour ajouter un événement ou une note ✦</div>`;
 
+  const totalEvents=Object.keys(S.calEvents).length;
+  if(totalEvents){
+    html+=`<div class="qada-ok" id="btn-export-ics" style="text-align:center;margin-top:12px;">📤 Exporter vers mon calendrier (.ics)</div>
+    <div style="font-size:0.66rem;color:var(--t3);text-align:center;margin-top:6px;">${totalEvents} événement(s) → fichier compatible iPhone, Android, Google Agenda…</div>`;
+  }
+
   // Événements du mois affiché
   const monthEvents=Object.entries(S.calEvents)
     .filter(([k])=>k.startsWith(`${y}-${String(m+1).padStart(2,'0')}-`))
@@ -253,6 +255,8 @@ function renderFastingCalendar(){
   bd.querySelectorAll('.fc-day[data-day], .cal-event-row[data-day]').forEach(el=>{
     el.addEventListener('click',()=>openEventEditor(y,m,parseInt(el.dataset.day)));
   });
+  const exp=document.getElementById('btn-export-ics');
+  if(exp)exp.addEventListener('click',exportICS);
 }
 
 /* ══════════ INIT ══════════ */
@@ -263,26 +267,6 @@ export function initTools(){
     closeSheet();
     setTimeout(()=>openSheet('sh-qada-info-inner'),320);
   });
-
-  // Rak'ah
-  $('btn-open-rakah').addEventListener('click',()=>openSheet('sh-rakah',renderRakah));
-  $('btn-reset-rakah').addEventListener('click',()=>{_rkCount=0;_rkSujoud=0;renderRakahUI();toast("Rak'ahs remises à zéro");vib([40,20,40]);});
-  $('rakah-plus').addEventListener('click',()=>{
-    const total=RAKAH_REF[_rkPrayer]||4;
-    if(_rkCount>=total){
-      toast(`🎉 ${QADA_PRAYERS.find(x=>x.key===_rkPrayer)?.name} terminée !`);
-      burst();playSound(S.sound,true);vib([80,40,80]);
-      return;
-    }
-    _rkCount++;_rkSujoud=0;playSound(S.sound);vib(20);renderRakahUI();
-    if(_rkCount===total)setTimeout(()=>toast(`✓ ${_rkCount}/${total} rak'ahs accomplis`),100);
-  });
-  $('rakah-minus').addEventListener('click',()=>{
-    if(_rkCount<=0)return;
-    _rkCount--;_rkSujoud=0;playSound('click');vib(14);renderRakahUI();
-  });
-  $('sujoud-plus').addEventListener('click',()=>{_rkSujoud++;$('sujoud-count').textContent=_rkSujoud;playSound('click');vib(12);});
-  $('sujoud-minus').addEventListener('click',()=>{if(_rkSujoud>0){_rkSujoud--;$('sujoud-count').textContent=_rkSujoud;}});
 
   // Zakat
   $('btn-open-zakat').addEventListener('click',()=>openSheet('sh-zakat',()=>{

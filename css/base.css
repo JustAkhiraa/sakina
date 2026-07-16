@@ -3,6 +3,11 @@
 ════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;overflow:hidden;}
+/* iOS Safari : la barre d'outils dynamique coupait le bas de l'app avec 100% —
+   100dvh suit la hauteur réellement visible */
+@supports(height:100dvh){
+  body{height:100dvh;}
+}
 html{background:var(--bg);}
 body{font-family:var(--ff-b);background:var(--bg);color:var(--t1);
   -webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;}
@@ -102,8 +107,11 @@ input:-webkit-autofill,input:-webkit-autofill:focus{
 /* ── INPUT ── */
 .inp{background:var(--sur2) !important;border:1px solid var(--bor);border-radius:var(--r-md);
   padding:12px 14px;color:var(--t1) !important;-webkit-text-fill-color:var(--t1) !important;
-  font-family:var(--ff-b);font-size:0.9rem;width:100%;outline:none;
+  font-family:var(--ff-b);font-size:16px;width:100%;outline:none;
   transition:border-color 0.2s;box-shadow:var(--sh1);-webkit-appearance:none;color-scheme:inherit;}
+/* 16px minimum sur tous les champs : en dessous, iOS zoome automatiquement
+   au focus et la page reste zoomée (site "coupé", obligé de dézoomer) */
+input,textarea,select{font-size:16px;}
 .inp:focus{border-color:var(--a);}
 .inp::placeholder{color:var(--t3);}
 /* ── STEPPER ── */
@@ -126,8 +134,13 @@ input:-webkit-autofill,input:-webkit-autofill:focus{
   background:var(--sur);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);
   border-top:1px solid var(--bor);border-radius:var(--r-xl) var(--r-xl) 0 0;
   box-shadow:0 -8px 40px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.10);
-  z-index:101;transition:transform 0.38s var(--ease);display:flex;flex-direction:column;overflow:hidden;color:var(--t1);}
-.sheet.open{transform:translateX(-50%) translateY(0);}
+  z-index:101;display:flex;flex-direction:column;overflow:hidden;color:var(--t1);
+  /* visibility:hidden quand fermée : les ombres des sheets garées sous l'écran
+     remontaient sinon dans le viewport (bande noire au-dessus de la navbar) */
+  visibility:hidden;
+  transition:transform 0.38s var(--ease),visibility 0s linear 0.38s;}
+.sheet.open{transform:translateX(-50%) translateY(0);visibility:visible;
+  transition:transform 0.38s var(--ease),visibility 0s;}
 .sh-grip{width:36px;height:4px;background:var(--bor);border-radius:var(--r-pill);margin:12px auto 0;flex-shrink:0;}
 .sh-hd{display:flex;align-items:center;justify-content:space-between;padding:13px 20px 9px;flex-shrink:0;}
 .sh-title{font-family:var(--ff-d);font-size:1.05rem;letter-spacing:0.04em;color:var(--t1);}

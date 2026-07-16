@@ -11,6 +11,66 @@ let _surah=1,_verses=[],_transl={},_selAyah=null;
 const _cache={};
 let _loaded=false;
 
+/* ── Audio : récitation Mishary Alafasy (CDN islamic.network, gratuit) ──
+   L'API audio est indexée par numéro de verset global (1–6236). */
+const AYAH_OFFSET=(()=>{
+  const o=[0];
+  SURAHS.forEach(s=>o.push(o[s.n-1]+s.v));
+  return o; // o[n-1] = nombre de versets avant la sourate n
+})();
+const globalAyah=key=>{
+  const[s,a]=key.split(':').map(Number);
+  return AYAH_OFFSET[s-1]+a;
+};
+const _player=new Audio();
+_player.preload='none';
+let _playingKey=null;
+
+function highlightPlaying(key){
+  document.querySelectorAll('.qv-ayah.playing').forEach(e=>e.classList.remove('playing'));
+  if(!key)return;
+  const el=document.querySelector(`.qv-ayah[data-key="${key}"]`);
+  if(el){
+    el.classList.add('playing');
+    el.scrollIntoView({block:'center',behavior:'smooth'});
+  }
+}
+
+function updatePlayerPill(){
+  const pill=$('quran-player');
+  if(_playingKey){
+    const[s,a]=_playingKey.split(':');
+    pill.querySelector('span').textContent=`▶ ${SURAHS[s-1].fr} · verset ${a}`;
+    pill.classList.add('show');
+  }else{
+    pill.classList.remove('show');
+  }
+}
+
+function playVerse(key){
+  _playingKey=key;
+  _player.src=`https://cdn.islamic.network/quran/audio/128/ar.alafasy/${globalAyah(key)}.mp3`;
+  _player.play().catch(()=>{stopPlayback();toast('Lecture audio indisponible');});
+  highlightPlaying(key);
+  updatePlayerPill();
+}
+
+export function stopPlayback(){
+  _player.pause();
+  _player.removeAttribute('src');
+  _playingKey=null;
+  highlightPlaying(null);
+  updatePlayerPill();
+}
+
+/* Fin d'un verset → verset suivant de la sourate (lecture continue) */
+function onVerseEnded(){
+  if(!_playingKey)return;
+  const[s,a]=_playingKey.split(':').map(Number);
+  if(s===_surah&&a<SURAHS[s-1].v)playVerse(`${s}:${a+1}`);
+  else stopPlayback();
+}
+
 /* ── API ── */
 async function fetchSurah(n){
   if(_cache[n])return _cache[n];
@@ -47,6 +107,7 @@ function applyTajwid(text){
 
 /* ── Rendu ── */
 async function renderSurah(n){
+  if(_playingKey)stopPlayback(); // changer de sourate arrête la récitation
   _surah=n;
   const surah=SURAHS[n-1];
   $('quran-surah-name').textContent=`${surah.ar} — ${surah.fr}`;
@@ -163,6 +224,15 @@ function buildBookmarks(){
 export function initQuran(){
   $('quran-scroll').addEventListener('click',deselectAyah);
 
+  // Lecture audio
+  _player.addEventListener('ended',onVerseEnded);
+  $('vact-play').addEventListener('click',()=>{
+    if(!_selAyah)return;
+    playVerse(_selAyah);
+    deselectAyah();
+  });
+  $('quran-player').addEventListener('click',stopPlayback);
+
   $('vact-transl').addEventListener('click',()=>{
     if(!_selAyah)return;
     const verse=_verses.find(v=>v.verse_key===_selAyah);
@@ -172,9 +242,14 @@ export function initQuran(){
     $('transl-arabic').textContent=verse.text_uthmani;
     const tr=_transl[_selAyah]||'Traduction non disponible.';
     $('transl-text').textContent=tr.replace(/<[^>]+>/g,'');
+    // La barre d'action masquait le panneau sur iPhone : on la retire pendant la lecture
+    $('verse-action-bar').classList.remove('show');
     $('transl-panel').classList.add('show');
   });
-  $('btn-close-transl').addEventListener('click',()=>$('transl-panel').classList.remove('show'));
+  $('btn-close-transl').addEventListener('click',()=>{
+    $('transl-panel').classList.remove('show');
+    if(_selAyah)$('verse-action-bar').classList.add('show');
+  });
 
   $('vact-fav').addEventListener('click',()=>{
     if(!_selAyah)return;

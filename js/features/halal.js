@@ -5,6 +5,7 @@
 import {openSheet} from '../core/ui.js';
 import {vib} from '../core/audio.js';
 import {ADDITIVES,ADD_STATUS,HARAM_KEYWORDS} from '../data/additives.js';
+import {CERT_ORGS,CERT_BRANDS} from '../data/halal-certifs.js';
 
 const $=id=>document.getElementById(id);
 let _tab='scan';
@@ -133,21 +134,83 @@ export function stopCamera(){
   const h=$('halal-cam-hint');if(h)h.textContent='';
 }
 
+/* ── Certifications : organismes & marques (source debat-halal.fr) ── */
+const CRITS=[
+  ['salaried','Contrôleurs salariés',true],
+  ['everyProd','Présents à chaque production',true],
+  ['sacrif','Sacrificateurs salariés',true],
+  ['meca','Abattage mécanique',false],
+  ['electro','Électronarcose',false],
+  ['electrocution','Électrocution',false],
+  ['assommage','Assommage bovins',false],
+];
+function renderOrgs(){
+  const box=$('certs-orgs');box.innerHTML='';
+  [...CERT_ORGS].sort((a,b)=>(b.trusted?1:0)-(a.trusted?1:0)).forEach(o=>{
+    const card=document.createElement('div');card.className='org-card';
+    const crits=CRITS.map(([key,label,goodWhenTrue])=>{
+      const v=o[key];
+      if(v===null)return `<span class="crit">${label} : mitigé</span>`;
+      const good=goodWhenTrue?v:!v;
+      const txt=goodWhenTrue?(v?'✓':'✗'):(v?'accepté ✗':'refusé ✓');
+      return `<span class="crit ${good?'good':'bad'}">${label} : ${txt}</span>`;
+    }).join('');
+    card.innerHTML=`<div class="org-head ${o.trusted?'ok':'bad'}">
+        <div class="org-name">${o.name}</div>
+        <span class="org-badge">${o.trusted?'✓ Digne de confiance':'✗ Rite non respecté'}</span>
+      </div>
+      <div class="org-crit">${crits}</div>
+      ${o.note?`<div class="org-note">⚠ ${o.note}</div>`:''}
+      ${o.site?`<div class="org-site">${o.site}${o.created?` · depuis ${o.created}`:''}</div>`:''}`;
+    box.appendChild(card);
+  });
+}
+function renderBrands(filter=''){
+  const box=$('brands-list');box.innerHTML='';
+  const f=filter.trim().toLowerCase();
+  const items=CERT_BRANDS.filter(b=>!f||b.name.toLowerCase().includes(f)||b.cert.toLowerCase().includes(f));
+  if(!items.length){box.innerHTML='<div class="places-empty">Marque absente des relevés debat-halal.fr.</div>';return;}
+  const wrap=document.createElement('div');
+  wrap.style.cssText='border:1px solid var(--bor2);border-radius:var(--r-md);overflow:hidden;background:var(--sur2);';
+  items.forEach(b=>{
+    const row=document.createElement('div');row.className='brand-row';
+    row.innerHTML=`<div class="brand-dot ${b.verdict==='halal'?'ok':'bad'}"></div>
+      <div style="flex:1"><div class="brand-name">${b.name}</div><div class="brand-cert">Certifié par : ${b.cert}</div></div>
+      <div style="font-size:0.62rem;font-weight:800;color:${b.verdict==='halal'?'var(--ok)':'#fb923c'};">${b.verdict==='halal'?'SEREIN':'DOUTEUX'}</div>`;
+    wrap.appendChild(row);
+  });
+  box.appendChild(wrap);
+}
+
 /* ── UI ── */
 function syncTabs(){
   document.querySelectorAll('#halal-tabs .seg-opt').forEach(o=>o.classList.toggle('active',o.dataset.tab===_tab));
   $('halal-tab-scan').style.display=_tab==='scan'?'block':'none';
   $('halal-tab-add').style.display=_tab==='add'?'block':'none';
+  $('halal-tab-certs').style.display=_tab==='certs'?'block':'none';
+  $('halal-tab-info').style.display=_tab==='info'?'block':'none';
   if(_tab!=='scan')stopCamera();
 }
 
 export function initHalal(){
   $('btn-open-halal').addEventListener('click',()=>{
-    openSheet('sh-halal',()=>{_tab='scan';syncTabs();$('halal-scan-result').innerHTML='';searchAdditives('');});
+    openSheet('sh-halal',()=>{
+      _tab='scan';syncTabs();
+      $('halal-scan-result').innerHTML='';
+      searchAdditives('');renderOrgs();renderBrands();
+    });
   });
   document.querySelectorAll('#halal-tabs .seg-opt').forEach(o=>{
     o.addEventListener('click',()=>{_tab=o.dataset.tab;syncTabs();});
   });
+  document.querySelectorAll('#certs-sub .seg-opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      document.querySelectorAll('#certs-sub .seg-opt').forEach(x=>x.classList.toggle('active',x===o));
+      $('certs-orgs').style.display=o.dataset.sub==='orgs'?'block':'none';
+      $('certs-brands').style.display=o.dataset.sub==='brands'?'block':'none';
+    });
+  });
+  $('brand-search').addEventListener('input',e=>renderBrands(e.target.value));
   $('btn-halal-cam').addEventListener('click',()=>{_stream?stopCamera():startCamera();});
   $('btn-halal-lookup').addEventListener('click',()=>lookupBarcode($('halal-barcode-inp').value));
   $('halal-barcode-inp').addEventListener('keydown',e=>{if(e.key==='Enter')lookupBarcode(e.target.value);});

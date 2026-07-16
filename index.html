@@ -10,6 +10,29 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Sakina">
 <meta name="theme-color" id="theme-color-meta" content="#08090C">
+<script>
+/* Applique le thème sauvegardé AVANT le premier rendu : sans ça, Chrome
+   Android fige la couleur de sa barre système sur le sombre par défaut,
+   et les thèmes clairs subissent un flash sombre au chargement. */
+(function(){try{
+  var s=JSON.parse(localStorage.getItem('sakina.v1')||'{}');
+  var sw={dark:'#08090C',emerald:'#04120C',ocean:'#050B16',mocha:'#120C08',light:'#F5F4F0',sand:'#F3EBDD',dawn:'#F7F0F2'};
+  var t=s.baseTheme||(s.lightMode?'light':'dark');
+  if(!sw[t])t='dark';
+  var light=(t==='light'||t==='sand'||t==='dawn');
+  var night=!!s.nightMode&&!light;
+  var bg=night?'#000000':sw[t];
+  var d=document.documentElement;
+  d.setAttribute('data-theme',t);
+  if(light)d.setAttribute('data-light-ui','');
+  if(night)d.setAttribute('data-night','true');
+  if(s.accent)d.setAttribute('data-accent',s.accent);
+  d.style.background=bg;
+  d.style.colorScheme=light?'light':'dark';
+  var m=document.getElementById('theme-color-meta');if(m)m.content=bg;
+  var c=document.querySelector('meta[name="color-scheme"]');if(c)c.content=light?'light':'dark';
+}catch(e){}})();
+</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -142,6 +165,11 @@
     </button>
   </div>
   <div class="pscroll">
+    <div id="duas-routines-banner" class="gc">
+      <div style="font-size:1.3rem;">🛡️</div>
+      <div style="flex:1;"><div style="font-size:0.85rem;font-weight:700;color:var(--t1);">Routines &amp; Protection</div><div style="font-size:0.67rem;color:var(--t2);">Matin, Al-Ma'thûrât, après la prière — guidés pas à pas</div></div>
+      <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </div>
     <div id="cat-bar"></div>
     <div id="duas-list"></div>
   </div>
@@ -184,6 +212,10 @@
     </div>
   </div>
   <div id="verse-action-bar">
+    <div class="v-act" id="vact-play">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><circle cx="12" cy="12" r="9"/></svg>
+      Écouter
+    </div>
     <div class="v-act" id="vact-transl">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
       Traduction
@@ -201,6 +233,8 @@
       Copier
     </div>
   </div>
+  <div id="quran-player"><span>▶</span><b>◼ Arrêter</b></div>
+
   <div id="transl-panel">
     <div id="transl-panel-hd">
       <div id="transl-ayah-ref"></div>
@@ -234,14 +268,14 @@
     <!-- Outils -->
     <div class="sl" data-i18n="sec.tools">Outils islamiques</div>
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row" id="btn-open-routines">
+        <div class="row-ic">🛡️</div>
+        <div class="row-body"><div class="row-name" data-i18n="row.routines">Routines &amp; Protection</div><div class="row-sub">Adhkâr guidés : matin, Al-Ma'thûrât, après-prière</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
       <div class="row" id="btn-open-qada">
         <div class="row-ic">🤲</div>
         <div class="row-body"><div class="row-name" data-i18n="row.qada">Rattrapage des Prières (Qadâ')</div><div class="row-sub">Suivre les prières manquées à rattraper</div></div>
-        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-      </div>
-      <div class="row" id="btn-open-rakah">
-        <div class="row-ic">🕌</div>
-        <div class="row-body"><div class="row-name" data-i18n="row.rakah">Compteur Rak'ah</div><div class="row-sub">Compter les rak'ahs de la prière</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
       <div class="row" id="btn-open-zakat">
@@ -261,7 +295,7 @@
       </div>
       <div class="row" id="btn-open-places">
         <div class="row-ic">🗺️</div>
-        <div class="row-body"><div class="row-name" data-i18n="row.places">À proximité — Mosquées &amp; Halal</div><div class="row-sub">Autour de votre position (OpenStreetMap)</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="row.places">Mosquées à proximité</div><div class="row-sub">Autour de votre position (OpenStreetMap)</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
       <div class="row" style="border-bottom:none" id="btn-open-halal">
@@ -291,12 +325,9 @@
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
       <div class="row" style="cursor:default;">
         <div class="row-ic">🌓</div>
-        <div class="row-body"><div class="row-name" data-i18n="row.theme">Thème</div><div class="row-sub">Clair ou sombre</div></div>
-        <div class="seg-ctrl" id="theme-seg">
-          <div class="seg-opt active" data-thm="dark">🌙 Sombre</div>
-          <div class="seg-opt" data-thm="light">☀️ Clair</div>
-        </div>
+        <div class="row-body"><div class="row-name" data-i18n="row.theme">Thème</div><div class="row-sub">7 ambiances, du plus sombre au plus lumineux</div></div>
       </div>
+      <div style="padding:4px 16px 10px;"><div class="tgrid" id="base-theme-grid"></div></div>
       <div class="row" style="cursor:default;border-bottom:none">
         <div class="row-ic">🎨</div>
         <div class="row-body"><div class="row-name" data-i18n="row.accent">Couleur d'accent</div></div>
@@ -493,49 +524,6 @@
   </div>
 </div>
 
-<!-- COMPTEUR RAK'AH -->
-<div class="sheet" id="sh-rakah">
-  <div class="sh-grip"></div>
-  <div class="sh-hd">
-    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Compteur Rak'ah</div>
-    <button class="ok-b" id="btn-reset-rakah" style="background:rgba(239,68,68,0.15);color:#f87171;font-size:0.7rem;width:auto;padding:0 10px;font-weight:700;box-shadow:none;">Reset</button>
-  </div>
-  <div class="sh-bd">
-    <div class="sl" style="margin:0 0 10px">Prière en cours</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px" id="rakah-prayer-sel"></div>
-    <div class="gc" style="border-radius:var(--r-xl);padding:28px;text-align:center;margin-bottom:14px;position:relative;">
-      <div style="font-family:var(--ff-a);font-size:1.1rem;color:var(--a);margin-bottom:6px;" id="rakah-prayer-ar">الفجر</div>
-      <div style="font-family:var(--ff-m);font-size:5rem;color:var(--t1);line-height:1;" id="rakah-count">0</div>
-      <div style="font-size:0.65rem;color:var(--t2);margin-top:6px;text-transform:uppercase;letter-spacing:0.1em;">Rak'ahs</div>
-      <div style="display:flex;gap:8px;justify-content:center;margin-top:14px;" id="rakah-dots"></div>
-    </div>
-    <div style="display:flex;gap:12px;margin-bottom:14px;">
-      <div style="flex:1;height:64px;border-radius:var(--r-lg);background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.6rem;color:#f87171;transition:all 0.15s;" id="rakah-minus">−</div>
-      <div style="flex:2;height:64px;border-radius:var(--r-lg);background:var(--a-dim);border:1px solid var(--a-glow);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;font-weight:800;color:var(--a);transition:all 0.15s;letter-spacing:0.06em;" id="rakah-plus">+ 1 Rak'ah</div>
-    </div>
-    <div class="gc" style="border-radius:var(--r-lg);padding:14px 16px;display:flex;align-items:center;gap:12px;">
-      <div style="flex:1">
-        <div style="font-size:0.85rem;font-weight:700;">Sujoud</div>
-        <div style="font-size:0.68rem;color:var(--t2);margin-top:1px;">Prosternations dans la rak'ah</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div style="width:32px;height:32px;border-radius:var(--r-sm);background:var(--sur2);border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;color:var(--t2);" id="sujoud-minus">−</div>
-        <div style="font-family:var(--ff-m);font-size:1.2rem;color:var(--a);min-width:28px;text-align:center;" id="sujoud-count">0</div>
-        <div style="width:32px;height:32px;border-radius:var(--r-sm);background:var(--a-dim);border:1px solid var(--a-glow);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;color:var(--a);" id="sujoud-plus">+</div>
-      </div>
-    </div>
-    <div class="sl" style="margin-top:16px;margin-bottom:8px">Référence — Nombre de Rak'ahs</div>
-    <div class="gc" style="border-radius:var(--r-xl);overflow:hidden;">
-      <div class="row" style="cursor:default"><div class="row-ic">🌙</div><div class="row-body"><div class="row-name">Fajr</div><div class="row-sub">Prière de l'aube</div></div><div class="row-right gold">2</div></div>
-      <div class="row" style="cursor:default"><div class="row-ic">☀️</div><div class="row-body"><div class="row-name">Dhouhr</div><div class="row-sub">Prière du midi</div></div><div class="row-right gold">4</div></div>
-      <div class="row" style="cursor:default"><div class="row-ic">🌤️</div><div class="row-body"><div class="row-name">Asr</div><div class="row-sub">Prière de l'après-midi</div></div><div class="row-right gold">4</div></div>
-      <div class="row" style="cursor:default"><div class="row-ic">🌅</div><div class="row-body"><div class="row-name">Maghrib</div><div class="row-sub">Prière du coucher du soleil</div></div><div class="row-right gold">3</div></div>
-      <div class="row" style="cursor:default;border-bottom:none"><div class="row-ic">🌃</div><div class="row-body"><div class="row-name">Icha</div><div class="row-sub">Prière du soir</div></div><div class="row-right gold">4</div></div>
-    </div>
-  </div>
-</div>
-
 <!-- ZAKAT -->
 <div class="sheet" id="sh-zakat">
   <div class="sh-grip"></div>
@@ -693,22 +681,15 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">À proximité</div>
+    <div class="sh-title">Mosquées à proximité</div>
     <div style="width:32px"></div>
   </div>
   <div style="padding:0 20px 8px;flex-shrink:0;">
-    <div class="seg-ctrl" id="places-mode" style="width:100%;margin-bottom:10px;">
-      <div class="seg-opt active" data-mode="mosques" style="flex:1;text-align:center;">🕌 Mosquées</div>
-      <div class="seg-opt" data-mode="halal" style="flex:1;text-align:center;">🍽️ Restos &amp; Halal</div>
-    </div>
     <div style="display:flex;gap:8px;" id="places-radius">
       <span class="chip" data-km="2">2 km</span>
       <span class="chip sel" data-km="5">5 km</span>
       <span class="chip" data-km="10">10 km</span>
       <span class="chip" data-km="20">20 km</span>
-    </div>
-    <div id="places-disclaimer" style="display:none;font-size:0.68rem;color:#fb923c;line-height:1.5;margin-top:10px;padding:9px 11px;background:rgba(251,146,60,0.08);border:1px dashed rgba(251,146,60,0.3);border-radius:var(--r-sm);">
-      ⚠ Mention « halal » déclarée sur OpenStreetMap — <strong>vérifiez toujours vous-même</strong> la certification : mode d'abattage, étourdissement, traçabilité de la viande.
     </div>
   </div>
   <div class="sh-bd" id="places-list" style="padding-left:16px;padding-right:16px;"></div>
@@ -724,8 +705,10 @@
   </div>
   <div style="padding:0 20px 8px;flex-shrink:0;">
     <div class="seg-ctrl" id="halal-tabs" style="width:100%;">
-      <div class="seg-opt active" data-tab="scan" style="flex:1;text-align:center;">📷 Scanner un produit</div>
-      <div class="seg-opt" data-tab="add" style="flex:1;text-align:center;">🧪 Additifs E</div>
+      <div class="seg-opt active" data-tab="scan" style="flex:1;text-align:center;">📷 Scan</div>
+      <div class="seg-opt" data-tab="add" style="flex:1;text-align:center;">🧪 Additifs</div>
+      <div class="seg-opt" data-tab="certs" style="flex:1;text-align:center;">✅ Certifs</div>
+      <div class="seg-opt" data-tab="info" style="flex:1;text-align:center;">📖 Comprendre</div>
     </div>
   </div>
   <div class="sh-bd">
@@ -745,6 +728,51 @@
     <div id="halal-tab-add" style="display:none;">
       <input class="inp" type="text" id="halal-add-inp" placeholder="Code E ou nom (ex : E471, gélatine…)" autocomplete="off" style="margin-bottom:10px;">
       <div id="halal-add-results"></div>
+    </div>
+
+    <div id="halal-tab-certs" style="display:none;">
+      <div class="seg-ctrl" id="certs-sub" style="width:100%;margin-bottom:10px;">
+        <div class="seg-opt active" data-sub="orgs" style="flex:1;text-align:center;">Organismes</div>
+        <div class="seg-opt" data-sub="brands" style="flex:1;text-align:center;">Marques</div>
+      </div>
+      <div id="certs-orgs"></div>
+      <div id="certs-brands" style="display:none;">
+        <input class="inp" type="text" id="brand-search" placeholder="Chercher une marque (Isla Délice, AVS…)" autocomplete="off" style="margin-bottom:10px;">
+        <div id="brands-list"></div>
+      </div>
+      <div style="font-size:0.66rem;color:var(--t3);line-height:1.5;margin-top:12px;padding:9px 11px;background:var(--sur2);border-radius:var(--r-sm);border:1px solid var(--bor2);">
+        Source : relevés publiés par <strong style="color:var(--t2)">debat-halal.fr</strong>. Données déclaratives pouvant évoluer — vérifiez directement auprès des organismes.
+      </div>
+    </div>
+
+    <div id="halal-tab-info" style="display:none;">
+      <div class="info-block">
+        <div class="info-title">🤲 Pourquoi manger halal ?</div>
+        <p>Manger halal n'est pas un simple logo sur une vitrine : c'est un acte d'adoration qui touche la santé, la spiritualité et la vie familiale. La condition n'est pas seulement <em>quoi</em> manger, mais <em>comment</em> l'animal a été traité et sacrifié : un sacrificateur musulman pratiquant, la basmala prononcée, un couteau affûté, une bête vivante et consciente.</p>
+      </div>
+      <div class="info-block">
+        <div class="info-title">⚡ L'électronarcose, c'est quoi ?</div>
+        <p>Les volailles sont plongées tête la première dans un bain d'eau électrifié (ou étourdies par pinces) avant la saignée. L'animal est censé être « seulement étourdi »… mais des tests menés en abattoir par des certificateurs ont mesuré <strong>plus de 15 % de mortalité avant la saignée</strong> : ces bêtes, mortes électrocutées et non égorgées, sont de la charogne (maytah) — interdites à la consommation. Et à 100-300 bêtes par minute, impossible de trier.</p>
+      </div>
+      <div class="info-block">
+        <div class="info-title">🔨 L'assommage (matador)</div>
+        <p>Pour les bovins : un pistolet à tige captive perfore la boîte crânienne et détruit le cerveau avant la saignée. L'animal tombe dans le coma — quand il n'est pas tué sur le coup. Pour les ovins, des pinces électriques sur les tempes « brûlent » littéralement le cerveau. Outre la souffrance, l'animal risque de mourir <em>avant</em> l'égorgement rituel, ce qui invalide le caractère halal.</p>
+      </div>
+      <div class="info-block">
+        <div class="info-title">🔪 L'abattage mécanique</div>
+        <p>Une lame rotative égorge les volailles à la chaîne, sans sacrificateur, sans basmala prononcée sur chaque bête, et avec des ratés (bêtes mal saignées). La majorité des savants considèrent que les conditions du sacrifice rituel ne sont pas réunies.</p>
+      </div>
+      <div class="info-block">
+        <div class="info-title">🍳 La contamination croisée</div>
+        <p>Même une viande certifiée peut être « contaminée » en cuisine : friteuse, grill ou planche partagés avec du bacon ou des produits non halal, sauces au vin, arômes alcoolisés. Dans un restaurant, demandez ce qui partage les surfaces de cuisson.</p>
+      </div>
+      <div class="info-block">
+        <div class="info-title">✅ Comment choisir ?</div>
+        <p>Un contrôle fiable réunit : des <strong>contrôleurs salariés de l'organisme</strong> (pas de l'usine), <strong>présents à chaque production</strong>, des <strong>sacrificateurs salariés</strong>, et le <strong>refus</strong> de l'électronarcose, de l'abattage mécanique et de l'assommage. Ne vous contentez pas du mot « halal » en vitrine : demandez <em>qui</em> certifie (onglet Certifs), et en cas de doute, abstenez-vous — c'est votre responsabilité devant Allah, pas celle du vendeur seulement.</p>
+      </div>
+      <div style="font-size:0.66rem;color:var(--t3);line-height:1.5;margin-top:4px;padding:9px 11px;background:var(--sur2);border-radius:var(--r-sm);border:1px solid var(--bor2);">
+        Synthèse issue de témoignages publics de certificateurs (25 ans d'expérience, ex-AVS) et de debat-halal.fr.
+      </div>
     </div>
   </div>
 </div>
@@ -775,6 +803,46 @@
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd" id="fasting-bd"></div>
+</div>
+
+<!-- CHOIX DE ROUTINE -->
+<div class="sheet" id="sh-routines">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Routines &amp; Protection</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <p style="font-size:0.78rem;color:var(--t2);line-height:1.6;margin-bottom:12px;">Des enchaînements guidés d'adhkâr : appuyez sur la carte pour compter, l'étape suivante s'ouvre toute seule.</p>
+    <div class="gc" style="border-radius:var(--r-xl);overflow:hidden;" id="routines-list"></div>
+  </div>
+</div>
+
+<!-- LECTEUR DE ROUTINE -->
+<div class="sheet" id="sh-routine" style="max-height:96vh;">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title" id="routine-title">Routine</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <div id="rt-total-track"><div id="rt-total-fill"></div></div>
+    <div id="rt-step-label" class="sl" style="margin:12px 0 4px;text-align:center;">Étape 1/9</div>
+    <div id="rt-step-title"></div>
+    <div id="rt-tap" class="gc">
+      <div id="rt-ar"></div>
+      <div id="rt-counter"><span id="rt-count">0</span><span id="rt-target">/ 33</span></div>
+      <div id="rt-step-track"><div id="rt-step-fill"></div></div>
+      <div id="rt-hint">Appuyer pour compter</div>
+    </div>
+    <div id="rt-note"></div>
+    <div style="display:flex;gap:10px;margin-top:14px;">
+      <div class="ob-btn ghost" id="rt-prev">‹ Précédent</div>
+      <div class="ob-btn primary" id="rt-next">Étape suivante ›</div>
+    </div>
+  </div>
 </div>
 
 <!-- ════════════════ ASSISTANT DE BIENVENUE (1er lancement) ════════════════ -->
@@ -808,11 +876,8 @@
     <div class="ob-step" data-step="1">
       <div class="ob-title" data-i18n="ob.ambTitle">Votre ambiance</div>
       <p class="ob-sub" data-i18n="ob.ambSub">Choisissez le thème et la couleur — modifiables à tout moment dans les Réglages.</p>
-      <div class="sl" style="margin:14px 0 8px">Thème</div>
-      <div class="seg-ctrl" id="ob-theme-seg" style="width:100%;">
-        <div class="seg-opt active" data-thm="dark" style="flex:1;text-align:center;">🌙 Sombre</div>
-        <div class="seg-opt" data-thm="light" style="flex:1;text-align:center;">☀️ Clair</div>
-      </div>
+      <div class="sl" style="margin:14px 0 8px">Ambiance</div>
+      <div class="tgrid" id="ob-base-theme-grid"></div>
       <div class="sl" style="margin:16px 0 4px">Couleur d'accent</div>
       <div class="tgrid" id="ob-accent-grid"></div>
     </div>

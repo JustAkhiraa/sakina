@@ -152,13 +152,20 @@
 .qv-ayah.selected{background:rgba(255,220,50,0.28);outline:2px solid rgba(255,210,0,0.5);border-radius:4px;}
 [data-theme="light"] .qv-ayah.selected{background:rgba(255,200,0,0.22);}
 .qv-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--a-dim);border:1px solid var(--a-glow);font-family:var(--ff-m);font-size:0.55rem;color:var(--a);margin:0 4px;vertical-align:middle;flex-shrink:0;}
-.tj-madd{color:#E53E3E;}
-.tj-madd2{color:#FC8181;}
-.tj-ghunna{color:#276749;}
-[data-theme="light"] .tj-ghunna{color:#276749;}
-.tj-qalqala{color:#2B6CB0;}
-.tj-ikhfa{color:#D69E2E;}
-.tj-idgham{color:#718096;}
+/* Tajwid — teintes claires par défaut (fonds sombres), assombries sur thèmes clairs.
+   Les anciennes couleurs (#276749, #2B6CB0…) étaient illisibles en mode nuit. */
+.tj-madd{color:#F87171;}
+.tj-madd2{color:#FCA5A5;}
+.tj-ghunna{color:#4ADE80;}
+.tj-qalqala{color:#7DD3FC;}
+.tj-ikhfa{color:#FACC15;}
+.tj-idgham{color:#A8B2C1;}
+[data-light-ui] .tj-madd{color:#DC2626;}
+[data-light-ui] .tj-madd2{color:#F87171;}
+[data-light-ui] .tj-ghunna{color:#15803D;}
+[data-light-ui] .tj-qalqala{color:#0369A1;}
+[data-light-ui] .tj-ikhfa{color:#A16207;}
+[data-light-ui] .tj-idgham{color:#64748B;}
 .tj-fav-mark{color:var(--a);font-size:0.6rem;vertical-align:super;}
 #quran-loading{text-align:center;padding:60px 20px;}
 .q-spinner{width:36px;height:36px;border:3px solid rgba(var(--a-rgb),0.2);border-top:3px solid var(--a);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto;}
@@ -168,8 +175,10 @@
   background:var(--sur3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border:1px solid var(--bor);border-radius:var(--r-xl);
   display:flex;align-items:center;padding:8px 6px;gap:4px;z-index:80;
-  transition:transform 0.3s var(--ease);box-shadow:0 -4px 30px rgba(0,0,0,0.3);}
-#verse-action-bar.show{transform:translateX(-50%) translateY(0);}
+  box-shadow:0 -4px 30px rgba(0,0,0,0.3);visibility:hidden;
+  transition:transform 0.3s var(--ease),visibility 0s linear 0.3s;}
+#verse-action-bar.show{transform:translateX(-50%) translateY(0);visibility:visible;
+  transition:transform 0.3s var(--ease),visibility 0s;}
 .v-act{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px;border-radius:var(--r-md);cursor:pointer;font-size:0.58rem;font-weight:700;color:var(--t2);letter-spacing:0.05em;text-transform:uppercase;transition:all 0.15s;}
 .v-act:active{background:var(--a-dim);color:var(--a);}
 .v-act svg{width:18px;height:18px;}
@@ -178,10 +187,12 @@
   backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
   border-top:1px solid var(--bor);border-radius:var(--r-xl) var(--r-xl) 0 0;
   padding:16px 20px calc(env(safe-area-inset-bottom,0px) + 80px);
-  z-index:79;transition:transform 0.35s var(--ease);box-shadow:0 -8px 30px rgba(0,0,0,0.3);
-  max-height:55vh;overflow-y:auto;}
+  z-index:88;box-shadow:0 -8px 30px rgba(0,0,0,0.3);
+  max-height:55vh;overflow-y:auto;visibility:hidden;
+  transition:transform 0.35s var(--ease),visibility 0s linear 0.35s;}
 #transl-panel::-webkit-scrollbar{display:none;}
-#transl-panel.show{transform:translateX(-50%) translateY(0);}
+#transl-panel.show{transform:translateX(-50%) translateY(0);visibility:visible;
+  transition:transform 0.35s var(--ease),visibility 0s;}
 #transl-panel-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 #transl-ayah-ref{font-family:var(--ff-m);font-size:0.72rem;color:var(--a);font-weight:700;}
 #transl-arabic{font-family:var(--ff-a);font-size:1.2rem;color:var(--a);direction:rtl;text-align:right;line-height:1.9;padding:8px 0;border-bottom:1px solid var(--bor);margin-bottom:10px;}
@@ -369,6 +380,72 @@
 .hp-ing summary{cursor:pointer;color:var(--a);font-weight:700;font-size:0.72rem;}
 .hp-ing div{margin-top:6px;line-height:1.6;}
 #halal-video{max-height:220px;object-fit:cover;background:#000;}
+
+/* ════════ ROUTINES GUIDÉES ════════ */
+#duas-routines-banner{margin:0 16px 12px;border-radius:var(--r-lg);padding:12px 15px;
+  display:flex;align-items:center;gap:12px;cursor:pointer;}
+#duas-routines-banner:active{transform:scale(0.98);}
+#rt-total-track{height:5px;background:var(--bor);border-radius:var(--r-pill);overflow:hidden;}
+#rt-total-fill{height:100%;width:0%;background:var(--a);border-radius:var(--r-pill);
+  transition:width 0.4s var(--ease);box-shadow:0 0 8px rgba(var(--a-rgb),0.5);}
+#rt-step-title{font-family:var(--ff-d);font-size:1.05rem;color:var(--t1);text-align:center;
+  letter-spacing:0.04em;margin-bottom:12px;}
+#rt-tap{border-radius:var(--r-xl);padding:22px 18px;text-align:center;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;user-select:none;transition:transform 0.1s var(--ease);}
+#rt-tap:active{transform:scale(0.98);}
+#rt-tap.bump{animation:nbump 0.14s ease;}
+#rt-ar{font-family:var(--ff-a);font-size:1.35rem;line-height:2.1;color:var(--a);
+  direction:rtl;max-height:34vh;overflow-y:auto;padding-bottom:8px;}
+#rt-ar::-webkit-scrollbar{display:none;}
+#rt-counter{margin-top:10px;}
+#rt-count{font-family:var(--ff-m);font-size:2.6rem;color:var(--t1);}
+#rt-target{font-family:var(--ff-m);font-size:1rem;color:var(--t3);margin-left:6px;}
+#rt-step-track{height:4px;background:var(--bor);border-radius:var(--r-pill);overflow:hidden;margin-top:10px;}
+#rt-step-fill{height:100%;width:0%;background:var(--a);border-radius:var(--r-pill);transition:width 0.25s var(--ease);}
+#rt-hint{font-size:0.6rem;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;font-weight:700;margin-top:10px;}
+#rt-note{font-size:0.73rem;color:var(--t2);line-height:1.6;margin-top:12px;padding:10px 12px;
+  background:var(--a-soft);border:1px dashed var(--a-glow);border-radius:var(--r-md);display:none;}
+
+/* ════════ LECTEUR AUDIO CORAN ════════ */
+.qv-ayah.playing{background:rgba(var(--a-rgb),0.16);border-radius:4px;}
+#quran-player{position:fixed;bottom:96px;left:50%;transform:translateX(-50%) translateY(150%);
+  background:var(--sur3);border:1px solid var(--a-glow);border-radius:var(--r-pill);
+  padding:9px 18px;display:flex;align-items:center;gap:10px;z-index:81;cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,0.4),0 0 16px rgba(var(--a-rgb),0.2);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);white-space:nowrap;
+  visibility:hidden;transition:transform 0.3s var(--ease),visibility 0s linear 0.3s;}
+#quran-player.show{transform:translateX(-50%) translateY(0);visibility:visible;
+  transition:transform 0.3s var(--ease),visibility 0s;}
+#quran-player span{font-size:0.75rem;color:var(--a);font-weight:700;}
+#quran-player b{font-size:0.68rem;color:var(--t2);font-weight:800;}
+
+/* ════════ INFOS HALAL & CERTIFS ════════ */
+.info-block{background:var(--sur2);border:1px solid var(--bor2);border-radius:var(--r-lg);
+  padding:14px 15px;margin-bottom:10px;}
+.info-title{font-size:0.87rem;font-weight:800;color:var(--t1);margin-bottom:6px;}
+.info-block p{font-size:0.78rem;color:var(--t2);line-height:1.65;}
+.info-block strong{color:var(--t1);}
+.org-card{border:1px solid var(--bor2);border-radius:var(--r-lg);overflow:hidden;margin-bottom:10px;background:var(--sur2);}
+.org-head{display:flex;align-items:center;gap:9px;padding:11px 13px;flex-wrap:wrap;}
+.org-head.ok{background:rgba(var(--ok-rgb),0.12);}
+.org-head.bad{background:rgba(var(--err-rgb),0.10);}
+.org-name{flex:1;font-size:0.83rem;font-weight:800;color:var(--t1);}
+.org-badge{font-size:0.6rem;font-weight:800;padding:3px 9px;border-radius:var(--r-pill);letter-spacing:0.03em;}
+.org-head.ok .org-badge{background:rgba(var(--ok-rgb),0.18);color:var(--ok);}
+.org-head.bad .org-badge{background:rgba(var(--err-rgb),0.16);color:var(--err);}
+.org-crit{display:flex;flex-wrap:wrap;gap:5px;padding:9px 13px;}
+.crit{font-size:0.62rem;font-weight:700;padding:3px 8px;border-radius:var(--r-pill);border:1px solid var(--bor2);}
+.crit.good{color:var(--ok);background:rgba(var(--ok-rgb),0.08);}
+.crit.bad{color:var(--err);background:rgba(var(--err-rgb),0.07);}
+.org-note{font-size:0.68rem;color:#fb923c;padding:0 13px 10px;line-height:1.5;}
+.org-site{font-size:0.65rem;color:var(--t3);padding:0 13px 10px;}
+.brand-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--bor2);}
+.brand-row:last-child{border-bottom:none;}
+.brand-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.brand-dot.ok{background:var(--ok);box-shadow:0 0 6px rgba(var(--ok-rgb),0.5);}
+.brand-dot.bad{background:#fb923c;box-shadow:0 0 6px rgba(251,146,60,0.5);}
+.brand-name{flex:1;font-size:0.8rem;font-weight:700;color:var(--t1);}
+.brand-cert{font-size:0.64rem;color:var(--t3);}
 
 /* ════════ ÉVÉNEMENTS DU CALENDRIER ════════ */
 .fc-day{position:relative;}

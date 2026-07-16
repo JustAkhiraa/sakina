@@ -11,6 +11,7 @@ import {initTools} from './features/tools.js';
 import {initOnboarding} from './features/onboarding.js';
 import {initPlaces} from './features/places.js';
 import {initHalal,stopCamera} from './features/halal.js';
+import {initRoutines} from './features/routines.js';
 
 initUI();
 initRouter();
@@ -23,6 +24,7 @@ initQuran();
 initTools();
 initPlaces();
 initHalal();
+initRoutines();
 initOnboarding(); // en dernier : peut afficher l'assistant par-dessus l'app prête
 
 // Coupe la caméra du scanner si l'utilisateur ferme la sheet Vérif' Halal

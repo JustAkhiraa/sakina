@@ -6,7 +6,7 @@ import {toast} from '../core/ui.js';
 import {vib} from '../core/audio.js';
 import {THEMES,CALC_METHODS,MADHABS,LANGS} from '../data/catalog.js';
 import {t,applyI18n} from '../lib/i18n.js';
-import {applyTheme} from './settings.js';
+import {applyTheme,buildBaseThemeGrid} from './settings.js';
 import {renderPrayers,reverseGeocode,geocodeCity} from './salat.js';
 
 const $=id=>document.getElementById(id);
@@ -74,11 +74,6 @@ function buildAccentGrid(){
       S.accent=t.key;save();applyTheme();buildAccentGrid();vib(18);
     });
     grid.appendChild(el);
-  });
-}
-function syncThemeSeg(){
-  document.querySelectorAll('#ob-theme-seg .seg-opt').forEach(o=>{
-    o.classList.toggle('active',o.dataset.thm===(S.lightMode?'light':'dark'));
   });
 }
 
@@ -171,19 +166,13 @@ export function initOnboarding(){
 
   buildLangGrid();
   buildAccentGrid();
-  syncThemeSeg();
+  buildBaseThemeGrid('ob-base-theme-grid');
   buildMethodList();
   buildMadhabRow();
   syncFmtSeg();
   wireLocation();
   showStep(0);
 
-  document.querySelectorAll('#ob-theme-seg .seg-opt').forEach(opt=>{
-    opt.addEventListener('click',()=>{
-      S.lightMode=(opt.dataset.thm==='light');
-      save();applyTheme();syncThemeSeg();vib(18);
-    });
-  });
   document.querySelectorAll('#ob-fmt-seg .seg-opt').forEach(opt=>{
     opt.addEventListener('click',()=>{
       S.hourFmt=opt.dataset.fmt;

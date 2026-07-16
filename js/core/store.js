@@ -17,6 +17,7 @@ const DEFAULTS={
   // Apparence / préférences
   accent:'gold',sound:'drop',soundOn:true,vibOn:true,
   nightMode:false,autoLoop:false,screenLock:false,lightMode:false,
+  baseTheme:'dark',              // ambiance : dark|emerald|ocean|mocha|light|sand|dawn
   hourFmt:'24',
   // Localisation & prières
   calcMethod:3,lat:null,lon:null,city:'',
@@ -63,6 +64,8 @@ for(const k of ['qada','qdone','daily','quranFavs','quranNotes','quranLast','cal
   if(!S[k]||typeof S[k]!=='object')S[k]=structuredClone(DEFAULTS[k]);
 if(!Array.isArray(S.customDhikrs))S.customDhikrs=[];
 if(!Array.isArray(S.history))S.history=[];
+// Migration : l'ancien booléen lightMode devient une ambiance nommée
+if(!S.baseTheme)S.baseTheme=S.lightMode?'light':'dark';
 
 let _pending=null;
 function flush(){
