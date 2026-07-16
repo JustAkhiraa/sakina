@@ -40,7 +40,11 @@ function renderStep(){
   const step=_routine.steps[_stepIdx];
   $('rt-step-label').textContent=`Étape ${_stepIdx+1}/${_routine.steps.length}`;
   $('rt-step-title').textContent=step.title;
-  $('rt-ar').textContent=step.ar||'';
+  // Arabe ou phonétique selon la préférence (bouton abc/عربي + réglage)
+  const usePh=S.translit==='ph'&&step.ph;
+  $('rt-ar').textContent=usePh?step.ph:(step.ar||'');
+  $('rt-ar').classList.toggle('latin',!!usePh);
+  $('rt-translit').textContent=S.translit==='ph'?'عربي':'abc';
   $('rt-note').textContent=step.note||'';
   $('rt-note').style.display=step.note?'block':'none';
   $('rt-count').textContent=_count;
@@ -88,6 +92,12 @@ function finishRoutine(){
 export function initRoutines(){
   $('btn-open-routines').addEventListener('click',openPicker);
   $('duas-routines-banner').addEventListener('click',openPicker);
+  $('rt-translit').addEventListener('click',()=>{
+    S.translit=S.translit==='ph'?'ar':'ph';
+    save();renderStep();vib(14);
+    // synchronise le sélecteur des Réglages
+    document.querySelectorAll('#translit-seg .seg-opt').forEach(o=>o.classList.toggle('active',o.dataset.tr===S.translit));
+  });
   $('rt-tap').addEventListener('click',tap);
   $('rt-prev').addEventListener('click',()=>{
     if(_stepIdx>0){_stepIdx--;_count=0;renderStep();vib(14);}

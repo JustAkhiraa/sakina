@@ -249,26 +249,15 @@
   </div>
 </div>
 
-<!-- ════════════════ PAGE RÉGLAGES ════════════════ -->
-<div class="page" id="page-settings">
-  <div class="phd"><div><div class="phd-title" data-i18n="settings.title">Paramètres</div></div><div style="width:40px"></div></div>
+<!-- ════════════════ PAGE OUTILS ════════════════ -->
+<div class="page" id="page-tools">
+  <div class="phd">
+    <div><div class="phd-title" data-i18n="nav.tools">Outils</div><div class="phd-sub">Adorations, calculs &amp; bibliothèque</div></div>
+    <button class="ib" id="btn-open-settings" aria-label="Réglages">
+      <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+    </button>
+  </div>
   <div class="pscroll">
-
-    <!-- Profil -->
-    <div id="prof-card" class="gc">
-      <div id="prof-av">🕋</div>
-      <div><div id="prof-name">Sakina</div><div id="prof-sub">0 sessions</div></div>
-    </div>
-
-    <!-- Stats -->
-    <div class="sl" data-i18n="sec.stats">Statistiques</div>
-    <div id="my-stats">
-      <div class="ms-card gc"><div class="ms-val" id="st-total">0</div><div class="ms-lbl" data-i18n="stat.dhikrs">Dhikrs</div></div>
-      <div class="ms-card gc"><div class="ms-val" id="st-sess">0</div><div class="ms-lbl" data-i18n="stat.sessions">Sessions</div></div>
-      <div class="ms-card gc"><div class="ms-val" id="st-streak">0</div><div class="ms-lbl" data-i18n="stat.days">Jours 🔥</div></div>
-      <div class="ms-card gc"><div class="ms-val" id="st-qada">0</div><div class="ms-lbl">Qadâ'</div></div>
-    </div>
-
     <!-- Outils -->
     <div class="sl" data-i18n="sec.tools">Outils islamiques</div>
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
@@ -309,6 +298,51 @@
       </div>
     </div>
 
+    <!-- Bibliothèque -->
+    <div class="sl">Bibliothèque</div>
+    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row" id="btn-open-riyad">
+        <div class="row-ic">📗</div>
+        <div class="row-body"><div class="row-name">Riyad as-Salihin</div><div class="row-sub">Le Jardin des Vertueux — an-Nawawi · texte intégral (373 chap.)</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <a class="row" style="border-bottom:none;text-decoration:none;color:inherit;" href="books/citadelle-du-musulman.pdf" target="_blank" rel="noopener">
+        <div class="row-ic">📘</div>
+        <div class="row-body"><div class="row-name">La Citadelle du Musulman</div><div class="row-sub">Invocations du matin &amp; du soir — édition PDF intégrale</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════ PAGE RÉGLAGES ════════════════ -->
+<div class="page" id="page-settings">
+  <div class="phd">
+    <button class="ib" id="btn-back-tools" aria-label="Retour">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <div><div class="phd-title" data-i18n="settings.title">Paramètres</div></div>
+    <div style="width:40px"></div>
+  </div>
+  <div class="pscroll">
+
+    <!-- Profil -->
+    <div id="prof-card" class="gc">
+      <div id="prof-av">🕋</div>
+      <div><div id="prof-name">Sakina</div><div id="prof-sub">0 sessions</div></div>
+    </div>
+
+    <!-- Stats -->
+    <div class="sl" data-i18n="sec.stats">Statistiques</div>
+    <div id="my-stats">
+      <div class="ms-card gc"><div class="ms-val" id="st-total">0</div><div class="ms-lbl" data-i18n="stat.dhikrs">Dhikrs</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-sess">0</div><div class="ms-lbl" data-i18n="stat.sessions">Sessions</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-streak">0</div><div class="ms-lbl" data-i18n="stat.days">Jours 🔥</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-qada">0</div><div class="ms-lbl">Qadâ'</div></div>
+    </div>
+
+
     <!-- Pratique religieuse -->
     <div class="sl" data-i18n="sec.practice">Pratique religieuse</div>
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
@@ -316,6 +350,14 @@
         <div class="row-ic">🕌</div>
         <div class="row-body"><div class="row-name" data-i18n="row.madhab">École juridique (madhhab)</div><div class="row-sub" id="madhab-current">Malikite</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="row" style="cursor:default;">
+        <div class="row-ic">🔤</div>
+        <div class="row-body"><div class="row-name">Écriture des adhkâr</div><div class="row-sub">Routines : arabe ou phonétique</div></div>
+        <div class="seg-ctrl" id="translit-seg">
+          <div class="seg-opt" data-tr="ar">عربي</div>
+          <div class="seg-opt" data-tr="ph">abc</div>
+        </div>
       </div>
       <div class="row" style="border-bottom:none" id="btn-open-lang">
         <div class="row-ic">🌐</div>
@@ -407,9 +449,9 @@
     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg>
     <span class="nv-lbl" data-i18n="nav.quran">Coran</span>
   </div>
-  <div class="nv" data-page="page-settings">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-    <span class="nv-lbl" data-i18n="nav.settings">Réglages</span>
+  <div class="nv" data-page="page-tools">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+    <span class="nv-lbl" data-i18n="nav.tools">Outils</span>
   </div>
 </nav>
 </div><!-- /#app -->
@@ -828,7 +870,7 @@
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
     <div class="sh-title" id="routine-title">Routine</div>
-    <div style="width:32px"></div>
+    <button class="ib" id="rt-translit" style="width:38px;height:32px;border-radius:var(--r-pill);font-size:0.72rem;font-weight:800;" title="Basculer arabe / phonétique">abc</button>
   </div>
   <div class="sh-bd">
     <div id="rt-total-track"><div id="rt-total-fill"></div></div>
@@ -890,6 +932,11 @@
       <div class="ob-title" data-i18n="ob.prayTitle">Horaires de prière</div>
       <p class="ob-sub" data-i18n="ob.praySub">Quelle méthode de calcul suit votre mosquée ou votre pays ?</p>
       <div id="ob-method-list" style="margin-top:12px;"></div>
+      <div class="sl" style="margin:14px 0 6px">Lecture des adhkâr</div>
+      <div class="seg-ctrl" id="ob-translit-seg" style="width:100%;margin-bottom:4px;">
+        <div class="seg-opt active" data-tr="ar" style="flex:1;text-align:center;">عربي Je lis l'arabe</div>
+        <div class="seg-opt" data-tr="ph" style="flex:1;text-align:center;">abc Phonétique</div>
+      </div>
       <div class="sl" style="margin:14px 0 6px" data-i18n="ob.madhabLabel">École juridique (heure de l’Asr)</div>
       <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:4px;" id="ob-madhab-row"></div>
       <div class="sl" style="margin:14px 0 8px">Format d'heure</div>
@@ -917,6 +964,20 @@
     </div>
     <div class="ob-skip" id="ob-skip" style="display:none;" data-i18n="ob.skip">Passer cette étape — je choisirai plus tard</div>
   </div>
+</div>
+
+<!-- LECTEUR DE LIVRE (Riyad as-Salihin) -->
+<div class="sheet" id="sh-book" style="max-height:96vh;">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title" id="book-title">Riyad as-Salihin</div>
+    <button class="close-b" id="btn-book-back" style="display:none;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
+  </div>
+  <div style="padding:0 16px 6px;flex-shrink:0;" id="book-search-wrap">
+    <input class="inp" type="text" id="book-search" placeholder="Chercher un chapitre (patience, repentir…)" autocomplete="off">
+  </div>
+  <div class="sh-bd" id="book-bd" style="padding-left:0;padding-right:0;"></div>
 </div>
 
 <!-- MODE PLEIN ÉCRAN TASBIH : toute la surface compte -->

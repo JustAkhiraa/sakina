@@ -504,9 +504,37 @@
 .brand-name{flex:1;font-size:0.8rem;font-weight:700;color:var(--t1);}
 .brand-cert{font-size:0.64rem;color:var(--t3);}
 
+/* ════════ BIBLIOTHÈQUE (Riyad as-Salihin) ════════ */
+.book-chap-row{display:flex;align-items:center;gap:11px;padding:11px 16px;
+  border-bottom:1px solid var(--bor2);cursor:pointer;transition:background 0.15s;}
+.book-chap-row:active{background:rgba(var(--a-rgb),0.07);}
+.book-chap-n{width:34px;height:34px;border-radius:var(--r-sm);background:var(--a-dim);
+  border:1px solid var(--a-glow);display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-m);font-size:0.62rem;color:var(--a);flex-shrink:0;}
+.book-chap-t{flex:1;font-size:0.8rem;font-weight:600;color:var(--t1);line-height:1.35;}
+.book-chapter{padding:4px 20px 30px;}
+.book-chap-head{font-family:var(--ff-d);font-size:1.02rem;color:var(--a);
+  letter-spacing:0.03em;line-height:1.5;padding:6px 0 12px;border-bottom:1px solid var(--bor2);margin-bottom:12px;}
+.book-par{font-size:0.86rem;color:var(--t1);line-height:1.8;margin-bottom:13px;text-align:justify;}
+.book-hnum{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:22px;
+  padding:0 7px;border-radius:var(--r-pill);background:var(--a-dim);border:1px solid var(--a-glow);
+  font-family:var(--ff-m);font-size:0.62rem;color:var(--a);margin-right:6px;vertical-align:middle;}
+.book-src{font-size:0.64rem;color:var(--t3);font-style:italic;margin-top:16px;padding-top:10px;border-top:1px solid var(--bor2);}
+
+/* Phonétique dans le lecteur de routine */
+#rt-ar.latin{font-family:var(--ff-b);font-size:1rem;line-height:1.9;direction:ltr;
+  font-style:italic;color:var(--t1);}
+
+/* Note d'aide du calendrier */
+.cal-help{font-size:0.74rem;color:var(--t2);line-height:1.6;padding:11px 13px;margin-bottom:12px;
+  background:var(--a-soft);border:1px dashed var(--a-glow);border-radius:var(--r-md);}
+.cal-help strong{color:var(--t1);}
+
 /* ════════ ÉVÉNEMENTS DU CALENDRIER ════════ */
 .fc-day{position:relative;}
-.fc-evt{position:absolute;top:1px;right:3px;font-size:0.5rem;color:var(--a);text-shadow:0 0 6px rgba(var(--a-rgb),0.8);}
+/* Point rouge : bien visible sur chaque jour qui porte un événement */
+.fc-evt{position:absolute;top:3px;right:3px;width:8px;height:8px;border-radius:50%;
+  background:#EF4444;box-shadow:0 0 6px rgba(239,68,68,0.7);font-size:0;}
 .cal-events{border:1px solid var(--bor2);border-radius:var(--r-md);overflow:hidden;background:var(--sur2);}
 .cal-event-row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--bor2);cursor:pointer;transition:background 0.15s;}
 .cal-event-row:last-child{border-bottom:none;}
