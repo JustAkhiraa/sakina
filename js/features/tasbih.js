@@ -33,7 +33,6 @@ export function renderTasbih(){
 /* ── Compteur ── */
 function increment(){
   getAC();
-  if(S.screenLock){toast('🔒 Écran verrouillé');return;}
   S.count++;S.sessTot++;S.allTime++;
   const tk=todayKey();
   S.daily[tk]=(S.daily[tk]||0)+1;
@@ -58,6 +57,33 @@ function increment(){
     }
   }
   save();renderTasbih();emit('stats-changed');
+  if(_immersiveOpen)renderImmersive(milestone);
+}
+
+/* ── Mode plein écran : toute la surface compte, feedback sonore/haptique
+   aux paliers → utilisable téléphone en poche, sans regarder ── */
+let _immersiveOpen=false;
+function renderImmersive(milestone=false){
+  $('imm-title').textContent=S.title;
+  $('imm-count').textContent=S.count;
+  $('imm-sub').textContent=S.goal>0?`/ ${S.goal} · tour ${S.lapCount+1}`:'comptage libre';
+  const c=$('imm-count');
+  if(milestone){
+    c.classList.add('gold');
+    const ov=$('immersive');
+    ov.classList.remove('pulse');void ov.offsetWidth;ov.classList.add('pulse');
+    setTimeout(()=>c.classList.remove('gold'),700);
+  }
+}
+function openImmersive(){
+  _immersiveOpen=true;
+  renderImmersive();
+  $('immersive').classList.add('open');
+  vib(20);
+}
+function closeImmersive(){
+  _immersiveOpen=false;
+  $('immersive').classList.remove('open');
 }
 
 function undo(){
@@ -174,6 +200,9 @@ function buildHistory(){
 /* ── Init ── */
 export function initTasbih(){
   $('tap-btn').addEventListener('click',increment);
+  $('btn-immersive').addEventListener('click',openImmersive);
+  $('immersive').addEventListener('click',increment);
+  $('imm-exit').addEventListener('click',e=>{e.stopPropagation();closeImmersive();});
   $('btn-undo').addEventListener('click',undo);
   $('btn-reset').addEventListener('click',resetCounter);
   $('btn-save-s').addEventListener('click',saveSession);

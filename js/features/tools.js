@@ -127,6 +127,35 @@ let _evtDate=null; // 'YYYY-MM-DD' en cours d'édition
 
 const dateKey=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
+/* ── Séries d'événements : générer tous les jours blancs / Achoura / Arafat /
+   lundis-jeudis entre deux dates, puis exportables en .ics ── */
+let _serieType='blancs';
+const SERIES={
+  blancs:{label:'Jours blancs',evt:'🤍 Jeûne — jour blanc',test:h=>isWhiteDay(h)},
+  achoura:{label:'Achoura',evt:'💙 Jeûne — Achoura (10 Mouharram)',test:h=>isAshura(h)},
+  arafat:{label:'Arafat',evt:'🧡 Jeûne — Arafat (9 Dhou al-Hijja)',test:h=>isArafat(h)},
+  lunjeu:{label:'Lundis & jeudis',evt:'💚 Jeûne — sunna',test:(h,dow)=>dow===1||dow===4},
+};
+function generateSeries(){
+  const start=$('serie-start').value,end=$('serie-end').value;
+  if(!start||!end){toast('Choisissez les deux dates');return;}
+  const d0=new Date(start+'T12:00:00'),d1=new Date(end+'T12:00:00');
+  if(d1<d0){toast('La date de fin précède le début');return;}
+  if((d1-d0)/86400000>1100){toast('Période limitée à 3 ans maximum');return;}
+  const serie=SERIES[_serieType];
+  let added=0;
+  for(let d=new Date(d0);d<=d1;d.setDate(d.getDate()+1)){
+    if(!serie.test(toHijri(d),d.getDay()))continue;
+    const key=dateKey(d.getFullYear(),d.getMonth(),d.getDate());
+    if(S.calEvents[key])continue; // ne pas écraser une note existante
+    S.calEvents[key]=serie.evt;
+    added++;
+  }
+  save();vib([40,20,40]);
+  toast(added?`✦ ${added} événement(s) « ${serie.label} » ajoutés`:'Aucun jour correspondant (ou déjà notés)');
+  renderFastingCalendar();
+}
+
 /* Export des événements au format iCalendar (importable partout) */
 function exportICS(){
   const esc=t=>t.replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\n/g,'\\n');
@@ -219,9 +248,24 @@ function renderFastingCalendar(){
   html+=`</div>
   <div style="font-size:0.68rem;color:var(--t3);text-align:center;margin-top:8px;">Appuyez sur un jour pour ajouter un événement ou une note ✦</div>`;
 
+  // Ajout en série (jours blancs, Achoura… entre deux dates)
+  const today=new Date();
+  const in1y=new Date();in1y.setFullYear(in1y.getFullYear()+1);
+  const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  html+=`<div class="sl" style="margin:16px 0 8px;">Ajouter une série de jeûnes</div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="serie-types">
+    ${Object.entries(SERIES).map(([k,v])=>`<span class="chip${k===_serieType?' sel':''}" data-serie="${k}">${v.label}</span>`).join('')}
+  </div>
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;">
+    <input class="inp" type="date" id="serie-start" value="${iso(today)}" style="flex:1;min-width:0;">
+    <span style="font-size:0.7rem;color:var(--t3);flex-shrink:0;">→</span>
+    <input class="inp" type="date" id="serie-end" value="${iso(in1y)}" style="flex:1;min-width:0;">
+  </div>
+  <div class="qada-ok" id="btn-gen-series" style="text-align:center;">✦ Générer la série</div>`;
+
   const totalEvents=Object.keys(S.calEvents).length;
   if(totalEvents){
-    html+=`<div class="qada-ok" id="btn-export-ics" style="text-align:center;margin-top:12px;">📤 Exporter vers mon calendrier (.ics)</div>
+    html+=`<div class="qada-ok" id="btn-export-ics" style="text-align:center;margin-top:12px;background:var(--sur3);color:var(--a);border:1px solid var(--a-glow);box-shadow:none;">📤 Exporter vers mon calendrier (.ics)</div>
     <div style="font-size:0.66rem;color:var(--t3);text-align:center;margin-top:6px;">${totalEvents} événement(s) → fichier compatible iPhone, Android, Google Agenda…</div>`;
   }
 
@@ -257,6 +301,13 @@ function renderFastingCalendar(){
   });
   const exp=document.getElementById('btn-export-ics');
   if(exp)exp.addEventListener('click',exportICS);
+  bd.querySelectorAll('#serie-types .chip').forEach(c=>{
+    c.addEventListener('click',()=>{
+      _serieType=c.dataset.serie;
+      bd.querySelectorAll('#serie-types .chip').forEach(x=>x.classList.toggle('sel',x===c));
+    });
+  });
+  $('btn-gen-series').addEventListener('click',generateSeries);
 }
 
 /* ══════════ INIT ══════════ */

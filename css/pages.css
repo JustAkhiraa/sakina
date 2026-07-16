@@ -18,7 +18,9 @@
 .dchip-ar{font-family:var(--ff-a);font-size:0.95rem;color:var(--a);display:block;text-align:center;}
 .dchip-n{font-family:var(--ff-m);font-size:0.6rem;color:var(--t2);display:block;text-align:center;margin-top:1px;}
 .dchip-star{position:absolute;top:-4px;right:-2px;font-size:0.55rem;color:var(--a);}
-#czone{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:8px 24px 0;}
+/* padding-bottom : réserve la hauteur de la navbar fixe pour que les
+   contrôles ne passent jamais derrière elle (iPhone Safari) */
+#czone{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:8px 24px 88px;min-height:0;}
 #ring-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
 #ring-svg{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(-90deg);pointer-events:none;}
 #ring-bg{fill:none;stroke:var(--bor);stroke-width:2.5;}
@@ -53,6 +55,44 @@
   display:flex;align-items:center;justify-content:center;color:var(--t2);transition:all 0.18s;box-shadow:var(--sh1);}
 .ctrl:active .ctrl-ic{transform:scale(0.88);background:var(--a-dim);color:var(--a);}
 .ctrl-lbl{font-size:0.57rem;color:var(--t3);letter-spacing:0.08em;text-transform:uppercase;font-weight:700;}
+/* Écrans courts (iPhone avec barre Safari) : tout se compacte pour tenir.
+   ⚠ Ce bloc doit rester APRÈS les règles de base du tasbih (même spécificité). */
+@media(max-height:820px){
+  #czone{gap:13px;padding-bottom:84px;}
+  #tap-btn{width:180px;height:180px;}
+  #cnum{font-size:3.9rem;}
+  .ctrl-ic{width:46px;height:46px;}
+  .dchip{padding:5px 11px;}
+  .dchip-ar{font-size:0.88rem;}
+  .sp{padding:6px 12px;}
+}
+@media(max-height:700px){
+  #czone{gap:9px;padding-bottom:80px;}
+  #tap-btn{width:150px;height:150px;}
+  #cnum{font-size:3.1rem;}
+  #clabel{font-size:0.5rem;}
+  .ctrl-ic{width:42px;height:42px;}
+  .ctrl-lbl{font-size:0.5rem;}
+}
+/* ── Mode plein écran (tape n'importe où) ── */
+#immersive{position:fixed;inset:0;z-index:260;background:var(--bg);display:none;
+  flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  cursor:pointer;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;}
+#immersive.open{display:flex;}
+#immersive::before{content:"";position:absolute;inset:0;background:var(--orb1);pointer-events:none;}
+#imm-exit{position:absolute;top:calc(env(safe-area-inset-top,20px) + 14px);right:18px;
+  width:44px;height:44px;border-radius:var(--r-pill);background:var(--sur2);
+  border:1px solid var(--bor);color:var(--t2);font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;z-index:2;}
+#imm-title{font-family:var(--ff-d);font-size:1.15rem;color:var(--a);letter-spacing:0.05em;}
+#imm-count{font-family:var(--ff-m);font-size:clamp(6rem,28vw,9rem);color:var(--t1);line-height:1;transition:color 0.25s;}
+#imm-count.gold{color:var(--a);text-shadow:0 0 30px rgba(var(--a-rgb),0.6);}
+#imm-sub{font-family:var(--ff-m);font-size:0.9rem;color:var(--t2);}
+#imm-hint{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 26px);
+  font-size:0.62rem;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;font-weight:700;}
+#immersive.pulse{animation:immpulse 0.5s ease;}
+@keyframes immpulse{0%{background:var(--bg);}35%{background:rgba(var(--a-rgb),0.14);}100%{background:var(--bg);}}
+
 /* Préréglages personnalisés (sheet édition) */
 .preset-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--bor2);}
 .preset-row:last-child{border-bottom:none;}
@@ -240,6 +280,16 @@
 .sdot::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:0.9rem;background:rgba(0,0,0,0.45);opacity:0;transition:opacity 0.2s;color:#fff;}
 .tsw.active .sdot::after{opacity:1;}
 .sname{font-size:0.57rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:800;color:var(--t2);text-align:center;}
+/* Grille compacte des sons (la liste de 11 lignes était trop longue) */
+.sound-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:12px 14px;}
+.sound-chip{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:var(--r-md);
+  background:var(--sur2);border:1px solid var(--bor2);font-size:0.78rem;font-weight:700;
+  color:var(--t2);cursor:pointer;transition:all 0.15s;}
+.sound-chip:active{transform:scale(0.96);}
+.sound-chip.active{background:var(--a-dim);border-color:var(--a-glow);color:var(--a);}
+.sc-dot{width:8px;height:8px;border-radius:50%;background:var(--t3);flex-shrink:0;transition:all 0.2s;}
+.sound-chip.active .sc-dot{background:var(--a);box-shadow:0 0 6px rgba(var(--a-rgb),0.6);}
+
 .si{display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid var(--bor2);gap:12px;cursor:pointer;transition:background 0.15s;}
 .si:last-child{border-bottom:none;}
 .si:active{background:rgba(var(--a-rgb),0.06);}
@@ -311,7 +361,14 @@
 .ob-title{font-family:var(--ff-d);font-size:1.25rem;letter-spacing:0.04em;color:var(--t1);text-align:center;}
 .ob-ar{font-family:var(--ff-a);font-size:1.3rem;color:var(--a);text-align:center;margin-top:4px;}
 .ob-sub{font-size:0.83rem;color:var(--t2);text-align:center;line-height:1.6;margin-top:10px;}
-.ob-nav{display:flex;gap:10px;margin-top:18px;flex-shrink:0;}
+/* Indicateur "faites défiler" : certains ne pensent pas à scroller
+   dans l'étape Horaires de l'assistant (madhhab + format plus bas) */
+#ob-scroll-hint{display:none;text-align:center;font-size:0.62rem;color:var(--a);
+  letter-spacing:0.1em;text-transform:uppercase;font-weight:800;
+  padding:6px 0 0;flex-shrink:0;animation:obHint 1.5s ease-in-out infinite;}
+#ob-scroll-hint.show{display:block;}
+@keyframes obHint{0%,100%{opacity:0.45;transform:translateY(0);}50%{opacity:1;transform:translateY(3px);}}
+.ob-nav{display:flex;gap:10px;margin-top:12px;flex-shrink:0;}
 .ob-btn{flex:1;padding:13px;border-radius:var(--r-md);text-align:center;font-size:0.85rem;
   font-weight:800;cursor:pointer;transition:all 0.18s;}
 .ob-btn:active{transform:scale(0.96);}

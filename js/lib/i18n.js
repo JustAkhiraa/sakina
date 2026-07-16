@@ -64,6 +64,7 @@ const D={
   'ctrl.undo':    {fr:'Annuler',ar:'تراجع',en:'Undo',es:'Deshacer',ru:'Отмена',zh:'撤销',ja:'元に戻す',hi:'पूर्ववत'},
   'ctrl.reset':   {fr:'Reset',ar:'تصفير',en:'Reset',es:'Reiniciar',ru:'Сброс',zh:'重置',ja:'リセット',hi:'रीसेट'},
   'ctrl.save':    {fr:'Sauver',ar:'حفظ',en:'Save',es:'Guardar',ru:'Сохранить',zh:'保存',ja:'保存',hi:'सहेजें'},
+  'ctrl.focus':   {fr:'Plein écran',ar:'ملء الشاشة',en:'Fullscreen',es:'Pantalla completa',ru:'Во весь экран',zh:'全屏',ja:'全画面',hi:'फ़ुल स्क्रीन'},
   'ctrl.history': {fr:'Historique',ar:'السجل',en:'History',es:'Historial',ru:'История',zh:'历史',ja:'履歴',hi:'इतिहास'},
   'tap.label':    {fr:'APPUYER',ar:'اضغط',en:'TAP',es:'TOCAR',ru:'НАЖМИТЕ',zh:'点击',ja:'タップ',hi:'टैप करें'},
 
