@@ -3,6 +3,11 @@
 ════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;overflow:hidden;}
+/* iOS Safari : la barre d'outils dynamique coupait le bas de l'app avec 100% —
+   100dvh suit la hauteur réellement visible */
+@supports(height:100dvh){
+  body{height:100dvh;}
+}
 html{background:var(--bg);}
 body{font-family:var(--ff-b);background:var(--bg);color:var(--t1);
   -webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;}
@@ -102,8 +107,11 @@ input:-webkit-autofill,input:-webkit-autofill:focus{
 /* ── INPUT ── */
 .inp{background:var(--sur2) !important;border:1px solid var(--bor);border-radius:var(--r-md);
   padding:12px 14px;color:var(--t1) !important;-webkit-text-fill-color:var(--t1) !important;
-  font-family:var(--ff-b);font-size:0.9rem;width:100%;outline:none;
+  font-family:var(--ff-b);font-size:16px;width:100%;outline:none;
   transition:border-color 0.2s;box-shadow:var(--sh1);-webkit-appearance:none;color-scheme:inherit;}
+/* 16px minimum sur tous les champs : en dessous, iOS zoome automatiquement
+   au focus et la page reste zoomée (site "coupé", obligé de dézoomer) */
+input,textarea,select{font-size:16px;}
 .inp:focus{border-color:var(--a);}
 .inp::placeholder{color:var(--t3);}
 /* ── STEPPER ── */

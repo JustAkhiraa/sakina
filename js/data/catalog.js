@@ -21,13 +21,29 @@ export const THEMES=[
   {key:'pearl',   name:'Perle', color:'#CBD5E1'},
 ];
 
+/* Thèmes d'ambiance (fond complet) — light:true → interface claire */
+export const BASE_THEMES=[
+  {id:'dark',   name:'Sombre',  swatch:'#08090C', light:false},
+  {id:'emerald',name:'Émeraude',swatch:'#0A1F15', light:false},
+  {id:'ocean',  name:'Océan',   swatch:'#0B1628', light:false},
+  {id:'mocha',  name:'Moka',    swatch:'#1F1611', light:false},
+  {id:'light',  name:'Clair',   swatch:'#F5F4F0', light:true},
+  {id:'sand',   name:'Sable',   swatch:'#F3EBDD', light:true},
+  {id:'dawn',   name:'Aube',    swatch:'#F7F0F2', light:true},
+];
+
 export const SOUNDS=[
-  {id:'drop', name:'Goutte',      desc:'Doux et rond'},
-  {id:'click',name:'Clic méca.',  desc:'Court et net'},
-  {id:'bleep',name:'Bip digital', desc:'Précis'},
-  {id:'wood', name:'Bois',        desc:'Chaleureux'},
-  {id:'bell', name:'Clochette',   desc:'Résonant'},
-  {id:'none', name:'Silencieux',  desc:'Aucun son'},
+  {id:'drop',  name:'Goutte',        desc:'Doux et rond'},
+  {id:'pearl', name:'Perle',         desc:'Pincement feutré'},
+  {id:'calm',  name:'Apaisant',      desc:'Onde 432 Hz très douce'},
+  {id:'breath',name:'Souffle',       desc:'Murmure d\'air discret'},
+  {id:'kalimba',name:'Kalimba',      desc:'Note chaleureuse'},
+  {id:'chime2',name:'Carillon doux', desc:'Deux notes cristallines'},
+  {id:'wood',  name:'Bois',          desc:'Chaleureux'},
+  {id:'click', name:'Clic méca.',    desc:'Court et net'},
+  {id:'bleep', name:'Bip digital',   desc:'Précis'},
+  {id:'bell',  name:'Clochette',     desc:'Résonant'},
+  {id:'none',  name:'Silencieux',    desc:'Aucun son'},
 ];
 
 /* Paramètres astronomiques exacts par méthode (angles Fajr/Isha réels).

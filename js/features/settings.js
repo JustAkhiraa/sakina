@@ -2,7 +2,7 @@
 import {S,save,streak,on} from '../core/store.js';
 import {toast,confirmDlg,openSheet,closeSheet} from '../core/ui.js';
 import {playSound,vib} from '../core/audio.js';
-import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS} from '../data/catalog.js';
+import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS,BASE_THEMES} from '../data/catalog.js';
 import {applyI18n} from '../lib/i18n.js';
 import {renderTasbih,buildDhikrBar} from './tasbih.js';
 import {renderPrayers} from './salat.js';
@@ -11,18 +11,43 @@ const $=id=>document.getElementById(id);
 
 export function applyTheme(){
   const root=document.documentElement;
+  const theme=BASE_THEMES.find(t=>t.id===S.baseTheme)||BASE_THEMES[0];
   root.setAttribute('data-accent',S.accent);
-  root.setAttribute('data-theme',S.lightMode?'light':'dark');
-  root.setAttribute('data-night',S.nightMode?'true':'false');
-  const bg=S.lightMode?'#F5F4F0':(S.nightMode?'#000000':'#08090C');
+  root.setAttribute('data-theme',theme.id);
+  root.setAttribute('data-night',(S.nightMode&&!theme.light)?'true':'false');
+  if(theme.light)root.setAttribute('data-light-ui','');
+  else root.removeAttribute('data-light-ui');
+
+  const bg=(S.nightMode&&!theme.light)?'#000000':theme.swatch;
   const meta=$('theme-color-meta');
   if(meta)meta.content=bg;
   root.style.background=bg;
-  // Synchronise les toggles et le segment de thème
+  // color-scheme dynamique : figé sur "dark", il laissait les zones système
+  // (barre du bas, overscroll) noires même en thème clair
+  root.style.colorScheme=theme.light?'light':'dark';
+  const cs=document.querySelector('meta[name="color-scheme"]');
+  if(cs)cs.content=theme.light?'light':'dark';
+
   const map={soundOn:'tog-sound',vibOn:'tog-vib',autoLoop:'tog-loop',nightMode:'tog-night',screenLock:'tog-lock'};
   Object.entries(map).forEach(([k,id])=>{const el=$(id);if(el)el.classList.toggle('on',!!S[k]);});
-  document.querySelectorAll('#theme-seg .seg-opt').forEach(o=>{
-    o.classList.toggle('active',o.dataset.thm===(S.lightMode?'light':'dark'));
+}
+
+export function buildBaseThemeGrid(targetId='base-theme-grid'){
+  const grid=$(targetId);
+  if(!grid)return;
+  grid.innerHTML='';
+  BASE_THEMES.forEach(t=>{
+    const el=document.createElement('div');
+    el.className='tsw'+(S.baseTheme===t.id?' active':'');
+    el.innerHTML=`<div class="sdot" style="background:${t.swatch};border-color:${t.light?'rgba(0,0,0,0.2)':'rgba(255,255,255,0.25)'}"></div><div class="sname">${t.name}</div>`;
+    el.addEventListener('click',()=>{
+      S.baseTheme=t.id;S.lightMode=t.light;
+      save();applyTheme();
+      buildBaseThemeGrid('base-theme-grid');
+      buildBaseThemeGrid('ob-base-theme-grid');
+      vib(18);
+    });
+    grid.appendChild(el);
   });
 }
 
@@ -100,6 +125,7 @@ function syncPracticeRows(){
 export function initSettings(){
   applyTheme();
   applyI18n();
+  buildBaseThemeGrid();
   buildThemeGrid();
   buildSoundList();
   renderStats();
@@ -118,15 +144,6 @@ export function initSettings(){
       if(key==='soundOn')toast(S[key]?'🔊 Son activé':'🔇 Son coupé');
       if(key==='vibOn'){vib(20);toast(S[key]?'📳 Vibration':'🔕 Vibration désactivée');}
       if(key==='screenLock')toast(S[key]?'🔒 Écran verrouillé':'🔓 Écran déverrouillé');
-    });
-  });
-
-  // Thème clair/sombre — sélecteur scopé (bug v8 corrigé)
-  document.querySelectorAll('#theme-seg .seg-opt').forEach(opt=>{
-    opt.addEventListener('click',()=>{
-      S.lightMode=(opt.dataset.thm==='light');
-      save();applyTheme();vib(18);
-      toast(S.lightMode?'☀️ Mode clair activé':'🌙 Mode sombre activé');
     });
   });
 
