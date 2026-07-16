@@ -16,10 +16,10 @@
    et les thèmes clairs subissent un flash sombre au chargement. */
 (function(){try{
   var s=JSON.parse(localStorage.getItem('sakina.v1')||'{}');
-  var sw={dark:'#08090C',emerald:'#04120C',ocean:'#050B16',mocha:'#120C08',light:'#F5F4F0',sand:'#F3EBDD',dawn:'#F7F0F2'};
+  var sw={dark:'#08090C',emerald:'#04120C',ocean:'#050B16',mocha:'#120C08',light:'#F5F4F0',sand:'#F3EBDD',dawn:'#F7F0F2',cream:'#EBE1CD'};
   var t=s.baseTheme||(s.lightMode?'light':'dark');
   if(!sw[t])t='dark';
-  var light=(t==='light'||t==='sand'||t==='dawn');
+  var light=(t==='light'||t==='sand'||t==='dawn'||t==='cream');
   var night=!!s.nightMode&&!light;
   var bg=night?'#000000':sw[t];
   var d=document.documentElement;
@@ -89,6 +89,10 @@
       <div class="ctrl" id="btn-save-s">
         <div class="ctrl-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
         <span class="ctrl-lbl" data-i18n="ctrl.save">Sauver</span>
+      </div>
+      <div class="ctrl" id="btn-immersive">
+        <div class="ctrl-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg></div>
+        <span class="ctrl-lbl" data-i18n="ctrl.focus">Plein écran</span>
       </div>
       <div class="ctrl" id="btn-hlist">
         <div class="ctrl-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
@@ -357,8 +361,7 @@
       <div class="row"><div class="row-ic">🔊</div><div class="row-body"><div class="row-name" data-i18n="row.sound">Son</div><div class="row-sub">Retour sonore à chaque appui</div></div><div class="tog" id="tog-sound"></div></div>
       <div class="row"><div class="row-ic">📳</div><div class="row-body"><div class="row-name" data-i18n="row.vib">Vibration haptique</div><div class="row-sub">Retour tactile</div></div><div class="tog" id="tog-vib"></div></div>
       <div class="row"><div class="row-ic">🔁</div><div class="row-body"><div class="row-name" data-i18n="row.loop">Boucle automatique</div><div class="row-sub">Reprend à 0 après l'objectif</div></div><div class="tog" id="tog-loop"></div></div>
-      <div class="row"><div class="row-ic">🌑</div><div class="row-body"><div class="row-name" data-i18n="row.night">Nuit profonde (OLED)</div><div class="row-sub">Fond noir absolu, économie d'écran</div></div><div class="tog" id="tog-night"></div></div>
-      <div class="row" style="border-bottom:none"><div class="row-ic">🔒</div><div class="row-body"><div class="row-name" data-i18n="row.lock">Verrouillage écran</div><div class="row-sub">Évite les appuis accidentels</div></div><div class="tog" id="tog-lock"></div></div>
+      <div class="row" style="border-bottom:none"><div class="row-ic">🌑</div><div class="row-body"><div class="row-name" data-i18n="row.night">Nuit profonde (OLED)</div><div class="row-sub">Fond noir absolu, économie d'écran</div></div><div class="tog" id="tog-night"></div></div>
     </div>
 
     <!-- Données -->
@@ -907,12 +910,22 @@
       <div id="ob-city-results" style="margin-top:8px;max-height:180px;overflow-y:auto;"></div>
     </div>
 
+    <div id="ob-scroll-hint">⌄ faites défiler ⌄</div>
     <div class="ob-nav">
       <div class="ob-btn ghost" id="ob-back" style="display:none;">Retour</div>
       <div class="ob-btn primary" id="ob-next">Commencer</div>
     </div>
     <div class="ob-skip" id="ob-skip" style="display:none;" data-i18n="ob.skip">Passer cette étape — je choisirai plus tard</div>
   </div>
+</div>
+
+<!-- MODE PLEIN ÉCRAN TASBIH : toute la surface compte -->
+<div id="immersive">
+  <button id="imm-exit">✕</button>
+  <div id="imm-title">Subhanallah</div>
+  <div id="imm-count">0</div>
+  <div id="imm-sub">/ 33</div>
+  <div id="imm-hint">Touchez n'importe où pour compter</div>
 </div>
 
 <div id="toast"></div>

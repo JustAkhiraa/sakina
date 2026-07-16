@@ -28,7 +28,7 @@ export function applyTheme(){
   const cs=document.querySelector('meta[name="color-scheme"]');
   if(cs)cs.content=theme.light?'light':'dark';
 
-  const map={soundOn:'tog-sound',vibOn:'tog-vib',autoLoop:'tog-loop',nightMode:'tog-night',screenLock:'tog-lock'};
+  const map={soundOn:'tog-sound',vibOn:'tog-vib',autoLoop:'tog-loop',nightMode:'tog-night'};
   Object.entries(map).forEach(([k,id])=>{const el=$(id);if(el)el.classList.toggle('on',!!S[k]);});
 }
 
@@ -64,14 +64,16 @@ function buildThemeGrid(){
 
 function buildSoundList(){
   const list=$('sound-list');list.innerHTML='';
+  const grid=document.createElement('div');grid.className='sound-grid';
   SOUNDS.forEach(s=>{
     const el=document.createElement('div');
-    el.className='si'+(S.sound===s.id?' active':'');
-    el.innerHTML=`<div class="si-dot"></div><div style="flex:1"><div class="si-name">${s.name}</div><div class="si-desc">${s.desc}</div></div><div class="si-play">▶</div>`;
+    el.className='sound-chip'+(S.sound===s.id?' active':'');
+    el.title=s.desc;
+    el.innerHTML=`<span class="sc-dot"></span>${s.name}`;
     el.addEventListener('click',()=>{S.sound=s.id;save();buildSoundList();playSound(s.id);vib(16);});
-    el.querySelector('.si-play').addEventListener('click',e=>{e.stopPropagation();playSound(s.id);});
-    list.appendChild(el);
+    grid.appendChild(el);
   });
+  list.appendChild(grid);
 }
 
 const qdaTotal=()=>QADA_PRAYERS.reduce((s,p)=>s+(S.qada[p.key]||0),0);
@@ -136,14 +138,13 @@ export function initSettings(){
   document.getElementById('btn-open-lang').addEventListener('click',()=>openSheet('sh-lang',buildLangList));
 
   // Toggles de préférences
-  const keyMap={'tog-sound':'soundOn','tog-vib':'vibOn','tog-loop':'autoLoop','tog-night':'nightMode','tog-lock':'screenLock'};
+  const keyMap={'tog-sound':'soundOn','tog-vib':'vibOn','tog-loop':'autoLoop','tog-night':'nightMode'};
   Object.entries(keyMap).forEach(([id,key])=>{
     $(id).addEventListener('click',function(){
       S[key]=!S[key];this.classList.toggle('on',S[key]);save();
       if(key==='nightMode')applyTheme();
       if(key==='soundOn')toast(S[key]?'🔊 Son activé':'🔇 Son coupé');
       if(key==='vibOn'){vib(20);toast(S[key]?'📳 Vibration':'🔕 Vibration désactivée');}
-      if(key==='screenLock')toast(S[key]?'🔒 Écran verrouillé':'🔓 Écran déverrouillé');
     });
   });
 

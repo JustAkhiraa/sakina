@@ -83,6 +83,16 @@
   --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(201,169,110,0.18) 0%,transparent 70%);
   --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(194,120,60,0.08) 0%,transparent 65%);
 }
+[data-theme="cream"]{
+  --bg:#EBE1CD;--sur:#F7F0E0;--sur2:#E3D7BE;--sur3:#D7C8A8;
+  --bor:rgba(80,55,15,0.14);--bor2:rgba(80,55,15,0.07);
+  --shine:rgba(255,252,240,0.9);
+  --t1:#2E2413;--t2:#75654A;--t3:#AC9C7E;
+  --sh1:0 4px 20px rgba(110,85,35,0.12),inset 0 1px 0 rgba(255,255,255,0.75);
+  --sh2:0 10px 40px rgba(110,85,35,0.14),inset 0 1px 0 rgba(255,255,255,0.85);
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(190,150,80,0.20) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(140,110,60,0.10) 0%,transparent 65%);
+}
 [data-theme="dawn"]{
   --bg:#F7F0F2;--sur:#FFFAFB;--sur2:#F1E4E8;--sur3:#E8D5DC;
   --bor:rgba(120,40,70,0.10);--bor2:rgba(120,40,70,0.05);

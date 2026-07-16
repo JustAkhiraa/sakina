@@ -66,6 +66,9 @@ if(!Array.isArray(S.customDhikrs))S.customDhikrs=[];
 if(!Array.isArray(S.history))S.history=[];
 // Migration : l'ancien booléen lightMode devient une ambiance nommée
 if(!S.baseTheme)S.baseTheme=S.lightMode?'light':'dark';
+// Le verrouillage écran a été remplacé par le mode plein écran :
+// on le désactive pour ne pas bloquer le compteur des anciens utilisateurs
+S.screenLock=false;
 
 let _pending=null;
 function flush(){

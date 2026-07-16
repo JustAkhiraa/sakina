@@ -2,6 +2,9 @@
    SAKINA — BASE : reset, shell, composants partagés
 ════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+/* Supprime le zoom au double-tap sur iOS (les taps rapides du compteur
+   zoomaient la page) tout en gardant défilement et pincement */
+*{touch-action:manipulation;}
 html,body{height:100%;overflow:hidden;}
 /* iOS Safari : la barre d'outils dynamique coupait le bas de l'app avec 100% —
    100dvh suit la hauteur réellement visible */

@@ -32,6 +32,24 @@ function showStep(i){
   $('ob-back').textContent=t('ob.back');
   $('ob-skip').style.display=_step===3?'block':'none';
   $('ob-next').textContent=_step===0?t('ob.start'):(_step===STEPS-1?t('ob.letsgo'):t('ob.next'));
+  updateScrollHint();
+}
+
+/* Signale qu'il y a du contenu plus bas (madhhab, format d'heure…) */
+function updateScrollHint(){
+  requestAnimationFrame(()=>{
+    const panel=document.querySelector('.ob-step.active');
+    const hint=$('ob-scroll-hint');
+    if(!panel||!hint)return;
+    const overflows=panel.scrollHeight>panel.clientHeight+12;
+    hint.classList.toggle('show',overflows&&panel.scrollTop<20);
+    if(overflows&&!panel._hintWired){
+      panel._hintWired=true;
+      panel.addEventListener('scroll',()=>{
+        hint.classList.toggle('show',panel.scrollTop<20);
+      },{passive:true});
+    }
+  });
 }
 
 /* ── Étape 0 : langue ── */

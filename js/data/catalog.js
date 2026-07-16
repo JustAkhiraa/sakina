@@ -29,6 +29,7 @@ export const BASE_THEMES=[
   {id:'mocha',  name:'Moka',    swatch:'#1F1611', light:false},
   {id:'light',  name:'Clair',   swatch:'#F5F4F0', light:true},
   {id:'sand',   name:'Sable',   swatch:'#F3EBDD', light:true},
+  {id:'cream',  name:'Crème',   swatch:'#EBE1CD', light:true},
   {id:'dawn',   name:'Aube',    swatch:'#F7F0F2', light:true},
 ];
 
