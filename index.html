@@ -10,6 +10,29 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Sakina">
 <meta name="theme-color" id="theme-color-meta" content="#08090C">
+<script>
+/* Applique le thème sauvegardé AVANT le premier rendu : sans ça, Chrome
+   Android fige la couleur de sa barre système sur le sombre par défaut,
+   et les thèmes clairs subissent un flash sombre au chargement. */
+(function(){try{
+  var s=JSON.parse(localStorage.getItem('sakina.v1')||'{}');
+  var sw={dark:'#08090C',emerald:'#04120C',ocean:'#050B16',mocha:'#120C08',light:'#F5F4F0',sand:'#F3EBDD',dawn:'#F7F0F2'};
+  var t=s.baseTheme||(s.lightMode?'light':'dark');
+  if(!sw[t])t='dark';
+  var light=(t==='light'||t==='sand'||t==='dawn');
+  var night=!!s.nightMode&&!light;
+  var bg=night?'#000000':sw[t];
+  var d=document.documentElement;
+  d.setAttribute('data-theme',t);
+  if(light)d.setAttribute('data-light-ui','');
+  if(night)d.setAttribute('data-night','true');
+  if(s.accent)d.setAttribute('data-accent',s.accent);
+  d.style.background=bg;
+  d.style.colorScheme=light?'light':'dark';
+  var m=document.getElementById('theme-color-meta');if(m)m.content=bg;
+  var c=document.querySelector('meta[name="color-scheme"]');if(c)c.content=light?'light':'dark';
+}catch(e){}})();
+</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
