@@ -175,8 +175,10 @@
   background:var(--sur3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border:1px solid var(--bor);border-radius:var(--r-xl);
   display:flex;align-items:center;padding:8px 6px;gap:4px;z-index:80;
-  transition:transform 0.3s var(--ease);box-shadow:0 -4px 30px rgba(0,0,0,0.3);}
-#verse-action-bar.show{transform:translateX(-50%) translateY(0);}
+  box-shadow:0 -4px 30px rgba(0,0,0,0.3);visibility:hidden;
+  transition:transform 0.3s var(--ease),visibility 0s linear 0.3s;}
+#verse-action-bar.show{transform:translateX(-50%) translateY(0);visibility:visible;
+  transition:transform 0.3s var(--ease),visibility 0s;}
 .v-act{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px;border-radius:var(--r-md);cursor:pointer;font-size:0.58rem;font-weight:700;color:var(--t2);letter-spacing:0.05em;text-transform:uppercase;transition:all 0.15s;}
 .v-act:active{background:var(--a-dim);color:var(--a);}
 .v-act svg{width:18px;height:18px;}
@@ -185,10 +187,12 @@
   backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
   border-top:1px solid var(--bor);border-radius:var(--r-xl) var(--r-xl) 0 0;
   padding:16px 20px calc(env(safe-area-inset-bottom,0px) + 80px);
-  z-index:88;transition:transform 0.35s var(--ease);box-shadow:0 -8px 30px rgba(0,0,0,0.3);
-  max-height:55vh;overflow-y:auto;}
+  z-index:88;box-shadow:0 -8px 30px rgba(0,0,0,0.3);
+  max-height:55vh;overflow-y:auto;visibility:hidden;
+  transition:transform 0.35s var(--ease),visibility 0s linear 0.35s;}
 #transl-panel::-webkit-scrollbar{display:none;}
-#transl-panel.show{transform:translateX(-50%) translateY(0);}
+#transl-panel.show{transform:translateX(-50%) translateY(0);visibility:visible;
+  transition:transform 0.35s var(--ease),visibility 0s;}
 #transl-panel-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 #transl-ayah-ref{font-family:var(--ff-m);font-size:0.72rem;color:var(--a);font-weight:700;}
 #transl-arabic{font-family:var(--ff-a);font-size:1.2rem;color:var(--a);direction:rtl;text-align:right;line-height:1.9;padding:8px 0;border-bottom:1px solid var(--bor);margin-bottom:10px;}
@@ -407,9 +411,11 @@
 #quran-player{position:fixed;bottom:96px;left:50%;transform:translateX(-50%) translateY(150%);
   background:var(--sur3);border:1px solid var(--a-glow);border-radius:var(--r-pill);
   padding:9px 18px;display:flex;align-items:center;gap:10px;z-index:81;cursor:pointer;
-  transition:transform 0.3s var(--ease);box-shadow:0 8px 24px rgba(0,0,0,0.4),0 0 16px rgba(var(--a-rgb),0.2);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);white-space:nowrap;}
-#quran-player.show{transform:translateX(-50%) translateY(0);}
+  box-shadow:0 8px 24px rgba(0,0,0,0.4),0 0 16px rgba(var(--a-rgb),0.2);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);white-space:nowrap;
+  visibility:hidden;transition:transform 0.3s var(--ease),visibility 0s linear 0.3s;}
+#quran-player.show{transform:translateX(-50%) translateY(0);visibility:visible;
+  transition:transform 0.3s var(--ease),visibility 0s;}
 #quran-player span{font-size:0.75rem;color:var(--a);font-weight:700;}
 #quran-player b{font-size:0.68rem;color:var(--t2);font-weight:800;}
 
