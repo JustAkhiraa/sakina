@@ -553,6 +553,12 @@
 .book-chap-nav-btn:active{background:var(--a-dim);color:var(--a);transform:scale(0.97);}
 .book-chap-nav-btn.disabled{opacity:0.35;pointer-events:none;}
 
+/* ════════ BIBLIOTHÈQUE — texte OCR par page (Citadelle du Musulman) ════════ */
+.book-ocr-warn{font-size:0.72rem;color:#fb923c;line-height:1.55;background:rgba(251,146,60,0.1);
+  border:1px dashed rgba(251,146,60,0.3);border-radius:var(--r-md);padding:10px 12px;margin-bottom:16px;}
+.book-ocr-par{font-size:0.88rem;color:var(--t1);line-height:2;margin-bottom:10px;
+  unicode-bidi:plaintext;}   /* respecte le sens naturel de chaque ligne (arabe RTL / français LTR mélangés) */
+
 /* ════════ BIBLIOTHÈQUE — visionneuse de pages (Citadelle du Musulman) ════════ */
 .book-pages-viewer{display:flex;align-items:center;justify-content:center;min-height:70vh;padding:10px 8px 4px;}
 .book-page-img{max-width:100%;border-radius:var(--r-md);box-shadow:0 12px 40px rgba(0,0,0,0.4);
