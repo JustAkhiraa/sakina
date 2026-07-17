@@ -504,7 +504,34 @@
 .brand-name{flex:1;font-size:0.8rem;font-weight:700;color:var(--t1);}
 .brand-cert{font-size:0.64rem;color:var(--t3);}
 
-/* ════════ BIBLIOTHÈQUE (Riyad as-Salihin) ════════ */
+/* ════════ BIBLIOTHÈQUE — écran d'introduction (Emotional Design) ════════
+   Visceral : badge en dégradé, titre display, respiration généreuse.
+   Comportemental : un seul CTA net, la lecture démarre en un geste.
+   Réflexif : contexte (auteur, époque, portée) qui donne de la valeur
+   au contenu avant même de l'ouvrir. */
+.book-intro{padding:6px 24px 34px;text-align:center;}
+.book-intro-badge{width:84px;height:84px;margin:8px auto 18px;border-radius:26px;
+  background:linear-gradient(145deg,var(--a-dim),var(--sur2));border:1px solid var(--a-glow);
+  display:flex;align-items:center;justify-content:center;font-size:2.4rem;
+  box-shadow:0 14px 40px rgba(0,0,0,0.35),0 0 30px rgba(var(--a-rgb),0.18),inset 0 1px 0 rgba(255,255,255,0.1);}
+.book-intro-title{font-family:var(--ff-d);font-size:1.35rem;color:var(--t1);letter-spacing:0.03em;line-height:1.35;}
+.book-intro-ar{font-family:var(--ff-a);font-size:1.15rem;color:var(--a);margin-top:6px;direction:rtl;}
+.book-intro-author{font-size:0.75rem;color:var(--t2);margin-top:9px;font-weight:600;}
+.book-intro-stats{display:flex;gap:9px;justify-content:center;margin:20px 0;flex-wrap:wrap;}
+.book-intro-stat{background:var(--sur2);border:1px solid var(--bor2);border-radius:var(--r-lg);
+  padding:10px 16px;min-width:78px;}
+.book-intro-stat b{display:block;font-family:var(--ff-m);font-size:1.1rem;color:var(--a);}
+.book-intro-stat span{font-size:0.58rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;}
+.book-intro-desc{font-size:0.83rem;color:var(--t2);line-height:1.75;text-align:left;margin:4px 0 24px;}
+.book-intro-desc strong{color:var(--t1);}
+.book-intro-desc + .book-intro-desc{margin-top:-14px;}
+.book-intro-cta{display:inline-flex;align-items:center;gap:8px;background:var(--a);color:#000;
+  font-weight:800;font-size:0.86rem;padding:14px 30px;border-radius:var(--r-pill);cursor:pointer;
+  box-shadow:0 10px 26px rgba(var(--a-rgb),0.35);transition:transform 0.15s;}
+.book-intro-cta:active{transform:scale(0.96);}
+.book-intro-src{font-size:0.64rem;color:var(--t3);font-style:italic;margin-top:18px;}
+
+/* ════════ BIBLIOTHÈQUE — liste + lecture (Riyad as-Salihin) ════════ */
 .book-chap-row{display:flex;align-items:center;gap:11px;padding:11px 16px;
   border-bottom:1px solid var(--bor2);cursor:pointer;transition:background 0.15s;}
 .book-chap-row:active{background:rgba(var(--a-rgb),0.07);}
@@ -520,6 +547,25 @@
   padding:0 7px;border-radius:var(--r-pill);background:var(--a-dim);border:1px solid var(--a-glow);
   font-family:var(--ff-m);font-size:0.62rem;color:var(--a);margin-right:6px;vertical-align:middle;}
 .book-src{font-size:0.64rem;color:var(--t3);font-style:italic;margin-top:16px;padding-top:10px;border-top:1px solid var(--bor2);}
+.book-chap-nav{display:flex;gap:10px;margin-top:22px;padding-top:16px;border-top:1px solid var(--bor2);}
+.book-chap-nav-btn{flex:1;padding:12px;border-radius:var(--r-md);background:var(--sur2);border:1px solid var(--bor);
+  color:var(--t2);font-size:0.76rem;font-weight:700;text-align:center;cursor:pointer;transition:all 0.15s;}
+.book-chap-nav-btn:active{background:var(--a-dim);color:var(--a);transform:scale(0.97);}
+.book-chap-nav-btn.disabled{opacity:0.35;pointer-events:none;}
+
+/* ════════ BIBLIOTHÈQUE — visionneuse de pages (Citadelle du Musulman) ════════ */
+.book-pages-viewer{display:flex;align-items:center;justify-content:center;min-height:70vh;padding:10px 8px 4px;}
+.book-page-img{max-width:100%;border-radius:var(--r-md);box-shadow:0 12px 40px rgba(0,0,0,0.4);
+  background:#fff;display:block;}
+#book-pager{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:14px;
+  padding:10px 16px calc(env(safe-area-inset-bottom,0px) + 12px);border-top:1px solid var(--bor2);
+  background:var(--sur);}
+.pager-btn{width:44px;height:44px;border-radius:50%;background:var(--sur2);border:1px solid var(--bor);
+  color:var(--t2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s;flex-shrink:0;}
+.pager-btn:active{background:var(--a-dim);color:var(--a);transform:scale(0.9);}
+#pager-mid{display:flex;align-items:center;gap:6px;font-family:var(--ff-m);font-size:0.85rem;color:var(--t2);}
+#pager-input{width:52px;text-align:center;background:var(--sur2);border:1px solid var(--bor);border-radius:var(--r-sm);
+  padding:8px 4px;color:var(--t1);font-family:var(--ff-m);font-size:0.85rem;-webkit-appearance:none;}
 
 /* Phonétique dans le lecteur de routine */
 #rt-ar.latin{font-family:var(--ff-b);font-size:1rem;line-height:1.9;direction:ltr;

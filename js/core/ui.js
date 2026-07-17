@@ -68,10 +68,16 @@ export function initUI(){
     if(_cfResolve){settleConfirm(false);return;}
     closeSheet();
   });
-  // Glissement vers le bas pour fermer la sheet active
-  let y0=0;
-  document.addEventListener('touchstart',e=>{y0=e.touches[0].clientY;},{passive:true});
+  // Glissement vers le bas pour fermer la sheet active — uniquement depuis
+  // la poignée ou l'en-tête (zone fixe non scrollable). Sans cette
+  // restriction, tout glissement dans une liste (ex: calendrier) était
+  // interprété comme une fermeture, ce qui rendait le scroll inutilisable.
+  let y0=0,dragFromHandle=false;
+  document.addEventListener('touchstart',e=>{
+    y0=e.touches[0].clientY;
+    dragFromHandle=!!e.target.closest('.sh-grip,.sh-hd');
+  },{passive:true});
   document.addEventListener('touchend',e=>{
-    if(_sh&&(e.changedTouches[0].clientY-y0)>80)closeSheet();
+    if(_sh&&dragFromHandle&&(e.changedTouches[0].clientY-y0)>80)closeSheet();
   },{passive:true});
 }
