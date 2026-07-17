@@ -122,13 +122,16 @@ function renderList(filter=''){
    le contenu lui-même n'est jamais modifié */
 function formatChapter(text){
   let esc=text.replace(/&/g,'&amp;').replace(/</g,'&lt;');
-  // Numéro + point + Majuscule = début d'un hadith, quel que soit le nom du
-  // rapporteur (une liste de prénoms ratait "Al Hasan", "Jarir", etc.)
-  esc=esc.replace(/\s(?=\d{1,4}\.\s[A-ZÀ-Ü])/g,'\n\n');
+  // Numéro + point (ou tiret collé) + Majuscule = début d'un hadith, quel
+  // que soit le nom du rapporteur (une liste de prénoms ratait "Al Hasan",
+  // "Jarir", etc.). Le tiret collé ("1- Le calife...") est le format du
+  // chapitre 1 ; il ne se confond pas avec les citations coraniques
+  // internes ("1 - Chapitre 98 verset 48"), qui ont un espace avant le tiret.
+  esc=esc.replace(/\s(?=\d{1,4}[.\-]\s?[A-ZÀ-Ü])/g,'\n\n');
   return esc.split('\n\n').map(par=>{
     let p=par.trim();
     if(!p)return'';
-    p=p.replace(/^(\d{1,4})\.\s/,'<span class="book-hnum">$1</span> ');
+    p=p.replace(/^(\d{1,4})[.\-]\s?/,'<span class="book-hnum">$1</span> ');
     return`<p class="book-par">${p}</p>`;
   }).join('');
 }
