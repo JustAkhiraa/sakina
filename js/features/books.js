@@ -131,7 +131,11 @@ function formatChapter(text){
   return esc.split('\n\n').map(par=>{
     let p=par.trim();
     if(!p)return'';
-    p=p.replace(/^(\d{1,4})[.\-]\s?/,'<span class="book-hnum">$1</span> ');
+    // La pastille ne s'applique QUE si une majuscule suit immédiatement
+    // (nom de rapporteur) — sinon "3.200 O vous..." (citation coranique
+    // sourate.verset) se ferait amputer son "3." comme si c'était une
+    // pastille de hadith, laissant "200 O vous..." orphelin à l'affichage.
+    p=p.replace(/^(\d{1,4})[.\-]\s?(?=[A-ZÀ-Ü])/,'<span class="book-hnum">$1</span> ');
     return`<p class="book-par">${p}</p>`;
   }).join('');
 }
