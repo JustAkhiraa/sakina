@@ -120,7 +120,9 @@ function renderList(filter=''){
    le contenu lui-même n'est jamais modifié */
 function formatChapter(text){
   let esc=text.replace(/&/g,'&amp;').replace(/</g,'&lt;');
-  esc=esc.replace(/\s(?=\d{1,4}\.\s(?:Selon|D['’]après|Abou|Abd|Anas|Ibn|Omar|Abda|Aïcha|Djaber|Moâdh|On))/g,'\n\n');
+  // Numéro + point + Majuscule = début d'un hadith, quel que soit le nom du
+  // rapporteur (une liste de prénoms ratait "Al Hasan", "Jarir", etc.)
+  esc=esc.replace(/\s(?=\d{1,4}\.\s[A-ZÀ-Ü])/g,'\n\n');
   return esc.split('\n\n').map(par=>{
     let p=par.trim();
     if(!p)return'';
