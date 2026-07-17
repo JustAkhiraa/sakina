@@ -306,11 +306,11 @@
         <div class="row-body"><div class="row-name">Riyad as-Salihin</div><div class="row-sub">Le Jardin des Vertueux — an-Nawawi · texte intégral (373 chap.)</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
-      <a class="row" style="border-bottom:none;text-decoration:none;color:inherit;" href="books/citadelle-du-musulman.pdf" target="_blank" rel="noopener">
+      <div class="row" style="border-bottom:none" id="btn-open-citadelle">
         <div class="row-ic">📘</div>
-        <div class="row-body"><div class="row-name">La Citadelle du Musulman</div><div class="row-sub">Invocations du matin &amp; du soir — édition PDF intégrale</div></div>
+        <div class="row-body"><div class="row-name">La Citadelle du Musulman</div><div class="row-sub">Invocations du matin &amp; du soir — pages du livre (146 p.)</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-      </a>
+      </div>
     </div>
 
   </div>
@@ -966,18 +966,30 @@
   </div>
 </div>
 
-<!-- LECTEUR DE LIVRE (Riyad as-Salihin) -->
+<!-- LECTEUR DE LIVRE (Bibliothèque) -->
 <div class="sheet" id="sh-book" style="max-height:96vh;">
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title" id="book-title">Riyad as-Salihin</div>
+    <div class="sh-title" id="book-title">Bibliothèque</div>
     <button class="close-b" id="btn-book-back" style="display:none;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
   </div>
-  <div style="padding:0 16px 6px;flex-shrink:0;" id="book-search-wrap">
+  <div style="padding:0 16px 6px;flex-shrink:0;display:none;" id="book-search-wrap">
     <input class="inp" type="text" id="book-search" placeholder="Chercher un chapitre (patience, repentir…)" autocomplete="off">
   </div>
   <div class="sh-bd" id="book-bd" style="padding-left:0;padding-right:0;"></div>
+  <div id="book-pager" style="display:none;">
+    <button class="pager-btn" id="pager-prev" aria-label="Page précédente">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <div id="pager-mid">
+      <input type="number" id="pager-input" min="1" inputmode="numeric">
+      <span id="pager-total">/ 146</span>
+    </div>
+    <button class="pager-btn" id="pager-next" aria-label="Page suivante">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
 </div>
 
 <!-- MODE PLEIN ÉCRAN TASBIH : toute la surface compte -->
