@@ -51,15 +51,12 @@ goToStartPage();
 
 
 
-// PWA — hors localhost/preview/iframe pour ne pas gêner le développement
+// PWA — enregistré uniquement sur le site publié (https), jamais en dev local
+// ni dans une iframe. Échappatoire : ?sw=off désactive et purge le cache.
 (function registerSW(){
   if(!('serviceWorker' in navigator))return;
   if(location.protocol!=='https:')return;
-  if(window.top!==window.self)return; // pas dans une iframe (preview Lovable)
-  const h=location.hostname;
-  if(h.startsWith('id-preview--')||h.startsWith('preview--'))return;
-  if(h.endsWith('.lovableproject.com')||h.endsWith('.lovableproject-dev.com'))return;
-  if(h.endsWith('.beta.lovable.dev'))return;
+  if(window.top!==window.self)return; // pas dans une iframe d'aperçu
   if(location.search.includes('sw=off')){
     navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister()));
     return;

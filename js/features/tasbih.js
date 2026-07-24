@@ -4,6 +4,7 @@ import {toast,burst,openSheet,closeSheet,sheetOpen} from '../core/ui.js';
 import {playSound,vib,getAC} from '../core/audio.js';
 import {DHIKRS,BONUS_DHIKRS} from '../data/catalog.js';
 import {isUnlocked,remainingFor,fmtGoal,checkUnlocks} from '../core/rewards.js';
+import {t} from '../lib/i18n.js';
 
 const $=id=>document.getElementById(id);
 const CIRC=2*Math.PI*104;
@@ -18,14 +19,11 @@ function updateRing(pct){
 export function renderTasbih(){
   $('cnum').textContent=S.count;
   $('t-title').textContent=S.title;
-  // En skin Voxel, on « mine » plutôt que « appuyer »
+  // Le libellé du bouton dérive uniquement de l'état : « MINÉ » sur le skin
+  // Voxel, sinon la traduction courante. Pur (aucune mémoïsation fragile),
+  // donc il redevient « APPUYER » dès qu'on quitte le skin.
   const cl=$('clabel');
-  if(cl){
-    // Mémorise le label de base (issu de l'i18n) au premier passage pour pouvoir
-    // le restaurer en sortant du skin Voxel — sans ça, "MINÉ" restait collé.
-    if(!cl.dataset.baseLabel)cl.dataset.baseLabel=cl.textContent||'APPUYER';
-    cl.textContent=(S.skin==='voxel')?'MINÉ':cl.dataset.baseLabel;
-  }
+  if(cl)cl.textContent=(S.skin==='voxel')?'MINÉ':t('tap.label');
   const nxt=S.reminder>0?(S.reminder-(S.count%S.reminder)):0;
   $('t-sub').textContent=S.reminder>0?`Dans ${nxt} · Rappel ${S.reminder}`:(S.goal>0?`Objectif ${S.goal}`:'Comptage libre');
   $('sp-laps').textContent=S.lapCount;
