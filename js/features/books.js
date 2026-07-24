@@ -32,17 +32,66 @@ const BOOKS={
     stats:[{val:'146',label:'Pages'},{val:'Intégral',label:'Édition'}],
     desc:[
       "« Hisn al-Muslim » rassemble des invocations authentiques tirées du Coran et de la Sunna pour chaque instant du quotidien : réveil, repas, voyage, épreuves — afin que le rappel d'Allah accompagne le musulman à chaque moment.",
-      "Le PDF source est un document scanné : vous consultez d'abord la page originale du livre. Une version texte (reconnaissance automatique) est aussi proposée pour la lecture rapide — utile pour parcourir, mais vérifiez toujours l'arabe sur la page scannée avant de citer.",
+      "Le mode « Lecture » vous propose le texte propre, mis en forme pour un confort optimal. Pour vérifier un passage précis (surtout en arabe), basculez sur « Page scannée » pour retrouver la mise en page originale du livre.",
     ],
     pageCount:146,
     pagePath:n=>`books/citadelle-pages/page-${String(n).padStart(3,'0')}.png`,
     textSrc:'books/citadelle.json',
   },
+  asma:{
+    key:'asma',icon:'✨',type:'names',
+    title:"Les 99 Noms d'Allah",titleAr:'أسماء الله الحسنى',
+    author:"Al-Asma' al-Husna — tradition sunnite classique",
+    stats:[{val:'99',label:'Noms'},{val:'Ar → Fr',label:'Traduction'}],
+    desc:[
+      "« Les Plus Beaux Noms » d'Allah — 99 noms rapportés par la tradition, chacun révélant une facette de Sa majesté, de Sa miséricorde et de Sa perfection.",
+      "« À Allah appartiennent les plus beaux noms. Invoquez-Le par ces noms » (Coran 7:180). Cette lecture est un moyen d'accroître la connaissance d'Allah et l'attachement à Lui.",
+    ],
+    src:'books/asma.json',
+  },
+  salat:{
+    key:'salat',icon:'🧎',type:'guide',
+    title:'Comment faire la Salât',titleAr:'الصلاة',
+    author:'Guide pratique — apprentissage général',
+    stats:[{val:'5',label:'Prières'},{val:'Pas à pas',label:'Méthode'},{val:'Claire',label:'Lecture'}],
+    desc:[
+      "Une fiche d'apprentissage pour comprendre l'ordre général de la prière : intention, takbîr, récitation, inclinaison, prosternation, tashahhud et salâm.",
+      "Selon les écoles et les mosquées, certains détails peuvent varier. Gardez ce guide comme base de révision et suivez l'enseignement de votre imam pour les points précis.",
+    ],
+    sections:[
+      {icon:'🧭',title:'Avant de commencer',points:['Être en état de pureté avec les ablutions.','Prier dans un endroit propre, couvert correctement.','Se tourner vers la Qibla et savoir quelle prière on accomplit.','L’intention se fait dans le cœur, sans obligation de la prononcer.']},
+      {icon:'1',title:'Entrée en prière',points:['Lever les mains puis dire : Allahu Akbar.','Poser les mains et commencer avec calme.','Réciter Al-Fâtiha, puis une sourate ou quelques versets dans les deux premières unités.']},
+      {icon:'2',title:'Rukûʿ — inclinaison',points:['Dire Allahu Akbar puis s’incliner, dos posé et mains sur les genoux.','Dire plusieurs fois : Subhâna Rabbiyal ʿAzîm.','Se relever en disant : Samiʿa Allahu liman hamidah, puis Rabbana wa laka-l-hamd.']},
+      {icon:'3',title:'Sujûd — prosternation',points:['Dire Allahu Akbar puis se prosterner.','Poser le front, le nez, les mains, les genoux et les pieds.','Dire plusieurs fois : Subhâna Rabbiyal Aʿlâ.','S’asseoir brièvement, puis faire une deuxième prosternation.']},
+      {icon:'4',title:'Tashahhud & salâm',points:['À la fin, s’asseoir et réciter le tashahhud.','Ajouter la prière sur le Prophète ﷺ.','Clore par le salâm à droite puis à gauche : As-salâmu ʿalaykum wa rahmatullah.']},
+      {icon:'🧩',title:'Nombre d’unités',points:['Fajr : 2 rakʿât.','Dhuhr : 4 rakʿât.','ʿAsr : 4 rakʿât.','Maghrib : 3 rakʿât.','ʿIshâ : 4 rakʿât.']},
+    ],
+  },
+  wudu:{
+    key:'wudu',icon:'💧',type:'guide',
+    title:'Faire les ablutions',titleAr:'الوضوء',
+    author:'Wudû’ — purification avant la prière',
+    stats:[{val:'7',label:'Étapes'},{val:'Avant',label:'Salât'},{val:'Simple',label:'Mémo'}],
+    desc:[
+      "Les ablutions préparent à la prière et installent une intention de pureté, de concentration et de respect avant de se présenter devant Allah.",
+      "Cette fiche donne l'ordre pratique le plus courant. Pour les détails de votre école juridique, suivez l'avis enseigné par votre mosquée ou professeur.",
+    ],
+    sections:[
+      {icon:'🤲',title:'Intention & basmala',points:['Avoir l’intention de faire les ablutions pour la prière.','Dire : Bismillah.','Éviter le gaspillage d’eau, même si l’eau est disponible.']},
+      {icon:'1',title:'Mains',points:['Laver les deux mains jusqu’aux poignets.','Faire passer l’eau entre les doigts.','Répéter jusqu’à trois fois.']},
+      {icon:'2',title:'Bouche & nez',points:['Rincer la bouche.','Inspirer légèrement de l’eau dans le nez puis l’expulser.','Faire doucement si l’on jeûne.']},
+      {icon:'3',title:'Visage',points:['Laver tout le visage : du haut du front au menton, et d’une oreille à l’autre.','Veiller aux contours du nez, de la barbe et du menton.']},
+      {icon:'4',title:'Bras',points:['Laver le bras droit jusqu’au coude inclus.','Puis laver le bras gauche jusqu’au coude inclus.','Ne pas oublier l’arrière des coudes.']},
+      {icon:'5',title:'Tête & oreilles',points:['Passer les mains mouillées sur la tête.','Essuyer les oreilles avec les doigts humides.','Un seul passage suffit dans la pratique courante.']},
+      {icon:'6',title:'Pieds',points:['Laver le pied droit jusqu’à la cheville incluse, puis le gauche.','Passer entre les orteils.','Vérifier que le talon est bien mouillé.']},
+      {icon:'✨',title:'Après les ablutions',points:['Dire l’attestation de foi.','Garder le calme et partir vers la prière sans se précipiter.','Si les ablutions sont annulées, il faut les refaire avant de prier.']},
+    ],
+  },
 };
 
 let _current=null;   // clé du livre ouvert
 let _riyad=null;     // données JSON chargées (mise en cache)
-let _view='intro';   // intro | list | chapter | pages
+let _view='intro';   // intro | list | chapter | names | guide | pages
 let _page=1;
 
 /* ── En-tête commun ── */
@@ -68,11 +117,13 @@ function showIntro(){
     <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${s.val}</b><span>${s.label}</span></div>`).join('')}</div>
     ${b.desc.map(p=>`<p class="book-intro-desc">${p}</p>`).join('')}
     <div class="book-intro-cta" id="book-start">✦ Commencer la lecture</div>
-    <div class="book-intro-src">${b.type==='chapters'?'Texte intégral, reproduit tel quel — édition riyad.fr.tc':'Pages originales du livre imprimé'}</div>
+    <div class="book-intro-src">${b.type==='chapters'?'Texte intégral, reproduit tel quel — édition riyad.fr.tc':b.type==='names'?"D'après la tradition classique — références coraniques et prophétiques":'Pages originales du livre imprimé'}</div>
   </div>`;
   $('book-start').addEventListener('click',()=>{
     vib(16);
     if(b.type==='chapters')openList();
+    else if(b.type==='names')openNames();
+    else if(b.type==='guide')openGuide();
     else openPages(1);
   });
   bd.scrollTop=0;
@@ -128,15 +179,20 @@ function formatChapter(text){
   // chapitre 1 ; il ne se confond pas avec les citations coraniques
   // internes ("1 - Chapitre 98 verset 48"), qui ont un espace avant le tiret.
   esc=esc.replace(/\s(?=\d{1,4}[.\-]\s?[A-ZÀ-Ü])/g,'\n\n');
+  let seenHnum=false;
   return esc.split('\n\n').map(par=>{
     let p=par.trim();
     if(!p)return'';
-    // La pastille ne s'applique QUE si une majuscule suit immédiatement
-    // (nom de rapporteur) — sinon "3.200 O vous..." (citation coranique
-    // sourate.verset) se ferait amputer son "3." comme si c'était une
-    // pastille de hadith, laissant "200 O vous..." orphelin à l'affichage.
+    // "N. Majuscule" ou "N- Majuscule" = début d'un nouveau hadith
+    const isH=/^(\d{1,4})[.\-]\s?[A-ZÀ-Ü]/.test(p);
     p=p.replace(/^(\d{1,4})[.\-]\s?(?=[A-ZÀ-Ü])/,'<span class="book-hnum">$1</span> ');
-    return`<p class="book-par">${p}</p>`;
+    // Enluminure horizontale avant chaque hadith (sauf le premier)
+    let sep='';
+    if(isH){
+      if(seenHnum)sep='<div class="book-sep" aria-hidden="true"><span></span><span></span><span></span></div>';
+      seenHnum=true;
+    }
+    return sep+`<p class="book-par">${p}</p>`;
   }).join('');
 }
 
@@ -163,9 +219,12 @@ function showChapter(n){
   if(next)$('book-next-chap').addEventListener('click',()=>showChapter(next.n));
 }
 
-/* ── Citadelle du Musulman : pages scannées + texte OCR (2 modes) ── */
-let _pageMode='image';   // image | text
-let _citadelleText=null; // {pages:[{n,text}], source} — chargé à la demande
+/* ── Citadelle du Musulman : deux vues ──
+   « Lecture » (mode texte) : source Markdown propre — c'est le mode par défaut,
+   agréable à parcourir. « Page scannée » (image) : reproduction fidèle du PDF
+   pour vérifier un passage précis. */
+let _pageMode='text';    // text | image  (défaut = lecture propre)
+let _citadelleText=null; // {pages:[{n,text}]} — chargé à la demande
 
 async function loadCitadelleText(){
   if(_citadelleText)return _citadelleText;
@@ -180,10 +239,54 @@ function openPages(n){
   const b=BOOKS.citadelle;
   setHeader({title:b.title,back:true});
   $('book-mode-toggle').style.display='flex';
+  // Synchronise l'état visuel du toggle avec le mode actif
+  document.querySelectorAll('#book-mode-toggle .seg-opt').forEach(o=>o.classList.toggle('active',o.dataset.mode===_pageMode));
   const pager=$('book-pager');
   pager.style.display='flex';
   $('pager-total').textContent=`/ ${b.pageCount}`;
   showPage(Math.max(1,Math.min(b.pageCount,n)));
+}
+
+/* Petit rendu Markdown maison — juste ce dont la Citadelle a besoin :
+   #/##/### pour les titres, **gras**, *italique*, listes -, séparateurs ---.
+   L'arabe est enveloppé en RTL quand une ligne contient uniquement de l'arabe. */
+function renderCitadelleMarkdown(md){
+  const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  const inline=s=>esc(s)
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g,'<em>$1</em>');
+  const isArabic=s=>/^[\s\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF0-9.,()«»:;!؟،—\-]+$/.test(s)&&/[\u0600-\u06FF]/.test(s);
+  const lines=md.split('\n');
+  const out=[];
+  let inList=false;
+  const closeList=()=>{if(inList){out.push('</ul>');inList=false;}};
+  for(let raw of lines){
+    const line=raw.trimEnd();
+    if(!line.trim()){closeList();continue;}
+    if(/^#{1,6}\s+/.test(line)){
+      closeList();
+      const m=line.match(/^(#{1,6})\s+(.*)$/);
+      const lvl=Math.min(m[1].length+1,6); // # → h2 (h1 réservé au header du livre)
+      out.push(`<h${lvl} class="book-md-h${lvl}">${inline(m[2])}</h${lvl}>`);
+      continue;
+    }
+    if(/^---+$/.test(line.trim())){
+      closeList();
+      out.push('<div class="book-sep" aria-hidden="true"><span></span><span></span><span></span></div>');
+      continue;
+    }
+    if(/^[-•]\s+/.test(line)){
+      if(!inList){out.push('<ul class="book-md-ul">');inList=true;}
+      out.push(`<li>${inline(line.replace(/^[-•]\s+/,''))}</li>`);
+      continue;
+    }
+    closeList();
+    const cls='book-md-p'+(isArabic(line.trim())?' book-md-ar':'');
+    const attr=isArabic(line.trim())?' dir="rtl" lang="ar"':'';
+    out.push(`<p class="${cls}"${attr}>${inline(line)}</p>`);
+  }
+  closeList();
+  return out.join('');
 }
 
 async function showPage(n){
@@ -202,11 +305,10 @@ async function showPage(n){
     try{await loadCitadelleText();}
     catch{bd.innerHTML='<div class="places-empty">Connexion requise pour le premier chargement du texte.</div>';return;}
     const page=_citadelleText.pages.find(p=>p.n===n);
-    const text=(page?.text||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
-    const pars=text.split('\n').filter(Boolean).map(p=>`<p class="book-ocr-par">${p}</p>`).join('');
-    bd.innerHTML=`<div class="book-chapter">
-      <div class="book-ocr-warn">⚠ Texte obtenu par reconnaissance automatique (OCR) — peut contenir de petites erreurs, notamment sur les diacritiques arabes. Basculez sur « Page scannée » pour vérifier un passage précis.</div>
-      ${pars||'<p class="book-ocr-par" style="color:var(--t3)">(page sans texte détecté)</p>'}
+    const html=page?renderCitadelleMarkdown(page.text||''):'';
+    bd.innerHTML=`<div class="book-chapter book-md">
+      ${html||'<p class="book-md-p" style="color:var(--t3)">(page vide)</p>'}
+      <div class="book-md-foot">Page ${n} · Hisn al-Muslim</div>
     </div>`;
   }
   bd.scrollTop=0;
@@ -218,10 +320,72 @@ function setPageMode(mode){
   showPage(_page);
 }
 
-/* ── Ouverture d'un livre depuis les Outils ── */
+/* ── 99 Noms d'Allah : chargement + rendu en cartes ── */
+let _asma=null;
+async function loadAsma(){
+  if(_asma)return _asma;
+  const res=await fetch(BOOKS.asma.src);
+  if(!res.ok)throw new Error('load');
+  _asma=await res.json();
+  return _asma;
+}
+async function openNames(filter=''){
+  _view='names';
+  setHeader({title:BOOKS.asma.title,back:true,search:true});
+  $('book-pager').style.display='none';
+  if(!_asma){
+    $('book-bd').innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement des noms…</div>';
+    try{await loadAsma();}
+    catch{$('book-bd').innerHTML='<div class="places-empty">Connexion requise pour le premier chargement.</div>';return;}
+  }
+  renderNames(filter);
+}
+function renderNames(filter=''){
+  const bd=$('book-bd');
+  const f=filter.trim().toLowerCase();
+  const items=_asma.names.filter(x=>!f||x.tr.toLowerCase().includes(f)||x.fr.toLowerCase().includes(f)||String(x.n)===f||x.ar.includes(filter.trim()));
+  if(!items.length){bd.innerHTML='<div class="places-empty">Aucun nom trouvé.</div>';return;}
+  bd.innerHTML=`<div class="asma-list">${items.map(x=>`
+    <div class="asma-card">
+      <div class="asma-head">
+        <div class="asma-n">${x.n}</div>
+        <div class="asma-ar" lang="ar" dir="rtl">${x.ar}</div>
+      </div>
+      <div class="asma-tr">${x.tr}</div>
+      <div class="asma-fr">${x.fr}</div>
+      <div class="asma-desc">${x.desc}</div>
+    </div>`).join('')}</div>`;
+  bd.scrollTop=0;
+}
+
+/* ── Apprendre : fiches pratiques lisibles en étapes courtes ── */
+function openGuide(){
+  _view='guide';
+  const b=BOOKS[_current];
+  setHeader({title:b.title,back:true});
+  $('book-pager').style.display='none';
+  const bd=$('book-bd');
+  bd.innerHTML=`<div class="learn-reader">
+    <div class="learn-hero">
+      <div class="learn-mark">${b.icon}</div>
+      <div><div class="learn-title">${b.title}</div>${b.titleAr?`<div class="learn-ar">${b.titleAr}</div>`:''}</div>
+    </div>
+    ${b.sections.map((sec,i)=>`<section class="learn-sec">
+      <div class="learn-sec-head">
+        <div class="learn-step">${sec.icon||i+1}</div>
+        <h3>${sec.title}</h3>
+      </div>
+      <ul>${sec.points.map(p=>`<li>${p}</li>`).join('')}</ul>
+    </section>`).join('')}
+    <div class="learn-note">Ces rappels sont une base simple d’apprentissage. Pour les divergences de détails, suivez une personne de science ou votre mosquée.</div>
+  </div>`;
+  bd.scrollTop=0;
+}
+
+
 function openBook(key){
   _current=key;
-  _pageMode='image'; // toujours repartir de la page originale, la plus fiable
+  _pageMode='text'; // Lecture propre par défaut — le scan reste accessible via le toggle
   openSheet('sh-book',()=>{
     $('book-search').value='';
     showIntro();
@@ -231,14 +395,25 @@ function openBook(key){
 export function initBooks(){
   $('btn-open-riyad').addEventListener('click',()=>openBook('riyad'));
   $('btn-open-citadelle').addEventListener('click',()=>openBook('citadelle'));
+  const btnAsma=$('btn-open-asma');
+  if(btnAsma)btnAsma.addEventListener('click',()=>openBook('asma'));
+  const btnSalat=$('btn-open-learn-salat');
+  if(btnSalat)btnSalat.addEventListener('click',()=>openBook('salat'));
+  const btnWudu=$('btn-open-learn-wudu');
+  if(btnWudu)btnWudu.addEventListener('click',()=>openBook('wudu'));
 
   $('btn-book-back').addEventListener('click',()=>{
     if(_view==='chapter')openList($('book-search').value);
     else if(_view==='list')showIntro();
+    else if(_view==='names')showIntro();
+    else if(_view==='guide')showIntro();
     else if(_view==='pages')showIntro();
     else showIntro();
   });
-  $('book-search').addEventListener('input',e=>{if(_view==='list')renderList(e.target.value);});
+  $('book-search').addEventListener('input',e=>{
+    if(_view==='list')renderList(e.target.value);
+    else if(_view==='names')renderNames(e.target.value);
+  });
 
   // Visionneuse de pages
   $('pager-prev').addEventListener('click',()=>{if(_page>1){vib(12);showPage(_page-1);}});

@@ -36,7 +36,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Nunito:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;700&family=DM+Mono:wght@400;500&family=Amiri:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/pages.css">
@@ -306,9 +306,24 @@
         <div class="row-body"><div class="row-name">Riyad as-Salihin</div><div class="row-sub">Le Jardin des Vertueux — an-Nawawi · texte intégral (373 chap.)</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
-      <div class="row" style="border-bottom:none" id="btn-open-citadelle">
+      <div class="row" id="btn-open-citadelle">
         <div class="row-ic">📘</div>
         <div class="row-body"><div class="row-name">La Citadelle du Musulman</div><div class="row-sub">Invocations du matin &amp; du soir — pages du livre (146 p.)</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="row" id="btn-open-asma">
+        <div class="row-ic">✨</div>
+        <div class="row-body"><div class="row-name">Les 99 Noms d'Allah</div><div class="row-sub">Al-Asma' al-Husna — arabe, translittération &amp; sens (99)</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="row" id="btn-open-learn-wudu">
+        <div class="row-ic">💧</div>
+        <div class="row-body"><div class="row-name">Faire les ablutions</div><div class="row-sub">Wudû' étape par étape, avec rappels pratiques</div></div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+      <div class="row" style="border-bottom:none" id="btn-open-learn-salat">
+        <div class="row-ic">🧎</div>
+        <div class="row-body"><div class="row-name">Comment faire la Salât</div><div class="row-sub">Guide simple : préparation, unités, positions &amp; clôture</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
     </div>
@@ -342,6 +357,51 @@
       <div class="ms-card gc"><div class="ms-val" id="st-qada">0</div><div class="ms-lbl">Qadâ'</div></div>
     </div>
 
+    <!-- Cadeaux à débloquer (accès à la sheet dédiée) -->
+    <div class="sl">Cadeaux à débloquer</div>
+    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row" id="btn-open-bonus">
+        <div class="row-ic">🎁</div>
+        <div class="row-body">
+          <div class="row-name">Voir tous les cadeaux</div>
+          <div class="row-sub"><span id="rw-count">0/0</span> · <span id="rw-next">—</span></div>
+        </div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+
+    <!-- Avatar (récompense) — replié par défaut, la 1re ligne reste visible -->
+    <details class="sec sec-row">
+      <summary>
+        <div class="gc" style="margin:18px 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+          <div class="row" style="border-bottom:none">
+            <div class="row-ic">😊</div>
+            <div class="row-body"><div class="row-name">Avatar du profil</div><div class="row-sub">De nouveaux s'ajoutent à chaque palier</div></div>
+            <svg class="row-chev sec-chev-svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </summary>
+      <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+        <div style="padding:14px;"><div class="av-grid" id="avatar-grid"></div></div>
+      </div>
+    </details>
+
+    <!-- Titre (récompense) — replié par défaut -->
+    <details class="sec sec-row">
+      <summary>
+        <div class="gc" style="margin:18px 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+          <div class="row" style="border-bottom:none">
+            <div class="row-ic">🏷️</div>
+            <div class="row-body"><div class="row-name">Titre honorifique</div><div class="row-sub">Choisis parmi ceux débloqués</div></div>
+            <svg class="row-chev sec-chev-svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </summary>
+      <div class="gc" id="title-list" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;"></div>
+    </details>
+
+
+
 
     <!-- Pratique religieuse -->
     <div class="sl" data-i18n="sec.practice">Pratique religieuse</div>
@@ -366,20 +426,41 @@
       </div>
     </div>
 
-    <!-- Apparence -->
-    <div class="sl" data-i18n="sec.appearance">Apparence</div>
-    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
-      <div class="row" style="cursor:default;">
-        <div class="row-ic">🌓</div>
-        <div class="row-body"><div class="row-name" data-i18n="row.theme">Thème</div><div class="row-sub">7 ambiances, du plus sombre au plus lumineux</div></div>
+    <!-- Skin — replié -->
+    <details class="sec sec-row">
+      <summary>
+        <div class="gc" style="margin:18px 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+          <div class="row" style="border-bottom:none">
+            <div class="row-ic">✦</div>
+            <div class="row-body"><div class="row-name">Skin — style d'apparence</div><div class="row-sub">Verre, néon, calligraphie…</div></div>
+            <svg class="row-chev sec-chev-svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </summary>
+      <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+        <div style="padding:14px 16px;"><div class="skin-grid" id="skin-grid"></div></div>
       </div>
-      <div style="padding:4px 16px 10px;"><div class="tgrid" id="base-theme-grid"></div></div>
-      <div class="row" style="cursor:default;border-bottom:none">
-        <div class="row-ic">🎨</div>
-        <div class="row-body"><div class="row-name" data-i18n="row.accent">Couleur d'accent</div></div>
+    </details>
+
+    <!-- Ambiance de couleur -->
+    <details class="sec sec-row">
+      <summary>
+        <div class="gc" style="margin:18px 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+          <div class="row" style="border-bottom:none">
+            <div class="row-ic">🌓</div>
+            <div class="row-body"><div class="row-name">Ambiance de couleur</div><div class="row-sub">Fond, palette &amp; accent</div></div>
+            <svg class="row-chev sec-chev-svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </summary>
+      <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+        <div style="padding:10px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Fond &amp; palette</div>
+        <div style="padding:4px 16px 10px;"><div class="tgrid" id="base-theme-grid"></div></div>
+        <div style="padding:6px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Couleur d'accent</div>
+        <div style="padding:4px 16px 14px;"><div class="tgrid" id="theme-grid"></div></div>
       </div>
-      <div style="padding:4px 16px 14px;"><div class="tgrid" id="theme-grid"></div></div>
-    </div>
+    </details>
+
 
     <!-- Format heure -->
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
@@ -393,12 +474,43 @@
       </div>
     </div>
 
-    <!-- Son -->
-    <div class="sl" data-i18n="sec.sound">Son du compteur</div>
-    <div class="gc" id="sound-list" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;"></div>
+    <!-- Son du compteur — replié -->
+    <details class="sec sec-row">
+      <summary>
+        <div class="gc" style="margin:18px 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+          <div class="row" style="border-bottom:none">
+            <div class="row-ic">🔔</div>
+            <div class="row-body"><div class="row-name">Son du compteur</div><div class="row-sub">Nature, bois, digital, geek…</div></div>
+            <svg class="row-chev sec-chev-svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </summary>
+      <div class="gc" id="sound-list" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;"></div>
+    </details>
+
+
+    <!-- Navigation personnalisable (Lot 1) -->
+    <details class="sec sec-row">
+      <summary>
+        <div class="gc" style="margin:18px 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+          <div class="row" style="border-bottom:none">
+            <div class="row-ic">🧭</div>
+            <div class="row-body"><div class="row-name">Navigation</div><div class="row-sub">Ordre, catégories affichées &amp; page d'ouverture</div></div>
+            <svg class="row-chev sec-chev-svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </summary>
+      <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+        <div style="padding:10px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Ordre &amp; visibilité</div>
+        <div id="nav-editor" style="padding:4px 8px 10px;"></div>
+        <div style="padding:6px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Page d'ouverture</div>
+        <div style="padding:4px 16px 14px;"><select id="nav-startpage" style="width:100%;padding:10px 12px;border-radius:12px;background:var(--c2);color:var(--t1);border:1px solid var(--bd);font-size:0.9rem;"></select></div>
+      </div>
+    </details>
 
     <!-- Préférences -->
     <div class="sl" data-i18n="sec.prefs">Préférences</div>
+
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
       <div class="row"><div class="row-ic">🔊</div><div class="row-body"><div class="row-name" data-i18n="row.sound">Son</div><div class="row-sub">Retour sonore à chaque appui</div></div><div class="tog" id="tog-sound"></div></div>
       <div class="row"><div class="row-ic">📳</div><div class="row-body"><div class="row-name" data-i18n="row.vib">Vibration haptique</div><div class="row-sub">Retour tactile</div></div><div class="tog" id="tog-vib"></div></div>
@@ -409,7 +521,9 @@
     <!-- Données -->
     <div class="sl" data-i18n="sec.data">Données</div>
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
-      <div class="row" id="btn-export"><div class="row-ic">📤</div><div class="row-body"><div class="row-name" data-i18n="row.export">Exporter mes données</div><div class="row-sub">Télécharger en JSON</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+      <div class="row" id="btn-export"><div class="row-ic">📤</div><div class="row-body"><div class="row-name" data-i18n="row.export">Exporter mes données</div><div class="row-sub">Télécharger un fichier JSON</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+      <div class="row" id="btn-import"><div class="row-ic">📥</div><div class="row-body"><div class="row-name">Importer un fichier</div><div class="row-sub">Restaurer un export précédent (fusion non destructive)</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+      <input type="file" id="file-import" accept="application/json,.json" hidden>
       <div class="row" style="border-bottom:none" id="btn-reset-all"><div class="row-ic">🗑️</div><div class="row-body"><div class="row-name" style="color:var(--err)" data-i18n="row.reset">Tout réinitialiser</div><div class="row-sub">Efface compteur et historique</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
     </div>
 
@@ -427,37 +541,25 @@
   </div>
 </div>
 
-<!-- ════════════════ NAVBAR ════════════════ -->
-<nav id="navbar">
-  <div class="nv active" data-page="page-tasbih">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 8v4l3 3"/></svg>
-    <span class="nv-lbl" data-i18n="nav.tasbih">Tasbih</span>
-  </div>
-  <div class="nv" data-page="page-salat">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1M4.22 4.22l.707.707m12.728 12.728l.707.707M1 12h1m20 0h1M4.22 19.78l.707-.707M18.364 5.636l.707-.707"/><circle cx="12" cy="12" r="4"/></svg>
-    <span class="nv-lbl" data-i18n="nav.salat">Salat</span>
-  </div>
-  <div class="nv" data-page="page-qibla">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-    <span class="nv-lbl" data-i18n="nav.qibla">Qibla</span>
-  </div>
-  <div class="nv" data-page="page-duas">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-    <span class="nv-lbl" data-i18n="nav.duas">Douas</span>
-  </div>
-  <div class="nv" data-page="page-quran">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg>
-    <span class="nv-lbl" data-i18n="nav.quran">Coran</span>
-  </div>
-  <div class="nv" data-page="page-tools">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-    <span class="nv-lbl" data-i18n="nav.tools">Outils</span>
-  </div>
-</nav>
+<!-- ════════════════ NAVBAR (construite dynamiquement par core/nav.js) ════════════════ -->
+<nav id="navbar"></nav>
+
 </div><!-- /#app -->
 
 <!-- ════════════════ SHEETS ════════════════ -->
 <div class="overlay" id="overlay"></div>
+
+<!-- Sheet « Plus » : items de nav qui débordent de la barre du bas -->
+<div class="sheet" id="sh-more">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">Plus de catégories</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="gc" id="more-list" style="margin:8px 16px 20px;border-radius:var(--r-xl);overflow:hidden;"></div>
+</div>
+
 
 <!-- ÉDITION DHIKR -->
 <div class="sheet" id="sh-edit">
@@ -721,8 +823,20 @@
   </div>
 </div>
 
+<!-- CADEAUX À DÉBLOQUER -->
+<div class="sheet" id="sh-bonus" style="max-height:96vh;">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title">🎁 Cadeaux à débloquer</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd" id="bonus-body"></div>
+</div>
+
 <!-- À PROXIMITÉ -->
 <div class="sheet" id="sh-places" style="max-height:96vh;">
+
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
@@ -932,12 +1046,18 @@
       <div class="ob-title" data-i18n="ob.prayTitle">Horaires de prière</div>
       <p class="ob-sub" data-i18n="ob.praySub">Quelle méthode de calcul suit votre mosquée ou votre pays ?</p>
       <div id="ob-method-list" style="margin-top:12px;"></div>
+    </div>
+
+    <!-- Étape 3 — Lecture, école & format d'heure -->
+    <div class="ob-step" data-step="3">
+      <div class="ob-title">Lecture &amp; école</div>
+      <p class="ob-sub">Comment vous lisez les adhkâr, votre madhhab et le format d'heure.</p>
       <div class="sl" style="margin:14px 0 6px">Lecture des adhkâr</div>
       <div class="seg-ctrl" id="ob-translit-seg" style="width:100%;margin-bottom:4px;">
         <div class="seg-opt active" data-tr="ar" style="flex:1;text-align:center;">عربي Je lis l'arabe</div>
         <div class="seg-opt" data-tr="ph" style="flex:1;text-align:center;">abc Phonétique</div>
       </div>
-      <div class="sl" style="margin:14px 0 6px" data-i18n="ob.madhabLabel">École juridique (heure de l’Asr)</div>
+      <div class="sl" style="margin:14px 0 6px" data-i18n="ob.madhabLabel">École juridique (heure de l'Asr)</div>
       <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:4px;" id="ob-madhab-row"></div>
       <div class="sl" style="margin:14px 0 8px">Format d'heure</div>
       <div class="seg-ctrl" id="ob-fmt-seg" style="width:100%;">
@@ -946,8 +1066,8 @@
       </div>
     </div>
 
-    <!-- Étape 3 — Position -->
-    <div class="ob-step" data-step="3">
+    <!-- Étape 4 — Position -->
+    <div class="ob-step" data-step="4">
       <div class="ob-title" data-i18n="ob.locTitle">Votre position</div>
       <p class="ob-sub" data-i18n="ob.locSub">Nécessaire pour calculer vos horaires de prière et la direction de la Qibla. Elle reste sur votre appareil.</p>
       <div class="qada-ok" id="ob-gps" style="text-align:center;margin:16px 0 10px;" data-i18n="ob.gps">📍 Détecter par GPS</div>

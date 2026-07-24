@@ -4,13 +4,13 @@
 import {S,save,emit} from '../core/store.js';
 import {toast} from '../core/ui.js';
 import {vib} from '../core/audio.js';
-import {THEMES,CALC_METHODS,MADHABS,LANGS} from '../data/catalog.js';
+import {THEMES,CALC_METHODS,MADHABS,LANGS,LANG_REGIONS,CALC_BY_LANG,MADHAB_BY_LANG} from '../data/catalog.js';
 import {t,applyI18n} from '../lib/i18n.js';
 import {applyTheme,buildBaseThemeGrid} from './settings.js';
 import {renderPrayers,reverseGeocode,geocodeCity} from './salat.js';
 
 const $=id=>document.getElementById(id);
-const STEPS=4;
+const STEPS=5;
 let _step=0;
 
 function renderDots(){
@@ -30,7 +30,7 @@ function showStep(i){
   renderDots();
   $('ob-back').style.display=_step===0?'none':'block';
   $('ob-back').textContent=t('ob.back');
-  $('ob-skip').style.display=_step===3?'block':'none';
+  $('ob-skip').style.display=_step===STEPS-1?'block':'none';
   $('ob-next').textContent=_step===0?t('ob.start'):(_step===STEPS-1?t('ob.letsgo'):t('ob.next'));
   updateScrollHint();
 }
@@ -55,17 +55,31 @@ function updateScrollHint(){
 /* ── Étape 0 : langue ── */
 function buildLangGrid(){
   const grid=$('ob-lang-grid');grid.innerHTML='';
-  LANGS.forEach(l=>{
-    const el=document.createElement('div');
-    el.className='chip'+(S.lang===l.code?' sel':'');
-    el.style.cssText='margin:3px;display:inline-block;';
-    el.textContent=`${l.flag} ${l.name}`;
-    el.addEventListener('click',()=>{
-      S.lang=l.code;save();applyI18n();buildLangGrid();showStep(_step);vib(16);
+  grid.style.textAlign='left';
+  LANG_REGIONS.forEach(reg=>{
+    const langs=LANGS.filter(l=>l.region===reg.id);
+    if(!langs.length)return;
+    const h=document.createElement('div');
+    h.className='sl';h.style.cssText='margin:10px 4px 6px;text-align:left;';
+    h.textContent=reg.label;
+    grid.appendChild(h);
+    const row=document.createElement('div');
+    row.style.cssText='display:flex;flex-wrap:wrap;justify-content:center;gap:4px;';
+    langs.forEach(l=>{
+      const el=document.createElement('div');
+      el.className='chip'+(S.lang===l.code?' sel':'');
+      el.style.cssText='margin:2px;';
+      el.textContent=`${l.flag} ${l.name}`;
+      el.addEventListener('click',()=>{
+        S.lang=l.code;
+        if(!S._calcTouched){const m=CALC_BY_LANG[l.code];if(m)S.calcMethod=m;}
+        if(!S._madhabTouched){const md=MADHAB_BY_LANG[l.code];if(md)S.madhab=md;}
+        save();applyI18n();buildLangGrid();buildMethodList();buildMadhabRow();showStep(_step);vib(16);
+      });
+      row.appendChild(el);
     });
-    grid.appendChild(el);
+    grid.appendChild(row);
   });
-  grid.style.textAlign='center';
 }
 
 /* ── Étape 2 : madhhab ── */
@@ -76,15 +90,15 @@ function buildMadhabRow(){
     el.className='chip'+(S.madhab===m.id?' sel':'');
     el.textContent=`${m.name}`;
     el.title=m.asrFactor===2?'Asr : ombre ×2':'Asr : ombre ×1';
-    el.addEventListener('click',()=>{S.madhab=m.id;save();buildMadhabRow();vib(14);});
+    el.addEventListener('click',()=>{S.madhab=m.id;S._madhabTouched=true;save();buildMadhabRow();vib(14);});
     row.appendChild(el);
   });
 }
 
-/* ── Étape 1 : apparence ── */
+/* ── Étape 1 : apparence ── (uniquement les accents de base, pas les bonus verrouillés) */
 function buildAccentGrid(){
   const grid=$('ob-accent-grid');grid.innerHTML='';
-  THEMES.forEach(t=>{
+  THEMES.filter(x=>!x.unlockAt).forEach(t=>{
     const el=document.createElement('div');
     el.className='tsw'+(S.accent===t.key?' active':'');
     el.innerHTML=`<div class="sdot" style="background:${t.color}"></div><div class="sname">${t.name}</div>`;
@@ -103,7 +117,7 @@ function buildMethodList(){
     row.className='ob-method-row'+(S.calcMethod===m.id?' sel':'');
     row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${m.name}</div><div class="ob-method-desc">${m.desc}</div></div>`;
     row.addEventListener('click',()=>{
-      S.calcMethod=m.id;save();buildMethodList();vib(16);
+      S.calcMethod=m.id;S._calcTouched=true;save();buildMethodList();vib(16);
     });
     list.appendChild(row);
   });

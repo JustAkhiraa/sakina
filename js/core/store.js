@@ -17,7 +17,10 @@ const DEFAULTS={
   // Apparence / préférences
   accent:'gold',sound:'drop',soundOn:true,vibOn:true,
   nightMode:false,autoLoop:false,screenLock:false,lightMode:false,
-  baseTheme:'dark',              // ambiance : dark|emerald|ocean|mocha|light|sand|dawn
+  baseTheme:'dark',              // AMBIANCE de couleur : dark|emerald|ocean|mocha|light|sand|dawn|...
+  skin:'classic',                // SKIN d'apparence (couche visuelle par-dessus l'ambiance)
+  avatar:'kaaba',                // récompense — voir data/catalog.js AVATARS
+  titleId:'traveler',            // récompense — voir data/catalog.js TITLES
   hourFmt:'24',
   // Localisation & prières
   calcMethod:3,lat:null,lon:null,city:'',
@@ -31,7 +34,10 @@ const DEFAULTS={
   // Coran
   quranLast:{surah:1},
   quranFavs:{},quranNotes:{},
+  // Navigation personnalisable (Lot 1) — ordre, items masqués, page d'ouverture
+  nav:{order:[],hidden:[],startPage:'page-tasbih'},
 };
+
 
 function migrateLegacy(){
   try{

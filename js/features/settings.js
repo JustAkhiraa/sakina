@@ -1,19 +1,29 @@
-/* SAKINA — Réglages : thème, accents, sons, préférences, stats, données */
+/* SAKINA — Réglages : ambiance, accent, skin, sons, préférences, stats, données.
+   Règle d'or : dans les grilles de config, on N'AFFICHE PAS les cadeaux verrouillés
+   (l'utilisateur ne peut pas les sélectionner de toute façon). Tout ce qui est
+   verrouillé est regroupé dans la sheet « Cadeaux à débloquer » (#sh-bonus). */
 import {S,save,streak,on} from '../core/store.js';
 import {toast,confirmDlg,openSheet,closeSheet} from '../core/ui.js';
 import {playSound,vib} from '../core/audio.js';
-import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS,BASE_THEMES} from '../data/catalog.js';
+import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS,BASE_THEMES,AVATARS,TITLES,SKINS} from '../data/catalog.js';
+import {isUnlocked,remainingFor,fmtGoal,rewardsSummary,nextReward,allRewards} from '../core/rewards.js';
 import {applyI18n} from '../lib/i18n.js';
 import {renderTasbih,buildDhikrBar} from './tasbih.js';
 import {renderPrayers} from './salat.js';
+import {NAV_ITEMS,renderNavbar,visibleNavItems} from '../core/nav.js';
+
 
 const $=id=>document.getElementById(id);
 
 export function applyTheme(){
   const root=document.documentElement;
-  const theme=BASE_THEMES.find(t=>t.id===S.baseTheme)||BASE_THEMES[0];
+  let theme=BASE_THEMES.find(t=>t.id===S.baseTheme)||BASE_THEMES[0];
+  if(!isUnlocked(theme)){theme=BASE_THEMES[0];S.baseTheme=theme.id;save();}
+  let skin=SKINS.find(s=>s.id===S.skin)||SKINS[0];
+  if(!isUnlocked(skin)){skin=SKINS[0];S.skin=skin.id;save();}
   root.setAttribute('data-accent',S.accent);
   root.setAttribute('data-theme',theme.id);
+  root.setAttribute('data-skin',skin.id);
   root.setAttribute('data-night',(S.nightMode&&!theme.light)?'true':'false');
   if(theme.light)root.setAttribute('data-light-ui','');
   else root.removeAttribute('data-light-ui');
@@ -22,8 +32,6 @@ export function applyTheme(){
   const meta=$('theme-color-meta');
   if(meta)meta.content=bg;
   root.style.background=bg;
-  // color-scheme dynamique : figé sur "dark", il laissait les zones système
-  // (barre du bas, overscroll) noires même en thème clair
   root.style.colorScheme=theme.light?'light':'dark';
   const cs=document.querySelector('meta[name="color-scheme"]');
   if(cs)cs.content=theme.light?'light':'dark';
@@ -32,59 +40,262 @@ export function applyTheme(){
   Object.entries(map).forEach(([k,id])=>{const el=$(id);if(el)el.classList.toggle('on',!!S[k]);});
 }
 
-export function buildBaseThemeGrid(targetId='base-theme-grid'){
-  const grid=$(targetId);
-  if(!grid)return;
-  grid.innerHTML='';
-  BASE_THEMES.forEach(t=>{
+/* Petit helper : injecte un en-tête de groupe dans une grille/list. */
+function groupHeader(label){
+  const h=document.createElement('div');
+  h.className='grp-h';
+  h.textContent=label;
+  return h;
+}
+
+export function buildBaseThemeGrid(targetId='base-theme-grid',opts={onlyUnlocked:true}){
+  const host=$(targetId);
+  if(!host)return;
+  host.innerHTML='';host.style.display='block';
+  const items=BASE_THEMES.filter(t=>opts.onlyUnlocked?isUnlocked(t):true);
+  // On fusionne base + bonus dans une seule section par famille ;
+  // à l'intérieur, les bonus (unlockAt>0) apparaissent après les bases.
+  const groups=[
+    {label:'Sombres', filter:t=>!t.light},
+    {label:'Clairs',  filter:t=>t.light},
+  ];
+  const sortFn=(a,b)=>(a.unlockAt|0)-(b.unlockAt|0);
+  const makeCell=(t)=>{
+    const unlocked=isUnlocked(t);
     const el=document.createElement('div');
-    el.className='tsw'+(S.baseTheme===t.id?' active':'');
-    el.innerHTML=`<div class="sdot" style="background:${t.swatch};border-color:${t.light?'rgba(0,0,0,0.2)':'rgba(255,255,255,0.25)'}"></div><div class="sname">${t.name}</div>`;
+    el.className='tsw'+(S.baseTheme===t.id?' active':'')+(unlocked?'':' locked');
+    const border=t.light?'rgba(0,0,0,0.2)':'rgba(255,255,255,0.25)';
+    const badge=unlocked
+      ? (t.bonus?'<span class="tsw-badge">★</span>':'')
+      : `<span class="tsw-lock" aria-label="Verrouillé">🔒</span>`;
+    const sub=unlocked?t.name:`${t.name} · ${fmtGoal(t.unlockAt)}`;
+    el.innerHTML=`<div class="sdot" style="background:${t.swatch};border-color:${border}">${badge}</div><div class="sname">${sub}</div>`;
     el.addEventListener('click',()=>{
+      if(!unlocked){toast(`Ambiance verrouillée — encore ${remainingFor(t).toLocaleString('fr-FR')} dhikr`);vib(10);return;}
       S.baseTheme=t.id;S.lightMode=t.light;
       save();applyTheme();
       buildBaseThemeGrid('base-theme-grid');
       buildBaseThemeGrid('ob-base-theme-grid');
       vib(18);
     });
-    grid.appendChild(el);
+    return el;
+  };
+  groups.forEach(g=>{
+    const sub=items.filter(g.filter).sort(sortFn);
+    if(!sub.length)return;
+    host.appendChild(groupHeader(g.label));
+    const grid=document.createElement('div');grid.className='tsw-grid';
+    sub.forEach(t=>grid.appendChild(makeCell(t)));
+    host.appendChild(grid);
   });
 }
 
-function buildThemeGrid(){
-  const grid=$('theme-grid');grid.innerHTML='';
-  THEMES.forEach(t=>{
+/* ── Grille des SKINS (surcouche visuelle) ──
+   Rendu simplifié : chaque carte = une pastille couleur + un glyphe clair
+   représentant le skin. Fini le vague « ✦ » qui ne parlait à personne. */
+const SKIN_ICONS={
+  classic:'✦', liquid:'◐', masjid:'🕌', neon:'⚡',
+  emerald_deep:'❋', copper:'☀', royal:'♛', zellige:'❖',
+  voxel:'▣', terminal:'▮', matrix:'⋮⋮', crt:'▤',
+};
+function buildSkinGrid(targetId='skin-grid',opts={onlyUnlocked:true}){
+  const grid=$(targetId);if(!grid)return;grid.innerHTML='';
+  SKINS.filter(s=>opts.onlyUnlocked?isUnlocked(s):true).forEach(s=>{
+    const unlocked=isUnlocked(s);
     const el=document.createElement('div');
-    el.className='tsw'+(S.accent===t.key?' active':'');
-    el.innerHTML=`<div class="sdot" style="background:${t.color}"></div><div class="sname">${t.name}</div>`;
-    el.addEventListener('click',()=>{S.accent=t.key;save();applyTheme();buildThemeGrid();vib(18);});
+    el.className='skin-card'+(S.skin===s.id?' active':'')+(unlocked?'':' locked');
+    const icon=unlocked?(SKIN_ICONS[s.id]||'✦'):'🔒';
+    const meta=unlocked?s.desc:`Palier ${fmtGoal(s.unlockAt)} dhikr`;
+    el.innerHTML=`<div class="skin-chip skin-prev-${s.id}"><span>${icon}</span></div>
+      <div class="skin-info"><div class="skin-name">${s.name}</div>
+      <div class="skin-desc">${meta}</div></div>`;
+    el.addEventListener('click',()=>{
+      if(!unlocked){toast(`Skin verrouillé — encore ${remainingFor(s).toLocaleString('fr-FR')} dhikr`);vib(10);return;}
+      S.skin=s.id;save();applyTheme();buildSkinGrid('skin-grid');vib(18);
+      toast(`✦ Skin « ${s.name} »`);
+    });
     grid.appendChild(el);
   });
 }
 
-function buildSoundList(){
+
+function buildAccentGrid(){
+  const host=$('theme-grid');host.innerHTML='';host.style.display='block';
+  const groups=[
+    {label:'Chaudes', fam:'warm'},
+    {label:'Froides', fam:'cool'},
+    {label:'Neutres', fam:'neutral'},
+  ];
+  // Les accents verrouillés (bonus) ne sont PAS montrés ici — ils vivent
+  // dans la sheet « Cadeaux à débloquer » pour ne pas encombrer la config.
+  groups.forEach(g=>{
+    const sub=THEMES.filter(t=>t.fam===g.fam && isUnlocked(t));
+    if(!sub.length)return;
+    host.appendChild(groupHeader(g.label));
+    const grid=document.createElement('div');grid.className='tsw-grid';
+    sub.forEach(t=>{
+      const el=document.createElement('div');
+      el.className='tsw'+(S.accent===t.key?' active':'');
+      el.innerHTML=`<div class="sdot" style="background:${t.color}"></div><div class="sname">${t.name}</div>`;
+      el.addEventListener('click',()=>{S.accent=t.key;save();applyTheme();buildAccentGrid();vib(18);});
+      grid.appendChild(el);
+    });
+    host.appendChild(grid);
+  });
+}
+
+function buildSoundList(opts={onlyUnlocked:true}){
   const list=$('sound-list');list.innerHTML='';
-  const grid=document.createElement('div');grid.className='sound-grid';
-  SOUNDS.forEach(s=>{
+  const cats=[
+    {id:'nature', label:'Nature & souffle'},
+    {id:'perc',   label:'Percussion & bois'},
+    {id:'melo',   label:'Mélodique & résonant'},
+    {id:'digital',label:'Digital'},
+    {id:'geek',   label:'Clin d\'œil'},
+  ];
+  cats.forEach(c=>{
+    const sub=SOUNDS.filter(s=>(s.cat||'melo')===c.id).filter(s=>opts.onlyUnlocked?isUnlocked(s):true);
+    if(!sub.length)return;
+    list.appendChild(groupHeader(c.label));
+    const grid=document.createElement('div');grid.className='sound-grid';
+    sub.forEach(s=>{
+      const unlocked=isUnlocked(s);
+      const el=document.createElement('div');
+      el.className='sound-chip'+(S.sound===s.id?' active':'')+(unlocked?'':' locked');
+      el.title=unlocked?s.desc:`Débloqué à ${fmtGoal(s.unlockAt)} dhikr`;
+      const label=unlocked?s.name:`${s.name} · ${fmtGoal(s.unlockAt)}`;
+      el.innerHTML=`<span class="sc-dot"></span>${label}${unlocked?'':' <span class="sc-lock">🔒</span>'}`;
+      el.addEventListener('click',()=>{
+        if(!unlocked){toast(`Son verrouillé — encore ${remainingFor(s).toLocaleString('fr-FR')} dhikr`);vib(10);return;}
+        S.sound=s.id;save();buildSoundList();playSound(s.id);vib(16);
+      });
+      grid.appendChild(el);
+    });
+    list.appendChild(grid);
+  });
+}
+
+/* ── Avatars ── */
+function buildAvatarGrid(opts={onlyUnlocked:true}){
+  const grid=$('avatar-grid');if(!grid)return;grid.innerHTML='';
+  AVATARS.filter(a=>opts.onlyUnlocked?isUnlocked(a):true).forEach(a=>{
+    const unlocked=isUnlocked(a);
     const el=document.createElement('div');
-    el.className='sound-chip'+(S.sound===s.id?' active':'');
-    el.title=s.desc;
-    el.innerHTML=`<span class="sc-dot"></span>${s.name}`;
-    el.addEventListener('click',()=>{S.sound=s.id;save();buildSoundList();playSound(s.id);vib(16);});
+    el.className='av-cell'+(S.avatar===a.id?' active':'')+(unlocked?'':' locked');
+    const sub=unlocked?a.name:`${fmtGoal(a.unlockAt)}`;
+    el.innerHTML=`<div class="av-emoji">${unlocked?a.emoji:'🔒'}</div><div class="av-name">${sub}</div>`;
+    el.addEventListener('click',()=>{
+      if(!unlocked){toast(`Avatar verrouillé — encore ${remainingFor(a).toLocaleString('fr-FR')} dhikr`);vib(10);return;}
+      S.avatar=a.id;save();buildAvatarGrid();renderStats();vib(16);
+    });
     grid.appendChild(el);
   });
-  list.appendChild(grid);
+}
+
+/* ── Titres ── L'emoji devient le pictogramme et se colle au nom affiché. */
+function buildTitleList(opts={onlyUnlocked:true}){
+  const list=$('title-list');if(!list)return;list.innerHTML='';
+  TITLES.filter(t=>opts.onlyUnlocked?isUnlocked(t):true).forEach(t=>{
+    const unlocked=isUnlocked(t);
+    const row=document.createElement('div');
+    row.className='title-row'+(S.titleId===t.id?' sel':'')+(unlocked?'':' locked');
+    row.innerHTML=`<div class="title-emoji">${t.emoji||'✦'}</div>
+      <div style="flex:1"><div class="title-name">${t.name}</div>
+      <div class="title-sub">${unlocked?'Débloqué':'Palier '+fmtGoal(t.unlockAt)+' dhikr'}</div></div>
+      <div class="title-lock">${unlocked?'':'🔒'}</div>`;
+    row.addEventListener('click',()=>{
+      if(!unlocked){toast(`Titre verrouillé — encore ${remainingFor(t).toLocaleString('fr-FR')} dhikr`);vib(10);return;}
+      S.titleId=t.id;save();buildTitleList();renderStats();vib(16);
+    });
+    list.appendChild(row);
+  });
+}
+
+/* ── Sheet « Cadeaux à débloquer » : liste TOUS les items à unlockAt>0,
+   classés par catégorie, avec barre de progression individuelle. ── */
+function buildBonusSheet(){
+  const body=$('bonus-body');if(!body)return;
+  const items=allRewards();  // toutes catégories, item.__cat / __label injectés
+  const grouped={};
+  items.forEach(it=>{(grouped[it.__cat]=grouped[it.__cat]||{label:it.__label,items:[]}).items.push(it);});
+  const summary=rewardsSummary();
+  const next=nextReward();
+  let html=`<div class="bonus-summary">
+    <div class="bonus-count">${summary.unlocked}<span>/${summary.total}</span></div>
+    <div class="bonus-sub">${next?`Prochain : ${next.name||next.__label} · ${fmtGoal(next.unlockAt)} dhikr (encore ${remainingFor(next).toLocaleString('fr-FR')})`:'Toutes les récompenses débloquées ✨'}</div>
+  </div>`;
+  const catOrder=['skin','theme','avatar','sound','dhikr','title'];
+  catOrder.forEach(cat=>{
+    const g=grouped[cat];if(!g)return;
+    html+=`<div class="bonus-cat"><div class="bonus-cat-title">${g.label}s</div><div class="bonus-list">`;
+    g.items.sort((a,b)=>a.unlockAt-b.unlockAt).forEach(it=>{
+      const u=isUnlocked(it);
+      const pct=Math.min(100,((S.allTime|0)/it.unlockAt)*100);
+      const nm=it.name||it.__label;
+      const emoji=it.emoji||(u?'✓':'🔒');
+      html+=`<div class="bonus-row${u?' unlocked':''}">
+        <div class="bonus-ic">${emoji}</div>
+        <div class="bonus-body">
+          <div class="bonus-name">${nm}</div>
+          <div class="bonus-prog"><div class="bonus-prog-fill" style="width:${pct}%"></div></div>
+          <div class="bonus-meta">${u?'Débloqué':`${(S.allTime|0).toLocaleString('fr-FR')} / ${fmtGoal(it.unlockAt)} dhikr`}</div>
+        </div>
+      </div>`;
+    });
+    html+=`</div></div>`;
+  });
+  body.innerHTML=html;
 }
 
 const qdaTotal=()=>QADA_PRAYERS.reduce((s,p)=>s+(S.qada[p.key]||0),0);
+
+function currentAvatar(){return (AVATARS.find(a=>a.id===S.avatar&&isUnlocked(a))||AVATARS[0]).emoji;}
+function currentTitle(){
+  const t=TITLES.find(t=>t.id===S.titleId&&isUnlocked(t))||TITLES[0];
+  return `${t.emoji||''} ${t.name}`.trim();
+}
+
+/* ── Système de flamme progressive ─────────────────────────────────────
+   Plus la série de jours consécutifs est longue, plus la flamme grandit :
+   0 j → 🌫️  · 1-2 j → 🕯️  · 3-6 j → 🔥  · 7-13 j → 🔥🔥
+   14-29 j → 🔥🔥🔥  · 30-99 j → ⭐🔥  · 100+ j → 👑🔥
+   Le CSS ajoute un léger scintillement au-dessus de 3 jours. */
+function streakBadge(n){
+  if(n<=0) return {icon:'🌫️',cls:'st-cold',label:'Aucune série'};
+  if(n<3)  return {icon:'🕯️',cls:'st-spark',label:'Étincelle'};
+  if(n<7)  return {icon:'🔥',cls:'st-flame',label:'En feu'};
+  if(n<14) return {icon:'🔥🔥',cls:'st-flame st-hot',label:'Brasier'};
+  if(n<30) return {icon:'🔥🔥🔥',cls:'st-flame st-hot',label:'Fournaise'};
+  if(n<100)return {icon:'⭐🔥',cls:'st-flame st-star',label:'Étoile ardente'};
+  return {icon:'👑🔥',cls:'st-flame st-crown',label:'Souverain·e'};
+}
 
 export function renderStats(){
   const fmt=n=>n>9999?(n/1000).toFixed(1)+'k':n;
   $('st-total').textContent=fmt(S.allTime||0);
   $('st-sess').textContent=S.sessCount||0;
-  $('st-streak').textContent=streak();
+  const sk=streak();
+  const badge=streakBadge(sk);
+  const stEl=$('st-streak');
+  if(stEl){
+    stEl.textContent=sk;
+    // La carte parent reçoit la classe → couleur/animation adaptées à la ferveur
+    const card=stEl.closest('.ms-card');
+    if(card){card.className='ms-card gc '+badge.cls;}
+  }
   $('st-qada').textContent=qdaTotal();
-  $('prof-sub').textContent=`${S.sessCount||0} sessions · ${S.allTime||0} dhikrs · série de ${streak()} j`;
+  const av=$('prof-av');if(av)av.textContent=currentAvatar();
+  const pn=$('prof-name');if(pn)pn.textContent=currentTitle();
+  $('prof-sub').textContent=`${badge.icon} ${badge.label} · ${sk} j · ${(S.allTime||0).toLocaleString('fr-FR')} dhikrs`;
+  const rsum=rewardsSummary();
+  const rc=$('rw-count');if(rc)rc.textContent=`${rsum.unlocked}/${rsum.total}`;
+  const rn=$('rw-next');
+  if(rn){
+    const nxt=nextReward();
+    rn.textContent=nxt
+      ?`Prochain : ${nxt.__label} à ${fmtGoal(nxt.unlockAt)} dhikr`
+      :'Tout débloqué ✨';
+  }
 }
 
 /* ── École juridique ── */
@@ -124,18 +335,105 @@ function syncPracticeRows(){
   document.getElementById('lang-current').textContent=`${l.flag} ${l.name}`;
 }
 
+/* ═══ Éditeur de navigation (Lot 1) ═══
+   Liste les 6 catégories avec ↑ ↓ pour trier et une case pour masquer/afficher.
+   La barre du bas est reconstruite à chaque changement.  */
+function buildNavEditor(){
+  const host=$('nav-editor');
+  if(!host)return;
+  host.innerHTML='';
+  const order=[...S.nav.order];
+  order.forEach((id,idx)=>{
+    const item=NAV_ITEMS.find(n=>n.id===id);
+    if(!item)return;
+    const hidden=S.nav.hidden.includes(id);
+    const row=document.createElement('div');
+    row.className='nav-edit-row'+(item.locked?' locked':'');
+    // Item locked (Paramètres) : réordonnable mais case toggle remplacée par
+    // un cadenas — impossible de se verrouiller hors des réglages.
+    const togHtml=item.locked
+      ? `<div class="nav-edit-lock" title="Toujours visible" aria-label="Verrouillé">🔒</div>`
+      : `<div class="tog ${hidden?'':'on'}" data-act="toggle" role="switch" aria-checked="${!hidden}" aria-label="Afficher"></div>`;
+    row.innerHTML=`
+      <div class="nav-edit-icon">${item.icon}</div>
+      <div class="nav-edit-name">${item.label}</div>
+      <button class="nav-edit-btn" data-act="up"  ${idx===0?'disabled':''} aria-label="Monter">▲</button>
+      <button class="nav-edit-btn" data-act="down" ${idx===order.length-1?'disabled':''} aria-label="Descendre">▼</button>
+      ${togHtml}`;
+    row.querySelector('[data-act="up"]').addEventListener('click',()=>moveNav(id,-1));
+    row.querySelector('[data-act="down"]').addEventListener('click',()=>moveNav(id,1));
+    const tog=row.querySelector('[data-act="toggle"]');
+    if(tog)tog.addEventListener('click',()=>toggleNav(id));
+    host.appendChild(row);
+  });
+  buildStartPageSelect();
+}
+
+function buildStartPageSelect(){
+  const sel=$('nav-startpage');
+  if(!sel)return;
+  sel.innerHTML='';
+  visibleNavItems().forEach(it=>{
+    const opt=document.createElement('option');
+    opt.value=it.id;opt.textContent=it.label;
+    if(it.id===S.nav.startPage)opt.selected=true;
+    sel.appendChild(opt);
+  });
+  sel.onchange=()=>{S.nav.startPage=sel.value;save();toast('Page d\'ouverture : '+sel.options[sel.selectedIndex].text);};
+}
+
+function moveNav(id,delta){
+  const arr=S.nav.order;const i=arr.indexOf(id);
+  const j=i+delta;if(i<0||j<0||j>=arr.length)return;
+  [arr[i],arr[j]]=[arr[j],arr[i]];
+  save();renderNavbar();buildNavEditor();vib(12);
+}
+
+function toggleNav(id){
+  const item=NAV_ITEMS.find(n=>n.id===id);
+  if(item&&item.locked){toast('Cette catégorie est toujours visible');return;}
+  const h=S.nav.hidden;const i=h.indexOf(id);
+  if(i>=0)h.splice(i,1); else h.push(id);
+  // Ne pas tout masquer : garantit au moins 1 item visible (hors locked)
+  const visibleCount=NAV_ITEMS.filter(n=>!h.includes(n.id)).length;
+  if(visibleCount<1){h.pop();toast('Il faut au moins une catégorie visible');return;}
+  // Si la page de démarrage vient d'être masquée, on la déplace
+  if(h.includes(S.nav.startPage)){
+    const first=visibleNavItems()[0];
+    if(first)S.nav.startPage=first.id;
+  }
+  save();renderNavbar();buildNavEditor();vib(12);
+}
+
 export function initSettings(){
+
+  // Replis sûrs : si un cadeau sélectionné n'est plus débloqué (après reset)
+  if(!isUnlocked(AVATARS.find(a=>a.id===S.avatar)||{}))S.avatar='kaaba';
+  if(!isUnlocked(TITLES.find(t=>t.id===S.titleId)||{}))S.titleId='traveler';
+  if(!isUnlocked(SKINS.find(s=>s.id===S.skin)||{}))S.skin='classic';
   applyTheme();
   applyI18n();
-  buildBaseThemeGrid();
-  buildThemeGrid();
+  buildBaseThemeGrid('base-theme-grid');
+  buildSkinGrid('skin-grid');
+  buildAccentGrid();
   buildSoundList();
+  buildAvatarGrid();
+  buildTitleList();
   renderStats();
   syncPracticeRows();
-  on('stats-changed',renderStats);
+  buildNavEditor();
+
+  on('stats-changed',()=>{
+    renderStats();
+    // Refresh silencieux : les cadeaux fraîchement débloqués apparaissent immédiatement
+    buildAvatarGrid();buildTitleList();buildSoundList();
+    buildBaseThemeGrid('base-theme-grid');buildSkinGrid('skin-grid');
+  });
 
   document.getElementById('btn-open-madhab').addEventListener('click',()=>openSheet('sh-madhab',buildMadhabList));
   document.getElementById('btn-open-lang').addEventListener('click',()=>openSheet('sh-lang',buildLangList));
+  const bonusBtn=document.getElementById('btn-open-bonus');
+  if(bonusBtn)bonusBtn.addEventListener('click',()=>openSheet('sh-bonus',buildBonusSheet));
 
   // Toggles de préférences
   const keyMap={'tog-sound':'soundOn','tog-vib':'vibOn','tog-loop':'autoLoop','tog-night':'nightMode'};
@@ -148,7 +446,6 @@ export function initSettings(){
     });
   });
 
-  // Écriture des adhkâr : arabe / phonétique
   document.querySelectorAll('#translit-seg .seg-opt').forEach(opt=>{
     opt.classList.toggle('active',opt.dataset.tr===S.translit);
     opt.addEventListener('click',()=>{
@@ -159,7 +456,6 @@ export function initSettings(){
     });
   });
 
-  // Format 12H/24H — scopé et réellement appliqué aux horaires
   document.querySelectorAll('#fmt-seg .seg-opt').forEach(opt=>{
     opt.classList.toggle('active',opt.dataset.fmt===S.hourFmt);
     opt.addEventListener('click',()=>{
@@ -170,7 +466,6 @@ export function initSettings(){
     });
   });
 
-  // Export JSON
   $('btn-export').addEventListener('click',()=>{
     const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
     const a=document.createElement('a');
@@ -181,7 +476,34 @@ export function initSettings(){
     toast('📤 Exporté');
   });
 
-  // Réinitialisation totale
+  // Import : fusion non destructive d'un backup précédent. On garde toujours
+  // le max des deux pour les compteurs cumulatifs (allTime, sessCount…) pour
+  // ne jamais régresser si l'utilisateur importe un vieux fichier.
+  const fileImport=$('file-import');
+  $('btn-import').addEventListener('click',()=>fileImport.click());
+  fileImport.addEventListener('change',async e=>{
+    const f=e.target.files&&e.target.files[0];if(!f){return;}
+    try{
+      const data=JSON.parse(await f.text());
+      if(!data||typeof data!=='object')throw new Error('format');
+      if(!await confirmDlg('Importer ce fichier ? Il sera fusionné avec ta config actuelle (aucun effacement).',{okLabel:'Importer'})){fileImport.value='';return;}
+      const maxKeys=new Set(['allTime','sessCount','sessTot']);
+      const mergeObj=new Set(['daily','quranFavs','quranNotes','calEvents','qada','qdone']);
+      for(const k of Object.keys(data)){
+        if(maxKeys.has(k))S[k]=Math.max(S[k]|0,data[k]|0);
+        else if(mergeObj.has(k))S[k]={...(S[k]||{}),...(data[k]||{})};
+        else if(k==='history'&&Array.isArray(data.history))S.history=[...data.history,...S.history].slice(0,500);
+        else if(k==='customDhikrs'&&Array.isArray(data.customDhikrs)){
+          const seen=new Set(S.customDhikrs.map(d=>d.name));
+          data.customDhikrs.forEach(d=>{if(!seen.has(d.name))S.customDhikrs.push(d);});
+        }
+        else S[k]=data[k];
+      }
+      save();location.reload();
+    }catch{toast('⚠️ Fichier invalide');}
+    fileImport.value='';
+  });
+
   $('btn-reset-all').addEventListener('click',async()=>{
     if(!await confirmDlg('Tout effacer ? Compteurs, historique, qadâ\'. Action irréversible.',{okLabel:'Tout effacer'}))return;
     S.count=0;S.lapCount=0;S.sessTot=0;S.allTime=0;S.sessCount=0;

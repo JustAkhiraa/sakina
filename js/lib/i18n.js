@@ -92,10 +92,13 @@ const D={
   'com.contentNote':{fr:'Le contenu religieux (douas, traduction du Coran) reste en français/arabe pour le moment.',ar:'المحتوى الديني (الأدعية وترجمة القرآن) يبقى بالفرنسية/العربية حالياً.',en:'Religious content (duas, Quran translation) remains in French/Arabic for now.',es:'El contenido religioso permanece en francés/árabe por ahora.',ru:'Религиозный контент пока остаётся на французском/арабском.',zh:'宗教内容（祈祷文、古兰经翻译）目前仍为法语/阿拉伯语。',ja:'宗教コンテンツは現在フランス語／アラビア語のままです。',hi:'धार्मिक सामग्री फ़िलहाल फ़्रेंच/अरबी में ही रहेगी।'},
 };
 
+/* Chaîne de repli : langue courante → anglais → français.
+   Permet d'ajouter de nouvelles langues (tr, id, ur, ms, fa, bn, bs, so, sw, ha)
+   sans traduire immédiatement chaque clé — l'interface reste lisible. */
 export function t(key){
   const e=D[key];
   if(!e)return key;
-  return e[S.lang]||e.fr;
+  return e[S.lang]||e.en||e.fr||key;
 }
 
 export function isRTL(){return !!(LANGS.find(l=>l.code===S.lang)||{}).rtl;}

@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v12';
+const VERSION='sakina-v14';
 const SHELL=[
   './',
   './index.html',
@@ -9,6 +9,7 @@ const SHELL=[
   './css/tokens.css','./css/base.css','./css/pages.css',
   './js/app.js',
   './js/core/store.js','./js/core/ui.js','./js/core/audio.js','./js/core/router.js',
+  './js/core/nav.js','./js/core/rewards.js','./js/core/devtools.js',
   './js/lib/astro.js','./js/lib/hijri.js','./js/lib/i18n.js',
   './js/data/catalog.js','./js/data/duas.js','./js/data/surahs.js','./js/data/additives.js',
   './js/data/routines.js','./js/data/halal-certifs.js',
@@ -31,6 +32,14 @@ self.addEventListener('activate',e=>{
 self.addEventListener('fetch',e=>{
   const url=new URL(e.request.url);
   if(e.request.method!=='GET')return;
+
+  // Navigations vers '/' (ou toute page HTML non trouvée) → app shell hors-ligne
+  if(e.request.mode==='navigate'&&url.origin===location.origin){
+    e.respondWith(
+      fetch(e.request).catch(()=>caches.match('./index.html'))
+    );
+    return;
+  }
 
   // Coran & géocodage : réseau d'abord, cache en secours (lecture hors-ligne)
   if(url.hostname==='api.quran.com'){

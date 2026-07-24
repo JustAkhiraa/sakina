@@ -15,7 +15,6 @@ export function goPage(pageId){
 }
 
 export function initRouter(){
-  document.querySelectorAll('.nv').forEach(el=>{
-    el.addEventListener('click',()=>goPage(el.dataset.page));
-  });
+  // La navbar est reconstruite dynamiquement par core/nav.js — plus rien à câbler ici.
 }
+
