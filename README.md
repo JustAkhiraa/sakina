@@ -30,16 +30,21 @@ js/
   core/
     store.js            État persistant + migration auto depuis l'ancienne app (tpv5)
     router.js           Navigation par pages + hooks d'affichage
+    nav.js              Barre de navigation dynamique (5 items + menu « Plus »)
     ui.js               Toast, burst, sheets, dialogue de confirmation (Promise)
     audio.js            Sons WebAudio synthétisés + haptique
+    rewards.js          Récompenses par paliers (skins, ambiances, avatars, titres…)
+    devtools.js         Outils de développement internes
   lib/
     astro.js            Astronomie : horaires de prière (angles réels par méthode,
                         Asr par facteur d'ombre), qibla, distance Ka'ba
     hijri.js            Calendrier hégirien tabulaire (données numériques propres)
   data/                 Catalogues : dhikrs, douas, 114 sourates, méthodes de calcul
   features/             Un module par écran : tasbih, salat, qibla, duas, quran,
-                        settings, tools (Qadâ'/Rak'ah/Zakat/hégirien/jeûne)
-legacy/v8.html          Ancien monolithe (référence, ne plus modifier)
+                        settings, tools (Qadâ'/Rak'ah/Zakat/hégirien/jeûne), books
+books/                  Textes : Riyad as-Salihin, Citadelle du Musulman, Asma ul-Husna
+docs/                   Guides (README.html rendu, PUBLISH.html)
+tools/                  Scripts dev (extraction PDF)
 ```
 
 **Communication inter-modules** : imports directs quand la dépendance est naturelle, `CustomEvent` DOM (`stats-changed`, `location-changed`) pour éviter les cycles.
