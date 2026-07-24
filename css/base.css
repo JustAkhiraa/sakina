@@ -76,6 +76,24 @@ input:-webkit-autofill,input:-webkit-autofill:focus{
 /* ── LABEL DE SECTION ── */
 .sl{font-size:0.57rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;
   color:var(--t3);margin:18px 20px 8px;}
+/* ── SECTION REPLIABLE (<details class="sec">) ──
+   Chaque grosse liste (Skin, Ambiance, Son, Avatar, Titre) est repliée par
+   défaut pour alléger la page Réglages. Le <summary> réutilise le style .sl
+   avec un chevron qui pivote quand la section s'ouvre. */
+details.sec{margin:0;}
+details.sec>summary{list-style:none;cursor:pointer;display:block;user-select:none;
+  -webkit-tap-highlight-color:transparent;}
+details.sec>summary::-webkit-details-marker{display:none;}
+details.sec>summary:active{opacity:0.85;}
+/* Ancien style (summary = titre .sl + chevron texte) */
+.sec-chev{font-size:0.9rem;font-weight:400;color:var(--t3);transition:transform 0.25s var(--ease);display:inline-block;margin-right:20px;}
+details.sec[open]>summary .sec-chev{transform:rotate(90deg);}
+/* Nouveau : summary = 1re ligne visible (.row) avec chevron SVG qui pivote */
+details.sec.sec-row>summary .sec-chev-svg{transition:transform 0.25s var(--ease);}
+details.sec.sec-row[open]>summary .sec-chev-svg{transform:rotate(90deg);color:var(--a);}
+details.sec[open]>*:not(summary){animation:secIn 0.28s var(--ease);}
+@keyframes secIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+
 /* ── ROW ── */
 .row{display:flex;align-items:center;padding:13px 16px;
   border-bottom:1px solid var(--bor2);gap:12px;cursor:pointer;
@@ -84,7 +102,8 @@ input:-webkit-autofill,input:-webkit-autofill:focus{
 .row:active{background:rgba(var(--a-rgb),0.07);}
 .row-ic{width:36px;height:36px;border-radius:var(--r-sm);background:var(--sur2);
   border:1px solid var(--bor);display:flex;align-items:center;justify-content:center;
-  font-size:1rem;flex-shrink:0;}
+  font-size:1rem;flex-shrink:0;color:var(--a);}
+.row-ic svg{width:20px;height:20px;}
 .row-body{flex:1;min-width:0;}
 .row-name{font-size:0.87rem;font-weight:600;color:var(--t1);}
 .row-sub{font-size:0.67rem;color:var(--t2);margin-top:1px;}
@@ -188,3 +207,20 @@ input,textarea,select{font-size:16px;}
 .seg-opt{padding:5px 11px;border-radius:var(--r-pill);font-size:0.72rem;font-weight:800;
   cursor:pointer;transition:all 0.2s;color:var(--t3);white-space:nowrap;border:1px solid transparent;}
 .seg-opt.active{background:var(--a-dim);color:var(--a);border-color:var(--a-glow);}
+
+/* Groupes logiques dans les grilles de réglages */
+.grp-h{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.09em;
+  color:var(--t3);opacity:0.85;margin:12px 2px 6px;}
+.grp-h:first-child{margin-top:2px;}
+.tsw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:10px;}
+
+/* Éditeur de navigation (Réglages → Navigation) */
+.nav-edit-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--bd);}
+.nav-edit-row:last-child{border-bottom:none;}
+.nav-edit-icon{width:28px;height:28px;color:var(--t2);flex-shrink:0;}
+.nav-edit-icon svg{width:100%;height:100%;}
+.nav-edit-name{flex:1;font-size:0.92rem;color:var(--t1);font-weight:600;}
+.nav-edit-btn{width:32px;height:32px;border-radius:10px;background:var(--c2);color:var(--t1);
+  border:1px solid var(--bd);font-size:0.7rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.nav-edit-btn:disabled{opacity:0.35;cursor:not-allowed;}
+.nv-more svg{width:22px;height:22px;}
