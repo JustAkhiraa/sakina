@@ -1,6 +1,7 @@
 /* SAKINA — Point d'entrée : câblage des modules + PWA */
 import {initUI} from './core/ui.js';
 import {initRouter,registerPageHook,goPage} from './core/router.js';
+import {ensureNavState,renderNavbar,goToStartPage} from './core/nav.js';
 import {initTasbih} from './features/tasbih.js';
 import {initSalat,onSalatShow} from './features/salat.js';
 import {initQibla,onQiblaShow} from './features/qibla.js';
@@ -13,9 +14,13 @@ import {initPlaces} from './features/places.js';
 import {initHalal,stopCamera} from './features/halal.js';
 import {initRoutines} from './features/routines.js';
 import {initBooks} from './features/books.js';
+import {initDevTools} from './core/devtools.js';
 
 initUI();
 initRouter();
+ensureNavState();
+renderNavbar();
+initDevTools();
 initSettings();   // applique le thème en premier (évite le flash)
 initTasbih();
 initSalat();
@@ -41,7 +46,23 @@ registerPageHook('page-salat',onSalatShow);
 registerPageHook('page-qibla',onQiblaShow);
 registerPageHook('page-quran',onQuranShow);
 
-// PWA — hors localhost/file pour ne pas gêner le développement
-if('serviceWorker' in navigator&&location.protocol==='https:'){
+// Page d'ouverture personnalisée (après que tous les modules soient prêts)
+goToStartPage();
+
+
+
+// PWA — hors localhost/preview/iframe pour ne pas gêner le développement
+(function registerSW(){
+  if(!('serviceWorker' in navigator))return;
+  if(location.protocol!=='https:')return;
+  if(window.top!==window.self)return; // pas dans une iframe (preview Lovable)
+  const h=location.hostname;
+  if(h.startsWith('id-preview--')||h.startsWith('preview--'))return;
+  if(h.endsWith('.lovableproject.com')||h.endsWith('.lovableproject-dev.com'))return;
+  if(h.endsWith('.beta.lovable.dev'))return;
+  if(location.search.includes('sw=off')){
+    navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister()));
+    return;
+  }
   navigator.serviceWorker.register('sw.js').catch(()=>{});
-}
+})();

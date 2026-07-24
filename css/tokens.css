@@ -39,7 +39,7 @@
 /* ── THÈMES D'AMBIANCE ──
    Sombres : dark (défaut), emerald, ocean, mocha · Clairs : light, sand, dawn
    Les thèmes clairs portent aussi data-light-ui (posé par applyTheme). */
-[data-theme="light"]{
+html[data-theme="light"]{
   --bg:#F5F4F0;--sur:#FFFFFF;--sur2:#EEECEA;--sur3:#E4E1DB;
   --bor:rgba(0,0,0,0.09);--bor2:rgba(0,0,0,0.05);
   --shine:rgba(255,255,255,0.9);
@@ -49,7 +49,7 @@
   --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(201,169,110,0.10) 0%,transparent 70%);
   --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(96,165,250,0.05) 0%,transparent 65%);
 }
-[data-theme="emerald"]{
+html[data-theme="emerald"]{
   --bg:#04120C;--sur:#0A1F15;--sur2:#11291D;--sur3:#173225;
   --bor:rgba(180,255,215,0.12);--bor2:rgba(180,255,215,0.06);
   --shine:rgba(200,255,225,0.2);
@@ -57,7 +57,7 @@
   --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(52,211,153,0.14) 0%,transparent 70%);
   --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(201,169,110,0.08) 0%,transparent 65%);
 }
-[data-theme="ocean"]{
+html[data-theme="ocean"]{
   --bg:#050B16;--sur:#0B1628;--sur2:#122036;--sur3:#182A44;
   --bor:rgba(170,210,255,0.12);--bor2:rgba(170,210,255,0.06);
   --shine:rgba(200,230,255,0.2);
@@ -65,7 +65,7 @@
   --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(56,152,236,0.15) 0%,transparent 70%);
   --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(45,212,191,0.08) 0%,transparent 65%);
 }
-[data-theme="mocha"]{
+html[data-theme="mocha"]{
   --bg:#120C08;--sur:#1F1611;--sur2:#2A1E17;--sur3:#33261D;
   --bor:rgba(255,220,190,0.12);--bor2:rgba(255,220,190,0.06);
   --shine:rgba(255,235,215,0.2);
@@ -73,7 +73,7 @@
   --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(217,144,88,0.14) 0%,transparent 70%);
   --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(201,169,110,0.10) 0%,transparent 65%);
 }
-[data-theme="sand"]{
+html[data-theme="sand"]{
   --bg:#F3EBDD;--sur:#FCF7EC;--sur2:#EDE3D0;--sur3:#E3D6BE;
   --bor:rgba(90,60,20,0.12);--bor2:rgba(90,60,20,0.06);
   --shine:rgba(255,255,250,0.9);
@@ -83,7 +83,7 @@
   --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(201,169,110,0.18) 0%,transparent 70%);
   --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(194,120,60,0.08) 0%,transparent 65%);
 }
-[data-theme="cream"]{
+html[data-theme="cream"]{
   --bg:#EBE1CD;--sur:#F7F0E0;--sur2:#E3D7BE;--sur3:#D7C8A8;
   --bor:rgba(80,55,15,0.14);--bor2:rgba(80,55,15,0.07);
   --shine:rgba(255,252,240,0.9);
@@ -93,7 +93,7 @@
   --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(190,150,80,0.20) 0%,transparent 70%);
   --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(140,110,60,0.10) 0%,transparent 65%);
 }
-[data-theme="dawn"]{
+html[data-theme="dawn"]{
   --bg:#F7F0F2;--sur:#FFFAFB;--sur2:#F1E4E8;--sur3:#E8D5DC;
   --bor:rgba(120,40,70,0.10);--bor2:rgba(120,40,70,0.05);
   --shine:rgba(255,255,255,0.9);
@@ -103,13 +103,1178 @@
   --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(236,130,160,0.14) 0%,transparent 70%);
   --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(201,169,110,0.10) 0%,transparent 65%);
 }
+/* ── THÈMES BONUS (débloqués à 6000 dhikr) ─────────────────────────────── */
+html[data-theme="amoled"]{
+  --bg:#000000;--sur:#0A0A0A;--sur2:#111111;--sur3:#181818;
+  --bor:rgba(255,255,255,0.08);--bor2:rgba(255,255,255,0.04);
+  --shine:rgba(255,255,255,0.12);
+  --t1:#F5F5F5;--t2:#9A9A9A;--t3:#525252;
+  --orb1:none;--orb2:none;
+}
+html[data-theme="rosewood"]{
+  --bg:#1A0B10;--sur:#25121A;--sur2:#301923;--sur3:#3B202C;
+  --bor:rgba(255,190,210,0.12);--bor2:rgba(255,190,210,0.06);
+  --shine:rgba(255,220,230,0.18);
+  --t1:#F7EBEF;--t2:#B99AA4;--t3:#7A5D66;
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(236,72,153,0.14) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(201,169,110,0.08) 0%,transparent 65%);
+}
+html[data-theme="starry"]{
+  --bg:#060814;--sur:#0C1024;--sur2:#131938;--sur3:#1B234A;
+  --bor:rgba(180,200,255,0.14);--bor2:rgba(180,200,255,0.07);
+  --shine:rgba(220,225,255,0.22);
+  --t1:#EEF1FA;--t2:#93A0C4;--t3:#5A6488;
+  --orb1:radial-gradient(ellipse 60% 50% at 20% 10%,rgba(139,92,246,0.20) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 55% 45% at 80% 90%,rgba(56,152,236,0.12) 0%,transparent 65%);
+}
+html[data-theme="aurora"]{
+  --bg:#071018;--sur:#0D1B24;--sur2:#122732;--sur3:#183342;
+  --bor:rgba(170,255,220,0.14);--bor2:rgba(170,255,220,0.06);
+  --shine:rgba(200,255,235,0.22);
+  --t1:#E8F6F1;--t2:#8FBFAE;--t3:#527F72;
+  --orb1:radial-gradient(ellipse 70% 55% at 12% 6%,rgba(45,212,191,0.20) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 60% 50% at 88% 94%,rgba(139,92,246,0.14) 0%,transparent 65%);
+}
+html[data-theme="marble"]{
+  --bg:#F2EFE9;--sur:#FBF9F4;--sur2:#E8E3D8;--sur3:#DAD3C4;
+  --bor:rgba(60,50,30,0.10);--bor2:rgba(60,50,30,0.05);
+  --shine:rgba(255,255,252,0.9);
+  --t1:#1E1A12;--t2:#6E6552;--t3:#A69C84;
+  --sh1:0 4px 20px rgba(90,70,30,0.08),inset 0 1px 0 rgba(255,255,255,0.85);
+  --sh2:0 10px 40px rgba(90,70,30,0.10),inset 0 1px 0 rgba(255,255,255,0.9);
+  --orb1:radial-gradient(ellipse 65% 50% at 18% 10%,rgba(201,169,110,0.14) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 55% 45% at 82% 92%,rgba(120,110,90,0.08) 0%,transparent 65%);
+}
+
 /* ── NUIT PROFONDE (OLED) — uniquement sur les thèmes sombres ── */
 [data-night="true"]:not([data-light-ui]){
   --bg:#000000;--sur:#0A0B0D;--sur2:#111214;--sur3:#17181B;
   --bor:rgba(255,255,255,0.08);--bor2:rgba(255,255,255,0.04);
   --orb1:none;--orb2:none;
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   SKINS D'APPARENCE — refonte visuelle complète appliquée par-dessus
+   l'ambiance de couleur. Chaque skin redéfinit matière, formes, typo,
+   navigation, chips et bouton principal pour donner l'impression d'une
+   autre app. Les tokens de couleur de fond restent tirés de l'ambiance
+   quand ça a du sens (sauf skins qui imposent leur propre palette).
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── LIQUID GLASS ─────────────────────────────────────────────────────
+   iOS/visionOS : verre translucide, blur généreux, contours lumineux,
+   radius fortement arrondis, halo coloré derrière chaque surface. */
+[data-skin="liquid"]{
+  --r-md:22px;--r-lg:32px;--r-pill:999px;
+  --sh1:0 8px 30px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.22);
+  --sh2:0 20px 60px rgba(0,0,0,0.45),inset 0 1px 0 rgba(255,255,255,0.18);
+}
+[data-skin="liquid"] body::before{
+  content:"";position:fixed;inset:-20% -10% auto -10%;height:70vh;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(40% 50% at 20% 30%,rgba(var(--a-rgb),0.28),transparent 70%),
+    radial-gradient(45% 55% at 80% 40%,rgba(120,180,255,0.22),transparent 70%),
+    radial-gradient(35% 45% at 50% 80%,rgba(255,120,200,0.18),transparent 70%);
+  filter:blur(30px);
+}
+[data-skin="liquid"] #tap-btn,
+[data-skin="liquid"] .gc:not(#compass-ring),
+[data-skin="liquid"] .sp,
+[data-skin="liquid"] .ctrl-ic,
+[data-skin="liquid"] .tsw,
+[data-skin="liquid"] .sh{
+  background:linear-gradient(145deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))!important;
+  backdrop-filter:blur(28px) saturate(200%);
+  border:1px solid rgba(255,255,255,0.22)!important;
+}
+/* Barre de dhikrs en haut : fond transparent, chips en verre très léger */
+[data-skin="liquid"] #dhikr-bar{
+  background:transparent!important;
+  border:none!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+}
+[data-skin="liquid"] .dchip{
+  background:linear-gradient(145deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02))!important;
+  backdrop-filter:blur(20px) saturate(180%);
+  border:1px solid rgba(255,255,255,0.18)!important;
+}
+/* Boussole : verre discret, PAS de reflet qui masque l'aiguille */
+[data-skin="liquid"] #compass-ring{
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.18),rgba(255,255,255,0.04) 70%)!important;
+  backdrop-filter:blur(20px) saturate(180%);
+  border:1px solid rgba(255,255,255,0.28)!important;
+  overflow:visible!important;
+}
+[data-skin="liquid"] #compass-ring::after{display:none!important;}
+[data-skin="liquid"][data-light-ui] #tap-btn,
+[data-skin="liquid"][data-light-ui] .gc,
+[data-skin="liquid"][data-light-ui] .sp,
+[data-skin="liquid"][data-light-ui] .ctrl-ic,
+[data-skin="liquid"][data-light-ui] .tsw{
+  background:linear-gradient(145deg,rgba(255,255,255,0.70),rgba(255,255,255,0.30))!important;
+  border:1px solid rgba(0,0,0,0.08)!important;
+}
+/* En thème clair les chips du haut restent en verre, pas un bloc blanc */
+[data-skin="liquid"][data-light-ui] .dchip{
+  background:linear-gradient(145deg,rgba(255,255,255,0.22),rgba(255,255,255,0.08))!important;
+  border:1px solid rgba(0,0,0,0.08)!important;
+}
+[data-skin="liquid"] #tap-btn{box-shadow:0 24px 70px rgba(0,0,0,0.5),0 0 60px rgba(var(--a-rgb),0.25),inset 0 2px 0 rgba(255,255,255,0.35)!important;}
+
+/* ── NEON LIME ────────────────────────────────────────────────────────
+   Cyberpunk sobre : lime électrique sur noir profond, formes carrées,
+   typo monospace, glow marqué, absence totale de gradients pastel. */
+[data-skin="neon"]{
+  --a:#B2FF2E;--a2:#DFFF8A;--a-glow:rgba(178,255,46,0.55);--a-dim:rgba(178,255,46,0.14);
+  --a-soft:rgba(178,255,46,0.06);--a-rgb:178,255,46;
+  --bg:#05080F;--sur:#0B101A;--sur2:#0F1626;--sur3:#182035;
+  --bor:rgba(178,255,46,0.28);--bor2:rgba(178,255,46,0.12);
+  --t1:#EAF5D5;--t2:#8FA57A;--t3:#4E5B44;
+  --r-md:10px;--r-lg:14px;--r-pill:8px;
+  --ff-d:"JetBrains Mono","IBM Plex Mono",monospace;
+}
+[data-skin="neon"] body{background:var(--bg);}
+[data-skin="neon"] body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.35;
+  background-image:linear-gradient(rgba(178,255,46,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(178,255,46,0.08) 1px,transparent 1px);
+  background-size:40px 40px;mask-image:radial-gradient(60% 60% at 50% 40%,#000 40%,transparent 100%);
+}
+[data-skin="neon"] #cnum,[data-skin="neon"] #t-title,[data-skin="neon"] .phd-title{
+  color:#B2FF2E;text-shadow:0 0 12px rgba(178,255,46,0.55);font-family:var(--ff-d);letter-spacing:0.02em;
+}
+[data-skin="neon"] .ctrl-ic,[data-skin="neon"] .sp,[data-skin="neon"] .gc,[data-skin="neon"] .dchip,[data-skin="neon"] .tsw{
+  background:#0B101A;border:1px solid rgba(178,255,46,0.22);box-shadow:none;
+}
+[data-skin="neon"] #tap-btn{
+  border-radius:24px;background:#0B101A;border:1.5px solid rgba(178,255,46,0.4);
+  box-shadow:0 0 80px rgba(178,255,46,0.35),inset 0 0 40px rgba(178,255,46,0.08);
+}
+[data-skin="neon"] .nv.active svg{filter:drop-shadow(0 0 8px rgba(178,255,46,0.9));}
+
+/* ── ÉMERAUDE PROFONDE ────────────────────────────────────────────────
+   Sanctuaire vert forêt : matière veloutée, calligraphie Amiri dominante,
+   halos verts diffus, radius doux, teinte immersive. */
+[data-skin="emerald_deep"]{
+  --a:#0DBF7B;--a2:#4ADE80;--a-glow:rgba(13,191,123,0.4);--a-dim:rgba(13,191,123,0.16);
+  --a-soft:rgba(13,191,123,0.06);--a-rgb:13,191,123;
+  --bg:#041712;--sur:#082A22;--sur2:#0A3830;--sur3:#0C4638;
+  --bor:rgba(74,222,128,0.14);--bor2:rgba(74,222,128,0.07);
+  --t1:#E8F6EF;--t2:#8FBFA5;--t3:#4E7F6A;
+  --ff-a:"Amiri Quran","Amiri","Traditional Arabic",serif;
+  --ff-d:"Amiri","Cormorant Garamond",serif;
+  --r-md:20px;--r-lg:28px;
+}
+[data-skin="emerald_deep"] body{
+  background:
+    radial-gradient(60% 40% at 50% 0%,rgba(13,191,123,0.18),transparent 70%),
+    radial-gradient(50% 40% at 50% 100%,rgba(13,191,123,0.12),transparent 70%),
+    #041712;
+}
+[data-skin="emerald_deep"] #cnum{color:#E8F6EF;text-shadow:0 0 24px rgba(13,191,123,0.5);}
+[data-skin="emerald_deep"] #t-title,[data-skin="emerald_deep"] .phd-title{font-family:var(--ff-d);font-weight:400;letter-spacing:0.04em;}
+[data-skin="emerald_deep"] .dchip-ar{font-size:1.15rem;font-weight:500;}
+[data-skin="emerald_deep"] #tap-btn{
+  background:radial-gradient(circle at 30% 30%,#0C4638,#041712);
+  border:1px solid rgba(74,222,128,0.25);
+  box-shadow:0 30px 80px rgba(0,0,0,0.6),0 0 60px rgba(13,191,123,0.25),inset 0 2px 0 rgba(74,222,128,0.15);
+}
+
+/* ── ROYAL CINZEL ─────────────────────────────────────────────────────
+   Manuscrit doré : Cinzel affirmé partout, filets or, capitales espacées,
+   surfaces sombres profondes, bordures ambrées, aucun gradient froid. */
+[data-skin="royal"]{
+  --a:#E8C98A;--a2:#F5DFAA;--a-glow:rgba(232,201,138,0.45);--a-dim:rgba(232,201,138,0.14);
+  --a-rgb:232,201,138;
+  --bg:#0A0705;--sur:#14100B;--sur2:#1A140D;--sur3:#221A11;
+  --bor:rgba(232,201,138,0.22);--bor2:rgba(232,201,138,0.10);
+  --t1:#F5EBD5;--t2:#B39E75;--t3:#6E5F44;
+  --ff-d:"Cinzel","Palatino Linotype",serif;
+  --r-md:6px;--r-lg:10px;--r-pill:4px;
+}
+[data-skin="royal"] body{
+  background:
+    radial-gradient(80% 50% at 50% 0%,rgba(232,201,138,0.10),transparent 70%),
+    #0A0705;
+}
+[data-skin="royal"] #t-title,[data-skin="royal"] .phd-title,
+[data-skin="royal"] #cnum,[data-skin="royal"] .ob-title,
+[data-skin="royal"] .nv-lbl,[data-skin="royal"] .sp-lbl{
+  font-family:var(--ff-d)!important;letter-spacing:0.14em;text-transform:uppercase;
+}
+[data-skin="royal"] #cnum{color:#E8C98A;text-shadow:0 2px 20px rgba(232,201,138,0.35);}
+[data-skin="royal"] #tap-btn{
+  background:radial-gradient(circle at 30% 25%,#221A11,#0A0705);
+  border:1.5px solid rgba(232,201,138,0.4);
+  box-shadow:0 24px 70px rgba(0,0,0,0.7),0 0 40px rgba(232,201,138,0.2),inset 0 1px 0 rgba(232,201,138,0.25);
+}
+[data-skin="royal"] .gc,[data-skin="royal"] .ctrl-ic,[data-skin="royal"] .sp,[data-skin="royal"] .dchip,[data-skin="royal"] .tsw{
+  border-color:rgba(232,201,138,0.22);
+}
+[data-skin="royal"] .gc{position:relative;}
+[data-skin="royal"] .gc::before{background:linear-gradient(90deg,transparent,rgba(232,201,138,0.6),transparent);}
+
+/* ── MASJID ───────────────────────────────────────────────────────────
+   Inspiré de SholatKu : vert mosquée profond, en-tête en dégradé
+   émeraude, cartes très arrondies, typographie Inter, halo pulsé
+   derrière la carte principale. */
+[data-skin="masjid"]{
+  --a:#2ECC71;--a2:#5EE29A;--a-glow:rgba(46,204,113,0.35);--a-dim:rgba(46,204,113,0.15);
+  --a-soft:rgba(46,204,113,0.06);--a-rgb:46,204,113;
+  --bg:#0A0F0D;--sur:#111A14;--sur2:#162118;--sur3:#1C2A20;
+  --bor:rgba(46,204,113,0.14);--bor2:rgba(46,204,113,0.08);
+  --t1:#E8F5E9;--t2:#8FB09C;--t3:#4E6E5C;
+  --ff-d:"Inter","Helvetica Neue",sans-serif;
+  --ff-b:"Inter","Helvetica Neue",sans-serif;
+  --r-md:16px;--r-lg:20px;--r-pill:9999px;
+}
+[data-skin="masjid"] body{background:var(--bg);}
+[data-skin="masjid"] .app-hdr,[data-skin="masjid"] .phd{
+  background:linear-gradient(135deg,#0D4F2B,#1A7A4A,#0D4F2B)!important;
+  border-bottom:1px solid var(--bor);
+}
+[data-skin="masjid"] .app-hdr *,[data-skin="masjid"] .phd *{color:#EAF7EE!important;}
+[data-skin="masjid"] #cnum{color:#EAF7EE;font-family:var(--ff-d);font-weight:300;letter-spacing:0.04em;text-shadow:0 0 30px rgba(94,226,154,0.4);}
+[data-skin="masjid"] #t-title{font-family:var(--ff-d);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;font-size:0.75rem;color:#2ECC71;}
+[data-skin="masjid"] #tap-btn{
+  background:linear-gradient(160deg,rgba(46,204,113,0.18),rgba(46,204,113,0.04))!important;
+  border:1px solid rgba(46,204,113,0.6)!important;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 40px rgba(46,204,113,0.35),inset 0 1px 0 rgba(94,226,154,0.25)!important;
+}
+[data-skin="masjid"] #tap-btn::after{
+  content:"";position:absolute;inset:-30%;pointer-events:none;
+  background:radial-gradient(circle,rgba(46,204,113,0.35),transparent 60%);
+  animation:masjid-pulse 3s ease-in-out infinite;
+}
+@keyframes masjid-pulse{0%,100%{transform:scale(1);opacity:0.35}50%{transform:scale(1.15);opacity:0.55}}
+[data-skin="masjid"] .gc,[data-skin="masjid"] .sp,[data-skin="masjid"] .dchip{
+  background:var(--sur)!important;border:1px solid var(--bor)!important;border-radius:16px!important;
+}
+[data-skin="masjid"] #navbar{background:rgba(10,15,13,0.9)!important;backdrop-filter:blur(20px);border-top:1px solid var(--bor);}
+[data-skin="masjid"] .nv.active{color:#2ECC71!important;}
+[data-skin="masjid"] .nv.active svg{filter:drop-shadow(0 0 10px rgba(46,204,113,0.7));}
+
+/* ── COPPER DAWN ───────────────────────────────────────────────────────
+   Inspiré de Tasbih-main (mode clair copper) : fond crème, accents
+   cuivre profond, serif Cormorant Garamond, ombres douces chaudes. */
+[data-skin="copper"]{
+  --a:#B85C1A;--a2:#E07C3C;--a-glow:rgba(184,92,26,0.30);--a-dim:rgba(184,92,26,0.14);
+  --a-soft:rgba(184,92,26,0.05);--a-rgb:184,92,26;
+  --bg:#F8F6F2;--sur:#FFFFFF;--sur2:#F1EBE0;--sur3:#E6DDCB;
+  --bor:rgba(184,92,26,0.22);--bor2:rgba(184,92,26,0.10);
+  --shine:rgba(255,250,240,0.9);
+  --t1:#0D161A;--t2:#4A6068;--t3:#8A9AA0;
+  --sh1:0 4px 20px rgba(184,92,26,0.10),inset 0 1px 0 rgba(255,255,255,0.8);
+  --sh2:0 12px 40px rgba(184,92,26,0.14),inset 0 1px 0 rgba(255,255,255,0.9);
+  --ff-d:"Cormorant Garamond","Palatino Linotype",serif;
+  --ff-b:"Montserrat","Helvetica Neue",sans-serif;
+  --r-md:14px;--r-lg:22px;--r-pill:9999px;
+}
+[data-skin="copper"] body{background:var(--bg);}
+[data-skin="copper"] #cnum{color:#B85C1A;font-family:var(--ff-d);font-weight:500;text-shadow:none;}
+[data-skin="copper"] #t-title,[data-skin="copper"] .phd-title{font-family:var(--ff-d);font-weight:600;letter-spacing:0.02em;color:#8B3C0A;}
+[data-skin="copper"] #tap-btn{
+  background:radial-gradient(circle at 30% 25%,#FFF8ED,#F1DFBF)!important;
+  border:1.5px solid rgba(184,92,26,0.35)!important;
+  box-shadow:0 18px 50px rgba(184,92,26,0.20),0 0 30px rgba(224,124,60,0.20),inset 0 2px 0 rgba(255,255,255,0.8)!important;
+}
+[data-skin="copper"] .gc,[data-skin="copper"] .sp,[data-skin="copper"] .dchip,[data-skin="copper"] .tsw{
+  background:#FFFFFF!important;border:1px solid var(--bor)!important;box-shadow:0 4px 14px rgba(184,92,26,0.06);
+}
+[data-skin="copper"] #navbar{background:rgba(255,255,255,0.92)!important;backdrop-filter:blur(16px);border-top:1px solid var(--bor);}
+
+/* ── Enrichissement des skins existants : nav-bar, en-têtes ────────────── */
+[data-skin="neon"] .app-hdr,[data-skin="neon"] .phd{
+  background:#0B101A!important;border-bottom:1px solid rgba(178,255,46,0.22);
+}
+[data-skin="neon"] #navbar{background:#05080F!important;border-top:1px solid rgba(178,255,46,0.25);}
+[data-skin="neon"] .nv.active{color:#B2FF2E!important;}
+[data-skin="royal"] .app-hdr,[data-skin="royal"] .phd{
+  background:linear-gradient(180deg,#14100B,#0A0705)!important;border-bottom:1px solid rgba(232,201,138,0.28);
+}
+[data-skin="royal"] #navbar{background:#0A0705!important;border-top:1px solid rgba(232,201,138,0.28);}
+[data-skin="emerald_deep"] .app-hdr,[data-skin="emerald_deep"] .phd{
+  background:linear-gradient(180deg,#0A3830,#041712)!important;border-bottom:1px solid rgba(74,222,128,0.18);
+}
+[data-skin="emerald_deep"] #navbar{background:rgba(4,23,18,0.92)!important;backdrop-filter:blur(20px);}
+[data-skin="liquid"] .app-hdr,[data-skin="liquid"] .phd{
+  background:linear-gradient(145deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02))!important;
+  backdrop-filter:blur(28px) saturate(200%);border-bottom:1px solid rgba(255,255,255,0.18);
+}
+[data-skin="liquid"] #navbar{
+  background:linear-gradient(145deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02))!important;
+  backdrop-filter:blur(28px) saturate(200%);border-top:1px solid rgba(255,255,255,0.18);
+}
+
+/* ── CLASSIC — laissé au design d'origine ── */
+[data-skin="classic"]{}
+
 /* ── ACCESSIBILITÉ ── */
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   LIQUID GLASS — refonte fidèle à iOS/visionOS 26
+   Matière translucide multi-couches, halo spéculaire, bordure lumineuse,
+   reflet supérieur, saturation renforcée. Chaque surface se comporte
+   comme une lentille posée sur le fond.
+   ══════════════════════════════════════════════════════════════════════ */
+[data-skin="liquid"]{
+  --lg-tint:rgba(255,255,255,0.14);
+  --lg-tint-2:rgba(255,255,255,0.04);
+  --lg-edge:rgba(255,255,255,0.28);
+  --lg-shine:rgba(255,255,255,0.55);
+}
+[data-skin="liquid"][data-light-ui]{
+  --lg-tint:rgba(255,255,255,0.72);
+  --lg-tint-2:rgba(255,255,255,0.32);
+  --lg-edge:rgba(255,255,255,0.9);
+  --lg-shine:rgba(255,255,255,0.95);
+}
+/* Fond dynamique avec 3 halos colorés qui dérivent doucement */
+[data-skin="liquid"] body::before{
+  animation:lg-drift 24s ease-in-out infinite alternate;
+}
+@keyframes lg-drift{
+  0%  {transform:translate3d(0,0,0) scale(1);}
+  50% {transform:translate3d(-4%,3%,0) scale(1.06);}
+  100%{transform:translate3d(3%,-2%,0) scale(1.02);}
+}
+/* Reflet supérieur (specular highlight) sur chaque surface */
+/* Reflet supérieur (specular highlight) — appliqué UNIQUEMENT aux grandes
+   surfaces (.gc, .sp). On l'exclut des .pcard car sur la liste des prières
+   il apparaissait comme un rectangle blanc franc au-dessus de chaque carte. */
+[data-skin="liquid"] .gc:not(#compass-ring),[data-skin="liquid"] .sp,
+[data-skin="liquid"] .dchip,[data-skin="liquid"] .tsw,
+[data-skin="liquid"] .pcard,[data-skin="liquid"] .sh,
+[data-skin="liquid"] .ctrl-ic{
+  position:relative;overflow:hidden;isolation:isolate;
+}
+[data-skin="liquid"] .gc:not(#compass-ring):not(.pcard)::after,
+[data-skin="liquid"] .sp::after{
+  content:"";position:absolute;left:12%;right:12%;top:0;height:26%;
+  background:linear-gradient(180deg,var(--lg-shine),transparent);
+  opacity:0.3;filter:blur(8px);border-radius:inherit;pointer-events:none;z-index:1;
+}
+[data-skin="liquid"] .gc:not(#compass-ring)>*,[data-skin="liquid"] .sp>*,[data-skin="liquid"] .pcard>*{position:relative;z-index:2;}
+
+[data-skin="liquid"] .pcard{
+  background:linear-gradient(145deg,var(--lg-tint),var(--lg-tint-2))!important;
+  backdrop-filter:blur(28px) saturate(200%);
+  border:1px solid var(--lg-edge)!important;
+  border-radius:var(--r-lg)!important;
+}
+[data-skin="liquid"] .pcard.next{
+  background:linear-gradient(145deg,rgba(var(--a-rgb),0.32),rgba(var(--a-rgb),0.10))!important;
+  box-shadow:0 12px 40px rgba(var(--a-rgb),0.35),inset 0 1px 0 rgba(255,255,255,0.35);
+}
+/* Chips et boutons de nav ondulent au survol/touch */
+[data-skin="liquid"] .nv.active{
+  background:radial-gradient(60% 80% at 50% 50%,rgba(var(--a-rgb),0.35),transparent 70%);
+  border-radius:16px;padding:4px 8px;margin:-4px -8px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   LAYOUTS D'HORAIRES DE PRIÈRE PAR SKIN
+   Chaque skin réorganise complètement la grille pour donner l'impression
+   d'une autre app. Sélecteurs ciblés sur #prayers-grid uniquement.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* CLASSIC : grille 3 colonnes (défaut, ne rien surcharger) */
+
+/* LIQUID GLASS : liste verticale, cartes larges façon widget iOS */
+[data-skin="liquid"] #prayers-grid{
+  grid-template-columns:1fr;gap:8px;
+}
+[data-skin="liquid"] #prayers-grid .pcard{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;
+  text-align:left;padding:14px 18px;
+}
+[data-skin="liquid"] #prayers-grid .pc-ar{grid-column:1;font-size:1.4rem;opacity:0.7;}
+[data-skin="liquid"] #prayers-grid .pc-name{grid-column:2;font-size:1rem;font-weight:600;}
+[data-skin="liquid"] #prayers-grid .pc-time{grid-column:3;font-size:1.15rem;font-variant-numeric:tabular-nums;}
+
+/* NEON : grille carrée 2×3, bordures droites, tabulaire mono */
+[data-skin="neon"] #prayers-grid{
+  grid-template-columns:repeat(2,1fr);gap:6px;
+}
+[data-skin="neon"] #prayers-grid .pcard{
+  border-radius:8px!important;border:1px solid rgba(178,255,46,0.22)!important;
+  background:#0B101A!important;padding:16px 10px;aspect-ratio:1.4/1;
+  display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;
+}
+[data-skin="neon"] #prayers-grid .pc-name{font-family:var(--ff-d);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#B2FF2E;}
+[data-skin="neon"] #prayers-grid .pc-ar{font-size:1.1rem;align-self:flex-end;opacity:0.5;}
+[data-skin="neon"] #prayers-grid .pc-time{font-family:var(--ff-d);font-size:1.4rem;text-shadow:0 0 8px rgba(178,255,46,0.5);}
+[data-skin="neon"] #prayers-grid .pcard.next{background:rgba(178,255,46,0.08)!important;border-color:#B2FF2E!important;}
+
+/* EMERALD DEEP : cercles alignés horizontalement, débordant en scroll */
+[data-skin="emerald_deep"] #prayers-grid{
+  display:flex;grid-template-columns:none;flex-wrap:nowrap;overflow-x:auto;gap:12px;
+  padding:8px 16px 12px;scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+}
+[data-skin="emerald_deep"] #prayers-grid::-webkit-scrollbar{display:none;}
+[data-skin="emerald_deep"] #prayers-grid .pcard{
+  flex:0 0 130px;aspect-ratio:1/1;border-radius:50%!important;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;
+  scroll-snap-align:center;padding:0;
+  background:radial-gradient(circle at 40% 35%,rgba(13,191,123,0.18),transparent 70%),var(--sur)!important;
+}
+[data-skin="emerald_deep"] #prayers-grid .pc-ar{font-family:var(--ff-a);font-size:1rem;opacity:0.6;}
+[data-skin="emerald_deep"] #prayers-grid .pc-name{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;}
+[data-skin="emerald_deep"] #prayers-grid .pc-time{font-family:var(--ff-d);font-size:1.1rem;color:var(--a);}
+[data-skin="emerald_deep"] #prayers-grid .pcard.next{
+  transform:scale(1.06);box-shadow:0 0 0 2px var(--a),0 0 40px rgba(13,191,123,0.4);
+}
+
+/* ROYAL CINZEL : liste type manuscrit, filet doré séparateur */
+[data-skin="royal"] #prayers-grid{
+  grid-template-columns:1fr;gap:0;padding:0 20px;
+}
+[data-skin="royal"] #prayers-grid .pcard{
+  border-radius:0!important;border:none!important;background:transparent!important;
+  border-bottom:1px solid rgba(232,201,138,0.25)!important;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:16px 8px;text-align:center;box-shadow:none;
+}
+[data-skin="royal"] #prayers-grid .pcard:last-child{border-bottom:none!important;}
+[data-skin="royal"] #prayers-grid .pc-name{grid-column:1;text-align:left;font-family:var(--ff-d);letter-spacing:0.2em;text-transform:uppercase;font-size:0.8rem;}
+[data-skin="royal"] #prayers-grid .pc-ar{grid-column:2;font-size:1.25rem;color:var(--a);padding:0 16px;}
+[data-skin="royal"] #prayers-grid .pc-time{grid-column:3;text-align:right;font-family:var(--ff-d);font-size:1.2rem;color:var(--a);}
+[data-skin="royal"] #prayers-grid .pcard.next{background:rgba(232,201,138,0.06)!important;}
+
+/* MASJID : grande carte prochaine + 4 petites en dessous (bento) */
+[data-skin="masjid"] #prayers-grid{
+  grid-template-columns:repeat(4,1fr);gap:8px;grid-auto-flow:dense;
+}
+[data-skin="masjid"] #prayers-grid .pcard{
+  border-radius:20px!important;background:var(--sur)!important;
+  border:1px solid var(--bor)!important;padding:14px 8px;
+}
+[data-skin="masjid"] #prayers-grid .pcard.next{
+  grid-column:span 4;background:linear-gradient(135deg,#0D4F2B,#1A7A4A)!important;
+  border-color:#2ECC71!important;padding:20px;display:flex;justify-content:space-between;align-items:center;
+}
+[data-skin="masjid"] #prayers-grid .pcard.next .pc-name{color:#EAF7EE!important;font-size:1.1rem;}
+[data-skin="masjid"] #prayers-grid .pcard.next .pc-ar{color:#5EE29A!important;font-size:1.4rem;}
+[data-skin="masjid"] #prayers-grid .pcard.next .pc-time{color:#fff!important;font-size:1.6rem;font-weight:700;}
+
+/* COPPER DAWN : deux colonnes larges, style éditorial */
+[data-skin="copper"] #prayers-grid{
+  grid-template-columns:repeat(2,1fr);gap:10px;
+}
+[data-skin="copper"] #prayers-grid .pcard{
+  background:#FFFFFF!important;border:1px solid var(--bor)!important;border-radius:14px!important;
+  display:grid;grid-template-columns:1fr auto;align-items:center;text-align:left;padding:14px;
+  box-shadow:0 4px 14px rgba(184,92,26,0.06);
+}
+[data-skin="copper"] #prayers-grid .pc-name{font-family:var(--ff-d);font-size:1rem;font-weight:600;color:#8B3C0A;grid-column:1;}
+[data-skin="copper"] #prayers-grid .pc-ar{display:none;}
+[data-skin="copper"] #prayers-grid .pc-time{grid-column:2;font-family:var(--ff-d);font-size:1.3rem;color:#B85C1A;}
+
+/* ══════════════════════════════════════════════════════════════════════
+   PALETTES BONUS D'ACCENT
+   ══════════════════════════════════════════════════════════════════════ */
+[data-accent="ruby"]     {--a:#DC2626;--a2:#EF4444;--a-glow:rgba(220,38,38,0.28);--a-dim:rgba(220,38,38,0.12);--a-rgb:220,38,38;}
+[data-accent="sunflower"]{--a:#CA8A04;--a2:#F5C518;--a-glow:rgba(202,138,4,0.30);--a-dim:rgba(202,138,4,0.13);--a-rgb:202,138,4;}
+[data-accent="mint"]     {--a:#10B981;--a2:#6EE7B7;--a-glow:rgba(16,185,129,0.28);--a-dim:rgba(16,185,129,0.12);--a-rgb:16,185,129;}
+[data-accent="indigo"]   {--a:#4F46E5;--a2:#818CF8;--a-glow:rgba(79,70,229,0.28);--a-dim:rgba(79,70,229,0.12);--a-rgb:79,70,229;}
+
+/* ══════════════════════════════════════════════════════════════════════
+   AMBIANCES DE FOND BONUS supplémentaires
+   ══════════════════════════════════════════════════════════════════════ */
+html[data-theme="nordic"]{
+  --bg:#1B2430;--sur:#232D3B;--sur2:#2C3849;--sur3:#354258;
+  --bor:rgba(180,210,240,0.10);--bor2:rgba(180,210,240,0.05);
+  --t1:#E7EDF5;--t2:#95A3B8;--t3:#5C6A80;
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(96,165,250,0.14) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(255,255,255,0.05) 0%,transparent 65%);
+}
+html[data-theme="sakura"]{
+  --bg:#FFF0F3;--sur:#FFFFFF;--sur2:#FCE4EA;--sur3:#F7CFD8;
+  --bor:rgba(190,90,120,0.14);--bor2:rgba(190,90,120,0.07);
+  --shine:rgba(255,255,255,0.9);
+  --t1:#3A1425;--t2:#7A4A5D;--t3:#B48A98;
+  --sh1:0 4px 20px rgba(190,90,120,0.10),inset 0 1px 0 rgba(255,255,255,0.9);
+  --sh2:0 12px 40px rgba(190,90,120,0.14),inset 0 1px 0 rgba(255,255,255,0.9);
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(244,114,182,0.14) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(201,169,110,0.06) 0%,transparent 65%);
+}
+html[data-theme="sunset"]{
+  --bg:#2A0F1E;--sur:#3B142B;--sur2:#4A1B37;--sur3:#5E2445;
+  --bor:rgba(255,180,150,0.12);--bor2:rgba(255,180,150,0.06);
+  --t1:#FBE9E0;--t2:#C99B94;--t3:#8A6A66;
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(251,146,60,0.16) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(244,114,182,0.10) 0%,transparent 65%);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   LIQUID GLASS — Barre de navigation : ronds flottants translucides
+   Chaque catégorie devient une bulle de verre séparée qui lévite.
+   ══════════════════════════════════════════════════════════════════════ */
+[data-skin="liquid"] #navbar{
+  background:transparent!important;border:none!important;
+  backdrop-filter:none!important;
+  padding:6px 10px 14px;box-shadow:none!important;
+  display:flex;justify-content:space-around;gap:6px;
+}
+[data-skin="liquid"] .nv{
+  width:52px;height:52px;border-radius:50%;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  background:linear-gradient(145deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04));
+  backdrop-filter:blur(24px) saturate(200%);
+  border:1px solid rgba(255,255,255,0.22);
+  box-shadow:0 8px 24px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.4);
+  position:relative;overflow:hidden;isolation:isolate;
+  transition:transform 0.35s var(--ease),background 0.35s var(--ease);
+}
+[data-skin="liquid"] .nv::before{
+  content:"";position:absolute;left:12%;right:12%;top:0;height:40%;
+  background:linear-gradient(180deg,rgba(255,255,255,0.55),transparent);
+  border-radius:inherit;opacity:0.6;filter:blur(3px);pointer-events:none;
+}
+[data-skin="liquid"] .nv svg{width:20px;height:20px;}
+[data-skin="liquid"] .nv span,[data-skin="liquid"] .nv .nv-label{display:none;}
+[data-skin="liquid"] .nv.active{
+  background:linear-gradient(145deg,rgba(var(--a-rgb),0.55),rgba(var(--a-rgb),0.18))!important;
+  border-color:rgba(var(--a-rgb),0.65)!important;
+  box-shadow:0 10px 30px rgba(var(--a-rgb),0.45),inset 0 1px 0 rgba(255,255,255,0.45);
+  transform:translateY(-4px);
+  padding:0;margin:0;border-radius:50%;
+}
+[data-skin="liquid"][data-light-ui] .nv{
+  background:linear-gradient(145deg,rgba(255,255,255,0.75),rgba(255,255,255,0.35));
+  border-color:rgba(0,0,0,0.08);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   VOXEL — TOUT est carré, même le tasbih. Pixel art assumé.
+   ══════════════════════════════════════════════════════════════════════ */
+[data-skin="voxel"]{
+  --a:#5FE4F5;--a2:#B8F2FA;--a-glow:rgba(95,228,245,0.4);--a-dim:rgba(95,228,245,0.14);--a-rgb:95,228,245;
+  --bg:#0F1216;--sur:#1B2028;--sur2:#242A34;--sur3:#2E3540;
+  --bor:rgba(95,228,245,0.35);--bor2:rgba(95,228,245,0.18);
+  --t1:#E6F0FA;--t2:#9AB0C0;--t3:#5C6E80;
+  --ff-d:"Press Start 2P","VT323","Courier New",monospace;
+  --ff-b:"VT323","Press Start 2P","Courier New",monospace;
+  --ff-m:"Press Start 2P","VT323",monospace;
+  --r-pill:0;--r-xl:0;--r-lg:0;--r-md:0;--r-sm:0;
+}
+[data-skin="voxel"] body{
+  background:var(--bg);
+  background-image:
+    linear-gradient(rgba(95,228,245,0.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(95,228,245,0.05) 1px,transparent 1px);
+  background-size:16px 16px;
+  image-rendering:pixelated;
+}
+[data-skin="voxel"] *{border-radius:0!important;letter-spacing:0.05em;}
+[data-skin="voxel"] #tap-btn,
+[data-skin="voxel"] .gc,[data-skin="voxel"] .sp,[data-skin="voxel"] .pcard,
+[data-skin="voxel"] .dchip,[data-skin="voxel"] .tsw,[data-skin="voxel"] .chip,
+[data-skin="voxel"] .btn,[data-skin="voxel"] .sh,[data-skin="voxel"] .nv{
+  border-radius:0!important;
+  box-shadow:4px 4px 0 rgba(0,0,0,0.6),inset -3px -3px 0 rgba(0,0,0,0.3),inset 3px 3px 0 rgba(255,255,255,0.12)!important;
+  border:2px solid #000!important;
+}
+/* Bouton principal = bloc de minerai (texture pixel réelle) */
+[data-skin="voxel"] #tap-btn{
+  background:url("/assets/voxel-diamond.jpg") center/cover no-repeat,#3A4A5C!important;
+  image-rendering:pixelated;
+  border:3px solid #000!important;
+  box-shadow:6px 6px 0 rgba(0,0,0,0.8),inset -4px -4px 0 rgba(0,0,0,0.35),inset 4px 4px 0 rgba(255,255,255,0.15)!important;
+}
+[data-skin="voxel"] #cnum{font-family:var(--ff-d);color:#B8F2FA;text-shadow:2px 2px 0 #000;font-weight:400;letter-spacing:0.1em;}
+[data-skin="voxel"] .app-hdr,[data-skin="voxel"] .phd{
+  background:#1B2028!important;border-bottom:3px solid #000!important;
+}
+[data-skin="voxel"] #navbar{background:#0F1216!important;border-top:3px solid #000!important;}
+[data-skin="voxel"] #prayers-grid{grid-template-columns:repeat(3,1fr);gap:4px;}
+[data-skin="voxel"] #prayers-grid .pcard{aspect-ratio:1/1;border-radius:0!important;}
+
+/* ══════════════════════════════════════════════════════════════════════
+   TERMINAL — CLI monochrome vert phosphore, curseur clignotant
+   ══════════════════════════════════════════════════════════════════════ */
+[data-skin="terminal"]{
+  --a:#00FF41;--a2:#7CFF9E;--a-glow:rgba(0,255,65,0.35);--a-dim:rgba(0,255,65,0.14);--a-rgb:0,255,65;
+  --bg:#000000;--sur:#0A0F0A;--sur2:#0F1A0F;--sur3:#152315;
+  --bor:rgba(0,255,65,0.35);--bor2:rgba(0,255,65,0.18);
+  --t1:#00FF41;--t2:#00B82F;--t3:#007A1F;
+  --ff-d:"JetBrains Mono","Courier New",monospace;
+  --ff-b:"JetBrains Mono","Courier New",monospace;
+  --ff-m:"JetBrains Mono","Courier New",monospace;
+  --r-md:2px;--r-lg:2px;--r-pill:2px;--r-sm:2px;--r-xl:2px;
+}
+[data-skin="terminal"] body{background:#000!important;color:#00FF41;}
+[data-skin="terminal"] body::before,[data-skin="terminal"] body::after{display:none!important;}
+[data-skin="terminal"] *{font-family:var(--ff-b);color:#00FF41;text-shadow:0 0 4px rgba(0,255,65,0.4);}
+[data-skin="terminal"] .gc,[data-skin="terminal"] .sp,[data-skin="terminal"] .pcard,
+[data-skin="terminal"] .dchip,[data-skin="terminal"] .tsw,[data-skin="terminal"] .chip{
+  background:#000!important;border:1px solid #00FF41!important;
+  box-shadow:0 0 12px rgba(0,255,65,0.25),inset 0 0 12px rgba(0,255,65,0.08)!important;
+}
+[data-skin="terminal"] #tap-btn{
+  background:#000!important;border:2px solid #00FF41!important;
+  box-shadow:0 0 30px rgba(0,255,65,0.6),inset 0 0 30px rgba(0,255,65,0.15)!important;
+}
+[data-skin="terminal"] #cnum{font-family:var(--ff-m);color:#00FF41;text-shadow:0 0 12px rgba(0,255,65,0.8);}
+[data-skin="terminal"] #cnum::after{content:"_";animation:term-cursor 1s steps(1) infinite;margin-left:6px;}
+@keyframes term-cursor{50%{opacity:0}}
+[data-skin="terminal"] .app-hdr,[data-skin="terminal"] .phd{background:#000!important;border-bottom:1px solid #00FF41!important;}
+[data-skin="terminal"] #navbar{background:#000!important;border-top:1px solid #00FF41!important;}
+[data-skin="terminal"] .phd-title::before{content:"> ";color:#00FF41;}
+[data-skin="terminal"] #prayers-grid{grid-template-columns:1fr;gap:2px;}
+[data-skin="terminal"] #prayers-grid .pcard{
+  background:transparent!important;border:none!important;border-left:2px solid #00FF41!important;
+  display:grid;grid-template-columns:auto 1fr auto;gap:12px;padding:8px 12px;box-shadow:none!important;
+}
+[data-skin="terminal"] #prayers-grid .pc-name::before{content:"$ ";opacity:0.7;}
+
+/* ══════════════════════════════════════════════════════════════════════
+   MATRIX — pluie de caractères verts phosphorescents en fond
+   ══════════════════════════════════════════════════════════════════════ */
+[data-skin="matrix"]{
+  --a:#39FF14;--a2:#B7FF9E;--a-glow:rgba(57,255,20,0.35);--a-dim:rgba(57,255,20,0.14);--a-rgb:57,255,20;
+  --bg:#020402;--sur:#060B06;--sur2:#0B140B;--sur3:#0F1F0F;
+  --bor:rgba(57,255,20,0.25);--bor2:rgba(57,255,20,0.12);
+  --t1:#C5FFB0;--t2:#59B040;--t3:#2F6B22;
+  --ff-d:"JetBrains Mono","Courier New",monospace;
+  --ff-b:"JetBrains Mono","Courier New",monospace;
+}
+[data-skin="matrix"] body{background:#020402!important;}
+[data-skin="matrix"] body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    repeating-linear-gradient(180deg,rgba(57,255,20,0.06) 0,rgba(57,255,20,0.06) 2px,transparent 2px,transparent 4px),
+    linear-gradient(180deg,rgba(0,60,10,0.5),#020402 40%,#020402);
+  animation:mtx-rain 6s linear infinite;
+}
+@keyframes mtx-rain{from{background-position:0 0,0 0}to{background-position:0 400px,0 0}}
+[data-skin="matrix"] *{font-family:var(--ff-b);}
+[data-skin="matrix"] #cnum{color:#39FF14;text-shadow:0 0 20px #39FF14,0 0 40px rgba(57,255,20,0.5);}
+[data-skin="matrix"] #tap-btn{
+  background:radial-gradient(circle,rgba(57,255,20,0.2),#020402 70%)!important;
+  border:2px solid #39FF14!important;
+  box-shadow:0 0 50px rgba(57,255,20,0.5),inset 0 0 40px rgba(57,255,20,0.2)!important;
+}
+[data-skin="matrix"] .gc,[data-skin="matrix"] .sp,[data-skin="matrix"] .pcard{
+  background:rgba(6,11,6,0.85)!important;border:1px solid rgba(57,255,20,0.3)!important;
+  backdrop-filter:blur(2px);box-shadow:0 0 20px rgba(57,255,20,0.15)!important;
+}
+[data-skin="matrix"] .app-hdr,[data-skin="matrix"] .phd{background:rgba(2,4,2,0.7)!important;backdrop-filter:blur(4px);border-bottom:1px solid rgba(57,255,20,0.25);}
+[data-skin="matrix"] #navbar{background:rgba(2,4,2,0.9)!important;border-top:1px solid rgba(57,255,20,0.25);}
+
+/* ══════════════════════════════════════════════════════════════════════
+   RETRO CRT — écran cathodique, scanlines, phosphore ambre
+   ══════════════════════════════════════════════════════════════════════ */
+[data-skin="crt"]{
+  --a:#FFB000;--a2:#FFD37A;--a-glow:rgba(255,176,0,0.4);--a-dim:rgba(255,176,0,0.16);--a-rgb:255,176,0;
+  --bg:#1A0F00;--sur:#231600;--sur2:#2D1E00;--sur3:#3A2700;
+  --bor:rgba(255,176,0,0.30);--bor2:rgba(255,176,0,0.15);
+  --t1:#FFD37A;--t2:#B37800;--t3:#6E4A00;
+  --ff-d:"VT323","JetBrains Mono","Courier New",monospace;
+  --ff-b:"VT323","JetBrains Mono","Courier New",monospace;
+  --r-md:6px;--r-lg:10px;
+}
+[data-skin="crt"] body{background:#0A0700!important;}
+[data-skin="crt"] body::before{
+  content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,0.22) 0,rgba(0,0,0,0.22) 1px,transparent 1px,transparent 3px);
+  mix-blend-mode:multiply;
+}
+[data-skin="crt"] body::after{
+  content:"";position:fixed;inset:0;z-index:9997;pointer-events:none;
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,0.55) 100%);
+}
+[data-skin="crt"] *{font-family:var(--ff-b);color:#FFD37A;text-shadow:0 0 3px rgba(255,176,0,0.5);}
+[data-skin="crt"] #cnum{color:#FFB000;text-shadow:0 0 12px #FFB000,0 0 30px rgba(255,176,0,0.5);}
+[data-skin="crt"] #tap-btn{
+  background:radial-gradient(circle,rgba(255,176,0,0.25),#1A0F00 70%)!important;
+  border:2px solid #FFB000!important;
+  box-shadow:0 0 40px rgba(255,176,0,0.5),inset 0 0 30px rgba(255,176,0,0.2)!important;
+}
+[data-skin="crt"] .gc,[data-skin="crt"] .sp,[data-skin="crt"] .pcard{
+  background:rgba(35,22,0,0.85)!important;border:1px solid rgba(255,176,0,0.30)!important;
+  box-shadow:0 0 14px rgba(255,176,0,0.15)!important;
+}
+[data-skin="crt"] .app-hdr,[data-skin="crt"] .phd{background:#1A0F00!important;border-bottom:1px solid rgba(255,176,0,0.3);}
+[data-skin="crt"] #navbar{background:#0F0800!important;border-top:1px solid rgba(255,176,0,0.3);}
+
+/* ══════════════════════════════════════════════════════════════════════
+   PRIORITÉ DE L'AMBIANCE (theme) SUR LES SKINS
+   Un skin fixe l'accent, la typo, la matière des composants — mais le
+   fond global doit toujours refléter l'ambiance choisie par l'utilisateur.
+   On redéclare ici les tokens de fond avec une spécificité (0,1,1) qui
+   bat celle des blocs [data-skin="…"] (0,1,0), pour tous les skins sauf
+   les 4 skins immersifs qui imposent leur atmosphère (voxel/terminal/
+   matrix/crt), et le skin neon qui repose sur un fond noir spécifique.
+   ══════════════════════════════════════════════════════════════════════ */
+body[data-theme="dark"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#08090C;--sur:#131518;--sur2:#1C1E22;--sur3:#22252A;
+  --bor:rgba(255,255,255,0.11);--bor2:rgba(255,255,255,0.06);
+  --t1:#F0EDE8;--t2:#9A9590;--t3:#5A5754;
+}
+body[data-theme="emerald"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#04120C;--sur:#0A1F15;--sur2:#11291D;--sur3:#173225;
+  --bor:rgba(180,255,215,0.12);--bor2:rgba(180,255,215,0.06);
+  --t1:#EAF6EF;--t2:#8FAF9D;--t3:#527060;
+}
+body[data-theme="ocean"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#0B1628;--sur:#122238;--sur2:#182C48;--sur3:#213A5C;
+  --bor:rgba(180,210,255,0.11);--bor2:rgba(180,210,255,0.06);
+  --t1:#EAF1FA;--t2:#8FA5C0;--t3:#556B85;
+}
+body[data-theme="mocha"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#1F1611;--sur:#2A1D16;--sur2:#33251C;--sur3:#3F2E23;
+  --bor:rgba(255,220,190,0.10);--bor2:rgba(255,220,190,0.05);
+  --t1:#F1E7DD;--t2:#B39A87;--t3:#7A6555;
+}
+body[data-theme="light"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#F5F4F0;--sur:#FFFFFF;--sur2:#EEECEA;--sur3:#E4E1DB;
+  --bor:rgba(0,0,0,0.09);--bor2:rgba(0,0,0,0.05);
+  --shine:rgba(255,255,255,0.9);
+  --t1:#1A1814;--t2:#6B6760;--t3:#ADA9A4;
+  --sh1:0 4px 20px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.8);
+  --sh2:0 10px 40px rgba(0,0,0,0.10),inset 0 1px 0 rgba(255,255,255,0.9);
+}
+body[data-theme="sand"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#F3EBDD;--sur:#FFFAF0;--sur2:#EEE3CE;--sur3:#E5D6B9;
+  --bor:rgba(120,80,40,0.14);--bor2:rgba(120,80,40,0.07);
+  --t1:#2A1F10;--t2:#6B5A40;--t3:#A08B6C;
+}
+body[data-theme="cream"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#EBE1CD;--sur:#F7EFDB;--sur2:#E1D5BC;--sur3:#D3C4A5;
+  --bor:rgba(90,60,20,0.14);--bor2:rgba(90,60,20,0.07);
+  --t1:#231810;--t2:#6A553A;--t3:#A08B66;
+}
+body[data-theme="dawn"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#F7F0F2;--sur:#FFFFFF;--sur2:#F1E5E9;--sur3:#E7D6DB;
+  --bor:rgba(160,80,110,0.12);--bor2:rgba(160,80,110,0.06);
+  --t1:#291820;--t2:#6C4E5A;--t3:#A88F98;
+}
+body[data-theme="amoled"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#000000;--sur:#050506;--sur2:#0A0B0D;--sur3:#101215;
+  --bor:rgba(255,255,255,0.09);--bor2:rgba(255,255,255,0.04);
+  --t1:#F0EDE8;--t2:#8F8B86;--t3:#4A4744;
+}
+body[data-theme="rosewood"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#1A0B10;--sur:#251117;--sur2:#31171F;--sur3:#3D1E28;
+  --bor:rgba(255,180,200,0.11);--bor2:rgba(255,180,200,0.06);
+  --t1:#F3E4E8;--t2:#B08D96;--t3:#755962;
+}
+body[data-theme="starry"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#060814;--sur:#0D1024;--sur2:#151931;--sur3:#1E2440;
+  --bor:rgba(180,200,255,0.12);--bor2:rgba(180,200,255,0.06);
+  --t1:#E7EAF6;--t2:#8B92B4;--t3:#535A7A;
+}
+body[data-theme="aurora"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#071018;--sur:#0E1B25;--sur2:#152633;--sur3:#1E3345;
+  --bor:rgba(140,255,210,0.14);--bor2:rgba(140,255,210,0.07);
+  --t1:#E4F4EE;--t2:#89AFA0;--t3:#4E7266;
+}
+body[data-theme="marble"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#F2EFE9;--sur:#FFFFFF;--sur2:#E8E4DC;--sur3:#DAD4C8;
+  --bor:rgba(0,0,0,0.10);--bor2:rgba(0,0,0,0.05);
+  --t1:#1B1913;--t2:#6C665C;--t3:#A9A398;
+}
+body[data-theme="nordic"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#1B2430;--sur:#232D3B;--sur2:#2C3849;--sur3:#354258;
+  --bor:rgba(180,210,240,0.10);--bor2:rgba(180,210,240,0.05);
+  --t1:#E7EDF5;--t2:#95A3B8;--t3:#5C6A80;
+}
+body[data-theme="sakura"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#FFF0F3;--sur:#FFFFFF;--sur2:#FCE4EA;--sur3:#F7CFD8;
+  --bor:rgba(190,90,120,0.14);--bor2:rgba(190,90,120,0.07);
+  --t1:#3A1425;--t2:#7A4A5D;--t3:#B48A98;
+}
+body[data-theme="sunset"]:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]):not([data-skin="neon"]){
+  --bg:#2A0F1E;--sur:#3B142B;--sur2:#4A1B37;--sur3:#5E2445;
+  --bor:rgba(255,180,150,0.12);--bor2:rgba(255,180,150,0.06);
+  --t1:#FBE9E0;--t2:#C99B94;--t3:#8A6A66;
+}
+
+/* Le body doit peindre le fond depuis --bg, sauf pour les skins immersifs
+   qui gèrent eux-mêmes leur atmosphère. */
+body:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix"]):not([data-skin="crt"]){
+  background:var(--bg);
+}
+
+/* ── Particules « minage » (skin Voxel) ─────────────────────────────── */
+.vox-particle{
+  position:fixed;width:8px;height:8px;pointer-events:none;z-index:9999;
+  box-shadow:inset -1px -1px 0 rgba(0,0,0,0.35),inset 1px 1px 0 rgba(255,255,255,0.25);
+  image-rendering:pixelated;
+  animation:vox-fly 0.65s cubic-bezier(0.2,0.6,0.4,1) forwards;
+}
+@keyframes vox-fly{
+  0%  {transform:translate(-50%,-50%) scale(1);opacity:1;}
+  100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(0.4) rotate(90deg);opacity:0;}
+}
+/* Label « MINÉ » un peu plus court, on serre la taille sur voxel */
+[data-skin="voxel"] #clabel{font-size:0.7rem;letter-spacing:0.15em;}
+
+/* ══════════════════════════════════════════════════════════════════════
+   SKINS INSPIRÉS DE JEUX VIDÉO
+   Chaque skin transpose l'ambiance visuelle du menu d'un jeu — jamais
+   ses assets protégés. On mime : palette, typo, formes, effets.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── VELOURS : rouge/noir, italique agressif, formes coupées ── */
+[data-skin="persona"]{
+  --a:#E60012;--a2:#FF3B3B;--a-glow:rgba(230,0,18,0.55);--a-dim:rgba(230,0,18,0.18);--a-rgb:230,0,18;
+  --bg:#0A0000;--sur:#140303;--sur2:#1E0505;--sur3:#2A0808;
+  --bor:rgba(230,0,18,0.35);--bor2:rgba(230,0,18,0.15);
+  --t1:#FFF5F5;--t2:#C89999;--t3:#7A5555;
+  --ff-d:"Archivo Black","Bebas Neue","Impact",sans-serif;
+  --ff-b:"Archivo","Helvetica Neue",sans-serif;
+  --r-md:2px;--r-lg:4px;--r-pill:2px;
+}
+[data-skin="persona"] body{background:
+  linear-gradient(115deg,#E60012 0 42%,#0A0000 42% 100%) fixed;
+  background-attachment:fixed;}
+[data-skin="persona"] body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:repeating-linear-gradient(-25deg,rgba(255,255,255,0.04) 0 2px,transparent 2px 22px);
+  mix-blend-mode:screen;
+}
+[data-skin="persona"] *{font-style:italic;letter-spacing:0.02em;}
+[data-skin="persona"] #cnum,[data-skin="persona"] #t-title,[data-skin="persona"] .phd-title,[data-skin="persona"] .nv-lbl{
+  font-family:var(--ff-d)!important;text-transform:uppercase;font-style:italic;letter-spacing:0.05em;
+  transform:skewX(-8deg);
+}
+[data-skin="persona"] #cnum{color:#FFF5F5;text-shadow:3px 3px 0 #E60012,6px 6px 0 #000;}
+[data-skin="persona"] #tap-btn{
+  background:#0A0000!important;border:3px solid #E60012!important;
+  clip-path:polygon(6% 0,100% 0,100% 94%,94% 100%,0 100%,0 6%);
+  box-shadow:8px 8px 0 #E60012,inset 0 0 40px rgba(230,0,18,0.25)!important;
+}
+[data-skin="persona"] .gc,[data-skin="persona"] .sp,[data-skin="persona"] .pcard,[data-skin="persona"] .dchip{
+  background:#140303!important;border:2px solid #FFF5F5!important;border-radius:2px!important;
+  box-shadow:4px 4px 0 #E60012!important;
+}
+[data-skin="persona"] .app-hdr,[data-skin="persona"] .phd{background:#0A0000!important;border-bottom:3px solid #E60012!important;}
+[data-skin="persona"] #navbar{background:#0A0000!important;border-top:3px solid #E60012!important;}
+
+/* ── ANDROÏDE : sable/ocre, HUD carrés, filets, terminal élégant ── */
+[data-skin="nier"]{
+  --a:#4A4232;--a2:#867A5E;--a-glow:rgba(74,66,50,0.45);--a-dim:rgba(74,66,50,0.16);--a-rgb:74,66,50;
+  --bg:#C7BFA6;--sur:#B9B198;--sur2:#ADA48A;--sur3:#9D9478;
+  --bor:rgba(74,66,50,0.35);--bor2:rgba(74,66,50,0.18);
+  --shine:rgba(255,250,235,0.5);
+  --t1:#2A2418;--t2:#4A4232;--t3:#6E6650;
+  --ff-d:"Cormorant Infant","Cormorant Garamond","Palatino Linotype",serif;
+  --ff-b:"Cormorant Garamond","Palatino Linotype",serif;
+  --r-md:0;--r-lg:0;--r-pill:0;
+}
+[data-skin="nier"] body{background:#C7BFA6!important;}
+[data-skin="nier"] body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.08;
+  background-image:
+    linear-gradient(rgba(42,36,24,0.6) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(42,36,24,0.6) 1px,transparent 1px);
+  background-size:80px 80px;
+}
+[data-skin="nier"] *{letter-spacing:0.14em;}
+[data-skin="nier"] #cnum,[data-skin="nier"] #t-title,[data-skin="nier"] .phd-title,[data-skin="nier"] .nv-lbl{
+  font-family:var(--ff-d)!important;text-transform:uppercase;font-weight:500;
+}
+[data-skin="nier"] #cnum{color:#2A2418;text-shadow:none;}
+[data-skin="nier"] #tap-btn{
+  background:#B9B198!important;border:1px solid #2A2418!important;border-radius:0!important;
+  box-shadow:inset 0 0 0 4px #C7BFA6,inset 0 0 0 5px #2A2418,0 0 0 3px rgba(42,36,24,0.15)!important;
+}
+[data-skin="nier"] .gc,[data-skin="nier"] .sp,[data-skin="nier"] .pcard,[data-skin="nier"] .dchip,[data-skin="nier"] .tsw{
+  background:#B9B198!important;border:1px solid #2A2418!important;border-radius:0!important;box-shadow:none!important;
+}
+[data-skin="nier"] .app-hdr,[data-skin="nier"] .phd{background:#C7BFA6!important;border-bottom:1px solid #2A2418!important;}
+[data-skin="nier"] #navbar{background:#C7BFA6!important;border-top:1px solid #2A2418!important;}
+
+/* ── ARCHIPEL : cel-shading vert, ciel, tampon "carte au trésor" ── */
+[data-skin="windwaker"]{
+  --a:#0F7A3E;--a2:#3ECC6B;--a-glow:rgba(15,122,62,0.45);--a-dim:rgba(15,122,62,0.15);--a-rgb:15,122,62;
+  --bg:#7AC948;--sur:#F3E7B8;--sur2:#E8D89A;--sur3:#DBC880;
+  --bor:rgba(60,40,15,0.35);--bor2:rgba(60,40,15,0.18);
+  --t1:#2A1F0A;--t2:#5C4A2A;--t3:#8F7D5C;
+  --ff-d:"Fondamento","Cormorant Garamond","Palatino Linotype",serif;
+  --ff-b:"Cormorant Garamond",serif;
+  --r-md:14px;--r-lg:22px;--r-pill:9999px;
+}
+[data-skin="windwaker"] body{
+  background:
+    linear-gradient(180deg,#7EC7E6 0 40%,#7AC948 40% 100%) fixed!important;
+}
+[data-skin="windwaker"] body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6;
+  background:
+    radial-gradient(circle at 20% 22%,#fff 0 24px,transparent 25px),
+    radial-gradient(circle at 24% 20%,#fff 0 18px,transparent 19px),
+    radial-gradient(circle at 78% 15%,#fff 0 30px,transparent 31px),
+    radial-gradient(circle at 82% 12%,#fff 0 22px,transparent 23px);
+}
+[data-skin="windwaker"] #cnum{font-family:var(--ff-d);color:#8B5A1A;text-shadow:0 2px 0 #F3E7B8,0 3px 6px rgba(0,0,0,0.35);}
+[data-skin="windwaker"] #tap-btn{
+  background:radial-gradient(circle at 35% 30%,#FFF5D0,#D6BB6F 70%,#8B5A1A)!important;
+  border:4px solid #5C3A0F!important;
+  box-shadow:0 10px 30px rgba(0,0,0,0.35),inset 0 -6px 0 rgba(0,0,0,0.15),inset 0 3px 0 rgba(255,255,255,0.5)!important;
+}
+[data-skin="windwaker"] .gc,[data-skin="windwaker"] .sp,[data-skin="windwaker"] .pcard,[data-skin="windwaker"] .dchip,[data-skin="windwaker"] .tsw{
+  background:#F3E7B8!important;border:2px solid #5C3A0F!important;
+  box-shadow:0 4px 0 rgba(60,40,15,0.4),inset 0 2px 0 rgba(255,255,255,0.5)!important;
+}
+[data-skin="windwaker"] .app-hdr,[data-skin="windwaker"] .phd{background:linear-gradient(180deg,#F3E7B8,#DBC880)!important;border-bottom:3px solid #5C3A0F!important;}
+[data-skin="windwaker"] #navbar{background:#F3E7B8!important;border-top:3px solid #5C3A0F!important;}
+
+/* ── DÉTERMINATION : noir absolu, texte blanc pixel monospace, cœur rouge ── */
+[data-skin="undertale"]{
+  --a:#FF0000;--a2:#FF6B6B;--a-glow:rgba(255,0,0,0.4);--a-dim:rgba(255,0,0,0.14);--a-rgb:255,0,0;
+  --bg:#000000;--sur:#050505;--sur2:#0A0A0A;--sur3:#111111;
+  --bor:rgba(255,255,255,0.75);--bor2:rgba(255,255,255,0.35);
+  --t1:#FFFFFF;--t2:#DDDDDD;--t3:#888888;
+  --ff-d:"Press Start 2P","VT323","Courier New",monospace;
+  --ff-b:"VT323","Press Start 2P",monospace;
+  --r-md:0;--r-lg:0;--r-pill:0;
+}
+[data-skin="undertale"] body{background:#000!important;}
+[data-skin="undertale"] *{font-family:var(--ff-b);color:#FFF;text-shadow:none;letter-spacing:0.05em;}
+[data-skin="undertale"] #cnum{font-family:var(--ff-d);color:#FFF;}
+[data-skin="undertale"] #tap-btn{
+  background:#000!important;border:4px solid #FFF!important;border-radius:0!important;
+  box-shadow:none!important;
+}
+[data-skin="undertale"] #tap-btn::before{
+  content:"♥";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:#FF0000;font-size:6rem;filter:drop-shadow(0 0 20px rgba(255,0,0,0.7));pointer-events:none;opacity:0.15;
+}
+[data-skin="undertale"] .gc,[data-skin="undertale"] .sp,[data-skin="undertale"] .pcard,[data-skin="undertale"] .dchip,[data-skin="undertale"] .tsw{
+  background:#000!important;border:3px solid #FFF!important;border-radius:0!important;box-shadow:none!important;
+}
+[data-skin="undertale"] .app-hdr,[data-skin="undertale"] .phd{background:#000!important;border-bottom:3px solid #FFF!important;}
+[data-skin="undertale"] #navbar{background:#000!important;border-top:3px solid #FFF!important;}
+[data-skin="undertale"] .nv.active{color:#FF0000!important;}
+
+/* ── CAHIER ROSE : pastel, papier ligné, cœur ── */
+[data-skin="ddlc"]{
+  --a:#FF6FB5;--a2:#FFB3D9;--a-glow:rgba(255,111,181,0.4);--a-dim:rgba(255,111,181,0.14);--a-rgb:255,111,181;
+  --bg:#FFDCEB;--sur:#FFFFFF;--sur2:#FFF0F6;--sur3:#FFE1EE;
+  --bor:rgba(255,111,181,0.32);--bor2:rgba(255,111,181,0.16);
+  --shine:rgba(255,255,255,0.9);
+  --t1:#5A1F3D;--t2:#8E4568;--t3:#B87A96;
+  --sh1:0 4px 20px rgba(255,111,181,0.18),inset 0 1px 0 rgba(255,255,255,0.9);
+  --sh2:0 12px 40px rgba(255,111,181,0.22),inset 0 1px 0 rgba(255,255,255,0.9);
+  --ff-d:"Caveat","Kalam","Comic Sans MS",cursive;
+  --ff-b:"Quicksand","Nunito",sans-serif;
+  --r-md:14px;--r-lg:22px;--r-pill:9999px;
+}
+[data-skin="ddlc"] body{background:#FFDCEB!important;}
+[data-skin="ddlc"] body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.5;
+  background-image:repeating-linear-gradient(0deg,transparent 0 32px,rgba(255,111,181,0.18) 32px 33px);
+}
+[data-skin="ddlc"] #cnum{font-family:var(--ff-d);color:#FF6FB5;text-shadow:2px 2px 0 #fff,3px 3px 8px rgba(255,111,181,0.4);}
+[data-skin="ddlc"] #t-title,[data-skin="ddlc"] .phd-title{font-family:var(--ff-d);color:#5A1F3D;font-size:1.4rem;letter-spacing:0.01em;}
+[data-skin="ddlc"] #tap-btn{
+  background:radial-gradient(circle at 35% 30%,#FFF,#FFB3D9 60%,#FF6FB5)!important;
+  border:3px solid #FFF!important;
+  box-shadow:0 16px 50px rgba(255,111,181,0.5),0 0 40px rgba(255,111,181,0.35),inset 0 3px 0 rgba(255,255,255,0.7)!important;
+}
+[data-skin="ddlc"] .gc,[data-skin="ddlc"] .sp,[data-skin="ddlc"] .pcard,[data-skin="ddlc"] .dchip,[data-skin="ddlc"] .tsw{
+  background:#FFFFFF!important;border:2px solid rgba(255,111,181,0.35)!important;
+  box-shadow:0 4px 16px rgba(255,111,181,0.15)!important;
+}
+[data-skin="ddlc"] .app-hdr,[data-skin="ddlc"] .phd{background:linear-gradient(180deg,#fff,#FFF0F6)!important;border-bottom:2px solid rgba(255,111,181,0.3)!important;}
+[data-skin="ddlc"] #navbar{background:#FFFFFF!important;border-top:2px solid rgba(255,111,181,0.3)!important;}
+
+/* ── CONSOLE BLANCHE : bleu clair, cases blanches brillantes, filet noir fin ── */
+[data-skin="wii"]{
+  --a:#0080D8;--a2:#4CB4F0;--a-glow:rgba(0,128,216,0.35);--a-dim:rgba(0,128,216,0.12);--a-rgb:0,128,216;
+  --bg:#D8D8D8;--sur:#FFFFFF;--sur2:#EFEFEF;--sur3:#E0E0E0;
+  --bor:rgba(0,0,0,0.35);--bor2:rgba(0,0,0,0.18);
+  --shine:rgba(255,255,255,1);
+  --t1:#1A1A1A;--t2:#4A4A4A;--t3:#8A8A8A;
+  --sh1:0 4px 16px rgba(0,0,0,0.10),inset 0 1px 0 rgba(255,255,255,1);
+  --sh2:0 12px 32px rgba(0,0,0,0.14),inset 0 1px 0 rgba(255,255,255,1);
+  --ff-d:"Helvetica Neue","Arial",sans-serif;
+  --ff-b:"Helvetica Neue","Arial",sans-serif;
+  --r-md:14px;--r-lg:20px;--r-pill:9999px;
+}
+[data-skin="wii"] body{
+  background:
+    radial-gradient(circle at 50% 40%,#F0F0F0,#B8B8B8 90%) fixed!important;
+}
+[data-skin="wii"] body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.35;
+  background-image:linear-gradient(rgba(0,0,0,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.06) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+[data-skin="wii"] #cnum{color:#0080D8;font-weight:300;text-shadow:0 1px 0 #fff;}
+[data-skin="wii"] #tap-btn{
+  background:linear-gradient(180deg,#fff,#E0E0E0)!important;
+  border:2px solid #333!important;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15),inset 0 3px 0 #fff,inset 0 -2px 0 rgba(0,0,0,0.15)!important;
+}
+[data-skin="wii"] .gc,[data-skin="wii"] .sp,[data-skin="wii"] .pcard,[data-skin="wii"] .dchip,[data-skin="wii"] .tsw{
+  background:linear-gradient(180deg,#fff,#F0F0F0)!important;
+  border:1.5px solid #333!important;
+  box-shadow:0 4px 12px rgba(0,0,0,0.10),inset 0 2px 0 #fff!important;
+}
+[data-skin="wii"] .app-hdr,[data-skin="wii"] .phd{background:linear-gradient(180deg,#fff,#E8E8E8)!important;border-bottom:1.5px solid #333!important;}
+[data-skin="wii"] #navbar{background:linear-gradient(180deg,#fff,#DADADA)!important;border-top:1.5px solid #333!important;}
+[data-skin="wii"] .nv.active{color:#0080D8!important;}
+
+/* ── BLOC-NOTES : papier ligné, doodle vert, feutre noir ── */
+[data-skin="doodle"]{
+  --a:#3AAF35;--a2:#7BD670;--a-glow:rgba(58,175,53,0.35);--a-dim:rgba(58,175,53,0.14);--a-rgb:58,175,53;
+  --bg:#F5EDD7;--sur:#FDF7E4;--sur2:#F2E7C4;--sur3:#E9DBAA;
+  --bor:rgba(30,30,30,0.55);--bor2:rgba(30,30,30,0.25);
+  --shine:rgba(255,250,225,0.9);
+  --t1:#141414;--t2:#3A3A3A;--t3:#7A7A7A;
+  --ff-d:"Caveat","Kalam","Comic Sans MS",cursive;
+  --ff-b:"Kalam","Caveat",cursive;
+  --r-md:6px;--r-lg:10px;--r-pill:9999px;
+}
+[data-skin="doodle"] body{background:#F5EDD7!important;}
+[data-skin="doodle"] body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent 0 28px,rgba(60,120,200,0.22) 28px 29px),
+    linear-gradient(90deg,transparent 0 46px,rgba(220,50,50,0.35) 46px 47px,transparent 47px);
+  background-size:100% 29px,100% 100%;
+}
+[data-skin="doodle"] *{font-family:var(--ff-b);}
+[data-skin="doodle"] #cnum{font-family:var(--ff-d);color:#141414;text-shadow:2px 2px 0 rgba(58,175,53,0.35);}
+[data-skin="doodle"] #tap-btn{
+  background:#7BD670!important;border:3px solid #141414!important;
+  box-shadow:5px 5px 0 #141414,inset 0 6px 0 rgba(255,255,255,0.3),inset 0 -6px 0 rgba(0,0,0,0.2)!important;
+}
+[data-skin="doodle"] .gc,[data-skin="doodle"] .sp,[data-skin="doodle"] .pcard,[data-skin="doodle"] .dchip,[data-skin="doodle"] .tsw{
+  background:#FDF7E4!important;border:2px solid #141414!important;
+  box-shadow:3px 3px 0 #141414!important;
+}
+[data-skin="doodle"] .app-hdr,[data-skin="doodle"] .phd{background:transparent!important;border-bottom:2px solid #141414!important;}
+[data-skin="doodle"] #navbar{background:#FDF7E4!important;border-top:2px solid #141414!important;}
+
+/* ── MIDGARD : bleu profond, HUD anguleux, filets néons ── */
+[data-skin="ff7"]{
+  --a:#22D3EE;--a2:#67E8F9;--a-glow:rgba(34,211,238,0.45);--a-dim:rgba(34,211,238,0.14);--a-rgb:34,211,238;
+  --bg:#050914;--sur:#0A1226;--sur2:#0F1A36;--sur3:#152548;
+  --bor:rgba(34,211,238,0.35);--bor2:rgba(34,211,238,0.18);
+  --t1:#EAF5FB;--t2:#8FA8BF;--t3:#4E6580;
+  --ff-d:"Michroma","Orbitron","Rajdhani","Arial Narrow",sans-serif;
+  --ff-b:"Rajdhani","Barlow Condensed","Arial Narrow",sans-serif;
+  --r-md:4px;--r-lg:6px;--r-pill:4px;
+}
+[data-skin="ff7"] body{background:radial-gradient(60% 45% at 50% 30%,rgba(34,211,238,0.12),transparent 70%),#050914!important;}
+[data-skin="ff7"] *{letter-spacing:0.08em;}
+[data-skin="ff7"] #cnum,[data-skin="ff7"] #t-title,[data-skin="ff7"] .phd-title,[data-skin="ff7"] .nv-lbl{
+  font-family:var(--ff-d)!important;text-transform:uppercase;
+}
+[data-skin="ff7"] #cnum{color:#EAF5FB;}
+[data-skin="ff7"] #tap-btn{
+  background:linear-gradient(180deg,#0F1A36,#050914)!important;
+  border:1.5px solid #22D3EE!important;
+  clip-path:polygon(6% 0,100% 0,100% 84%,94% 100%,0 100%,0 16%);
+  box-shadow:inset 0 0 24px rgba(34,211,238,0.18)!important;
+}
+[data-skin="ff7"] .gc,[data-skin="ff7"] .sp,[data-skin="ff7"] .pcard,[data-skin="ff7"] .dchip,[data-skin="ff7"] .tsw{
+  background:rgba(10,18,38,0.85)!important;border:1px solid rgba(34,211,238,0.35)!important;
+  box-shadow:0 0 14px rgba(34,211,238,0.15),inset 0 1px 0 rgba(34,211,238,0.15)!important;
+}
+[data-skin="ff7"] .pcard{
+  clip-path:polygon(4% 0,100% 0,100% 88%,96% 100%,0 100%,0 12%);
+}
+[data-skin="ff7"] .app-hdr,[data-skin="ff7"] .phd{background:linear-gradient(180deg,#0A1226,#050914)!important;border-bottom:1px solid rgba(34,211,238,0.4)!important;}
+[data-skin="ff7"] #navbar{background:#050914!important;border-top:1px solid rgba(34,211,238,0.4)!important;}
+[data-skin="ff7"] .nv.active svg{filter:drop-shadow(0 0 8px #22D3EE);}
+
+/* Les 8 skins jeux respectent l'ambiance de couleur SEULEMENT si l'ambiance
+   n'est pas forcée par leur atmosphère (déjà fixée dans les blocs ci-dessus). */
+
+/* Les 8 skins jeux imposent leur atmosphère : on force leur --bg par-dessus
+   l'ambiance de couleur (spécificité 0,2,0 grâce au doublon [data-skin]). */
+body[data-skin="persona"][data-skin="persona"]{--bg:#0A0000;}
+body[data-skin="nier"][data-skin="nier"]{--bg:#C7BFA6;}
+body[data-skin="windwaker"][data-skin="windwaker"]{--bg:#7AC948;}
+body[data-skin="undertale"][data-skin="undertale"]{--bg:#000000;}
+body[data-skin="ddlc"][data-skin="ddlc"]{--bg:#FFDCEB;}
+body[data-skin="wii"][data-skin="wii"]{--bg:#D8D8D8;}
+body[data-skin="doodle"][data-skin="doodle"]{--bg:#F5EDD7;}
+body[data-skin="ff7"][data-skin="ff7"]{--bg:#050914;}
+
+/* ══════════════════════════════════════════════════════════════════════
+   LIQUID GLASS — patch final : vraie transparence iOS/visionOS.
+   Les blocs précédents étaient hérités de l'ambiance choisie (--sur opaque),
+   ce qui empêchait de voir le fond coloré à travers les surfaces. Ici on
+   force la translucidité sur TOUTES les surfaces principales et on retire
+   les reflets « bloc blanc » qui gênaient sur les cartes prière.
+   ══════════════════════════════════════════════════════════════════════ */
+[data-skin="liquid"]{
+  /* Fond dynamique visible partout : dégradé coloré vif style wallpaper iOS */
+  --lg-bg1:rgba(120,80,220,0.55);
+  --lg-bg2:rgba(255,120,180,0.45);
+  --lg-bg3:rgba(80,180,255,0.50);
+}
+[data-skin="liquid"][data-light-ui]{
+  --lg-bg1:rgba(180,120,255,0.35);
+  --lg-bg2:rgba(255,170,200,0.30);
+  --lg-bg3:rgba(140,200,255,0.35);
+}
+[data-skin="liquid"] body{
+  background:
+    radial-gradient(60% 45% at 15% 10%,var(--lg-bg1),transparent 70%),
+    radial-gradient(55% 40% at 85% 25%,var(--lg-bg2),transparent 70%),
+    radial-gradient(65% 55% at 50% 95%,var(--lg-bg3),transparent 70%),
+    var(--bg) !important;
+  background-attachment:fixed;
+}
+/* Toutes les surfaces principales deviennent du VRAI verre translucide.
+   !important nécessaire pour battre les [data-ambient="..."] plus spécifiques. */
+[data-skin="liquid"] .gc:not(#compass-ring),
+[data-skin="liquid"] .sp,
+[data-skin="liquid"] .pcard,
+[data-skin="liquid"] .dchip,
+[data-skin="liquid"] .tsw,
+[data-skin="liquid"] .sh,
+[data-skin="liquid"] .app-hdr,
+[data-skin="liquid"] .phd,
+[data-skin="liquid"] .ctrl-ic{
+  background:linear-gradient(145deg,rgba(255,255,255,0.16),rgba(255,255,255,0.04)) !important;
+  backdrop-filter:blur(30px) saturate(180%);
+  border:1px solid rgba(255,255,255,0.22) !important;
+  box-shadow:0 8px 32px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.28) !important;
+}
+[data-skin="liquid"][data-light-ui] .gc:not(#compass-ring),
+[data-skin="liquid"][data-light-ui] .sp,
+[data-skin="liquid"][data-light-ui] .pcard,
+[data-skin="liquid"][data-light-ui] .dchip,
+[data-skin="liquid"][data-light-ui] .tsw,
+[data-skin="liquid"][data-light-ui] .sh,
+[data-skin="liquid"][data-light-ui] .app-hdr,
+[data-skin="liquid"][data-light-ui] .phd,
+[data-skin="liquid"][data-light-ui] .ctrl-ic{
+  background:linear-gradient(145deg,rgba(255,255,255,0.55),rgba(255,255,255,0.22)) !important;
+  border:1px solid rgba(255,255,255,0.6) !important;
+  box-shadow:0 8px 28px rgba(0,0,0,0.10),inset 0 1px 0 rgba(255,255,255,0.7) !important;
+}
+/* Reflet supérieur : très discret, uniquement sur les grandes surfaces,
+   jamais sur .pcard (bug bloc blanc au-dessus des prières). */
+[data-skin="liquid"] .gc:not(#compass-ring):not(.pcard)::after,
+[data-skin="liquid"] .sp::after{
+  opacity:0.15 !important;
+  height:22% !important;
+}
+[data-skin="liquid"] .pcard::after{display:none !important;}
+/* Barres haut/bas : verre fin, pas de bloc de fond opaque */
+[data-skin="liquid"] .app-hdr,
+[data-skin="liquid"] .phd{
+  border-radius:0 !important;
+  border-bottom:1px solid rgba(255,255,255,0.14) !important;
+}
+[data-skin="liquid"] #navbar{
+  background:transparent !important;
+  backdrop-filter:none !important;
+  border-top:none !important;
+  box-shadow:none !important;
 }

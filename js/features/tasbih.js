@@ -2,7 +2,8 @@
 import {S,save,todayKey,emit} from '../core/store.js';
 import {toast,burst,openSheet,closeSheet,sheetOpen} from '../core/ui.js';
 import {playSound,vib,getAC} from '../core/audio.js';
-import {DHIKRS} from '../data/catalog.js';
+import {DHIKRS,BONUS_DHIKRS} from '../data/catalog.js';
+import {isUnlocked,remainingFor,fmtGoal,checkUnlocks} from '../core/rewards.js';
 
 const $=id=>document.getElementById(id);
 const CIRC=2*Math.PI*104;
@@ -17,6 +18,14 @@ function updateRing(pct){
 export function renderTasbih(){
   $('cnum').textContent=S.count;
   $('t-title').textContent=S.title;
+  // En skin Voxel, on « mine » plutôt que « appuyer »
+  const cl=$('clabel');
+  if(cl){
+    // Mémorise le label de base (issu de l'i18n) au premier passage pour pouvoir
+    // le restaurer en sortant du skin Voxel — sans ça, "MINÉ" restait collé.
+    if(!cl.dataset.baseLabel)cl.dataset.baseLabel=cl.textContent||'APPUYER';
+    cl.textContent=(S.skin==='voxel')?'MINÉ':cl.dataset.baseLabel;
+  }
   const nxt=S.reminder>0?(S.reminder-(S.count%S.reminder)):0;
   $('t-sub').textContent=S.reminder>0?`Dans ${nxt} · Rappel ${S.reminder}`:(S.goal>0?`Objectif ${S.goal}`:'Comptage libre');
   $('sp-laps').textContent=S.lapCount;
@@ -30,15 +39,43 @@ export function renderTasbih(){
   else lb.classList.remove('show');
 }
 
+/* Particules "cassage de bloc" — projetées depuis le tap-btn en mode Voxel */
+function voxelParticles(){
+  const btn=$('tap-btn');if(!btn)return;
+  const r=btn.getBoundingClientRect();
+  const cx=r.left+r.width/2,cy=r.top+r.height/2;
+  const colors=['#5FE4F5','#B8F2FA','#7A8A9C','#3A4A5C','#E6F0FA'];
+  for(let i=0;i<10;i++){
+    const p=document.createElement('div');
+    p.className='vox-particle';
+    p.style.left=cx+'px';p.style.top=cy+'px';
+    p.style.background=colors[i%colors.length];
+    const ang=Math.random()*Math.PI*2;
+    const dist=40+Math.random()*70;
+    p.style.setProperty('--dx',(Math.cos(ang)*dist)+'px');
+    p.style.setProperty('--dy',(Math.sin(ang)*dist-30)+'px');
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),700);
+  }
+}
+
 /* ── Compteur ── */
 function increment(){
   getAC();
+  const beforeAll=S.allTime|0;
   S.count++;S.sessTot++;S.allTime++;
+  // Détecte tous les paliers de récompense franchis (thèmes, sons, avatars, titres, dhikrs bonus)
+  checkUnlocks(beforeAll,S.allTime);
   const tk=todayKey();
   S.daily[tk]=(S.daily[tk]||0)+1;
 
   const milestone=(S.reminder>0&&S.count%S.reminder===0)||(S.goal>0&&S.count===S.goal);
   playSound(S.sound,milestone);
+  // Bonus Voxel : bruit de minage + gerbe de particules à chaque coup
+  if(S.skin==='voxel'){
+    if(!milestone)playSound('mc_mine');
+    voxelParticles();
+  }
   vib(milestone?[70,35,70]:16);
 
   const cn=$('cnum');
@@ -126,11 +163,17 @@ export function setDhikr({title,goal,reminder,resetCount=true}){
 
 export function buildDhikrBar(){
   const bar=$('dhikr-bar');bar.innerHTML='';
-  const all=[...DHIKRS.map(d=>({...d,custom:false})),...S.customDhikrs.map(d=>({...d,custom:true}))];
+  // Les dhikrs bonus verrouillés ne s'affichent PAS dans la barre principale :
+  // impossibles à sélectionner de toute façon, ils sont visibles dans la sheet Bonus.
+  const all=[
+    ...DHIKRS.map(d=>({...d,custom:false,bonus:false})),
+    ...BONUS_DHIKRS.filter(d=>isUnlocked(d)).map(d=>({...d,custom:false,bonus:true})),
+    ...S.customDhikrs.map(d=>({...d,custom:true,bonus:false})),
+  ];
   all.forEach(d=>{
     const el=document.createElement('div');
-    el.className='dchip'+(S.title===d.name?' active':'');
-    el.innerHTML=`<span class="dchip-ar">${d.arabic||d.name}</span><span class="dchip-n">${d.goal}×</span>${d.custom?'<span class="dchip-star">★</span>':''}`;
+    el.className='dchip'+(S.title===d.name?' active':'')+(d.bonus?' bonus':'');
+    el.innerHTML=`<span class="dchip-ar">${d.arabic||d.name}</span><span class="dchip-n">${d.goal}×</span>${d.custom?'<span class="dchip-star">★</span>':''}${d.bonus?'<span class="dchip-star">✦</span>':''}`;
     el.addEventListener('click',()=>{
       setDhikr({title:d.name,goal:d.goal,reminder:d.reminder});
       toast(`✦ ${d.name}`);vib(20);
