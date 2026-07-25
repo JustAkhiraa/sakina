@@ -38,16 +38,29 @@ export const NAV_ITEMS=[
   {id:'page-settings',label:'Paramètres',i18n:'nav.settings',icon:SVG.settings,locked:true},
 ];
 
-export const MAX_VISIBLE=5;
+export const MAX_VISIBLE=6;
 
 /* Initialise S.nav si absent ou incohérent (nouvel item ajouté au registre). */
 export function ensureNavState(){
   if(!S.nav||typeof S.nav!=='object')S.nav={order:[],hidden:[],startPage:'page-tasbih'};
   const ids=NAV_ITEMS.map(n=>n.id);
   const lockedIds=NAV_ITEMS.filter(n=>n.locked).map(n=>n.id);
-  // Ajoute les nouveaux items à la fin, retire ceux qui n'existent plus
-  S.nav.order=[...S.nav.order.filter(id=>ids.includes(id)),
-               ...ids.filter(id=>!S.nav.order.includes(id))];
+  // Migration unique (v2) : les versions précédentes ajoutaient les nouveaux
+  // items en fin d'ordre, enterrant la Bibliothèque tout en bas de « Plus ».
+  // On remet une fois l'ordre canonique ; l'utilisateur peut re-personnaliser
+  // ensuite dans Réglages → Navigation.
+  if((S.nav.navV||0)<2){S.nav.order=ids.slice();S.nav.navV=2;}
+  // Conserve l'ordre personnalisé, mais insère les NOUVEAUX items à leur
+  // position canonique (ordre du registre) plutôt qu'à la fin.
+  const existing=S.nav.order.filter(id=>ids.includes(id));
+  for(const id of ids){
+    if(existing.includes(id))continue;
+    const canon=ids.indexOf(id);
+    let pos=existing.findIndex(e=>ids.indexOf(e)>canon);
+    if(pos===-1)pos=existing.length;
+    existing.splice(pos,0,id);
+  }
+  S.nav.order=existing;
   // Les items « locked » (Paramètres) ne peuvent JAMAIS être masqués
   S.nav.hidden=(S.nav.hidden||[]).filter(id=>ids.includes(id)&&!lockedIds.includes(id));
   if(!ids.includes(S.nav.startPage)||S.nav.hidden.includes(S.nav.startPage)){
