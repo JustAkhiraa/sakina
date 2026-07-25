@@ -373,9 +373,16 @@ async function openNames(filter=''){
   }
   renderNames(filter);
 }
-/* Récitation d'un nom : fichier books/asma-audio/{n à 3 chiffres}.mp3.
-   Il suffit de déposer les fichiers, aucun changement de code nécessaire. */
-function asmaAudioSrc(n){return `books/asma-audio/${String(n).padStart(3,'0')}.mp3`;}
+/* Récitation d'un nom. Source par défaut : dépôt MIT MohammedAbidNafi/
+   99-Names-of-Allah via CDN jsDelivr (champ `af` par nom dans asma.json).
+   Repli local possible : books/asma-audio/{n à 3 chiffres}.mp3 — déposer les
+   fichiers là suffit à les faire jouer hors-ligne, sans changer le code. */
+function asmaAudioSrc(n){
+  const nm=_asma&&_asma.names.find(x=>x.n===n);
+  const base=(_asma&&_asma.audioSource&&_asma.audioSource.base)||'';
+  if(nm&&nm.af&&base)return base+nm.af+'.mp3';
+  return `books/asma-audio/${String(n).padStart(3,'0')}.mp3`;
+}
 let _asmaAudio=null,_asmaPlaying=0;
 function playName(n,card){
   if(!_asmaAudio){_asmaAudio=new Audio();}
