@@ -632,9 +632,19 @@
   font-style:italic;color:var(--t1);}
 
 /* Note d'aide du calendrier */
-.cal-help{font-size:0.74rem;color:var(--t2);line-height:1.6;padding:11px 13px;margin-bottom:12px;
-  background:var(--a-soft);border:1px dashed var(--a-glow);border-radius:var(--r-md);}
-.cal-help strong{color:var(--t1);}
+/* ── Bloc d'aide repliable « Comment ça marche » (réutilisable) ──
+   Replié par défaut : ceux qui connaissent ne voient qu'une ligne ; un clic
+   déroule l'explication. <details> natif = accessible, sans JS. */
+.help-fold{margin-bottom:12px;background:var(--a-soft);border:1px dashed var(--a-glow);
+  border-radius:var(--r-md);overflow:hidden;}
+.help-fold-sum{list-style:none;cursor:pointer;padding:10px 13px;font-size:0.78rem;font-weight:700;
+  color:var(--a);display:flex;align-items:center;gap:6px;user-select:none;}
+.help-fold-sum::-webkit-details-marker{display:none;}
+.help-fold-sum::after{content:"⌄";margin-left:auto;font-size:1rem;line-height:1;
+  transition:transform 0.2s;color:var(--t2);}
+.help-fold[open] .help-fold-sum::after{transform:rotate(180deg);}
+.help-fold-bd{padding:0 13px 12px;font-size:0.76rem;color:var(--t2);line-height:1.65;}
+.help-fold-bd strong{color:var(--t1);}
 
 /* ════════ ÉVÉNEMENTS DU CALENDRIER ════════ */
 .fc-day{position:relative;}

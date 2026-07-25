@@ -216,7 +216,7 @@ function renderFastingCalendar(){
     if(info.ash||info.araf)fastCount++;
   }
 
-  let html=`<div class="cal-help">💡 <strong>Comment ça marche :</strong> les couleurs indiquent les jours de jeûne recommandés. <strong>Appuyez sur n'importe quel jour</strong> pour y écrire un événement ou une note — il sera marqué d'un point rouge. En bas : générez des séries entières (jours blancs, Achoura…) et exportez tout vers le calendrier de votre téléphone.</div>
+  let html=`<details class="help-fold"><summary class="help-fold-sum">💡 Comment ça marche</summary><div class="help-fold-bd">Les couleurs indiquent les jours de jeûne recommandés. <strong>Appuyez sur n'importe quel jour</strong> pour y écrire un événement ou une note — il sera marqué d'un point rouge. En bas : générez des séries entières (jours blancs, Achoura…) et exportez tout vers le calendrier de votre téléphone.</div></details>
   <div class="fasting-stats">
     <div class="fs-card"><div class="fs-val">${ramCount||'—'}</div><div class="fs-lbl">Ramadan</div></div>
     <div class="fs-card"><div class="fs-val">${whiteCount}</div><div class="fs-lbl">Jours blancs</div></div>

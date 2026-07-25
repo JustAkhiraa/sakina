@@ -314,6 +314,54 @@ html[data-theme="marble"]{
 [data-skin="royal"] .gc{position:relative;}
 [data-skin="royal"] .gc::before{background:linear-gradient(90deg,transparent,rgba(232,201,138,0.6),transparent);}
 
+/* ── ZELLIGE ──────────────────────────────────────────────────────────
+   Mosaïque marocaine : bleu majorelle profond, filets & étoiles dorés,
+   motif géométrique de tuiles en losange sur le fond. */
+[data-skin="zellige"]{
+  --a:#E3B44B;--a2:#F2CF77;--a-glow:rgba(227,180,75,0.45);--a-dim:rgba(227,180,75,0.16);
+  --a-soft:rgba(227,180,75,0.07);--a-rgb:227,180,75;
+  --bg:#0B2A4A;--sur:#0F3358;--sur2:#134066;--sur3:#184D78;
+  --bor:rgba(227,180,75,0.22);--bor2:rgba(227,180,75,0.10);
+  --t1:#F3E9D2;--t2:#A9C2D8;--t3:#5E7E9C;
+  --ff-d:"Cormorant Garamond","Palatino Linotype",serif;
+  --r-md:12px;--r-lg:18px;
+}
+/* Fond : damier de losanges (deux diagonales dorées) + petites étoiles aux
+   intersections, sur un dégradé bleu profond — l'esprit du zellige. */
+[data-skin="zellige"] body{
+  background-color:#0B2A4A;
+  background-image:
+    repeating-linear-gradient(45deg,rgba(227,180,75,0.10) 0 1.5px,transparent 1.5px 30px),
+    repeating-linear-gradient(-45deg,rgba(227,180,75,0.10) 0 1.5px,transparent 1.5px 30px),
+    repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0 1px,transparent 1px 15px),
+    repeating-linear-gradient(-45deg,rgba(255,255,255,0.03) 0 1px,transparent 1px 15px),
+    radial-gradient(70% 50% at 50% 0%,rgba(227,180,75,0.10),transparent 70%),
+    linear-gradient(180deg,#0C2E50,#081F38)!important;
+  background-attachment:fixed!important;
+}
+/* Petites étoiles dorées disséminées (pseudo-tuiles) */
+[data-skin="zellige"] body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.5;
+  background-image:
+    radial-gradient(circle at 15px 15px,rgba(227,180,75,0.5) 0 1.5px,transparent 2px);
+  background-size:30px 30px;
+}
+[data-skin="zellige"] #cnum{color:#F3E9D2;text-shadow:0 0 22px rgba(227,180,75,0.4);}
+[data-skin="zellige"] #t-title,[data-skin="zellige"] .phd-title{font-family:var(--ff-d);letter-spacing:0.03em;}
+[data-skin="zellige"] #tap-btn{
+  background:
+    repeating-conic-gradient(from 22.5deg at 50% 50%,#134066 0deg 45deg,#0F3358 45deg 90deg),
+    radial-gradient(circle at 30% 28%,#184D78,#0B2A4A);
+  border:2px solid rgba(227,180,75,0.5);
+  box-shadow:0 24px 70px rgba(0,0,0,0.55),0 0 40px rgba(227,180,75,0.22),inset 0 0 30px rgba(11,42,74,0.6);
+}
+[data-skin="zellige"] .gc,[data-skin="zellige"] .sp,[data-skin="zellige"] .pcard,[data-skin="zellige"] .dchip,[data-skin="zellige"] .tsw{
+  border-color:rgba(227,180,75,0.22);
+}
+[data-skin="zellige"] .app-hdr,[data-skin="zellige"] .phd{border-bottom:1px solid rgba(227,180,75,0.28);}
+[data-skin="zellige"] #navbar{border-top:1px solid rgba(227,180,75,0.28);}
+body[data-skin="zellige"][data-skin="zellige"]{--bg:#0B2A4A;}
+
 /* ── MASJID ───────────────────────────────────────────────────────────
    Inspiré de SholatKu : vert mosquée profond, en-tête en dégradé
    émeraude, cartes très arrondies, typographie Inter, halo pulsé
