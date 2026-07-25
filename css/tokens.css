@@ -946,12 +946,10 @@ body:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix
   transform:skewX(-8deg);
 }
 [data-skin="persona"] #cnum{color:#FFF5F5;text-shadow:3px 3px 0 #E60012,6px 6px 0 #000;}
-/* Bouton principal rond : halo rouge symétrique. Pas de clip-path ni d'ombre
-   décalée en dur ici — sur un cercle, une ombre pleine décalée forme un
-   « croissant » qui donne l'impression que le bouton est coupé. */
 [data-skin="persona"] #tap-btn{
   background:#0A0000!important;border:3px solid #E60012!important;
-  box-shadow:0 0 0 6px rgba(230,0,18,0.22),0 0 44px rgba(230,0,18,0.4),inset 0 0 40px rgba(230,0,18,0.25)!important;
+  clip-path:polygon(6% 0,100% 0,100% 94%,94% 100%,0 100%,0 6%);
+  box-shadow:8px 8px 0 #E60012,inset 0 0 40px rgba(230,0,18,0.25)!important;
 }
 [data-skin="persona"] .gc,[data-skin="persona"] .sp,[data-skin="persona"] .pcard,[data-skin="persona"] .dchip{
   background:#140303!important;border:2px solid #FFF5F5!important;border-radius:2px!important;
@@ -994,7 +992,7 @@ body:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix
 [data-skin="nier"] .app-hdr,[data-skin="nier"] .phd{background:#C7BFA6!important;border-bottom:1px solid #2A2418!important;}
 [data-skin="nier"] #navbar{background:#C7BFA6!important;border-top:1px solid #2A2418!important;}
 
-/* ── ARCHIPEL : menu inventaire sur pelouse tissée, panneaux parchemin ── */
+/* ── ARCHIPEL : cel-shading vert, ciel, tampon "carte au trésor" ── */
 [data-skin="windwaker"]{
   --a:#0F7A3E;--a2:#3ECC6B;--a-glow:rgba(15,122,62,0.45);--a-dim:rgba(15,122,62,0.15);--a-rgb:15,122,62;
   --bg:#7AC948;--sur:#F3E7B8;--sur2:#E8D89A;--sur3:#DBC880;
@@ -1004,24 +1002,17 @@ body:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix
   --ff-b:"Cormorant Garamond",serif;
   --r-md:14px;--r-lg:22px;--r-pill:9999px;
 }
-/* Fond « herbe tissée » du menu Items : damier de deux verts, comme la pelouse
-   du menu inventaire — pas de ciel. Le damier vient de deux dégradés à 45°/-45°
-   décalés, superposés à la couleur d'herbe de base. */
 [data-skin="windwaker"] body{
   background:
-    repeating-linear-gradient(45deg,rgba(255,255,255,0.05) 0 14px,transparent 14px 28px),
-    repeating-linear-gradient(-45deg,rgba(0,0,0,0.05) 0 14px,transparent 14px 28px),
-    linear-gradient(180deg,#8FD457,#6FB93E) fixed!important;
-  background-attachment:fixed!important;
+    linear-gradient(180deg,#7EC7E6 0 40%,#7AC948 40% 100%) fixed!important;
 }
 [data-skin="windwaker"] body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.5;
-  /* touffes d'herbe éparses : petits triangles clairs */
-  background-image:
-    radial-gradient(circle at 12% 30%,rgba(255,255,255,0.12) 0 3px,transparent 4px),
-    radial-gradient(circle at 62% 18%,rgba(255,255,255,0.1) 0 2px,transparent 3px),
-    radial-gradient(circle at 88% 42%,rgba(255,255,255,0.1) 0 3px,transparent 4px),
-    radial-gradient(circle at 34% 72%,rgba(255,255,255,0.1) 0 2px,transparent 3px);
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.6;
+  background:
+    radial-gradient(circle at 20% 22%,#fff 0 24px,transparent 25px),
+    radial-gradient(circle at 24% 20%,#fff 0 18px,transparent 19px),
+    radial-gradient(circle at 78% 15%,#fff 0 30px,transparent 31px),
+    radial-gradient(circle at 82% 12%,#fff 0 22px,transparent 23px);
 }
 [data-skin="windwaker"] #cnum{font-family:var(--ff-d);color:#8B5A1A;text-shadow:0 2px 0 #F3E7B8,0 3px 6px rgba(0,0,0,0.35);}
 [data-skin="windwaker"] #tap-btn{
@@ -1051,14 +1042,11 @@ body:not([data-skin="voxel"]):not([data-skin="terminal"]):not([data-skin="matrix
 [data-skin="undertale"] #cnum{font-family:var(--ff-d);color:#FFF;}
 [data-skin="undertale"] #tap-btn{
   background:#000!important;border:4px solid #FFF!important;border-radius:0!important;
-  box-shadow:none!important;position:relative!important;overflow:hidden;
+  box-shadow:none!important;
 }
-/* Cœur rouge parfaitement centré derrière le compteur : translate(-50%,-50%)
-   depuis le centre du bouton, indépendant de la structure flex interne. */
 [data-skin="undertale"] #tap-btn::before{
-  content:"♥";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  color:#FF0000;font-size:6rem;line-height:1;filter:drop-shadow(0 0 20px rgba(255,0,0,0.7));
-  pointer-events:none;opacity:0.18;z-index:0;
+  content:"♥";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:#FF0000;font-size:6rem;filter:drop-shadow(0 0 20px rgba(255,0,0,0.7));pointer-events:none;opacity:0.15;
 }
 [data-skin="undertale"] .gc,[data-skin="undertale"] .sp,[data-skin="undertale"] .pcard,[data-skin="undertale"] .dchip,[data-skin="undertale"] .tsw{
   background:#000!important;border:3px solid #FFF!important;border-radius:0!important;box-shadow:none!important;

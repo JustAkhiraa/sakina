@@ -882,38 +882,3 @@
 .book-md-ul li::before{content:"◆";position:absolute;left:0;top:0;color:var(--a);font-size:0.7rem;line-height:1.8;}
 .book-md-foot{margin-top:24px;padding-top:12px;border-top:1px dashed var(--bor);
   font-size:0.7rem;color:var(--t3);text-align:center;letter-spacing:0.08em;text-transform:uppercase;}
-
-/* ── Verset coranique : encadré ornemental, arabe centré et mis en valeur ── */
-.book-md-verse{font-family:var(--ff-a);font-size:1.5rem;line-height:2.15;color:var(--a);
-  text-align:center;margin:18px 0;padding:16px 18px;border-radius:var(--r-md);
-  background:linear-gradient(180deg,rgba(var(--a-rgb),0.07),rgba(var(--a-rgb),0.02));
-  border:1px solid var(--a-glow);position:relative;}
-.book-md-verse::before,.book-md-verse::after{position:absolute;color:var(--a2,var(--a));
-  font-size:1.1rem;opacity:0.6;}
-.book-md-verse::before{content:"﴾";top:6px;right:10px;}
-.book-md-verse::after{content:"﴿";bottom:6px;left:10px;}
-
-/* ── Table des matières : titre à gauche, n° de page à droite, points de conduite ── */
-.book-toc-row{display:flex;align-items:baseline;gap:8px;margin:2px 0;font-size:0.92rem;line-height:1.5;}
-.book-toc-n{flex-shrink:0;min-width:1.6em;color:var(--a);font-family:var(--ff-m);font-size:0.8rem;font-weight:700;text-align:right;}
-.book-toc-t{color:var(--t1);}
-.book-toc-lead{flex:1;border-bottom:1.5px dotted var(--bor);transform:translateY(-3px);min-width:14px;}
-.book-toc-p{flex-shrink:0;color:var(--a);font-family:var(--ff-m);font-size:0.82rem;font-weight:700;}
-
-/* ── Tableau (page des symboles p.10) ── */
-.book-md-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.9rem;
-  background:var(--sur2);border-radius:var(--r-md);overflow:hidden;border:1px solid var(--bor2);}
-.book-md-table th{background:rgba(var(--a-rgb),0.12);color:var(--a);font-weight:700;
-  padding:9px 11px;text-align:left;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;}
-.book-md-table td{padding:9px 11px;border-top:1px solid var(--bor2);color:var(--t1);vertical-align:middle;line-height:1.5;}
-.book-md-table td[dir="rtl"]{font-family:var(--ff-a);font-size:1.25rem;color:var(--a);white-space:nowrap;}
-
-/* ── Renvoi de note (exposant discret) ── */
-.book-fn-ref{font-size:0.62em;color:var(--a);font-weight:700;vertical-align:super;
-  padding:0 1px;line-height:0;}
-/* ── Notes de bas de page ── */
-.book-fn-list{margin-top:22px;padding-top:12px;border-top:1px solid var(--bor2);
-  display:flex;flex-direction:column;gap:7px;}
-.book-fn{font-size:0.8rem;line-height:1.55;color:var(--t2);padding-left:6px;}
-.book-fn[dir="rtl"]{font-family:var(--ff-a);font-size:1.05rem;line-height:1.9;color:var(--t1);padding-left:0;padding-right:6px;}
-.book-fn-mark{color:var(--a);font-weight:700;font-family:var(--ff-m);font-size:0.72rem;margin-right:4px;}

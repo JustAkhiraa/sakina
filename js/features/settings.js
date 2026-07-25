@@ -111,7 +111,7 @@ function buildSkinGrid(targetId='skin-grid',opts={onlyUnlocked:true}){
       <div class="skin-desc">${meta}</div></div>`;
     el.addEventListener('click',()=>{
       if(!unlocked){toast(`Skin verrouillé — encore ${remainingFor(s).toLocaleString('fr-FR')} dhikr`);vib(10);return;}
-      S.skin=s.id;save();applyTheme();renderTasbih();buildSkinGrid('skin-grid');vib(18);
+      S.skin=s.id;save();applyTheme();buildSkinGrid('skin-grid');vib(18);
       toast(`✦ Skin « ${s.name} »`);
     });
     grid.appendChild(el);

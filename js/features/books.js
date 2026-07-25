@@ -254,70 +254,38 @@ function renderCitadelleMarkdown(md){
   const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
   const inline=s=>esc(s)
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g,'<em>$1</em>')
-    .replace(/\[\^([^\]]+)\]/g,'<sup class="book-fn-ref">$1</sup>'); // renvoi de note
-  const isArabic=s=>/[\u0600-\u06FF]/.test(s)&&!/[A-Za-z\u00C0-\u00FF]{2,}/.test(s);
+    .replace(/\*(.+?)\*/g,'<em>$1</em>');
+  const isArabic=s=>/^[\s\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF0-9.,()«»:;!؟،—\-]+$/.test(s)&&/[\u0600-\u06FF]/.test(s);
   const lines=md.split('\n');
   const out=[];
-  const notes=[];               // {mark,text} collectees puis rendues en bas de page
   let inList=false;
   const closeList=()=>{if(inList){out.push('</ul>');inList=false;}};
-  for(let i=0;i<lines.length;i++){
-    const line=lines[i].trimEnd();
-    const s=line.trim();
-    if(!s){closeList();continue;}
-    // Definition de note : "[^1]: texte"
-    const nd=s.match(/^\[\^([^\]]+)\]:\s*(.*)$/);
-    if(nd){closeList();notes.push({mark:nd[1],text:nd[2]});continue;}
-    // Tableau : "| ... |" + separateur "|---|---|"
-    if(/^\|.*\|$/.test(s)&&i+1<lines.length&&/^\|[\s:|-]+\|$/.test(lines[i+1].trim())){
+  for(let raw of lines){
+    const line=raw.trimEnd();
+    if(!line.trim()){closeList();continue;}
+    if(/^#{1,6}\s+/.test(line)){
       closeList();
-      const cells=r=>r.trim().replace(/^\||\|$/g,'').split('|').map(c=>c.trim());
-      const head=cells(s);i++;
-      const body=[];
-      while(i+1<lines.length&&/^\|.*\|$/.test(lines[i+1].trim())){i++;body.push(cells(lines[i]));}
-      let t='<table class="book-md-table"><thead><tr>'+head.map(h=>`<th>${inline(h)}</th>`).join('')+'</tr></thead><tbody>';
-      t+=body.map(r=>'<tr>'+r.map(c=>{const ar=isArabic(c);return `<td${ar?' dir="rtl" lang="ar"':''}>${inline(c)}</td>`;}).join('')+'</tr>').join('');
-      out.push(t+'</tbody></table>');continue;
+      const m=line.match(/^(#{1,6})\s+(.*)$/);
+      const lvl=Math.min(m[1].length+1,6); // # → h2 (h1 réservé au header du livre)
+      out.push(`<h${lvl} class="book-md-h${lvl}">${inline(m[2])}</h${lvl}>`);
+      continue;
     }
-    if(/^#{1,6}\s+/.test(s)){
+    if(/^---+$/.test(line.trim())){
       closeList();
-      const m=s.match(/^(#{1,6})\s+(.*)$/);
-      const lvl=Math.min(m[1].length+1,6); // # -> h2 (h1 reserve au header du livre)
-      out.push(`<h${lvl} class="book-md-h${lvl}">${inline(m[2])}</h${lvl}>`);continue;
+      out.push('<div class="book-sep" aria-hidden="true"><span></span><span></span><span></span></div>');
+      continue;
     }
-    if(/^---+$/.test(s)){
-      closeList();
-      out.push('<div class="book-sep" aria-hidden="true"><span></span><span></span><span></span></div>');continue;
-    }
-    // Table des matieres : "12. Titre ....... 15" ou "Titre ..... 15"
-    const toc=s.match(/^(?:(\d+)\.\s+)?(.+?\S)\s*[.\u00B7]{2,}\s*(\d+)$/);
-    if(toc&&!isArabic(s)){
-      closeList();
-      const num=toc[1]?`<span class="book-toc-n">${toc[1]}</span>`:'';
-      out.push(`<div class="book-toc-row">${num}<span class="book-toc-t">${inline(toc[2])}</span><span class="book-toc-lead" aria-hidden="true"></span><span class="book-toc-p">${toc[3]}</span></div>`);continue;
-    }
-    if(/^[-\u2022]\s+/.test(s)){
+    if(/^[-•]\s+/.test(line)){
       if(!inList){out.push('<ul class="book-md-ul">');inList=true;}
-      out.push(`<li>${inline(s.replace(/^[-\u2022]\s+/,''))}</li>`);continue;
+      out.push(`<li>${inline(line.replace(/^[-•]\s+/,''))}</li>`);
+      continue;
     }
     closeList();
-    // Verset coranique entre ornements
-    if(/[\uFD3E\uFD3F]/.test(s)){
-      out.push(`<p class="book-md-verse" dir="rtl" lang="ar">${inline(s)}</p>`);continue;
-    }
-    const ar=isArabic(s);
-    out.push(`<p class="book-md-p${ar?' book-md-ar':''}"${ar?' dir="rtl" lang="ar"':''}>${inline(line)}</p>`);
+    const cls='book-md-p'+(isArabic(line.trim())?' book-md-ar':'');
+    const attr=isArabic(line.trim())?' dir="rtl" lang="ar"':'';
+    out.push(`<p class="${cls}"${attr}>${inline(line)}</p>`);
   }
   closeList();
-  if(notes.length){
-    out.push('<div class="book-fn-list">');
-    notes.forEach(n=>{
-      const ar=isArabic(n.text);
-      out.push(`<div class="book-fn"${ar?' dir="rtl" lang="ar"':''}><span class="book-fn-mark">${esc(n.mark)}</span> ${inline(n.text)}</div>`);
-    });
-    out.push('</div>');
-  }
   return out.join('');
 }
 
