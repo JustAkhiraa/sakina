@@ -842,6 +842,19 @@
 .asma-tr{font-family:var(--ff-s);font-size:1.05rem;font-weight:600;color:var(--t1);margin-top:4px;}
 .asma-fr{font-size:0.9rem;color:var(--a);font-style:italic;margin-top:2px;}
 .asma-desc{font-size:0.9rem;line-height:1.6;color:var(--t2);margin-top:8px;}
+/* Carte cliquable : joue la récitation du nom */
+.asma-card{cursor:pointer;transition:box-shadow 0.15s,border-color 0.15s,transform 0.1s;}
+.asma-card:active{transform:scale(0.995);}
+.asma-ar{flex:1;text-align:right;}
+.asma-play{flex-shrink:0;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;background:rgba(var(--a-rgb),0.1);color:var(--a);border:1px solid var(--a-glow);
+  transition:all 0.15s;}
+.asma-play .ic-stop{display:none;}
+.asma-card:hover .asma-play{background:rgba(var(--a-rgb),0.18);}
+.asma-card.playing{border-color:var(--a-glow);box-shadow:0 0 0 1px var(--a-glow),0 6px 20px rgba(var(--a-rgb),0.18);}
+.asma-card.playing .asma-play{background:var(--a);color:#fff;box-shadow:0 0 16px rgba(var(--a-rgb),0.5);}
+.asma-card.playing .asma-play .ic-play{display:none;}
+.asma-card.playing .asma-play .ic-stop{display:block;}
 
 /* ── Fiches Apprendre : Salât / Wudû’ ── */
 .learn-reader{max-width:min(680px,100%);margin:0 auto;padding:8px clamp(18px,5vw,34px) 44px;}
