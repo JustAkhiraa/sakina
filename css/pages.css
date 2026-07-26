@@ -940,3 +940,24 @@
 .book-fn{font-size:0.8rem;line-height:1.55;color:var(--t2);padding-left:6px;}
 .book-fn[dir="rtl"]{font-family:var(--ff-a);font-size:1.05rem;line-height:1.9;color:var(--t1);padding-left:0;padding-right:6px;}
 .book-fn-mark{color:var(--a);font-weight:700;font-family:var(--ff-m);font-size:0.72rem;margin-right:4px;}
+
+/* ── Lecture continue et ergonomique (Citadelle & chapitres) ──
+   Colonne de lecture confortable, interligne aéré, respiration entre les
+   sections, arabe mis en valeur. Fait pour lire d'une traite, sans pagination. */
+.book-read{max-width:640px;margin:0 auto;}
+.book-read .book-md-p{font-size:1.04rem;line-height:1.9;margin-bottom:15px;
+  hyphens:auto;-webkit-hyphens:auto;}
+.book-read .book-md-h2{margin-top:38px;font-size:1.28rem;text-align:center;
+  border-bottom:none;padding-bottom:0;}
+.book-read .book-md-h2::after{content:"";display:block;width:46px;height:2px;margin:10px auto 0;
+  background:linear-gradient(90deg,transparent,var(--a),transparent);}
+.book-read .book-md-verse{margin:22px auto;max-width:560px;}
+.book-read .book-md-ar{font-size:1.5rem;line-height:2.15;}
+.book-read .book-fn-list{margin-top:14px;margin-bottom:26px;}
+/* Riyad (chapitres) : mêmes réglages de confort */
+.book-read .book-par{font-size:1.04rem;line-height:1.9;margin-bottom:15px;text-align:left;
+  hyphens:auto;-webkit-hyphens:auto;}
+.book-read .book-chap-head{font-size:1.28rem;text-align:center;line-height:1.5;
+  border-bottom:none;padding:8px 0 0;margin-bottom:20px;}
+.book-read .book-chap-head::after{content:"";display:block;width:46px;height:2px;margin:12px auto 0;
+  background:linear-gradient(90deg,transparent,var(--a),transparent);}

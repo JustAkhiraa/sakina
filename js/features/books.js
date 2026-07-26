@@ -29,10 +29,10 @@ const BOOKS={
     key:'citadelle',icon:'📘',type:'pages',
     title:'La Citadelle du Musulman',titleAr:'حصن المسلم',
     author:"Sa'id ibn Ali ibn Wahf Al-Qahtani",
-    stats:[{val:'146',label:'Pages'},{val:'Intégral',label:'Édition'}],
+    stats:[{val:'146',label:'Sections'},{val:'Intégral',label:'Édition'}],
     desc:[
       "« Hisn al-Muslim » rassemble des invocations authentiques tirées du Coran et de la Sunna pour chaque instant du quotidien : réveil, repas, voyage, épreuves — afin que le rappel d'Allah accompagne le musulman à chaque moment.",
-      "Le mode « Lecture » vous propose le texte propre, mis en forme pour un confort optimal. Pour vérifier un passage précis (surtout en arabe), basculez sur « Page scannée » pour retrouver la mise en page originale du livre.",
+      "Une lecture continue et soignée, du début à la fin, pensée pour un confort optimal — arabe, translittération et traduction mis en valeur.",
     ],
     pageCount:146,
     pagePath:n=>`books/citadelle-pages/page-${String(n).padStart(3,'0')}.png`,
@@ -125,7 +125,7 @@ function showIntro(){
     if(b.type==='chapters')openList();
     else if(b.type==='names')openNames();
     else if(b.type==='guide')openGuide();
-    else openPages(1);
+    else openPages();
   });
   bd.scrollTop=0;
 }
@@ -206,7 +206,7 @@ function showChapter(n){
   const idx=_riyad.chapters.indexOf(c);
   const prev=_riyad.chapters[idx-1],next=_riyad.chapters[idx+1];
   const bd=$('book-bd');
-  bd.innerHTML=`<div class="book-chapter">
+  bd.innerHTML=`<div class="book-chapter book-read">
       <div class="book-chap-head">${c.n}. ${c.title}</div>
       ${formatChapter(c.text)}
       <div class="book-src">${_riyad.author} · ${_riyad.source}</div>
@@ -235,17 +235,27 @@ async function loadCitadelleText(){
   return _citadelleText;
 }
 
-function openPages(n){
+async function openPages(){
   _view='pages';
   const b=BOOKS.citadelle;
   setHeader({title:b.title,back:true});
-  $('book-mode-toggle').style.display='flex';
-  // Synchronise l'état visuel du toggle avec le mode actif
-  document.querySelectorAll('#book-mode-toggle .seg-opt').forEach(o=>o.classList.toggle('active',o.dataset.mode===_pageMode));
-  const pager=$('book-pager');
-  pager.style.display='flex';
-  $('pager-total').textContent=`/ ${b.pageCount}`;
-  showPage(Math.max(1,Math.min(b.pageCount,n)));
+  // Lecture continue et ergonomique : plus de pagination ni de bascule
+  // « Page scannée » (masquée pour l'instant, le mode image reste dans le code).
+  $('book-mode-toggle').style.display='none';
+  $('book-pager').style.display='none';
+  const bd=$('book-bd');
+  bd.innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement du livre…</div>';
+  try{await loadCitadelleText();}
+  catch{bd.innerHTML='<div class="places-empty">Connexion requise pour le premier chargement du texte.</div>';return;}
+  // Chaque page est rendue individuellement (ses notes de bas de page restent
+  // près de leur texte) puis tout est enchaîné en un seul flux de lecture.
+  const html=_citadelleText.pages
+    .filter(p=>(p.text||'').trim())
+    .map(p=>renderCitadelleMarkdown(p.text))
+    .join('');
+  bd.innerHTML=`<div class="book-chapter book-md book-read">${html}
+    <div class="book-src">Hisn al-Muslim — La Citadelle du Musulman · Sa'îd Ibn 'Alî Ibn Wahf Al-Qahtânî · texte intégral</div></div>`;
+  bd.scrollTop=0;
 }
 
 /* Petit rendu Markdown maison — juste ce dont la Citadelle a besoin :
