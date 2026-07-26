@@ -95,10 +95,11 @@ let _view='intro';   // intro | list | chapter | names | guide | pages
 let _page=1;
 
 /* ── En-tête commun ── */
-function setHeader({title,back=false,search=false}){
+function setHeader({title,back=false,search=false,searchPh=''}){
   $('book-title').textContent=title;
   $('btn-book-back').style.display=back?'flex':'none';
   $('book-search-wrap').style.display=search?'block':'none';
+  if(search&&searchPh)$('book-search').placeholder=searchPh;
   $('book-mode-toggle').style.display='none'; // ré-affiché explicitement par openPages()
 }
 
@@ -140,7 +141,7 @@ async function loadRiyad(){
 
 async function openList(filter=''){
   _view='list';
-  setHeader({title:BOOKS.riyad.title,back:true,search:true});
+  setHeader({title:BOOKS.riyad.title,back:true,search:true,searchPh:'Chercher un chapitre (patience, repentir…)'});
   $('book-pager').style.display='none';
   if(!_riyad){
     $('book-bd').innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement du livre…</div>';
@@ -363,7 +364,7 @@ async function loadAsma(){
 }
 async function openNames(filter=''){
   _view='names';
-  setHeader({title:BOOKS.asma.title,back:true,search:true});
+  setHeader({title:BOOKS.asma.title,back:true,search:true,searchPh:'Chercher un nom (Rahmân, Paix, n°…)'});
   $('book-pager').style.display='none';
   if(!_asma){
     $('book-bd').innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement des noms…</div>';
@@ -372,21 +373,52 @@ async function openNames(filter=''){
   }
   renderNames(filter);
 }
+/* Récitation d'un nom : fichiers locaux books/asma-audio/{af}.mp3, où `af`
+   (dans asma.json) est du type "001_ar-rahman" — triés par numéro, nom lisible.
+   Récitations issues du dépôt MIT MohammedAbidNafi/99-Names-of-Allah (cf.
+   `audioSource`), converties en MP3. Locaux = hors-ligne + cache SW. */
+function asmaAudioSrc(n){
+  const nm=_asma&&_asma.names.find(x=>x.n===n);
+  return `books/asma-audio/${(nm&&nm.af)||String(n).padStart(3,'0')}.mp3`;
+}
+let _asmaAudio=null,_asmaPlaying=null;   // null = rien en lecture (n=0 = Allah, donc pas 0 comme sentinelle)
+function playName(n,card){
+  if(!_asmaAudio){_asmaAudio=new Audio();}
+  document.querySelectorAll('.asma-card.playing').forEach(c=>c.classList.remove('playing'));
+  // reclic sur le nom en cours → stop
+  if(_asmaPlaying===n&&!_asmaAudio.paused){_asmaAudio.pause();_asmaPlaying=null;return;}
+  _asmaAudio.src=asmaAudioSrc(n);_asmaPlaying=n;
+  card.classList.add('playing');
+  _asmaAudio.onended=()=>{card.classList.remove('playing');_asmaPlaying=null;};
+  _asmaAudio.onerror=()=>{card.classList.remove('playing');_asmaPlaying=null;toast('Récitation de ce nom bientôt disponible 🎧');};
+  _asmaAudio.play().catch(()=>{});
+}
+
 function renderNames(filter=''){
   const bd=$('book-bd');
   const f=filter.trim().toLowerCase();
   const items=_asma.names.filter(x=>!f||x.tr.toLowerCase().includes(f)||x.fr.toLowerCase().includes(f)||String(x.n)===f||x.ar.includes(filter.trim()));
   if(!items.length){bd.innerHTML='<div class="places-empty">Aucun nom trouvé.</div>';return;}
   bd.innerHTML=`<div class="asma-list">${items.map(x=>`
-    <div class="asma-card">
+    <div class="asma-card" data-n="${x.n}" role="button" tabindex="0" aria-label="Écouter ${x.tr}">
       <div class="asma-head">
-        <div class="asma-n">${x.n}</div>
+        <div class="asma-n">${x.n||'★'}</div>
         <div class="asma-ar" lang="ar" dir="rtl">${x.ar}</div>
+        <div class="asma-play" aria-hidden="true">
+          <svg class="ic-play" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="ic-stop" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>
+        </div>
       </div>
       <div class="asma-tr">${x.tr}</div>
       <div class="asma-fr">${x.fr}</div>
       <div class="asma-desc">${x.desc}</div>
     </div>`).join('')}</div>`;
+  // Un clic (ou Entrée) sur une carte joue la récitation du nom
+  bd.querySelectorAll('.asma-card').forEach(card=>{
+    const n=+card.dataset.n;
+    card.addEventListener('click',()=>playName(n,card));
+    card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();playName(n,card);}});
+  });
   bd.scrollTop=0;
 }
 
