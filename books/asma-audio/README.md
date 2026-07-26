@@ -1,20 +1,23 @@
-# Récitations des 99 Noms d'Allah
+# Récitations des Noms d'Allah
 
-Déposez ici un fichier audio par nom, nommé avec le **numéro du nom sur 3 chiffres** :
+Un fichier **MP3** par nom, nommé **`{numéro sur 3 chiffres}_{nom}.mp3`** — ainsi
+les fichiers se trient par numéro tout en restant lisibles :
 
 ```
-001.mp3   → Ar-Rahmân   (nom n°1)
-002.mp3   → Ar-Rahîm    (nom n°2)
-003.mp3   → Al-Malik    (nom n°3)
+000_allah.mp3        → Allah (Nom suprême)
+001_ar-rahman.mp3    → Ar-Rahmân   (nom n°1)
+002_ar-rahim.mp3     → Ar-Rahîm    (nom n°2)
 ...
-099.mp3   → As-Sabûr    (nom n°99)
+067_al-ahad.mp3      → Al-Ahad     (nom n°67)
+099_as-sabur.mp3     → As-Sabûr    (nom n°99)
 ```
 
-- Format conseillé : **MP3** (ou `.m4a`/`.ogg` en adaptant l'extension dans `asmaAudioSrc()` de `js/features/books.js`).
-- La numérotation suit l'ordre de `books/asma.json` (champ `n`).
-- Aucun changement de code nécessaire : dès qu'un fichier est présent, cliquer
-  le nom correspondant dans l'app le joue. Les noms sans fichier affichent
-  simplement « Récitation bientôt disponible ».
+- La correspondance nom → fichier est le champ **`af`** de chaque nom dans
+  `books/asma.json` (ex : `"af": "001_ar-rahman"`). Pour changer un fichier,
+  il suffit d'aligner le nom du fichier et ce champ.
+- Format **MP3** uniquement (universel, iOS inclus).
+- L'app lit `books/asma-audio/{af}.mp3` au clic sur un nom ; hors-ligne grâce
+  au service worker.
 
-L'ordre des noms peut être ajusté dans `books/asma.json` si vous souhaitez
-suivre l'ordre d'un anachid précis (fournir la liste ordonnée).
+Récitations issues du dépôt MIT [MohammedAbidNafi/99-Names-of-Allah](https://github.com/MohammedAbidNafi/99-Names-of-Allah),
+converties en MP3 (voir le bloc `audioSource` de `asma.json`).

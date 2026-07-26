@@ -373,12 +373,14 @@ async function openNames(filter=''){
   }
   renderNames(filter);
 }
-/* Récitation d'un nom : fichiers locaux books/asma-audio/{n à 3 chiffres}.EXT
-   (récitations issues du dépôt MIT MohammedAbidNafi/99-Names-of-Allah, cf.
-   `audioSource` dans asma.json). Locaux = hors-ligne + mis en cache par le SW.
-   Formats : la plupart en .mp3, Allah (n°0) en .ogg, Al-Ahad (n°67) en .mp4. */
-const ASMA_EXT={0:'ogg',67:'mp4'};
-function asmaAudioSrc(n){return `books/asma-audio/${String(n).padStart(3,'0')}.${ASMA_EXT[n]||'mp3'}`;}
+/* Récitation d'un nom : fichiers locaux books/asma-audio/{af}.mp3, où `af`
+   (dans asma.json) est du type "001_ar-rahman" — triés par numéro, nom lisible.
+   Récitations issues du dépôt MIT MohammedAbidNafi/99-Names-of-Allah (cf.
+   `audioSource`), converties en MP3. Locaux = hors-ligne + cache SW. */
+function asmaAudioSrc(n){
+  const nm=_asma&&_asma.names.find(x=>x.n===n);
+  return `books/asma-audio/${(nm&&nm.af)||String(n).padStart(3,'0')}.mp3`;
+}
 let _asmaAudio=null,_asmaPlaying=null;   // null = rien en lecture (n=0 = Allah, donc pas 0 comme sentinelle)
 function playName(n,card){
   if(!_asmaAudio){_asmaAudio=new Audio();}
