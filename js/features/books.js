@@ -373,21 +373,22 @@ async function openNames(filter=''){
   }
   renderNames(filter);
 }
-/* Récitation d'un nom : fichiers locaux books/asma-audio/{n à 3 chiffres}.mp3
+/* Récitation d'un nom : fichiers locaux books/asma-audio/{n à 3 chiffres}.EXT
    (récitations issues du dépôt MIT MohammedAbidNafi/99-Names-of-Allah, cf.
    `audioSource` dans asma.json). Locaux = hors-ligne + mis en cache par le SW.
-   Al-Ahad (n°67) n'a pas de fichier : affiche « bientôt disponible ». */
-function asmaAudioSrc(n){return `books/asma-audio/${String(n).padStart(3,'0')}.mp3`;}
-let _asmaAudio=null,_asmaPlaying=0;
+   Formats : la plupart en .mp3, Allah (n°0) en .ogg, Al-Ahad (n°67) en .mp4. */
+const ASMA_EXT={0:'ogg',67:'mp4'};
+function asmaAudioSrc(n){return `books/asma-audio/${String(n).padStart(3,'0')}.${ASMA_EXT[n]||'mp3'}`;}
+let _asmaAudio=null,_asmaPlaying=null;   // null = rien en lecture (n=0 = Allah, donc pas 0 comme sentinelle)
 function playName(n,card){
   if(!_asmaAudio){_asmaAudio=new Audio();}
   document.querySelectorAll('.asma-card.playing').forEach(c=>c.classList.remove('playing'));
   // reclic sur le nom en cours → stop
-  if(_asmaPlaying===n&&!_asmaAudio.paused){_asmaAudio.pause();_asmaPlaying=0;return;}
+  if(_asmaPlaying===n&&!_asmaAudio.paused){_asmaAudio.pause();_asmaPlaying=null;return;}
   _asmaAudio.src=asmaAudioSrc(n);_asmaPlaying=n;
   card.classList.add('playing');
-  _asmaAudio.onended=()=>{card.classList.remove('playing');_asmaPlaying=0;};
-  _asmaAudio.onerror=()=>{card.classList.remove('playing');_asmaPlaying=0;toast('Récitation de ce nom bientôt disponible 🎧');};
+  _asmaAudio.onended=()=>{card.classList.remove('playing');_asmaPlaying=null;};
+  _asmaAudio.onerror=()=>{card.classList.remove('playing');_asmaPlaying=null;toast('Récitation de ce nom bientôt disponible 🎧');};
   _asmaAudio.play().catch(()=>{});
 }
 
@@ -399,7 +400,7 @@ function renderNames(filter=''){
   bd.innerHTML=`<div class="asma-list">${items.map(x=>`
     <div class="asma-card" data-n="${x.n}" role="button" tabindex="0" aria-label="Écouter ${x.tr}">
       <div class="asma-head">
-        <div class="asma-n">${x.n}</div>
+        <div class="asma-n">${x.n||'★'}</div>
         <div class="asma-ar" lang="ar" dir="rtl">${x.ar}</div>
         <div class="asma-play" aria-hidden="true">
           <svg class="ic-play" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
