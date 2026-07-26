@@ -17,7 +17,16 @@
    "tr": "Ar-Rahmân",
    "fr": "Le Tout Miséricordieux",
    "desc": "Celui dont la miséricorde embrasse toute la création, croyants comme mécréants, en ce bas monde.",
-   "af": "001_ar-rahman"
+   "af": "001_ar-rahman",
+   "inv": {
+    "ar": "يَا رَحْمَانُ، رَبَّنَا آمَنَّا فَاغْفِرْ لَنَا وَارْحَمْنَا وَأَنْتَ خَيْرُ الرَّاحِمِينَ",
+    "tr": "Yâ Rahmânu ! Rabbanâ ! Âmannâ fa-ghfir lanâ wa-rhamnâ wa-anta khayru ar-râhimîna.",
+    "fr": "Ô Tout-Miséricordieux ! Notre Seigneur ! Nous croyons, alors couvre nos fautes et fais-nous miséricorde, car Tu es le Meilleur des miséricordieux."
+   },
+   "intro": [
+    "Que puis-je faire pour cultiver cette attitude bienveillante envers moi-même et les autres ?",
+    "Je sélectionne trois actions concrètes à mettre en place, dès aujourd'hui, dans mon quotidien."
+   ]
   },
   {
    "n": 2,

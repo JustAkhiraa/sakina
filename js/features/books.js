@@ -422,14 +422,35 @@ function renderNames(filter=''){
       <div class="asma-tr">${x.tr}</div>
       <div class="asma-fr">${x.fr}</div>
       <div class="asma-desc">${x.desc}</div>
+      ${asmaDetail(x)}
     </div>`).join('')}</div>`;
-  // Un clic (ou Entrée) sur une carte joue la récitation du nom
+  // Un clic (ou Entrée) sur une carte joue la récitation — sauf si on
+  // interagit avec le dépliant Invocation/Introspection.
   bd.querySelectorAll('.asma-card').forEach(card=>{
     const n=+card.dataset.n;
-    card.addEventListener('click',()=>playName(n,card));
-    card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();playName(n,card);}});
+    card.addEventListener('click',e=>{if(e.target.closest('.asma-detail'))return;playName(n,card);});
+    card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('.asma-detail')){e.preventDefault();playName(n,card);}});
   });
   bd.scrollTop=0;
+}
+
+/* Dépliant « Invocation & introspection » d'un nom (si présent dans asma.json).
+   Fermé par défaut : la liste reste compacte, un clic ouvre le détail. */
+function asmaDetail(x){
+  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  if(!x.inv&&!(x.intro&&x.intro.length))return'';
+  let inner='';
+  if(x.inv){
+    inner+=`<div class="asma-sec-t">Invocation</div>`;
+    if(x.inv.fr)inner+=`<p class="asma-inv-fr">${esc(x.inv.fr)}</p>`;
+    if(x.inv.ar)inner+=`<p class="asma-inv-ar" lang="ar" dir="rtl">${esc(x.inv.ar)}</p>`;
+    if(x.inv.tr)inner+=`<p class="asma-inv-tr">${esc(x.inv.tr)}</p>`;
+  }
+  if(x.intro&&x.intro.length){
+    inner+=`<div class="asma-sec-t">Introspection</div><ul class="asma-intro">`+
+      x.intro.map(q=>`<li>${esc(q)}</li>`).join('')+`</ul>`;
+  }
+  return `<details class="asma-detail"><summary class="asma-detail-sum">✦ Invocation &amp; introspection</summary><div class="asma-detail-bd">${inner}</div></details>`;
 }
 
 /* ── Apprendre : fiches pratiques lisibles en étapes courtes ── */
