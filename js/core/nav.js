@@ -38,7 +38,7 @@ export const NAV_ITEMS=[
   {id:'page-settings',label:'Paramètres',i18n:'nav.settings',icon:SVG.settings,locked:true},
 ];
 
-export const MAX_VISIBLE=6;
+export const MAX_VISIBLE=5;
 
 /* Initialise S.nav si absent ou incohérent (nouvel item ajouté au registre). */
 export function ensureNavState(){

@@ -29,10 +29,10 @@ const BOOKS={
     key:'citadelle',icon:'📘',type:'pages',
     title:'La Citadelle du Musulman',titleAr:'حصن المسلم',
     author:"Sa'id ibn Ali ibn Wahf Al-Qahtani",
-    stats:[{val:'146',label:'Pages'},{val:'Intégral',label:'Édition'}],
+    stats:[{val:'146',label:'Sections'},{val:'Intégral',label:'Édition'}],
     desc:[
       "« Hisn al-Muslim » rassemble des invocations authentiques tirées du Coran et de la Sunna pour chaque instant du quotidien : réveil, repas, voyage, épreuves — afin que le rappel d'Allah accompagne le musulman à chaque moment.",
-      "Le mode « Lecture » vous propose le texte propre, mis en forme pour un confort optimal. Pour vérifier un passage précis (surtout en arabe), basculez sur « Page scannée » pour retrouver la mise en page originale du livre.",
+      "Une lecture continue et soignée, du début à la fin, pensée pour un confort optimal — arabe, translittération et traduction mis en valeur.",
     ],
     pageCount:146,
     pagePath:n=>`books/citadelle-pages/page-${String(n).padStart(3,'0')}.png`,
@@ -125,7 +125,7 @@ function showIntro(){
     if(b.type==='chapters')openList();
     else if(b.type==='names')openNames();
     else if(b.type==='guide')openGuide();
-    else openPages(1);
+    else openPages();
   });
   bd.scrollTop=0;
 }
@@ -206,7 +206,7 @@ function showChapter(n){
   const idx=_riyad.chapters.indexOf(c);
   const prev=_riyad.chapters[idx-1],next=_riyad.chapters[idx+1];
   const bd=$('book-bd');
-  bd.innerHTML=`<div class="book-chapter">
+  bd.innerHTML=`<div class="book-chapter book-read">
       <div class="book-chap-head">${c.n}. ${c.title}</div>
       ${formatChapter(c.text)}
       <div class="book-src">${_riyad.author} · ${_riyad.source}</div>
@@ -235,17 +235,27 @@ async function loadCitadelleText(){
   return _citadelleText;
 }
 
-function openPages(n){
+async function openPages(){
   _view='pages';
   const b=BOOKS.citadelle;
   setHeader({title:b.title,back:true});
-  $('book-mode-toggle').style.display='flex';
-  // Synchronise l'état visuel du toggle avec le mode actif
-  document.querySelectorAll('#book-mode-toggle .seg-opt').forEach(o=>o.classList.toggle('active',o.dataset.mode===_pageMode));
-  const pager=$('book-pager');
-  pager.style.display='flex';
-  $('pager-total').textContent=`/ ${b.pageCount}`;
-  showPage(Math.max(1,Math.min(b.pageCount,n)));
+  // Lecture continue et ergonomique : plus de pagination ni de bascule
+  // « Page scannée » (masquée pour l'instant, le mode image reste dans le code).
+  $('book-mode-toggle').style.display='none';
+  $('book-pager').style.display='none';
+  const bd=$('book-bd');
+  bd.innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement du livre…</div>';
+  try{await loadCitadelleText();}
+  catch{bd.innerHTML='<div class="places-empty">Connexion requise pour le premier chargement du texte.</div>';return;}
+  // Chaque page est rendue individuellement (ses notes de bas de page restent
+  // près de leur texte) puis tout est enchaîné en un seul flux de lecture.
+  const html=_citadelleText.pages
+    .filter(p=>(p.text||'').trim())
+    .map(p=>renderCitadelleMarkdown(p.text))
+    .join('');
+  bd.innerHTML=`<div class="book-chapter book-md book-read">${html}
+    <div class="book-src">Hisn al-Muslim — La Citadelle du Musulman · Sa'îd Ibn 'Alî Ibn Wahf Al-Qahtânî · texte intégral</div></div>`;
+  bd.scrollTop=0;
 }
 
 /* Petit rendu Markdown maison — juste ce dont la Citadelle a besoin :
@@ -412,14 +422,35 @@ function renderNames(filter=''){
       <div class="asma-tr">${x.tr}</div>
       <div class="asma-fr">${x.fr}</div>
       <div class="asma-desc">${x.desc}</div>
+      ${asmaDetail(x)}
     </div>`).join('')}</div>`;
-  // Un clic (ou Entrée) sur une carte joue la récitation du nom
+  // Un clic (ou Entrée) sur une carte joue la récitation — sauf si on
+  // interagit avec le dépliant Invocation/Introspection.
   bd.querySelectorAll('.asma-card').forEach(card=>{
     const n=+card.dataset.n;
-    card.addEventListener('click',()=>playName(n,card));
-    card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();playName(n,card);}});
+    card.addEventListener('click',e=>{if(e.target.closest('.asma-detail'))return;playName(n,card);});
+    card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('.asma-detail')){e.preventDefault();playName(n,card);}});
   });
   bd.scrollTop=0;
+}
+
+/* Dépliant « Invocation & introspection » d'un nom (si présent dans asma.json).
+   Fermé par défaut : la liste reste compacte, un clic ouvre le détail. */
+function asmaDetail(x){
+  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  if(!x.inv&&!(x.intro&&x.intro.length))return'';
+  let inner='';
+  if(x.inv){
+    inner+=`<div class="asma-sec-t">Invocation</div>`;
+    if(x.inv.fr)inner+=`<p class="asma-inv-fr">${esc(x.inv.fr)}</p>`;
+    if(x.inv.ar)inner+=`<p class="asma-inv-ar" lang="ar" dir="rtl">${esc(x.inv.ar)}</p>`;
+    if(x.inv.tr)inner+=`<p class="asma-inv-tr">${esc(x.inv.tr)}</p>`;
+  }
+  if(x.intro&&x.intro.length){
+    inner+=`<div class="asma-sec-t">Introspection</div><ul class="asma-intro">`+
+      x.intro.map(q=>`<li>${esc(q)}</li>`).join('')+`</ul>`;
+  }
+  return `<details class="asma-detail"><summary class="asma-detail-sum">✦ Invocation &amp; introspection</summary><div class="asma-detail-bd">${inner}</div></details>`;
 }
 
 /* ── Apprendre : fiches pratiques lisibles en étapes courtes ── */
