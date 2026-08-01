@@ -1,821 +1,1028 @@
 {
- "title": "Les 99 Noms d'Allah",
- "titleAr": "أسماء الله الحسنى",
- "source": "Al-Asma' al-Husna — recensés d'après la tradition sunnite classique",
- "names": [
-  {
-   "n": 0,
-   "ar": "اللّٰه",
-   "tr": "Allah",
-   "fr": "Le Nom suprême",
-   "desc": "Le nom propre de Dieu, le Nom suprême qui englobe tous les attributs de perfection. Les 99 « plus beaux noms » en sont les qualités.",
-   "af": "000_allah"
-  },
-  {
-   "n": 1,
-   "ar": "الرَّحْمَنُ",
-   "tr": "Ar-Rahmân",
-   "fr": "Le Tout Miséricordieux",
-   "desc": "Celui dont la miséricorde embrasse toute la création, croyants comme mécréants, en ce bas monde.",
-   "af": "001_ar-rahman",
-   "inv": {
-    "ar": "يَا رَحْمَانُ، رَبَّنَا آمَنَّا فَاغْفِرْ لَنَا وَارْحَمْنَا وَأَنْتَ خَيْرُ الرَّاحِمِينَ",
-    "tr": "Yâ Rahmânu ! Rabbanâ ! Âmannâ fa-ghfir lanâ wa-rhamnâ wa-anta khayru ar-râhimîna.",
-    "fr": "Ô Tout-Miséricordieux ! Notre Seigneur ! Nous croyons, alors couvre nos fautes et fais-nous miséricorde, car Tu es le Meilleur des miséricordieux."
-   },
-   "intro": [
-    "Que puis-je faire pour cultiver cette attitude bienveillante envers moi-même et les autres ?",
-    "Je sélectionne trois actions concrètes à mettre en place, dès aujourd'hui, dans mon quotidien."
-   ]
-  },
-  {
-   "n": 2,
-   "ar": "الرَّحِيمُ",
-   "tr": "Ar-Rahîm",
-   "fr": "Le Très Miséricordieux",
-   "desc": "Celui qui réserve une miséricorde particulière aux croyants dans l'au-delà.",
-   "af": "002_ar-rahim"
-  },
-  {
-   "n": 3,
-   "ar": "الْمَلِكُ",
-   "tr": "Al-Malik",
-   "fr": "Le Souverain",
-   "desc": "Le Roi absolu, à qui appartient la royauté des cieux et de la terre, sans partenaire.",
-   "af": "003_al-malik"
-  },
-  {
-   "n": 4,
-   "ar": "الْقُدُّوسُ",
-   "tr": "Al-Quddûs",
-   "fr": "Le Très Saint",
-   "desc": "Le Pur, exempt de tout défaut, de tout manque et de toute imperfection.",
-   "af": "004_al-quddus"
-  },
-  {
-   "n": 5,
-   "ar": "السَّلَامُ",
-   "tr": "As-Salâm",
-   "fr": "La Paix",
-   "desc": "Celui qui est exempt de tout défaut et qui accorde la paix à Ses créatures.",
-   "af": "005_as-salam"
-  },
-  {
-   "n": 6,
-   "ar": "الْمُؤْمِنُ",
-   "tr": "Al-Mu'min",
-   "fr": "Le Rassurant",
-   "desc": "Celui qui donne la sécurité et la foi, qui confirme la vérité par Ses signes.",
-   "af": "006_al-mumin"
-  },
-  {
-   "n": 7,
-   "ar": "الْمُهَيْمِنُ",
-   "tr": "Al-Muhaymin",
-   "fr": "Le Prépondérant",
-   "desc": "Le Témoin qui veille sur toute chose, le Gardien et le Protecteur.",
-   "af": "007_al-muhaymin"
-  },
-  {
-   "n": 8,
-   "ar": "الْعَزِيزُ",
-   "tr": "Al-'Azîz",
-   "fr": "Le Tout-Puissant",
-   "desc": "Le Puissant, l'Invincible, que rien ne peut atteindre ni contraindre.",
-   "af": "008_al-aziz"
-  },
-  {
-   "n": 9,
-   "ar": "الْجَبَّارُ",
-   "tr": "Al-Jabbâr",
-   "fr": "Le Contraignant",
-   "desc": "Celui dont la volonté s'impose à toute la création et qui répare toute chose brisée.",
-   "af": "009_al-jabbar"
-  },
-  {
-   "n": 10,
-   "ar": "الْمُتَكَبِّرُ",
-   "tr": "Al-Mutakabbir",
-   "fr": "Le Superbe",
-   "desc": "Celui à qui appartient la Grandeur véritable, à laquelle nulle autre ne peut prétendre.",
-   "af": "010_al-mutakabbir"
-  },
-  {
-   "n": 11,
-   "ar": "الْخَالِقُ",
-   "tr": "Al-Khâliq",
-   "fr": "Le Créateur",
-   "desc": "Celui qui crée toute chose à partir du néant, sans modèle préalable.",
-   "af": "011_al-khaliq"
-  },
-  {
-   "n": 12,
-   "ar": "الْبَارِئُ",
-   "tr": "Al-Bâri'",
-   "fr": "Le Producteur",
-   "desc": "Celui qui donne l'existence, distingue et façonne chaque créature.",
-   "af": "012_al-bari"
-  },
-  {
-   "n": 13,
-   "ar": "الْمُصَوِّرُ",
-   "tr": "Al-Musawwir",
-   "fr": "Le Formateur",
-   "desc": "Celui qui donne à chaque chose sa forme particulière, unique et harmonieuse.",
-   "af": "013_al-musawwir"
-  },
-  {
-   "n": 14,
-   "ar": "الْغَفَّارُ",
-   "tr": "Al-Ghaffâr",
-   "fr": "Le Grand Pardonneur",
-   "desc": "Celui qui pardonne encore et encore, qui couvre les péchés de Ses serviteurs.",
-   "af": "014_al-ghaffar"
-  },
-  {
-   "n": 15,
-   "ar": "الْقَهَّارُ",
-   "tr": "Al-Qahhâr",
-   "fr": "Le Dominateur",
-   "desc": "Celui qui domine toute chose par Sa force, à qui rien ni personne ne résiste.",
-   "af": "015_al-qahhar"
-  },
-  {
-   "n": 16,
-   "ar": "الْوَهَّابُ",
-   "tr": "Al-Wahhâb",
-   "fr": "Le Grand Donateur",
-   "desc": "Celui qui donne sans compter et sans attendre de retour.",
-   "af": "016_al-wahhab"
-  },
-  {
-   "n": 17,
-   "ar": "الرَّزَّاقُ",
-   "tr": "Ar-Razzâq",
-   "fr": "Le Grand Pourvoyeur",
-   "desc": "Celui qui pourvoit à la subsistance de toutes Ses créatures.",
-   "af": "017_ar-razzaq"
-  },
-  {
-   "n": 18,
-   "ar": "الْفَتَّاحُ",
-   "tr": "Al-Fattâh",
-   "fr": "Celui qui ouvre",
-   "desc": "Celui qui ouvre les portes de la miséricorde, de la victoire et de la connaissance.",
-   "af": "018_al-fattah"
-  },
-  {
-   "n": 19,
-   "ar": "الْعَلِيمُ",
-   "tr": "Al-'Alîm",
-   "fr": "L'Omniscient",
-   "desc": "Celui dont la science embrasse tout : le visible, le caché, le passé et l'avenir.",
-   "af": "019_al-alim"
-  },
-  {
-   "n": 20,
-   "ar": "الْقَابِضُ",
-   "tr": "Al-Qâbid",
-   "fr": "Celui qui retient",
-   "desc": "Celui qui restreint la subsistance ou les âmes selon Sa sagesse.",
-   "af": "020_al-qabid"
-  },
-  {
-   "n": 21,
-   "ar": "الْبَاسِطُ",
-   "tr": "Al-Bâsit",
-   "fr": "Celui qui étend",
-   "desc": "Celui qui élargit la subsistance et ouvre les cœurs à Ses serviteurs.",
-   "af": "021_al-basit"
-  },
-  {
-   "n": 22,
-   "ar": "الْخَافِضُ",
-   "tr": "Al-Khâfid",
-   "fr": "Celui qui abaisse",
-   "desc": "Celui qui abaisse les orgueilleux et les injustes.",
-   "af": "022_al-khafid"
-  },
-  {
-   "n": 23,
-   "ar": "الرَّافِعُ",
-   "tr": "Ar-Râfi'",
-   "fr": "Celui qui élève",
-   "desc": "Celui qui élève en rang Ses saints et les croyants sincères.",
-   "af": "023_ar-rafi"
-  },
-  {
-   "n": 24,
-   "ar": "الْمُعِزُّ",
-   "tr": "Al-Mu'izz",
-   "fr": "Celui qui donne la puissance",
-   "desc": "Celui qui accorde la gloire et l'honneur à qui Il veut.",
-   "af": "024_al-muizz"
-  },
-  {
-   "n": 25,
-   "ar": "الْمُذِلُّ",
-   "tr": "Al-Mudhill",
-   "fr": "Celui qui humilie",
-   "desc": "Celui qui rabaisse et humilie qui Il veut, par justice.",
-   "af": "025_al-mudhill"
-  },
-  {
-   "n": 26,
-   "ar": "السَّمِيعُ",
-   "tr": "As-Samî'",
-   "fr": "L'Audient",
-   "desc": "Celui qui entend tout, y compris le murmure le plus discret.",
-   "af": "026_as-sami"
-  },
-  {
-   "n": 27,
-   "ar": "الْبَصِيرُ",
-   "tr": "Al-Basîr",
-   "fr": "Le Clairvoyant",
-   "desc": "Celui qui voit tout, en tous lieux et en tout temps.",
-   "af": "027_al-basir"
-  },
-  {
-   "n": 28,
-   "ar": "الْحَكَمُ",
-   "tr": "Al-Hakam",
-   "fr": "Le Juge",
-   "desc": "L'Arbitre suprême qui tranche entre Ses créatures avec justice.",
-   "af": "028_al-hakam"
-  },
-  {
-   "n": 29,
-   "ar": "الْعَدْلُ",
-   "tr": "Al-'Adl",
-   "fr": "Le Juste",
-   "desc": "Celui qui est équité absolue, dont les jugements sont exempts de toute injustice.",
-   "af": "029_al-adl"
-  },
-  {
-   "n": 30,
-   "ar": "اللَّطِيفُ",
-   "tr": "Al-Latîf",
-   "fr": "Le Subtil, le Bienveillant",
-   "desc": "Celui dont la douceur atteint jusqu'aux détails les plus fins de Ses créatures.",
-   "af": "030_al-latif"
-  },
-  {
-   "n": 31,
-   "ar": "الْخَبِيرُ",
-   "tr": "Al-Khabîr",
-   "fr": "Le Parfaitement Informé",
-   "desc": "Celui à qui rien n'échappe, connaissant la réalité intime de toute chose.",
-   "af": "031_al-khabir"
-  },
-  {
-   "n": 32,
-   "ar": "الْحَلِيمُ",
-   "tr": "Al-Halîm",
-   "fr": "Le Longanime",
-   "desc": "Celui qui use de patience et ne se hâte pas de châtier.",
-   "af": "032_al-halim"
-  },
-  {
-   "n": 33,
-   "ar": "الْعَظِيمُ",
-   "tr": "Al-'Azhîm",
-   "fr": "L'Immense",
-   "desc": "Celui dont la grandeur dépasse tout entendement.",
-   "af": "033_al-azhim"
-  },
-  {
-   "n": 34,
-   "ar": "الْغَفُورُ",
-   "tr": "Al-Ghafûr",
-   "fr": "Le Tout-Pardonnant",
-   "desc": "Celui qui pardonne largement à quiconque se repent sincèrement.",
-   "af": "034_al-ghafur"
-  },
-  {
-   "n": 35,
-   "ar": "الشَّكُورُ",
-   "tr": "Ash-Shakûr",
-   "fr": "Le Très Reconnaissant",
-   "desc": "Celui qui récompense généreusement les moindres bonnes actions.",
-   "af": "035_ash-shakur"
-  },
-  {
-   "n": 36,
-   "ar": "الْعَلِيُّ",
-   "tr": "Al-'Aliyy",
-   "fr": "Le Très Haut",
-   "desc": "Celui qui est au-dessus de toute chose par Son essence, Ses attributs et Sa puissance.",
-   "af": "036_al-aliyy"
-  },
-  {
-   "n": 37,
-   "ar": "الْكَبِيرُ",
-   "tr": "Al-Kabîr",
-   "fr": "Le Très Grand",
-   "desc": "Celui dont la grandeur est absolue, à qui rien ne peut se comparer.",
-   "af": "037_al-kabir"
-  },
-  {
-   "n": 38,
-   "ar": "الْحَفِيظُ",
-   "tr": "Al-Hafîz",
-   "fr": "Le Préservateur",
-   "desc": "Celui qui protège Ses créatures et préserve tous les actes.",
-   "af": "038_al-hafiz"
-  },
-  {
-   "n": 39,
-   "ar": "الْمُقِيتُ",
-   "tr": "Al-Muqît",
-   "fr": "Celui qui nourrit",
-   "desc": "Celui qui donne à chacun sa juste part de nourriture et de moyens.",
-   "af": "039_al-muqit"
-  },
-  {
-   "n": 40,
-   "ar": "الْحَسِيبُ",
-   "tr": "Al-Hasîb",
-   "fr": "Celui qui suffit",
-   "desc": "Celui qui est le Compte suffisant, qui juge et rétribue Ses serviteurs.",
-   "af": "040_al-hasib"
-  },
-  {
-   "n": 41,
-   "ar": "الْجَلِيلُ",
-   "tr": "Al-Jalîl",
-   "fr": "Le Majestueux",
-   "desc": "Celui qui possède la majesté et la magnificence absolues.",
-   "af": "041_al-jalil"
-  },
-  {
-   "n": 42,
-   "ar": "الْكَرِيمُ",
-   "tr": "Al-Karîm",
-   "fr": "Le Généreux",
-   "desc": "Celui qui accorde le bien même à qui ne le mérite pas.",
-   "af": "042_al-karim"
-  },
-  {
-   "n": 43,
-   "ar": "الرَّقِيبُ",
-   "tr": "Ar-Raqîb",
-   "fr": "L'Observateur",
-   "desc": "Celui qui veille sur toute chose, dont rien n'est ignoré.",
-   "af": "043_ar-raqib"
-  },
-  {
-   "n": 44,
-   "ar": "الْمُجِيبُ",
-   "tr": "Al-Mujîb",
-   "fr": "Celui qui exauce",
-   "desc": "Celui qui répond aux invocations de Ses serviteurs.",
-   "af": "044_al-mujib"
-  },
-  {
-   "n": 45,
-   "ar": "الْوَاسِعُ",
-   "tr": "Al-Wâsi'",
-   "fr": "L'Immense",
-   "desc": "Celui dont la miséricorde, la science et les dons embrassent toute chose.",
-   "af": "045_al-wasi"
-  },
-  {
-   "n": 46,
-   "ar": "الْحَكِيمُ",
-   "tr": "Al-Hakîm",
-   "fr": "Le Sage",
-   "desc": "Celui qui place chaque chose à sa juste place par une sagesse infinie.",
-   "af": "046_al-hakim"
-  },
-  {
-   "n": 47,
-   "ar": "الْوَدُودُ",
-   "tr": "Al-Wadûd",
-   "fr": "Le Très Aimant",
-   "desc": "Celui qui aime Ses serviteurs vertueux et est aimé d'eux.",
-   "af": "047_al-wadud"
-  },
-  {
-   "n": 48,
-   "ar": "الْمَجِيدُ",
-   "tr": "Al-Majîd",
-   "fr": "Le Très Glorieux",
-   "desc": "Celui dont la gloire est parfaite et dont les bienfaits sont infinis.",
-   "af": "048_al-majid"
-  },
-  {
-   "n": 49,
-   "ar": "الْبَاعِثُ",
-   "tr": "Al-Bâ'ith",
-   "fr": "Le Ressusciteur",
-   "desc": "Celui qui ressuscitera les morts au Jour du Jugement.",
-   "af": "049_al-baith"
-  },
-  {
-   "n": 50,
-   "ar": "الشَّهِيدُ",
-   "tr": "Ash-Shahîd",
-   "fr": "Le Témoin",
-   "desc": "Celui qui est présent en tout lieu et témoin de toute chose.",
-   "af": "050_ash-shahid"
-  },
-  {
-   "n": 51,
-   "ar": "الْحَقُّ",
-   "tr": "Al-Haqq",
-   "fr": "La Vérité",
-   "desc": "La Vérité en Lui-même ; Son existence, Sa parole et Sa promesse sont vraies.",
-   "af": "051_al-haqq"
-  },
-  {
-   "n": 52,
-   "ar": "الْوَكِيلُ",
-   "tr": "Al-Wakîl",
-   "fr": "Le Garant",
-   "desc": "Celui à qui on s'en remet totalement, qui gère les affaires de Ses serviteurs.",
-   "af": "052_al-wakil"
-  },
-  {
-   "n": 53,
-   "ar": "الْقَوِيُّ",
-   "tr": "Al-Qawiyy",
-   "fr": "Le Très Fort",
-   "desc": "Celui dont la force est parfaite, absolue et sans faiblesse.",
-   "af": "053_al-qawiyy"
-  },
-  {
-   "n": 54,
-   "ar": "الْمَتِينُ",
-   "tr": "Al-Matîn",
-   "fr": "L'Inébranlable",
-   "desc": "Celui dont la puissance est ferme et solide, sans lassitude ni fatigue.",
-   "af": "054_al-matin"
-  },
-  {
-   "n": 55,
-   "ar": "الْوَلِيُّ",
-   "tr": "Al-Waliyy",
-   "fr": "Le Protecteur",
-   "desc": "L'Ami et le Protecteur des croyants.",
-   "af": "055_al-waliyy"
-  },
-  {
-   "n": 56,
-   "ar": "الْحَمِيدُ",
-   "tr": "Al-Hamîd",
-   "fr": "Le Très Digne de louanges",
-   "desc": "Celui qui mérite toute louange pour ce qu'Il est et ce qu'Il fait.",
-   "af": "056_al-hamid"
-  },
-  {
-   "n": 57,
-   "ar": "الْمُحْصِي",
-   "tr": "Al-Muhsî",
-   "fr": "Celui qui recense",
-   "desc": "Celui qui dénombre chaque chose, jusqu'au plus infime détail.",
-   "af": "057_al-muhsi"
-  },
-  {
-   "n": 58,
-   "ar": "الْمُبْدِئُ",
-   "tr": "Al-Mubdi'",
-   "fr": "Celui qui initie",
-   "desc": "Celui qui commence toute chose, l'Initiateur de la création.",
-   "af": "058_al-mubdi"
-  },
-  {
-   "n": 59,
-   "ar": "الْمُعِيدُ",
-   "tr": "Al-Mu'îd",
-   "fr": "Celui qui recommence",
-   "desc": "Celui qui recrée après la mort, qui refait toute chose.",
-   "af": "059_al-muid"
-  },
-  {
-   "n": 60,
-   "ar": "الْمُحْيِي",
-   "tr": "Al-Muhyî",
-   "fr": "Celui qui donne la vie",
-   "desc": "Celui qui insuffle la vie et fait sortir le vivant du non-vivant.",
-   "af": "060_al-muhyi"
-  },
-  {
-   "n": 61,
-   "ar": "الْمُمِيتُ",
-   "tr": "Al-Mumît",
-   "fr": "Celui qui donne la mort",
-   "desc": "Celui qui fait mourir toute âme au terme fixé.",
-   "af": "061_al-mumit"
-  },
-  {
-   "n": 62,
-   "ar": "الْحَيُّ",
-   "tr": "Al-Hayy",
-   "fr": "Le Vivant",
-   "desc": "Celui qui possède la vie parfaite, éternelle, sans début ni fin.",
-   "af": "062_al-hayy"
-  },
-  {
-   "n": 63,
-   "ar": "الْقَيُّومُ",
-   "tr": "Al-Qayyûm",
-   "fr": "Le Subsistant par Lui-même",
-   "desc": "Celui qui subsiste par Lui-même et par qui subsiste toute chose.",
-   "af": "063_al-qayyum"
-  },
-  {
-   "n": 64,
-   "ar": "الْوَاجِدُ",
-   "tr": "Al-Wâjid",
-   "fr": "Celui qui trouve",
-   "desc": "Celui à qui rien n'échappe, qui possède tout ce qu'Il veut sans effort.",
-   "af": "064_al-wajid"
-  },
-  {
-   "n": 65,
-   "ar": "الْمَاجِدُ",
-   "tr": "Al-Mâjid",
-   "fr": "Le Très Noble",
-   "desc": "Celui qui possède la noblesse, la générosité et la gloire absolues.",
-   "af": "065_al-majid"
-  },
-  {
-   "n": 66,
-   "ar": "الْوَاحِدُ",
-   "tr": "Al-Wâhid",
-   "fr": "L'Unique",
-   "desc": "Celui qui est Un dans Son essence, Ses attributs et Ses actes.",
-   "af": "066_al-wahid"
-  },
-  {
-   "n": 67,
-   "ar": "الْأَحَدُ",
-   "tr": "Al-Ahad",
-   "fr": "L'Un",
-   "desc": "L'Unique absolu, sans partenaire, sans semblable ni équivalent.",
-   "af": "067_al-ahad"
-  },
-  {
-   "n": 68,
-   "ar": "الصَّمَدُ",
-   "tr": "As-Samad",
-   "fr": "Le Recours suprême",
-   "desc": "Celui vers qui se tourne toute créature dans le besoin, qui n'a besoin de rien.",
-   "af": "068_as-samad"
-  },
-  {
-   "n": 69,
-   "ar": "الْقَادِرُ",
-   "tr": "Al-Qâdir",
-   "fr": "Le Détenteur du pouvoir",
-   "desc": "Celui qui a le pouvoir absolu sur toute chose.",
-   "af": "069_al-qadir"
-  },
-  {
-   "n": 70,
-   "ar": "الْمُقْتَدِرُ",
-   "tr": "Al-Muqtadir",
-   "fr": "Le Puissant Déterminant",
-   "desc": "Celui dont la puissance s'exerce sans obstacle, avec une maîtrise parfaite.",
-   "af": "070_al-muqtadir"
-  },
-  {
-   "n": 71,
-   "ar": "الْمُقَدِّمُ",
-   "tr": "Al-Muqaddim",
-   "fr": "Celui qui avance",
-   "desc": "Celui qui met en avant qui Il veut par Sa sagesse.",
-   "af": "071_al-muqaddim"
-  },
-  {
-   "n": 72,
-   "ar": "الْمُؤَخِّرُ",
-   "tr": "Al-Mu'akhkhir",
-   "fr": "Celui qui recule",
-   "desc": "Celui qui retarde ou repousse qui Il veut selon Sa sagesse.",
-   "af": "072_al-muakhkhir"
-  },
-  {
-   "n": 73,
-   "ar": "الْأَوَّلُ",
-   "tr": "Al-Awwal",
-   "fr": "Le Premier",
-   "desc": "Celui qui n'a pas de commencement, avant qui il n'y a rien.",
-   "af": "073_al-awwal"
-  },
-  {
-   "n": 74,
-   "ar": "الْآخِرُ",
-   "tr": "Al-Âkhir",
-   "fr": "Le Dernier",
-   "desc": "Celui qui n'a pas de fin, après qui il n'y a rien.",
-   "af": "074_al-akhir"
-  },
-  {
-   "n": 75,
-   "ar": "الظَّاهِرُ",
-   "tr": "Az-Zâhir",
-   "fr": "L'Apparent",
-   "desc": "Celui dont l'existence est manifeste par les signes de Sa création.",
-   "af": "075_az-zahir"
-  },
-  {
-   "n": 76,
-   "ar": "الْبَاطِنُ",
-   "tr": "Al-Bâtin",
-   "fr": "Le Caché",
-   "desc": "Celui dont la réalité échappe à la perception des créatures.",
-   "af": "076_al-batin"
-  },
-  {
-   "n": 77,
-   "ar": "الْوَالِي",
-   "tr": "Al-Wâlî",
-   "fr": "Le Maître souverain",
-   "desc": "Celui qui gouverne toute chose et dispose de la création.",
-   "af": "077_al-wali"
-  },
-  {
-   "n": 78,
-   "ar": "الْمُتَعَالِي",
-   "tr": "Al-Muta'âlî",
-   "fr": "Le Très Sublime",
-   "desc": "Celui qui transcende tout ce que les créatures peuvent Lui attribuer d'imparfait.",
-   "af": "078_al-mutaali"
-  },
-  {
-   "n": 79,
-   "ar": "الْبَرُّ",
-   "tr": "Al-Barr",
-   "fr": "Le Bienfaiteur",
-   "desc": "Celui qui répand Sa bonté sur toute Sa création.",
-   "af": "079_al-barr"
-  },
-  {
-   "n": 80,
-   "ar": "التَّوَّابُ",
-   "tr": "At-Tawwâb",
-   "fr": "Celui qui accueille le repentir",
-   "desc": "Celui qui accepte sans cesse le retour de Ses serviteurs vers Lui.",
-   "af": "080_at-tawwab"
-  },
-  {
-   "n": 81,
-   "ar": "الْمُنْتَقِمُ",
-   "tr": "Al-Muntaqim",
-   "fr": "Le Vengeur",
-   "desc": "Celui qui punit les oppresseurs et rend justice après avoir laissé un délai.",
-   "af": "081_al-muntaqim"
-  },
-  {
-   "n": 82,
-   "ar": "الْعَفُوُّ",
-   "tr": "Al-'Afuww",
-   "fr": "Celui qui efface",
-   "desc": "Celui qui efface totalement les péchés, comme s'ils n'avaient jamais été.",
-   "af": "082_al-afuww"
-  },
-  {
-   "n": 83,
-   "ar": "الرَّءُوفُ",
-   "tr": "Ar-Ra'ûf",
-   "fr": "Le Très Doux",
-   "desc": "Celui dont la compassion et la bienveillance sont infinies.",
-   "af": "083_ar-rauf"
-  },
-  {
-   "n": 84,
-   "ar": "مَالِكُ الْمُلْكِ",
-   "tr": "Mâlik al-Mulk",
-   "fr": "Le Souverain absolu",
-   "desc": "Celui à qui appartient toute la royauté, qu'Il donne à qui Il veut.",
-   "af": "084_malik-al-mulk"
-  },
-  {
-   "n": 85,
-   "ar": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
-   "tr": "Dhûl-Jalâli wal-Ikrâm",
-   "fr": "Détenteur de la majesté et de la générosité",
-   "desc": "Celui qui réunit toute grandeur et toute générosité.",
-   "af": "085_dhul-jalali-wal-ikram"
-  },
-  {
-   "n": 86,
-   "ar": "الْمُقْسِطُ",
-   "tr": "Al-Muqsit",
-   "fr": "L'Équitable",
-   "desc": "Celui qui juge et agit avec la plus parfaite équité.",
-   "af": "086_al-muqsit"
-  },
-  {
-   "n": 87,
-   "ar": "الْجَامِعُ",
-   "tr": "Al-Jâmi'",
-   "fr": "Celui qui rassemble",
-   "desc": "Celui qui rassemblera les créatures au Jour de la Résurrection.",
-   "af": "087_al-jami"
-  },
-  {
-   "n": 88,
-   "ar": "الْغَنِيُّ",
-   "tr": "Al-Ghaniyy",
-   "fr": "Le Riche par Lui-même",
-   "desc": "Celui qui se suffit à Lui-même et dont toute chose dépend.",
-   "af": "088_al-ghaniyy"
-  },
-  {
-   "n": 89,
-   "ar": "الْمُغْنِي",
-   "tr": "Al-Mughnî",
-   "fr": "Celui qui enrichit",
-   "desc": "Celui qui accorde la richesse et la suffisance à qui Il veut.",
-   "af": "089_al-mughni"
-  },
-  {
-   "n": 90,
-   "ar": "الْمَانِعُ",
-   "tr": "Al-Mâni'",
-   "fr": "Celui qui préserve",
-   "desc": "Celui qui empêche ce qui doit être empêché par sagesse.",
-   "af": "090_al-mani"
-  },
-  {
-   "n": 91,
-   "ar": "الضَّارُّ",
-   "tr": "Ad-Dârr",
-   "fr": "Celui qui peut nuire",
-   "desc": "Celui qui décrète l'épreuve à qui Il veut, selon Sa sagesse.",
-   "af": "091_ad-darr"
-  },
-  {
-   "n": 92,
-   "ar": "النَّافِعُ",
-   "tr": "An-Nâfi'",
-   "fr": "Le Bienfaiteur",
-   "desc": "Celui qui apporte le bien et le profit à qui Il veut.",
-   "af": "092_an-nafi"
-  },
-  {
-   "n": 93,
-   "ar": "النُّورُ",
-   "tr": "An-Nûr",
-   "fr": "La Lumière",
-   "desc": "Celui qui illumine les cieux et la terre, et guide les cœurs.",
-   "af": "093_an-nur"
-  },
-  {
-   "n": 94,
-   "ar": "الْهَادِي",
-   "tr": "Al-Hâdî",
-   "fr": "Le Guide",
-   "desc": "Celui qui guide vers la vérité et vers le droit chemin.",
-   "af": "094_al-hadi"
-  },
-  {
-   "n": 95,
-   "ar": "الْبَدِيعُ",
-   "tr": "Al-Badî'",
-   "fr": "L'Inventeur",
-   "desc": "Celui qui crée sans modèle préalable, l'Auteur incomparable de la création.",
-   "af": "095_al-badi"
-  },
-  {
-   "n": 96,
-   "ar": "الْبَاقِي",
-   "tr": "Al-Bâqî",
-   "fr": "L'Éternel",
-   "desc": "Celui qui subsiste à jamais, alors que toute autre chose périt.",
-   "af": "096_al-baqi"
-  },
-  {
-   "n": 97,
-   "ar": "الْوَارِثُ",
-   "tr": "Al-Wârith",
-   "fr": "L'Héritier",
-   "desc": "Celui qui demeure après la disparition de toutes les créatures.",
-   "af": "097_al-warith"
-  },
-  {
-   "n": 98,
-   "ar": "الرَّشِيدُ",
-   "tr": "Ar-Rashîd",
-   "fr": "Le Guide de la rectitude",
-   "desc": "Celui qui mène toute chose à sa perfection par une sagesse infaillible.",
-   "af": "098_ar-rashid"
-  },
-  {
-   "n": 99,
-   "ar": "الصَّبُورُ",
-   "tr": "As-Sabûr",
-   "fr": "Le Très Patient",
-   "desc": "Celui qui use de patience et ne se hâte pas de punir les fautifs.",
-   "af": "099_as-sabur"
+  "title": "Les 99 Noms d'Allah",
+  "titleAr": "أسماء الله الحسنى",
+  "source": "Al-Asma' al-Husna — recensés d'après la tradition sunnite classique",
+  "names": [
+    {
+      "n": 0,
+      "ar": "اللّٰه",
+      "tr": "Allah",
+      "fr": "Le Nom suprême",
+      "desc": "Le nom propre de Dieu, le Nom suprême qui englobe tous les attributs de perfection. Les 99 « plus beaux noms » en sont les qualités.",
+      "af": "000_allah"
+    },
+    {
+      "n": 1,
+      "ar": "الرَّحْمَنُ",
+      "tr": "Ar-Rahmân",
+      "fr": "Le Tout Miséricordieux",
+      "desc": "Celui dont la miséricorde embrasse toute la création, croyants comme mécréants, en ce bas monde.",
+      "af": "001_ar-rahman",
+      "inv": {
+        "ar": "يَا رَحْمَانُ، رَبَّنَا آمَنَّا فَاغْفِرْ لَنَا وَارْحَمْنَا وَأَنْتَ خَيْرُ الرَّاحِمِينَ",
+        "tr": "Yâ Rahmânu ! Rabbanâ ! Âmannâ fa-ghfir lanâ wa-rhamnâ wa-anta khayru ar-râhimîna.",
+        "fr": "Ô Tout-Miséricordieux ! Notre Seigneur ! Nous croyons, alors couvre nos fautes et fais-nous miséricorde, car Tu es le Meilleur des miséricordieux."
+      },
+      "intro": [
+        "Que puis-je faire pour cultiver cette attitude bienveillante envers moi-même et les autres ?",
+        "Je sélectionne trois actions concrètes à mettre en place, dès aujourd'hui, dans mon quotidien."
+      ]
+    },
+    {
+      "n": 2,
+      "ar": "الرَّحِيمُ",
+      "tr": "Ar-Rahîm",
+      "fr": "Le Très Miséricordieux",
+      "desc": "Celui qui réserve une miséricorde particulière aux croyants dans l'au-delà.",
+      "af": "002_ar-rahim",
+      "inv": {
+        "fr": "Ô Très-Miséricordieux ! Fais-moi miséricorde en m'ouvrant l'entrée de Ton paradis. Et accorde-moi la gloire d'être en Ta proximité.",
+        "ar": "يَا رَحِيمُ، ارْحَمْنِي بِدُخُولِ جَنَّتِكَ وَالتَّنَعُّمِ بِقُرْبِكَ",
+        "tr": "Yâ Rahîmu ! Irham-nî bi-dukhûli jannati-ka wa-t-tana'umi bi-qurbi-ka"
+      },
+      "intro": [
+        "Comment le pardon d'Allâh influence-t-il ma capacité à pardonner aux autres ?",
+        "Je consacre un temps à la lecture et à l'exégèse (tafsîr) des versets du Coran qui mettent en lumière la Miséricorde d'Allâh. Je cherche à comprendre leurs enseignements et les diffuse autour de moi."
+      ]
+    },
+    {
+      "n": 3,
+      "ar": "الْمَلِكُ",
+      "tr": "Al-Malik",
+      "fr": "Le Souverain",
+      "desc": "Le Roi absolu, à qui appartient la royauté des cieux et de la terre, sans partenaire.",
+      "af": "003_al-malik",
+      "inv": {
+        "fr": "Ô Roi de ce monde et de l'Au-delà, Roi absolument parfait ! Place-moi à l'apogée, en présence de la Gloire et du Royaume immense par ses biens et éminent par ses possibilités.",
+        "ar": "يَا مَالِكَ الدُّنْيَا وَالآخِرَةِ مُلْكاً تَامّاً كَامِلاً، اجْعَلْنِي فِي الوُصُولِ إلى حَضْرَةِ النَّعِيمِ وَالمُلْكِ الكَبِيرِ جَادّاً عَامِلاً",
+        "tr": "Yâ Mâlika ad-dunyâ wa-'l-âkhirati mulkan tâmman kâmilan ! Ij'al-nî fî 'l-wusûli ilâ hadrati 'n-na'îmi wa-'l-mulki 'l-kabîri jâddan 'âmilan."
+      },
+      "intro": [
+        "Comment puis-je agir avec gratitude et de manière responsable avec toutes les ressources dont je dispose, tout en reconnaissant que tout vient d'Allâh ?",
+        "Je modère ma recherche des biens matériels de ce monde, en gardant à l'esprit qu'Allâh est le Seul Roi, Vrai Possesseur de tout."
+      ]
+    },
+    {
+      "n": 4,
+      "ar": "الْقُدُّوسُ",
+      "tr": "Al-Quddûs",
+      "fr": "Le Très Saint",
+      "desc": "Le Pur, exempt de tout défaut, de tout manque et de toute imperfection.",
+      "af": "004_al-quddus",
+      "inv": {
+        "fr": "Ô Saint ! Purifie-moi de mes fautes, de mes vices et de mes égarements. Et purifie-moi des péchés et des méfaits.",
+        "ar": "يَا قُدُّوسُ، قَدِّسْنِي عَنِ العُيُوبِ وَالآفَاتِ وَطَهِّرْنِي مِنَ الذُّنُوبِ وَالسَّيِّئَاتِ",
+        "tr": "Yâ Quddûsu ! Qaddis-nî 'ani l-'uyûbi wa-l-âfâti wa-tahhir-nî mina dh-dhunûbi wa-s-sayyi'ât."
+      },
+      "intro": [
+        "En quoi la compréhension de la perfection d'Allâh peut-elle m'inspirer à viser l'excellence dans mes actions au quotidien ?",
+        "J'apprends à reconnaître mes propres imperfections et j'aspire à m'en purifier. Je m'efforce d'agir avec intégrité et j'évite les comportements qui pourraient ternir cette pureté en moi."
+      ]
+    },
+    {
+      "n": 5,
+      "ar": "السَّلَامُ",
+      "tr": "As-Salâm",
+      "fr": "La Paix",
+      "desc": "Celui qui est exempt de tout défaut et qui accorde la paix à Ses créatures.",
+      "af": "005_as-salam",
+      "inv": {
+        "fr": "Ô Allâh, Tu es la Paix et c'est de Toi que provient la paix. Béni sois-Tu, ô Toi qui as la Majesté et la Munificence.",
+        "ar": "اللَّهُمَّ أَنْتَ السَّلامُ وَمِنْكَ السَّلامُ تَبَارَكْتَ يا ذا الجَلالِ وَالإِكْرامِ",
+        "tr": "Allâhumma anta s-salâm wa minka s-salâm tabârakta yâ dhal jalâli wa l-ikrâmi."
+      },
+      "intro": [
+        "En quoi le fait de connaître As-Salâm peut-il m'encourager à surmonter la peur et l'insécurité, et à aborder les obstacles de la vie avec confiance et sérénité ?",
+        "Je réfléchis à trois choses en lien avec la protection d'Allâh pour lesquelles je suis reconnaissant(e). Cela peut aller des petites choses, comme un trajet en sécurité, jusqu'aux moments les plus angoissants."
+      ]
+    },
+    {
+      "n": 6,
+      "ar": "الْمُؤْمِنُ",
+      "tr": "Al-Mu'min",
+      "fr": "Le Rassurant",
+      "desc": "Celui qui donne la sécurité et la foi, qui confirme la vérité par Ses signes.",
+      "af": "006_al-mumin",
+      "inv": {
+        "fr": "Ô Sécurisant ! Sécurise-moi au Jour de la Grande Épouvante. Et gratifie-moi au travers de l'élévation croissante de ma foi.",
+        "ar": "يَا مُؤْمِنُ، آمِنِّي يَوْمَ الفَزَعِ الأَكْبَرِ وَارْزُقْنِي مِنْ مَزِيدِ الإِيمَانِ بِكَ الحَظَّ الأَوْفَرَ",
+        "tr": "Yâ Mu'minu ! Âmin-nî yawma 'l-faza'i 'l-akbari wa-'rzuq-nî min mazîdi 'l-îmâni bi-ka 'l-hazza 'l-awfara."
+      },
+      "intro": [
+        "Quels actes d'adoration puis-je ajouter à ma routine spirituelle pour renforcer ma foi et trouver la tranquillité auprès d'Al-Mu'min, le Gardien de la foi ?",
+        "Lorsque je me sens submergé(e) par le stress, je fais mes ablutions et je confie à Al-Mu'min toutes mes préoccupations pour (re)trouver la paix intérieure."
+      ]
+    },
+    {
+      "n": 7,
+      "ar": "الْمُهَيْمِنُ",
+      "tr": "Al-Muhaymin",
+      "fr": "Le Prépondérant",
+      "desc": "Le Témoin qui veille sur toute chose, le Gardien et le Protecteur.",
+      "af": "007_al-muhaymin",
+      "inv": {
+        "fr": "Ô Protecteur ! Mets-moi au service de Ta providence. Fais en sorte que je sois témoin de Ta protection, que je puisse être fidèle à mon engagement envers Toi, préservant avec attention ma foi.",
+        "ar": "يَا مُهَيْمِنُ، اجْعَلْنِي لِمُهَيْمَنَتِكَ شَاهِداً وَرَائِياً وَلأَمَانَاتِكَ وَعَهْدِكَ حَافِظاً وَرَاعِياً",
+        "tr": "Yâ Muhayminu ! Ij'al-nî li-muhaymanati-ka shâhidan wa-râ'iyan wa-li-amânâti-ka wa-'ahdi-ka hâfizan wa-râ'iyan."
+      },
+      "intro": [
+        "Que dois-je changer dans mes interactions avec les autres pour créer ce sentiment de sécurité et de protection ?",
+        "Je m'imagine sous la Bienveillance et la Protection d'Allâh tout au long de ma journée. Face à des défis, je me rappelle qu'Al-Muhaimin est Attentif et veille sur moi."
+      ]
+    },
+    {
+      "n": 8,
+      "ar": "الْعَزِيزُ",
+      "tr": "Al-'Azîz",
+      "fr": "Le Tout-Puissant",
+      "desc": "Le Puissant, l'Invincible, que rien ne peut atteindre ni contraindre.",
+      "af": "008_al-aziz",
+      "inv": {
+        "fr": "Il n'y a pas de divinité en dehors de Dieu, l'Un, le Vainqueur de toute chose, Seigneur des cieux et de la terre et de ce qu'il y a entre eux, le Tout-Puissant, Celui qui ne cesse de pardonner.",
+        "ar": "لَا إِلَٰهَ إِلَّا اللَّهُ الوَاحِدُ القَهَّارُ، رَبُّ السَّمَوَاتِ وَالأَرْضِ وَمَا بَيْنَهُمَا العَزِيزُ الغَفَّارُ",
+        "tr": "Lâ ilâha illâ llâhu l-wâhidu l-qahhâru, rabbu s-samâwâti wa-l-ardi wa-mâ baynahuma al-'azîzu l-ġaffâru."
+      },
+      "intro": [
+        "En quoi méditer sur le nom Al-'Aziz peut-il m'aider à développer une attitude d'humilité face aux défis de la vie ?",
+        "Pour puiser de la force et de la détermination face à mes défis, je me souviens que j'ai Al-'Aziz à mes côtés, Celui pour Qui rien ne résiste, et rien n'est insurmontable."
+      ]
+    },
+    {
+      "n": 9,
+      "ar": "الْجَبَّارُ",
+      "tr": "Al-Jabbâr",
+      "fr": "Le Contraignant",
+      "desc": "Celui dont la volonté s'impose à toute la création et qui répare toute chose brisée.",
+      "af": "009_al-jabbar",
+      "inv": {
+        "fr": "Ô Contraignant ! Répare mon état conformément à Ta volonté. Et protège-moi de tout sentiment d'orgueil envers Tes serviteurs.",
+        "ar": "يَا جَبَّارُ، اجْبُرْ حَالِي بِمُوَافَقَةِ مُرَادِكَ وَلَا تَجْعَلْنِي جَبَّاراً عَلَى عِبَادِكَ",
+        "tr": "Yâ Jabbâru ! Ujbur hâlî bi-muwâfaqati murâdi-ka wa-lâ taj'al-nî jabbâran 'alâ 'ibâdi-ka."
+      },
+      "intro": [
+        "Quand me suis-je senti(e) brisé(e), et comment Al-Jabbâr m'a-t-il totalement réparé(e) et renforcé(e) ?",
+        "Je médite sur le nom Al-Jabbâr, Celui qui transforme mes situations difficiles en belles opportunités, pour m'aider à développer une attitude de sérénité et de confiance."
+      ]
+    },
+    {
+      "n": 10,
+      "ar": "الْمُتَكَبِّرُ",
+      "tr": "Al-Mutakabbir",
+      "fr": "Le Superbe",
+      "desc": "Celui à qui appartient la Grandeur véritable, à laquelle nulle autre ne peut prétendre.",
+      "af": "010_al-mutakabbir",
+      "inv": {
+        "fr": "Ô Majestueux ! Place-moi avec les humbles face à Ta grandeur. Ainsi qu'avec ceux qui se soumettent paisiblement à Ton jugement et Ta sentence.",
+        "ar": "يَا مُتَكَبِّرُ، اجْعَلْنِي مِنَ المُتَوَاضِعِينَ لِكِبْرِيَائِكَ الخَاضِعِينَ لِحُكْمِكَ وَقَضَائِكَ",
+        "tr": "Yâ Mutakabbiru ! Ij'al-nî mina 'l-mutawâdi'îna li-kibriyâ'i-ka 'l-khâdi'îna li-hukmi-ka wa-qadâ'i-ka."
+      },
+      "intro": [
+        "En quoi méditer sur le nom Al-Mutakabbir peut m'aider à atténuer mes traits d'arrogance et à développer l'humilité ?",
+        "J'observe attentivement les détails qui m'entourent : la magnificence d'Al-Mutakabbir se reflète dans la plus petite des créations et je ressens une humilité profonde devant la grandeur d'Allâh."
+      ]
+    },
+    {
+      "n": 11,
+      "ar": "الْخَالِقُ",
+      "tr": "Al-Khâliq",
+      "fr": "Le Créateur",
+      "desc": "Celui qui crée toute chose à partir du néant, sans modèle préalable.",
+      "af": "011_al-khaliq",
+      "inv": {
+        "fr": "Ô Créateur ! Crée en mon cœur un chemin vers l'obéissance. Et préserve-moi, parmi Tes créatures, de toute injustice ou tyrannie.",
+        "ar": "يَا خَالِقُ، اخْلِقْ فِي قَلْبِي تَوْفِيقَ الطَّاعَةِ وَاعْصِمْنِي بَيْنَ خَلْقِكَ مِنْ كُلِّ ظَلَامَةٍ وَتَبَاعَةٍ",
+        "tr": "Yâ Khâliqu ! Ikhliq fî qalb-î tawfîqan li-'t-tâ'ati wa-'sim-nî bayna khalqi-ka min kulli zalâmatin wa-tabâ'atin."
+      },
+      "intro": [
+        "Qu'ai-je observé aujourd'hui qui me rappelle de remercier Allâh pour avoir créé tout ce qui m'entoure ?",
+        "Je médite sur la manière dont chaque élément de la création prend forme par la Volonté d'Al-Khâliq. Puis, je me concentre sur un détail, comme la symétrie d'une feuille d'arbre, et je me souviens de la Perfection d'Allâh."
+      ]
+    },
+    {
+      "n": 12,
+      "ar": "الْبَارِئُ",
+      "tr": "Al-Bâri'",
+      "fr": "Le Producteur",
+      "desc": "Celui qui donne l'existence, distingue et façonne chaque créature.",
+      "af": "012_al-bari",
+      "inv": {
+        "fr": "Ô Producteur ! Place-moi parmi les meilleurs des êtres formés. Et habitue-moi aux nobles comportements.",
+        "ar": "يَا بَارِئُ، اجْعَلْنِي مِنْ خَيْرِ البَرِيَّةِ وَخَلِّقْنِي بِأَخْلَاقٍ حَسَنَةٍ سَوِيَّةٍ",
+        "tr": "Yâ Bâri'u ! Ij'al-nî min khayri 'l-barîyati wa-khalliq-nî bi-akhlâqin hasanatin sawiya."
+      },
+      "intro": [
+        "Comment puis-je m'inspirer d'Al-Bari' pour aborder ma vie de manière plus équilibrée, saine et écologique ?",
+        "Je me documente sur la diversité de la nature. Je réalise que chaque création est à sa place et interagit harmonieusement, reflétant l'équilibre et la proportion parfaite de la création d'Allâh."
+      ]
+    },
+    {
+      "n": 13,
+      "ar": "الْمُصَوِّرُ",
+      "tr": "Al-Musawwir",
+      "fr": "Le Formateur",
+      "desc": "Celui qui donne à chaque chose sa forme particulière, unique et harmonieuse.",
+      "af": "013_al-musawwir",
+      "inv": {
+        "fr": "Ô Formateur ! Façonne-moi d'une forme vouée à Ton service. Et donne-moi les lumières qui clarifient la connaissance de Ta seigneurie.",
+        "ar": "يَا مُصَوِّرُ، صَوِّرْنِي بِصُورَةِ عُبُودِيَّتِكَ وَنَوِّرْنِي بِأَنْوَارِ مَعْرِفَةِ رُبُوبِيَّتِكَ",
+        "tr": "Yâ Musawwiru ! Sawwir-nî bi-sûrati 'ubûdiyyati-ka wa-nawwir-nî bi-anwâri ma'rifati rubûbiyyati-ka."
+      },
+      "intro": [
+        "Comment puis-je voir la beauté qu'Al-Musawwir a inscrit en moi-même et en autrui ?",
+        "Je prends un moment pour me rappeler que je suis une création façonnée par Al-Musawwir, d'une beauté unique et harmonieuse. Chaque personne que je croise est aussi une magnifique création d'Allâh."
+      ]
+    },
+    {
+      "n": 14,
+      "ar": "الْغَفَّارُ",
+      "tr": "Al-Ghaffâr",
+      "fr": "Le Grand Pardonneur",
+      "desc": "Celui qui pardonne encore et encore, qui couvre les péchés de Ses serviteurs.",
+      "af": "014_al-ghaffar",
+      "inv": {
+        "fr": "Ô Pardonneur ! Pardonne-moi tous mes péchés, grands ou petits, les bourrasques des négligences et la vanité dans les désirs.",
+        "ar": "يَا غَفَّارُ، اغْفِرْ لِي جَمِيعَ الكَبَائِرِ وَالصَّغَائِرِ وَهَوَاجِمَ الغَفْلَاتِ وَهَوَاجِسَ الضَّمَائِرِ",
+        "tr": "Yâ Ghaffâru ! Ighfir lî jamî'a 'l-kabâ'iri wa-'s-saghâ'iri wa-hawâjima 'l-ghaflâti wa-hawâjisa 'd-damâ'ir."
+      },
+      "intro": [
+        "Comment améliorer ma routine spirituelle pour y introduire davantage de moments où je demande Pardon ?",
+        "Je choisis un moment tranquille pour réfléchir aux fautes que j'ai commises. Avec sincérité, je demande pardon à Allâh, imaginant mes péchés doucement recouverts de Sa Miséricorde. Je m'autorise à ressentir un apaisement, me libérant du fardeau des remords."
+      ]
+    },
+    {
+      "n": 15,
+      "ar": "الْقَهَّارُ",
+      "tr": "Al-Qahhâr",
+      "fr": "Le Dominateur",
+      "desc": "Celui qui domine toute chose par Sa force, à qui rien ni personne ne résiste.",
+      "af": "015_al-qahhar",
+      "inv": {
+        "fr": "Ô Dominateur ! Place Ta grande force devant mes yeux. Et ne me conforte pas dans l'absence de crainte envers Ton châtiment.",
+        "ar": "يَا قَهَّارُ، أَشْهِدْنِي قَهْرَكَ وَلَا تُؤَمِّنِّي مَكْرَكَ",
+        "tr": "Yâ Qahhâru ! Ashhid-nî qahra-ka wa-lâ tu'am-min-nî makra-ka."
+      },
+      "intro": [
+        "Comment puis-je puiser dans la compréhension d'Al-Qahhâr, Celui qui est Victorieux et Prédominant, pour surmonter les défis et les obstacles dans ma vie ?",
+        "J'imagine les situations ou les défis qui m'inquiètent. Je répète le nom Al-Qahhâr, en visualisant ces situations comme étant totalement prises en charge. Je sens ma détermination se renforcer, car Allâh est avec moi."
+      ]
+    },
+    {
+      "n": 16,
+      "ar": "الْوَهَّابُ",
+      "tr": "Al-Wahhâb",
+      "fr": "Le Grand Donateur",
+      "desc": "Celui qui donne sans compter et sans attendre de retour.",
+      "af": "016_al-wahhab",
+      "inv": {
+        "fr": "« Notre Seigneur, ne fais pas dévier nos cœurs après que Tu nous as guidés et offre-nous, par pure grâce de Ta part, un amour rayonnant (une miséricorde). Vraiment Tu es Celui qui ne cesse d'offrir gracieusement ! » [Sourate 3, La Famille d'Imrân, 8]",
+        "ar": "﴿رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً إِنَّكَ أَنتَ الْوَهَّابُ﴾",
+        "tr": "Rabbanâ lâ tuzigh qulûbanâ ba'da idh hadaytanâ wa-hab lanâ min ladunka rahmatan innaka anta al-Wahhâbu !"
+      },
+      "intro": [
+        "Comment la réflexion sur le nom Al-Wahhâb peut-elle m'encourager à être plus généreux envers les autres, sans attendre en retour ?",
+        "Je choisis de partager concrètement quelque chose avec les autres : du temps, une compétence ou un geste. Je peux, par exemple, préparer un repas pour un voisin, aider un ami dans une tâche ou faire un don à une association. En agissant de manière désintéressée, je ressens la satisfaction de donner, comme un reflet de la générosité divine."
+      ]
+    },
+    {
+      "n": 17,
+      "ar": "الرَّزَّاقُ",
+      "tr": "Ar-Razzâq",
+      "fr": "Le Grand Pourvoyeur",
+      "desc": "Celui qui pourvoit à la subsistance de toutes Ses créatures.",
+      "af": "017_ar-razzaq",
+      "inv": {
+        "fr": "Ô Pourvoyeur ! Offre-moi une science utile. Et accorde-moi une subsistance licite et vaste.",
+        "ar": "يَا رَزَّاقُ، ارْزُقْنِي عِلْماً نَافِعاً وَرِزْقاً حَلَالاً وَاسِعاً",
+        "tr": "Yâ Razzâqu ! Urzuq-nî 'ilman nâfi'an wa-rizqan halâlân wâsi'an."
+      },
+      "intro": [
+        "Je me rappelle d'une période où je me suis senti(e) limité(e) en termes de ressources. Durant ce temps, comment Ar-Razzâq a-t-Il pourvu à mes besoins et m'a-t-Il aidé(e) à traverser cette situation ?",
+        "Chaque jour, je prends un moment pour exprimer ma gratitude pour tout ce dont je dispose."
+      ]
+    },
+    {
+      "n": 18,
+      "ar": "الْفَتَّاحُ",
+      "tr": "Al-Fattâh",
+      "fr": "Celui qui ouvre",
+      "desc": "Celui qui ouvre les portes de la miséricorde, de la victoire et de la connaissance.",
+      "af": "018_al-fattah",
+      "inv": {
+        "fr": "Ô Victorieux ! Ouvre-moi les portes de la béatitude. Et nomme-moi parmi ceux que Tu as certifiés être les êtres volontaires.",
+        "ar": "يَا فَتَّاحُ، افْتَحْ لِي أَبْوَابَ السَّعَادَةِ وَحَقِّقْنِي بِحَقَائِقِ أَهْلِ الإِرَادَةِ",
+        "tr": "Yâ Fattâhu ! Iftah lî abwâba 's-sa'âdati wa-haqqiq-nî bi-haqâ'iqi ahli 'l-irâda."
+      },
+      "intro": [
+        "Existe-t-il un domaine dans ma vie où je me sens actuellement bloqué(e) et que je peux confier à Al-Fattâh ?",
+        "Je réfléchis à un défi que je rencontre. Je m'imagine comme étant soutenu(e) par la Puissance d'Allâh. Je garde cette pensée positive, je m'en remets à Al-Fattâh et je cherche les opportunités cachées pour une solution."
+      ]
+    },
+    {
+      "n": 19,
+      "ar": "الْعَلِيمُ",
+      "tr": "Al-'Alîm",
+      "fr": "L'Omniscient",
+      "desc": "Celui dont la science embrasse tout : le visible, le caché, le passé et l'avenir.",
+      "af": "019_al-alim",
+      "inv": {
+        "fr": "Ô Omniscient ! Enseigne-moi une part de Ton savoir qui Te rendra Satisfait de moi, et pardonne-moi ce que Tu sais de moi.",
+        "ar": "يَا عَلِيمُ، عَلِّمْنِي مِنْ عِلْمِكَ مَا تَرْضَى بِهِ عَنِّي وَلَا تُؤَاخِذْنِي بِمَا تَعْلَمُهُ مِنِّي",
+        "tr": "Yâ 'Alîmu ! 'Allim-nî min 'ilmi-ka ma tardâ bi-hi 'an-nî wa-lâ tu'âkhidh-nî bi-mâ ta'lamu-hu min-nî."
+      },
+      "intro": [
+        "Quel savoir utile pour mon âme puis-je rechercher cette année ? Comment puis-je commencer cette apprentissage ?",
+        "En cas de doute ou d'incertitude, je répète ce nom pour me rappeler que rien ne Lui échappe. En prenant conscience de Sa connaissance infinie, je cultive une confiance en Lui ainsi qu'une attitude d'humilité."
+      ]
+    },
+    {
+      "n": 20,
+      "ar": "الْقَابِضُ",
+      "tr": "Al-Qâbid",
+      "fr": "Celui qui retient",
+      "desc": "Celui qui restreint la subsistance ou les âmes selon Sa sagesse.",
+      "af": "020_al-qabid",
+      "inv": {
+        "fr": "Ô Celui qui retient ! Retiens mon âme contre ses propres passions.",
+        "ar": "يَا قَابِضُ، اقْبِضْنِي عَنْ مُتَابَعَةِ دَوَاعِي النَّفْسِ",
+        "tr": "Yâ Qâbidu ! Iqbid-nî 'an mutâba'ati dawâ'i n-nafsi."
+      },
+      "intro": [
+        "Je me souviens d'un moment où quelque chose de cher à mon cœur m'a été retirée. Comment ai-je réagi à cet instant-là ?",
+        "Je prends conscience que les moments de contrainte sont temporaires et qu'ils renferment une sagesse qu'Allâh connaît. Il est Celui qui m'aide à traverser ces épreuves, en cultivant en moi la patience et la résilience."
+      ]
+    },
+    {
+      "n": 21,
+      "ar": "الْبَاسِطُ",
+      "tr": "Al-Bâsit",
+      "fr": "Celui qui étend",
+      "desc": "Celui qui élargit la subsistance et ouvre les cœurs à Ses serviteurs.",
+      "af": "021_al-basit",
+      "inv": {
+        "fr": "Ô Prodigue ! Étends mes souhaits vers les grâces de Ta proximité.",
+        "ar": "يَا بَاسِطُ، ابْسُطْ أَمَنِيَّ بِتَنَسُّمِ نَفَحَاتِ الأُنْسِ",
+        "tr": "Yâ Bâsitu ! Ibsit amaniyya bi-tanassumi nafahâti 'l-uns."
+      },
+      "intro": [
+        "Comment puis-je adopter une perspective plus ouverte et généreuse envers les autres et les situations ?",
+        "Je me rappelle qu'Allâh déploie les opportunités et les solutions dans ma vie, car Il est Al-Bâsit, Celui qui dilate et étend."
+      ]
+    },
+    {
+      "n": 22,
+      "ar": "الْخَافِضُ",
+      "tr": "Al-Khâfid",
+      "fr": "Celui qui abaisse",
+      "desc": "Celui qui abaisse les orgueilleux et les injustes.",
+      "af": "022_al-khafid",
+      "inv": {
+        "fr": "Ô Celui qui abaisse ! Abaisse mes passions afin d'obtenir Ton amour.",
+        "ar": "يَا خَافِضُ، اخْفِضْ لِي هَوَايَ لِابْتِغَاءِ مَحَابِّكَ",
+        "tr": "Yâ Khâfidu ! Ikhfid lî hawâya li-'btighâ'i mahâbbi-ka."
+      },
+      "intro": [
+        "Quelles actions concrètes puis-je entreprendre pour cultiver une attitude d'humilité et de modestie ?",
+        "Je prends conscience des moments où j'ai pu agir avec arrogance envers les autres. Si des pensées d'orgueil surgissent, je reviens au nom Al-Khâfid pour me rappeler que c'est Allâh qui a le pouvoir d'élever et d'abaisser."
+      ]
+    },
+    {
+      "n": 23,
+      "ar": "الرَّافِعُ",
+      "tr": "Ar-Râfi'",
+      "fr": "Celui qui élève",
+      "desc": "Celui qui élève en rang Ses saints et les croyants sincères.",
+      "af": "023_ar-rafi",
+      "inv": {
+        "fr": "Ô Celui qui élève ! Élève-moi par Ta proximité lorsque Tu me rappelleras à Toi.",
+        "ar": "يَا رَافِعُ، ارْفَعْنِي بِقُرْبِكَ وَالإِيوَاءِ إِلَى جَنَابِكَ",
+        "tr": "Yâ Râfi'u ! Irfa'-nî bi-qurbi-ka wa-'l-îwâ'i ilâ janâbi-ka."
+      },
+      "intro": [
+        "Quelles sont les situations actuelles où je pourrais ressentir le besoin d'être redressé(e) par Ar-Râfi' ?",
+        "Lorsque je me sens découragé(e), je me rappelle qu'Allâh va m'aider à me redresser et à m'élever à travers l'épreuve. En utilisant le nom Ar-Râfi', j'éprouve un regain de détermination pour surmonter les obstacles."
+      ]
+    },
+    {
+      "n": 24,
+      "ar": "الْمُعِزُّ",
+      "tr": "Al-Mu'izz",
+      "fr": "Celui qui donne la puissance",
+      "desc": "Celui qui accorde la gloire et l'honneur à qui Il veut.",
+      "af": "024_al-muizz",
+      "inv": {
+        "fr": "« Notre Seigneur, Possesseur de la Royauté, Tu accordes la Royauté à qui Tu veux, et Tu retires la Royauté à qui Tu veux, et Tu honores qui Tu veux, et Tu abaisses qui Tu veux. Le bien est dans Tes mains. Vraiment, Tu es Puissant sur toute chose ! » [Sourate 3, La Famille d'Imrân, 26]",
+        "ar": "﴿قُلِ اللَّهُمَّ مَالِكَ الْمُلْكِ تُؤْتِي الْمُلْكَ مَن تَشَاءُ وَتَنزِعُ الْمُلْكَ مِمَّن تَشَاءُ وَتُعِزُّ مَن تَشَاءُ وَتُذِلُّ مَن تَشَاءُ بِيَدِكَ الْخَيْرُ إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ﴾",
+        "tr": "Allâhumma Mâlik al-mulk tu'tî al-mulk man tachâ'u wa tanzi'u al-mulka min man tachâ'u wa-tu'izzu man tachâ'u wa-tudhillu man tachâ'u biyadika al-khayru innaka 'alâ kulli chay'in Qadîr !"
+      },
+      "intro": [
+        "Que puis-je améliorer en moi pour traiter les autres avec respect et reconnaître la dignité de chaque individu ?",
+        "Je choisis une personne dans ma vie avec qui j'interagis fréquemment. Je me rappelle du nom Al-Mu'izz pour m'encourager à traiter cette personne avec respect et dignité."
+      ]
+    },
+    {
+      "n": 25,
+      "ar": "الْمُذِلُّ",
+      "tr": "Al-Mudhill",
+      "fr": "Celui qui humilie",
+      "desc": "Celui qui rabaisse et humilie qui Il veut, par justice.",
+      "af": "025_al-mudhill"
+    },
+    {
+      "n": 26,
+      "ar": "السَّمِيعُ",
+      "tr": "As-Samî'",
+      "fr": "L'Audient",
+      "desc": "Celui qui entend tout, y compris le murmure le plus discret.",
+      "af": "026_as-sami"
+    },
+    {
+      "n": 27,
+      "ar": "الْبَصِيرُ",
+      "tr": "Al-Basîr",
+      "fr": "Le Clairvoyant",
+      "desc": "Celui qui voit tout, en tous lieux et en tout temps.",
+      "af": "027_al-basir"
+    },
+    {
+      "n": 28,
+      "ar": "الْحَكَمُ",
+      "tr": "Al-Hakam",
+      "fr": "Le Juge",
+      "desc": "L'Arbitre suprême qui tranche entre Ses créatures avec justice.",
+      "af": "028_al-hakam"
+    },
+    {
+      "n": 29,
+      "ar": "الْعَدْلُ",
+      "tr": "Al-'Adl",
+      "fr": "Le Juste",
+      "desc": "Celui qui est équité absolue, dont les jugements sont exempts de toute injustice.",
+      "af": "029_al-adl"
+    },
+    {
+      "n": 30,
+      "ar": "اللَّطِيفُ",
+      "tr": "Al-Latîf",
+      "fr": "Le Subtil, le Bienveillant",
+      "desc": "Celui dont la douceur atteint jusqu'aux détails les plus fins de Ses créatures.",
+      "af": "030_al-latif"
+    },
+    {
+      "n": 31,
+      "ar": "الْخَبِيرُ",
+      "tr": "Al-Khabîr",
+      "fr": "Le Parfaitement Informé",
+      "desc": "Celui à qui rien n'échappe, connaissant la réalité intime de toute chose.",
+      "af": "031_al-khabir"
+    },
+    {
+      "n": 32,
+      "ar": "الْحَلِيمُ",
+      "tr": "Al-Halîm",
+      "fr": "Le Longanime",
+      "desc": "Celui qui use de patience et ne se hâte pas de châtier.",
+      "af": "032_al-halim"
+    },
+    {
+      "n": 33,
+      "ar": "الْعَظِيمُ",
+      "tr": "Al-'Azhîm",
+      "fr": "L'Immense",
+      "desc": "Celui dont la grandeur dépasse tout entendement.",
+      "af": "033_al-azhim"
+    },
+    {
+      "n": 34,
+      "ar": "الْغَفُورُ",
+      "tr": "Al-Ghafûr",
+      "fr": "Le Tout-Pardonnant",
+      "desc": "Celui qui pardonne largement à quiconque se repent sincèrement.",
+      "af": "034_al-ghafur"
+    },
+    {
+      "n": 35,
+      "ar": "الشَّكُورُ",
+      "tr": "Ash-Shakûr",
+      "fr": "Le Très Reconnaissant",
+      "desc": "Celui qui récompense généreusement les moindres bonnes actions.",
+      "af": "035_ash-shakur"
+    },
+    {
+      "n": 36,
+      "ar": "الْعَلِيُّ",
+      "tr": "Al-'Aliyy",
+      "fr": "Le Très Haut",
+      "desc": "Celui qui est au-dessus de toute chose par Son essence, Ses attributs et Sa puissance.",
+      "af": "036_al-aliyy"
+    },
+    {
+      "n": 37,
+      "ar": "الْكَبِيرُ",
+      "tr": "Al-Kabîr",
+      "fr": "Le Très Grand",
+      "desc": "Celui dont la grandeur est absolue, à qui rien ne peut se comparer.",
+      "af": "037_al-kabir"
+    },
+    {
+      "n": 38,
+      "ar": "الْحَفِيظُ",
+      "tr": "Al-Hafîz",
+      "fr": "Le Préservateur",
+      "desc": "Celui qui protège Ses créatures et préserve tous les actes.",
+      "af": "038_al-hafiz"
+    },
+    {
+      "n": 39,
+      "ar": "الْمُقِيتُ",
+      "tr": "Al-Muqît",
+      "fr": "Celui qui nourrit",
+      "desc": "Celui qui donne à chacun sa juste part de nourriture et de moyens.",
+      "af": "039_al-muqit"
+    },
+    {
+      "n": 40,
+      "ar": "الْحَسِيبُ",
+      "tr": "Al-Hasîb",
+      "fr": "Celui qui suffit",
+      "desc": "Celui qui est le Compte suffisant, qui juge et rétribue Ses serviteurs.",
+      "af": "040_al-hasib"
+    },
+    {
+      "n": 41,
+      "ar": "الْجَلِيلُ",
+      "tr": "Al-Jalîl",
+      "fr": "Le Majestueux",
+      "desc": "Celui qui possède la majesté et la magnificence absolues.",
+      "af": "041_al-jalil"
+    },
+    {
+      "n": 42,
+      "ar": "الْكَرِيمُ",
+      "tr": "Al-Karîm",
+      "fr": "Le Généreux",
+      "desc": "Celui qui accorde le bien même à qui ne le mérite pas.",
+      "af": "042_al-karim"
+    },
+    {
+      "n": 43,
+      "ar": "الرَّقِيبُ",
+      "tr": "Ar-Raqîb",
+      "fr": "L'Observateur",
+      "desc": "Celui qui veille sur toute chose, dont rien n'est ignoré.",
+      "af": "043_ar-raqib"
+    },
+    {
+      "n": 44,
+      "ar": "الْمُجِيبُ",
+      "tr": "Al-Mujîb",
+      "fr": "Celui qui exauce",
+      "desc": "Celui qui répond aux invocations de Ses serviteurs.",
+      "af": "044_al-mujib"
+    },
+    {
+      "n": 45,
+      "ar": "الْوَاسِعُ",
+      "tr": "Al-Wâsi'",
+      "fr": "L'Immense",
+      "desc": "Celui dont la miséricorde, la science et les dons embrassent toute chose.",
+      "af": "045_al-wasi"
+    },
+    {
+      "n": 46,
+      "ar": "الْحَكِيمُ",
+      "tr": "Al-Hakîm",
+      "fr": "Le Sage",
+      "desc": "Celui qui place chaque chose à sa juste place par une sagesse infinie.",
+      "af": "046_al-hakim"
+    },
+    {
+      "n": 47,
+      "ar": "الْوَدُودُ",
+      "tr": "Al-Wadûd",
+      "fr": "Le Très Aimant",
+      "desc": "Celui qui aime Ses serviteurs vertueux et est aimé d'eux.",
+      "af": "047_al-wadud"
+    },
+    {
+      "n": 48,
+      "ar": "الْمَجِيدُ",
+      "tr": "Al-Majîd",
+      "fr": "Le Très Glorieux",
+      "desc": "Celui dont la gloire est parfaite et dont les bienfaits sont infinis.",
+      "af": "048_al-majid"
+    },
+    {
+      "n": 49,
+      "ar": "الْبَاعِثُ",
+      "tr": "Al-Bâ'ith",
+      "fr": "Le Ressusciteur",
+      "desc": "Celui qui ressuscitera les morts au Jour du Jugement.",
+      "af": "049_al-baith"
+    },
+    {
+      "n": 50,
+      "ar": "الشَّهِيدُ",
+      "tr": "Ash-Shahîd",
+      "fr": "Le Témoin",
+      "desc": "Celui qui est présent en tout lieu et témoin de toute chose.",
+      "af": "050_ash-shahid"
+    },
+    {
+      "n": 51,
+      "ar": "الْحَقُّ",
+      "tr": "Al-Haqq",
+      "fr": "La Vérité",
+      "desc": "La Vérité en Lui-même ; Son existence, Sa parole et Sa promesse sont vraies.",
+      "af": "051_al-haqq"
+    },
+    {
+      "n": 52,
+      "ar": "الْوَكِيلُ",
+      "tr": "Al-Wakîl",
+      "fr": "Le Garant",
+      "desc": "Celui à qui on s'en remet totalement, qui gère les affaires de Ses serviteurs.",
+      "af": "052_al-wakil"
+    },
+    {
+      "n": 53,
+      "ar": "الْقَوِيُّ",
+      "tr": "Al-Qawiyy",
+      "fr": "Le Très Fort",
+      "desc": "Celui dont la force est parfaite, absolue et sans faiblesse.",
+      "af": "053_al-qawiyy"
+    },
+    {
+      "n": 54,
+      "ar": "الْمَتِينُ",
+      "tr": "Al-Matîn",
+      "fr": "L'Inébranlable",
+      "desc": "Celui dont la puissance est ferme et solide, sans lassitude ni fatigue.",
+      "af": "054_al-matin"
+    },
+    {
+      "n": 55,
+      "ar": "الْوَلِيُّ",
+      "tr": "Al-Waliyy",
+      "fr": "Le Protecteur",
+      "desc": "L'Ami et le Protecteur des croyants.",
+      "af": "055_al-waliyy"
+    },
+    {
+      "n": 56,
+      "ar": "الْحَمِيدُ",
+      "tr": "Al-Hamîd",
+      "fr": "Le Très Digne de louanges",
+      "desc": "Celui qui mérite toute louange pour ce qu'Il est et ce qu'Il fait.",
+      "af": "056_al-hamid"
+    },
+    {
+      "n": 57,
+      "ar": "الْمُحْصِي",
+      "tr": "Al-Muhsî",
+      "fr": "Celui qui recense",
+      "desc": "Celui qui dénombre chaque chose, jusqu'au plus infime détail.",
+      "af": "057_al-muhsi"
+    },
+    {
+      "n": 58,
+      "ar": "الْمُبْدِئُ",
+      "tr": "Al-Mubdi'",
+      "fr": "Celui qui initie",
+      "desc": "Celui qui commence toute chose, l'Initiateur de la création.",
+      "af": "058_al-mubdi"
+    },
+    {
+      "n": 59,
+      "ar": "الْمُعِيدُ",
+      "tr": "Al-Mu'îd",
+      "fr": "Celui qui recommence",
+      "desc": "Celui qui recrée après la mort, qui refait toute chose.",
+      "af": "059_al-muid"
+    },
+    {
+      "n": 60,
+      "ar": "الْمُحْيِي",
+      "tr": "Al-Muhyî",
+      "fr": "Celui qui donne la vie",
+      "desc": "Celui qui insuffle la vie et fait sortir le vivant du non-vivant.",
+      "af": "060_al-muhyi"
+    },
+    {
+      "n": 61,
+      "ar": "الْمُمِيتُ",
+      "tr": "Al-Mumît",
+      "fr": "Celui qui donne la mort",
+      "desc": "Celui qui fait mourir toute âme au terme fixé.",
+      "af": "061_al-mumit"
+    },
+    {
+      "n": 62,
+      "ar": "الْحَيُّ",
+      "tr": "Al-Hayy",
+      "fr": "Le Vivant",
+      "desc": "Celui qui possède la vie parfaite, éternelle, sans début ni fin.",
+      "af": "062_al-hayy"
+    },
+    {
+      "n": 63,
+      "ar": "الْقَيُّومُ",
+      "tr": "Al-Qayyûm",
+      "fr": "Le Subsistant par Lui-même",
+      "desc": "Celui qui subsiste par Lui-même et par qui subsiste toute chose.",
+      "af": "063_al-qayyum"
+    },
+    {
+      "n": 64,
+      "ar": "الْوَاجِدُ",
+      "tr": "Al-Wâjid",
+      "fr": "Celui qui trouve",
+      "desc": "Celui à qui rien n'échappe, qui possède tout ce qu'Il veut sans effort.",
+      "af": "064_al-wajid"
+    },
+    {
+      "n": 65,
+      "ar": "الْمَاجِدُ",
+      "tr": "Al-Mâjid",
+      "fr": "Le Très Noble",
+      "desc": "Celui qui possède la noblesse, la générosité et la gloire absolues.",
+      "af": "065_al-majid"
+    },
+    {
+      "n": 66,
+      "ar": "الْوَاحِدُ",
+      "tr": "Al-Wâhid",
+      "fr": "L'Unique",
+      "desc": "Celui qui est Un dans Son essence, Ses attributs et Ses actes.",
+      "af": "066_al-wahid"
+    },
+    {
+      "n": 67,
+      "ar": "الْأَحَدُ",
+      "tr": "Al-Ahad",
+      "fr": "L'Un",
+      "desc": "L'Unique absolu, sans partenaire, sans semblable ni équivalent.",
+      "af": "067_al-ahad"
+    },
+    {
+      "n": 68,
+      "ar": "الصَّمَدُ",
+      "tr": "As-Samad",
+      "fr": "Le Recours suprême",
+      "desc": "Celui vers qui se tourne toute créature dans le besoin, qui n'a besoin de rien.",
+      "af": "068_as-samad"
+    },
+    {
+      "n": 69,
+      "ar": "الْقَادِرُ",
+      "tr": "Al-Qâdir",
+      "fr": "Le Détenteur du pouvoir",
+      "desc": "Celui qui a le pouvoir absolu sur toute chose.",
+      "af": "069_al-qadir"
+    },
+    {
+      "n": 70,
+      "ar": "الْمُقْتَدِرُ",
+      "tr": "Al-Muqtadir",
+      "fr": "Le Puissant Déterminant",
+      "desc": "Celui dont la puissance s'exerce sans obstacle, avec une maîtrise parfaite.",
+      "af": "070_al-muqtadir"
+    },
+    {
+      "n": 71,
+      "ar": "الْمُقَدِّمُ",
+      "tr": "Al-Muqaddim",
+      "fr": "Celui qui avance",
+      "desc": "Celui qui met en avant qui Il veut par Sa sagesse.",
+      "af": "071_al-muqaddim"
+    },
+    {
+      "n": 72,
+      "ar": "الْمُؤَخِّرُ",
+      "tr": "Al-Mu'akhkhir",
+      "fr": "Celui qui recule",
+      "desc": "Celui qui retarde ou repousse qui Il veut selon Sa sagesse.",
+      "af": "072_al-muakhkhir"
+    },
+    {
+      "n": 73,
+      "ar": "الْأَوَّلُ",
+      "tr": "Al-Awwal",
+      "fr": "Le Premier",
+      "desc": "Celui qui n'a pas de commencement, avant qui il n'y a rien.",
+      "af": "073_al-awwal"
+    },
+    {
+      "n": 74,
+      "ar": "الْآخِرُ",
+      "tr": "Al-Âkhir",
+      "fr": "Le Dernier",
+      "desc": "Celui qui n'a pas de fin, après qui il n'y a rien.",
+      "af": "074_al-akhir"
+    },
+    {
+      "n": 75,
+      "ar": "الظَّاهِرُ",
+      "tr": "Az-Zâhir",
+      "fr": "L'Apparent",
+      "desc": "Celui dont l'existence est manifeste par les signes de Sa création.",
+      "af": "075_az-zahir"
+    },
+    {
+      "n": 76,
+      "ar": "الْبَاطِنُ",
+      "tr": "Al-Bâtin",
+      "fr": "Le Caché",
+      "desc": "Celui dont la réalité échappe à la perception des créatures.",
+      "af": "076_al-batin"
+    },
+    {
+      "n": 77,
+      "ar": "الْوَالِي",
+      "tr": "Al-Wâlî",
+      "fr": "Le Maître souverain",
+      "desc": "Celui qui gouverne toute chose et dispose de la création.",
+      "af": "077_al-wali"
+    },
+    {
+      "n": 78,
+      "ar": "الْمُتَعَالِي",
+      "tr": "Al-Muta'âlî",
+      "fr": "Le Très Sublime",
+      "desc": "Celui qui transcende tout ce que les créatures peuvent Lui attribuer d'imparfait.",
+      "af": "078_al-mutaali"
+    },
+    {
+      "n": 79,
+      "ar": "الْبَرُّ",
+      "tr": "Al-Barr",
+      "fr": "Le Bienfaiteur",
+      "desc": "Celui qui répand Sa bonté sur toute Sa création.",
+      "af": "079_al-barr"
+    },
+    {
+      "n": 80,
+      "ar": "التَّوَّابُ",
+      "tr": "At-Tawwâb",
+      "fr": "Celui qui accueille le repentir",
+      "desc": "Celui qui accepte sans cesse le retour de Ses serviteurs vers Lui.",
+      "af": "080_at-tawwab"
+    },
+    {
+      "n": 81,
+      "ar": "الْمُنْتَقِمُ",
+      "tr": "Al-Muntaqim",
+      "fr": "Le Vengeur",
+      "desc": "Celui qui punit les oppresseurs et rend justice après avoir laissé un délai.",
+      "af": "081_al-muntaqim"
+    },
+    {
+      "n": 82,
+      "ar": "الْعَفُوُّ",
+      "tr": "Al-'Afuww",
+      "fr": "Celui qui efface",
+      "desc": "Celui qui efface totalement les péchés, comme s'ils n'avaient jamais été.",
+      "af": "082_al-afuww"
+    },
+    {
+      "n": 83,
+      "ar": "الرَّءُوفُ",
+      "tr": "Ar-Ra'ûf",
+      "fr": "Le Très Doux",
+      "desc": "Celui dont la compassion et la bienveillance sont infinies.",
+      "af": "083_ar-rauf"
+    },
+    {
+      "n": 84,
+      "ar": "مَالِكُ الْمُلْكِ",
+      "tr": "Mâlik al-Mulk",
+      "fr": "Le Souverain absolu",
+      "desc": "Celui à qui appartient toute la royauté, qu'Il donne à qui Il veut.",
+      "af": "084_malik-al-mulk"
+    },
+    {
+      "n": 85,
+      "ar": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+      "tr": "Dhûl-Jalâli wal-Ikrâm",
+      "fr": "Détenteur de la majesté et de la générosité",
+      "desc": "Celui qui réunit toute grandeur et toute générosité.",
+      "af": "085_dhul-jalali-wal-ikram"
+    },
+    {
+      "n": 86,
+      "ar": "الْمُقْسِطُ",
+      "tr": "Al-Muqsit",
+      "fr": "L'Équitable",
+      "desc": "Celui qui juge et agit avec la plus parfaite équité.",
+      "af": "086_al-muqsit"
+    },
+    {
+      "n": 87,
+      "ar": "الْجَامِعُ",
+      "tr": "Al-Jâmi'",
+      "fr": "Celui qui rassemble",
+      "desc": "Celui qui rassemblera les créatures au Jour de la Résurrection.",
+      "af": "087_al-jami"
+    },
+    {
+      "n": 88,
+      "ar": "الْغَنِيُّ",
+      "tr": "Al-Ghaniyy",
+      "fr": "Le Riche par Lui-même",
+      "desc": "Celui qui se suffit à Lui-même et dont toute chose dépend.",
+      "af": "088_al-ghaniyy"
+    },
+    {
+      "n": 89,
+      "ar": "الْمُغْنِي",
+      "tr": "Al-Mughnî",
+      "fr": "Celui qui enrichit",
+      "desc": "Celui qui accorde la richesse et la suffisance à qui Il veut.",
+      "af": "089_al-mughni"
+    },
+    {
+      "n": 90,
+      "ar": "الْمَانِعُ",
+      "tr": "Al-Mâni'",
+      "fr": "Celui qui préserve",
+      "desc": "Celui qui empêche ce qui doit être empêché par sagesse.",
+      "af": "090_al-mani"
+    },
+    {
+      "n": 91,
+      "ar": "الضَّارُّ",
+      "tr": "Ad-Dârr",
+      "fr": "Celui qui peut nuire",
+      "desc": "Celui qui décrète l'épreuve à qui Il veut, selon Sa sagesse.",
+      "af": "091_ad-darr"
+    },
+    {
+      "n": 92,
+      "ar": "النَّافِعُ",
+      "tr": "An-Nâfi'",
+      "fr": "Le Bienfaiteur",
+      "desc": "Celui qui apporte le bien et le profit à qui Il veut.",
+      "af": "092_an-nafi"
+    },
+    {
+      "n": 93,
+      "ar": "النُّورُ",
+      "tr": "An-Nûr",
+      "fr": "La Lumière",
+      "desc": "Celui qui illumine les cieux et la terre, et guide les cœurs.",
+      "af": "093_an-nur"
+    },
+    {
+      "n": 94,
+      "ar": "الْهَادِي",
+      "tr": "Al-Hâdî",
+      "fr": "Le Guide",
+      "desc": "Celui qui guide vers la vérité et vers le droit chemin.",
+      "af": "094_al-hadi"
+    },
+    {
+      "n": 95,
+      "ar": "الْبَدِيعُ",
+      "tr": "Al-Badî'",
+      "fr": "L'Inventeur",
+      "desc": "Celui qui crée sans modèle préalable, l'Auteur incomparable de la création.",
+      "af": "095_al-badi"
+    },
+    {
+      "n": 96,
+      "ar": "الْبَاقِي",
+      "tr": "Al-Bâqî",
+      "fr": "L'Éternel",
+      "desc": "Celui qui subsiste à jamais, alors que toute autre chose périt.",
+      "af": "096_al-baqi"
+    },
+    {
+      "n": 97,
+      "ar": "الْوَارِثُ",
+      "tr": "Al-Wârith",
+      "fr": "L'Héritier",
+      "desc": "Celui qui demeure après la disparition de toutes les créatures.",
+      "af": "097_al-warith"
+    },
+    {
+      "n": 98,
+      "ar": "الرَّشِيدُ",
+      "tr": "Ar-Rashîd",
+      "fr": "Le Guide de la rectitude",
+      "desc": "Celui qui mène toute chose à sa perfection par une sagesse infaillible.",
+      "af": "098_ar-rashid"
+    },
+    {
+      "n": 99,
+      "ar": "الصَّبُورُ",
+      "tr": "As-Sabûr",
+      "fr": "Le Très Patient",
+      "desc": "Celui qui use de patience et ne se hâte pas de punir les fautifs.",
+      "af": "099_as-sabur"
+    }
+  ],
+  "audioSource": {
+    "name": "MohammedAbidNafi/99-Names-of-Allah",
+    "license": "MIT",
+    "note": "Récitations locales dans books/asma-audio/ (converties en MP3, renommées {n}_{nom}.mp3)"
   }
- ],
- "audioSource": {
-  "name": "MohammedAbidNafi/99-Names-of-Allah",
-  "license": "MIT",
-  "note": "Récitations locales dans books/asma-audio/ (converties en MP3, renommées {n}_{nom}.mp3)"
- }
 }

@@ -829,6 +829,32 @@
 
 
 /* ── 99 Noms d'Allah ── */
+/* Bannière anachid : lecteur du chant des 99 Noms, en tête de liste */
+.asma-nasheed{display:flex;align-items:center;gap:14px;margin:8px 2px 4px;padding:14px 16px;
+  border-radius:var(--r-lg);cursor:pointer;position:relative;overflow:hidden;
+  background:linear-gradient(120deg,rgba(var(--a-rgb),0.16),rgba(var(--a-rgb),0.05));
+  border:1px solid var(--a-glow);transition:box-shadow 0.18s,transform 0.1s;}
+.asma-nasheed:active{transform:scale(0.995);}
+.asma-nasheed:hover{box-shadow:0 6px 20px rgba(var(--a-rgb),0.18);}
+.asma-nasheed-ic{flex-shrink:0;width:44px;height:44px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;background:var(--a);color:#fff;
+  box-shadow:0 4px 14px rgba(var(--a-rgb),0.4);}
+.asma-nasheed-ic .ic-stop{display:none;}
+.asma-nasheed.playing .asma-nasheed-ic{box-shadow:0 0 18px rgba(var(--a-rgb),0.6);}
+.asma-nasheed.playing .asma-nasheed-ic .ic-play{display:none;}
+.asma-nasheed.playing .asma-nasheed-ic .ic-stop{display:block;}
+.asma-nasheed-tx{flex:1;min-width:0;}
+.asma-nasheed-t{font-family:var(--ff-s);font-size:1rem;font-weight:700;color:var(--t1);}
+.asma-nasheed-s{font-size:0.78rem;color:var(--t2);margin-top:2px;}
+.asma-nasheed-eq{display:flex;align-items:flex-end;gap:3px;height:20px;flex-shrink:0;opacity:0.35;}
+.asma-nasheed-eq span{width:3px;height:6px;border-radius:2px;background:var(--a);}
+.asma-nasheed.playing .asma-nasheed-eq{opacity:1;}
+.asma-nasheed.playing .asma-nasheed-eq span{animation:eqbar 0.9s ease-in-out infinite;}
+.asma-nasheed.playing .asma-nasheed-eq span:nth-child(2){animation-delay:0.15s;}
+.asma-nasheed.playing .asma-nasheed-eq span:nth-child(3){animation-delay:0.3s;}
+.asma-nasheed.playing .asma-nasheed-eq span:nth-child(4){animation-delay:0.45s;}
+@keyframes eqbar{0%,100%{height:6px;}50%{height:20px;}}
+@media (prefers-reduced-motion:reduce){.asma-nasheed.playing .asma-nasheed-eq span{animation:none;height:14px;}}
 .asma-list{display:flex;flex-direction:column;gap:14px;padding:8px 2px 40px;}
 .asma-card{background:var(--surf);border:1px solid var(--bord);border-radius:var(--r-lg);
   padding:16px 18px;box-shadow:0 2px 10px rgba(0,0,0,0.04);position:relative;overflow:hidden;}

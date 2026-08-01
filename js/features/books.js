@@ -394,6 +394,7 @@ function asmaAudioSrc(n){
 let _asmaAudio=null,_asmaPlaying=null;   // null = rien en lecture (n=0 = Allah, donc pas 0 comme sentinelle)
 function playName(n,card){
   if(!_asmaAudio){_asmaAudio=new Audio();}
+  stopNasheed();                         // une seule source à la fois
   document.querySelectorAll('.asma-card.playing').forEach(c=>c.classList.remove('playing'));
   // reclic sur le nom en cours → stop
   if(_asmaPlaying===n&&!_asmaAudio.paused){_asmaAudio.pause();_asmaPlaying=null;return;}
@@ -404,12 +405,53 @@ function playName(n,card){
   _asmaAudio.play().catch(()=>{});
 }
 
+/* ── Anachid des 99 Noms : lecture continue du chant ──
+   Objet Audio persistant (hors DOM) : filtrer la liste re-render la bannière
+   sans interrompre la lecture ; l'icône est restaurée depuis `_nasheedOn`. */
+const NASHEED_SRC='books/asma-audio/nasheed-99-noms.mp3';
+let _nasheedAudio=null,_nasheedOn=false;
+function stopNasheed(){
+  if(_nasheedAudio&&!_nasheedAudio.paused)_nasheedAudio.pause();
+  _nasheedOn=false;
+  document.querySelectorAll('.asma-nasheed.playing').forEach(b=>b.classList.remove('playing'));
+}
+function toggleNasheed(banner){
+  if(!_nasheedAudio){_nasheedAudio=new Audio(NASHEED_SRC);
+    _nasheedAudio.onended=()=>{_nasheedOn=false;document.querySelectorAll('.asma-nasheed.playing').forEach(b=>b.classList.remove('playing'));};
+    _nasheedAudio.onerror=()=>{_nasheedOn=false;banner.classList.remove('playing');toast('Anachid indisponible 🎧');};
+  }
+  if(_nasheedOn){stopNasheed();return;}
+  if(_asmaAudio&&!_asmaAudio.paused){_asmaAudio.pause();_asmaPlaying=null;
+    document.querySelectorAll('.asma-card.playing').forEach(c=>c.classList.remove('playing'));}
+  _nasheedOn=true;banner.classList.add('playing');
+  _nasheedAudio.play().catch(()=>{_nasheedOn=false;banner.classList.remove('playing');});
+}
+
+function nasheedBanner(){
+  return `<div class="asma-nasheed${_nasheedOn?' playing':''}" role="button" tabindex="0" aria-label="Écouter l'anachid des 99 Noms">
+    <div class="asma-nasheed-ic">
+      <svg class="ic-play" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="ic-stop" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+    </div>
+    <div class="asma-nasheed-tx">
+      <div class="asma-nasheed-t">Anachid des 99 Noms</div>
+      <div class="asma-nasheed-s">Le chant en continu · récités dans l'ordre</div>
+    </div>
+    <div class="asma-nasheed-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  </div>`;
+}
+function bindNasheed(bd){
+  const b=bd.querySelector('.asma-nasheed');
+  if(!b)return;
+  b.addEventListener('click',()=>toggleNasheed(b));
+  b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleNasheed(b);}});
+}
 function renderNames(filter=''){
   const bd=$('book-bd');
   const f=filter.trim().toLowerCase();
   const items=_asma.names.filter(x=>!f||x.tr.toLowerCase().includes(f)||x.fr.toLowerCase().includes(f)||String(x.n)===f||x.ar.includes(filter.trim()));
-  if(!items.length){bd.innerHTML='<div class="places-empty">Aucun nom trouvé.</div>';return;}
-  bd.innerHTML=`<div class="asma-list">${items.map(x=>`
+  if(!items.length){bd.innerHTML=nasheedBanner()+'<div class="places-empty">Aucun nom trouvé.</div>';bindNasheed(bd);return;}
+  bd.innerHTML=nasheedBanner()+`<div class="asma-list">${items.map(x=>`
     <div class="asma-card" data-n="${x.n}" role="button" tabindex="0" aria-label="Écouter ${x.tr}">
       <div class="asma-head">
         <div class="asma-n">${x.n||'★'}</div>
@@ -431,6 +473,7 @@ function renderNames(filter=''){
     card.addEventListener('click',e=>{if(e.target.closest('.asma-detail'))return;playName(n,card);});
     card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('.asma-detail')){e.preventDefault();playName(n,card);}});
   });
+  bindNasheed(bd);
   bd.scrollTop=0;
 }
 
@@ -498,6 +541,7 @@ export function initBooks(){
   if(btnWudu)btnWudu.addEventListener('click',()=>openBook('wudu'));
 
   $('btn-book-back').addEventListener('click',()=>{
+    stopNasheed();                       // couper le chant en quittant la vue
     if(_view==='chapter')openList($('book-search').value);
     else if(_view==='list')showIntro();
     else if(_view==='names')showIntro();
