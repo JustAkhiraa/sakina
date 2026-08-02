@@ -1547,7 +1547,16 @@
       "tr": "Ad-Dârr",
       "fr": "Celui qui peut nuire",
       "desc": "Celui qui décrète l'épreuve à qui Il veut, selon Sa sagesse.",
-      "af": "091_ad-darr"
+      "af": "091_ad-darr",
+      "inv": {
+        "fr": "Ô Celui qui nuit ! Ô Favorable ! Compte-moi parmi ceux pour qui ce monde n'est que nuisance, parmi ceux qui aspirent à la Vie dernière, qui abandonnent leurs passions et leurs désirs pour contempler les bienfaits éclatants.",
+        "ar": "يَا ضَارُّ يَا نَافِعُ، اِجْعَلْنِي مِمَّنْ يُضَرُّ بِدُنْيَاهُ لِطَلَبِ الآخِرَةِ وَيَذَرُ هَوَاهُ وَمُنَاهُ لِشُهُودِ المَنَافِعِ الفَاخِرَةِ",
+        "tr": "Yâ Dârru ! Yâ Nâfi'u ! Ij'al-nî mim-man yudarru bi-dunyâ-hu li-talabi 'l-âkhirati wa-yadharu hawâ-hu wa-munâhu li-shuhûdi 'l-manâfi'i 'l-fâkhirati."
+      },
+      "intro": [
+        "Quelles leçons puis-je tirer des épreuves de ma vie pour en faire un tremplin dans ma quête spirituelle ?",
+        "En période de difficultés, je garde patience, car je suis conscient(e) qu'Allâh détient la sagesse sur ce qui est meilleur pour moi, et que cette épreuve est une chance de me rapprocher de Lui."
+      ]
     },
     {
       "n": 92,
