@@ -119,6 +119,7 @@ function showIntro(){
     ${b.desc.map(p=>`<p class="book-intro-desc">${p}</p>`).join('')}
     <div class="book-intro-cta" id="book-start">✦ Commencer la lecture</div>
     <div class="book-intro-src">${b.type==='chapters'?'Texte intégral, reproduit tel quel — édition riyad.fr.tc':b.type==='names'?"D'après la tradition classique — références coraniques et prophétiques":'Pages originales du livre imprimé'}</div>
+    ${b.key==='asma'?'<div class="book-intro-src">Invocation &amp; introspection de chaque nom : « Les Essentiels — Les 99 Noms d\'Allah » de Souad El Mansouri, éditions Al Bouraq</div>':''}
   </div>`;
   $('book-start').addEventListener('click',()=>{
     vib(16);
