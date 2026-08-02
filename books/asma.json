@@ -1699,5 +1699,12 @@
     "name": "MohammedAbidNafi/99-Names-of-Allah",
     "license": "MIT",
     "note": "Récitations locales dans books/asma-audio/ (converties en MP3, renommées {n}_{nom}.mp3)"
+  },
+  "invocationSource": {
+    "collection": "Les Essentiels",
+    "author": "Souad El Mansouri",
+    "title": "Les 99 Noms d'Allah",
+    "publisher": "Al Bouraq",
+    "note": "Source des sections Invocation & Introspection de chaque nom."
   }
 }
