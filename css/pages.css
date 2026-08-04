@@ -543,6 +543,12 @@
   border:1px solid var(--a-glow);display:flex;align-items:center;justify-content:center;
   font-family:var(--ff-m);font-size:0.62rem;color:var(--a);flex-shrink:0;}
 .book-chap-t{flex:1;font-size:0.8rem;font-weight:600;color:var(--t1);line-height:1.35;}
+/* Intertitre de section dans la liste des chapitres (livres à catégories) */
+.book-cat-head{padding:20px 16px 8px;font-size:0.64rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.12em;color:var(--a);
+  display:flex;align-items:center;gap:9px;}
+.book-cat-head::after{content:"";flex:1;height:1px;
+  background:linear-gradient(90deg,var(--a-glow),transparent);}
 /* ════════ LECTEUR — mise en page « livre » (Riyad + Citadelle OCR) ════════
    Objectif : reproduire le confort d'une app de lecture (Kindle, Readwise).
    · Contraste calibré (t-read = quasi noir en clair, ivoire cassé en sombre)
@@ -612,20 +618,6 @@
   margin-bottom:0.85em;text-align:justify;
   unicode-bidi:plaintext;  /* préserve le sens naturel de chaque ligne (RTL / LTR) */
 }
-
-/* ════════ BIBLIOTHÈQUE — visionneuse de pages (Citadelle du Musulman) ════════ */
-.book-pages-viewer{display:flex;align-items:center;justify-content:center;min-height:70vh;padding:10px 8px 4px;}
-.book-page-img{max-width:100%;border-radius:var(--r-md);box-shadow:0 12px 40px rgba(0,0,0,0.4);
-  background:#fff;display:block;}
-#book-pager{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:14px;
-  padding:10px 16px calc(env(safe-area-inset-bottom,0px) + 12px);border-top:1px solid var(--bor2);
-  background:var(--sur);}
-.pager-btn{width:44px;height:44px;border-radius:50%;background:var(--sur2);border:1px solid var(--bor);
-  color:var(--t2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s;flex-shrink:0;}
-.pager-btn:active{background:var(--a-dim);color:var(--a);transform:scale(0.9);}
-#pager-mid{display:flex;align-items:center;gap:6px;font-family:var(--ff-m);font-size:0.85rem;color:var(--t2);}
-#pager-input{width:52px;text-align:center;background:var(--sur2);border:1px solid var(--bor);border-radius:var(--r-sm);
-  padding:8px 4px;color:var(--t1);font-family:var(--ff-m);font-size:0.85rem;-webkit-appearance:none;}
 
 /* Phonétique dans le lecteur de routine */
 #rt-ar.latin{font-family:var(--ff-b);font-size:1rem;line-height:1.9;direction:ltr;
@@ -946,8 +938,6 @@
 .book-md-ul{margin:8px 0 14px;padding:0;list-style:none;}
 .book-md-ul li{position:relative;padding-left:18px;margin-bottom:6px;font-size:0.95rem;line-height:1.65;color:var(--t2);}
 .book-md-ul li::before{content:"◆";position:absolute;left:0;top:0;color:var(--a);font-size:0.7rem;line-height:1.8;}
-.book-md-foot{margin-top:24px;padding-top:12px;border-top:1px dashed var(--bor);
-  font-size:0.7rem;color:var(--t3);text-align:center;letter-spacing:0.08em;text-transform:uppercase;}
 
 /* ── Verset coranique : encadré ornemental, arabe centré et mis en valeur ── */
 .book-md-verse{font-family:var(--ff-a);font-size:1.5rem;line-height:2.15;color:var(--a);
@@ -960,11 +950,35 @@
 .book-md-verse::after{content:"﴿";bottom:6px;left:10px;}
 
 /* ── Table des matières : titre à gauche, n° de page à droite, points de conduite ── */
+/* Sommaire repliable — 133 lignes à plat noyaient le début du livre */
+.book-toc-fold{margin:14px 0 18px;border:1px solid var(--bor2);border-radius:var(--r-md);
+  background:var(--sur2);overflow:hidden;}
+.book-toc-sum{list-style:none;cursor:pointer;user-select:none;display:flex;align-items:center;gap:10px;
+  padding:13px 15px;font-family:var(--ff-s);font-size:0.85rem;font-weight:700;color:var(--a);}
+.book-toc-sum::-webkit-details-marker{display:none;}
+.book-toc-sum::before{content:"☰";font-size:0.95rem;opacity:0.85;}
+.book-toc-sum::after{content:"⌄";margin-left:auto;color:var(--t2);transition:transform 0.2s;font-size:1.05rem;}
+.book-toc-fold[open] .book-toc-sum::after{transform:rotate(180deg);}
+.book-toc-fold[open] .book-toc-sum{border-bottom:1px solid var(--bor2);}
+.book-toc-count{font-family:var(--ff-m);font-size:0.68rem;font-weight:500;color:var(--t3);
+  letter-spacing:0.04em;text-transform:uppercase;}
+.book-toc-box{padding:10px 15px 14px;max-height:60vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+
 .book-toc-row{display:flex;align-items:baseline;gap:8px;margin:2px 0;font-size:0.92rem;line-height:1.5;}
+/* Ligne cliquable : mène au titre correspondant dans le corps du livre */
+.book-toc-row[data-goto]{cursor:pointer;border-radius:var(--r-sm);padding:5px 7px;margin:1px -7px;
+  transition:background 0.14s;}
+.book-toc-row[data-goto]:hover{background:rgba(var(--a-rgb),0.09);}
+.book-toc-row[data-goto]:active{background:rgba(var(--a-rgb),0.16);}
+.book-toc-row[data-goto]:focus-visible{outline:2px solid var(--a);outline-offset:1px;}
 .book-toc-n{flex-shrink:0;min-width:1.6em;color:var(--a);font-family:var(--ff-m);font-size:0.8rem;font-weight:700;text-align:right;}
 .book-toc-t{color:var(--t1);}
 .book-toc-lead{flex:1;border-bottom:1.5px dotted var(--bor);transform:translateY(-3px);min-width:14px;}
 .book-toc-p{flex-shrink:0;color:var(--a);font-family:var(--ff-m);font-size:0.82rem;font-weight:700;}
+/* Repère visuel bref sur le titre atteint depuis le sommaire */
+@keyframes bookFlash{0%{background:rgba(var(--a-rgb),0.28);}100%{background:transparent;}}
+.book-md-flash{animation:bookFlash 1.5s ease-out;border-radius:var(--r-sm);}
+@media (prefers-reduced-motion:reduce){.book-md-flash{animation:none;}}
 
 /* ── Tableau (page des symboles p.10) ── */
 .book-md-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.9rem;
@@ -973,6 +987,10 @@
   padding:9px 11px;text-align:left;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;}
 .book-md-table td{padding:9px 11px;border-top:1px solid var(--bor2);color:var(--t1);vertical-align:middle;line-height:1.5;}
 .book-md-table td[dir="rtl"]{font-family:var(--ff-a);font-size:1.25rem;color:var(--a);white-space:nowrap;}
+/* Colonne « Symbole » : ﷺ ﷻ et les signes combinants (ؓ…) sont dessinés
+   dans un très petit cadran — sans agrandissement ils sont illisibles. */
+.book-md-table td.book-td-hon{font-size:2.1rem;line-height:1.2;text-align:center;
+  padding:6px 11px;min-width:2.4em;}
 
 /* ── Renvoi de note (exposant discret) ── */
 .book-fn-ref{font-size:0.62em;color:var(--a);font-weight:700;vertical-align:super;

@@ -1,6 +1,6 @@
 # Sakina ✦ — سَكِينَة
 
-**Compagnon spirituel tout-en-un** : tasbih, horaires de prière, qibla, Coran (tajwid, favoris, notes), invocations, et outils (Qadâ', Rak'ah, Zakat, calendrier hégirien & du jeûne). PWA installable, hors-ligne, sans publicité.
+**Compagnon spirituel tout-en-un** : tasbih, horaires de prière, qibla, Coran (tajwid, favoris, notes), invocations, bibliothèque de livres, et outils (Qadâ', Rak'ah, Zakat, calendrier hégirien & du jeûne, additifs halal). PWA installable, hors-ligne, sans publicité.
 
 > *Sakina* (سكينة) : la quiétude que Dieu fait descendre dans les cœurs — l'émotion que l'app cherche à susciter.
 
@@ -39,10 +39,14 @@ js/
     astro.js            Astronomie : horaires de prière (angles réels par méthode,
                         Asr par facteur d'ombre), qibla, distance Ka'ba
     hijri.js            Calendrier hégirien tabulaire (données numériques propres)
-  data/                 Catalogues : dhikrs, douas, 114 sourates, méthodes de calcul
+  data/                 Catalogues : dhikrs, douas, 114 sourates, routines,
+                        additifs & certifications halal, méthodes de calcul
   features/             Un module par écran : tasbih, salat, qibla, duas, quran,
-                        settings, tools (Qadâ'/Rak'ah/Zakat/hégirien/jeûne), books
-books/                  Textes : Riyad as-Salihin, Citadelle du Musulman, Asma ul-Husna
+                        settings, tools (Qadâ'/Rak'ah/Zakat/hégirien/jeûne),
+                        books, routines, places, halal, onboarding
+books/                  Textes : Riyad as-Salihin, Citadelle du Musulman,
+                        Asma ul-Husna (+ récitations MP3), Les Aliments dans
+                        le Coran et la Sunna
 docs/                   Guides (README.html rendu, PUBLISH.html)
 tools/                  Scripts dev (extraction PDF)
 ```
