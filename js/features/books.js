@@ -51,13 +51,13 @@ const BOOKS={
   },
   fruits:{
     key:'fruits',icon:'🌿',type:'chapters',md:true,
-    title:'Les Fruits cités dans le Coran',titleAr:'الفواكه المذكورة في القرآن الكريم',
-    author:'Guide original — versets, hadiths et repères nutritionnels actuels',
-    searchPh:'Chercher un fruit (datte, miel, figue…)',
-    stats:[{val:'7',label:'Fruits + miel'},{val:'Coran',label:'Versets exacts'},{val:'2026',label:'Science à jour'}],
+    title:'Les Aliments dans le Coran et la Sunna',titleAr:'الأطعمة في القرآن والسنة',
+    author:'Guide original — versets, hadiths et recherche nutritionnelle actuelle',
+    searchPh:'Chercher un aliment (datte, miel, nigelle…)',
+    stats:[{val:'9',label:'Aliments'},{val:'Coran',label:'Versets exacts'},{val:'12',label:'Chapitres'}],
     desc:[
-      "Dattes, raisin, banane, grenade, jujube, figue et miel — sept aliments cités dans le Coran, souvent en lien avec la guérison ou la nourriture bénie.",
-      "Pour chacun : les versets et hadiths qui le concernent, cités intégralement, puis un tour d'horizon de ce que la recherche nutritionnelle actuelle en dit — au-delà des remèdes traditionnels.",
+      "Dattes, raisin, banane, grenade, olive, miel, nigelle, jujube, figue… des aliments cités dans le Coran ou la Sunna, souvent en lien avec la guérison ou la nourriture bénie.",
+      "Pour chacun : les versets et hadiths qui le concernent, cités intégralement, puis ce que la recherche nutritionnelle actuelle en dit — avec toutes les sources rassemblées en fin de lecture.",
     ],
     src:'books/fruits.json',
   },
@@ -131,9 +131,8 @@ function showIntro(){
     <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${s.val}</b><span>${s.label}</span></div>`).join('')}</div>
     ${b.desc.map(p=>`<p class="book-intro-desc">${p}</p>`).join('')}
     <div class="book-intro-cta" id="book-start">✦ Commencer la lecture</div>
-    <div class="book-intro-src">${b.key==='riyad'?'Texte intégral, reproduit tel quel — édition riyad.fr.tc':b.key==='fruits'?'Versets et hadiths cités intégralement ; le reste est une réécriture originale':b.type==='names'?"D'après la tradition classique — références coraniques et prophétiques":'Pages originales du livre imprimé'}</div>
+    <div class="book-intro-src">${b.key==='riyad'?'Texte intégral, reproduit tel quel — édition riyad.fr.tc':b.key==='fruits'?"Versets et hadiths cités intégralement ; recherche et rédaction originales — sources en fin de lecture":b.type==='names'?"D'après la tradition classique — références coraniques et prophétiques":'Pages originales du livre imprimé'}</div>
     ${b.key==='asma'?'<div class="book-intro-src">Invocation &amp; introspection de chaque nom : « Les Essentiels — Les 99 Noms d\'Allah » de Souad El Mansouri, éditions Al Bouraq</div>':''}
-    ${b.key==='fruits'?'<div class="book-intro-src">Inspiré de « L\'automédication par les fruits cités dans le Noble Coran » (Fatima Benthami, Dar Al-Kotob Al-Ilmiyah — libre de diffusion)</div>':''}
   </div>`;
   $('book-start').addEventListener('click',()=>{
     vib(16);
@@ -291,7 +290,8 @@ function renderCitadelleMarkdown(md){
   const inline=s=>esc(s)
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.+?)\*/g,'<em>$1</em>')
-    .replace(/\[\^([^\]]+)\]/g,'<sup class="book-fn-ref">$1</sup>'); // renvoi de note
+    .replace(/\[\^([^\]]+)\]/g,'<sup class="book-fn-ref">$1</sup>') // renvoi de note
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>'); // lien [texte](url)
   const isArabic=s=>/[\u0600-\u06FF]/.test(s)&&!/[A-Za-z\u00C0-\u00FF]{2,}/.test(s);
   const lines=md.split('\n');
   const out=[];
