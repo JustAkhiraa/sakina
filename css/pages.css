@@ -619,20 +619,6 @@
   unicode-bidi:plaintext;  /* préserve le sens naturel de chaque ligne (RTL / LTR) */
 }
 
-/* ════════ BIBLIOTHÈQUE — visionneuse de pages (Citadelle du Musulman) ════════ */
-.book-pages-viewer{display:flex;align-items:center;justify-content:center;min-height:70vh;padding:10px 8px 4px;}
-.book-page-img{max-width:100%;border-radius:var(--r-md);box-shadow:0 12px 40px rgba(0,0,0,0.4);
-  background:#fff;display:block;}
-#book-pager{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:14px;
-  padding:10px 16px calc(env(safe-area-inset-bottom,0px) + 12px);border-top:1px solid var(--bor2);
-  background:var(--sur);}
-.pager-btn{width:44px;height:44px;border-radius:50%;background:var(--sur2);border:1px solid var(--bor);
-  color:var(--t2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s;flex-shrink:0;}
-.pager-btn:active{background:var(--a-dim);color:var(--a);transform:scale(0.9);}
-#pager-mid{display:flex;align-items:center;gap:6px;font-family:var(--ff-m);font-size:0.85rem;color:var(--t2);}
-#pager-input{width:52px;text-align:center;background:var(--sur2);border:1px solid var(--bor);border-radius:var(--r-sm);
-  padding:8px 4px;color:var(--t1);font-family:var(--ff-m);font-size:0.85rem;-webkit-appearance:none;}
-
 /* Phonétique dans le lecteur de routine */
 #rt-ar.latin{font-family:var(--ff-b);font-size:1rem;line-height:1.9;direction:ltr;
   font-style:italic;color:var(--t1);}
@@ -952,8 +938,6 @@
 .book-md-ul{margin:8px 0 14px;padding:0;list-style:none;}
 .book-md-ul li{position:relative;padding-left:18px;margin-bottom:6px;font-size:0.95rem;line-height:1.65;color:var(--t2);}
 .book-md-ul li::before{content:"◆";position:absolute;left:0;top:0;color:var(--a);font-size:0.7rem;line-height:1.8;}
-.book-md-foot{margin-top:24px;padding-top:12px;border-top:1px dashed var(--bor);
-  font-size:0.7rem;color:var(--t3);text-align:center;letter-spacing:0.08em;text-transform:uppercase;}
 
 /* ── Verset coranique : encadré ornemental, arabe centré et mis en valeur ── */
 .book-md-verse{font-family:var(--ff-a);font-size:1.5rem;line-height:2.15;color:var(--a);

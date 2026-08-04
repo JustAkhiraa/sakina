@@ -1,10 +1,12 @@
 /* SAKINA — Bibliothèque.
-   Deux ouvrages, deux natures de contenu :
-   · Riyad as-Salihin — texte intégral extrait du PDF (trad. Kechrid),
-     lu comme un livre : intro → liste de chapitres → lecture.
-   · La Citadelle du Musulman — le PDF source est un scan sans couche de
-     texte fiable (l'arabe y était irrécupérable après extraction) ; on
-     affiche donc les pages originales du livre telles qu'imprimées.
+   Trois natures de contenu, décrites par le champ `type` de chaque livre :
+   · `chapters` — sommaire puis lecture chapitre par chapitre
+     (Riyad as-Salihin, Les Aliments dans le Coran et la Sunna).
+     Option `md:true` pour un rendu Markdown enrichi ; option `cat` sur
+     les chapitres pour les regrouper en sections dans le sommaire.
+   · `pages`    — lecture continue d'un texte long (La Citadelle du Musulman).
+   · `names`    — grille de fiches (Les 99 Noms d'Allah).
+   · `guide`    — fiche pratique en étapes courtes (Salât, Wudû').
    Emotional Design (Norman) : chaque livre s'ouvre sur un écran qui
    explique ce qu'il est et pourquoi il compte (réflexif) avant la
    lecture (comportemental), avec une présentation soignée (viscéral). */
@@ -34,8 +36,6 @@ const BOOKS={
       "« Hisn al-Muslim » rassemble des invocations authentiques tirées du Coran et de la Sunna pour chaque instant du quotidien : réveil, repas, voyage, épreuves — afin que le rappel d'Allah accompagne le musulman à chaque moment.",
       "Une lecture continue et soignée, du début à la fin, pensée pour un confort optimal — arabe, translittération et traduction mis en valeur.",
     ],
-    pageCount:146,
-    pagePath:n=>`books/citadelle-pages/page-${String(n).padStart(3,'0')}.png`,
     textSrc:'books/citadelle.json',
   },
   asma:{
@@ -102,10 +102,8 @@ const BOOKS={
 };
 
 let _current=null;   // clé du livre ouvert
-let _riyad=null;     // données JSON chargées (mise en cache)
-const _chaptersCache={};  // livres « chapitres » génériques (fruits…), en cache par clé
+const _chaptersCache={};  // JSON des livres « chapitres », en cache par clé
 let _view='intro';   // intro | list | chapter | names | guide | pages
-let _page=1;
 
 /* ── En-tête commun ── */
 function setHeader({title,back=false,search=false,searchPh=''}){
@@ -113,15 +111,13 @@ function setHeader({title,back=false,search=false,searchPh=''}){
   $('btn-book-back').style.display=back?'flex':'none';
   $('book-search-wrap').style.display=search?'block':'none';
   if(search&&searchPh)$('book-search').placeholder=searchPh;
-  $('book-mode-toggle').style.display='none'; // ré-affiché explicitement par openPages()
 }
 
-/* ── Écran d'introduction (commun aux deux livres) ── */
+/* ── Écran d'introduction (commun à tous les livres) ── */
 function showIntro(){
   _view='intro';
   const b=BOOKS[_current];
   setHeader({title:'Bibliothèque',back:true});
-  $('book-pager').style.display='none';
   const bd=$('book-bd');
   bd.innerHTML=`<div class="book-intro">
     <div class="book-intro-badge">${b.icon}</div>
@@ -144,16 +140,14 @@ function showIntro(){
   bd.scrollTop=0;
 }
 
-/* ── Livres « chapitres » (Riyad as-Salihin, Fruits du Coran…) ──
-   `_chaptersCache[key]` met en cache le JSON chargé, `key` = BOOKS[_current].key.
-   Riyad garde en plus `_riyad` (alias) pour le code plus ancien qui le référence. */
+/* ── Livres « chapitres » (Riyad as-Salihin, Les Aliments…) ──
+   `_chaptersCache[key]` met en cache le JSON chargé, `key` = BOOKS[_current].key. */
 async function loadChapters(key){
   if(_chaptersCache[key])return _chaptersCache[key];
   const res=await fetch(BOOKS[key].src);
   if(!res.ok)throw new Error('load');
   const data=await res.json();
   _chaptersCache[key]=data;
-  if(key==='riyad')_riyad=data;
   return data;
 }
 
@@ -162,7 +156,6 @@ async function openList(filter=''){
   const key=_current;
   const b=BOOKS[key];
   setHeader({title:b.title,back:true,search:true,searchPh:b.searchPh||'Chercher un chapitre…'});
-  $('book-pager').style.display='none';
   if(!_chaptersCache[key]){
     $('book-bd').innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement du livre…</div>';
     try{await loadChapters(key);}
@@ -235,7 +228,6 @@ function showChapter(n){
   if(!c)return;
   _view='chapter';
   setHeader({title:`${c.n}/${data.chapters.length}`,back:true});
-  $('book-pager').style.display='none';
   const idx=data.chapters.indexOf(c);
   const prev=data.chapters[idx-1],next=data.chapters[idx+1];
   const bd=$('book-bd');
@@ -254,11 +246,9 @@ function showChapter(n){
   if(next)$('book-next-chap').addEventListener('click',()=>showChapter(next.n));
 }
 
-/* ── Citadelle du Musulman : deux vues ──
-   « Lecture » (mode texte) : source Markdown propre — c'est le mode par défaut,
-   agréable à parcourir. « Page scannée » (image) : reproduction fidèle du PDF
-   pour vérifier un passage précis. */
-let _pageMode='text';    // text | image  (défaut = lecture propre)
+/* ── Citadelle du Musulman ──
+   Lecture continue du texte intégral (source Markdown), d'un seul flux :
+   ni pagination ni bascule vers les pages scannées. */
 let _citadelleText=null; // {pages:[{n,text}]} — chargé à la demande
 
 async function loadCitadelleText(){
@@ -273,10 +263,6 @@ async function openPages(){
   _view='pages';
   const b=BOOKS.citadelle;
   setHeader({title:b.title,back:true});
-  // Lecture continue et ergonomique : plus de pagination ni de bascule
-  // « Page scannée » (masquée pour l'instant, le mode image reste dans le code).
-  $('book-mode-toggle').style.display='none';
-  $('book-pager').style.display='none';
   const bd=$('book-bd');
   bd.innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement du livre…</div>';
   try{await loadCitadelleText();}
@@ -367,37 +353,6 @@ function renderCitadelleMarkdown(md){
   return out.join('');
 }
 
-async function showPage(n){
-  _page=n;
-  const b=BOOKS.citadelle;
-  $('pager-input').value=n;
-  $('pager-prev').classList.toggle('disabled',n<=1);
-  $('pager-next').classList.toggle('disabled',n>=b.pageCount);
-  const bd=$('book-bd');
-
-  if(_pageMode==='image'){
-    bd.innerHTML=`<div class="book-pages-viewer"><img class="book-page-img" src="${b.pagePath(n)}" alt="Page ${n}" loading="eager"></div>`;
-    if(n<b.pageCount){const pre=new Image();pre.src=b.pagePath(n+1);}
-  }else{
-    bd.innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement du texte…</div>';
-    try{await loadCitadelleText();}
-    catch{bd.innerHTML='<div class="places-empty">Connexion requise pour le premier chargement du texte.</div>';return;}
-    const page=_citadelleText.pages.find(p=>p.n===n);
-    const html=page?renderCitadelleMarkdown(page.text||''):'';
-    bd.innerHTML=`<div class="book-chapter book-md">
-      ${html||'<p class="book-md-p" style="color:var(--t3)">(page vide)</p>'}
-      <div class="book-md-foot">Page ${n} · Hisn al-Muslim</div>
-    </div>`;
-  }
-  bd.scrollTop=0;
-}
-
-function setPageMode(mode){
-  _pageMode=mode;
-  document.querySelectorAll('#book-mode-toggle .seg-opt').forEach(o=>o.classList.toggle('active',o.dataset.mode===mode));
-  showPage(_page);
-}
-
 /* ── 99 Noms d'Allah : chargement + rendu en cartes ── */
 let _asma=null;
 async function loadAsma(){
@@ -410,7 +365,6 @@ async function loadAsma(){
 async function openNames(filter=''){
   _view='names';
   setHeader({title:BOOKS.asma.title,back:true,search:true,searchPh:'Chercher un nom (Rahmân, Paix, n°…)'});
-  $('book-pager').style.display='none';
   if(!_asma){
     $('book-bd').innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement des noms…</div>';
     try{await loadAsma();}
@@ -536,7 +490,6 @@ function openGuide(){
   _view='guide';
   const b=BOOKS[_current];
   setHeader({title:b.title,back:true});
-  $('book-pager').style.display='none';
   const bd=$('book-bd');
   bd.innerHTML=`<div class="learn-reader">
     <div class="learn-hero">
@@ -555,10 +508,8 @@ function openGuide(){
   bd.scrollTop=0;
 }
 
-
 function openBook(key){
   _current=key;
-  _pageMode='text'; // Lecture propre par défaut — le scan reste accessible via le toggle
   openSheet('sh-book',()=>{
     $('book-search').value='';
     showIntro();
@@ -589,16 +540,5 @@ export function initBooks(){
   $('book-search').addEventListener('input',e=>{
     if(_view==='list')renderList(e.target.value);
     else if(_view==='names')renderNames(e.target.value);
-  });
-
-  // Visionneuse de pages
-  $('pager-prev').addEventListener('click',()=>{if(_page>1){vib(12);showPage(_page-1);}});
-  $('pager-next').addEventListener('click',()=>{if(_page<BOOKS.citadelle.pageCount){vib(12);showPage(_page+1);}});
-  $('pager-input').addEventListener('change',e=>{
-    const n=parseInt(e.target.value)||1;
-    showPage(Math.max(1,Math.min(BOOKS.citadelle.pageCount,n)));
-  });
-  document.querySelectorAll('#book-mode-toggle .seg-opt').forEach(o=>{
-    o.addEventListener('click',()=>{vib(12);setPageMode(o.dataset.mode);});
   });
 }
