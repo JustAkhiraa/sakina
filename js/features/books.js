@@ -275,7 +275,66 @@ async function openPages(){
     .join('');
   bd.innerHTML=`<div class="book-chapter book-md book-read">${html}
     <div class="book-src">Hisn al-Muslim — La Citadelle du Musulman · Sa'îd Ibn 'Alî Ibn Wahf Al-Qahtânî · texte intégral</div></div>`;
+  foldToc(bd);
   bd.scrollTop=0;
+}
+
+/* Le sommaire de la Citadelle fait 133 lignes réparties sur cinq pages :
+   laissé à plat, il faut le faire défiler entièrement avant d'atteindre le
+   texte. On replie donc tout le bloc dans un <details> fermé par défaut. */
+function foldToc(bd){
+  const rows=bd.querySelectorAll('.book-toc-row');
+  if(rows.length<8)return;                     // pas un vrai sommaire
+  /* Quelques intitulés du sommaire diffèrent de ceux du corps du livre
+     (l'original n'est pas homogène) : sans titre correspondant, la ligne
+     redevient du texte simple plutôt que d'afficher un lien qui ne mène
+     nulle part. */
+  rows.forEach(r=>{
+    const id=r.dataset.goto;
+    if(id&&!bd.querySelector(`#${CSS.escape(id)}`)){
+      delete r.dataset.goto;
+      r.removeAttribute('role');
+      r.removeAttribute('tabindex');
+    }
+  });
+  const first=rows[0],last=rows[rows.length-1];
+  const det=document.createElement('details');
+  det.className='book-toc-fold';
+  det.innerHTML=`<summary class="book-toc-sum">Table des matières<span class="book-toc-count">${rows.length} sections</span></summary>`;
+  const box=document.createElement('div');
+  box.className='book-toc-box';
+  first.parentNode.insertBefore(det,first);
+  // Déplace la plage first…last (les lignes sont des frères adjacents une
+  // fois les pages concaténées) à l'intérieur du dépliant.
+  let node=first;
+  while(node){
+    const next=node.nextSibling;
+    box.appendChild(node);
+    if(node===last)break;
+    node=next;
+  }
+  det.appendChild(box);
+}
+
+/* Clic sur une ligne de sommaire → défilement jusqu'au titre correspondant.
+   `scrollIntoView` ne convient pas ici : il remonte jusqu'au <body>, dont
+   l'`overflow:hidden` bloque le défilement. On positionne donc directement
+   le conteneur (#book-bd) à partir de l'écart mesuré entre les deux. */
+function gotoAnchor(bd,id){
+  const target=bd.querySelector(`#${CSS.escape(id)}`);
+  if(!target)return false;
+  const fold=bd.querySelector('.book-toc-fold');
+  if(fold)fold.open=false;                     // referme le sommaire derrière soi
+  void bd.offsetHeight;                        // le repli change la hauteur : on remesure après
+  const delta=target.getBoundingClientRect().top-bd.getBoundingClientRect().top;
+  /* Saut instantané : le livre fait ~140 000 px de haut, un défilement animé
+     sur une telle distance est long et désorientant. Le surlignage bref du
+     titre atteint suffit à situer l'arrivée. */
+  bd.scrollTo({top:Math.max(0,bd.scrollTop+delta-10),behavior:'auto'});
+  target.classList.remove('book-md-flash');
+  void target.offsetWidth;                     // relance l'animation
+  target.classList.add('book-md-flash');
+  return true;
 }
 
 /* Petit rendu Markdown maison — juste ce dont la Citadelle a besoin :
@@ -289,6 +348,22 @@ function renderCitadelleMarkdown(md){
     .replace(/\[\^([^\]]+)\]/g,'<sup class="book-fn-ref">$1</sup>') // renvoi de note
     .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>'); // lien [texte](url)
   const isArabic=s=>/[\u0600-\u06FF]/.test(s)&&!/[A-Za-z\u00C0-\u00FF]{2,}/.test(s);
+  /* Sigles honorifiques : ligatures (\uFDFA \uFDFB \uFDF2, U+FDF2/FDFA/FDFB) et signes
+     combinants isol\u00E9s (\u0610\u2026\u061A, U+0610-061A). Rendus minuscules par d\u00E9faut \u2014
+     la cellule qui n'en contient qu'un est agrandie. */
+  const isHonorific=s=>/^[\u0610-\u061A\uFDF2\uFDFA\uFDFB\s]+$/.test(s)&&!!s.trim();
+  /* Ancre stable partag\u00E9e par un titre et sa ligne de sommaire : on retire
+     la num\u00E9rotation de t\u00EAte (absente c\u00F4t\u00E9 sommaire, pr\u00E9sente c\u00F4t\u00E9 titre) et
+     les accents, ce qui fait converger \u00AB 3. L'invocation\u2026 \u00BB et
+     \u00AB L'invocation\u2026 \u00BB vers la m\u00EAme cl\u00E9. */
+  const slug=s=>('c-'+s.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036F]/g,'')
+    .replace(/\[\^[^\]]*\]/g,'')       // renvois de note ([^24]) pr\u00E9sents c\u00F4t\u00E9 titre seulement
+    .replace(/^\d+\s*(\([^)]*\))?\s*[.\-\u2013\u2014]?\s*/,'')  // num\u00E9rotation de t\u00EAte : \u00AB 12. \u00BB, \u00AB 37 \u00BB, \u00AB 77(bis). \u00BB
+    .replace(/\s*\d+\s*$/,'')          // num\u00E9ro de page coll\u00E9 en fin (artefact d'oc\u00E9risation)
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-+|-+$/g,'')
+    .slice(0,60)).replace(/-+$/,'');   // re-rogne si la coupe tombe sur un tiret
   const lines=md.split('\n');
   const out=[];
   const notes=[];               // {mark,text} collectees puis rendues en bas de page
@@ -309,14 +384,18 @@ function renderCitadelleMarkdown(md){
       const body=[];
       while(i+1<lines.length&&/^\|.*\|$/.test(lines[i+1].trim())){i++;body.push(cells(lines[i]));}
       let t='<table class="book-md-table"><thead><tr>'+head.map(h=>`<th>${inline(h)}</th>`).join('')+'</tr></thead><tbody>';
-      t+=body.map(r=>'<tr>'+r.map(c=>{const ar=isArabic(c);return `<td${ar?' dir="rtl" lang="ar"':''}>${inline(c)}</td>`;}).join('')+'</tr>').join('');
+      t+=body.map(r=>'<tr>'+r.map(c=>{
+        if(isHonorific(c))return `<td class="book-td-hon" dir="rtl" lang="ar">${inline(c)}</td>`;
+        const ar=isArabic(c);
+        return `<td${ar?' dir="rtl" lang="ar"':''}>${inline(c)}</td>`;
+      }).join('')+'</tr>').join('');
       out.push(t+'</tbody></table>');continue;
     }
     if(/^#{1,6}\s+/.test(s)){
       closeList();
       const m=s.match(/^(#{1,6})\s+(.*)$/);
       const lvl=Math.min(m[1].length+1,6); // # -> h2 (h1 reserve au header du livre)
-      out.push(`<h${lvl} class="book-md-h${lvl}">${inline(m[2])}</h${lvl}>`);continue;
+      out.push(`<h${lvl} id="${slug(m[2])}" class="book-md-h${lvl}">${inline(m[2])}</h${lvl}>`);continue;
     }
     if(/^---+$/.test(s)){
       closeList();
@@ -327,7 +406,7 @@ function renderCitadelleMarkdown(md){
     if(toc&&!isArabic(s)){
       closeList();
       const num=toc[1]?`<span class="book-toc-n">${toc[1]}</span>`:'';
-      out.push(`<div class="book-toc-row">${num}<span class="book-toc-t">${inline(toc[2])}</span><span class="book-toc-lead" aria-hidden="true"></span><span class="book-toc-p">${toc[3]}</span></div>`);continue;
+      out.push(`<div class="book-toc-row" role="link" tabindex="0" data-goto="${slug(toc[2])}">${num}<span class="book-toc-t">${inline(toc[2])}</span><span class="book-toc-lead" aria-hidden="true"></span><span class="book-toc-p">${toc[3]}</span></div>`);continue;
     }
     if(/^[-\u2022]\s+/.test(s)){
       if(!inList){out.push('<ul class="book-md-ul">');inList=true;}
@@ -540,5 +619,21 @@ export function initBooks(){
   $('book-search').addEventListener('input',e=>{
     if(_view==='list')renderList(e.target.value);
     else if(_view==='names')renderNames(e.target.value);
+  });
+
+  // Sommaire cliquable (délégation : les lignes sont recréées à chaque rendu)
+  const bd=$('book-bd');
+  bd.addEventListener('click',e=>{
+    const row=e.target.closest('.book-toc-row[data-goto]');
+    if(!row)return;
+    vib(12);
+    gotoAnchor(bd,row.dataset.goto);
+  });
+  bd.addEventListener('keydown',e=>{
+    if(e.key!=='Enter'&&e.key!==' ')return;
+    const row=e.target.closest('.book-toc-row[data-goto]');
+    if(!row)return;
+    e.preventDefault();vib(12);
+    gotoAnchor(bd,row.dataset.goto);
   });
 }
