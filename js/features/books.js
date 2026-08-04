@@ -49,6 +49,18 @@ const BOOKS={
     ],
     src:'books/asma.json',
   },
+  fruits:{
+    key:'fruits',icon:'🌿',type:'chapters',md:true,
+    title:'Les Fruits cités dans le Coran',titleAr:'الفواكه المذكورة في القرآن الكريم',
+    author:'Guide original — versets, hadiths et repères nutritionnels actuels',
+    searchPh:'Chercher un fruit (datte, miel, figue…)',
+    stats:[{val:'7',label:'Fruits + miel'},{val:'Coran',label:'Versets exacts'},{val:'2026',label:'Science à jour'}],
+    desc:[
+      "Dattes, raisin, banane, grenade, jujube, figue et miel — sept aliments cités dans le Coran, souvent en lien avec la guérison ou la nourriture bénie.",
+      "Pour chacun : les versets et hadiths qui le concernent, cités intégralement, puis un tour d'horizon de ce que la recherche nutritionnelle actuelle en dit — au-delà des remèdes traditionnels.",
+    ],
+    src:'books/fruits.json',
+  },
   salat:{
     key:'salat',icon:'🧎',type:'guide',
     title:'Comment faire la Salât',titleAr:'الصلاة',
@@ -91,6 +103,7 @@ const BOOKS={
 
 let _current=null;   // clé du livre ouvert
 let _riyad=null;     // données JSON chargées (mise en cache)
+const _chaptersCache={};  // livres « chapitres » génériques (fruits…), en cache par clé
 let _view='intro';   // intro | list | chapter | names | guide | pages
 let _page=1;
 
@@ -118,8 +131,9 @@ function showIntro(){
     <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${s.val}</b><span>${s.label}</span></div>`).join('')}</div>
     ${b.desc.map(p=>`<p class="book-intro-desc">${p}</p>`).join('')}
     <div class="book-intro-cta" id="book-start">✦ Commencer la lecture</div>
-    <div class="book-intro-src">${b.type==='chapters'?'Texte intégral, reproduit tel quel — édition riyad.fr.tc':b.type==='names'?"D'après la tradition classique — références coraniques et prophétiques":'Pages originales du livre imprimé'}</div>
+    <div class="book-intro-src">${b.key==='riyad'?'Texte intégral, reproduit tel quel — édition riyad.fr.tc':b.key==='fruits'?'Versets et hadiths cités intégralement ; le reste est une réécriture originale':b.type==='names'?"D'après la tradition classique — références coraniques et prophétiques":'Pages originales du livre imprimé'}</div>
     ${b.key==='asma'?'<div class="book-intro-src">Invocation &amp; introspection de chaque nom : « Les Essentiels — Les 99 Noms d\'Allah » de Souad El Mansouri, éditions Al Bouraq</div>':''}
+    ${b.key==='fruits'?'<div class="book-intro-src">Inspiré de « L\'automédication par les fruits cités dans le Noble Coran » (Fatima Benthami, Dar Al-Kotob Al-Ilmiyah — libre de diffusion)</div>':''}
   </div>`;
   $('book-start').addEventListener('click',()=>{
     vib(16);
@@ -131,22 +145,28 @@ function showIntro(){
   bd.scrollTop=0;
 }
 
-/* ── Riyad as-Salihin : liste de chapitres ── */
-async function loadRiyad(){
-  if(_riyad)return _riyad;
-  const res=await fetch(BOOKS.riyad.src);
+/* ── Livres « chapitres » (Riyad as-Salihin, Fruits du Coran…) ──
+   `_chaptersCache[key]` met en cache le JSON chargé, `key` = BOOKS[_current].key.
+   Riyad garde en plus `_riyad` (alias) pour le code plus ancien qui le référence. */
+async function loadChapters(key){
+  if(_chaptersCache[key])return _chaptersCache[key];
+  const res=await fetch(BOOKS[key].src);
   if(!res.ok)throw new Error('load');
-  _riyad=await res.json();
-  return _riyad;
+  const data=await res.json();
+  _chaptersCache[key]=data;
+  if(key==='riyad')_riyad=data;
+  return data;
 }
 
 async function openList(filter=''){
   _view='list';
-  setHeader({title:BOOKS.riyad.title,back:true,search:true,searchPh:'Chercher un chapitre (patience, repentir…)'});
+  const key=_current;
+  const b=BOOKS[key];
+  setHeader({title:b.title,back:true,search:true,searchPh:b.searchPh||'Chercher un chapitre…'});
   $('book-pager').style.display='none';
-  if(!_riyad){
+  if(!_chaptersCache[key]){
     $('book-bd').innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement du livre…</div>';
-    try{await loadRiyad();}
+    try{await loadChapters(key);}
     catch{$('book-bd').innerHTML='<div class="places-empty">Connexion requise pour le premier chargement du livre.</div>';return;}
   }
   renderList(filter);
@@ -155,8 +175,9 @@ async function openList(filter=''){
 
 function renderList(filter=''){
   const bd=$('book-bd');bd.innerHTML='';
+  const data=_chaptersCache[_current];
   const f=filter.trim().toLowerCase();
-  const items=_riyad.chapters.filter(c=>!f||c.title.toLowerCase().includes(f)||String(c.n)===f);
+  const items=data.chapters.filter(c=>!f||c.title.toLowerCase().includes(f)||String(c.n)===f);
   if(!items.length){
     bd.innerHTML='<div class="places-empty">Aucun chapitre trouvé.</div>';
     return;
@@ -199,18 +220,21 @@ function formatChapter(text){
 }
 
 function showChapter(n){
-  const c=_riyad.chapters.find(x=>x.n===n);
+  const key=_current;
+  const data=_chaptersCache[key];
+  const c=data.chapters.find(x=>x.n===n);
   if(!c)return;
   _view='chapter';
-  setHeader({title:`${c.n}/${_riyad.chapters.length}`,back:true});
+  setHeader({title:`${c.n}/${data.chapters.length}`,back:true});
   $('book-pager').style.display='none';
-  const idx=_riyad.chapters.indexOf(c);
-  const prev=_riyad.chapters[idx-1],next=_riyad.chapters[idx+1];
+  const idx=data.chapters.indexOf(c);
+  const prev=data.chapters[idx-1],next=data.chapters[idx+1];
   const bd=$('book-bd');
-  bd.innerHTML=`<div class="book-chapter book-read">
+  const body=BOOKS[key].md?renderCitadelleMarkdown(c.text):formatChapter(c.text);
+  bd.innerHTML=`<div class="book-chapter book-read${BOOKS[key].md?' book-md':''}">
       <div class="book-chap-head">${c.n}. ${c.title}</div>
-      ${formatChapter(c.text)}
-      <div class="book-src">${_riyad.author} · ${_riyad.source}</div>
+      ${body}
+      <div class="book-src">${data.author} · ${data.source}</div>
       <div class="book-chap-nav">
         <div class="book-chap-nav-btn${prev?'':' disabled'}" id="book-prev-chap">‹ Chapitre précédent</div>
         <div class="book-chap-nav-btn${next?'':' disabled'}" id="book-next-chap">Chapitre suivant ›</div>
@@ -536,6 +560,8 @@ export function initBooks(){
   $('btn-open-citadelle').addEventListener('click',()=>openBook('citadelle'));
   const btnAsma=$('btn-open-asma');
   if(btnAsma)btnAsma.addEventListener('click',()=>openBook('asma'));
+  const btnFruits=$('btn-open-fruits');
+  if(btnFruits)btnFruits.addEventListener('click',()=>openBook('fruits'));
   const btnSalat=$('btn-open-learn-salat');
   if(btnSalat)btnSalat.addEventListener('click',()=>openBook('salat'));
   const btnWudu=$('btn-open-learn-wudu');
