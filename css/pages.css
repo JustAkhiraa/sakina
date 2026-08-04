@@ -543,6 +543,12 @@
   border:1px solid var(--a-glow);display:flex;align-items:center;justify-content:center;
   font-family:var(--ff-m);font-size:0.62rem;color:var(--a);flex-shrink:0;}
 .book-chap-t{flex:1;font-size:0.8rem;font-weight:600;color:var(--t1);line-height:1.35;}
+/* Intertitre de section dans la liste des chapitres (livres à catégories) */
+.book-cat-head{padding:20px 16px 8px;font-size:0.64rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.12em;color:var(--a);
+  display:flex;align-items:center;gap:9px;}
+.book-cat-head::after{content:"";flex:1;height:1px;
+  background:linear-gradient(90deg,var(--a-glow),transparent);}
 /* ════════ LECTEUR — mise en page « livre » (Riyad + Citadelle OCR) ════════
    Objectif : reproduire le confort d'une app de lecture (Kindle, Readwise).
    · Contraste calibré (t-read = quasi noir en clair, ivoire cassé en sombre)

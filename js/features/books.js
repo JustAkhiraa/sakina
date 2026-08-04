@@ -54,10 +54,10 @@ const BOOKS={
     title:'Les Aliments dans le Coran et la Sunna',titleAr:'الأطعمة في القرآن والسنة',
     author:'Guide original — versets, hadiths et recherche nutritionnelle actuelle',
     searchPh:'Chercher un aliment (datte, miel, nigelle…)',
-    stats:[{val:'9',label:'Aliments'},{val:'Coran',label:'Versets exacts'},{val:'12',label:'Chapitres'}],
+    stats:[{val:'12',label:'Aliments'},{val:'Coran',label:'Versets exacts'},{val:'60+',label:'Sources'}],
     desc:[
-      "Dattes, raisin, banane, grenade, olive, miel, nigelle, jujube, figue… des aliments cités dans le Coran ou la Sunna, souvent en lien avec la guérison ou la nourriture bénie.",
-      "Pour chacun : les versets et hadiths qui le concernent, cités intégralement, puis ce que la recherche nutritionnelle actuelle en dit — avec toutes les sources rassemblées en fin de lecture.",
+      "Datte, raisin, figue, olive, grenade, banane, jujube, miel — les aliments que le Coran nomme. Puis les remèdes transmis par la Sunna : nigelle, orge, vinaigre, eau de Zamzam.",
+      "Pour chacun : les versets et hadiths cités intégralement avec leurs références, puis ce que dit la recherche — méta-analyses, essais randomisés, revues Cochrane — avec ses résultats comme ses limites. Toutes les sources sont rassemblées en fin de lecture.",
     ],
     src:'books/fruits.json',
   },
@@ -181,7 +181,17 @@ function renderList(filter=''){
     bd.innerHTML='<div class="places-empty">Aucun chapitre trouvé.</div>';
     return;
   }
+  // Les livres dont les chapitres portent un champ `cat` sont regroupés par
+  // section (un intertitre s'insère à chaque changement de catégorie).
+  let lastCat=null;
   items.forEach(c=>{
+    if(c.cat&&c.cat!==lastCat){
+      lastCat=c.cat;
+      const h=document.createElement('div');
+      h.className='book-cat-head';
+      h.textContent=c.cat;
+      bd.appendChild(h);
+    }
     const div=document.createElement('div');
     div.className='book-chap-row';
     div.innerHTML=`<div class="book-chap-n">${c.n}</div><div class="book-chap-t">${c.title}</div>
