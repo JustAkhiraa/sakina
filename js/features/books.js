@@ -26,6 +26,7 @@ const BOOKS={
       "Organisé en 373 chapitres thématiques — sincérité, patience, bonté envers les parents, adab du quotidien, repentir — c'est l'un des recueils les plus lus au monde pour ancrer la foi dans le comportement de tous les jours.",
     ],
     src:'books/riyad.json',
+    srcNotes:['Texte intégral, reproduit tel quel — édition riyad.fr.tc'],
   },
   citadelle:{
     key:'citadelle',icon:'📘',type:'pages',
@@ -37,6 +38,7 @@ const BOOKS={
       "Une lecture continue et soignée, du début à la fin, pensée pour un confort optimal — arabe, translittération et traduction mis en valeur.",
     ],
     textSrc:'books/citadelle.json',
+    srcNotes:["Texte intégral — Hisn al-Muslim, Sa'îd Ibn 'Alî Ibn Wahf Al-Qahtânî"],
   },
   asma:{
     key:'asma',icon:'✨',type:'names',
@@ -48,6 +50,7 @@ const BOOKS={
       "« À Allah appartiennent les plus beaux noms. Invoquez-Le par ces noms » (Coran 7:180). Cette lecture est un moyen d'accroître la connaissance d'Allah et l'attachement à Lui.",
     ],
     src:'books/asma.json',
+    srcNotes:["D'après la tradition classique — références coraniques et prophétiques","Invocation &amp; introspection de chaque nom : « Les Essentiels — Les 99 Noms d'Allah » de Souad El Mansouri, éditions Al Bouraq"],
   },
   fruits:{
     key:'fruits',icon:'🌿',type:'chapters',md:true,
@@ -60,6 +63,7 @@ const BOOKS={
       "Pour chacun : les versets et hadiths cités intégralement avec leurs références, puis ce que dit la recherche — méta-analyses, essais randomisés, revues Cochrane — avec ses résultats comme ses limites. Toutes les sources sont rassemblées en fin de lecture.",
     ],
     src:'books/fruits.json',
+    srcNotes:['Versets et hadiths cités intégralement ; recherche et rédaction originales — sources en fin de lecture'],
   },
   miracles:{
     key:'miracles',icon:'✦',type:'chapters',md:true,
@@ -72,6 +76,7 @@ const BOOKS={
       "Ce guide part de là — l'inimitabilité de la parole selon les savants classiques — avant d'aborder les annonces accomplies, les versets qui décrivent la création, et les signes rapportés par la Sunna. Avec, à chaque fois, ce qui est établi et ce qui reste discuté.",
     ],
     src:'books/miracles.json',
+    srcNotes:['Versets et hadiths cités intégralement ; recherche et rédaction originales — sources en fin de lecture'],
   },
   salat:{
     key:'salat',icon:'🧎',type:'guide',
@@ -139,8 +144,7 @@ function showIntro(){
     <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${s.val}</b><span>${s.label}</span></div>`).join('')}</div>
     ${b.desc.map(p=>`<p class="book-intro-desc">${p}</p>`).join('')}
     <div class="book-intro-cta" id="book-start">✦ Commencer la lecture</div>
-    <div class="book-intro-src">${b.key==='riyad'?'Texte intégral, reproduit tel quel — édition riyad.fr.tc':b.key==='fruits'?"Versets et hadiths cités intégralement ; recherche et rédaction originales — sources en fin de lecture":b.type==='names'?"D'après la tradition classique — références coraniques et prophétiques":'Pages originales du livre imprimé'}</div>
-    ${b.key==='asma'?'<div class="book-intro-src">Invocation &amp; introspection de chaque nom : « Les Essentiels — Les 99 Noms d\'Allah » de Souad El Mansouri, éditions Al Bouraq</div>':''}
+    ${(b.srcNotes||[]).map(n=>`<div class="book-intro-src">${n}</div>`).join('')}
   </div>`;
   $('book-start').addEventListener('click',()=>{
     vib(16);
