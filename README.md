@@ -46,7 +46,7 @@ js/
                         books, routines, places, halal, onboarding
 books/                  Textes : Riyad as-Salihin, Citadelle du Musulman,
                         Asma ul-Husna (+ récitations MP3), Les Aliments dans
-                        le Coran et la Sunna
+                        le Coran et la Sunna, Les Miracles du Coran
 docs/                   Guides (README.html rendu, PUBLISH.html)
 tools/                  Scripts dev (extraction PDF)
 ```

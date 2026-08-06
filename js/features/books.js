@@ -61,6 +61,18 @@ const BOOKS={
     ],
     src:'books/fruits.json',
   },
+  miracles:{
+    key:'miracles',icon:'✦',type:'chapters',md:true,
+    title:'Les Miracles du Coran',titleAr:'معجزات القرآن',
+    author:"Guide original — le défi du Coran, la Sunna et les sources",
+    searchPh:'Chercher un chapitre (défi, Rome, création…)',
+    stats:[{val:'13',label:'Chapitres'},{val:'Coran',label:'Versets exacts'},{val:'Sunna',label:'Hadiths sourcés'}],
+    desc:[
+      "Le Coran met lui-même son authenticité en jeu : produire une seule sourate semblable suffirait à le réfuter. Ce défi, lancé aux plus fins connaisseurs de la langue arabe, n'a jamais été relevé.",
+      "Ce guide part de là — l'inimitabilité de la parole selon les savants classiques — avant d'aborder les annonces accomplies, les versets qui décrivent la création, et les signes rapportés par la Sunna. Avec, à chaque fois, ce qui est établi et ce qui reste discuté.",
+    ],
+    src:'books/miracles.json',
+  },
   salat:{
     key:'salat',icon:'🧎',type:'guide',
     title:'Comment faire la Salât',titleAr:'الصلاة',
@@ -602,6 +614,8 @@ export function initBooks(){
   if(btnAsma)btnAsma.addEventListener('click',()=>openBook('asma'));
   const btnFruits=$('btn-open-fruits');
   if(btnFruits)btnFruits.addEventListener('click',()=>openBook('fruits'));
+  const btnMiracles=$('btn-open-miracles');
+  if(btnMiracles)btnMiracles.addEventListener('click',()=>openBook('miracles'));
   const btnSalat=$('btn-open-learn-salat');
   if(btnSalat)btnSalat.addEventListener('click',()=>openBook('salat'));
   const btnWudu=$('btn-open-learn-wudu');
