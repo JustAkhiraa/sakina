@@ -69,14 +69,14 @@ const BOOKS={
     key:'miracles',icon:'✦',type:'chapters',md:true,
     title:'Les Miracles du Coran',titleAr:'معجزات القرآن',
     author:"Guide original — le défi du Coran, la Sunna et les sources",
-    searchPh:'Chercher un chapitre (défi, Rome, création…)',
-    stats:[{val:'16',label:'Chapitres'},{val:'61',label:'Versets cités'},{val:'Sunna',label:'Hadiths sourcés'}],
+    searchPh:'Chercher un chapitre (défi, Rome, comptages…)',
+    stats:[{val:'16',label:'Chapitres'},{val:'61',label:'Versets cités'},{val:'Refaits',label:'Calculs vérifiés'}],
     desc:[
       "Le Coran met lui-même son authenticité en jeu : produire une seule sourate semblable suffirait à le réfuter. Ce défi, lancé aux plus fins connaisseurs de la langue arabe, n'a jamais été relevé.",
-      "Ce guide part de là — l'inimitabilité de la parole selon les savants classiques — avant d'aborder les annonces accomplies, les versets qui décrivent la création, et les signes rapportés par la Sunna. Avec, à chaque fois, ce qui est établi et ce qui reste discuté.",
+      "Ce guide part de là — l'inimitabilité de la parole selon les savants classiques — avant d'aborder les annonces accomplies, les versets qui décrivent la création, et les signes rapportés par la Sunna. Les comptages sont recalculés sur le texte complet, avec de quoi refaire chaque calcul soi-même.",
     ],
     src:'books/miracles.json',
-    srcNotes:['Versets et hadiths cités intégralement ; recherche et rédaction originales — sources en fin de lecture'],
+    srcNotes:['Versets et hadiths cités intégralement ; comptages refaits sur les 6236 versets, dans les deux orthographes — sources et méthode en fin de lecture'],
   },
   salat:{
     key:'salat',icon:'🧎',type:'guide',
