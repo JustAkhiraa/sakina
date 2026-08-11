@@ -411,11 +411,22 @@ function toggleNav(id){
    Activer une langue déclenche son téléchargement ; le service worker la
    conserve ensuite en cache. On empêche de tout décocher, sans quoi le
    lecteur n'aurait plus rien à afficher sous les versets. */
+/* Résumé affiché sur la ligne repliée : le menu fermé doit dire ce qui est actif. */
+function quranTrSummary(){
+  const el=document.getElementById('quran-tr-sub');
+  if(!el)return;
+  const on=TRANSLATIONS.filter(t=>S.quranTr.includes(t.code)).map(t=>t.label);
+  el.textContent=on.length<=3
+    ? on.join(' · ')
+    : `${on.slice(0,2).join(' · ')} et ${on.length-2} autres`;
+}
+
 function buildQuranTrList(){
   const host=document.getElementById('quran-tr-list');
   if(!host)return;
   if(!Array.isArray(S.quranTr)||!S.quranTr.length){S.quranTr=['fr'];save();}
   host.innerHTML='';
+  quranTrSummary();
 
   TRANSLATIONS.forEach((t,i)=>{
     const on=S.quranTr.includes(t.code);
@@ -435,7 +446,7 @@ function buildQuranTrList(){
         if(S.quranTr.length===1){toast('Gardez au moins une traduction');return;}
         S.quranTr=S.quranTr.filter(c=>c!==t.code);
         tog.classList.remove('on');save();
-        refreshTranslations();
+        quranTrSummary();refreshTranslations();
         return;
       }
       tog.classList.add('on');
@@ -443,6 +454,7 @@ function buildQuranTrList(){
       try{
         await preloadTr(t.code);
         S.quranTr=[...S.quranTr,t.code];save();
+        quranTrSummary();
         await refreshTranslations();
         row.querySelector('.row-sub').textContent=`${t.author} · disponible hors ligne`;
         toast(`${t.label} ajouté`);
