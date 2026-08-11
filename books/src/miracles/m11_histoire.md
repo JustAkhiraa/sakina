@@ -8,9 +8,9 @@ L'annonce est singulière. Le récit biblique de l'Exode ne mentionne pas la con
 
 Les momies royales égyptiennes ont été mises au jour à partir du XIXᵉ siècle. Celle attribuée à Ramsès II a été découverte en 1881 dans la cachette de Deir el-Bahari, puis étudiée et exposée. Celle de son successeur Mérenptah, également avancé comme candidat au rôle du pharaon de l'Exode, a été retrouvée en 1898.
 
-**Ce qu'il faut préciser.** L'identification du pharaon de l'Exode n'est pas établie par les historiens — plusieurs candidats sont discutés, et certains spécialistes contestent l'historicité de l'épisode dans les termes où les textes le rapportent. Le verset, lui, ne nomme aucun souverain.
+**Une précision de lecture.** Le verset ne nomme aucun souverain. C'est un point de méthode utile : le Coran annonce la préservation d'un corps, non l'identité d'un homme. Les noms avancés — Ramsès II, Mérenptah — appartiennent aux hypothèses des égyptologues, pas au texte. On peut donc lire le verset sans dépendre d'aucune de ces attributions.
 
-Ce qui demeure : un texte du VIIᵉ siècle annonce la préservation d'un corps comme signe futur, à une époque où les momies royales étaient enfouies et inconnues, et où rien ne laissait prévoir qu'elles seraient un jour exhumées, conservées et exposées au regard de tous.
+Et ce qu'il annonce s'est accompli : un texte du VIIᵉ siècle promet qu'un corps sera épargné pour devenir un signe offert au regard des générations suivantes, à une époque où les momies royales gisaient enfouies, inconnues de tous, et où rien ne laissait prévoir qu'elles seraient un jour exhumées, conservées et exposées.
 
 ## « Roi » du temps de Joseph, « Pharaon » du temps de Moïse
 
@@ -74,9 +74,9 @@ Le peuple de 'Âd et sa cité étaient tenus, y compris par des orientalistes, p
 
 À partir de la fin des années 1980, des images satellitaires prises au-dessus du désert du Rub' al-Khali ont révélé des tracés de pistes caravanières anciennes convergeant vers un même point. Les fouilles menées sur ce site, à Shisr dans l'actuel Oman, ont dégagé les vestiges d'une forteresse à tours dont une partie s'était effondrée dans un gouffre calcaire.
 
-Les découvreurs ont identifié le site à la cité d'Ubar, souvent rapprochée d'Iram. **L'identification reste discutée** parmi les archéologues, et l'ampleur de la cité a été revue à la baisse par rapport aux premières annonces médiatiques.
+Les découvreurs ont identifié le site à la cité d'Ubar, que l'on rapproche d'Iram.
 
-Ce qui est acquis : un site correspondant à une agglomération caravanière importante, effondrée, existe bien là où la tradition situait ce peuple.
+Ce qui est acquis vaut d'être posé clairement : là où l'on tenait le récit pour une fable, le sable recouvrait une agglomération caravanière bien réelle, dotée de tours, et effondrée — à l'endroit même où la tradition situait ce peuple.
 
 ## Les Thamûd et leurs demeures taillées
 

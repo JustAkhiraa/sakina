@@ -359,6 +359,8 @@ function gotoAnchor(bd,id){
 function renderCitadelleMarkdown(md){
   const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
   const inline=s=>esc(s)
+    // ***gras italique*** avant **gras**, sinon les balises s'imbriquent mal
+    .replace(/\*\*\*(.+?)\*\*\*/g,'<strong><em>$1</em></strong>')
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.+?)\*/g,'<em>$1</em>')
     .replace(/\[\^([^\]]+)\]/g,'<sup class="book-fn-ref">$1</sup>') // renvoi de note
