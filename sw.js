@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v42';
+const VERSION='sakina-v43';
 const SHELL=[
   './',
   './index.html',
@@ -18,8 +18,17 @@ const SHELL=[
   './js/features/onboarding.js','./js/features/places.js','./js/features/halal.js','./js/features/routines.js','./js/features/books.js',
 ];
 
+/* Corpus coranique embarqué (~2,3 Mo). Mis en cache à part du shell : s'il
+   échoue, l'application s'installe quand même et le lecteur retombera sur
+   l'API. */
+const CORPUS=['./data/quran-ar.json','./data/quran-fr.json'];
+
 self.addEventListener('install',e=>{
-  e.waitUntil(caches.open(VERSION).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()));
+  e.waitUntil(
+    caches.open(VERSION)
+      .then(c=>c.addAll(SHELL).then(()=>c.addAll(CORPUS).catch(()=>{})))
+      .then(()=>self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate',e=>{

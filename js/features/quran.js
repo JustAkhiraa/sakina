@@ -1,5 +1,8 @@
-/* SAKINA — Lecteur du Coran : API Quran.com, coloration tajwid (heuristique),
-   favoris, notes, traduction Hamidullah, reprise de lecture. */
+/* SAKINA — Lecteur du Coran : texte embarqué (data/quran-ar.json, uthmanî) et
+   traduction française embarquée (data/quran-fr.json, Montada Islamic
+   Foundation), avec l'API Quran.com en secours. Coloration tajwid
+   (heuristique), favoris, notes, reprise de lecture.
+   Seule la récitation audio reste distante (CDN islamic.network). */
 import {S,save} from '../core/store.js';
 import {toast,burst,openSheet,closeSheet} from '../core/ui.js';
 import {SURAHS,JUZ_STARTS} from '../data/surahs.js';
@@ -71,22 +74,46 @@ function onVerseEnded(){
   else stopPlayback();
 }
 
-/* ── API ── */
+/* ── Texte : local d'abord, API en secours ──
+   Les deux corpus sont embarqués dans data/ : lecture intégrale hors ligne,
+   sans dépendre d'un service tiers. Chaque fichier est un tableau de 114
+   sourates, chacune un tableau de versets dans l'ordre. */
+const _corpus={ar:null,fr:null};
+async function loadCorpus(kind){
+  if(_corpus[kind])return _corpus[kind];
+  const res=await fetch(`data/quran-${kind}.json`);
+  if(!res.ok)throw new Error('corpus indisponible');
+  _corpus[kind]=await res.json();
+  return _corpus[kind];
+}
+
 async function fetchSurah(n){
   if(_cache[n])return _cache[n];
-  const res=await fetch(`https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=${n}`);
-  if(!res.ok)throw new Error('API error');
-  const data=await res.json();
-  _cache[n]=data.verses;
-  return data.verses;
-}
-async function fetchTranslation(n){
+  let verses;
   try{
-    // 136 = Muhammad Hamidullah (français)
+    const c=await loadCorpus('ar');
+    verses=c[n-1].map((text,i)=>({verse_key:`${n}:${i+1}`,text_uthmani:text}));
+  }catch{
+    const res=await fetch(`https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=${n}`);
+    if(!res.ok)throw new Error('API error');
+    verses=(await res.json()).verses;
+  }
+  _cache[n]=verses;
+  return verses;
+}
+
+async function fetchTranslation(n){
+  const m={};
+  try{
+    const c=await loadCorpus('fr');
+    c[n-1].forEach((text,i)=>{m[`${n}:${i+1}`]=text;});
+    return m;
+  }catch{}
+  try{
+    // 136 = Montada Islamic Foundation (français)
     const res=await fetch(`https://api.quran.com/api/v4/quran/translations/136?chapter_number=${n}`);
     if(!res.ok)return{};
     const data=await res.json();
-    const m={};
     data.translations.forEach((t,i)=>{m[t.verse_key||`${n}:${i+1}`]=t.text;});
     return m;
   }catch{return{};}
