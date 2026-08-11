@@ -34,6 +34,7 @@ const DEFAULTS={
   // Coran
   quranLast:{surah:1},
   quranFavs:{},quranNotes:{},
+  quranTr:['fr'],                // traductions affichées, codes de js/data/translations.js
   // Navigation personnalisable (Lot 1) — ordre, items masqués, page d'ouverture
   nav:{order:[],hidden:[],startPage:'page-tasbih'},
 };

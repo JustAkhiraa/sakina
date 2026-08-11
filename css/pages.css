@@ -237,6 +237,11 @@
 #transl-ayah-ref{font-family:var(--ff-m);font-size:0.72rem;color:var(--a);font-weight:700;}
 #transl-arabic{font-family:var(--ff-a);font-size:1.2rem;color:var(--a);direction:rtl;text-align:right;line-height:1.9;padding:8px 0;border-bottom:1px solid var(--bor);margin-bottom:10px;}
 #transl-text{font-size:0.85rem;color:var(--t1);line-height:1.75;}
+/* Traductions multilingues : une entrée par langue active */
+.qtr-item + .qtr-item{margin-top:12px;padding-top:12px;border-top:1px solid var(--bor);}
+.qtr-lang{font-size:0.62rem;color:var(--a);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;}
+.qtr-text{font-size:0.85rem;color:var(--t1);line-height:1.75;}
+.qtr-text.qtr-rtl{text-align:right;font-size:0.95rem;line-height:2;}
 .surah-item{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid var(--bor2);cursor:pointer;transition:background 0.15s;gap:12px;}
 .surah-item:last-child{border-bottom:none;}
 .surah-item:active{background:rgba(var(--a-rgb),0.08);}

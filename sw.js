@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v43';
+const VERSION='sakina-v45';
 const SHELL=[
   './',
   './index.html',
@@ -41,6 +41,19 @@ self.addEventListener('activate',e=>{
 self.addEventListener('fetch',e=>{
   const url=new URL(e.request.url);
   if(e.request.method!=='GET')return;
+
+  // Corpus coraniques : cache d'abord. Une langue téléchargée une fois depuis
+  // les réglages reste ensuite disponible hors connexion.
+  if(url.origin===location.origin&&url.pathname.includes('/data/quran-')){
+    e.respondWith(
+      caches.match(e.request).then(hit=>hit||fetch(e.request).then(res=>{
+        const copy=res.clone();
+        caches.open(VERSION).then(c=>c.put(e.request,copy));
+        return res;
+      }))
+    );
+    return;
+  }
 
   // Navigations vers '/' (ou toute page HTML non trouvée) → app shell hors-ligne
   if(e.request.mode==='navigate'&&url.origin===location.origin){

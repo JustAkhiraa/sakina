@@ -8,6 +8,8 @@ import {playSound,vib} from '../core/audio.js';
 import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS,BASE_THEMES,AVATARS,TITLES,SKINS} from '../data/catalog.js';
 import {isUnlocked,remainingFor,fmtGoal,rewardsSummary,nextReward,allRewards} from '../core/rewards.js';
 import {applyI18n} from '../lib/i18n.js';
+import {TRANSLATIONS} from '../data/translations.js';
+import {preloadTr,refreshTranslations} from './quran.js';
 import {renderTasbih,buildDhikrBar} from './tasbih.js';
 import {renderPrayers} from './salat.js';
 import {NAV_ITEMS,renderNavbar,visibleNavItems} from '../core/nav.js';
@@ -405,6 +407,55 @@ function toggleNav(id){
   save();renderNavbar();buildNavEditor();vib(12);
 }
 
+/* ── Traductions du Coran : sélection multilingue ──
+   Activer une langue déclenche son téléchargement ; le service worker la
+   conserve ensuite en cache. On empêche de tout décocher, sans quoi le
+   lecteur n'aurait plus rien à afficher sous les versets. */
+function buildQuranTrList(){
+  const host=document.getElementById('quran-tr-list');
+  if(!host)return;
+  if(!Array.isArray(S.quranTr)||!S.quranTr.length){S.quranTr=['fr'];save();}
+  host.innerHTML='';
+
+  TRANSLATIONS.forEach((t,i)=>{
+    const on=S.quranTr.includes(t.code);
+    const row=document.createElement('div');
+    row.className='row';
+    if(i===TRANSLATIONS.length-1)row.style.borderBottom='none';
+    row.innerHTML=
+      `<div class="row-body">`+
+        `<div class="row-name">${t.label} <span style="color:var(--t2);font-weight:400">· ${t.native}</span></div>`+
+        `<div class="row-sub">${t.author} · ${t.mb.toFixed(2)} Mo</div>`+
+      `</div><div class="tog${on?' on':''}"></div>`;
+    const tog=row.querySelector('.tog');
+
+    tog.addEventListener('click',async()=>{
+      const active=S.quranTr.includes(t.code);
+      if(active){
+        if(S.quranTr.length===1){toast('Gardez au moins une traduction');return;}
+        S.quranTr=S.quranTr.filter(c=>c!==t.code);
+        tog.classList.remove('on');save();
+        refreshTranslations();
+        return;
+      }
+      tog.classList.add('on');
+      row.querySelector('.row-sub').textContent='Téléchargement…';
+      try{
+        await preloadTr(t.code);
+        S.quranTr=[...S.quranTr,t.code];save();
+        await refreshTranslations();
+        row.querySelector('.row-sub').textContent=`${t.author} · disponible hors ligne`;
+        toast(`${t.label} ajouté`);
+      }catch{
+        tog.classList.remove('on');
+        row.querySelector('.row-sub').textContent=`${t.author} · ${t.mb.toFixed(2)} Mo`;
+        toast('Téléchargement impossible');
+      }
+    });
+    host.appendChild(row);
+  });
+}
+
 export function initSettings(){
 
   // Replis sûrs : si un cadeau sélectionné n'est plus débloqué (après reset)
@@ -417,6 +468,7 @@ export function initSettings(){
   buildSkinGrid('skin-grid');
   buildAccentGrid();
   buildSoundList();
+  buildQuranTrList();
   buildAvatarGrid();
   buildTitleList();
   renderStats();

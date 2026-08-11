@@ -6,6 +6,7 @@
 import {S,save} from '../core/store.js';
 import {toast,burst,openSheet,closeSheet} from '../core/ui.js';
 import {SURAHS,JUZ_STARTS} from '../data/surahs.js';
+import {TR_BY_CODE} from '../data/translations.js';
 import {toArabicNum} from '../lib/hijri.js';
 
 const $=id=>document.getElementById(id);
@@ -78,13 +79,24 @@ function onVerseEnded(){
    Les deux corpus sont embarqués dans data/ : lecture intégrale hors ligne,
    sans dépendre d'un service tiers. Chaque fichier est un tableau de 114
    sourates, chacune un tableau de versets dans l'ordre. */
-const _corpus={ar:null,fr:null};
+const _corpus={};
 async function loadCorpus(kind){
   if(_corpus[kind])return _corpus[kind];
   const res=await fetch(`data/quran-${kind}.json`);
   if(!res.ok)throw new Error('corpus indisponible');
   _corpus[kind]=await res.json();
   return _corpus[kind];
+}
+/* Codes des traductions actives, dans l'ordre choisi. */
+export const activeTr=()=>(Array.isArray(S.quranTr)&&S.quranTr.length?S.quranTr:['fr'])
+  .filter(c=>TR_BY_CODE[c]);
+/* Télécharge une langue (et la met en cache) — utilisé par les réglages. */
+export const preloadTr=code=>loadCorpus(code);
+/* Recharge les traductions de la sourate affichée. À appeler après un
+   changement de sélection de langues, sinon le panneau garde les anciennes. */
+export async function refreshTranslations(){
+  if(!_verses.length)return;
+  _transl=await fetchTranslation(_surah);
 }
 
 async function fetchSurah(n){
@@ -102,19 +114,33 @@ async function fetchSurah(n){
   return verses;
 }
 
+/* Renvoie { 'n:a': [{code,label,rtl,text}, …] } pour toutes les langues actives.
+   Une langue dont le fichier manque est simplement omise, sans faire échouer
+   les autres. */
 async function fetchTranslation(n){
+  const codes=activeTr();
+  const packs=await Promise.all(codes.map(async code=>{
+    try{return{code,verses:(await loadCorpus(code))[n-1]};}
+    catch{return null;}
+  }));
   const m={};
+  packs.filter(Boolean).forEach(({code,verses})=>{
+    const meta=TR_BY_CODE[code];
+    verses.forEach((text,i)=>{
+      const k=`${n}:${i+1}`;
+      (m[k]||(m[k]=[])).push({code,label:meta.label,rtl:!!meta.rtl,text});
+    });
+  });
+  if(Object.keys(m).length)return m;
+
+  // Secours réseau : traduction française de l'API
   try{
-    const c=await loadCorpus('fr');
-    c[n-1].forEach((text,i)=>{m[`${n}:${i+1}`]=text;});
-    return m;
-  }catch{}
-  try{
-    // 136 = Montada Islamic Foundation (français)
     const res=await fetch(`https://api.quran.com/api/v4/quran/translations/136?chapter_number=${n}`);
     if(!res.ok)return{};
     const data=await res.json();
-    data.translations.forEach((t,i)=>{m[t.verse_key||`${n}:${i+1}`]=t.text;});
+    data.translations.forEach((t,i)=>{
+      m[t.verse_key||`${n}:${i+1}`]=[{code:'fr',label:'Français',rtl:false,text:t.text}];
+    });
     return m;
   }catch{return{};}
 }
@@ -130,6 +156,30 @@ function applyTajwid(text){
   // Ikhfa : ن soukoun suivi (après espace éventuel) d'une lettre d'ikhfa — sans insérer d'espace
   text=text.replace(/(نْ)(\s*)([ثجدذزسشصضطظفقك])/g,'<span class="tj-ikhfa">$1</span>$2$3');
   return text;
+}
+
+/* Affiche les traductions d'un verset, une par langue active. Avec une seule
+   langue on omet l'étiquette : elle n'apprendrait rien au lecteur. */
+function renderTranslations(host,list){
+  host.innerHTML='';
+  if(!list||!list.length){host.textContent='Traduction non disponible.';return;}
+  const solo=list.length===1;
+  list.forEach(tr=>{
+    const box=document.createElement('div');
+    box.className='qtr-item';
+    if(!solo){
+      const lab=document.createElement('div');
+      lab.className='qtr-lang';
+      lab.textContent=tr.label;
+      box.appendChild(lab);
+    }
+    const p=document.createElement('div');
+    p.className='qtr-text';
+    if(tr.rtl){p.dir='rtl';p.classList.add('qtr-rtl');}
+    p.textContent=String(tr.text).replace(/<[^>]+>/g,'');
+    box.appendChild(p);
+    host.appendChild(box);
+  });
 }
 
 /* ── Rendu ── */
@@ -267,8 +317,7 @@ export function initQuran(){
     const[s,a]=_selAyah.split(':');
     $('transl-ayah-ref').textContent=`Sourate ${s}, Verset ${a}`;
     $('transl-arabic').textContent=verse.text_uthmani;
-    const tr=_transl[_selAyah]||'Traduction non disponible.';
-    $('transl-text').textContent=tr.replace(/<[^>]+>/g,'');
+    renderTranslations($('transl-text'),_transl[_selAyah]);
     // La barre d'action masquait le panneau sur iPhone : on la retire pendant la lecture
     $('verse-action-bar').classList.remove('show');
     $('transl-panel').classList.add('show');
