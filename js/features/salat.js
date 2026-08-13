@@ -5,6 +5,7 @@ import {toast,openSheet,closeSheet} from '../core/ui.js';
 import {computeTimes,fmtTime} from '../lib/astro.js';
 import {toHijri,hijriLabelAr} from '../lib/hijri.js';
 import {CALC_METHODS,MADHABS,CALC_BY_COUNTRY} from '../data/catalog.js';
+import {t} from '../lib/i18n.js';
 
 const $=id=>document.getElementById(id);
 let _cdI=null;
@@ -33,9 +34,9 @@ function findNext(now){
   const m=methodById(S.calcMethod);
   const today=computeTimes(S.lat,S.lon,now,m,asrFactor());
   for(const p of PRAYER_DEFS){
-    const t=today[p.key];
-    if(t!==null){
-      const dt=timeToDate(now,t);
+    const hr=today[p.key];
+    if(hr!==null){
+      const dt=timeToDate(now,hr);
       if(dt>now)return{...p,at:dt,today:true};
     }
   }
@@ -54,9 +55,9 @@ export function upcomingPrayers(now=new Date(),days=2){
     const day=new Date(now);day.setDate(day.getDate()+d);
     const T=computeTimes(S.lat,S.lon,day,m,f);
     for(const p of PRAYER_DEFS){
-      const t=T[p.key];
-      if(t===null)continue;
-      const at=timeToDate(day,t);
+      const hr=T[p.key];
+      if(hr===null)continue;
+      const at=timeToDate(day,hr);
       if(at>now)out.push({key:p.key,name:p.name,arabic:p.arabic,at});
     }
   }
@@ -70,27 +71,27 @@ export function renderPrayers(){
   const T=computeTimes(S.lat,S.lon,now,m,asrFactor());
 
   $('hijri-date').textContent=hijriLabelAr(toHijri(now));
-  $('greg-date').textContent=now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  $('greg-date').textContent=now.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
   $('salat-sub').textContent=S.city||`${S.lat.toFixed(2)}°, ${S.lon.toFixed(2)}°`;
-  $('loc-txt').textContent=S.city||'Position détectée';
+  $('loc-txt').textContent=S.city||t('salat.located');
   $('calc-name').textContent=m.name;
 
   const next=findNext(now);
   const grid=$('prayers-grid');grid.innerHTML='';
   PRAYER_DEFS.forEach(p=>{
-    const t=T[p.key];
+    const hr=T[p.key];
     const isNext=next&&next.today&&p.key===next.key;
-    const isPast=!isNext&&t!==null&&timeToDate(now,t)<now;
+    const isPast=!isNext&&hr!==null&&timeToDate(now,hr)<now;
     const div=document.createElement('div');
     div.className='pcard gc'+(isNext?' next':'')+(isPast?' passed':'');
-    div.innerHTML=`<div class="pc-name">${p.name}</div><div class="pc-ar">${p.arabic}</div><div class="pc-time">${fmtTime(t,S.hourFmt)}</div>`;
+    div.innerHTML=`<div class="pc-name">${p.name}</div><div class="pc-ar">${p.arabic}</div><div class="pc-time">${fmtTime(hr,S.hourFmt)}</div>`;
     grid.appendChild(div);
   });
 
   $('ramadan-row').innerHTML=
-    `<div class="row" style="cursor:default"><div class="row-ic">⭐</div><div class="row-body"><div class="row-name">Imsak (Suhoor)</div><div class="row-sub">Début du jeûne</div></div><div class="row-right gold">${fmtTime(T.imsak,S.hourFmt)}</div></div>
-     <div class="row" style="cursor:default"><div class="row-ic">🌅</div><div class="row-body"><div class="row-name">Lever du Soleil</div><div class="row-sub">Fin de Fajr</div></div><div class="row-right gold">${fmtTime(T.sunrise,S.hourFmt)}</div></div>
-     <div class="row" style="cursor:default;border-bottom:none"><div class="row-ic">🌙</div><div class="row-body"><div class="row-name">Iftar (Maghrib)</div><div class="row-sub">Rupture du jeûne</div></div><div class="row-right gold">${fmtTime(T.maghrib,S.hourFmt)}</div></div>`;
+    `<div class="row" style="cursor:default"><div class="row-ic">⭐</div><div class="row-body"><div class="row-name">${t('salat.imsak')}</div><div class="row-sub">${t('salat.imsakSub')}</div></div><div class="row-right gold">${fmtTime(T.imsak,S.hourFmt)}</div></div>
+     <div class="row" style="cursor:default"><div class="row-ic">🌅</div><div class="row-body"><div class="row-name">${t('salat.sunrise')}</div><div class="row-sub">${t('salat.sunriseSub')}</div></div><div class="row-right gold">${fmtTime(T.sunrise,S.hourFmt)}</div></div>
+     <div class="row" style="cursor:default;border-bottom:none"><div class="row-ic">🌙</div><div class="row-body"><div class="row-name">${t('salat.iftar')}</div><div class="row-sub">${t('salat.iftarSub')}</div></div><div class="row-right gold">${fmtTime(T.maghrib,S.hourFmt)}</div></div>`;
 
   // Compte à rebours — se re-rend seul quand la prière passe ou que le jour change
   if(_cdI)clearInterval(_cdI);
@@ -100,7 +101,7 @@ export function renderPrayers(){
     if(!target||target.at<=n){renderPrayers();return;}
     const diff=Math.floor((target.at-n)/1000);
     const h=Math.floor(diff/3600),mi=Math.floor((diff%3600)/60),s=diff%60;
-    $('next-name').textContent=target.today?target.name.toUpperCase():'FAJR (DEMAIN)';
+    $('next-name').textContent=target.today?target.name.toUpperCase():t('salat.tomorrow');
     $('next-cd').textContent=`${String(h).padStart(2,'0')}:${String(mi).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
   };
   tick();
@@ -138,8 +139,8 @@ export async function geocodeCity(q){
 }
 
 export function requestGPS(){
-  if(!navigator.geolocation){toast('Géolocalisation non disponible');return;}
-  $('loc-txt').textContent='⟳ Détection en cours…';
+  if(!navigator.geolocation){toast(t('salat.noGeo'));return;}
+  $('loc-txt').textContent=t('salat.detecting');
   navigator.geolocation.getCurrentPosition(
     async pos=>{
       S.lat=pos.coords.latitude;S.lon=pos.coords.longitude;
@@ -147,12 +148,12 @@ export function requestGPS(){
       S.city=loc.city;
       const auto=autoCalcMethod(loc.country);
       save();renderPrayers();emit('location-changed');
-      if(auto)toast(`📍 ${S.city||'Position détectée'} · méthode ${methodById(S.calcMethod).name}`);
-      else toast(S.city?`📍 ${S.city}`:'📍 Position détectée');
+      if(auto)toast(`📍 ${S.city||t('salat.located')} · ${methodById(S.calcMethod).name}`);
+      else toast(S.city?`📍 ${S.city}`:`📍 ${t('salat.located')}`);
     },
     ()=>{
-      $('loc-txt').textContent='Appuyer pour choisir ma position';
-      toast('GPS refusé — cherchez votre ville manuellement');
+      $('loc-txt').textContent=t('salat.pickLoc');
+      toast(t('salat.gpsDenied'));
       openSheet('sh-city');
     },
     {enableHighAccuracy:true,timeout:10000,maximumAge:300000}
@@ -216,7 +217,7 @@ export function initSalat(){
   // Affichage de la date même sans position
   const now=new Date();
   $('hijri-date').textContent=hijriLabelAr(toHijri(now));
-  $('greg-date').textContent=now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  $('greg-date').textContent=now.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 
   if(S.lat!==null)renderPrayers();
 }
