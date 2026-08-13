@@ -8,6 +8,7 @@
 import {S,save} from './store.js';
 import {goPage} from './router.js';
 import {closeSheet,openSheet} from './ui.js';
+import {t} from '../lib/i18n.js';
 
 /* SVG stockés en chaînes pour rester copiables tels quels dans d'autres projets. */
 const SVG={
@@ -121,10 +122,18 @@ function openMoreSheet(items,shown){
   const rows=[...items];
   if(settingsItem&&!shownIds.has('page-settings')&&!overflowIds.has('page-settings'))
     rows.push(settingsItem);
+  // Profil & récompenses : ce n'est pas une page mais une feuille, et sa place
+  // n'était pas au milieu des réglages — on la sort ici, en tête.
+  const rw=document.createElement('div');
+  rw.className='row';
+  rw.innerHTML=`<div class="row-ic">🎁</div><div class="row-body"><div class="row-name" data-i18n="sec.rewards">Profil & récompenses</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
+  rw.addEventListener('click',()=>{closeSheet();setTimeout(()=>openSheet('sh-rewards'),220);});
+  list.appendChild(rw);
+
   rows.forEach(it=>{
     const row=document.createElement('div');
     row.className='row';
-    row.innerHTML=`<div class="row-ic">${it.icon}</div><div class="row-body"><div class="row-name">${it.label}</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
+    row.innerHTML=`<div class="row-ic">${it.icon}</div><div class="row-body"><div class="row-name" data-i18n="${it.i18n}">${t(it.i18n)||it.label}</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
     row.addEventListener('click',()=>{closeSheet();goPage(it.id);});
     list.appendChild(row);
   });

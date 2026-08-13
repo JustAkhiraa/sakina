@@ -6,6 +6,7 @@
    rotation de l'anneau → double soustraction du cap, direction fausse) */
 import {S,on} from '../core/store.js';
 import {qiblaBearing,kaabaDistance} from '../lib/astro.js';
+import {t} from '../lib/i18n.js';
 import {requestGPS} from './salat.js';
 
 const $=id=>document.getElementById(id);
@@ -17,16 +18,16 @@ function render(){
   if(S.lat===null)return;
   const bearing=qiblaBearing(S.lat,S.lon);
   $('q-deg').textContent=Math.round(bearing)+'°';
-  $('q-city').textContent=(S.city||`${S.lat.toFixed(2)}°, ${S.lon.toFixed(2)}°`)+` · ${kaabaDistance(S.lat,S.lon).toLocaleString('fr-FR')} km de la Ka'ba`;
+  $('q-city').textContent=(S.city||`${S.lat.toFixed(2)}°, ${S.lon.toFixed(2)}°`)+` · ${kaabaDistance(S.lat,S.lon).toLocaleString(S.lang||'fr')} km ${t('qibla.fromKaaba')}`;
   $('q-status').className='ok';
-  $('q-status').textContent='✓ Direction calculée';
+  $('q-status').textContent=t('qibla.computed');
   // L'aiguille pointe le cap Qibla dans le référentiel de l'anneau
   $('qn').style.transform=`translateY(-100%) rotate(${bearing}deg)`;
   // L'anneau entier (N/S/E/O + aiguille) suit la boussole
   $('compass-ring').style.transform=`rotate(${-_heading}deg)`;
   $('q-hint').textContent=_sensorActive
-    ?'Tournez-vous jusqu’à aligner l’aiguille dorée vers le haut de l’écran.'
-    :'Boussole matérielle inactive — appuyez sur ⟳ pour l’activer, ou orientez le N vers le Nord réel et suivez l’aiguille.';
+    ?t('qibla.hintLive')
+    :t('qibla.hintOff');
 }
 
 function onOrientation(e){

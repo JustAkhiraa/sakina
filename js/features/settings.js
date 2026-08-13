@@ -7,7 +7,7 @@ import {toast,confirmDlg,openSheet,closeSheet} from '../core/ui.js';
 import {playSound,vib} from '../core/audio.js';
 import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS,BASE_THEMES,AVATARS,TITLES,SKINS} from '../data/catalog.js';
 import {isUnlocked,remainingFor,fmtGoal,rewardsSummary,nextReward,allRewards} from '../core/rewards.js';
-import {applyI18n,setLang} from '../lib/i18n.js';
+import {applyI18n,setLang,t} from '../lib/i18n.js';
 import {TRANSLATIONS} from '../data/translations.js';
 import {preloadTr,refreshTranslations} from './quran.js';
 import {notifSupported,notifPermission,askNotifPermission,scheduleNext,testNotification} from './notifications.js';
@@ -225,7 +225,7 @@ function buildBonusSheet(){
   const next=nextReward();
   let html=`<div class="bonus-summary">
     <div class="bonus-count">${summary.unlocked}<span>/${summary.total}</span></div>
-    <div class="bonus-sub">${next?`Prochain : ${next.name||next.__label} · ${fmtGoal(next.unlockAt)} dhikr (encore ${remainingFor(next).toLocaleString('fr-FR')})`:'Toutes les récompenses débloquées ✨'}</div>
+    <div class="bonus-sub">${next?`${t('prof.next')} : ${next.name||next.__label} · ${fmtGoal(next.unlockAt)} ${t('prof.dhikrs')} (${t('prof.remaining')} ${remainingFor(next).toLocaleString(S.lang||'fr')})`:t('prof.allUnlocked')}</div>
   </div>`;
   const catOrder=['skin','theme','avatar','sound','dhikr','title'];
   catOrder.forEach(cat=>{
@@ -264,7 +264,7 @@ function currentTitle(){
    14-29 j → 🔥🔥🔥  · 30-99 j → ⭐🔥  · 100+ j → 👑🔥
    Le CSS ajoute un léger scintillement au-dessus de 3 jours. */
 function streakBadge(n){
-  if(n<=0) return {icon:'🌫️',cls:'st-cold',label:'Aucune série'};
+  if(n<=0) return {icon:'🌫️',cls:'st-cold',label:t('prof.noStreak')};
   if(n<3)  return {icon:'🕯️',cls:'st-spark',label:'Étincelle'};
   if(n<7)  return {icon:'🔥',cls:'st-flame',label:'En feu'};
   if(n<14) return {icon:'🔥🔥',cls:'st-flame st-hot',label:'Brasier'};
@@ -289,14 +289,14 @@ export function renderStats(){
   $('st-qada').textContent=qdaTotal();
   const av=$('prof-av');if(av)av.textContent=currentAvatar();
   const pn=$('prof-name');if(pn)pn.textContent=currentTitle();
-  $('prof-sub').textContent=`${badge.icon} ${badge.label} · ${sk} j · ${(S.allTime||0).toLocaleString('fr-FR')} dhikrs`;
+  $('prof-sub').textContent=`${badge.icon} ${badge.label} · ${sk} ${t('prof.days')} · ${(S.allTime||0).toLocaleString(S.lang||'fr')} ${t('prof.dhikrs')}`;
   const rsum=rewardsSummary();
   const rc=$('rw-count');if(rc)rc.textContent=`${rsum.unlocked}/${rsum.total}`;
   const rn=$('rw-next');
   if(rn){
     const nxt=nextReward();
     rn.textContent=nxt
-      ?`Prochain : ${nxt.__label} à ${fmtGoal(nxt.unlockAt)} dhikr`
+      ?`${t('prof.next')} : ${nxt.__label} · ${fmtGoal(nxt.unlockAt)} ${t('prof.dhikrs')}`
       :'Tout débloqué ✨';
   }
 }

@@ -146,15 +146,15 @@
   <div id="qibla-zone">
     <div style="position:relative;display:flex;align-items:center;justify-content:center;">
       <div id="compass-ring" class="gc" style="width:260px;height:260px;border-radius:50%;">
-        <div class="cd n">N</div><div class="cd s">S</div><div class="cd e">E</div><div class="cd w">O</div>
+        <div class="cd n" data-i18n="qibla.n">N</div><div class="cd s" data-i18n="qibla.s">S</div><div class="cd e" data-i18n="qibla.e">E</div><div class="cd w" data-i18n="qibla.w">O</div>
         <div id="qn"><div class="nt"></div><div class="nb"></div></div>
         <div id="cdot"></div>
       </div>
     </div>
     <div id="qinfo" class="gc">
-      <div id="q-deg">---°</div><div id="q-lbl">Direction vers La Mecque</div>
-      <div id="q-city">Position non détectée</div>
-      <div id="q-status" class="searching">⟳ Recherche…</div>
+      <div id="q-deg">---°</div><div id="q-lbl" data-i18n="qibla.toMecca">Direction vers La Mecque</div>
+      <div id="q-city" data-i18n="qibla.noLoc">Position non détectée</div>
+      <div id="q-status" class="searching" data-i18n="qibla.searching">⟳ Recherche…</div>
       <div id="q-hint"></div>
     </div>
   </div>
@@ -363,67 +363,6 @@
   </div>
   <div class="pscroll">
 
-    <!-- Profil -->
-    <div id="prof-card" class="gc">
-      <div id="prof-av">🕋</div>
-      <div><div id="prof-name">Sakina</div><div id="prof-sub">0 sessions</div></div>
-    </div>
-
-    <!-- Stats -->
-    <div class="sl" data-i18n="sec.stats">Statistiques</div>
-    <div id="my-stats">
-      <div class="ms-card gc"><div class="ms-val" id="st-total">0</div><div class="ms-lbl" data-i18n="stat.dhikrs">Dhikrs</div></div>
-      <div class="ms-card gc"><div class="ms-val" id="st-sess">0</div><div class="ms-lbl" data-i18n="stat.sessions">Sessions</div></div>
-      <div class="ms-card gc"><div class="ms-val" id="st-streak">0</div><div class="ms-lbl" data-i18n="stat.days">Jours 🔥</div></div>
-      <div class="ms-card gc"><div class="ms-val" id="st-qada">0</div><div class="ms-lbl">Qadâ'</div></div>
-    </div>
-
-    <!-- Cadeaux à débloquer (accès à la sheet dédiée) -->
-    <div class="sl" data-i18n="sec.gifts">Cadeaux à débloquer</div>
-    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
-      <div class="row" id="btn-open-bonus">
-        <div class="row-ic">🎁</div>
-        <div class="row-body">
-          <div class="row-name" data-i18n="row.allGifts">Voir tous les cadeaux</div>
-          <div class="row-sub"><span id="rw-count">0/0</span> · <span id="rw-next">—</span></div>
-        </div>
-        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-      </div>
-    </div>
-
-    <!-- Avatar (récompense) — replié par défaut, la 1re ligne reste visible -->
-    <details class="sec sec-row">
-      <summary>
-        <div class="gc" style="margin:18px 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
-          <div class="row" style="border-bottom:none">
-            <div class="row-ic">😊</div>
-            <div class="row-body"><div class="row-name" data-i18n="row.avatar">Avatar du profil</div><div class="row-sub" data-i18n="sub.avatar">De nouveaux s'ajoutent à chaque palier</div></div>
-            <svg class="row-chev sec-chev-svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </summary>
-      <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
-        <div style="padding:14px;"><div class="av-grid" id="avatar-grid"></div></div>
-      </div>
-    </details>
-
-    <!-- Titre (récompense) — replié par défaut -->
-    <details class="sec sec-row">
-      <summary>
-        <div class="gc" style="margin:18px 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
-          <div class="row" style="border-bottom:none">
-            <div class="row-ic">🏷️</div>
-            <div class="row-body"><div class="row-name" data-i18n="row.titleHon">Titre honorifique</div><div class="row-sub" data-i18n="sub.titleHon">Choisis parmi ceux débloqués</div></div>
-            <svg class="row-chev sec-chev-svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-      </summary>
-      <div class="gc" id="title-list" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;"></div>
-    </details>
-
-
-
-
     <!-- Pratique religieuse -->
     <div class="sl" data-i18n="sec.practice">Pratique religieuse</div>
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
@@ -620,12 +559,85 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Plus de catégories</div>
+    <div class="sh-title" data-i18n="nav.more">Plus de catégories</div>
     <div style="width:32px"></div>
   </div>
   <div class="gc" id="more-list" style="margin:8px 16px 20px;border-radius:var(--r-xl);overflow:hidden;"></div>
 </div>
 
+
+<!-- PROFIL & RECOMPENSES (accessible depuis « Plus ») -->
+<div class="sheet" id="sh-rewards">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title" data-i18n="sec.rewards">Profil &amp; récompenses</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd" style="padding:0 0 20px;">
+    <!-- Profil -->
+    <div id="prof-card" class="gc">
+      <div id="prof-av">🕋</div>
+      <div><div id="prof-name">Sakina</div><div id="prof-sub">0 sessions</div></div>
+    </div>
+
+    <!-- Stats -->
+    <div class="sl" data-i18n="sec.stats">Statistiques</div>
+    <div id="my-stats">
+      <div class="ms-card gc"><div class="ms-val" id="st-total">0</div><div class="ms-lbl" data-i18n="stat.dhikrs">Dhikrs</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-sess">0</div><div class="ms-lbl" data-i18n="stat.sessions">Sessions</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-streak">0</div><div class="ms-lbl" data-i18n="stat.days">Jours 🔥</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-qada">0</div><div class="ms-lbl">Qadâ'</div></div>
+    </div>
+
+    <!-- Cadeaux à débloquer (accès à la sheet dédiée) -->
+    <div class="sl" data-i18n="sec.gifts">Cadeaux à débloquer</div>
+    <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+      <div class="row" id="btn-open-bonus">
+        <div class="row-ic">🎁</div>
+        <div class="row-body">
+          <div class="row-name" data-i18n="row.allGifts">Voir tous les cadeaux</div>
+          <div class="row-sub"><span id="rw-count">0/0</span> · <span id="rw-next">—</span></div>
+        </div>
+        <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+
+    <!-- Avatar (récompense) — replié par défaut, la 1re ligne reste visible -->
+    <details class="sec sec-row">
+      <summary>
+        <div class="gc" style="margin:18px 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+          <div class="row" style="border-bottom:none">
+            <div class="row-ic">😊</div>
+            <div class="row-body"><div class="row-name" data-i18n="row.avatar">Avatar du profil</div><div class="row-sub" data-i18n="sub.avatar">De nouveaux s'ajoutent à chaque palier</div></div>
+            <svg class="row-chev sec-chev-svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </summary>
+      <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+        <div style="padding:14px;"><div class="av-grid" id="avatar-grid"></div></div>
+      </div>
+    </details>
+
+    <!-- Titre (récompense) — replié par défaut -->
+    <details class="sec sec-row">
+      <summary>
+        <div class="gc" style="margin:18px 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+          <div class="row" style="border-bottom:none">
+            <div class="row-ic">🏷️</div>
+            <div class="row-body"><div class="row-name" data-i18n="row.titleHon">Titre honorifique</div><div class="row-sub" data-i18n="sub.titleHon">Choisis parmi ceux débloqués</div></div>
+            <svg class="row-chev sec-chev-svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </summary>
+      <div class="gc" id="title-list" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;"></div>
+    </details>
+
+
+
+
+  </div>
+</div>
 
 <!-- ÉDITION DHIKR -->
 <div class="sheet" id="sh-edit">
