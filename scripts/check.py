@@ -55,6 +55,26 @@ def check_service_worker() -> None:
     # './' seul désigne index.html, déjà couvert
     NOTES.append(f"service worker : {listed} fichiers précachés vérifiés")
 
+    # Tout module atteignable depuis app.js doit être précaché, sinon
+    # l'application se charge en ligne mais casse hors connexion.
+    shell = set(re.findall(r"'\./([^']+)'", sw))
+    seen: set[Path] = set()
+    stack = [ROOT / "js/app.js"]
+    while stack:
+        f = stack.pop()
+        if f in seen or not f.exists():
+            continue
+        seen.add(f)
+        for spec in re.findall(
+            r"^\s*import\s+.*?from\s+['\"](\.[^'\"]+)['\"]", f.read_text(encoding="utf-8"), re.M
+        ):
+            stack.append((f.parent / spec).resolve())
+    for f in sorted(seen):
+        rel = f.relative_to(ROOT).as_posix()
+        if rel not in shell:
+            ERRORS.append(f"sw.js : « {rel} » est importé mais absent de SHELL (casse le hors-ligne)")
+    NOTES.append(f"graphe de modules : {len(seen)} atteignables depuis app.js")
+
 
 # ── 2. Imports ES ────────────────────────────────────────────────────────
 def check_imports() -> None:

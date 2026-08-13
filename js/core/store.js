@@ -35,6 +35,10 @@ const DEFAULTS={
   quranLast:{surah:1},
   quranFavs:{},quranNotes:{},
   quranTr:['fr'],                // traductions affichées, codes de js/data/translations.js
+  // Rappels de prière
+  notifEnabled:false,
+  notifOffset:0,                 // minutes d'avance sur l'heure de la prière
+  notifPrayers:{fajr:true,dhuhr:true,asr:true,maghrib:true,isha:true},
   // Navigation personnalisable (Lot 1) — ordre, items masqués, page d'ouverture
   nav:{order:[],hidden:[],startPage:'page-tasbih'},
 };

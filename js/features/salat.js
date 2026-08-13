@@ -45,6 +45,24 @@ function findNext(now){
   return null;
 }
 
+/* Prochaines prières à partir de `now`, sur plusieurs jours.
+   Exposé pour les rappels, qui ont besoin de programmer à l'avance. */
+export function upcomingPrayers(now=new Date(),days=2){
+  if(S.lat===null)return[];
+  const m=methodById(S.calcMethod),f=asrFactor(),out=[];
+  for(let d=0;d<days;d++){
+    const day=new Date(now);day.setDate(day.getDate()+d);
+    const T=computeTimes(S.lat,S.lon,day,m,f);
+    for(const p of PRAYER_DEFS){
+      const t=T[p.key];
+      if(t===null)continue;
+      const at=timeToDate(day,t);
+      if(at>now)out.push({key:p.key,name:p.name,arabic:p.arabic,at});
+    }
+  }
+  return out.sort((a,b)=>a.at-b.at);
+}
+
 export function renderPrayers(){
   if(S.lat===null)return;
   const now=new Date();

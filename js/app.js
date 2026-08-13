@@ -8,6 +8,7 @@ import {initQibla,onQiblaShow} from './features/qibla.js';
 import {initDuas} from './features/duas.js';
 import {initQuran,onQuranShow} from './features/quran.js';
 import {initSettings} from './features/settings.js';
+import {initNotifications} from './features/notifications.js';
 import {initTools} from './features/tools.js';
 import {initOnboarding} from './features/onboarding.js';
 import {initPlaces} from './features/places.js';
@@ -30,6 +31,7 @@ initQuran();
 initTools();
 initPlaces();
 initHalal();
+initNotifications();  // reprend les rappels programmés au démarrage
 initRoutines();
 initBooks();
 

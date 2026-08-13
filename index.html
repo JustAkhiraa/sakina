@@ -539,6 +539,32 @@
       <div class="row" style="border-bottom:none"><div class="row-ic">🌑</div><div class="row-body"><div class="row-name" data-i18n="row.night">Nuit profonde (OLED)</div><div class="row-sub">Fond noir absolu, économie d'écran</div></div><div class="tog" id="tog-night"></div></div>
     </div>
 
+    <!-- Rappels de prière -->
+    <details class="sec sec-row">
+      <summary>
+        <div class="gc" style="margin:18px 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+          <div class="row" style="border-bottom:none">
+            <div class="row-ic">🔔</div>
+            <div class="row-body"><div class="row-name">Rappels de prière</div><div class="row-sub" id="notif-sub">Désactivés</div></div>
+            <svg class="row-chev sec-chev-svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </summary>
+      <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
+        <div class="row"><div class="row-ic">🔔</div><div class="row-body"><div class="row-name">Activer les rappels</div><div class="row-sub" id="notif-state">Autorisation nécessaire</div></div><div class="tog" id="tog-notif"></div></div>
+        <div id="notif-detail" style="display:none">
+          <div style="padding:10px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Prières annoncées</div>
+          <div id="notif-prayers" style="padding:2px 0;"></div>
+          <div style="padding:10px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Avance</div>
+          <div style="padding:4px 16px 10px;"><select id="notif-offset" style="width:100%;padding:10px 12px;border-radius:12px;background:var(--c2);color:var(--t1);border:1px solid var(--bd);font-size:0.9rem;"></select></div>
+          <div class="row" id="btn-notif-test"><div class="row-ic">📨</div><div class="row-body"><div class="row-name">Envoyer un rappel d'essai</div><div class="row-sub">Vérifier que tout fonctionne</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+          <div style="padding:8px 16px 14px;font-size:0.68rem;color:var(--t2);line-height:1.6;border-top:1px solid var(--bor);">
+            Les rappels sont donnés tant que Sakina reste en mémoire. Si vous fermez complètement l'application ou redémarrez l'appareil, ils reprennent à sa réouverture.
+          </div>
+        </div>
+      </div>
+    </details>
+
     <!-- Traductions du Coran -->
     <details class="sec sec-row">
       <summary>

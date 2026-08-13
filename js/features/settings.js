@@ -10,6 +10,7 @@ import {isUnlocked,remainingFor,fmtGoal,rewardsSummary,nextReward,allRewards} fr
 import {applyI18n} from '../lib/i18n.js';
 import {TRANSLATIONS} from '../data/translations.js';
 import {preloadTr,refreshTranslations} from './quran.js';
+import {notifSupported,notifPermission,askNotifPermission,scheduleNext,testNotification} from './notifications.js';
 import {renderTasbih,buildDhikrBar} from './tasbih.js';
 import {renderPrayers} from './salat.js';
 import {NAV_ITEMS,renderNavbar,visibleNavItems} from '../core/nav.js';
@@ -407,6 +408,104 @@ function toggleNav(id){
   save();renderNavbar();buildNavEditor();vib(12);
 }
 
+/* ── Rappels de prière ──
+   L'interrupteur principal demande l'autorisation au navigateur ; sans elle
+   on ne l'allume pas, pour ne pas laisser croire que les rappels arrivent. */
+const NOTIF_PRAYERS=[
+  {key:'fajr',name:'Fajr'},{key:'dhuhr',name:'Dhouhr'},{key:'asr',name:'Asr'},
+  {key:'maghrib',name:'Maghrib'},{key:'isha',name:'Icha'},
+];
+
+function notifSummary(){
+  const sub=$('notif-sub'),state=$('notif-state');
+  const perm=notifPermission();
+  if(sub){
+    if(!S.notifEnabled)sub.textContent=perm==='denied'?'Bloqués par le navigateur':'Désactivés';
+    else{
+      const on=NOTIF_PRAYERS.filter(p=>(S.notifPrayers||{})[p.key]!==false).length;
+      const av=Number(S.notifOffset)||0;
+      sub.textContent=`${on} prière${on>1?'s':''}${av?` · ${av} min avant`:''}`;
+    }
+  }
+  if(state){
+    state.textContent=perm==='denied'
+      ? 'Autorisation refusée — à réactiver dans le navigateur'
+      : perm==='granted' ? 'Autorisation accordée' : 'Autorisation nécessaire';
+  }
+  const det=$('notif-detail');
+  if(det)det.style.display=S.notifEnabled?'block':'none';
+}
+
+function buildNotifPrayers(){
+  const host=$('notif-prayers');
+  if(!host)return;
+  host.innerHTML='';
+  NOTIF_PRAYERS.forEach((p,i)=>{
+    const on=(S.notifPrayers||{})[p.key]!==false;
+    const row=document.createElement('div');
+    row.className='row';
+    if(i===NOTIF_PRAYERS.length-1)row.style.borderBottom='none';
+    row.innerHTML=`<div class="row-body"><div class="row-name">${p.name}</div></div><div class="tog${on?' on':''}"></div>`;
+    row.querySelector('.tog').addEventListener('click',function(){
+      const cur={...(S.notifPrayers||{})};
+      cur[p.key]=cur[p.key]===false;
+      S.notifPrayers=cur;save();
+      this.classList.toggle('on',cur[p.key]!==false);
+      notifSummary();scheduleNext();
+    });
+    host.appendChild(row);
+  });
+}
+
+function buildNotifOffset(){
+  const sel=$('notif-offset');
+  if(!sel)return;
+  sel.innerHTML='';
+  [[0,"À l'heure exacte"],[5,'5 minutes avant'],[10,'10 minutes avant'],
+   [15,'15 minutes avant'],[30,'30 minutes avant']].forEach(([v,label])=>{
+    const o=document.createElement('option');
+    o.value=v;o.textContent=label;
+    if(Number(S.notifOffset)===v)o.selected=true;
+    sel.appendChild(o);
+  });
+  sel.addEventListener('change',()=>{
+    S.notifOffset=Number(sel.value)||0;save();
+    notifSummary();scheduleNext();
+  });
+}
+
+function initNotifSettings(){
+  const tog=$('tog-notif');
+  if(!tog)return;
+  if(!notifSupported()){
+    const st=$('notif-state');
+    if(st)st.textContent='Non pris en charge par ce navigateur';
+    tog.style.opacity='0.4';
+    return;
+  }
+  tog.classList.toggle('on',!!S.notifEnabled);
+  buildNotifPrayers();buildNotifOffset();notifSummary();
+
+  tog.addEventListener('click',async()=>{
+    if(S.notifEnabled){
+      S.notifEnabled=false;save();
+      tog.classList.remove('on');notifSummary();scheduleNext();
+      return;
+    }
+    if(!await askNotifPermission()){notifSummary();return;}
+    S.notifEnabled=true;save();
+    tog.classList.add('on');notifSummary();
+    const next=scheduleNext();
+    toast(next
+      ? `Prochain rappel : ${next.name} à ${next.at.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}`
+      : 'Rappels activés — définissez votre position');
+  });
+
+  $('btn-notif-test')?.addEventListener('click',async()=>{
+    if(await testNotification())toast('Rappel envoyé');
+  });
+}
+
 /* ── Traductions du Coran : sélection multilingue ──
    Activer une langue déclenche son téléchargement ; le service worker la
    conserve ensuite en cache. On empêche de tout décocher, sans quoi le
@@ -480,6 +579,7 @@ export function initSettings(){
   buildSkinGrid('skin-grid');
   buildAccentGrid();
   buildSoundList();
+  initNotifSettings();
   buildQuranTrList();
   buildAvatarGrid();
   buildTitleList();
