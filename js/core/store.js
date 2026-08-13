@@ -24,6 +24,7 @@ const DEFAULTS={
   hourFmt:'24',
   // Localisation & prières
   calcMethod:3,lat:null,lon:null,city:'',
+  calcMethodPicked:false,        // vrai dès que l'utilisateur choisit sa méthode lui-même
   madhab:'maliki',               // école juridique (hanafi → Asr ombre ×2)
   translit:'ar',                 // adhkâr des routines : 'ar' (arabe) ou 'ph' (phonétique)
   lang:'fr',                     // langue de l'interface

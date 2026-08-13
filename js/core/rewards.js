@@ -9,7 +9,6 @@ import {BASE_THEMES,SOUNDS,BONUS_DHIKRS,AVATARS,TITLES,SKINS} from '../data/cata
 
 export const isUnlocked=(item)=>!!S.devUnlock||!item.unlockAt||(S.allTime|0)>=item.unlockAt;
 export const remainingFor=(item)=>Math.max(0,(item.unlockAt||0)-(S.allTime|0));
-export const progressFor=(item)=>Math.min(S.allTime|0,item.unlockAt||0);
 
 /* Formate 1234 → "1 234", 12000 → "12 k" pour économiser l'espace visuel */
 export function fmtGoal(n){

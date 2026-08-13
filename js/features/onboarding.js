@@ -137,7 +137,7 @@ function wireLocation(){
     navigator.geolocation.getCurrentPosition(
       async pos=>{
         S.lat=pos.coords.latitude;S.lon=pos.coords.longitude;
-        S.city=await reverseGeocode(S.lat,S.lon);
+        S.city=(await reverseGeocode(S.lat,S.lon)).city;
         save();emit('location-changed');
         st.textContent=`✓ ${S.city||'Position détectée'}`;
         vib([40,20,40]);

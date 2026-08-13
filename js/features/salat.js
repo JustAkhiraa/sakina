@@ -4,7 +4,7 @@ import {S,save,emit} from '../core/store.js';
 import {toast,openSheet,closeSheet} from '../core/ui.js';
 import {computeTimes,fmtTime} from '../lib/astro.js';
 import {toHijri,hijriLabelAr} from '../lib/hijri.js';
-import {CALC_METHODS,MADHABS} from '../data/catalog.js';
+import {CALC_METHODS,MADHABS,CALC_BY_COUNTRY} from '../data/catalog.js';
 
 const $=id=>document.getElementById(id);
 let _cdI=null;
@@ -112,8 +112,24 @@ export async function reverseGeocode(lat,lon){
   try{
     const res=await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=fr`);
     const d=await res.json();
-    return d.address?.city||d.address?.town||d.address?.village||d.address?.municipality||'';
-  }catch{return'';}
+    const a=d.address||{};
+    return{
+      city:a.city||a.town||a.village||a.municipality||'',
+      country:(a.country_code||'').toLowerCase(),
+    };
+  }catch{return{city:'',country:''};}
+}
+
+/* Méthode de calcul selon le pays détecté. Peu d'utilisateurs savent laquelle
+   choisir ; le mauvais réglage décale surtout Fajr et Icha de plusieurs
+   minutes. On ne l'applique qu'une fois, tant que l'utilisateur n'a pas
+   choisi lui-même. */
+function autoCalcMethod(country){
+  if(!country||S.calcMethodPicked)return false;
+  const id=CALC_BY_COUNTRY[country];
+  if(id===undefined||id===S.calcMethod)return false;
+  S.calcMethod=id;
+  return true;
 }
 
 export async function geocodeCity(q){
@@ -127,9 +143,12 @@ export function requestGPS(){
   navigator.geolocation.getCurrentPosition(
     async pos=>{
       S.lat=pos.coords.latitude;S.lon=pos.coords.longitude;
-      S.city=await reverseGeocode(S.lat,S.lon);
+      const loc=await reverseGeocode(S.lat,S.lon);
+      S.city=loc.city;
+      const auto=autoCalcMethod(loc.country);
       save();renderPrayers();emit('location-changed');
-      toast(S.city?`📍 ${S.city}`:'📍 Position détectée');
+      if(auto)toast(`📍 ${S.city||'Position détectée'} · méthode ${methodById(S.calcMethod).name}`);
+      else toast(S.city?`📍 ${S.city}`:'📍 Position détectée');
     },
     ()=>{
       $('loc-txt').textContent='Appuyer pour choisir ma position';
@@ -172,7 +191,8 @@ function buildCalcMethods(){
     const div=document.createElement('div');div.className='row';
     div.innerHTML=`<div class="row-ic">🕌</div><div class="row-body"><div class="row-name">${m.name}</div><div class="row-sub">${m.desc}</div></div>${S.calcMethod===m.id?'<svg width="18" height="18" fill="none" stroke="var(--a)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>':''}`;
     div.addEventListener('click',()=>{
-      S.calcMethod=m.id;$('calc-name').textContent=m.name;
+      S.calcMethod=m.id;S.calcMethodPicked=true;  // choix explicite : l'auto ne l'écrase plus
+      $('calc-name').textContent=m.name;
       save();if(S.lat!==null)renderPrayers();
       closeSheet();toast(`Méthode : ${m.name}`);
     });
