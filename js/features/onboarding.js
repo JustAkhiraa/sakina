@@ -5,7 +5,7 @@ import {S,save,emit} from '../core/store.js';
 import {toast} from '../core/ui.js';
 import {vib} from '../core/audio.js';
 import {THEMES,CALC_METHODS,MADHABS,LANGS,LANG_REGIONS,CALC_BY_LANG,MADHAB_BY_LANG} from '../data/catalog.js';
-import {t,applyI18n} from '../lib/i18n.js';
+import {t,applyI18n,setLang} from '../lib/i18n.js';
 import {applyTheme,buildBaseThemeGrid} from './settings.js';
 import {renderPrayers,reverseGeocode,geocodeCity} from './salat.js';
 
@@ -71,10 +71,12 @@ function buildLangGrid(){
       el.style.cssText='margin:2px;';
       el.textContent=`${l.flag} ${l.name}`;
       el.addEventListener('click',()=>{
-        S.lang=l.code;
         if(!S._calcTouched){const m=CALC_BY_LANG[l.code];if(m)S.calcMethod=m;}
         if(!S._madhabTouched){const md=MADHAB_BY_LANG[l.code];if(md)S.madhab=md;}
-        save();applyI18n();buildLangGrid();buildMethodList();buildMadhabRow();showStep(_step);vib(16);
+        vib(16);
+        setLang(l.code).then(()=>{
+          save();buildLangGrid();buildMethodList();buildMadhabRow();showStep(_step);
+        });
       });
       row.appendChild(el);
     });

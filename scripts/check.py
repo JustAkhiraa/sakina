@@ -75,6 +75,15 @@ def check_service_worker() -> None:
             ERRORS.append(f"sw.js : « {rel} » est importé mais absent de SHELL (casse le hors-ligne)")
     NOTES.append(f"graphe de modules : {len(seen)} atteignables depuis app.js")
 
+    # Les dictionnaires de langue sont importés dynamiquement : le graphe
+    # statique ne les voit pas, il faut les vérifier à part.
+    langs = sorted(ROOT.glob("js/i18n/*.js"))
+    for p in langs:
+        rel = p.relative_to(ROOT).as_posix()
+        if rel not in shell:
+            ERRORS.append(f"sw.js : « {rel} » absent de SHELL (langue indisponible hors ligne)")
+    NOTES.append(f"dictionnaires de langue : {len(langs)} précachés")
+
 
 # ── 2. Imports ES ────────────────────────────────────────────────────────
 def check_imports() -> None:
@@ -113,24 +122,33 @@ def check_dom_ids() -> None:
 
 # ── 4. Clés i18n ─────────────────────────────────────────────────────────
 def check_i18n() -> None:
-    dic = read("js/lib/i18n.js")
-    keys = set(re.findall(r"""^\s*'([\w.]+)'\s*:\s*\{""", dic, re.M))
-    used = set(re.findall(r'data-i18n="([\w.]+)"', read("index.html")))
-    missing = sorted(used - keys)
-    for k in missing:
-        ERRORS.append(f"index.html : clé i18n « {k} » absente du dictionnaire")
+    """Le français fait référence : toute clé utilisée doit y figurer, et la
+    couverture des autres langues se mesure par rapport à lui."""
+    def keys_of(path: Path) -> set[str]:
+        return set(re.findall(r'^\s*"([\w.]+)"\s*:', path.read_text(encoding="utf-8"), re.M))
 
-    # Couverture par langue : une clé partiellement traduite retombe en français
-    langs: dict[str, int] = {}
-    for line in dic.splitlines():
-        if re.match(r"\s*'[\w.]+'\s*:\s*\{", line):
-            for code in set(re.findall(r"\b([a-z]{2}):", line)):
-                langs[code] = langs.get(code, 0) + 1
-    total = len(keys)
-    incomplete = {c: n for c, n in langs.items() if n < total and n > total * 0.5}
-    for c, n in sorted(incomplete.items()):
-        NOTES.append(f"i18n : « {c} » traduit à {n}/{total}")
-    NOTES.append(f"i18n : {total} clés, {len(used)} utilisées dans le HTML")
+    base = ROOT / "js/i18n/fr.js"
+    if not base.exists():
+        ERRORS.append("js/i18n/fr.js manquant : plus aucun repli de traduction")
+        return
+    ref = keys_of(base)
+    used = set(re.findall(r'data-i18n="([\w.]+)"', read("index.html")))
+    for k in sorted(used - ref):
+        ERRORS.append(f"index.html : clé i18n « {k} » absente de js/i18n/fr.js")
+
+    partial = []
+    for p in sorted(ROOT.glob("js/i18n/*.js")):
+        if p.name == "fr.js":
+            continue
+        n = len(keys_of(p) & ref)
+        if n < len(ref):
+            partial.append(f"{p.stem} {n}/{len(ref)}")
+    if partial:
+        NOTES.append("i18n incomplètes : " + ", ".join(partial))
+    NOTES.append(
+        f"i18n : {len(ref)} clés en français, {len(used)} utilisées, "
+        f"{len(list(ROOT.glob('js/i18n/*.js')))} langues"
+    )
 
 
 # ── 5. Corpus coraniques ─────────────────────────────────────────────────

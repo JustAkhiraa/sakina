@@ -7,7 +7,7 @@ import {toast,confirmDlg,openSheet,closeSheet} from '../core/ui.js';
 import {playSound,vib} from '../core/audio.js';
 import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS,BASE_THEMES,AVATARS,TITLES,SKINS} from '../data/catalog.js';
 import {isUnlocked,remainingFor,fmtGoal,rewardsSummary,nextReward,allRewards} from '../core/rewards.js';
-import {applyI18n} from '../lib/i18n.js';
+import {applyI18n,setLang} from '../lib/i18n.js';
 import {TRANSLATIONS} from '../data/translations.js';
 import {preloadTr,refreshTranslations} from './quran.js';
 import {notifSupported,notifPermission,askNotifPermission,scheduleNext,testNotification} from './notifications.js';
@@ -325,7 +325,10 @@ function buildLangList(){
     row.className='ob-method-row'+(S.lang===l.code?' sel':'');
     row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${l.flag} ${l.name}</div></div>`;
     row.addEventListener('click',()=>{
-      S.lang=l.code;save();applyI18n();buildLangList();syncPracticeRows();vib(16);
+      vib(16);
+      // setLang pose S.lang puis applique : on enregistre après, sinon on
+      // sauvegarderait l'ancienne langue.
+      setLang(l.code).then(()=>{save();buildLangList();syncPracticeRows();});
     });
     list.appendChild(row);
   });
@@ -574,7 +577,8 @@ export function initSettings(){
   if(!isUnlocked(TITLES.find(t=>t.id===S.titleId)||{}))S.titleId='traveler';
   if(!isUnlocked(SKINS.find(s=>s.id===S.skin)||{}))S.skin='classic';
   applyTheme();
-  applyI18n();
+  applyI18n();                 // français immédiat, sans attendre le réseau
+  setLang(S.lang);             // puis la langue choisie, dès son fichier chargé
   buildBaseThemeGrid('base-theme-grid');
   buildSkinGrid('skin-grid');
   buildAccentGrid();

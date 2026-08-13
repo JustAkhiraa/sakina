@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v50';
+const VERSION='sakina-v51';
 const SHELL=[
   './',
   './index.html',
@@ -16,6 +16,8 @@ const SHELL=[
   './js/features/tasbih.js','./js/features/salat.js','./js/features/qibla.js',
   './js/features/duas.js','./js/features/quran.js','./js/features/settings.js','./js/features/tools.js',
   './js/features/notifications.js','./js/features/onboarding.js','./js/features/places.js','./js/features/halal.js','./js/features/routines.js','./js/features/books.js',
+  // Dictionnaires de langue (importes dynamiquement par lib/i18n.js)
+  './js/i18n/ar.js','./js/i18n/en.js','./js/i18n/es.js','./js/i18n/fr.js','./js/i18n/hi.js','./js/i18n/ja.js','./js/i18n/ru.js','./js/i18n/zh.js',
 ];
 
 /* Corpus coranique embarqué (~2,3 Mo). Mis en cache à part du shell : s'il
