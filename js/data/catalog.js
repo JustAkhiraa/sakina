@@ -13,19 +13,19 @@ export const DHIKRS=[
 ];
 
 export const BONUS_DHIKRS=[
-  {name:'Subhanallahi wa bihamdihi', arabic:'سُبْحَانَ ٱللَّٰهِ وَبِحَمْدِهِ',
+  {id:'bihamdihi',name:'Subhanallahi wa bihamdihi', arabic:'سُبْحَانَ ٱللَّٰهِ وَبِحَمْدِهِ',
     goal:100,reminder:33,unlockAt:5000,
     hint:'« Gloire et louange à Allah » — 100× / jour efface les péchés (hadith)'},
-  {name:'La hawla wa la quwwata illa billah',arabic:'لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِٱللَّٰهِ',
+  {id:'lahawla',name:'La hawla wa la quwwata illa billah',arabic:'لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِٱللَّٰهِ',
     goal:100,reminder:33,unlockAt:15000,
     hint:'« Il n\'y a de force ni de puissance qu\'en Allah » — trésor du Paradis'},
-  {name:'Subhanallahi wa bihamdihi ‘Adada khalqih',arabic:'سُبْحَانَ ٱللَّٰهِ وَبِحَمْدِهِ عَدَدَ خَلْقِهِ',
+  {id:'adada',name:'Subhanallahi wa bihamdihi ‘Adada khalqih',arabic:'سُبْحَانَ ٱللَّٰهِ وَبِحَمْدِهِ عَدَدَ خَلْقِهِ',
     goal:33,reminder:33,unlockAt:35000,
     hint:'« Autant que Sa création » — une phrase, poids d\'une matinée entière'},
-  {name:'Allahumma salli ‘ala Muhammad',arabic:'ٱللَّٰهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ',
+  {id:'salli',name:'Allahumma salli ‘ala Muhammad',arabic:'ٱللَّٰهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ',
     goal:100,reminder:10,unlockAt:70000,
     hint:'Salât ibrahimiyya abrégée — le Prophète ﷺ demande la salât sur lui'},
-  {name:'Ya Hayyu Ya Qayyum',arabic:'يَا حَيُّ يَا قَيُّومُ',
+  {id:'yahayyu',name:'Ya Hayyu Ya Qayyum',arabic:'يَا حَيُّ يَا قَيُّومُ',
     goal:100,reminder:33,unlockAt:150000,
     hint:'Invocation des Noms — Le Vivant, Celui qui subsiste par Lui-même'},
 ];

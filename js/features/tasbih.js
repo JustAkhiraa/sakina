@@ -86,7 +86,7 @@ function increment(){
     tb.classList.add('flash');
     setTimeout(()=>{cn.classList.remove('gold');tb.classList.remove('flash');},650);
     if(S.goal>0&&S.count>=S.goal){
-      toast('🎉 Objectif atteint !');S.lapCount++;
+      toast(t('tsb.goalReached'));S.lapCount++;
       if(S.autoLoop)setTimeout(()=>{S.count=S.startVal;renderTasbih();save();},800);
     }else if(S.reminder>0){
       toast(`✦ ${S.count} — ${S.title}`);

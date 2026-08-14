@@ -13,13 +13,21 @@ let _cdI=null;
 const methodById=id=>CALC_METHODS.find(m=>m.id===id)||CALC_METHODS[0];
 const asrFactor=()=>(MADHABS.find(m=>m.id===S.madhab)||MADHABS[0]).asrFactor;
 
-const PRAYER_DEFS=[
-  {key:'fajr',   name:'Fajr',   arabic:'الفجر'},
-  {key:'dhuhr',  name:'Dhouhr', arabic:'الظهر'},
-  {key:'asr',    name:'Asr',    arabic:'العصر'},
-  {key:'maghrib',name:'Maghrib',arabic:'المغرب'},
-  {key:'isha',   name:'Icha',   arabic:'العشاء'},
+/* Le nom se lit dans l'alphabet de l'utilisateur : « DHOUHR » ne dit rien a
+   un lecteur japonais. On garde la graphie arabe a cote, comme le fait tout
+   calendrier de priere. */
+const PRAYER_KEYS=[
+  {key:'fajr',   arabic:'الفجر'},
+  {key:'dhuhr',  arabic:'الظهر'},
+  {key:'asr',    arabic:'العصر'},
+  {key:'maghrib',arabic:'المغرب'},
+  {key:'isha',   arabic:'العشاء'},
 ];
+/* Un simple appel plutot qu'un Proxy : `map`/`forEach` sur un Proxy sont
+   lies au tableau brut et contournent le piege, ce qui rendait `name`
+   indefini. Ici le nom est recalcule a chaque lecture, donc il suit la
+   langue courante sans etat a invalider. */
+const prayerDefs=()=>PRAYER_KEYS.map(p=>({...p,name:t(`pr.${p.key}`)}));
 
 /* Date cible réelle d'un horaire décimal (gère minuit) */
 function timeToDate(base,hours){
@@ -33,7 +41,7 @@ function timeToDate(base,hours){
 function findNext(now){
   const m=methodById(S.calcMethod);
   const today=computeTimes(S.lat,S.lon,now,m,asrFactor());
-  for(const p of PRAYER_DEFS){
+  for(const p of prayerDefs()){
     const hr=today[p.key];
     if(hr!==null){
       const dt=timeToDate(now,hr);
@@ -42,7 +50,7 @@ function findNext(now){
   }
   const tomorrow=new Date(now);tomorrow.setDate(tomorrow.getDate()+1);
   const t2=computeTimes(S.lat,S.lon,tomorrow,m,asrFactor());
-  if(t2.fajr!==null)return{...PRAYER_DEFS[0],at:timeToDate(tomorrow,t2.fajr),today:false};
+  if(t2.fajr!==null)return{...prayerDefs()[0],at:timeToDate(tomorrow,t2.fajr),today:false};
   return null;
 }
 
@@ -54,7 +62,7 @@ export function upcomingPrayers(now=new Date(),days=2){
   for(let d=0;d<days;d++){
     const day=new Date(now);day.setDate(day.getDate()+d);
     const T=computeTimes(S.lat,S.lon,day,m,f);
-    for(const p of PRAYER_DEFS){
+    for(const p of prayerDefs()){
       const hr=T[p.key];
       if(hr===null)continue;
       const at=timeToDate(day,hr);
@@ -78,7 +86,7 @@ export function renderPrayers(){
 
   const next=findNext(now);
   const grid=$('prayers-grid');grid.innerHTML='';
-  PRAYER_DEFS.forEach(p=>{
+  prayerDefs().forEach(p=>{
     const hr=T[p.key];
     const isNext=next&&next.today&&p.key===next.key;
     const isPast=!isNext&&hr!==null&&timeToDate(now,hr)<now;
