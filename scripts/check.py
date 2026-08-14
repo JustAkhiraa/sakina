@@ -247,14 +247,16 @@ def check_i18n() -> None:
     """Le français fait référence : toute clé utilisée doit y figurer, et la
     couverture des autres langues se mesure par rapport à lui."""
     def keys_of(path: Path) -> set[str]:
-        return set(re.findall(r'^\s*"([\w.]+)"\s*:', path.read_text(encoding="utf-8"), re.M))
+        # Le trait d'union fait partie des clés dérivées d'un slug
+        # (dua.aisance-eloquence.t, rtx.1er-cycle-al-ikhlas…).
+        return set(re.findall(r'^\s*"([\w.-]+)"\s*:', path.read_text(encoding="utf-8"), re.M))
 
     base = ROOT / "js/i18n/fr.js"
     if not base.exists():
         ERRORS.append("js/i18n/fr.js manquant : plus aucun repli de traduction")
         return
     ref = keys_of(base)
-    used = set(re.findall(r'data-i18n="([\w.]+)"', read("index.html")))
+    used = set(re.findall(r'data-i18n(?:-html|-ph)?="([\w.-]+)"', read("index.html")))
     for k in sorted(used - ref):
         ERRORS.append(f"index.html : clé i18n « {k} » absente de js/i18n/fr.js")
 
@@ -277,15 +279,27 @@ def check_i18n() -> None:
         offered = declared & catalog
         NOTES.append(f"sélecteur : {len(offered)} langues proposées et traduites")
 
-    partial = []
+    # Parité stricte : une clé manquante retombe silencieusement sur le
+    # français, ce qui donne une interface panachée que rien ne signale.
+    # Une clé en trop est du poids mort, ou le vestige d'un renommage.
     for p in sorted(ROOT.glob("js/i18n/*.js")):
         if p.name in ("fr.js", "index.js"):   # référence, et manifeste
             continue
-        n = len(keys_of(p) & ref)
-        if n < len(ref):
-            partial.append(f"{p.stem} {n}/{len(ref)}")
-    if partial:
-        NOTES.append("i18n incomplètes : " + ", ".join(partial))
+        src = p.read_text(encoding="utf-8")
+        got = re.findall(r'^\s*"([\w.-]+)"\s*:', src, re.M)
+        seen = set(got)
+        missing = [k for k in sorted(ref) if k not in seen]
+        extra = [k for k in sorted(seen - ref)]
+        dup = sorted({k for k in seen if got.count(k) > 1})
+        if missing:
+            ERRORS.append(
+                f"js/i18n/{p.name} : {len(missing)} clé(s) manquante(s) — "
+                f"{', '.join(missing[:6])}{'…' if len(missing) > 6 else ''}"
+            )
+        if extra:
+            NOTES.append(f"js/i18n/{p.name} : {len(extra)} clé(s) hors référence")
+        if dup:
+            ERRORS.append(f"js/i18n/{p.name} : clé(s) en double — {', '.join(dup[:6])}")
     NOTES.append(
         f"i18n : {len(ref)} clés en français, {len(used)} utilisées, "
         f"{len(list(ROOT.glob('js/i18n/*.js')))} langues"
