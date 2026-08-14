@@ -132,7 +132,7 @@ function undo(){
 
 async function resetCounter(){
   const {confirmDlg}=await import('../core/ui.js');
-  if(!await confirmDlg('Remettre le compteur à la valeur de départ ?',{okLabel:'Remettre à zéro'}))return;
+  if(!await confirmDlg(t('tsb.resetAsk'),{okLabel:t('tsb.resetOk')}))return;
   if(S.count>S.startVal)pushHistory();
   S.count=S.startVal;S.lapCount=0;S.sessTot=0;
   vib([60,30,60]);toast(t('msg.reset'));save();renderTasbih();
@@ -254,7 +254,7 @@ export function initTasbih(){
   $('btn-hlist').addEventListener('click',()=>openSheet('sh-hist',buildHistory));
   $('btn-clr-hist').addEventListener('click',async()=>{
     const {confirmDlg}=await import('../core/ui.js');
-    if(!await confirmDlg("Effacer tout l'historique ?",{okLabel:'Effacer'}))return;
+    if(!await confirmDlg(t('tsb.clearHistAsk'),{okLabel:t('com.clear')}))return;
     S.history=[];save();buildHistory();vib(40);toast(t('tasbih.histCleared'));
   });
 

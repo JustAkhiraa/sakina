@@ -91,7 +91,9 @@ export function renderNavbar(){
     const el=document.createElement('div');
     el.className='nv'+(it.id===activeId?' active':'');
     el.dataset.page=it.id;
-    el.innerHTML=`${it.icon}<span class="nv-lbl" data-i18n="${it.i18n}">${it.label}</span>`;
+    // renderNavbar tourne APRES applyI18n au changement de langue : sans t()
+    // ici, la barre repartirait sur les libelles francais du catalogue.
+    el.innerHTML=`${it.icon}<span class="nv-lbl" data-i18n="${it.i18n}">${t(it.i18n)||it.label}</span>`;
     el.addEventListener('click',()=>goPage(it.id));
     bar.appendChild(el);
   });
@@ -100,7 +102,7 @@ export function renderNavbar(){
   // inatteignables même si l'utilisateur cache tout le reste.
   const el=document.createElement('div');
   el.className='nv nv-more';
-  el.innerHTML=`${SVG.more}<span class="nv-lbl">Plus</span>`;
+  el.innerHTML=`${SVG.more}<span class="nv-lbl" data-i18n="nav.plus">${t('nav.plus')}</span>`;
   el.addEventListener('click',()=>openMoreSheet(overflow,shown));
   bar.appendChild(el);
 }

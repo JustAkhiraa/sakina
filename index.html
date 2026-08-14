@@ -171,7 +171,7 @@
   <div class="pscroll">
     <div id="duas-routines-banner" class="gc">
       <div style="font-size:1.3rem;">🛡️</div>
-      <div style="flex:1;"><div style="font-size:0.85rem;font-weight:700;color:var(--t1);">Routines &amp; Protection</div><div style="font-size:0.67rem;color:var(--t2);">Matin, Al-Ma'thûrât, après la prière — guidés pas à pas</div></div>
+      <div style="flex:1;"><div style="font-size:0.85rem;font-weight:700;color:var(--t1);" data-i18n="row.routines">Routines &amp; Protection</div><div style="font-size:0.67rem;color:var(--t2);" data-i18n="sub.routines">Matin, Al-Ma'thûrât, après la prière — guidés pas à pas</div></div>
       <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     </div>
     <div id="cat-bar"></div>
@@ -207,12 +207,12 @@
     <div id="quran-verses"></div>
     <div id="quran-loading">
       <div class="q-spinner"></div>
-      <div style="font-size:0.8rem;color:var(--t2);margin-top:12px;">Chargement du Coran…</div>
+      <div style="font-size:0.8rem;color:var(--t2);margin-top:12px;" data-i18n="quran.loading">Chargement du Coran…</div>
     </div>
     <div id="quran-error" style="display:none;text-align:center;padding:32px 20px;">
       <div style="font-size:2rem;margin-bottom:8px;">📵</div>
-      <div style="font-size:0.85rem;color:var(--t2);margin-bottom:16px;">Connexion requise pour charger le Coran</div>
-      <div class="ok-b" id="btn-quran-retry" style="width:auto;padding:10px 24px;margin:0 auto;display:flex;align-items:center;gap:6px;font-size:0.82rem;">Réessayer</div>
+      <div style="font-size:0.85rem;color:var(--t2);margin-bottom:16px;" data-i18n="quran.needNet">Connexion requise pour charger le Coran</div>
+      <div class="ok-b" id="btn-quran-retry" style="width:auto;padding:10px 24px;margin:0 auto;display:flex;align-items:center;gap:6px;font-size:0.82rem;" data-i18n="com.retry">Réessayer</div>
     </div>
   </div>
   <div id="verse-action-bar">
@@ -237,7 +237,7 @@
       Copier
     </div>
   </div>
-  <div id="quran-player"><span>▶</span><b>◼ Arrêter</b></div>
+  <div id="quran-player"><span>▶</span><b data-i18n="quran.stop">◼ Arrêter</b></div>
 
   <div id="transl-panel">
     <div id="transl-panel-hd">
@@ -311,27 +311,27 @@
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
       <div class="row" id="btn-open-riyad">
         <div class="row-ic">📗</div>
-        <div class="row-body"><div class="row-name">Riyad as-Salihin</div><div class="row-sub">Le Jardin des Vertueux — an-Nawawi · texte intégral (373 chap.)</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="books.riyad">Riyad as-Salihin</div><div class="row-sub" data-i18n="books.riyadSub">Le Jardin des Vertueux — an-Nawawi · texte intégral (373 chap.)</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
       <div class="row" id="btn-open-citadelle">
         <div class="row-ic">📘</div>
-        <div class="row-body"><div class="row-name">La Citadelle du Musulman</div><div class="row-sub">Invocations du matin &amp; du soir — pages du livre (146 p.)</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="books.citadelle">La Citadelle du Musulman</div><div class="row-sub" data-i18n="books.citadelleSub">Invocations du matin &amp; du soir — pages du livre (146 p.)</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
       <div class="row" id="btn-open-asma">
         <div class="row-ic">✨</div>
-        <div class="row-body"><div class="row-name">Les 99 Noms d'Allah</div><div class="row-sub">Al-Asma' al-Husna — arabe, translittération &amp; sens (99)</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="books.asma">Les 99 Noms d'Allah</div><div class="row-sub" data-i18n="books.asmaSub">Al-Asma' al-Husna — arabe, translittération &amp; sens (99)</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
       <div class="row" id="btn-open-fruits">
         <div class="row-ic">🌿</div>
-        <div class="row-body"><div class="row-name">Les Aliments dans le Coran et la Sunna</div><div class="row-sub">Versets, hadiths &amp; recherche scientifique — datte, miel, nigelle, Zamzam… (14 chap.)</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="books.foods">Les aliments dans le Coran et la Sunna</div><div class="row-sub" data-i18n="books.foodsSub">Versets, hadiths &amp; recherche scientifique — datte, miel, nigelle, olive…</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
       <div class="row" id="btn-open-miracles">
         <div class="row-ic">✦</div>
-        <div class="row-body"><div class="row-name">Les Miracles du Coran</div><div class="row-sub">Le défi, l'inimitabilité, les annonces accomplies &amp; la Sunna (16 chap.)</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="books.miracles">Les miracles du Coran</div><div class="row-sub" data-i18n="books.miraclesSub">Le défi, l'inimitabilité, les annonces accomplies &amp; la Sunna (16 chap.)</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
     </div>
@@ -339,12 +339,12 @@
     <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
       <div class="row" id="btn-open-learn-wudu">
         <div class="row-ic">💧</div>
-        <div class="row-body"><div class="row-name">Faire les ablutions</div><div class="row-sub">Wudû' étape par étape, avec rappels pratiques</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="books.wudu">Faire les ablutions</div><div class="row-sub" data-i18n="books.wuduSub">Wudû' étape par étape, avec rappels pratiques</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
       <div class="row" style="border-bottom:none" id="btn-open-learn-salat">
         <div class="row-ic">🧎</div>
-        <div class="row-body"><div class="row-name">Comment faire la Salât</div><div class="row-sub">Guide simple : préparation, unités, positions &amp; clôture</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="books.salatGuide">Comment faire la Salât</div><div class="row-sub" data-i18n="books.salatGuideSub">Guide simple : préparation, unités, positions &amp; clôture</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
     
@@ -416,7 +416,7 @@
       <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
         <div style="padding:10px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Fond &amp; palette</div>
         <div style="padding:4px 16px 10px;"><div class="tgrid" id="base-theme-grid"></div></div>
-        <div style="padding:6px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Couleur d'accent</div>
+        <div style="padding:6px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;" data-i18n="sec.accent">Couleur d'accent</div>
         <div style="padding:4px 16px 14px;"><div class="tgrid" id="theme-grid"></div></div>
       </div>
     </details>
@@ -463,7 +463,7 @@
       <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
         <div style="padding:10px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Ordre &amp; visibilité</div>
         <div id="nav-editor" style="padding:4px 8px 10px;"></div>
-        <div style="padding:6px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Page d'ouverture</div>
+        <div style="padding:6px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;" data-i18n="set.startPage">Page d'ouverture</div>
         <div style="padding:4px 16px 14px;"><select id="nav-startpage" style="width:100%;padding:10px 12px;border-radius:12px;background:var(--c2);color:var(--t1);border:1px solid var(--bd);font-size:0.9rem;"></select></div>
       </div>
     </details>
@@ -498,7 +498,7 @@
           <div style="padding:4px 16px 10px;"><select id="notif-offset" style="width:100%;padding:10px 12px;border-radius:12px;background:var(--c2);color:var(--t1);border:1px solid var(--bd);font-size:0.9rem;"></select></div>
           <div class="row" id="btn-notif-test"><div class="row-ic">📨</div><div class="row-body"><div class="row-name" data-i18n="row.notifTest">Envoyer un rappel d'essai</div><div class="row-sub" data-i18n="sub.notifTest">Vérifier que tout fonctionne</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
           <div style="padding:8px 16px 14px;font-size:0.68rem;color:var(--t2);line-height:1.6;border-top:1px solid var(--bor);">
-            Les rappels sont donnés tant que Sakina reste en mémoire. Si vous fermez complètement l'application ou redémarrez l'appareil, ils reprennent à sa réouverture.
+            <span data-i18n="set.notifLimit">Les rappels sont donnés tant que Sakina reste en mémoire. Si vous fermez complètement l'application ou redémarrez l'appareil, ils reprennent à sa réouverture.</span>
           </div>
         </div>
       </div>
@@ -648,23 +648,23 @@
     <button class="ok-b" id="btn-save-edit">✓</button>
   </div>
   <div class="sh-bd">
-    <div style="margin-bottom:16px"><div class="sl" style="margin:0 0 8px" data-i18n="lbl.name">Nom</div><input class="inp" type="text" id="inp-title" placeholder="ex: Subhanallah"></div>
+    <div style="margin-bottom:16px"><div class="sl" style="margin:0 0 8px" data-i18n="lbl.name">Nom</div><input class="inp" type="text" id="inp-title" data-i18n-ph="tsb.phName" placeholder="ex: Subhanallah"></div>
     <div style="margin-bottom:16px"><div class="sl" style="margin:0 0 8px" data-i18n="lbl.startVal">Valeur de départ</div>
       <div class="stepper"><div class="step-b" id="ss-m">−</div><input type="number" id="inp-start" value="0" min="0"><div class="step-b" id="ss-p">+</div></div>
     </div>
     <div style="margin-bottom:12px"><div class="sl" style="margin:0 0 8px" data-i18n="lbl.reminder">Rappel</div>
       <div class="stepper"><div class="step-b" id="sr-m">−</div><input type="number" id="inp-rem" value="33" min="0"><div class="step-b" id="sr-p">+</div></div>
       <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
-        <span class="chip" data-for="inp-rem" data-val="11">11</span><span class="chip" data-for="inp-rem" data-val="33">33</span><span class="chip" data-for="inp-rem" data-val="99">99</span><span class="chip" data-for="inp-rem" data-val="100">100</span><span class="chip" data-for="inp-rem" data-val="0">Aucun</span>
+        <span class="chip" data-for="inp-rem" data-val="11">11</span><span class="chip" data-for="inp-rem" data-val="33">33</span><span class="chip" data-for="inp-rem" data-val="99">99</span><span class="chip" data-for="inp-rem" data-val="100">100</span><span class="chip" data-for="inp-rem" data-val="0" data-i18n="com.none">Aucun</span>
       </div>
     </div>
     <div style="margin-bottom:14px"><div class="sl" style="margin:0 0 8px" data-i18n="lbl.goal">Objectif</div>
       <div class="stepper"><div class="step-b" id="sg-m">−</div><input type="number" id="inp-goal" value="99" min="0"><div class="step-b" id="sg-p">+</div></div>
       <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
-        <span class="chip" data-for="inp-goal" data-val="33">33</span><span class="chip" data-for="inp-goal" data-val="99">99</span><span class="chip" data-for="inp-goal" data-val="100">100</span><span class="chip" data-for="inp-goal" data-val="1000">1000</span><span class="chip" data-for="inp-goal" data-val="0">Infini</span>
+        <span class="chip" data-for="inp-goal" data-val="33">33</span><span class="chip" data-for="inp-goal" data-val="99">99</span><span class="chip" data-for="inp-goal" data-val="100">100</span><span class="chip" data-for="inp-goal" data-val="1000">1000</span><span class="chip" data-for="inp-goal" data-val="0" data-i18n="com.infinite">Infini</span>
       </div>
     </div>
-    <div class="qada-ok" id="btn-pin-dhikr" style="text-align:center;margin-bottom:14px;">☆ Épingler comme préréglage</div>
+    <div class="qada-ok" id="btn-pin-dhikr" style="text-align:center;margin-bottom:14px;" data-i18n="tsb.pinPreset">☆ Épingler comme préréglage</div>
     <div class="sl" style="margin:0 0 4px" data-i18n="lbl.presets">Mes préréglages</div>
     <div id="custom-presets"></div>
   </div>
@@ -675,7 +675,7 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Historique</div>
+    <div class="sh-title" data-i18n="com.history">Historique</div>
     <button class="close-b" id="btn-clr-hist" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2)"><svg width="12" height="12" fill="none" stroke="#f87171" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
   </div>
   <div class="sh-bd" id="hist-bd"></div>
@@ -703,7 +703,7 @@
   <div class="sh-bd">
     <div class="qada-ok" id="btn-gps" style="text-align:center;margin-bottom:14px;">📍 Détecter par GPS</div>
     <div class="sl" style="margin:0 0 8px" data-i18n="lbl.searchCity">Ou chercher une ville</div>
-    <input class="inp" type="text" id="city-inp" placeholder="ex: Lyon, Casablanca, Istanbul…" autocomplete="off">
+    <input class="inp" type="text" id="city-inp" data-i18n-ph="com.phCity" placeholder="ex: Lyon, Casablanca, Istanbul…" autocomplete="off">
     <div id="city-results" style="margin-top:10px"></div>
   </div>
 </div>
@@ -713,11 +713,11 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Rechercher</div>
+    <div class="sh-title" data-i18n="com.search">Rechercher</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd">
-    <input class="inp" type="text" id="dsearch-inp" placeholder="Chercher une invocation…" autocomplete="off">
+    <input class="inp" type="text" id="dsearch-inp" data-i18n-ph="duas.searchPh" placeholder="Chercher une invocation…" autocomplete="off">
     <div id="dsearch-res" style="margin-top:14px"></div>
   </div>
 </div>
@@ -738,14 +738,14 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">À propos du Qadâ'</div>
+    <div class="sh-title" data-i18n="tools.aboutQada">À propos du Qadâ'</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd">
     <div style="font-family:var(--ff-a);font-size:1.4rem;color:var(--a);text-align:right;direction:rtl;padding:10px 0 16px;line-height:2;">وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ</div>
-    <p style="font-size:0.82rem;color:var(--t2);line-height:1.7;margin-bottom:14px;">Le <strong style="color:var(--t1)">Qadâ'</strong> consiste à rattraper les prières obligatoires manquées. Selon les savants, il est obligatoire de les rattraper dès que possible.</p>
-    <p style="font-size:0.82rem;color:var(--t2);line-height:1.7;margin-bottom:14px;"><strong style="color:var(--t1)">Comment utiliser :</strong> Entrez le nombre de jours ou d'années pendant lesquels vous avez manqué vos prières. Le nombre de prières manquées par prière sera calculé automatiquement.</p>
-    <p style="font-size:0.82rem;color:var(--t2);line-height:1.7;">Pour chaque prière rattrapée, appuyez sur <strong style="color:var(--a)">−</strong>. Votre progression est sauvegardée automatiquement.</p>
+    <p style="font-size:0.82rem;color:var(--t2);line-height:1.7;margin-bottom:14px;" data-i18n-html="tools.qadaP1">Le <strong style="color:var(--t1)">Qadâ'</strong> consiste à rattraper les prières obligatoires manquées. Selon les savants, il est obligatoire de les rattraper dès que possible.</p>
+    <p style="font-size:0.82rem;color:var(--t2);line-height:1.7;margin-bottom:14px;" data-i18n-html="tools.qadaP2"><strong style="color:var(--t1)">Comment utiliser :</strong> Entrez le nombre de jours ou d'années pendant lesquels vous avez manqué vos prières. Le nombre de prières manquées par prière sera calculé automatiquement.</p>
+    <p style="font-size:0.82rem;color:var(--t2);line-height:1.7;" data-i18n-html="tools.qadaP3">Pour chaque prière rattrapée, appuyez sur <strong style="color:var(--a)">−</strong>. Votre progression est sauvegardée automatiquement.</p>
   </div>
 </div>
 
@@ -754,7 +754,7 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Calcul de la Zakat</div>
+    <div class="sh-title" data-i18n="tools.zakatTitle">Calcul de la Zakat</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd">
@@ -768,16 +768,16 @@
       <span class="chip" data-cur="DZD" data-sym="DA">DA DZD</span>
       <span class="chip" data-cur="TND" data-sym="DT">DT TND</span>
     </div>
-    <div class="sl" style="margin:0 0 8px">Nisab — Prix de l'or (85g) en <span id="zakat-cur-lbl">EUR</span></div>
+    <div class="sl" style="margin:0 0 8px"><span data-i18n="tools.zakatNisabLbl">Nisab — Prix de l'or (85 g) en</span> <span id="zakat-cur-lbl">EUR</span></div>
     <div style="margin-bottom:16px">
       <div class="stepper">
         <div class="step-b" id="z-nisab-m">−</div>
         <input type="number" id="z-nisab" value="5000" min="0" step="100">
         <div class="step-b" id="z-nisab-p">+</div>
       </div>
-      <div style="font-size:0.68rem;color:var(--t3);margin-top:6px;">Valeur actuelle estimée de 85g d'or. À vérifier selon le cours du jour.</div>
+      <div style="font-size:0.68rem;color:var(--t3);margin-top:6px;" data-i18n="tools.zakatNisabNote">Valeur actuelle estimée de 85 g d'or. À vérifier selon le cours du jour.</div>
     </div>
-    <div class="sl" style="margin:0 0 8px">Votre patrimoine total (<span id="zakat-sym-lbl">€</span>)</div>
+    <div class="sl" style="margin:0 0 8px"><span data-i18n="tools.zakatWealthLbl">Votre patrimoine total</span> (<span id="zakat-sym-lbl">€</span>)</div>
     <div style="margin-bottom:8px">
       <div class="stepper">
         <div class="step-b" id="z-wealth-m">−</div>
@@ -785,13 +785,13 @@
         <div class="step-b" id="z-wealth-p">+</div>
       </div>
     </div>
-    <div style="font-size:0.68rem;color:var(--t3);margin-bottom:16px;line-height:1.5;">Incluez : épargne, investissements, stocks commerciaux, créances récupérables. Déduisez : dettes, besoins essentiels.</div>
+    <div style="font-size:0.68rem;color:var(--t3);margin-bottom:16px;line-height:1.5;" data-i18n="tools.zakatInclude">Incluez : épargne, investissements, stocks commerciaux, créances récupérables. Déduisez : dettes, besoins essentiels.</div>
     <div class="gc" id="zakat-result" style="border-radius:var(--r-xl);padding:20px;text-align:center;margin-top:4px;">
-      <div style="font-size:0.65rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.12em;font-weight:800;margin-bottom:8px;">ZAKAT DUE (2.5%)</div>
+      <div style="font-size:0.65rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.12em;font-weight:800;margin-bottom:8px;" data-i18n="tools.zakatDueLbl">ZAKAT DUE (2,5 %)</div>
       <div style="font-family:var(--ff-m);font-size:2.4rem;color:var(--a);" id="zakat-amount">0 €</div>
-      <div style="font-size:0.72rem;color:var(--t2);margin-top:8px;" id="zakat-status">Entrez votre patrimoine pour calculer</div>
+      <div style="font-size:0.72rem;color:var(--t2);margin-top:8px;" id="zakat-status" data-i18n="tools.zakatEnter">Entrez votre patrimoine</div>
     </div>
-    <div style="font-size:0.72rem;color:var(--t3);line-height:1.6;margin-top:14px;padding:12px;background:var(--sur2);border-radius:var(--r-md);border:1px solid var(--bor2);">
+    <div style="font-size:0.72rem;color:var(--t3);line-height:1.6;margin-top:14px;padding:12px;background:var(--sur2);border-radius:var(--r-md);border:1px solid var(--bor2);" data-i18n-html="tools.zakatNote">
       <strong style="color:var(--t2);">Note :</strong> Ce calcul est une estimation basée sur le fiqh de la majorité. La Zakat est due sur tout patrimoine dépassant le Nisab, détenu pendant un an lunaire (hawl). Consultez un imam pour votre situation personnelle.
     </div>
   </div>
@@ -802,16 +802,16 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Calendrier Hégirien</div>
+    <div class="sh-title" data-i18n="tools.hijriTitle">Calendrier hégirien</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd">
     <div class="gc" style="border-radius:var(--r-xl);padding:18px;text-align:center;margin-bottom:16px;">
-      <div style="font-size:0.62rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;font-weight:800;">AUJOURD'HUI</div>
+      <div style="font-size:0.62rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;font-weight:800;" data-i18n="com.today">AUJOURD'HUI</div>
       <div style="font-family:var(--ff-a);font-size:1.6rem;color:var(--a);line-height:1.5;" id="hconv-hijri-today">---</div>
       <div style="font-size:0.78rem;color:var(--t2);margin-top:4px;" id="hconv-greg-today">---</div>
     </div>
-    <div class="sl" style="margin:0 0 8px">Convertir une date grégorienne</div>
+    <div class="sl" style="margin:0 0 8px" data-i18n="tools.convGreg">Convertir une date grégorienne</div>
     <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center;">
       <input class="inp" type="date" id="hconv-inp" style="flex:1">
       <div class="ok-b" id="btn-hconv" style="width:auto;padding:0 16px;height:46px;border-radius:var(--r-md);font-size:0.82rem;">OK</div>
@@ -820,7 +820,7 @@
       <div style="font-family:var(--ff-a);font-size:1.4rem;color:var(--a);line-height:1.5;" id="hconv-result-hijri"></div>
       <div style="font-size:0.78rem;color:var(--t2);margin-top:6px;" id="hconv-result-greg"></div>
     </div>
-    <div class="sl" style="margin-top:18px;margin-bottom:8px">Les mois du calendrier hégirien</div>
+    <div class="sl" style="margin-top:18px;margin-bottom:8px" data-i18n="tools.hijriMonths">Les mois du calendrier hégirien</div>
     <div class="gc" style="border-radius:var(--r-xl);overflow:hidden;" id="hijri-months-list"></div>
   </div>
 </div>
@@ -830,11 +830,11 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Sourates du Coran</div>
+    <div class="sh-title" data-i18n="quran.surahsTitle">Sourates du Coran</div>
     <div style="width:32px"></div>
   </div>
   <div style="padding:0 16px 4px;flex-shrink:0;">
-    <input class="inp" type="text" id="surah-search" placeholder="Rechercher une sourate…" autocomplete="off" style="margin-bottom:8px;">
+    <input class="inp" type="text" id="surah-search" data-i18n-ph="quran.searchSurah" placeholder="Rechercher une sourate…" autocomplete="off" style="margin-bottom:8px;">
     <div id="quran-tabs"></div>
   </div>
   <div class="sh-bd" id="surah-list-bd" style="padding-left:0;padding-right:0;"></div>
@@ -845,13 +845,13 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Favoris & Notes</div>
+    <div class="sh-title" data-i18n="quran.bkTitle">Favoris &amp; Notes</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd">
     <div class="seg-ctrl" style="margin-bottom:14px;">
-      <div class="seg-opt active" id="bk-tab-fav" style="flex:1;text-align:center;">❤️ Favoris</div>
-      <div class="seg-opt" id="bk-tab-notes" style="flex:1;text-align:center;">✏️ Notes</div>
+      <div class="seg-opt active" id="bk-tab-fav" style="flex:1;text-align:center;" data-i18n="quran.favs">❤️ Favoris</div>
+      <div class="seg-opt" id="bk-tab-notes" style="flex:1;text-align:center;" data-i18n="quran.notes">✏️ Notes</div>
     </div>
     <div id="bk-favs-list"></div>
     <div id="bk-notes-list" style="display:none;"></div>
@@ -863,13 +863,13 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title" id="note-sheet-title">Ajouter une note</div>
+    <div class="sh-title" id="note-sheet-title" data-i18n="quran.addNote">Ajouter une note</div>
     <button class="ok-b" id="btn-save-note">✓</button>
   </div>
   <div class="sh-bd">
     <div id="note-ayah-preview" style="font-family:var(--ff-a);font-size:1.1rem;color:var(--a);direction:rtl;text-align:right;padding:12px 0;border-bottom:1px solid var(--bor2);margin-bottom:12px;line-height:1.9;"></div>
-    <div class="sl" style="margin:0 0 8px;">Votre note</div>
-    <textarea id="note-textarea" placeholder="Notez vos réflexions, mémorisations ou enseignements…"></textarea>
+    <div class="sl" style="margin:0 0 8px;" data-i18n="quran.yourNote">Votre note</div>
+    <textarea id="note-textarea" data-i18n-ph="quran.notePh" placeholder="Notez vos réflexions, mémorisations ou enseignements…"></textarea>
   </div>
 </div>
 
@@ -878,11 +878,11 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">École juridique</div>
+    <div class="sh-title" data-i18n="row.madhab">École juridique</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd">
-    <p style="font-size:0.8rem;color:var(--t2);line-height:1.6;margin-bottom:14px;">Les quatre écoles sunnites sont toutes valides. Ce choix influence <strong style="color:var(--t1)">l'heure de l'Asr</strong> : l'école hanafite attend que l'ombre atteigne deux fois la taille de l'objet (Asr plus tardif).</p>
+    <p style="font-size:0.8rem;color:var(--t2);line-height:1.6;margin-bottom:14px;" data-i18n-html="set.madhabNote">Les quatre écoles sunnites sont toutes valides. Ce choix influence <strong style="color:var(--t1)">l'heure de l'Asr</strong> : l'école hanafite attend que l'ombre atteigne deux fois la taille de l'objet (Asr plus tardif).</p>
     <div id="madhab-list"></div>
   </div>
 </div>
@@ -892,7 +892,7 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Langue / Language</div>
+    <div class="sh-title" data-i18n="row.lang">Langue / Language</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd">
@@ -906,7 +906,7 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">🎁 Cadeaux à débloquer</div>
+    <div class="sh-title" data-i18n="sec.gifts">Cadeaux à débloquer</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd" id="bonus-body"></div>
@@ -918,7 +918,7 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Mosquées à proximité</div>
+    <div class="sh-title" data-i18n="row.places">Mosquées à proximité</div>
     <div style="width:32px"></div>
   </div>
   <div style="padding:0 20px 8px;flex-shrink:0;">
@@ -937,15 +937,15 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Vérif' Halal</div>
+    <div class="sh-title" data-i18n="halal.title">Vérif' Halal</div>
     <div style="width:32px"></div>
   </div>
   <div style="padding:0 20px 8px;flex-shrink:0;">
     <div class="seg-ctrl" id="halal-tabs" style="width:100%;">
-      <div class="seg-opt active" data-tab="scan" style="flex:1;text-align:center;">📷 Scan</div>
-      <div class="seg-opt" data-tab="add" style="flex:1;text-align:center;">🧪 Additifs</div>
-      <div class="seg-opt" data-tab="certs" style="flex:1;text-align:center;">✅ Certifs</div>
-      <div class="seg-opt" data-tab="info" style="flex:1;text-align:center;">📖 Comprendre</div>
+      <div class="seg-opt active" data-tab="scan" style="flex:1;text-align:center;" data-i18n="halal.tabScan">📷 Scan</div>
+      <div class="seg-opt" data-tab="add" style="flex:1;text-align:center;" data-i18n="halal.tabAdd">🧪 Additifs</div>
+      <div class="seg-opt" data-tab="certs" style="flex:1;text-align:center;" data-i18n="halal.tabCert">✅ Certifs</div>
+      <div class="seg-opt" data-tab="info" style="flex:1;text-align:center;" data-i18n="halal.tabInfo">📖 Comprendre</div>
     </div>
   </div>
   <div class="sh-bd">
@@ -953,61 +953,61 @@
       <video id="halal-video" style="display:none;width:100%;border-radius:var(--r-md);margin-bottom:8px;" muted playsinline></video>
       <div id="halal-cam-hint" style="font-size:0.72rem;color:var(--t2);text-align:center;min-height:1.2em;margin-bottom:8px;"></div>
       <div style="display:flex;gap:8px;margin-bottom:6px;">
-        <input class="inp" type="text" inputmode="numeric" id="halal-barcode-inp" placeholder="Code-barres (ex : 3017620422003)" autocomplete="off" style="flex:1;">
+        <input class="inp" type="text" inputmode="numeric" id="halal-barcode-inp" data-i18n-ph="halal.phBarcode" placeholder="Code-barres (ex : 3017620422003)" autocomplete="off" style="flex:1;">
         <div class="ok-b" id="btn-halal-lookup" style="width:auto;padding:0 16px;height:46px;border-radius:var(--r-md);font-size:0.82rem;flex-shrink:0;">OK</div>
       </div>
-      <div class="qada-ok" id="btn-halal-cam" style="text-align:center;margin-bottom:12px;">📷 Scanner avec la caméra</div>
+      <div class="qada-ok" id="btn-halal-cam" style="text-align:center;margin-bottom:12px;" data-i18n="halal.scanCam">📷 Scanner avec la caméra</div>
       <div id="halal-scan-result"></div>
-      <div style="font-size:0.68rem;color:var(--t3);line-height:1.5;margin-top:12px;padding:9px 11px;background:var(--sur2);border-radius:var(--r-sm);border:1px solid var(--bor2);">
+      <div style="font-size:0.68rem;color:var(--t3);line-height:1.5;margin-top:12px;padding:9px 11px;background:var(--sur2);border-radius:var(--r-sm);border:1px solid var(--bor2);" data-i18n-html="halal.disclaimer">
         Analyse indicative basée sur la composition (OpenFoodFacts). Elle ne détecte pas le mode d'abattage d'une viande : <strong style="color:var(--t2)">un produit « sans indicateur » n'est pas forcément certifié halal.</strong>
       </div>
     </div>
     <div id="halal-tab-add" style="display:none;">
-      <input class="inp" type="text" id="halal-add-inp" placeholder="Code E ou nom (ex : E471, gélatine…)" autocomplete="off" style="margin-bottom:10px;">
+      <input class="inp" type="text" id="halal-add-inp" data-i18n-ph="halal.phAdd" placeholder="Code E ou nom (ex : E471, gélatine…)" autocomplete="off" style="margin-bottom:10px;">
       <div id="halal-add-results"></div>
     </div>
 
     <div id="halal-tab-certs" style="display:none;">
       <div class="seg-ctrl" id="certs-sub" style="width:100%;margin-bottom:10px;">
-        <div class="seg-opt active" data-sub="orgs" style="flex:1;text-align:center;">Organismes</div>
-        <div class="seg-opt" data-sub="brands" style="flex:1;text-align:center;">Marques</div>
+        <div class="seg-opt active" data-sub="orgs" style="flex:1;text-align:center;" data-i18n="halal.orgs">Organismes</div>
+        <div class="seg-opt" data-sub="brands" style="flex:1;text-align:center;" data-i18n="halal.brands">Marques</div>
       </div>
       <div id="certs-orgs"></div>
       <div id="certs-brands" style="display:none;">
-        <input class="inp" type="text" id="brand-search" placeholder="Chercher une marque (Isla Délice, AVS…)" autocomplete="off" style="margin-bottom:10px;">
+        <input class="inp" type="text" id="brand-search" data-i18n-ph="halal.phBrand" placeholder="Chercher une marque (Isla Délice, AVS…)" autocomplete="off" style="margin-bottom:10px;">
         <div id="brands-list"></div>
       </div>
-      <div style="font-size:0.66rem;color:var(--t3);line-height:1.5;margin-top:12px;padding:9px 11px;background:var(--sur2);border-radius:var(--r-sm);border:1px solid var(--bor2);">
+      <div style="font-size:0.66rem;color:var(--t3);line-height:1.5;margin-top:12px;padding:9px 11px;background:var(--sur2);border-radius:var(--r-sm);border:1px solid var(--bor2);" data-i18n-html="halal.source">
         Source : relevés publiés par <strong style="color:var(--t2)">debat-halal.fr</strong>. Données déclaratives pouvant évoluer — vérifiez directement auprès des organismes.
       </div>
     </div>
 
     <div id="halal-tab-info" style="display:none;">
       <div class="info-block">
-        <div class="info-title">🤲 Pourquoi manger halal ?</div>
-        <p>Manger halal n'est pas un simple logo sur une vitrine : c'est un acte d'adoration qui touche la santé, la spiritualité et la vie familiale. La condition n'est pas seulement <em>quoi</em> manger, mais <em>comment</em> l'animal a été traité et sacrifié : un sacrificateur musulman pratiquant, la basmala prononcée, un couteau affûté, une bête vivante et consciente.</p>
+        <div class="info-title" data-i18n="halal.i1t">🤲 Pourquoi manger halal ?</div>
+        <p data-i18n-html="halal.i1p">Manger halal n'est pas un simple logo sur une vitrine : c'est un acte d'adoration qui touche la santé, la spiritualité et la vie familiale. La condition n'est pas seulement <em>quoi</em> manger, mais <em>comment</em> l'animal a été traité et sacrifié : un sacrificateur musulman pratiquant, la basmala prononcée, un couteau affûté, une bête vivante et consciente.</p>
       </div>
       <div class="info-block">
-        <div class="info-title">⚡ L'électronarcose, c'est quoi ?</div>
-        <p>Les volailles sont plongées tête la première dans un bain d'eau électrifié (ou étourdies par pinces) avant la saignée. L'animal est censé être « seulement étourdi »… mais des tests menés en abattoir par des certificateurs ont mesuré <strong>plus de 15 % de mortalité avant la saignée</strong> : ces bêtes, mortes électrocutées et non égorgées, sont de la charogne (maytah) — interdites à la consommation. Et à 100-300 bêtes par minute, impossible de trier.</p>
+        <div class="info-title" data-i18n="halal.i2t">⚡ L'électronarcose, c'est quoi ?</div>
+        <p data-i18n-html="halal.i2p">Les volailles sont plongées tête la première dans un bain d'eau électrifié (ou étourdies par pinces) avant la saignée. L'animal est censé être « seulement étourdi »… mais des tests menés en abattoir par des certificateurs ont mesuré <strong>plus de 15 % de mortalité avant la saignée</strong> : ces bêtes, mortes électrocutées et non égorgées, sont de la charogne (maytah) — interdites à la consommation. Et à 100-300 bêtes par minute, impossible de trier.</p>
       </div>
       <div class="info-block">
-        <div class="info-title">🔨 L'assommage (matador)</div>
-        <p>Pour les bovins : un pistolet à tige captive perfore la boîte crânienne et détruit le cerveau avant la saignée. L'animal tombe dans le coma — quand il n'est pas tué sur le coup. Pour les ovins, des pinces électriques sur les tempes « brûlent » littéralement le cerveau. Outre la souffrance, l'animal risque de mourir <em>avant</em> l'égorgement rituel, ce qui invalide le caractère halal.</p>
+        <div class="info-title" data-i18n="halal.i3t">🔨 L'assommage (matador)</div>
+        <p data-i18n-html="halal.i3p">Pour les bovins : un pistolet à tige captive perfore la boîte crânienne et détruit le cerveau avant la saignée. L'animal tombe dans le coma — quand il n'est pas tué sur le coup. Pour les ovins, des pinces électriques sur les tempes « brûlent » littéralement le cerveau. Outre la souffrance, l'animal risque de mourir <em>avant</em> l'égorgement rituel, ce qui invalide le caractère halal.</p>
       </div>
       <div class="info-block">
-        <div class="info-title">🔪 L'abattage mécanique</div>
-        <p>Une lame rotative égorge les volailles à la chaîne, sans sacrificateur, sans basmala prononcée sur chaque bête, et avec des ratés (bêtes mal saignées). La majorité des savants considèrent que les conditions du sacrifice rituel ne sont pas réunies.</p>
+        <div class="info-title" data-i18n="halal.i4t">🔪 L'abattage mécanique</div>
+        <p data-i18n-html="halal.i4p">Une lame rotative égorge les volailles à la chaîne, sans sacrificateur, sans basmala prononcée sur chaque bête, et avec des ratés (bêtes mal saignées). La majorité des savants considèrent que les conditions du sacrifice rituel ne sont pas réunies.</p>
       </div>
       <div class="info-block">
-        <div class="info-title">🍳 La contamination croisée</div>
-        <p>Même une viande certifiée peut être « contaminée » en cuisine : friteuse, grill ou planche partagés avec du bacon ou des produits non halal, sauces au vin, arômes alcoolisés. Dans un restaurant, demandez ce qui partage les surfaces de cuisson.</p>
+        <div class="info-title" data-i18n="halal.i5t">🍳 La contamination croisée</div>
+        <p data-i18n-html="halal.i5p">Même une viande certifiée peut être « contaminée » en cuisine : friteuse, grill ou planche partagés avec du bacon ou des produits non halal, sauces au vin, arômes alcoolisés. Dans un restaurant, demandez ce qui partage les surfaces de cuisson.</p>
       </div>
       <div class="info-block">
-        <div class="info-title">✅ Comment choisir ?</div>
-        <p>Un contrôle fiable réunit : des <strong>contrôleurs salariés de l'organisme</strong> (pas de l'usine), <strong>présents à chaque production</strong>, des <strong>sacrificateurs salariés</strong>, et le <strong>refus</strong> de l'électronarcose, de l'abattage mécanique et de l'assommage. Ne vous contentez pas du mot « halal » en vitrine : demandez <em>qui</em> certifie (onglet Certifs), et en cas de doute, abstenez-vous — c'est votre responsabilité devant Allah, pas celle du vendeur seulement.</p>
+        <div class="info-title" data-i18n="halal.i6t">✅ Comment choisir ?</div>
+        <p data-i18n-html="halal.i6p">Un contrôle fiable réunit : des <strong>contrôleurs salariés de l'organisme</strong> (pas de l'usine), <strong>présents à chaque production</strong>, des <strong>sacrificateurs salariés</strong>, et le <strong>refus</strong> de l'électronarcose, de l'abattage mécanique et de l'assommage. Ne vous contentez pas du mot « halal » en vitrine : demandez <em>qui</em> certifie (onglet Certifs), et en cas de doute, abstenez-vous — c'est votre responsabilité devant Allah, pas celle du vendeur seulement.</p>
       </div>
-      <div style="font-size:0.66rem;color:var(--t3);line-height:1.5;margin-top:4px;padding:9px 11px;background:var(--sur2);border-radius:var(--r-sm);border:1px solid var(--bor2);">
+      <div style="font-size:0.66rem;color:var(--t3);line-height:1.5;margin-top:4px;padding:9px 11px;background:var(--sur2);border-radius:var(--r-sm);border:1px solid var(--bor2);" data-i18n="halal.iNote">
         Synthèse issue de témoignages publics de certificateurs (25 ans d'expérience, ex-AVS) et de debat-halal.fr.
       </div>
     </div>
@@ -1025,9 +1025,9 @@
   <div class="sh-bd">
     <div id="cal-event-date" style="font-size:0.8rem;color:var(--a);font-weight:700;margin-bottom:4px;"></div>
     <div id="cal-event-hijri" style="font-size:0.72rem;color:var(--t2);margin-bottom:12px;"></div>
-    <div class="sl" style="margin:0 0 8px;">Note / événement</div>
-    <textarea id="cal-event-text" placeholder="ex : Jeûne prévu, invitation iftar, aqiqa, rappel…" style="width:100%;background:var(--sur2);border:1px solid var(--bor);border-radius:var(--r-md);padding:12px;color:var(--t1);font-family:var(--ff-b);font-size:0.88rem;line-height:1.6;outline:none;resize:none;min-height:100px;"></textarea>
-    <div class="qada-reset-btn" id="btn-del-cal-event" style="margin-top:12px;display:none;">Supprimer cet événement</div>
+    <div class="sl" style="margin:0 0 8px;" data-i18n="tools.noteEvent">Note / événement</div>
+    <textarea id="cal-event-text" data-i18n-ph="tools.phEvent" placeholder="ex : Jeûne prévu, invitation iftar, aqiqa, rappel…" style="width:100%;background:var(--sur2);border:1px solid var(--bor);border-radius:var(--r-md);padding:12px;color:var(--t1);font-family:var(--ff-b);font-size:0.88rem;line-height:1.6;outline:none;resize:none;min-height:100px;"></textarea>
+    <div class="qada-reset-btn" id="btn-del-cal-event" style="margin-top:12px;display:none;" data-i18n="tools.delEvent">Supprimer cet événement</div>
   </div>
 </div>
 
@@ -1036,7 +1036,7 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Calendrier du Jeûne</div>
+    <div class="sh-title" data-i18n="row.fasting">Calendrier du jeûne</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd" id="fasting-bd"></div>
@@ -1047,7 +1047,7 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Routines &amp; Protection</div>
+    <div class="sh-title" data-i18n="row.routines">Routines &amp; Protection</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd">
@@ -1072,12 +1072,12 @@
       <div id="rt-ar"></div>
       <div id="rt-counter"><span id="rt-count">0</span><span id="rt-target">/ 33</span></div>
       <div id="rt-step-track"><div id="rt-step-fill"></div></div>
-      <div id="rt-hint">Appuyer pour compter</div>
+      <div id="rt-hint" data-i18n="routines.tapToCount">Appuyer pour compter</div>
     </div>
     <div id="rt-note"></div>
     <div style="display:flex;gap:10px;margin-top:14px;">
-      <div class="ob-btn ghost" id="rt-prev">‹ Précédent</div>
-      <div class="ob-btn primary" id="rt-next">Étape suivante ›</div>
+      <div class="ob-btn ghost" id="rt-prev" data-i18n="routines.prev">‹ Précédent</div>
+      <div class="ob-btn primary" id="rt-next" data-i18n="routines.nextStep">Étape suivante ›</div>
     </div>
   </div>
 </div>
@@ -1128,12 +1128,12 @@
 
     <!-- Étape 3 — Lecture, école & format d'heure -->
     <div class="ob-step" data-step="3">
-      <div class="ob-title">Lecture &amp; école</div>
-      <p class="ob-sub">Comment vous lisez les adhkâr, votre madhhab et le format d'heure.</p>
+      <div class="ob-title" data-i18n="ob.prefsTitle">Lecture &amp; école</div>
+      <p class="ob-sub" data-i18n="ob.prefsSub">Comment vous lisez les adhkâr, votre madhhab et le format d'heure.</p>
       <div class="sl" style="margin:14px 0 6px" data-i18n="sec.adhkarRead">Lecture des adhkâr</div>
       <div class="seg-ctrl" id="ob-translit-seg" style="width:100%;margin-bottom:4px;">
-        <div class="seg-opt active" data-tr="ar" style="flex:1;text-align:center;">عربي Je lis l'arabe</div>
-        <div class="seg-opt" data-tr="ph" style="flex:1;text-align:center;">abc Phonétique</div>
+        <div class="seg-opt active" data-tr="ar" style="flex:1;text-align:center;" data-i18n="ob.readAr">عربي Je lis l'arabe</div>
+        <div class="seg-opt" data-tr="ph" style="flex:1;text-align:center;" data-i18n="ob.readPh">abc Phonétique</div>
       </div>
       <div class="sl" style="margin:14px 0 6px" data-i18n="ob.madhabLabel">École juridique (heure de l'Asr)</div>
       <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:4px;" id="ob-madhab-row"></div>
@@ -1151,11 +1151,11 @@
       <div class="qada-ok" id="ob-gps" style="text-align:center;margin:16px 0 10px;" data-i18n="ob.gps">📍 Détecter par GPS</div>
       <div id="ob-loc-status" style="text-align:center;font-size:0.78rem;color:var(--t2);min-height:1.4em;margin-bottom:12px;"></div>
       <div class="sl" style="margin:0 0 8px" data-i18n="ob.searchCity">Ou chercher une ville</div>
-      <input class="inp" type="text" id="ob-city-inp" placeholder="ex: Lyon, Casablanca, Istanbul…" autocomplete="off">
+      <input class="inp" type="text" id="ob-city-inp" data-i18n-ph="com.phCity" placeholder="ex: Lyon, Casablanca, Istanbul…" autocomplete="off">
       <div id="ob-city-results" style="margin-top:8px;max-height:180px;overflow-y:auto;"></div>
     </div>
 
-    <div id="ob-scroll-hint">⌄ faites défiler ⌄</div>
+    <div id="ob-scroll-hint" data-i18n="ob.scrollHint">⌄ faites défiler ⌄</div>
     <div class="ob-nav">
       <div class="ob-btn ghost" id="ob-back" style="display:none;">Retour</div>
       <div class="ob-btn primary" id="ob-next">Commencer</div>
@@ -1173,7 +1173,7 @@
     <button class="close-b" id="btn-book-back" style="display:none;"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
   </div>
   <div style="padding:0 16px 6px;flex-shrink:0;display:none;" id="book-search-wrap">
-    <input class="inp" type="text" id="book-search" placeholder="Chercher un chapitre (patience, repentir…)" autocomplete="off">
+    <input class="inp" type="text" id="book-search" data-i18n-ph="books.searchPh" placeholder="Chercher un chapitre (patience, repentir…)" autocomplete="off">
   </div>
   <div class="sh-bd" id="book-bd" style="padding-left:0;padding-right:0;"></div>
 </div>

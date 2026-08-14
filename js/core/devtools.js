@@ -7,6 +7,7 @@
 import {S,save,emit} from './store.js';
 import {toast} from './ui.js';
 import {vib} from './audio.js';
+import {t} from '../lib/i18n.js';
 
 const NEED_TITLE=5;
 const NEED_AVATAR=5;
@@ -24,7 +25,7 @@ export function initDevTools(){
     reset();
     S.devUnlock=!S.devUnlock;save();
     vib([60,30,60,30,120]);
-    toast(S.devUnlock?'🛠️ Mode dev — tous les cadeaux débloqués':'Mode dev désactivé');
+    toast(S.devUnlock?t('dev.on'):t('dev.off'));
     emit('stats-changed');
   };
 

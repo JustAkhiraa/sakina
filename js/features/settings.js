@@ -298,7 +298,7 @@ export function renderStats(){
     const nxt=nextReward();
     rn.textContent=nxt
       ?`${t('prof.next')} : ${nxt.__label} · ${fmtGoal(nxt.unlockAt)} ${t('prof.dhikrs')}`
-      :'Tout débloqué ✨';
+      :t('prof.allUnlocked');
   }
 }
 
@@ -308,11 +308,11 @@ function buildMadhabList(){
   MADHABS.forEach(m=>{
     const row=document.createElement('div');
     row.className='ob-method-row'+(S.madhab===m.id?' sel':'');
-    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${m.name} <span style="font-family:var(--ff-a);color:var(--t2);font-weight:400;">${m.ar}</span></div><div class="ob-method-desc">${m.asrFactor===2?'Asr : ombre ×2 (plus tardif)':'Asr : ombre ×1 (majorité)'}</div></div>`;
+    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${m.name} <span style="font-family:var(--ff-a);color:var(--t2);font-weight:400;">${m.ar}</span></div><div class="ob-method-desc">${m.asrFactor===2?t('set.asr2'):t('set.asr1')}</div></div>`;
     row.addEventListener('click',()=>{
       S.madhab=m.id;save();buildMadhabList();syncPracticeRows();
       if(S.lat!==null)renderPrayers();
-      vib(16);toast(`École ${m.name.toLowerCase()}`);
+      vib(16);toast(t('set.school',{name:m.name.toLowerCase()}));
     });
     list.appendChild(row);
   });
@@ -359,7 +359,7 @@ function buildNavEditor(){
     // Item locked (Paramètres) : réordonnable mais case toggle remplacée par
     // un cadenas — impossible de se verrouiller hors des réglages.
     const togHtml=item.locked
-      ? `<div class="nav-edit-lock" title="Toujours visible" aria-label="Verrouillé">🔒</div>`
+      ? `<div class="nav-edit-lock" title="${t('set.alwaysOn')}" aria-label="${t('set.alwaysOn')}">🔒</div>`
       : `<div class="tog ${hidden?'':'on'}" data-act="toggle" role="switch" aria-checked="${!hidden}" aria-label="Afficher"></div>`;
     row.innerHTML=`
       <div class="nav-edit-icon">${item.icon}</div>
@@ -398,12 +398,12 @@ function moveNav(id,delta){
 
 function toggleNav(id){
   const item=NAV_ITEMS.find(n=>n.id===id);
-  if(item&&item.locked){toast('Cette catégorie est toujours visible');return;}
+  if(item&&item.locked){toast(t('nav.alwaysVisible'));return;}
   const h=S.nav.hidden;const i=h.indexOf(id);
   if(i>=0)h.splice(i,1); else h.push(id);
   // Ne pas tout masquer : garantit au moins 1 item visible (hors locked)
   const visibleCount=NAV_ITEMS.filter(n=>!h.includes(n.id)).length;
-  if(visibleCount<1){h.pop();toast('Il faut au moins une catégorie visible');return;}
+  if(visibleCount<1){h.pop();toast(t('nav.needOne'));return;}
   // Si la page de démarrage vient d'être masquée, on la déplace
   if(h.includes(S.nav.startPage)){
     const first=visibleNavItems()[0];
@@ -424,11 +424,11 @@ function notifSummary(){
   const sub=$('notif-sub'),state=$('notif-state');
   const perm=notifPermission();
   if(sub){
-    if(!S.notifEnabled)sub.textContent=perm==='denied'?'Bloqués par le navigateur':'Désactivés';
+    if(!S.notifEnabled)sub.textContent=perm==='denied'?t('set.notifBlocked'):t('sub.notifOff');
     else{
       const on=NOTIF_PRAYERS.filter(p=>(S.notifPrayers||{})[p.key]!==false).length;
       const av=Number(S.notifOffset)||0;
-      sub.textContent=`${on} prière${on>1?'s':''}${av?` · ${av} min avant`:''}`;
+      sub.textContent=t('set.notifSummary',{n:on,extra:av?t('set.minBefore',{n:av}):''});
     }
   }
   if(state){
@@ -465,10 +465,9 @@ function buildNotifOffset(){
   const sel=$('notif-offset');
   if(!sel)return;
   sel.innerHTML='';
-  [[0,"À l'heure exacte"],[5,'5 minutes avant'],[10,'10 minutes avant'],
-   [15,'15 minutes avant'],[30,'30 minutes avant']].forEach(([v,label])=>{
+  [0,5,10,15,30].forEach(v=>{
     const o=document.createElement('option');
-    o.value=v;o.textContent=label;
+    o.value=v;o.textContent=v?t('set.notifBefore',{n:v}):t('set.notifOnTime');
     if(Number(S.notifOffset)===v)o.selected=true;
     sel.appendChild(o);
   });
@@ -483,7 +482,7 @@ function initNotifSettings(){
   if(!tog)return;
   if(!notifSupported()){
     const st=$('notif-state');
-    if(st)st.textContent='Non pris en charge par ce navigateur';
+    if(st)st.textContent=t('set.notifUnsupported');
     tog.style.opacity='0.4';
     return;
   }
@@ -506,7 +505,7 @@ function initNotifSettings(){
   });
 
   $('btn-notif-test')?.addEventListener('click',async()=>{
-    if(await testNotification())toast('Rappel envoyé');
+    if(await testNotification())toast(t('set.reminderSent'));
   });
 }
 
@@ -531,40 +530,40 @@ function buildQuranTrList(){
   host.innerHTML='';
   quranTrSummary();
 
-  TRANSLATIONS.forEach((t,i)=>{
-    const on=S.quranTr.includes(t.code);
+  TRANSLATIONS.forEach((tr,i)=>{
+    const on=S.quranTr.includes(tr.code);
     const row=document.createElement('div');
     row.className='row';
     if(i===TRANSLATIONS.length-1)row.style.borderBottom='none';
     row.innerHTML=
       `<div class="row-body">`+
-        `<div class="row-name">${t.label} <span style="color:var(--t2);font-weight:400">· ${t.native}</span></div>`+
-        `<div class="row-sub">${t.author} · ${t.mb.toFixed(2)} Mo</div>`+
+        `<div class="row-name">${tr.label} <span style="color:var(--t2);font-weight:400">· ${tr.native}</span></div>`+
+        `<div class="row-sub">${tr.author} · ${tr.mb.toFixed(2)} Mo</div>`+
       `</div><div class="tog${on?' on':''}"></div>`;
     const tog=row.querySelector('.tog');
 
     tog.addEventListener('click',async()=>{
-      const active=S.quranTr.includes(t.code);
+      const active=S.quranTr.includes(tr.code);
       if(active){
-        if(S.quranTr.length===1){toast('Gardez au moins une traduction');return;}
-        S.quranTr=S.quranTr.filter(c=>c!==t.code);
+        if(S.quranTr.length===1){toast(t('set.keepOne'));return;}
+        S.quranTr=S.quranTr.filter(c=>c!==tr.code);
         tog.classList.remove('on');save();
         quranTrSummary();refreshTranslations();
         return;
       }
       tog.classList.add('on');
-      row.querySelector('.row-sub').textContent='Téléchargement…';
+      row.querySelector('.row-sub').textContent=t('set.downloading');
       try{
-        await preloadTr(t.code);
-        S.quranTr=[...S.quranTr,t.code];save();
+        await preloadTr(tr.code);
+        S.quranTr=[...S.quranTr,tr.code];save();
         quranTrSummary();
         await refreshTranslations();
-        row.querySelector('.row-sub').textContent=`${t.author} · disponible hors ligne`;
-        toast(`${t.label} ajouté`);
+        row.querySelector('.row-sub').textContent=`${tr.author} · disponible hors ligne`;
+        toast(t('set.langAdded',{name:tr.label}));
       }catch{
         tog.classList.remove('on');
-        row.querySelector('.row-sub').textContent=`${t.author} · ${t.mb.toFixed(2)} Mo`;
-        toast('Téléchargement impossible');
+        row.querySelector('.row-sub').textContent=`${tr.author} · ${tr.mb.toFixed(2)} Mo`;
+        toast(t('set.downloadFail'));
       }
     });
     host.appendChild(row);
@@ -610,8 +609,8 @@ export function initSettings(){
     $(id).addEventListener('click',function(){
       S[key]=!S[key];this.classList.toggle('on',S[key]);save();
       if(key==='nightMode')applyTheme();
-      if(key==='soundOn')toast(S[key]?'🔊 Son activé':'🔇 Son coupé');
-      if(key==='vibOn'){vib(20);toast(S[key]?'📳 Vibration':'🔕 Vibration désactivée');}
+      if(key==='soundOn')toast(t(S[key]?'set.soundOn':'set.soundOff'));
+      if(key==='vibOn'){vib(20);toast(t(S[key]?'set.vibOn':'set.vibOff'));}
     });
   });
 
@@ -621,7 +620,7 @@ export function initSettings(){
       S.translit=opt.dataset.tr;
       document.querySelectorAll('#translit-seg .seg-opt').forEach(o=>o.classList.toggle('active',o.dataset.tr===S.translit));
       save();vib(14);
-      toast(S.translit==='ph'?'abc Adhkâr en phonétique':'عربي Adhkâr en arabe');
+      toast(t(S.translit==='ph'?'set.scriptPh':'set.scriptAr'));
     });
   });
 
@@ -642,7 +641,7 @@ export function initSettings(){
     a.download=`sakina-donnees-${new Date().toISOString().slice(0,10)}.json`;
     a.click();
     URL.revokeObjectURL(a.href);
-    toast('📤 Exporté');
+    toast(t('set.exported'));
   });
 
   // Import : fusion non destructive d'un backup précédent. On garde toujours
@@ -655,7 +654,7 @@ export function initSettings(){
     try{
       const data=JSON.parse(await f.text());
       if(!data||typeof data!=='object')throw new Error('format');
-      if(!await confirmDlg('Importer ce fichier ? Il sera fusionné avec ta config actuelle (aucun effacement).',{okLabel:'Importer'})){fileImport.value='';return;}
+      if(!await confirmDlg(t('set.importAsk'),{okLabel:t('com.import')})){fileImport.value='';return;}
       const maxKeys=new Set(['allTime','sessCount','sessTot']);
       const mergeObj=new Set(['daily','quranFavs','quranNotes','calEvents','qada','qdone']);
       for(const k of Object.keys(data)){
@@ -674,11 +673,11 @@ export function initSettings(){
   });
 
   $('btn-reset-all').addEventListener('click',async()=>{
-    if(!await confirmDlg('Tout effacer ? Compteurs, historique, qadâ\'. Action irréversible.',{okLabel:'Tout effacer'}))return;
+    if(!await confirmDlg(t('set.resetAsk'),{okLabel:t('com.clearAll')}))return;
     S.count=0;S.lapCount=0;S.sessTot=0;S.allTime=0;S.sessCount=0;
     S.history=[];S.daily={};
     QADA_PRAYERS.forEach(p=>{S.qada[p.key]=0;S.qdone[p.key]=0;});
     save();renderTasbih();buildDhikrBar();renderStats();
-    toast('✓ Réinitialisé');vib([100,50,100]);
+    toast(t('set.resetDone'));vib([100,50,100]);
   });
 }

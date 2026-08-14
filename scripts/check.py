@@ -13,9 +13,10 @@ Ce script attrape cette classe de fautes :
   1. entrées SHELL / CORPUS du service worker introuvables
   2. imports ES qui ne résolvent vers aucun fichier
   3. getElementById(...) visant un identifiant qui n'existe nulle part
-  4. clés data-i18n absentes du dictionnaire
-  5. traductions déclarées sans fichier de corpus, et l'inverse
-  6. livres du registre sans JSON, et l'inverse
+  4. variable locale « t » masquant la fonction de traduction
+  5. clés data-i18n absentes du dictionnaire
+  6. traductions déclarées sans fichier de corpus, et l'inverse
+  7. livres du registre sans JSON, et l'inverse
 
 Sortie : 0 si tout va bien, 1 sinon.
 """
@@ -121,6 +122,78 @@ def check_dom_ids() -> None:
 
 
 # ── 4. Clés i18n ─────────────────────────────────────────────────────────
+CALL_T = re.compile(r"""(?<![\w.$])t\(\s*['"`]""")   # t('cle') — pas obj.t(…)
+
+
+def _block_from(src: str, i: int) -> str | None:
+    """Le bloc « { … } » qui commence au premier caractère non blanc après i."""
+    while i < len(src) and src[i].isspace():
+        i += 1
+    if i >= len(src) or src[i] != "{":
+        return None
+    depth = 0
+    for j in range(i, len(src)):
+        if src[j] == "{":
+            depth += 1
+        elif src[j] == "}":
+            depth -= 1
+            if depth == 0:
+                return src[i : j + 1]
+    return src[i:]
+
+
+def _enclosing_block(src: str, i: int) -> str:
+    """Le bloc « { … } » le plus proche qui entoure la position i."""
+    depth = 0
+    for j in range(i, -1, -1):
+        if src[j] == "}":
+            depth += 1
+        elif src[j] == "{":
+            if depth == 0:
+                return _block_from(src, j) or src
+            depth -= 1
+    return src
+
+
+def check_t_shadowing() -> None:
+    """`t` est la fonction de traduction. Une variable locale du même nom la
+    masque, et l'appel `t('cle')` lève « t is not a function » à l'exécution
+    — sans que rien ne le signale au chargement. Le piège s'est présenté
+    trois fois (thèmes, titres, traductions du Coran).
+
+    Un `t` local n'est fautif que si sa portée appelle vraiment t() : les
+    `arr.map(t=>t.id)` d'une seule ligne sont inoffensifs et signaler tout
+    homonyme noierait les vrais cas."""
+    decl = re.compile(
+        r"(?:const|let|var)\s+t\s*=(?!=)"       # const t = …
+        r"|\(\s*t\s*(?:,\s*[\w{}\[\]. ]+)*\)\s*=>"  # (t) => / (t, i) =>
+        r"|(?<![\w.$])t\s*=>"                    # t => …
+    )
+    n = 0
+    for f in sorted(ROOT.glob("js/**/*.js")):
+        if f.parent.name == "i18n":
+            continue
+        src = f.read_text(encoding="utf-8")
+        if not CALL_T.search(src):
+            continue                            # ce fichier n'appelle pas t()
+        for m in decl.finditer(src):
+            if m.group().rstrip().endswith("=>"):
+                # Corps entre accolades, sinon expression jusqu'au bout de la ligne.
+                eol = src.find("\n", m.end())
+                scope = _block_from(src, m.end()) or src[m.end() : eol if eol > 0 else len(src)]
+            else:
+                scope = _enclosing_block(src, m.start())
+            if not CALL_T.search(scope):
+                continue
+            n += 1
+            ERRORS.append(
+                f"{f.relative_to(ROOT)}:{src[: m.start()].count(chr(10)) + 1} : « t » "
+                f"redéfini dans une portée qui appelle t() — renommez la variable"
+            )
+    if not n:
+        NOTES.append("aucune variable locale ne masque la fonction t()")
+
+
 def check_i18n() -> None:
     """Le français fait référence : toute clé utilisée doit y figurer, et la
     couverture des autres langues se mesure par rapport à lui."""
@@ -210,6 +283,7 @@ def main() -> int:
         check_service_worker,
         check_imports,
         check_dom_ids,
+        check_t_shadowing,
         check_i18n,
         check_quran,
         check_books,

@@ -12,6 +12,7 @@
    lecture (comportemental), avec une présentation soignée (viscéral). */
 import {openSheet} from '../core/ui.js';
 import {vib} from '../core/audio.js';
+import {t} from '../lib/i18n.js';
 
 const $=id=>document.getElementById(id);
 
@@ -143,7 +144,7 @@ function showIntro(){
     <div class="book-intro-author">${b.author}</div>
     <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${s.val}</b><span>${s.label}</span></div>`).join('')}</div>
     ${b.desc.map(p=>`<p class="book-intro-desc">${p}</p>`).join('')}
-    <div class="book-intro-cta" id="book-start">✦ Commencer la lecture</div>
+    <div class="book-intro-cta" id="book-start">${t('books.start')}</div>
     ${(b.srcNotes||[]).map(n=>`<div class="book-intro-src">${n}</div>`).join('')}
   </div>`;
   $('book-start').addEventListener('click',()=>{
@@ -171,11 +172,11 @@ async function openList(filter=''){
   _view='list';
   const key=_current;
   const b=BOOKS[key];
-  setHeader({title:b.title,back:true,search:true,searchPh:b.searchPh||'Chercher un chapitre…'});
+  setHeader({title:b.title,back:true,search:true,searchPh:b.searchPh||t('books.searchPh')});
   if(!_chaptersCache[key]){
-    $('book-bd').innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement du livre…</div>';
+    $('book-bd').innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
     try{await loadChapters(key);}
-    catch{$('book-bd').innerHTML='<div class="places-empty">Connexion requise pour le premier chargement du livre.</div>';return;}
+    catch{$('book-bd').innerHTML=`<div class="places-empty">${t('books.needNet')}</div>`;return;}
   }
   renderList(filter);
   if(!filter)$('book-search').focus({preventScroll:true});
@@ -253,8 +254,8 @@ function showChapter(n){
       ${body}
       <div class="book-src">${data.author} · ${data.source}</div>
       <div class="book-chap-nav">
-        <div class="book-chap-nav-btn${prev?'':' disabled'}" id="book-prev-chap">‹ Chapitre précédent</div>
-        <div class="book-chap-nav-btn${next?'':' disabled'}" id="book-next-chap">Chapitre suivant ›</div>
+        <div class="book-chap-nav-btn${prev?'':' disabled'}" id="book-prev-chap">${t('books.prevChap')}</div>
+        <div class="book-chap-nav-btn${next?'':' disabled'}" id="book-next-chap">${t('books.nextChap')}</div>
       </div>
     </div>`;
   bd.scrollTop=0;
@@ -280,9 +281,9 @@ async function openPages(){
   const b=BOOKS.citadelle;
   setHeader({title:b.title,back:true});
   const bd=$('book-bd');
-  bd.innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement du livre…</div>';
+  bd.innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
   try{await loadCitadelleText();}
-  catch{bd.innerHTML='<div class="places-empty">Connexion requise pour le premier chargement du texte.</div>';return;}
+  catch{bd.innerHTML=`<div class="places-empty">${t('books.needNet')}</div>`;return;}
   // Chaque page est rendue individuellement (ses notes de bas de page restent
   // près de leur texte) puis tout est enchaîné en un seul flux de lecture.
   const html=_citadelleText.pages
@@ -316,7 +317,7 @@ function foldToc(bd){
   const first=rows[0],last=rows[rows.length-1];
   const det=document.createElement('details');
   det.className='book-toc-fold';
-  det.innerHTML=`<summary class="book-toc-sum">Table des matières<span class="book-toc-count">${rows.length} sections</span></summary>`;
+  det.innerHTML=`<summary class="book-toc-sum">${t('books.toc')}<span class="book-toc-count">${rows.length} ${t('books.sections')}</span></summary>`;
   const box=document.createElement('div');
   box.className='book-toc-box';
   first.parentNode.insertBefore(det,first);
@@ -401,13 +402,13 @@ function renderCitadelleMarkdown(md){
       const head=cells(s);i++;
       const body=[];
       while(i+1<lines.length&&/^\|.*\|$/.test(lines[i+1].trim())){i++;body.push(cells(lines[i]));}
-      let t='<table class="book-md-table"><thead><tr>'+head.map(h=>`<th>${inline(h)}</th>`).join('')+'</tr></thead><tbody>';
-      t+=body.map(r=>'<tr>'+r.map(c=>{
+      let tbl='<table class="book-md-table"><thead><tr>'+head.map(h=>`<th>${inline(h)}</th>`).join('')+'</tr></thead><tbody>';
+      tbl+=body.map(r=>'<tr>'+r.map(c=>{
         if(isHonorific(c))return `<td class="book-td-hon" dir="rtl" lang="ar">${inline(c)}</td>`;
         const ar=isArabic(c);
         return `<td${ar?' dir="rtl" lang="ar"':''}>${inline(c)}</td>`;
       }).join('')+'</tr>').join('');
-      out.push(t+'</tbody></table>');continue;
+      out.push(tbl+'</tbody></table>');continue;
     }
     if(/^#{1,6}\s+/.test(s)){
       closeList();
@@ -461,11 +462,11 @@ async function loadAsma(){
 }
 async function openNames(filter=''){
   _view='names';
-  setHeader({title:BOOKS.asma.title,back:true,search:true,searchPh:'Chercher un nom (Rahmân, Paix, n°…)'});
+  setHeader({title:BOOKS.asma.title,back:true,search:true,searchPh:t('books.searchName')});
   if(!_asma){
-    $('book-bd').innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement des noms…</div>';
+    $('book-bd').innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
     try{await loadAsma();}
-    catch{$('book-bd').innerHTML='<div class="places-empty">Connexion requise pour le premier chargement.</div>';return;}
+    catch{$('book-bd').innerHTML=`<div class="places-empty">${t('books.needNet')}</div>`;return;}
   }
   renderNames(filter);
 }
@@ -600,7 +601,7 @@ function openGuide(){
       </div>
       <ul>${sec.points.map(p=>`<li>${p}</li>`).join('')}</ul>
     </section>`).join('')}
-    <div class="learn-note">Ces rappels sont une base simple d’apprentissage. Pour les divergences de détails, suivez une personne de science ou votre mosquée.</div>
+    <div class="learn-note">${t('books.learnNote')}</div>
   </div>`;
   bd.scrollTop=0;
 }

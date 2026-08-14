@@ -13,10 +13,10 @@ function arabicHtml(d){
 }
 
 function copyText(txt){
-  navigator.clipboard.writeText(txt).then(()=>toast('📋 Copié !')).catch(()=>{
+  navigator.clipboard.writeText(txt).then(()=>toast(t('duas.copied'))).catch(()=>{
     const ta=document.createElement('textarea');
     ta.value=txt;document.body.appendChild(ta);ta.select();
-    document.execCommand('copy');ta.remove();toast('📋 Copié !');
+    document.execCommand('copy');ta.remove();toast(t('duas.copied'));
   });
 }
 
@@ -69,7 +69,7 @@ function initSearch(){
     const res=$('dsearch-res');res.innerHTML='';
     if(!q.trim())return;
     const items=DUAS.filter(d=>matches(d,q));
-    if(!items.length){res.innerHTML='<div style="text-align:center;padding:24px;font-size:0.82rem;color:var(--t3);">Aucun résultat</div>';return;}
+    if(!items.length){res.innerHTML=`<div style="text-align:center;padding:24px;font-size:0.82rem;color:var(--t3);">${t('com.noResult')}</div>`;return;}
     items.forEach(d=>{
       const arHtml=arabicHtml(d);
       const el=document.createElement('div');el.className='dua-card gc open';

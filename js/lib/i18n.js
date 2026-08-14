@@ -60,6 +60,16 @@ export function applyI18n(){
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     el.textContent=t(el.dataset.i18n);
   });
+  // Le texte d'un champ de saisie vit dans un attribut, pas dans le noeud :
+  // sans cette passe les placeholders resteraient en francais.
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    el.placeholder=t(el.dataset.i18nPh);
+  });
+  // Les paragraphes explicatifs portent de l'emphase (<strong>) : textContent
+  // l'effacerait, on injecte donc le balisage de la traduction.
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    el.innerHTML=t(el.dataset.i18nHtml);
+  });
 }
 
 /* Charge puis applique — à utiliser au démarrage et à chaque changement. */

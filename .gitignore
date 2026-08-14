@@ -1,2 +1,6 @@
 .claude/settings.local.json
 inspirations/
+
+# Caches Python des scripts de verification
+scripts/__pycache__/
+__pycache__/

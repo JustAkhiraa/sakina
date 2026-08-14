@@ -161,7 +161,7 @@ function wireLocation(){
       try{
         const items=await geocodeCity(q);
         box.innerHTML='';
-        if(!items.length){box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">Aucun résultat</div>';return;}
+        if(!items.length){box.innerHTML=`<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">${t('com.noResult')}</div>`;return;}
         items.forEach(it=>{
           const div=document.createElement('div');div.className='city-result';
           const name=it.display_name.split(',')[0];
@@ -177,7 +177,7 @@ function wireLocation(){
           box.appendChild(div);
         });
       }catch{
-        box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">Erreur réseau</div>';
+        box.innerHTML=`<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">${t('msg.netError')}</div>`;
       }
     },450);
   });

@@ -5,6 +5,7 @@
 import {S} from './store.js';
 import {toast} from './ui.js';
 import {vib} from './audio.js';
+import {t} from '../lib/i18n.js';
 import {BASE_THEMES,SOUNDS,BONUS_DHIKRS,AVATARS,TITLES,SKINS} from '../data/catalog.js';
 
 export const isUnlocked=(item)=>!!S.devUnlock||!item.unlockAt||(S.allTime|0)>=item.unlockAt;
@@ -57,7 +58,7 @@ export function checkUnlocks(beforeAll,afterAll){
   Object.entries(byTier).forEach(([tier,items],i)=>{
     setTimeout(()=>{
       const names=items.map(x=>x.__label).join(' · ');
-      toast(`✨ ${fmtGoal(+tier)} dhikr — ${names} débloqué${items.length>1?'s':''} !`);
+      toast(t(items.length>1?'msg.unlockedN':'msg.unlocked',{goal:fmtGoal(+tier),names}));
       vib([40,25,40,25,80]);
     },300+i*1400);
   });

@@ -21,7 +21,7 @@ function openPicker(){
   ROUTINES.forEach(r=>{
     const row=document.createElement('div');row.className='row';
     row.innerHTML=`<div class="row-ic">${r.icon}</div>
-      <div class="row-body"><div class="row-name">${r.name}</div><div class="row-sub">${r.desc} · ${r.steps.length} étapes, ${totalTaps(r)} répétitions</div></div>
+      <div class="row-body"><div class="row-name">${r.name}</div><div class="row-sub">${r.desc} · ${t('rt.summary',{n:r.steps.length,r:totalTaps(r)})}</div></div>
       <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
     row.addEventListener('click',()=>startRoutine(r));
     list.appendChild(row);
@@ -52,7 +52,7 @@ function renderStep(){
   $('rt-step-fill').style.width=(_count/step.count*100)+'%';
   $('rt-total-fill').style.width=(doneTaps()/totalTaps(_routine)*100)+'%';
   $('rt-prev').style.visibility=_stepIdx>0?'visible':'hidden';
-  $('rt-next').textContent=_stepIdx<_routine.steps.length-1?t('routines.nextStep'):'Terminer ✦';
+  $('rt-next').textContent=_stepIdx<_routine.steps.length-1?t('routines.nextStep'):t('routines.finish');
 }
 
 function tap(){

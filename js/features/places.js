@@ -37,7 +37,7 @@ async function search(){
   if(_abort)_abort.abort();
   _abort=new AbortController();
   const signal=_abort.signal;
-  list.innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Recherche dans un rayon de '+_radius+' km…</div>';
+  list.innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('places.searchingRadius',{km:_radius})}</div>`;
   try{
     const body='data='+encodeURIComponent(buildQuery());
     let data=null;
@@ -67,7 +67,7 @@ async function search(){
     }).filter(Boolean).sort((a,b)=>a.dist-b.dist);
 
     if(!items.length){
-      list.innerHTML=`<div class="places-empty">Aucune mosquée référencée dans un rayon de ${_radius} km.<br>Essayez un rayon plus large — ou contribuez sur OpenStreetMap !</div>`;
+      list.innerHTML=`<div class="places-empty">${t('places.none',{km:_radius})}<br>${t('places.tryWider')}</div>`;
       return;
     }
     list.innerHTML='';
@@ -81,12 +81,12 @@ async function search(){
           <div class="place-name">${p.name}</div>
           <div class="place-sub">${p.street||''}</div>
         </div>
-        <div class="place-dist">${p.dist<1?Math.round(p.dist*1000)+' m':p.dist.toFixed(1)+' km'}<span class="place-go">Itinéraire ↗</span></div>`;
+        <div class="place-dist">${p.dist<1?Math.round(p.dist*1000)+' m':p.dist.toFixed(1)+' km'}<span class="place-go">${t('places.route')}</span></div>`;
       list.appendChild(el);
     });
   }catch(e){
     if(e.name==='AbortError')return;
-    list.innerHTML='<div class="places-empty">Erreur réseau — le service Overpass est peut-être saturé, réessayez dans un instant.</div>';
+    list.innerHTML=`<div class="places-empty">${t('places.overpassBusy')}</div>`;
   }
 }
 

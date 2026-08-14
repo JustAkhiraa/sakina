@@ -163,7 +163,7 @@ function applyTajwid(text){
    langue on omet l'étiquette : elle n'apprendrait rien au lecteur. */
 function renderTranslations(host,list){
   host.innerHTML='';
-  if(!list||!list.length){host.textContent='Traduction non disponible.';return;}
+  if(!list||!list.length){host.textContent=t('quran.noTrans');return;}
   const solo=list.length===1;
   list.forEach(tr=>{
     const box=document.createElement('div');
@@ -245,7 +245,7 @@ function buildSurahList(filter=''){
     .forEach(s=>{
       const div=document.createElement('div');
       div.className='surah-item'+(s.n===_surah?' active-surah':'');
-      div.innerHTML=`<div class="surah-num">${s.n}</div><div style="flex:1"><div class="surah-fr">${s.fr}</div><div class="surah-info">${s.v} versets</div></div><div class="surah-ar">${s.ar}</div><div class="surah-type ${s.t.toLowerCase()}">${s.t==='Makki'?'Makkî':'Madinî'}</div>`;
+      div.innerHTML=`<div class="surah-num">${s.n}</div><div style="flex:1"><div class="surah-fr">${s.fr}</div><div class="surah-info">${s.v} ${t('quran.verses')}</div></div><div class="surah-ar">${s.ar}</div><div class="surah-type ${s.t.toLowerCase()}">${s.t==='Makki'?t('quran.makki'):t('quran.madani')}</div>`;
       div.addEventListener('click',()=>{
         closeSheet();
         $('quran-scroll').scrollTop=0;
@@ -331,11 +331,11 @@ export function initQuran(){
   $('vact-fav').addEventListener('click',()=>{
     if(!_selAyah)return;
     if(S.quranFavs[_selAyah]){
-      delete S.quranFavs[_selAyah];toast('❤️ Retiré des favoris');
+      delete S.quranFavs[_selAyah];toast(t('quran.favDel'));
     }else{
       const v=_verses.find(x=>x.verse_key===_selAyah);
       S.quranFavs[_selAyah]={key:_selAyah,text:v?.text_uthmani||'',surah:_surah,ts:Date.now()};
-      toast('❤️ Ajouté aux favoris');burst();
+      toast(t('quran.favAdd'));burst();
     }
     save();renderVerses();deselectAyah();
   });
@@ -361,8 +361,8 @@ export function initQuran(){
   $('btn-save-note').addEventListener('click',()=>{
     if(!_selAyah)return;
     const txt=$('note-textarea').value.trim();
-    if(txt){S.quranNotes[_selAyah]=txt;toast('✓ Note sauvegardée');}
-    else{delete S.quranNotes[_selAyah];toast('Note supprimée');}
+    if(txt){S.quranNotes[_selAyah]=txt;toast(t('quran.noteSaved'));}
+    else{delete S.quranNotes[_selAyah];toast(t('quran.noteDel'));}
     save();renderVerses();closeSheet();deselectAyah();
   });
 

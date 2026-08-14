@@ -4,6 +4,7 @@
    responsable de sa vérification (abattage, étourdissement, traçabilité…). */
 import {openSheet} from '../core/ui.js';
 import {vib} from '../core/audio.js';
+import {t} from '../lib/i18n.js';
 import {ADDITIVES,ADD_STATUS,HARAM_KEYWORDS} from '../data/additives.js';
 import {CERT_ORGS,CERT_BRANDS} from '../data/halal-certifs.js';
 
@@ -15,13 +16,13 @@ let _stream=null,_scanLoop=null;
 function searchAdditives(q){
   const box=$('halal-add-results');
   q=q.trim().toLowerCase().replace(/^e\s*/i,'e');
-  if(!q){box.innerHTML='<div class="places-empty">Tapez un code (ex : E471) ou un nom (ex : gélatine).</div>';return;}
+  if(!q){box.innerHTML=`<div class="places-empty">${t('halal.searchHint')}</div>`;return;}
   const items=ADDITIVES.filter(a=>
     a.code.toLowerCase().includes(q)||a.name.toLowerCase().includes(q)
   ).slice(0,30);
   box.innerHTML='';
   if(!items.length){
-    box.innerHTML='<div class="places-empty">Additif absent de la base — statut inconnu, vérifiez auprès d\'un organisme de certification.</div>';
+    box.innerHTML=`<div class="places-empty">${t('halal.unknownAdditive')}</div>`;
     return;
   }
   items.forEach(a=>{
@@ -59,10 +60,10 @@ function analyzeProduct(p){
   const problems=findings.filter(f=>f.status!=='halal');
 
   let verdict,cls;
-  if(hasHaram){verdict='✗ Indicateurs HARAM détectés';cls='err';}
-  else if(hasDoubt){verdict='? Douteux — vérifiez la source des ingrédients signalés';cls='warn';}
-  else if(!ingredients){verdict='· Composition indisponible — impossible d\'analyser';cls='mute';}
-  else{verdict='✓ Aucun indicateur haram détecté dans la composition';cls='ok';}
+  if(hasHaram){verdict=t('halal.vHaram');cls='err';}
+  else if(hasDoubt){verdict=t('halal.vDoubt');cls='warn';}
+  else if(!ingredients){verdict=t('halal.vNoComp');cls='mute';}
+  else{verdict=t('halal.vOk');cls='ok';}
 
   return{verdict,cls,problems,halalFindings,ingredients};
 }
@@ -71,12 +72,12 @@ async function lookupBarcode(code){
   code=code.replace(/\D/g,'');
   const box=$('halal-scan-result');
   if(!code){box.innerHTML='';return;}
-  box.innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Recherche du produit…</div>';
+  box.innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('halal.searching')}</div>`;
   try{
     const res=await fetch(`https://world.openfoodfacts.org/api/v2/product/${code}.json?fields=product_name,brands,image_front_small_url,ingredients_text_fr,ingredients_text,additives_tags`);
     const data=await res.json();
     if(data.status!==1||!data.product){
-      box.innerHTML='<div class="places-empty">Produit introuvable dans OpenFoodFacts.<br>Vérifiez le code, ou le produit n\'est pas encore référencé.</div>';
+      box.innerHTML=`<div class="places-empty">${t('halal.notFound')}<br>${t('halal.notFoundSub')}</div>`;
       return;
     }
     const p=data.product;
@@ -89,7 +90,7 @@ async function lookupBarcode(code){
         </div>
         <div class="hp-verdict ${a.cls}">${a.verdict}</div>
         ${a.problems.length?`<div class="hp-findings">${a.problems.map(f=>`<div class="hp-finding ${f.status==='haram'?'err':'warn'}"><strong>${f.status==='haram'?'✗':'?'} ${f.label}</strong>${f.note?`<div class="hp-fnote">${f.note}</div>`:''}</div>`).join('')}</div>`:''}
-        ${a.ingredients?`<details class="hp-ing"><summary>Composition complète</summary><div>${a.ingredients}</div></details>`:''}
+        ${a.ingredients?`<details class="hp-ing"><summary>${t('halal.fullComp')}</summary><div>${a.ingredients}</div></details>`:''}
       </div>`;
   }catch{
     box.innerHTML=`<div class="places-empty">${t('halal.netError')}</div>`;
@@ -157,7 +158,7 @@ function renderOrgs(){
     }).join('');
     card.innerHTML=`<div class="org-head ${o.trusted?'ok':'bad'}">
         <div class="org-name">${o.name}</div>
-        <span class="org-badge">${o.trusted?'✓ Digne de confiance':'✗ Rite non respecté'}</span>
+        <span class="org-badge">${o.trusted?t('halal.trusted'):t('halal.untrusted')}</span>
       </div>
       <div class="org-crit">${crits}</div>
       ${o.note?`<div class="org-note">⚠ ${o.note}</div>`:''}
@@ -169,13 +170,13 @@ function renderBrands(filter=''){
   const box=$('brands-list');box.innerHTML='';
   const f=filter.trim().toLowerCase();
   const items=CERT_BRANDS.filter(b=>!f||b.name.toLowerCase().includes(f)||b.cert.toLowerCase().includes(f));
-  if(!items.length){box.innerHTML='<div class="places-empty">Marque absente des relevés debat-halal.fr.</div>';return;}
+  if(!items.length){box.innerHTML=`<div class="places-empty">${t('halal.noBrand')}</div>`;return;}
   const wrap=document.createElement('div');
   wrap.style.cssText='border:1px solid var(--bor2);border-radius:var(--r-md);overflow:hidden;background:var(--sur2);';
   items.forEach(b=>{
     const row=document.createElement('div');row.className='brand-row';
     row.innerHTML=`<div class="brand-dot ${b.verdict==='halal'?'ok':'bad'}"></div>
-      <div style="flex:1"><div class="brand-name">${b.name}</div><div class="brand-cert">Certifié par : ${b.cert}</div></div>
+      <div style="flex:1"><div class="brand-name">${b.name}</div><div class="brand-cert">${t('halal.certBy')} ${b.cert}</div></div>
       <div style="font-size:0.62rem;font-weight:800;color:${b.verdict==='halal'?'var(--ok)':'#fb923c'};">${b.verdict==='halal'?'SEREIN':'DOUTEUX'}</div>`;
     wrap.appendChild(row);
   });
@@ -214,8 +215,8 @@ export function initHalal(){
   $('btn-halal-cam').addEventListener('click',()=>{_stream?stopCamera():startCamera();});
   $('btn-halal-lookup').addEventListener('click',()=>lookupBarcode($('halal-barcode-inp').value));
   $('halal-barcode-inp').addEventListener('keydown',e=>{if(e.key==='Enter')lookupBarcode(e.target.value);});
-  let t=null;
+  let deb=null;
   $('halal-add-inp').addEventListener('input',e=>{
-    clearTimeout(t);t=setTimeout(()=>searchAdditives(e.target.value),250);
+    clearTimeout(deb);deb=setTimeout(()=>searchAdditives(e.target.value),250);
   });
 }

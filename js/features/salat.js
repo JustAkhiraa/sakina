@@ -168,7 +168,7 @@ async function searchCity(q){
   try{
     const items=await geocodeCity(q);
     box.innerHTML='';
-    if(!items.length){box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:10px 0;">Aucun résultat</div>';return;}
+    if(!items.length){box.innerHTML=`<div style="font-size:0.75rem;color:var(--t3);padding:10px 0;">${t('com.noResult')}</div>`;return;}
     items.forEach(it=>{
       const div=document.createElement('div');div.className='city-result';
       const name=it.display_name.split(',')[0];
@@ -181,7 +181,7 @@ async function searchCity(q){
       box.appendChild(div);
     });
   }catch{
-    box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:10px 0;">Erreur réseau</div>';
+    box.innerHTML=`<div style="font-size:0.75rem;color:var(--t3);padding:10px 0;">${t('msg.netError')}</div>`;
   }
 }
 
@@ -195,7 +195,7 @@ function buildCalcMethods(){
       S.calcMethod=m.id;S.calcMethodPicked=true;  // choix explicite : l'auto ne l'écrase plus
       $('calc-name').textContent=m.name;
       save();if(S.lat!==null)renderPrayers();
-      closeSheet();toast(`Méthode : ${m.name}`);
+      closeSheet();toast(t('salat.methodIs',{name:m.name}));
     });
     bd.appendChild(div);
   });
