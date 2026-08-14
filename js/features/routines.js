@@ -38,7 +38,7 @@ function startRoutine(r){
 
 function renderStep(){
   const step=_routine.steps[_stepIdx];
-  $('rt-step-label').textContent=`Étape ${_stepIdx+1}/${_routine.steps.length}`;
+  $('rt-step-label').textContent=t('routines.step',{n:_stepIdx+1,total:_routine.steps.length});
   $('rt-step-title').textContent=step.title;
   // Arabe ou phonétique selon la préférence (bouton abc/عربي + réglage)
   const usePh=S.translit==='ph'&&step.ph;
@@ -52,7 +52,7 @@ function renderStep(){
   $('rt-step-fill').style.width=(_count/step.count*100)+'%';
   $('rt-total-fill').style.width=(doneTaps()/totalTaps(_routine)*100)+'%';
   $('rt-prev').style.visibility=_stepIdx>0?'visible':'hidden';
-  $('rt-next').textContent=_stepIdx<_routine.steps.length-1?'Étape suivante ›':'Terminer ✦';
+  $('rt-next').textContent=_stepIdx<_routine.steps.length-1?t('routines.nextStep'):'Terminer ✦';
 }
 
 function tap(){

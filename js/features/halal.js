@@ -92,7 +92,7 @@ async function lookupBarcode(code){
         ${a.ingredients?`<details class="hp-ing"><summary>Composition complète</summary><div>${a.ingredients}</div></details>`:''}
       </div>`;
   }catch{
-    box.innerHTML='<div class="places-empty">Erreur réseau — réessayez.</div>';
+    box.innerHTML=`<div class="places-empty">${t('halal.netError')}</div>`;
   }
 }
 
@@ -100,7 +100,7 @@ async function lookupBarcode(code){
 async function startCamera(){
   const video=$('halal-video');
   if(!('BarcodeDetector' in window)){
-    $('halal-cam-hint').textContent='Scanner caméra non supporté par ce navigateur — saisissez le code-barres à la main.';
+    $('halal-cam-hint').textContent=t('halal.noCamera');
     return;
   }
   try{
@@ -109,7 +109,7 @@ async function startCamera(){
     video.style.display='block';
     await video.play();
     const detector=new BarcodeDetector({formats:['ean_13','ean_8','upc_a','upc_e','code_128']});
-    $('halal-cam-hint').textContent='Visez le code-barres…';
+    $('halal-cam-hint').textContent=t('halal.aim');
     _scanLoop=setInterval(async()=>{
       try{
         const codes=await detector.detect(video);
@@ -123,7 +123,7 @@ async function startCamera(){
       }catch{}
     },350);
   }catch{
-    $('halal-cam-hint').textContent='Caméra refusée ou indisponible — saisissez le code à la main.';
+    $('halal-cam-hint').textContent=t('halal.camDenied');
   }
 }
 export function stopCamera(){

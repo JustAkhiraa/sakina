@@ -255,7 +255,7 @@ export function initTasbih(){
   $('btn-clr-hist').addEventListener('click',async()=>{
     const {confirmDlg}=await import('../core/ui.js');
     if(!await confirmDlg("Effacer tout l'historique ?",{okLabel:'Effacer'}))return;
-    S.history=[];save();buildHistory();vib(40);toast('Historique effacé');
+    S.history=[];save();buildHistory();vib(40);toast(t('tasbih.histCleared'));
   });
 
   $('btn-save-edit').addEventListener('click',()=>{
@@ -263,15 +263,15 @@ export function initTasbih(){
     S.title=f.title;S.startVal=f.startVal;S.reminder=f.reminder;S.goal=f.goal;
     if(S.count<S.startVal)S.count=S.startVal;
     save();renderTasbih();buildDhikrBar();closeSheet();
-    vib([40,20,40]);toast('✓ Sauvegardé');
+    vib([40,20,40]);toast(t('tasbih.saved'));
   });
 
   $('btn-pin-dhikr').addEventListener('click',()=>{
     const f=readEditForm();
-    if(S.customDhikrs.some(p=>p.name===f.title)){toast('Déjà épinglé');return;}
+    if(S.customDhikrs.some(p=>p.name===f.title)){toast(t('tasbih.alreadyPinned'));return;}
     S.customDhikrs.push({name:f.title,goal:f.goal,reminder:f.reminder});
     save();renderPresets();buildDhikrBar();
-    vib(24);toast(`★ « ${f.title} » épinglé`);
+    vib(24);toast(t('tasbih.pinned',{name:f.title}));
   });
 
   // Steppers de la sheet d'édition

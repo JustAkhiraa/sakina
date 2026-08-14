@@ -187,7 +187,7 @@ function renderList(filter=''){
   const f=filter.trim().toLowerCase();
   const items=data.chapters.filter(c=>!f||c.title.toLowerCase().includes(f)||String(c.n)===f);
   if(!items.length){
-    bd.innerHTML='<div class="places-empty">Aucun chapitre trouvé.</div>';
+    bd.innerHTML=`<div class="places-empty">${t('books.noChapter')}</div>`;
     return;
   }
   // Les livres dont les chapitres portent un champ `cat` sont regroupés par
@@ -487,7 +487,7 @@ function playName(n,card){
   _asmaAudio.src=asmaAudioSrc(n);_asmaPlaying=n;
   card.classList.add('playing');
   _asmaAudio.onended=()=>{card.classList.remove('playing');_asmaPlaying=null;};
-  _asmaAudio.onerror=()=>{card.classList.remove('playing');_asmaPlaying=null;toast('Récitation de ce nom bientôt disponible 🎧');};
+  _asmaAudio.onerror=()=>{card.classList.remove('playing');_asmaPlaying=null;toast(t('books.audioSoon'));};
   _asmaAudio.play().catch(()=>{});
 }
 
@@ -536,7 +536,7 @@ function renderNames(filter=''){
   const bd=$('book-bd');
   const f=filter.trim().toLowerCase();
   const items=_asma.names.filter(x=>!f||x.tr.toLowerCase().includes(f)||x.fr.toLowerCase().includes(f)||String(x.n)===f||x.ar.includes(filter.trim()));
-  if(!items.length){bd.innerHTML=nasheedBanner()+'<div class="places-empty">Aucun nom trouvé.</div>';bindNasheed(bd);return;}
+  if(!items.length){bd.innerHTML=nasheedBanner()+`<div class="places-empty">${t('books.noName')}</div>`;bindNasheed(bd);return;}
   bd.innerHTML=nasheedBanner()+`<div class="asma-list">${items.map(x=>`
     <div class="asma-card" data-n="${x.n}" role="button" tabindex="0" aria-label="Écouter ${x.tr}">
       <div class="asma-head">

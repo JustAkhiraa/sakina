@@ -4,6 +4,7 @@
    (heuristique), favoris, notes, reprise de lecture.
    Seule la récitation audio reste distante (CDN islamic.network). */
 import {S,save} from '../core/store.js';
+import {t} from '../lib/i18n.js';
 import {toast,burst,openSheet,closeSheet} from '../core/ui.js';
 import {SURAHS,JUZ_STARTS} from '../data/surahs.js';
 import {TR_BY_CODE} from '../data/translations.js';
@@ -188,7 +189,7 @@ async function renderSurah(n){
   _surah=n;
   const surah=SURAHS[n-1];
   $('quran-surah-name').textContent=`${surah.ar} — ${surah.fr}`;
-  $('quran-surah-info').textContent=`Sourate ${n} · ${surah.v} versets · ${surah.t==='Makki'?'La Mecque':'Médine'}`;
+  $('quran-surah-info').textContent=t('quran.surahMeta',{n,v:surah.v,origin:surah.t==='Makki'?t('quran.makki'):t('quran.madani')});
   $('quran-basmala').style.display=(n===9)?'none':'block';
 
   const loading=$('quran-loading'),errEl=$('quran-error'),versesEl=$('quran-verses');
@@ -344,7 +345,7 @@ export function initQuran(){
     const v=_verses.find(x=>x.verse_key===_selAyah);
     if(!v)return;
     navigator.clipboard.writeText(`${v.text_uthmani}\n[${_selAyah}]`)
-      .then(()=>toast('📋 Verset copié')).catch(()=>toast('Copie impossible'));
+      .then(()=>toast(t('quran.copied'))).catch(()=>toast('Copie impossible'));
     deselectAyah();
   });
 

@@ -135,17 +135,17 @@ function syncFmtSeg(){
 function wireLocation(){
   $('ob-gps').addEventListener('click',()=>{
     const st=$('ob-loc-status');
-    if(!navigator.geolocation){st.textContent='✗ Géolocalisation non disponible sur cet appareil';return;}
-    st.textContent='⟳ Détection en cours…';
+    if(!navigator.geolocation){st.textContent=t('ob.noGeo');return;}
+    st.textContent=t('salat.detecting');
     navigator.geolocation.getCurrentPosition(
       async pos=>{
         S.lat=pos.coords.latitude;S.lon=pos.coords.longitude;
         S.city=(await reverseGeocode(S.lat,S.lon)).city;
         save();emit('location-changed');
-        st.textContent=`✓ ${S.city||'Position détectée'}`;
+        st.textContent=`✓ ${S.city||t('salat.located')}`;
         vib([40,20,40]);
       },
-      ()=>{st.textContent='✗ GPS refusé — cherchez votre ville ci-dessous';},
+      ()=>{st.textContent=t('ob.gpsDenied');},
       {enableHighAccuracy:true,timeout:10000,maximumAge:300000}
     );
   });

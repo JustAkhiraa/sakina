@@ -3,6 +3,7 @@
    adresses comme halal engagerait notre responsabilité — la sensibilisation
    se fait dans Vérif' Halal → Comprendre. */
 import {S} from '../core/store.js';
+import {t} from '../lib/i18n.js';
 import {toast,openSheet} from '../core/ui.js';
 import {requestGPS} from './salat.js';
 
@@ -30,7 +31,7 @@ let _abort=null;
 async function search(){
   const list=$('places-list');
   if(S.lat===null){
-    list.innerHTML='<div class="places-empty">📍 Position requise — activez le GPS ou choisissez une ville dans l\'onglet Salat.</div>';
+    list.innerHTML=`<div class="places-empty">${t('places.needLoc')}</div>`;
     return;
   }
   if(_abort)_abort.abort();
@@ -96,7 +97,7 @@ function syncUI(){
 export function initPlaces(){
   $('btn-open-places').addEventListener('click',()=>{
     openSheet('sh-places',()=>{
-      if(S.lat===null){toast('Position requise');requestGPS();}
+      if(S.lat===null){toast(t('lbl.locNeeded'));requestGPS();}
       syncUI();search();
     });
   });

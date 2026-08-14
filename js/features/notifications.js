@@ -20,6 +20,7 @@
    étranglent en arrière-plan. */
 import {S,on} from '../core/store.js';
 import {toast} from '../core/ui.js';
+import {t} from '../lib/i18n.js';
 import {upcomingPrayers} from './salat.js';
 
 const MAX_DELAY=6*3600*1000;   // au-delà, on se réveille pour réarmer
@@ -35,10 +36,10 @@ const enabledFor=key=>{
 
 /* Demande l'autorisation. Renvoie true si elle est accordée. */
 export async function askNotifPermission(){
-  if(!notifSupported()){toast('Notifications non prises en charge');return false;}
+  if(!notifSupported()){toast(t('notif.unsupported'));return false;}
   if(Notification.permission==='granted')return true;
   if(Notification.permission==='denied'){
-    toast('Notifications bloquées dans les réglages du navigateur');
+    toast(t('notif.blocked'));
     return false;
   }
   const res=await Notification.requestPermission();
