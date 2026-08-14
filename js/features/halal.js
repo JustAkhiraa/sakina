@@ -136,24 +136,26 @@ export function stopCamera(){
 }
 
 /* ── Certifications : organismes & marques (source debat-halal.fr) ── */
+/* [cle du critere, cle i18n du libelle, vrai = bon signe].
+   Pour les quatre derniers c'est l'inverse : accepter est un mauvais signe. */
 const CRITS=[
-  ['salaried','Contrôleurs salariés',true],
-  ['everyProd','Présents à chaque production',true],
-  ['sacrif','Sacrificateurs salariés',true],
-  ['meca','Abattage mécanique',false],
-  ['electro','Électronarcose',false],
-  ['electrocution','Électrocution',false],
-  ['assommage','Assommage bovins',false],
+  ['salaried',     'crit.salaried',      true],
+  ['everyProd',    'crit.everyProd',     true],
+  ['sacrif',       'crit.sacrif',        true],
+  ['meca',         'crit.meca',          false],
+  ['electro',      'crit.electro',       false],
+  ['electrocution','crit.electrocution', false],
+  ['assommage',    'crit.assommage',     false],
 ];
 function renderOrgs(){
   const box=$('certs-orgs');box.innerHTML='';
   [...CERT_ORGS].sort((a,b)=>(b.trusted?1:0)-(a.trusted?1:0)).forEach(o=>{
     const card=document.createElement('div');card.className='org-card';
-    const crits=CRITS.map(([key,label,goodWhenTrue])=>{
-      const v=o[key];
-      if(v===null)return `<span class="crit">${label} : mitigé</span>`;
+    const crits=CRITS.map(([key,lk,goodWhenTrue])=>{
+      const v=o[key],label=t(lk);
+      if(v===null)return `<span class="crit">${label} : ${t('crit.mixed')}</span>`;
       const good=goodWhenTrue?v:!v;
-      const txt=goodWhenTrue?(v?'✓':'✗'):(v?'accepté ✗':'refusé ✓');
+      const txt=goodWhenTrue?(v?'✓':'✗'):(v?t('crit.accepted'):t('crit.refused'));
       return `<span class="crit ${good?'good':'bad'}">${label} : ${txt}</span>`;
     }).join('');
     card.innerHTML=`<div class="org-head ${o.trusted?'ok':'bad'}">
@@ -161,8 +163,8 @@ function renderOrgs(){
         <span class="org-badge">${o.trusted?t('halal.trusted'):t('halal.untrusted')}</span>
       </div>
       <div class="org-crit">${crits}</div>
-      ${o.note?`<div class="org-note">⚠ ${o.note}</div>`:''}
-      ${o.site?`<div class="org-site">${o.site}${o.created?` · depuis ${o.created}`:''}</div>`:''}`;
+      ${o.noteKey?`<div class="org-note">⚠ ${t(o.noteKey)}</div>`:''}
+      ${o.site?`<div class="org-site">${o.site}${o.created?` · ${t('crit.since',{y:o.created})}`:''}</div>`:''}`;
     box.appendChild(card);
   });
 }
