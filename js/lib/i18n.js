@@ -11,7 +11,7 @@
 
    Le contenu religieux (livres, invocations, traductions du Coran) n'est
    pas concerné : il possède ses propres fichiers de contenu. */
-import {S} from '../core/store.js';
+import {S,emit} from '../core/store.js';
 import {LANGS} from '../data/catalog.js';
 import fr from '../i18n/fr.js';
 import {AVAILABLE_LANGS,hasLang} from '../i18n/index.js';
@@ -67,6 +67,10 @@ export async function setLang(code){
   S.lang=code;
   await loadLang(code);
   applyI18n();
+  // Les sections construites en JS evaluent t() une seule fois : sans ce
+  // signal elles gardent la langue qu'elles avaient au moment du rendu.
+  // C'est ce qui laissait la page Priere et le Tasbih en francais.
+  emit('lang-changed',{lang:code});
 }
 
 /* Couverture d'une langue, pour les réglages : sur combien de clés du

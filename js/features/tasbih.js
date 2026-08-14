@@ -23,9 +23,10 @@ export function renderTasbih(){
   // Voxel, sinon la traduction courante. Pur (aucune mémoïsation fragile),
   // donc il redevient « APPUYER » dès qu'on quitte le skin.
   const cl=$('clabel');
-  if(cl)cl.textContent=(S.skin==='voxel')?'MINÉ':t('tap.label');
+  if(cl)cl.textContent=(S.skin==='voxel')?t('tasbih.mined'):t('tap.label');
   const nxt=S.reminder>0?(S.reminder-(S.count%S.reminder)):0;
-  $('t-sub').textContent=S.reminder>0?`Dans ${nxt} · Rappel ${S.reminder}`:(S.goal>0?`Objectif ${S.goal}`:'Comptage libre');
+  $('t-sub').textContent=S.reminder>0?t('tasbih.inNext',{n:nxt,r:S.reminder})
+    :(S.goal>0?t('tasbih.goalIs',{n:S.goal}):t('tasbih.free'));
   $('sp-laps').textContent=S.lapCount;
   $('sp-total').textContent=S.sessTot;
   $('sp-goal').textContent=S.goal>0?S.goal:'∞';
@@ -33,7 +34,7 @@ export function renderTasbih(){
   $('prog-fill').style.width=pct+'%';
   updateRing(pct);
   const lb=$('lap-badge');
-  if(S.lapCount>0){lb.textContent=`Tour ${S.lapCount+1}`;lb.classList.add('show');}
+  if(S.lapCount>0){lb.textContent=t('tasbih.lap',{n:S.lapCount+1});lb.classList.add('show');}
   else lb.classList.remove('show');
 }
 
@@ -101,7 +102,7 @@ let _immersiveOpen=false;
 function renderImmersive(milestone=false){
   $('imm-title').textContent=S.title;
   $('imm-count').textContent=S.count;
-  $('imm-sub').textContent=S.goal>0?`/ ${S.goal} · tour ${S.lapCount+1}`:'comptage libre';
+  $('imm-sub').textContent=S.goal>0?t('tasbih.immSub',{goal:S.goal,lap:S.lapCount+1}):t('tasbih.immFree');
   const c=$('imm-count');
   if(milestone){
     c.classList.add('gold');
@@ -184,12 +185,12 @@ export function buildDhikrBar(){
 function renderPresets(){
   const box=$('custom-presets');box.innerHTML='';
   if(!S.customDhikrs.length){
-    box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">Aucun préréglage — configurez un dhikr puis épinglez-le.</div>';
+    box.innerHTML=`<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">${t('tasbih.noPreset')}</div>`;
     return;
   }
   S.customDhikrs.forEach((p,i)=>{
     const row=document.createElement('div');row.className='preset-row';
-    row.innerHTML=`<div class="preset-name">★ ${p.name}</div><div class="preset-meta">obj ${p.goal} · rap ${p.reminder}</div><div class="preset-del">✕</div>`;
+    row.innerHTML=`<div class="preset-name">★ ${p.name}</div><div class="preset-meta">${t('tasbih.presetMeta',{goal:p.goal,rem:p.reminder})}</div><div class="preset-del">✕</div>`;
     row.querySelector('.preset-del').addEventListener('click',()=>{
       S.customDhikrs.splice(i,1);save();renderPresets();buildDhikrBar();toast(t('msg.presetDel'));
     });
@@ -223,7 +224,7 @@ function fmtTs(h){
 function buildHistory(){
   const bd=$('hist-bd');
   if(!S.history.length){
-    bd.innerHTML='<div style="text-align:center;padding:40px 0;font-size:0.82rem;color:var(--t3);">Aucune session sauvegardée</div>';
+    bd.innerHTML=`<div style="text-align:center;padding:40px 0;font-size:0.82rem;color:var(--t3);">${t('tasbih.noSession')}</div>`;
     return;
   }
   bd.innerHTML='';

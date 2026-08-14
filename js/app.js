@@ -2,12 +2,13 @@
 import {initUI} from './core/ui.js';
 import {initRouter,registerPageHook,goPage} from './core/router.js';
 import {ensureNavState,renderNavbar,goToStartPage} from './core/nav.js';
-import {initTasbih} from './features/tasbih.js';
-import {initSalat,onSalatShow} from './features/salat.js';
+import {initTasbih,renderTasbih,buildDhikrBar} from './features/tasbih.js';
+import {initSalat,onSalatShow,renderPrayers} from './features/salat.js';
 import {initQibla,onQiblaShow} from './features/qibla.js';
 import {initDuas} from './features/duas.js';
 import {initQuran,onQuranShow} from './features/quran.js';
 import {initSettings} from './features/settings.js';
+import {S,on} from './core/store.js';
 import {initNotifications} from './features/notifications.js';
 import {initTools} from './features/tools.js';
 import {initOnboarding} from './features/onboarding.js';
@@ -32,6 +33,14 @@ initTools();
 initPlaces();
 initHalal();
 initNotifications();  // reprend les rappels programmés au démarrage
+
+/* Changement de langue : les pages bâties en JS doivent être reconstruites,
+   applyI18n ne touchant que les éléments marqués data-i18n. */
+on('lang-changed',()=>{
+  if(S.lat!==null){renderPrayers();onQiblaShow();}
+  renderTasbih();buildDhikrBar();
+  renderNavbar();
+});
 initRoutines();
 initBooks();
 
