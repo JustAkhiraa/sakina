@@ -492,11 +492,12 @@
       <div class="gc" style="margin:0 16px 6px;border-radius:var(--r-xl);overflow:hidden;">
         <div class="row"><div class="row-ic">🔔</div><div class="row-body"><div class="row-name" data-i18n="row.notifEnable">Activer les rappels</div><div class="row-sub" id="notif-state" data-i18n="sub.notifPerm">Autorisation nécessaire</div></div><div class="tog" id="tog-notif"></div></div>
         <div id="notif-detail" style="display:none">
-          <div style="padding:10px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Prières annoncées</div>
+          <div style="padding:10px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;" data-i18n="set.notifWhich">Prières annoncées</div>
           <div id="notif-prayers" style="padding:2px 0;"></div>
-          <div style="padding:10px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;">Avance</div>
+          <div style="padding:10px 16px 4px;font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;" data-i18n="set.notifLead">Avance</div>
           <div style="padding:4px 16px 10px;"><select id="notif-offset" style="width:100%;padding:10px 12px;border-radius:12px;background:var(--c2);color:var(--t1);border:1px solid var(--bd);font-size:0.9rem;"></select></div>
           <div class="row" id="btn-notif-test"><div class="row-ic">📨</div><div class="row-body"><div class="row-name" data-i18n="row.notifTest">Envoyer un rappel d'essai</div><div class="row-sub" data-i18n="sub.notifTest">Vérifier que tout fonctionne</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+          <div class="row" id="btn-open-adhan"><div class="row-ic">🕌</div><div class="row-body"><div class="row-name" data-i18n="row.adhan">Appel à la prière (adhân)</div><div class="row-sub" id="adhan-sub" data-i18n="sub.adhanOff">Désactivé</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
           <div style="padding:8px 16px 14px;font-size:0.68rem;color:var(--t2);line-height:1.6;border-top:1px solid var(--bor);">
             <span data-i18n="set.notifLimit">Les rappels sont donnés tant que Sakina reste en mémoire. Si vous fermez complètement l'application ou redémarrez l'appareil, ils reprennent à sa réouverture.</span>
           </div>
@@ -563,6 +564,51 @@
     <div style="width:32px"></div>
   </div>
   <div class="gc" id="more-list" style="margin:8px 16px 20px;border-radius:var(--r-xl);overflow:hidden;"></div>
+</div>
+
+<!-- APPEL À LA PRIÈRE (ADHÂN) -->
+<div class="sheet" id="sh-adhan" style="max-height:96vh;">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title" data-i18n="row.adhan">Appel à la prière</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <div class="gc" style="border-radius:var(--r-xl);overflow:hidden;margin-bottom:10px;">
+      <div class="row" style="border-bottom:none"><div class="row-ic">🕌</div><div class="row-body"><div class="row-name" data-i18n="adhan.enable">Faire retentir l'adhân</div><div class="row-sub" data-i18n="adhan.enableSub">À l'heure exacte de chaque prière</div></div><div class="tog" id="tog-adhan"></div></div>
+    </div>
+
+    <div id="adhan-detail" style="display:none">
+      <div class="sl" style="margin:12px 0 6px" data-i18n="adhan.voice">Voix de l'appel</div>
+      <div class="gc" id="adhan-voices" style="border-radius:var(--r-xl);overflow:hidden;"></div>
+
+      <div class="sl" style="margin:14px 0 6px" data-i18n="adhan.fajrVoice">Voix du Fajr</div>
+      <div class="gc" id="adhan-fajr-voices" style="border-radius:var(--r-xl);overflow:hidden;"></div>
+
+      <div class="sl" style="margin:14px 0 6px" data-i18n="adhan.volume">Volume</div>
+      <div style="padding:4px 4px 10px;">
+        <input type="range" id="adhan-volume" min="0" max="100" step="5" style="width:100%;">
+      </div>
+
+      <div class="sl" style="margin:6px 0 6px" data-i18n="adhan.which">Prières annoncées</div>
+      <div class="gc" id="adhan-prayers" style="border-radius:var(--r-xl);overflow:hidden;"></div>
+
+      <div class="qada-ok" id="btn-adhan-play" style="text-align:center;margin:14px 0 8px;" data-i18n="adhan.listen">▶ Écouter l'appel</div>
+      <div class="qada-reset-btn" id="btn-adhan-stop" style="display:none;margin-bottom:8px;" data-i18n="adhan.stop">◼ Arrêter</div>
+
+      <div class="sl" style="margin:14px 0 6px" data-i18n="adhan.own">Votre enregistrement</div>
+      <div class="gc" style="border-radius:var(--r-xl);overflow:hidden;">
+        <div class="row" id="btn-adhan-import"><div class="row-ic">📥</div><div class="row-body"><div class="row-name" data-i18n="adhan.import">Importer un adhân</div><div class="row-sub" data-i18n="adhan.importSub">MP3 ou M4A · reste sur votre appareil</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+        <div class="row" id="btn-adhan-import-fajr"><div class="row-ic">🌅</div><div class="row-body"><div class="row-name" data-i18n="adhan.importFajr">Importer un adhân du Fajr</div><div class="row-sub" data-i18n="adhan.importFajrSub">Facultatif — l'appel du Fajr diffère</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
+        <div class="row" id="btn-adhan-clear" style="border-bottom:none;display:none"><div class="row-ic">🗑️</div><div class="row-body"><div class="row-name" data-i18n="adhan.clear">Retirer mes enregistrements</div></div></div>
+      </div>
+      <input type="file" id="adhan-file" accept="audio/*,.mp3,.m4a,.ogg,.wav,.aac" style="display:none">
+
+      <div style="font-size:0.72rem;color:var(--t3);line-height:1.6;margin-top:14px;padding:12px;background:var(--sur2);border-radius:var(--r-md);border:1px solid var(--bor2);" data-i18n-html="adhan.note">Aucun enregistrement n'est livré avec l'application : un adhân pèse plusieurs mégaoctets et les récitations diffusées en ligne ne sont pas toutes libres de droits. <strong>Importez la vôtre</strong> — elle reste sur votre appareil et fonctionne hors ligne.</div>
+      <div style="font-size:0.72rem;color:var(--t3);line-height:1.6;margin-top:8px;padding:12px;background:var(--sur2);border-radius:var(--r-md);border:1px solid var(--bor2);" data-i18n="adhan.limit">Comme les rappels, l'adhân ne peut retentir que si Sakina est encore en mémoire. Application complètement fermée, aucun son n'est possible sans serveur d'envoi.</div>
+    </div>
+  </div>
 </div>
 
 <!-- RECHERCHE GLOBALE -->

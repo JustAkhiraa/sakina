@@ -12,6 +12,8 @@ import {hasLang} from '../i18n/index.js';
 import {TRANSLATIONS} from '../data/translations.js';
 import {preloadTr,refreshTranslations} from './quran.js';
 import {notifSupported,notifPermission,askNotifPermission,scheduleNext,testNotification} from './notifications.js';
+import {availableVoices,playAdhan,stopAdhan,importAdhan,removeCustom,CUSTOM_KEY,CUSTOM_FAJR_KEY} from './adhan.js';
+import {getBlob} from '../lib/blobstore.js';
 import {renderTasbih,buildDhikrBar} from './tasbih.js';
 import {renderPrayers} from './salat.js';
 import {NAV_ITEMS,renderNavbar,visibleNavItems} from '../core/nav.js';
@@ -468,8 +470,8 @@ function notifSummary(){
   }
   if(state){
     state.textContent=perm==='denied'
-      ? 'Autorisation refusée — à réactiver dans le navigateur'
-      : perm==='granted' ? 'Autorisation accordée' : 'Autorisation nécessaire';
+      ? t('set.permDenied')
+      : perm==='granted' ? t('set.permGranted') : t('sub.notifPerm');
   }
   const det=$('notif-detail');
   if(det)det.style.display=S.notifEnabled?'block':'none';
@@ -523,6 +525,7 @@ function initNotifSettings(){
   }
   tog.classList.toggle('on',!!S.notifEnabled);
   buildNotifPrayers();buildNotifOffset();notifSummary();
+  wireAdhan();adhanSummary();
 
   tog.addEventListener('click',async()=>{
     if(S.notifEnabled){
@@ -541,6 +544,122 @@ function initNotifSettings(){
 
   $('btn-notif-test')?.addEventListener('click',async()=>{
     if(await testNotification())toast(t('set.reminderSent'));
+  });
+  $('btn-open-adhan')?.addEventListener('click',()=>openSheet('sh-adhan',buildAdhanSheet));
+}
+
+/* ── Appel à la prière ──
+   La liste des voix se reconstruit à chaque ouverture : elle dépend de ce que
+   l'utilisateur a importé et des fichiers réellement présents dans
+   assets/adhan/, qui peuvent apparaître entre deux versions. */
+function adhanSummary(){
+  const sub=$('adhan-sub');
+  if(!sub)return;
+  if(!S.adhanEnabled){sub.textContent=t('sub.adhanOff');return;}
+  const on=NOTIF_PRAYERS.filter(p=>(S.adhanPrayers||{})[p.key]!==false).length;
+  sub.textContent=t('sub.adhanOn',{n:on});
+}
+
+async function buildVoiceList(hostId,{fajr}){
+  const host=$(hostId);
+  if(!host)return;
+  host.innerHTML='';
+  const voices=await availableVoices({fajr});
+  // Le Fajr peut simplement suivre le choix général : c'est la valeur par
+  // défaut, et elle doit rester atteignable une fois qu'on l'a quittée.
+  const opts=fajr?[{id:'',label:t('adhan.sameAsOthers'),sub:''},...voices]:voices;
+  const cur=fajr?(S.adhanFajrVoice||''):(S.adhanVoice||'chime');
+  opts.forEach((v,i)=>{
+    const row=document.createElement('div');
+    row.className='ob-method-row'+(cur===v.id?' sel':'');
+    if(i===opts.length-1)row.style.borderBottom='none';
+    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${v.label}</div>${v.sub?`<div class="ob-method-desc">${v.sub}</div>`:''}</div>`;
+    row.addEventListener('click',()=>{
+      vib(16);
+      if(fajr)S.adhanFajrVoice=v.id; else S.adhanVoice=v.id;
+      save();buildVoiceList(hostId,{fajr});
+    });
+    host.appendChild(row);
+  });
+}
+
+function buildAdhanPrayers(){
+  const host=$('adhan-prayers');
+  if(!host)return;
+  host.innerHTML='';
+  NOTIF_PRAYERS.forEach((p,i)=>{
+    const on=(S.adhanPrayers||{})[p.key]!==false;
+    const row=document.createElement('div');
+    row.className='row';
+    if(i===NOTIF_PRAYERS.length-1)row.style.borderBottom='none';
+    row.innerHTML=`<div class="row-body"><div class="row-name">${p.name}</div></div><div class="tog${on?' on':''}"></div>`;
+    row.querySelector('.tog').addEventListener('click',function(){
+      const cur={...(S.adhanPrayers||{})};
+      cur[p.key]=cur[p.key]===false;
+      S.adhanPrayers=cur;save();
+      this.classList.toggle('on',cur[p.key]!==false);
+      adhanSummary();
+    });
+    host.appendChild(row);
+  });
+}
+
+async function buildAdhanSheet(){
+  const tog=$('tog-adhan');
+  if(tog)tog.classList.toggle('on',!!S.adhanEnabled);
+  const det=$('adhan-detail');
+  if(det)det.style.display=S.adhanEnabled?'block':'none';
+  const vol=$('adhan-volume');
+  if(vol)vol.value=Math.round((Number(S.adhanVolume)??0.8)*100);
+  buildAdhanPrayers();
+  await buildVoiceList('adhan-voices',{fajr:false});
+  await buildVoiceList('adhan-fajr-voices',{fajr:true});
+  const clear=$('btn-adhan-clear');
+  if(clear){
+    const has=await getBlob(CUSTOM_KEY)||await getBlob(CUSTOM_FAJR_KEY);
+    clear.style.display=has?'flex':'none';
+  }
+  adhanSummary();
+}
+
+function wireAdhan(){
+  $('tog-adhan')?.addEventListener('click',function(){
+    S.adhanEnabled=!S.adhanEnabled;save();
+    this.classList.toggle('on',S.adhanEnabled);
+    const det=$('adhan-detail');
+    if(det)det.style.display=S.adhanEnabled?'block':'none';
+    adhanSummary();
+  });
+  $('adhan-volume')?.addEventListener('input',e=>{
+    S.adhanVolume=Number(e.target.value)/100;save();
+  });
+  const playBtn=$('btn-adhan-play'),stopBtn=$('btn-adhan-stop');
+  playBtn?.addEventListener('click',async()=>{
+    // Ce bouton sert aussi à débloquer l'audio : un navigateur refuse de
+    // jouer un son tant que l'utilisateur n'a rien touché sur la page.
+    const how=await playAdhan('dhuhr');
+    if(how==='blocked')toast(t('adhan.blocked'));
+    if(stopBtn)stopBtn.style.display=how==='audio'?'block':'none';
+  });
+  stopBtn?.addEventListener('click',()=>{stopAdhan();stopBtn.style.display='none';});
+
+  // Un seul champ de fichier pour les deux imports : on retient lequel a été
+  // demandé, sinon le second bouton écraserait l'adhân général.
+  let _wantFajr=false;
+  const file=$('adhan-file');
+  $('btn-adhan-import')?.addEventListener('click',()=>{_wantFajr=false;file?.click();});
+  $('btn-adhan-import-fajr')?.addEventListener('click',()=>{_wantFajr=true;file?.click();});
+  file?.addEventListener('change',async e=>{
+    const f=e.target.files&&e.target.files[0];
+    e.target.value='';
+    if(!f)return;
+    if(await importAdhan(f,{fajr:_wantFajr}))buildAdhanSheet();
+  });
+  $('btn-adhan-clear')?.addEventListener('click',async()=>{
+    if(!await confirmDlg(t('adhan.clearAsk'),{okLabel:t('com.clear')}))return;
+    await removeCustom({fajr:false});
+    await removeCustom({fajr:true});
+    buildAdhanSheet();
   });
 }
 

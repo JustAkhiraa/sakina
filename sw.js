@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v63';
+const VERSION='sakina-v64';
 const SHELL=[
   './',
   './index.html',
@@ -10,12 +10,12 @@ const SHELL=[
   './js/app.js',
   './js/core/store.js','./js/core/ui.js','./js/core/audio.js','./js/core/router.js',
   './js/core/nav.js','./js/core/rewards.js','./js/core/devtools.js',
-  './js/lib/astro.js','./js/lib/hijri.js','./js/lib/i18n.js',
+  './js/lib/astro.js','./js/lib/hijri.js','./js/lib/i18n.js','./js/lib/blobstore.js',
   './js/data/catalog.js','./js/data/duas.js','./js/data/surahs.js','./js/data/additives.js',
   './js/data/routines.js','./js/data/halal-certifs.js','./js/data/translations.js',
   './js/features/tasbih.js','./js/features/salat.js','./js/features/qibla.js',
   './js/features/duas.js','./js/features/quran.js','./js/features/settings.js','./js/features/tools.js',
-  './js/features/notifications.js','./js/features/onboarding.js','./js/features/places.js','./js/features/halal.js','./js/features/routines.js','./js/features/books.js','./js/features/search.js',
+  './js/features/notifications.js','./js/features/onboarding.js','./js/features/places.js','./js/features/halal.js','./js/features/routines.js','./js/features/books.js','./js/features/search.js','./js/features/adhan.js',
   // Dictionnaires de langue (importes dynamiquement par lib/i18n.js)
   './js/i18n/index.js',
   './js/i18n/fr.js','./js/i18n/en.js','./js/i18n/es.js','./js/i18n/ru.js','./js/i18n/bs.js',

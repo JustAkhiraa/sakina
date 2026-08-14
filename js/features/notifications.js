@@ -22,6 +22,7 @@ import {S,on} from '../core/store.js';
 import {toast} from '../core/ui.js';
 import {t} from '../lib/i18n.js';
 import {upcomingPrayers} from './salat.js';
+import {playAdhan,adhanEnabledFor} from './adhan.js';
 
 const MAX_DELAY=6*3600*1000;   // au-delà, on se réveille pour réarmer
 let _timer=null;
@@ -82,11 +83,14 @@ export function scheduleNext(){
     return next;
   }
   _timer=setTimeout(async()=>{
-    const heure=next.at.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+    const heure=next.at.toLocaleTimeString(S.lang||'fr',{hour:'2-digit',minute:'2-digit'});
     await show(
-      offset?`${next.name} dans ${S.notifOffset} min`:`C'est l'heure de ${next.name}`,
-      offset?`${next.name} à ${heure}`:`${next.arabic} · ${heure}`
+      offset?t('notif.inMin',{name:next.name,n:S.notifOffset}):t('notif.itsTime',{name:next.name}),
+      offset?t('notif.atTime',{name:next.name,time:heure}):`${next.arabic} · ${heure}`
     );
+    // L'adhân ne se déclenche qu'à l'heure exacte : le faire retentir avec le
+    // rappel d'avance annoncerait la prière avant qu'elle ne soit entrée.
+    if(!offset&&adhanEnabledFor(next.key))playAdhan(next.key);
     scheduleNext();
   },delay);
   return next;
@@ -95,7 +99,7 @@ export function scheduleNext(){
 /* Notification de démonstration, pour que l'utilisateur vérifie que ça marche. */
 export async function testNotification(){
   if(!await askNotifPermission())return false;
-  await show('Sakina','Les rappels de prière sont actifs.');
+  await show('Sakina',t('notif.testBody'));
   return true;
 }
 
