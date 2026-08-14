@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "念作证词。",
   "gd.wudu.s8.p2": "保持从容，不慌不忙地前往礼拜。",
   "gd.wudu.s8.p3": "若小净失效，须在礼拜前重做。",
+  "qact.listen": "聆听",
+  "qact.transl": "译文",
+  "qact.note": "笔记",
+  "qact.fav": "收藏",
+  "qact.copy": "复制",
 };

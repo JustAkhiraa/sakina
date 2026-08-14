@@ -7,10 +7,21 @@ import {S,save} from '../core/store.js';
 import {t} from '../lib/i18n.js';
 import {toast,burst,openSheet,closeSheet} from '../core/ui.js';
 import {SURAHS,JUZ_STARTS} from '../data/surahs.js';
+import {SURAH_NAMES} from '../data/surah-names.js';
 import {TR_BY_CODE} from '../data/translations.js';
 import {toArabicNum} from '../lib/hijri.js';
 
 const $=id=>document.getElementById(id);
+
+/* Le sens du nom de la sourate dans la langue du lecteur : « 开端章 » plutot
+   que le seul « Al-Fatiha », qui ne dit rien a qui ne lit pas l'alphabet
+   latin. Toutes les langues n'en disposent pas (voir surah-names.js) : sans
+   entree, on n'affiche que la translitteration et le nom arabe, plutot que
+   de servir un nom anglais a un lecteur hindi. */
+const surahMeaning=n=>{
+  const list=SURAH_NAMES[S.lang];
+  return list&&list[n-1]?list[n-1]:'';
+};
 
 let _surah=1,_verses=[],_transl={},_selAyah=null;
 const _cache={};
@@ -210,7 +221,8 @@ async function renderSurah(n){
   if(_playingKey)stopPlayback(); // changer de sourate arrête la récitation
   _surah=n;
   const surah=SURAHS[n-1];
-  $('quran-surah-name').textContent=`${surah.ar} — ${surah.fr}`;
+  const mean=surahMeaning(n);
+  $('quran-surah-name').textContent=`${surah.ar} — ${surah.fr}`+(mean?` · ${mean}`:'');
   $('quran-surah-info').textContent=t('quran.surahMeta',{n,v:surah.v,origin:surah.t==='Makki'?t('quran.makki'):t('quran.madani')});
   $('quran-basmala').style.display=(n===9)?'none':'block';
 
@@ -267,7 +279,7 @@ function buildSurahList(filter=''){
     .forEach(s=>{
       const div=document.createElement('div');
       div.className='surah-item'+(s.n===_surah?' active-surah':'');
-      div.innerHTML=`<div class="surah-num">${s.n}</div><div style="flex:1"><div class="surah-fr">${s.fr}</div><div class="surah-info">${s.v} ${t('quran.verses')}</div></div><div class="surah-ar">${s.ar}</div><div class="surah-type ${s.t.toLowerCase()}">${s.t==='Makki'?t('quran.makki'):t('quran.madani')}</div>`;
+      div.innerHTML=`<div class="surah-num">${s.n}</div><div style="flex:1"><div class="surah-fr">${s.fr}</div><div class="surah-info">${surahMeaning(s.n)?surahMeaning(s.n)+' · ':''}${s.v} ${t('quran.verses')}</div></div><div class="surah-ar">${s.ar}</div><div class="surah-type ${s.t.toLowerCase()}">${s.t==='Makki'?t('quran.makki'):t('quran.madani')}</div>`;
       div.addEventListener('click',()=>{
         closeSheet();
         $('quran-scroll').scrollTop=0;
@@ -333,7 +345,8 @@ export function refreshQuranHeader(){
   if(!_surah)return;
   const s=SURAHS[_surah-1];
   if(!s)return;
-  $('quran-surah-name').textContent=`${s.ar} — ${s.fr}`;
+  const mean=surahMeaning(_surah);
+  $('quran-surah-name').textContent=`${s.ar} — ${s.fr}`+(mean?` · ${mean}`:'');
   $('quran-surah-info').textContent=t('quran.surahMeta',
     {n:_surah,v:s.v,origin:s.t==='Makki'?t('quran.makki'):t('quran.madani')});
 }

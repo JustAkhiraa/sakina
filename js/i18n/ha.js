@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "Faɗi kalmar shahada.",
   "gd.wudu.s8.p2": "Ka natsu ka nufi salla ba tare da gaggawa ba.",
   "gd.wudu.s8.p3": "Idan alwala ta warware, sai a sake yi kafin salla.",
+  "qact.listen": "Saurara",
+  "qact.transl": "Fassara",
+  "qact.note": "Bayani",
+  "qact.fav": "Fi so",
+  "qact.copy": "Kwafi",
 };

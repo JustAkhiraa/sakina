@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "信仰告白を唱える。",
   "gd.wudu.s8.p2": "落ち着きを保ち、急がずに礼拝へ向かう。",
   "gd.wudu.s8.p3": "ウドゥーが破れたら、礼拝前にやり直す必要がある。",
+  "qact.listen": "聴く",
+  "qact.transl": "訳",
+  "qact.note": "メモ",
+  "qact.fav": "お気に入り",
+  "qact.copy": "コピー",
 };

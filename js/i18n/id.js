@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "Ucapkan syahadat.",
   "gd.wudu.s8.p2": "Tetap tenang dan menuju salat tanpa tergesa-gesa.",
   "gd.wudu.s8.p3": "Jika wudu batal, harus diulang sebelum salat.",
+  "qact.listen": "Dengarkan",
+  "qact.transl": "Terjemahan",
+  "qact.note": "Catatan",
+  "qact.fav": "Favorit",
+  "qact.copy": "Salin",
 };

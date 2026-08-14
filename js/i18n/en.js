@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "Say the testimony of faith.",
   "gd.wudu.s8.p2": "Stay calm and go to the prayer without rushing.",
   "gd.wudu.s8.p3": "If the wudu is broken, it must be redone before praying.",
+  "qact.listen": "Listen",
+  "qact.transl": "Translation",
+  "qact.note": "Note",
+  "qact.fav": "Favourite",
+  "qact.copy": "Copy",
 };

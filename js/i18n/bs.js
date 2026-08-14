@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "Izgovoriti šehadet.",
   "gd.wudu.s8.p2": "Ostati smiren i poći na namaz bez žurbe.",
   "gd.wudu.s8.p3": "Ako se abdest pokvari, mora se ponoviti prije namaza.",
+  "qact.listen": "Slušaj",
+  "qact.transl": "Prijevod",
+  "qact.note": "Bilješka",
+  "qact.fav": "Favorit",
+  "qact.copy": "Kopiraj",
 };

@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "Dheh shahaadada.",
   "gd.wudu.s8.p2": "Degganaanta ilaali oo salaadda u aad adigoon degdegin.",
   "gd.wudu.s8.p3": "Haddii weysadu buriso, waa in dib loo qaato ka hor salaadda.",
+  "qact.listen": "Dhagayso",
+  "qact.transl": "Tarjumaad",
+  "qact.note": "Qoraal",
+  "qact.fav": "Jecel",
+  "qact.copy": "Koobi",
 };

@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "Ucapkan syahadah.",
   "gd.wudu.s8.p2": "Kekal tenang dan menuju solat tanpa tergesa-gesa.",
   "gd.wudu.s8.p3": "Jika wuduk batal, ia perlu diulang sebelum solat.",
+  "qact.listen": "Dengar",
+  "qact.transl": "Terjemahan",
+  "qact.note": "Nota",
+  "qact.fav": "Kegemaran",
+  "qact.copy": "Salin",
 };

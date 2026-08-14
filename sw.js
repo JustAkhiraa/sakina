@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v71';
+const VERSION='sakina-v72';
 const SHELL=[
   './',
   './index.html',
@@ -11,7 +11,7 @@ const SHELL=[
   './js/core/store.js','./js/core/ui.js','./js/core/audio.js','./js/core/router.js',
   './js/core/nav.js','./js/core/rewards.js','./js/core/devtools.js',
   './js/lib/astro.js','./js/lib/hijri.js','./js/lib/i18n.js','./js/lib/blobstore.js',
-  './js/data/catalog.js','./js/data/duas.js','./js/data/surahs.js','./js/data/additives.js',
+  './js/data/catalog.js','./js/data/duas.js','./js/data/surahs.js','./js/data/surah-names.js','./js/data/additives.js',
   './js/data/routines.js','./js/data/halal-certifs.js','./js/data/translations.js',
   './js/features/tasbih.js','./js/features/salat.js','./js/features/qibla.js',
   './js/features/duas.js','./js/features/quran.js','./js/features/settings.js','./js/features/tools.js',

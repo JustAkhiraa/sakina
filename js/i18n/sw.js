@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "Sema shahada.",
   "gd.wudu.s8.p2": "Baki mtulivu na uende swalani bila kuharakisha.",
   "gd.wudu.s8.p3": "Ikiwa udhu umevunjika, ni lazima urudiwe kabla ya kuswali.",
+  "qact.listen": "Sikiliza",
+  "qact.transl": "Tafsiri",
+  "qact.note": "Dokezo",
+  "qact.fav": "Kipendwa",
+  "qact.copy": "Nakili",
 };

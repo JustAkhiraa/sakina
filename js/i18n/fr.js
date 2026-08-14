@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "Dire l'attestation de foi.",
   "gd.wudu.s8.p2": "Garder le calme et partir vers la prière sans se précipiter.",
   "gd.wudu.s8.p3": "Si les ablutions sont annulées, il faut les refaire avant de prier.",
+  "qact.listen": "Écouter",
+  "qact.transl": "Traduction",
+  "qact.note": "Note",
+  "qact.fav": "Favori",
+  "qact.copy": "Copier",
 };

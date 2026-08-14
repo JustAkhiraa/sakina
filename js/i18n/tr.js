@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "Kelime-i şehadeti söylemek.",
   "gd.wudu.s8.p2": "Sükûneti koruyup acele etmeden namaza gitmek.",
   "gd.wudu.s8.p3": "Abdest bozulursa namazdan önce yeniden alınmalıdır.",
+  "qact.listen": "Dinle",
+  "qact.transl": "Çeviri",
+  "qact.note": "Not",
+  "qact.fav": "Favori",
+  "qact.copy": "Kopyala",
 };

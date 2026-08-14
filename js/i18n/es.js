@@ -754,4 +754,9 @@ export default {
   "gd.wudu.s8.p1": "Pronunciar el testimonio de fe.",
   "gd.wudu.s8.p2": "Mantener la calma e ir a la oración sin apresurarse.",
   "gd.wudu.s8.p3": "Si la ablución se anula, hay que rehacerla antes de rezar.",
+  "qact.listen": "Escuchar",
+  "qact.transl": "Traducción",
+  "qact.note": "Nota",
+  "qact.fav": "Favorito",
+  "qact.copy": "Copiar",
 };
