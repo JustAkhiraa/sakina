@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "Matrix",
   "skn.crt": "CRT ya zamani",
   "skn.ff7": "Midgar",
+  "set.navOrder": "Mpangilio na mwonekano",
+  "sub.quranTrNote": "Lugha unayowasha hupakuliwa mara moja, kisha inabaki kusomeka bila mtandao.",
+  "set.startPageSet": "Ukurasa wa kuanzia: {name}",
 };

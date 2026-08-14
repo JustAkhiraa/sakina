@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "Матрица",
   "skn.crt": "Ретро CRT",
   "skn.ff7": "Мидгар",
+  "set.navOrder": "Порядок и видимость",
+  "sub.quranTrNote": "Включённый язык скачивается один раз и затем доступен офлайн.",
+  "set.startPageSet": "Стартовая страница: {name}",
 };

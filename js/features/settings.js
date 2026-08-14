@@ -410,7 +410,7 @@ function buildNavEditor(){
       : `<div class="tog ${hidden?'':'on'}" data-act="toggle" role="switch" aria-checked="${!hidden}" aria-label="Afficher"></div>`;
     row.innerHTML=`
       <div class="nav-edit-icon">${item.icon}</div>
-      <div class="nav-edit-name">${item.label}</div>
+      <div class="nav-edit-name">${tf(item.i18n,item.label)}</div>
       <button class="nav-edit-btn" data-act="up"  ${idx===0?'disabled':''} aria-label="Monter">▲</button>
       <button class="nav-edit-btn" data-act="down" ${idx===order.length-1?'disabled':''} aria-label="Descendre">▼</button>
       ${togHtml}`;
@@ -429,7 +429,7 @@ function buildStartPageSelect(){
   sel.innerHTML='';
   visibleNavItems().forEach(it=>{
     const opt=document.createElement('option');
-    opt.value=it.id;opt.textContent=it.label;
+    opt.value=it.id;opt.textContent=tf(it.i18n,it.label);
     if(it.id===S.nav.startPage)opt.selected=true;
     sel.appendChild(opt);
   });
@@ -732,6 +732,30 @@ function buildQuranTrList(){
     });
     host.appendChild(row);
   });
+}
+
+/* ── Rafraichissement au changement de langue ──
+   applyI18n ne touche que les elements marques data-i18n. Tout ce que les
+   reglages batissent en JS — grilles de themes, liste des sons, editeur de
+   navigation, options de rappel — garde la langue qu'il avait au moment du
+   rendu. C'est ce qui laissait « Melodique & resonant » ou « 5 minutes
+   avant » en francais sous une interface japonaise. */
+export function refreshSettings(){
+  buildBaseThemeGrid('base-theme-grid');
+  buildSkinGrid('skin-grid');
+  buildAccentGrid();
+  buildSoundList();
+  buildAvatarGrid();
+  buildTitleList();
+  buildQuranTrList();
+  buildNavEditor();
+  buildStartPageSelect();
+  buildNotifPrayers();
+  buildNotifOffset();
+  notifSummary();
+  adhanSummary();
+  renderStats();
+  syncPracticeRows();
 }
 
 export function initSettings(){

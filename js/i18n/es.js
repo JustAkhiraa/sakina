@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "Matrix",
   "skn.crt": "CRT retro",
   "skn.ff7": "Midgar",
+  "set.navOrder": "Orden y visibilidad",
+  "sub.quranTrNote": "Un idioma activado se descarga una vez y luego queda legible sin conexión.",
+  "set.startPageSet": "Página de inicio: {name}",
 };

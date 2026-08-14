@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "Matrix",
   "skn.crt": "CRT hore",
   "skn.ff7": "Midgar",
+  "set.navOrder": "Kala horreyn iyo muuqasho",
+  "sub.quranTrNote": "Luqadda aad shido hal mar ayaa la soo dejiyaa, kadibna offline ayaa la akhrisan karaa.",
+  "set.startPageSet": "Bogga bilowga: {name}",
 };

@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "ماتریکس",
   "skn.crt": "CRT قدیمی",
   "skn.ff7": "میدگار",
+  "set.navOrder": "ترتیب و نمایش",
+  "sub.quranTrNote": "زبانی که فعال کنید یک بار دانلود می‌شود و سپس آفلاین خواندنی می‌ماند.",
+  "set.startPageSet": "صفحهٔ آغازین: {name}",
 };

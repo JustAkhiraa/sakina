@@ -7,7 +7,7 @@ import {initSalat,onSalatShow,renderPrayers} from './features/salat.js';
 import {initQibla,onQiblaShow} from './features/qibla.js';
 import {initDuas,refreshDuas} from './features/duas.js';
 import {initQuran,onQuranShow,refreshQuranHeader} from './features/quran.js';
-import {initSettings} from './features/settings.js';
+import {initSettings,refreshSettings} from './features/settings.js';
 import {S,on} from './core/store.js';
 import {initNotifications} from './features/notifications.js';
 import {initTools} from './features/tools.js';
@@ -41,7 +41,7 @@ on('lang-changed',()=>{
   if(S.lat!==null){renderPrayers();onQiblaShow();}
   renderTasbih();buildDhikrBar();
   renderNavbar();
-  refreshDuas();refreshQuranHeader();
+  refreshDuas();refreshQuranHeader();refreshSettings();
 });
 initRoutines();
 initBooks();

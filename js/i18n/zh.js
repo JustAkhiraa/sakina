@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "矩阵",
   "skn.crt": "复古显像管",
   "skn.ff7": "米德加",
+  "set.navOrder": "顺序与显示",
+  "sub.quranTrNote": "启用的语言只下载一次，之后离线也可阅读。",
+  "set.startPageSet": "启动页面：{name}",
 };

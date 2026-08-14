@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "マトリックス",
   "skn.crt": "レトロCRT",
   "skn.ff7": "ミッドガル",
+  "set.navOrder": "並び順と表示",
+  "sub.quranTrNote": "有効にした言語は一度だけダウンロードされ、その後はオフラインでも読めます。",
+  "set.startPageSet": "起動ページ：{name}",
 };

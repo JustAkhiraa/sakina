@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "ম্যাট্রিক্স",
   "skn.crt": "রেট্রো CRT",
   "skn.ff7": "মিডগার",
+  "set.navOrder": "ক্রম ও দৃশ্যমানতা",
+  "sub.quranTrNote": "সক্রিয় করা ভাষা একবার ডাউনলোড হয়, তারপর অফলাইনেও পড়া যায়।",
+  "set.startPageSet": "শুরুর পাতা: {name}",
 };

@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "Matrix",
   "skn.crt": "Retro CRT",
   "skn.ff7": "Midgar",
+  "set.navOrder": "Redoslijed i vidljivost",
+  "sub.quranTrNote": "Uključeni jezik preuzima se jednom i potom ostaje čitljiv bez interneta.",
+  "set.startPageSet": "Početna stranica: {name}",
 };

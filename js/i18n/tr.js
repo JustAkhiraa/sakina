@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "Matrix",
   "skn.crt": "Retro CRT",
   "skn.ff7": "Midgar",
+  "set.navOrder": "Sıra ve görünürlük",
+  "sub.quranTrNote": "Etkinleştirdiğiniz dil bir kez indirilir, sonra çevrimdışı okunabilir kalır.",
+  "set.startPageSet": "Açılış sayfası: {name}",
 };

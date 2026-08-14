@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "ماتريكس",
   "skn.crt": "شاشة قديمة",
   "skn.ff7": "ميدغار",
+  "set.navOrder": "الترتيب والظهور",
+  "sub.quranTrNote": "اللغة التي تفعّلها تُنزَّل مرة واحدة، ثم تبقى قابلة للقراءة دون اتصال.",
+  "set.startPageSet": "صفحة البداية: {name}",
 };

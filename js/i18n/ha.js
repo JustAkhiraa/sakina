@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "Matrix",
   "skn.crt": "Retro CRT",
   "skn.ff7": "Midgar",
+  "set.navOrder": "Tsari da bayyanuwa",
+  "sub.quranTrNote": "Harshen da ka kunna ana sauke shi sau ɗaya, sannan ya ci gaba da karantuwa ba tare da yanar gizo ba.",
+  "set.startPageSet": "Shafin farawa: {name}",
 };

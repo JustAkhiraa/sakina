@@ -906,4 +906,7 @@ export default {
   "skn.matrix": "मैट्रिक्स",
   "skn.crt": "रेट्रो CRT",
   "skn.ff7": "मिडगार",
+  "set.navOrder": "क्रम व दृश्यता",
+  "sub.quranTrNote": "सक्रिय की गई भाषा एक बार डाउनलोड होती है, फिर ऑफ़लाइन पढ़ी जा सकती है।",
+  "set.startPageSet": "प्रारंभ पृष्ठ: {name}",
 };
