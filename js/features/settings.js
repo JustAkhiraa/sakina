@@ -7,7 +7,8 @@ import {toast,confirmDlg,openSheet,closeSheet} from '../core/ui.js';
 import {playSound,vib} from '../core/audio.js';
 import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS,BASE_THEMES,AVATARS,TITLES,SKINS} from '../data/catalog.js';
 import {isUnlocked,remainingFor,fmtGoal,rewardsSummary,nextReward,allRewards} from '../core/rewards.js';
-import {applyI18n,setLang,t} from '../lib/i18n.js';
+import {applyI18n,setLang,t,n as num} from '../lib/i18n.js';
+import {hasLang} from '../i18n/index.js';
 import {TRANSLATIONS} from '../data/translations.js';
 import {preloadTr,refreshTranslations} from './quran.js';
 import {notifSupported,notifPermission,askNotifPermission,scheduleNext,testNotification} from './notifications.js';
@@ -63,19 +64,19 @@ export function buildBaseThemeGrid(targetId='base-theme-grid',opts={onlyUnlocked
     {label:'Clairs',  filter:t=>t.light},
   ];
   const sortFn=(a,b)=>(a.unlockAt|0)-(b.unlockAt|0);
-  const makeCell=(t)=>{
-    const unlocked=isUnlocked(t);
+  const makeCell=(th)=>{
+    const unlocked=isUnlocked(th);
     const el=document.createElement('div');
-    el.className='tsw'+(S.baseTheme===t.id?' active':'')+(unlocked?'':' locked');
-    const border=t.light?'rgba(0,0,0,0.2)':'rgba(255,255,255,0.25)';
+    el.className='tsw'+(S.baseTheme===th.id?' active':'')+(unlocked?'':' locked');
+    const border=th.light?'rgba(0,0,0,0.2)':'rgba(255,255,255,0.25)';
     const badge=unlocked
-      ? (t.bonus?'<span class="tsw-badge">★</span>':'')
+      ? (th.bonus?'<span class="tsw-badge">★</span>':'')
       : `<span class="tsw-lock" aria-label="Verrouillé">🔒</span>`;
-    const sub=unlocked?t.name:`${t.name} · ${fmtGoal(t.unlockAt)}`;
-    el.innerHTML=`<div class="sdot" style="background:${t.swatch};border-color:${border}">${badge}</div><div class="sname">${sub}</div>`;
+    const sub=unlocked?th.name:`${th.name} · ${fmtGoal(th.unlockAt)}`;
+    el.innerHTML=`<div class="sdot" style="background:${th.swatch};border-color:${border}">${badge}</div><div class="sname">${sub}</div>`;
     el.addEventListener('click',()=>{
-      if(!unlocked){toast(`Ambiance verrouillée — encore ${remainingFor(t).toLocaleString('fr-FR')} dhikr`);vib(10);return;}
-      S.baseTheme=t.id;S.lightMode=t.light;
+      if(!unlocked){toast(t('msg.lockedTheme',{n:num(remainingFor(th))}));vib(10);return;}
+      S.baseTheme=th.id;S.lightMode=th.light;
       save();applyTheme();
       buildBaseThemeGrid('base-theme-grid');
       buildBaseThemeGrid('ob-base-theme-grid');
@@ -113,7 +114,7 @@ function buildSkinGrid(targetId='skin-grid',opts={onlyUnlocked:true}){
       <div class="skin-info"><div class="skin-name">${s.name}</div>
       <div class="skin-desc">${meta}</div></div>`;
     el.addEventListener('click',()=>{
-      if(!unlocked){toast(`Skin verrouillé — encore ${remainingFor(s).toLocaleString('fr-FR')} dhikr`);vib(10);return;}
+      if(!unlocked){toast(t('msg.lockedSkin',{n:num(remainingFor(s))}));vib(10);return;}
       S.skin=s.id;save();applyTheme();renderTasbih();buildSkinGrid('skin-grid');vib(18);
       toast(`✦ Skin « ${s.name} »`);
     });
@@ -165,11 +166,11 @@ function buildSoundList(opts={onlyUnlocked:true}){
       const unlocked=isUnlocked(s);
       const el=document.createElement('div');
       el.className='sound-chip'+(S.sound===s.id?' active':'')+(unlocked?'':' locked');
-      el.title=unlocked?s.desc:`Débloqué à ${fmtGoal(s.unlockAt)} dhikr`;
+      el.title=unlocked?s.desc:t('msg.unlockAt',{n:fmtGoal(s.unlockAt)});
       const label=unlocked?s.name:`${s.name} · ${fmtGoal(s.unlockAt)}`;
       el.innerHTML=`<span class="sc-dot"></span>${label}${unlocked?'':' <span class="sc-lock">🔒</span>'}`;
       el.addEventListener('click',()=>{
-        if(!unlocked){toast(`Son verrouillé — encore ${remainingFor(s).toLocaleString('fr-FR')} dhikr`);vib(10);return;}
+        if(!unlocked){toast(t('msg.lockedSound',{n:num(remainingFor(s))}));vib(10);return;}
         S.sound=s.id;save();buildSoundList();playSound(s.id);vib(16);
       });
       grid.appendChild(el);
@@ -188,7 +189,7 @@ function buildAvatarGrid(opts={onlyUnlocked:true}){
     const sub=unlocked?a.name:`${fmtGoal(a.unlockAt)}`;
     el.innerHTML=`<div class="av-emoji">${unlocked?a.emoji:'🔒'}</div><div class="av-name">${sub}</div>`;
     el.addEventListener('click',()=>{
-      if(!unlocked){toast(`Avatar verrouillé — encore ${remainingFor(a).toLocaleString('fr-FR')} dhikr`);vib(10);return;}
+      if(!unlocked){toast(t('msg.lockedAvatar',{n:num(remainingFor(a))}));vib(10);return;}
       S.avatar=a.id;save();buildAvatarGrid();renderStats();vib(16);
     });
     grid.appendChild(el);
@@ -198,17 +199,17 @@ function buildAvatarGrid(opts={onlyUnlocked:true}){
 /* ── Titres ── L'emoji devient le pictogramme et se colle au nom affiché. */
 function buildTitleList(opts={onlyUnlocked:true}){
   const list=$('title-list');if(!list)return;list.innerHTML='';
-  TITLES.filter(t=>opts.onlyUnlocked?isUnlocked(t):true).forEach(t=>{
-    const unlocked=isUnlocked(t);
+  TITLES.filter(ti=>opts.onlyUnlocked?isUnlocked(ti):true).forEach(ti=>{
+    const unlocked=isUnlocked(ti);
     const row=document.createElement('div');
-    row.className='title-row'+(S.titleId===t.id?' sel':'')+(unlocked?'':' locked');
-    row.innerHTML=`<div class="title-emoji">${t.emoji||'✦'}</div>
-      <div style="flex:1"><div class="title-name">${t.name}</div>
-      <div class="title-sub">${unlocked?'Débloqué':'Palier '+fmtGoal(t.unlockAt)+' dhikr'}</div></div>
+    row.className='title-row'+(S.titleId===ti.id?' sel':'')+(unlocked?'':' locked');
+    row.innerHTML=`<div class="title-emoji">${ti.emoji||'✦'}</div>
+      <div style="flex:1"><div class="title-name">${ti.name}</div>
+      <div class="title-sub">${unlocked?t('reward.unlocked'):t('msg.unlockAt',{n:fmtGoal(ti.unlockAt)})}</div></div>
       <div class="title-lock">${unlocked?'':'🔒'}</div>`;
     row.addEventListener('click',()=>{
-      if(!unlocked){toast(`Titre verrouillé — encore ${remainingFor(t).toLocaleString('fr-FR')} dhikr`);vib(10);return;}
-      S.titleId=t.id;save();buildTitleList();renderStats();vib(16);
+      if(!unlocked){toast(t('msg.lockedTitle',{n:num(remainingFor(ti))}));vib(10);return;}
+      S.titleId=ti.id;save();buildTitleList();renderStats();vib(16);
     });
     list.appendChild(row);
   });
@@ -254,8 +255,8 @@ const qdaTotal=()=>QADA_PRAYERS.reduce((s,p)=>s+(S.qada[p.key]||0),0);
 
 function currentAvatar(){return (AVATARS.find(a=>a.id===S.avatar&&isUnlocked(a))||AVATARS[0]).emoji;}
 function currentTitle(){
-  const t=TITLES.find(t=>t.id===S.titleId&&isUnlocked(t))||TITLES[0];
-  return `${t.emoji||''} ${t.name}`.trim();
+  const ti=TITLES.find(x=>x.id===S.titleId&&isUnlocked(x))||TITLES[0];
+  return `${ti.emoji||''} ${ti.name}`.trim();
 }
 
 /* ── Système de flamme progressive ─────────────────────────────────────
@@ -320,7 +321,7 @@ function buildMadhabList(){
 /* ── Langue ── */
 function buildLangList(){
   const list=document.getElementById('lang-list');list.innerHTML='';
-  LANGS.forEach(l=>{
+  LANGS.filter(l=>hasLang(l.code)).forEach(l=>{
     const row=document.createElement('div');
     row.className='ob-method-row'+(S.lang===l.code?' sel':'');
     row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${l.flag} ${l.name}</div></div>`;

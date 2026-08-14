@@ -14,6 +14,7 @@
 import {S} from '../core/store.js';
 import {LANGS} from '../data/catalog.js';
 import fr from '../i18n/fr.js';
+import {AVAILABLE_LANGS,hasLang} from '../i18n/index.js';
 
 const _packs={fr};        // code → dictionnaire chargé
 let _cur=fr, _en=null;
@@ -21,6 +22,9 @@ let _cur=fr, _en=null;
 /* Charge une langue et la rend active. Sans réseau ni fichier, on retombe
    silencieusement sur le français plutôt que d'afficher des clés brutes. */
 export async function loadLang(code){
+  // Une langue enregistree puis retiree (ou jamais livree) ne doit pas
+  // laisser l'app dans un etat batard : on revient au francais.
+  if(!hasLang(code)){_cur=fr;S.lang='fr';return false;}
   if(!_packs[code]){
     try{_packs[code]=(await import(`../i18n/${code}.js`)).default;}
     catch{_packs[code]=null;}
@@ -32,9 +36,20 @@ export async function loadLang(code){
   return _cur!==fr||code==='fr';
 }
 
-export function t(key){
-  return _cur[key]||(_en&&_en[key])||fr[key]||key;
+/* t('cle') ou t('cle',{n:12}) — les {marqueurs} du texte sont remplacés.
+   Sans cela, tout message contenant une valeur devait être assemblé sur
+   place, donc écrit en français en dur : c'est ce qui laissait des toasts
+   non traduits partout dans l'app. */
+export function t(key,params){
+  let s=_cur[key]||(_en&&_en[key])||fr[key]||key;
+  if(params)for(const k in params)s=s.split(`{${k}}`).join(params[k]);
+  return s;
 }
+
+/* Formatage des nombres dans la langue courante. */
+export const n=v=>Number(v||0).toLocaleString(S.lang||'fr');
+
+export {AVAILABLE_LANGS};
 
 export function isRTL(){return !!(LANGS.find(l=>l.code===S.lang)||{}).rtl;}
 

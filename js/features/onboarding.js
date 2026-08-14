@@ -6,6 +6,7 @@ import {toast} from '../core/ui.js';
 import {vib} from '../core/audio.js';
 import {THEMES,CALC_METHODS,MADHABS,LANGS,LANG_REGIONS,CALC_BY_LANG,MADHAB_BY_LANG} from '../data/catalog.js';
 import {t,applyI18n,setLang} from '../lib/i18n.js';
+import {hasLang} from '../i18n/index.js';
 import {applyTheme,buildBaseThemeGrid} from './settings.js';
 import {renderPrayers,reverseGeocode,geocodeCity} from './salat.js';
 
@@ -57,7 +58,7 @@ function buildLangGrid(){
   const grid=$('ob-lang-grid');grid.innerHTML='';
   grid.style.textAlign='left';
   LANG_REGIONS.forEach(reg=>{
-    const langs=LANGS.filter(l=>l.region===reg.id);
+    const langs=LANGS.filter(l=>l.region===reg.id&&hasLang(l.code));
     if(!langs.length)return;
     const h=document.createElement('div');
     h.className='sl';h.style.cssText='margin:10px 4px 6px;text-align:left;';
@@ -100,12 +101,12 @@ function buildMadhabRow(){
 /* ── Étape 1 : apparence ── (uniquement les accents de base, pas les bonus verrouillés) */
 function buildAccentGrid(){
   const grid=$('ob-accent-grid');grid.innerHTML='';
-  THEMES.filter(x=>!x.unlockAt).forEach(t=>{
+  THEMES.filter(x=>!x.unlockAt).forEach(th=>{
     const el=document.createElement('div');
-    el.className='tsw'+(S.accent===t.key?' active':'');
-    el.innerHTML=`<div class="sdot" style="background:${t.color}"></div><div class="sname">${t.name}</div>`;
+    el.className='tsw'+(S.accent===th.key?' active':'');
+    el.innerHTML=`<div class="sdot" style="background:${th.color}"></div><div class="sname">${th.name}</div>`;
     el.addEventListener('click',()=>{
-      S.accent=t.key;save();applyTheme();buildAccentGrid();vib(18);
+      S.accent=th.key;save();applyTheme();buildAccentGrid();vib(18);
     });
     grid.appendChild(el);
   });
@@ -149,10 +150,10 @@ function wireLocation(){
     );
   });
 
-  let t=null;
+  let searchT=null;
   $('ob-city-inp').addEventListener('input',e=>{
-    clearTimeout(t);
-    t=setTimeout(async()=>{
+    clearTimeout(searchT);
+    searchT=setTimeout(async()=>{
       const q=e.target.value;
       const box=$('ob-city-results');
       if(!q.trim()){box.innerHTML='';return;}
@@ -189,7 +190,7 @@ function finish(){
   const ob=$('onboard');
   ob.classList.add('hidden');
   setTimeout(()=>ob.remove(),500);
-  toast('✦ Bienvenue sur Sakina');
+  toast(t('msg.welcome'));
   vib([50,30,50]);
 }
 

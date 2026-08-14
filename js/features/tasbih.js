@@ -134,14 +134,14 @@ async function resetCounter(){
   if(!await confirmDlg('Remettre le compteur à la valeur de départ ?',{okLabel:'Remettre à zéro'}))return;
   if(S.count>S.startVal)pushHistory();
   S.count=S.startVal;S.lapCount=0;S.sessTot=0;
-  vib([60,30,60]);toast('Remis à zéro');save();renderTasbih();
+  vib([60,30,60]);toast(t('msg.reset'));save();renderTasbih();
 }
 
 function saveSession(){
-  if(S.count<=S.startVal){toast('Rien à sauvegarder');return;}
+  if(S.count<=S.startVal){toast(t('msg.nothingSave'));return;}
   pushHistory();S.sessCount++;
   S.count=S.startVal;S.lapCount=0;S.sessTot=0;   // une session sauvegardée repart proprement
-  vib([40,20,40]);toast('✓ Session sauvegardée');
+  vib([40,20,40]);toast(t('msg.sessionSaved'));
   save();renderTasbih();emit('stats-changed');
 }
 
@@ -191,7 +191,7 @@ function renderPresets(){
     const row=document.createElement('div');row.className='preset-row';
     row.innerHTML=`<div class="preset-name">★ ${p.name}</div><div class="preset-meta">obj ${p.goal} · rap ${p.reminder}</div><div class="preset-del">✕</div>`;
     row.querySelector('.preset-del').addEventListener('click',()=>{
-      S.customDhikrs.splice(i,1);save();renderPresets();buildDhikrBar();toast('Préréglage supprimé');
+      S.customDhikrs.splice(i,1);save();renderPresets();buildDhikrBar();toast(t('msg.presetDel'));
     });
     box.appendChild(row);
   });

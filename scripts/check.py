@@ -136,9 +136,28 @@ def check_i18n() -> None:
     for k in sorted(used - ref):
         ERRORS.append(f"index.html : clé i18n « {k} » absente de js/i18n/fr.js")
 
+    # Le manifeste, les fichiers et le catalogue doivent s'accorder : une
+    # langue proposée sans dictionnaire provoque un 404 et une interface
+    # à moitié traduite.
+    manifest = ROOT / "js/i18n/index.js"
+    if manifest.exists():
+        declared = set(
+            re.findall(r"'(\w{2})'", re.search(
+                r"AVAILABLE_LANGS\s*=\s*\[(.*?)\]", manifest.read_text(encoding="utf-8"), re.S
+            ).group(1))
+        )
+        on_disk = {p.stem for p in ROOT.glob("js/i18n/*.js")} - {"index"}
+        for c in sorted(declared - on_disk):
+            ERRORS.append(f"i18n/index.js : « {c} » annoncé mais js/i18n/{c}.js manquant")
+        for c in sorted(on_disk - declared):
+            NOTES.append(f"js/i18n/{c}.js présent mais absent de AVAILABLE_LANGS")
+        catalog = set(re.findall(r"code:'(\w{2})'", read("js/data/catalog.js")))
+        offered = declared & catalog
+        NOTES.append(f"sélecteur : {len(offered)} langues proposées et traduites")
+
     partial = []
     for p in sorted(ROOT.glob("js/i18n/*.js")):
-        if p.name == "fr.js":
+        if p.name in ("fr.js", "index.js"):   # référence, et manifeste
             continue
         n = len(keys_of(p) & ref)
         if n < len(ref):

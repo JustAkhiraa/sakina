@@ -105,7 +105,7 @@
 <!-- ════════════════ PAGE SALAT ════════════════ -->
 <div class="page" id="page-salat">
   <div class="phd">
-    <div><div class="phd-title" data-i18n="salat.title">Horaires</div><div class="phd-sub" id="salat-sub">Position requise</div></div>
+    <div><div class="phd-title" data-i18n="salat.title">Horaires</div><div class="phd-sub" id="salat-sub" data-i18n="lbl.locNeeded">Position requise</div></div>
     <button class="ib" id="btn-locate" aria-label="Me localiser">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
     </button>
@@ -587,7 +587,7 @@
       <div class="ms-card gc"><div class="ms-val" id="st-total">0</div><div class="ms-lbl" data-i18n="stat.dhikrs">Dhikrs</div></div>
       <div class="ms-card gc"><div class="ms-val" id="st-sess">0</div><div class="ms-lbl" data-i18n="stat.sessions">Sessions</div></div>
       <div class="ms-card gc"><div class="ms-val" id="st-streak">0</div><div class="ms-lbl" data-i18n="stat.days">Jours 🔥</div></div>
-      <div class="ms-card gc"><div class="ms-val" id="st-qada">0</div><div class="ms-lbl">Qadâ'</div></div>
+      <div class="ms-card gc"><div class="ms-val" id="st-qada">0</div><div class="ms-lbl" data-i18n="lbl.qada">Qadâ'</div></div>
     </div>
 
     <!-- Cadeaux à débloquer (accès à la sheet dédiée) -->
@@ -644,28 +644,28 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Configurer le Dhikr</div>
+    <div class="sh-title" data-i18n="sh.editDhikr">Configurer le Dhikr</div>
     <button class="ok-b" id="btn-save-edit">✓</button>
   </div>
   <div class="sh-bd">
-    <div style="margin-bottom:16px"><div class="sl" style="margin:0 0 8px">Nom</div><input class="inp" type="text" id="inp-title" placeholder="ex: Subhanallah"></div>
-    <div style="margin-bottom:16px"><div class="sl" style="margin:0 0 8px">Valeur de départ</div>
+    <div style="margin-bottom:16px"><div class="sl" style="margin:0 0 8px" data-i18n="lbl.name">Nom</div><input class="inp" type="text" id="inp-title" placeholder="ex: Subhanallah"></div>
+    <div style="margin-bottom:16px"><div class="sl" style="margin:0 0 8px" data-i18n="lbl.startVal">Valeur de départ</div>
       <div class="stepper"><div class="step-b" id="ss-m">−</div><input type="number" id="inp-start" value="0" min="0"><div class="step-b" id="ss-p">+</div></div>
     </div>
-    <div style="margin-bottom:12px"><div class="sl" style="margin:0 0 8px">Rappel</div>
+    <div style="margin-bottom:12px"><div class="sl" style="margin:0 0 8px" data-i18n="lbl.reminder">Rappel</div>
       <div class="stepper"><div class="step-b" id="sr-m">−</div><input type="number" id="inp-rem" value="33" min="0"><div class="step-b" id="sr-p">+</div></div>
       <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
         <span class="chip" data-for="inp-rem" data-val="11">11</span><span class="chip" data-for="inp-rem" data-val="33">33</span><span class="chip" data-for="inp-rem" data-val="99">99</span><span class="chip" data-for="inp-rem" data-val="100">100</span><span class="chip" data-for="inp-rem" data-val="0">Aucun</span>
       </div>
     </div>
-    <div style="margin-bottom:14px"><div class="sl" style="margin:0 0 8px">Objectif</div>
+    <div style="margin-bottom:14px"><div class="sl" style="margin:0 0 8px" data-i18n="lbl.goal">Objectif</div>
       <div class="stepper"><div class="step-b" id="sg-m">−</div><input type="number" id="inp-goal" value="99" min="0"><div class="step-b" id="sg-p">+</div></div>
       <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
         <span class="chip" data-for="inp-goal" data-val="33">33</span><span class="chip" data-for="inp-goal" data-val="99">99</span><span class="chip" data-for="inp-goal" data-val="100">100</span><span class="chip" data-for="inp-goal" data-val="1000">1000</span><span class="chip" data-for="inp-goal" data-val="0">Infini</span>
       </div>
     </div>
     <div class="qada-ok" id="btn-pin-dhikr" style="text-align:center;margin-bottom:14px;">☆ Épingler comme préréglage</div>
-    <div class="sl" style="margin:0 0 4px">Mes préréglages</div>
+    <div class="sl" style="margin:0 0 4px" data-i18n="lbl.presets">Mes préréglages</div>
     <div id="custom-presets"></div>
   </div>
 </div>
@@ -686,7 +686,7 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Méthode de calcul</div>
+    <div class="sh-title" data-i18n="sh.calcMethod">Méthode de calcul</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd" id="calc-bd"></div>
@@ -697,12 +697,12 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Ma position</div>
+    <div class="sh-title" data-i18n="sh.myLocation">Ma position</div>
     <div style="width:32px"></div>
   </div>
   <div class="sh-bd">
     <div class="qada-ok" id="btn-gps" style="text-align:center;margin-bottom:14px;">📍 Détecter par GPS</div>
-    <div class="sl" style="margin:0 0 8px">Ou chercher une ville</div>
+    <div class="sl" style="margin:0 0 8px" data-i18n="lbl.searchCity">Ou chercher une ville</div>
     <input class="inp" type="text" id="city-inp" placeholder="ex: Lyon, Casablanca, Istanbul…" autocomplete="off">
     <div id="city-results" style="margin-top:10px"></div>
   </div>
@@ -727,7 +727,7 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title">Qadâ' — Rattrapage</div>
+    <div class="sh-title" data-i18n="sh.qada">Qadâ' — Rattrapage</div>
     <button class="ib" id="btn-qada-info2" style="width:32px;height:32px;border-radius:50%;font-size:0.9rem;">ℹ</button>
   </div>
   <div class="sh-bd" id="qada-zone"></div>

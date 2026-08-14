@@ -43,7 +43,7 @@ function renderQada(){
   $('qdm-a').addEventListener('click',()=>{_qdaMode='ans';renderQada();});
   $('qda-apply').addEventListener('click',()=>{
     const raw=parseInt($('qda-inp').value)||0;
-    if(raw<=0){toast('Entrez un nombre valide');return;}
+    if(raw<=0){toast(t('msg.badNumber'));return;}
     const days=_qdaMode==='ans'?Math.round(raw*354.37):raw; // année lunaire
     QADA_PRAYERS.forEach(p=>{S.qada[p.key]=(S.qada[p.key]||0)+days;});
     save();renderQada();emit('stats-changed');
@@ -52,13 +52,13 @@ function renderQada(){
   $('qda-reset-done').addEventListener('click',async()=>{
     if(!await confirmDlg('Réinitialiser les prières rattrapées ?',{okLabel:'Réinitialiser'}))return;
     QADA_PRAYERS.forEach(p=>{S.qdone[p.key]=0;});
-    save();renderQada();toast('Rattrapées réinitialisées');
+    save();renderQada();toast(t('msg.madeUpReset'));
   });
   $('qda-reset-all').addEventListener('click',async()=>{
     if(!await confirmDlg('Effacer toutes les prières manquées ?',{okLabel:'Tout effacer'}))return;
     QADA_PRAYERS.forEach(p=>{S.qada[p.key]=0;S.qdone[p.key]=0;});
     save();renderQada();emit('stats-changed');
-    toast('Tout effacé');vib([60,30,60]);
+    toast(t('msg.allCleared'));vib([60,30,60]);
   });
 
   const rowsEl=$('qada-rows');
@@ -75,7 +75,7 @@ function renderQada(){
     });
     row.querySelector('.qada-btn.minus').addEventListener('click',e=>{
       e.stopPropagation();
-      if((S.qada[p.key]||0)<=0){toast('Déjà à jour !');return;}
+      if((S.qada[p.key]||0)<=0){toast(t('msg.upToDate'));return;}
       S.qada[p.key]--;S.qdone[p.key]=(S.qdone[p.key]||0)+1;
       playSound('drop');vib([30,10,30]);
       if(S.qada[p.key]===0){toast(`🎉 ${p.name} — À jour !`);burst();}
