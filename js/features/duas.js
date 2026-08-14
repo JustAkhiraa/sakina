@@ -6,7 +6,7 @@ import {setDhikr} from './tasbih.js';
 import {goPage} from '../core/router.js';
 
 const $=id=>document.getElementById(id);
-let _cat='Besoin';
+let _cat='need';   // identifiant de catégorie, pas son libellé traduit
 
 function arabicHtml(d){
   if(d.arabic_parts)return d.arabic_parts.map(p=>p.type==='pause'?`<span class="dua-pause">${p.text}</span>`:p.text).join(' ');
@@ -21,31 +21,43 @@ function copyText(txt){
   });
 }
 
+/* t() renvoie la clé elle-même quand elle manque : on ne peut donc pas se
+   contenter d'un `||`. Ces trois aides retombent proprement sur le texte
+   français du corpus, qui reste la source. */
+const tr=(key,fallback)=>{const v=t(key);return v===key?fallback:v;};
+export const duaTitle=d=>tr(`dua.${d.id}.t`,d.title);
+export const duaOcc  =d=>tr(`dua.${d.id}.o`,d.occasion);
+export const duaCat  =d=>tr(`duacat.${d.catId}`,d.cat);
+
 function buildCatBar(){
   const bar=$('cat-bar');bar.innerHTML='';
-  [...new Set(DUAS.map(d=>d.cat))].forEach(c=>{
+  // On distingue les catégories par leur identifiant, pas par leur libellé :
+  // celui-ci change avec la langue, l'identifiant non.
+  [...new Set(DUAS.map(d=>d.catId))].forEach(cid=>{
+    const d=DUAS.find(x=>x.catId===cid);
     const el=document.createElement('div');
-    el.className='cat-chip'+(c===_cat?' active':'');
-    el.textContent=c;
-    el.addEventListener('click',()=>{_cat=c;buildCatBar();renderDuas();});
+    el.className='cat-chip'+(cid===_cat?' active':'');
+    el.textContent=duaCat(d);
+    el.addEventListener('click',()=>{_cat=cid;buildCatBar();renderDuas();});
     bar.appendChild(el);
   });
 }
 
 function matches(d,q){
   q=q.toLowerCase();
-  return d.title.toLowerCase().includes(q)||d.translation.toLowerCase().includes(q)||d.occasion.toLowerCase().includes(q);
+  return [duaTitle(d),duaOcc(d),d.title,d.occasion,d.translation]
+    .some(s=>(s||'').toLowerCase().includes(q));
 }
 
 function renderDuas(){
   const list=$('duas-list');list.innerHTML='';
-  const items=DUAS.filter(d=>d.cat===_cat);
+  const items=DUAS.filter(d=>d.catId===_cat);
   items.forEach((d,i)=>{
     const arHtml=arabicHtml(d);
     const card=document.createElement('div');card.className='dua-card gc';
-    card.innerHTML=`<div class="dua-head"><div class="dua-num">${i+1}</div><div style="flex:1"><div class="dua-title">${d.icon||'✦'} ${d.title}</div><div class="dua-occ">${d.occasion}</div></div><div class="dua-chev"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div>
+    card.innerHTML=`<div class="dua-head"><div class="dua-num">${i+1}</div><div style="flex:1"><div class="dua-title">${d.icon||'✦'} ${duaTitle(d)}</div><div class="dua-occ">${duaOcc(d)}</div></div><div class="dua-chev"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div>
       <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-ph">${d.phonetic||''}</div><div class="dua-tr">${d.translation||''}</div><div class="dua-ref">📚 ${d.ref||''}</div>
-      <div class="dua-acts"><div class="dua-act dua-act-copy">📋 Copier</div><div class="dua-act dua-act-use">📿 Compter</div></div></div>`;
+      <div class="dua-acts"><div class="dua-act dua-act-copy">${t('duas.copy')}</div><div class="dua-act dua-act-use">${t('duas.count')}</div></div></div>`;
     card.querySelector('.dua-head').addEventListener('click',()=>card.classList.toggle('open'));
     card.querySelector('.dua-act-copy').addEventListener('click',e=>{
       e.stopPropagation();
@@ -53,8 +65,8 @@ function renderDuas(){
     });
     card.querySelector('.dua-act-use').addEventListener('click',e=>{
       e.stopPropagation();
-      setDhikr({title:d.title,goal:33,reminder:33});
-      goPage('page-tasbih');toast(`📿 ${d.title}`);
+      setDhikr({title:duaTitle(d),goal:33,reminder:33});
+      goPage('page-tasbih');toast(`📿 ${duaTitle(d)}`);
     });
     list.appendChild(card);
   });
@@ -85,11 +97,19 @@ function initSearch(){
     items.forEach(d=>{
       const arHtml=arabicHtml(d);
       const el=document.createElement('div');el.className='dua-card gc open';
-      el.innerHTML=`<div class="dua-head"><div class="dua-num">✦</div><div style="flex:1"><div class="dua-title">${d.icon||''} ${d.title}</div><div class="dua-occ">${d.cat} · ${d.occasion}</div></div></div>
+      el.innerHTML=`<div class="dua-head"><div class="dua-num">✦</div><div style="flex:1"><div class="dua-title">${d.icon||''} ${duaTitle(d)}</div><div class="dua-occ">${duaCat(d)} · ${duaOcc(d)}</div></div></div>
         <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-tr">${d.translation||''}</div><div class="dua-ref">📚 ${d.ref||''}</div></div>`;
       res.appendChild(el);
     });
   });
+}
+
+/* Rebati les puces et les cartes apres un changement de langue. initDuas
+   ne convient pas : il rebrancherait les ecouteurs de recherche a chaque
+   fois, et ils s'empileraient. */
+export function refreshDuas(){
+  buildCatBar();
+  renderDuas();
 }
 
 export function initDuas(){

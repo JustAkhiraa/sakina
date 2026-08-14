@@ -304,6 +304,18 @@ function buildBookmarks(){
    besoin de connaître le routeur. */
 export const showSurah=n=>renderSurah(n);
 
+/* L'en-tete est ecrit une fois au rendu de la sourate : au changement de
+   langue il garderait « Surah 1 · 7 verses · Meccan ». On le reecrit sans
+   retelecharger le texte, qui n'a pas change. */
+export function refreshQuranHeader(){
+  if(!_surah)return;
+  const s=SURAHS[_surah-1];
+  if(!s)return;
+  $('quran-surah-name').textContent=`${s.ar} — ${s.fr}`;
+  $('quran-surah-info').textContent=t('quran.surahMeta',
+    {n:_surah,v:s.v,origin:s.t==='Makki'?t('quran.makki'):t('quran.madani')});
+}
+
 export function initQuran(){
   $('quran-scroll').addEventListener('click',deselectAyah);
 

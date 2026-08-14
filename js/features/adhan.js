@@ -31,9 +31,10 @@ import {putBlob,getBlob,delBlob} from '../lib/blobstore.js';
 /* Voix intégrées : fichiers attendus dans assets/adhan/. Une entrée dont le
    fichier manque est simplement retirée du choix (voir availableVoices). */
 export const BUILTIN_ADHANS=[
-  {id:'makkah',  file:'assets/adhan/makkah.mp3',  i18n:'adhan.vMakkah'},
-  {id:'madinah', file:'assets/adhan/madinah.mp3', i18n:'adhan.vMadinah'},
-  {id:'fajr',    file:'assets/adhan/fajr.mp3',    i18n:'adhan.vFajr', fajrOnly:true},
+  {id:'omar',    file:'assets/adhan/omar-hisham.mp3', i18n:'adhan.vOmar'},
+  {id:'makkah',  file:'assets/adhan/makkah.mp3',      i18n:'adhan.vMakkah'},
+  {id:'madinah', file:'assets/adhan/madinah.mp3',     i18n:'adhan.vMadinah'},
+  {id:'fajr',    file:'assets/adhan/fajr.mp3',        i18n:'adhan.vFajr', fajrOnly:true},
 ];
 
 export const CUSTOM_KEY='adhan-custom';

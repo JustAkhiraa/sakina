@@ -19,7 +19,7 @@ import {DUAS} from '../data/duas.js';
 import {ROUTINES} from '../data/routines.js';
 import {ADDITIVES,ADD_STATUS} from '../data/additives.js';
 import {showSurah} from './quran.js';
-import {openDuaSearch} from './duas.js';
+import {openDuaSearch,duaTitle,duaOcc,duaCat} from './duas.js';
 import {openRoutine} from './routines.js';
 import {openHalal} from './halal.js';
 import {showBook} from './books.js';
@@ -95,9 +95,12 @@ function buildIndex(){
     ()=>{goPage('page-quran');showSurah(s.n);}
   ));
 
+  // On indexe le libelle traduit ET le francais d'origine : chercher
+  // « reveil » doit marcher meme quand l'interface est en japonais.
   DUAS.forEach(d=>push(
-    'dua',d.icon||'🤲',d.title,`${d.cat} · ${d.occasion||''}`,'',
-    ()=>openDuaSearch(d.title)
+    'dua',d.icon||'🤲',duaTitle(d),`${duaCat(d)} · ${duaOcc(d)}`,
+    `${d.title} ${d.occasion||''} ${d.cat}`,
+    ()=>openDuaSearch(duaTitle(d))
   ));
 
   ROUTINES.forEach(r=>push(

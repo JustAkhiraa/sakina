@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v64';
+const VERSION='sakina-v65';
 const SHELL=[
   './',
   './index.html',
@@ -55,6 +55,20 @@ self.addEventListener('fetch',e=>{
       caches.match(e.request).then(hit=>hit||fetch(e.request).then(res=>{
         const copy=res.clone();
         caches.open(VERSION).then(c=>c.put(e.request,copy));
+        return res;
+      }))
+    );
+    return;
+  }
+
+  // Adhân : cache d'abord, mais jamais précaché. Un appel pèse plusieurs
+  // mégaoctets ; le mettre dans SHELL rendrait la première installation
+  // longue pour une fonction que tout le monde n'active pas. Il se met en
+  // cache tout seul à la première écoute, et reste disponible hors ligne.
+  if(url.origin===location.origin&&url.pathname.includes('/assets/adhan/')){
+    e.respondWith(
+      caches.match(e.request).then(hit=>hit||fetch(e.request).then(res=>{
+        if(res.ok){const copy=res.clone();caches.open(VERSION).then(c=>c.put(e.request,copy));}
         return res;
       }))
     );

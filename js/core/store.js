@@ -43,7 +43,7 @@ const DEFAULTS={
   // Adhân — l'audio lui-même vit dans IndexedDB (trop lourd pour localStorage),
   // seuls les choix de l'utilisateur sont ici.
   adhanEnabled:false,
-  adhanVoice:'chime',            // id d'une entrée de js/features/adhan.js
+  adhanVoice:'omar',             // id d'une entrée de js/features/adhan.js
   adhanFajrVoice:'',             // vide = même appel qu'aux autres prières
   adhanVolume:0.8,
   adhanPrayers:{fajr:true,dhuhr:true,asr:true,maghrib:true,isha:true},
