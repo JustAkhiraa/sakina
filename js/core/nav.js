@@ -126,7 +126,7 @@ function openMoreSheet(items,shown){
   // n'était pas au milieu des réglages — on la sort ici, en tête.
   const rw=document.createElement('div');
   rw.className='row';
-  rw.innerHTML=`<div class="row-ic">🎁</div><div class="row-body"><div class="row-name" data-i18n="sec.rewards">Profil & récompenses</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
+  rw.innerHTML=`<div class="row-ic">🎁</div><div class="row-body"><div class="row-name" data-i18n="sec.rewards">${t('sec.rewards')}</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
   rw.addEventListener('click',()=>{closeSheet();setTimeout(()=>openSheet('sh-rewards'),220);});
   list.appendChild(rw);
 
