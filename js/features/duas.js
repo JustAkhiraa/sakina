@@ -4,6 +4,9 @@ import {t,tf} from '../lib/i18n.js';
 import {DUAS} from '../data/duas.js';
 import {setDhikr} from './tasbih.js';
 import {goPage} from '../core/router.js';
+import {S} from '../core/store.js';
+import {preloadTr,versesText,corpusReady} from './quran.js';
+import {TR_BY_CODE} from '../data/translations.js';
 
 const $=id=>document.getElementById(id);
 let _cat='need';   // identifiant de catégorie, pas son libellé traduit
@@ -19,6 +22,36 @@ function copyText(txt){
     ta.value=txt;document.body.appendChild(ta);ta.select();
     document.execCommand('copy');ta.remove();toast(t('duas.copied'));
   });
+}
+
+/* ── Sens de l'invocation ──
+   Huit des invocations sont des versets du Coran. Pour celles-la on ne
+   retraduit RIEN : on sert la traduction publiee que l'application embarque
+   deja (Saheeh International en anglais, Ma Jian en chinois, Diyanet en
+   turc…), exactement celle qu'affiche le lecteur. Une traduction de
+   traduction serait une degradation sur un texte qu'on recite.
+
+   Les autres viennent de recueils de hadiths : sans traduction publiee sous
+   la main, elles restent en francais — mieux vaut un texte fiable dans une
+   langue que le lecteur peut ignorer qu'un texte approximatif dans la
+   sienne. */
+export function duaTranslation(d){
+  if(d.verses&&TR_BY_CODE[S.lang]){
+    const off=versesText(d.verses,S.lang);
+    if(off)return off;
+  }
+  return d.translation||'';
+}
+
+/* Le corpus se charge une fois par langue, puis on redessine : le rendu
+   reste synchrone, la traduction publiee arrive juste apres. */
+let _trPending=null;
+function ensureOfficialTr(after){
+  const code=S.lang;
+  if(!TR_BY_CODE[code]||corpusReady(code)||_trPending===code)return;
+  _trPending=code;
+  preloadTr(code).then(()=>{_trPending=null;if(S.lang===code)after();})
+                 .catch(()=>{_trPending=null;});
 }
 
 /* Repli sur le texte français du corpus quand la clé n'existe pas. */
@@ -42,18 +75,19 @@ function buildCatBar(){
 
 function matches(d,q){
   q=q.toLowerCase();
-  return [duaTitle(d),duaOcc(d),d.title,d.occasion,d.translation]
+  return [duaTitle(d),duaOcc(d),d.title,d.occasion,d.translation,duaTranslation(d)]
     .some(s=>(s||'').toLowerCase().includes(q));
 }
 
 function renderDuas(){
+  ensureOfficialTr(renderDuas);
   const list=$('duas-list');list.innerHTML='';
   const items=DUAS.filter(d=>d.catId===_cat);
   items.forEach((d,i)=>{
     const arHtml=arabicHtml(d);
     const card=document.createElement('div');card.className='dua-card gc';
     card.innerHTML=`<div class="dua-head"><div class="dua-num">${i+1}</div><div style="flex:1"><div class="dua-title">${d.icon||'✦'} ${duaTitle(d)}</div><div class="dua-occ">${duaOcc(d)}</div></div><div class="dua-chev"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div>
-      <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-ph">${d.phonetic||''}</div><div class="dua-tr">${d.translation||''}</div><div class="dua-ref">📚 ${d.ref||''}</div>
+      <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-ph">${d.phonetic||''}</div><div class="dua-tr">${duaTranslation(d)}</div><div class="dua-ref">📚 ${d.ref||''}</div>
       <div class="dua-acts"><div class="dua-act dua-act-copy">${t('duas.copy')}</div><div class="dua-act dua-act-use">${t('duas.count')}</div></div></div>`;
     card.querySelector('.dua-head').addEventListener('click',()=>card.classList.toggle('open'));
     card.querySelector('.dua-act-copy').addEventListener('click',e=>{
@@ -95,7 +129,7 @@ function initSearch(){
       const arHtml=arabicHtml(d);
       const el=document.createElement('div');el.className='dua-card gc open';
       el.innerHTML=`<div class="dua-head"><div class="dua-num">✦</div><div style="flex:1"><div class="dua-title">${d.icon||''} ${duaTitle(d)}</div><div class="dua-occ">${duaCat(d)} · ${duaOcc(d)}</div></div></div>
-        <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-tr">${d.translation||''}</div><div class="dua-ref">📚 ${d.ref||''}</div></div>`;
+        <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-tr">${duaTranslation(d)}</div><div class="dua-ref">📚 ${d.ref||''}</div></div>`;
       res.appendChild(el);
     });
   });

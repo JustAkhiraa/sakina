@@ -93,6 +93,28 @@ export const activeTr=()=>(Array.isArray(S.quranTr)&&S.quranTr.length?S.quranTr:
   .filter(c=>TR_BY_CODE[c]);
 /* Télécharge une langue (et la met en cache) — utilisé par les réglages. */
 export const preloadTr=code=>loadCorpus(code);
+
+/* Passage coranique (« 20:25-28 ») dans une langue donnée, pris dans la
+   traduction PUBLIÉE que l'application embarque déjà — pas une retraduction
+   depuis le français. Renvoie null si la langue n'a pas de corpus : à
+   l'appelant de retomber sur son texte d'origine.
+   Le corpus doit avoir été chargé au préalable (voir preloadTr). */
+export function versesText(ref,code){
+  const pack=_corpus[code];
+  if(!pack||!ref)return null;
+  const m=/^(\d+):(\d+)(?:-(\d+))?$/.exec(ref.trim());
+  if(!m)return null;
+  const sura=pack[+m[1]-1];
+  if(!sura)return null;
+  const from=+m[2],to=m[3]?+m[3]:from;
+  const out=[];
+  for(let a=from;a<=to;a++){
+    const v=sura[a-1];
+    if(v)out.push(String(v).replace(/<[^>]+>/g,'').trim());
+  }
+  return out.length?out.join(' '):null;
+}
+export const corpusReady=code=>!!_corpus[code];
 /* Recharge les traductions de la sourate affichée. À appeler après un
    changement de sélection de langues, sinon le panneau garde les anciennes. */
 export async function refreshTranslations(){
