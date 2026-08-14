@@ -218,7 +218,7 @@ function readEditForm(){
 
 /* ── Historique ── */
 function fmtTs(h){
-  if(h.ts)return new Date(h.ts).toLocaleString('fr-FR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+  if(h.ts)return new Date(h.ts).toLocaleString(S.lang||'fr',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
   return h.legacyTime||h.time||'';
 }
 function buildHistory(){

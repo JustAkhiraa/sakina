@@ -110,7 +110,7 @@ function openHijriSheet(){
     const now=new Date();
     const h=toHijri(now);
     $('hconv-hijri-today').textContent=hijriLabelAr(h);
-    $('hconv-greg-today').textContent=now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+` · ${hijriLabelFr(h)}`;
+    $('hconv-greg-today').textContent=now.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+` · ${hijriLabelFr(h)}`;
     const inp=$('hconv-inp');
     inp.value=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
     const ml=$('hijri-months-list');ml.innerHTML='';
@@ -130,16 +130,26 @@ function openHijriSheet(){
 let _fastYear=new Date().getFullYear(),_fastMonth=new Date().getMonth();
 let _evtDate=null; // 'YYYY-MM-DD' en cours d'édition
 
+/* Jours de la semaine dans la langue de l'utilisateur, lundi en tete.
+   Intl les fournit pour les 18 langues : aucune cle a maintenir, et les
+   ecritures non latines sont servies correctement. */
+function weekdayLabels(){
+  const f=new Intl.DateTimeFormat(S.lang||'fr',{weekday:'short'});
+  // 2024-01-01 est un lundi : sept jours consecutifs a partir de la donnent
+  // la semaine complete dans le bon ordre.
+  return Array.from({length:7},(_,i)=>f.format(new Date(Date.UTC(2024,0,1+i))));
+}
+
 const dateKey=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
 /* ── Séries d'événements : générer tous les jours blancs / Achoura / Arafat /
    lundis-jeudis entre deux dates, puis exportables en .ics ── */
 let _serieType='blancs';
 const SERIES={
-  blancs:{label:'Jours blancs',evt:'🤍 Jeûne — jour blanc',test:h=>isWhiteDay(h)},
-  achoura:{label:'Achoura',evt:'💙 Jeûne — Achoura (10 Mouharram)',test:h=>isAshura(h)},
-  arafat:{label:'Arafat',evt:'🧡 Jeûne — Arafat (9 Dhou al-Hijja)',test:h=>isArafat(h)},
-  lunjeu:{label:'Lundis & jeudis',evt:'💚 Jeûne — sunna',test:(h,dow)=>dow===1||dow===4},
+  blancs:{lk:'fast.sBlancs', ek:'fast.eBlancs', test:h=>isWhiteDay(h)},
+  achoura:{lk:'fast.sAchoura',ek:'fast.eAchoura',test:h=>isAshura(h)},
+  arafat:{lk:'fast.sArafat', ek:'fast.eArafat', test:h=>isArafat(h)},
+  lunjeu:{lk:'fast.sLunjeu', ek:'fast.eLunjeu', test:(h,dow)=>dow===1||dow===4},
 };
 function generateSeries(){
   const start=$('serie-start').value,end=$('serie-end').value;
@@ -153,11 +163,11 @@ function generateSeries(){
     if(!serie.test(toHijri(d),d.getDay()))continue;
     const key=dateKey(d.getFullYear(),d.getMonth(),d.getDate());
     if(S.calEvents[key])continue; // ne pas écraser une note existante
-    S.calEvents[key]=serie.evt;
+    S.calEvents[key]=t(serie.ek);
     added++;
   }
   save();vib([40,20,40]);
-  toast(added?t('tools.evtAdded',{n:added,label:serie.label}):t('tools.evtNone'));
+  toast(added?t('tools.evtAdded',{n:added,label:t(serie.lk)}):t('tools.evtNone'));
   renderFastingCalendar();
 }
 
@@ -192,7 +202,7 @@ function openEventEditor(y,m,d){
   _evtDate=dateKey(y,m,d);
   const dt=new Date(y,m,d);
   $('cal-event-title').textContent=t('tools.event');
-  $('cal-event-date').textContent=dt.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  $('cal-event-date').textContent=dt.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
   $('cal-event-hijri').textContent=hijriLabelFr(toHijri(dt));
   $('cal-event-text').value=S.calEvents[_evtDate]||'';
   $('btn-del-cal-event').style.display=S.calEvents[_evtDate]?'block':'none';
@@ -206,7 +216,7 @@ function renderFastingCalendar(){
   const first=new Date(y,m,1),last=new Date(y,m+1,0);
   const days=last.getDate();
   const startDow=(first.getDay()+6)%7; // Lundi=0
-  const mName=first.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  const mName=first.toLocaleDateString(S.lang||'fr',{month:'long',year:'numeric'});
 
   let fastCount=0,whiteCount=0,ramCount=0;
   const dayInfo=[];
@@ -221,18 +231,18 @@ function renderFastingCalendar(){
     if(info.ash||info.araf)fastCount++;
   }
 
-  let html=`<details class="help-fold"><summary class="help-fold-sum">💡 Comment ça marche</summary><div class="help-fold-bd">Les couleurs indiquent les jours de jeûne recommandés. <strong>Appuyez sur n'importe quel jour</strong> pour y écrire un événement ou une note — il sera marqué d'un point rouge. En bas : générez des séries entières (jours blancs, Achoura…) et exportez tout vers le calendrier de votre téléphone.</div></details>
+  let html=`<details class="help-fold"><summary class="help-fold-sum">${t('fast.how')}</summary><div class="help-fold-bd">${t('fast.howBody')}</div></details>
   <div class="fasting-stats">
-    <div class="fs-card"><div class="fs-val">${ramCount||'—'}</div><div class="fs-lbl">Ramadan</div></div>
-    <div class="fs-card"><div class="fs-val">${whiteCount}</div><div class="fs-lbl">Jours blancs</div></div>
-    <div class="fs-card"><div class="fs-val">${fastCount}</div><div class="fs-lbl">Recommandés</div></div>
+    <div class="fs-card"><div class="fs-val">${ramCount||'—'}</div><div class="fs-lbl">${t('fast.ramadan')}</div></div>
+    <div class="fs-card"><div class="fs-val">${whiteCount}</div><div class="fs-lbl">${t('fast.whiteDays')}</div></div>
+    <div class="fs-card"><div class="fs-val">${fastCount}</div><div class="fs-lbl">${t('fast.recommended')}</div></div>
   </div>
   <div id="fasting-cal-header">
     <div class="fasting-nav" id="fast-prev">&#8249;</div>
     <div id="fasting-month-title">${mName.charAt(0).toUpperCase()+mName.slice(1)}</div>
     <div class="fasting-nav" id="fast-next">&#8250;</div>
   </div>
-  <div class="fasting-grid-header">${['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].map(d=>`<div class="fasting-day-label">${d}</div>`).join('')}</div>
+  <div class="fasting-grid-header">${weekdayLabels().map(d=>`<div class="fasting-day-label">${d}</div>`).join('')}</div>
   <div class="fasting-grid">`;
   for(let i=0;i<startDow;i++)html+='<div class="fc-day empty"></div>';
   dayInfo.forEach(info=>{
@@ -252,27 +262,27 @@ function renderFastingCalendar(){
     html+=`<div class="${cls}" data-day="${info.d}" title="${hijriLabelFr(info.h)}">${hasEvt?'<div class="fc-evt">✦</div>':''}<span>${info.d}</span><span class="fc-hijri">${toArabicNum(info.h.day)}</span>${dot}</div>`;
   });
   html+=`</div>
-  <div style="font-size:0.68rem;color:var(--t3);text-align:center;margin-top:8px;">Appuyez sur un jour pour ajouter un événement ou une note ✦</div>`;
+  <div style="font-size:0.68rem;color:var(--t3);text-align:center;margin-top:8px;">${t('fast.tapDay')}</div>`;
 
   // Ajout en série (jours blancs, Achoura… entre deux dates)
   const today=new Date();
   const in1y=new Date();in1y.setMonth(in1y.getMonth()+1); // 1 mois par défaut
   const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-  html+=`<div class="sl" style="margin:16px 0 8px;">Ajouter une série de jeûnes</div>
+  html+=`<div class="sl" style="margin:16px 0 8px;">${t('fast.addSeries')}</div>
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="serie-types">
-    ${Object.entries(SERIES).map(([k,v])=>`<span class="chip${k===_serieType?' sel':''}" data-serie="${k}">${v.label}</span>`).join('')}
+    ${Object.entries(SERIES).map(([k,v])=>`<span class="chip${k===_serieType?' sel':''}" data-serie="${k}">${t(v.lk)}</span>`).join('')}
   </div>
   <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;">
     <input class="inp" type="date" id="serie-start" value="${iso(today)}" style="flex:1;min-width:0;">
     <span style="font-size:0.7rem;color:var(--t3);flex-shrink:0;">→</span>
     <input class="inp" type="date" id="serie-end" value="${iso(in1y)}" style="flex:1;min-width:0;">
   </div>
-  <div class="qada-ok" id="btn-gen-series" style="text-align:center;">✦ Générer la série</div>`;
+  <div class="qada-ok" id="btn-gen-series" style="text-align:center;">${t('fast.generate')}</div>`;
 
   const totalEvents=Object.keys(S.calEvents).length;
   if(totalEvents){
-    html+=`<div class="qada-ok" id="btn-export-ics" style="text-align:center;margin-top:12px;background:var(--sur3);color:var(--a);border:1px solid var(--a-glow);box-shadow:none;">📤 Exporter vers mon calendrier (.ics)</div>
-    <div style="font-size:0.66rem;color:var(--t3);text-align:center;margin-top:6px;">${totalEvents} événement(s) → fichier compatible iPhone, Android, Google Agenda…</div>`;
+    html+=`<div class="qada-ok" id="btn-export-ics" style="text-align:center;margin-top:12px;background:var(--sur3);color:var(--a);border:1px solid var(--a-glow);box-shadow:none;">${t('fast.exportIcs')}</div>
+    <div style="font-size:0.66rem;color:var(--t3);text-align:center;margin-top:6px;">${t('fast.exportSub',{n:totalEvents})}</div>`;
   }
 
   // Événements du mois affiché
@@ -280,7 +290,7 @@ function renderFastingCalendar(){
     .filter(([k])=>k.startsWith(`${y}-${String(m+1).padStart(2,'0')}-`))
     .sort(([a],[b])=>a.localeCompare(b));
   if(monthEvents.length){
-    html+=`<div class="sl" style="margin:14px 0 6px;">Événements du mois</div><div class="cal-events">`;
+    html+=`<div class="sl" style="margin:14px 0 6px;">${t('fast.monthEvents')}</div><div class="cal-events">`;
     monthEvents.forEach(([k,txt])=>{
       const d=parseInt(k.slice(8));
       html+=`<div class="cal-event-row" data-day="${d}"><div class="cal-event-day">${d}</div><div class="cal-event-txt">${txt.replace(/</g,'&lt;')}</div></div>`;
@@ -289,14 +299,14 @@ function renderFastingCalendar(){
   }
 
   html+=`<div class="fasting-legend">
-    <div class="fl-item"><div class="fl-dot" style="background:rgba(201,169,110,0.5)"></div>Ramadan</div>
-    <div class="fl-item"><div class="fl-dot" style="background:rgba(212,195,140,0.7)"></div>Jours blancs 13-14-15</div>
-    <div class="fl-item"><div class="fl-dot" style="background:rgba(22,163,74,0.5)"></div>Lundi / Jeudi</div>
-    <div class="fl-item"><div class="fl-dot" style="background:rgba(37,99,235,0.5)"></div>Achoura (10 Mouharram)</div>
-    <div class="fl-item"><div class="fl-dot" style="background:rgba(194,65,12,0.5)"></div>Arafat (9 Dhou al-Hijja)</div>
+    <div class="fl-item"><div class="fl-dot" style="background:rgba(201,169,110,0.5)"></div>${t('fast.ramadan')}</div>
+    <div class="fl-item"><div class="fl-dot" style="background:rgba(212,195,140,0.7)"></div>${t('fast.legWhite')}</div>
+    <div class="fl-item"><div class="fl-dot" style="background:rgba(22,163,74,0.5)"></div>${t('fast.legMonThu')}</div>
+    <div class="fl-item"><div class="fl-dot" style="background:rgba(37,99,235,0.5)"></div>${t('fast.legAshura')}</div>
+    <div class="fl-item"><div class="fl-dot" style="background:rgba(194,65,12,0.5)"></div>${t('fast.legArafat')}</div>
   </div>
   <div style="font-size:0.7rem;color:var(--t3);margin-top:12px;line-height:1.6;padding:10px;background:var(--sur2);border-radius:var(--r-md);border:1px solid var(--bor2);">
-    <strong style="color:var(--t2)">Note :</strong> Dates indicatives (calendrier tabulaire), peuvent varier selon l'observation de la lune. Consultez votre mosquée.
+    ${t('fast.note')}
   </div>`;
   bd.innerHTML=html;
   $('fast-prev').addEventListener('click',()=>{_fastMonth--;if(_fastMonth<0){_fastMonth=11;_fastYear--;}renderFastingCalendar();});
@@ -358,7 +368,7 @@ export function initTools(){
     const d=new Date(val+'T12:00:00');
     const h=toHijri(d);
     $('hconv-result-hijri').textContent=hijriLabelAr(h);
-    $('hconv-result-greg').textContent=`${d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})} · ${hijriLabelFr(h)}`;
+    $('hconv-result-greg').textContent=`${d.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'})} · ${hijriLabelFr(h)}`;
     $('hconv-result').style.display='block';
   });
 

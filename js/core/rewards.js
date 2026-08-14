@@ -14,7 +14,7 @@ export const remainingFor=(item)=>Math.max(0,(item.unlockAt||0)-(S.allTime|0));
 /* Formate 1234 → "1 234", 12000 → "12 k" pour économiser l'espace visuel */
 export function fmtGoal(n){
   if(n>=10000)return Math.round(n/1000)+'k';
-  return n.toLocaleString('fr-FR');
+  return n.toLocaleString(S.lang||'fr');
 }
 
 /* Toutes les catégories réunies : sert au balayage des nouveaux paliers.

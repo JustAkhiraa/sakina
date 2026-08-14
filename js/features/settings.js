@@ -548,8 +548,8 @@ function initNotifSettings(){
     tog.classList.add('on');notifSummary();
     const next=scheduleNext();
     toast(next
-      ? `Prochain rappel : ${next.name} à ${next.at.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}`
-      : 'Rappels activés — définissez votre position');
+      ? t('set.nextReminder',{name:next.name,time:next.at.toLocaleTimeString(S.lang||'fr',{hour:'2-digit',minute:'2-digit'})})
+      : t('set.notifOnNoLoc'));
   });
 
   $('btn-notif-test')?.addEventListener('click',async()=>{
