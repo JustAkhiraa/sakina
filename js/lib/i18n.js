@@ -49,6 +49,15 @@ export function t(key,params){
 /* Formatage des nombres dans la langue courante. */
 export const n=v=>Number(v||0).toLocaleString(S.lang||'fr');
 
+/* t() renvoie la clé quand elle manque : un simple `||` ne peut donc pas
+   servir de repli. `tf` répond la traduction si elle existe, sinon le texte
+   d'origine — c'est ce qu'il faut pour les données de catalogue, dont le
+   français reste la source. */
+export function tf(key,fallback){
+  const v=t(key);
+  return v===key?fallback:v;
+}
+
 export {AVAILABLE_LANGS};
 
 export function isRTL(){return !!(LANGS.find(l=>l.code===S.lang)||{}).rtl;}

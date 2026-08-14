@@ -7,7 +7,7 @@ import {toast,confirmDlg,openSheet,closeSheet} from '../core/ui.js';
 import {playSound,vib} from '../core/audio.js';
 import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS,LANG_REGIONS,BASE_THEMES,AVATARS,TITLES,SKINS} from '../data/catalog.js';
 import {isUnlocked,remainingFor,fmtGoal,rewardsSummary,nextReward,allRewards} from '../core/rewards.js';
-import {applyI18n,setLang,t,n as num} from '../lib/i18n.js';
+import {applyI18n,setLang,t,tf,n as num} from '../lib/i18n.js';
 import {hasLang} from '../i18n/index.js';
 import {TRANSLATIONS} from '../data/translations.js';
 import {preloadTr,refreshTranslations} from './quran.js';
@@ -62,8 +62,8 @@ export function buildBaseThemeGrid(targetId='base-theme-grid',opts={onlyUnlocked
   // On fusionne base + bonus dans une seule section par famille ;
   // à l'intérieur, les bonus (unlockAt>0) apparaissent après les bases.
   const groups=[
-    {label:'Sombres', filter:t=>!t.light},
-    {label:'Clairs',  filter:t=>t.light},
+    {label:t('grp.dark'),  filter:th=>!th.light},
+    {label:t('grp.light'), filter:th=>th.light},
   ];
   const sortFn=(a,b)=>(a.unlockAt|0)-(b.unlockAt|0);
   const makeCell=(th)=>{
@@ -74,7 +74,8 @@ export function buildBaseThemeGrid(targetId='base-theme-grid',opts={onlyUnlocked
     const badge=unlocked
       ? (th.bonus?'<span class="tsw-badge">★</span>':'')
       : `<span class="tsw-lock" aria-label="Verrouillé">🔒</span>`;
-    const sub=unlocked?th.name:`${th.name} · ${fmtGoal(th.unlockAt)}`;
+    const nm=tf(`bth.${th.id}`,th.name);
+    const sub=unlocked?nm:`${nm} · ${fmtGoal(th.unlockAt)}`;
     el.innerHTML=`<div class="sdot" style="background:${th.swatch};border-color:${border}">${badge}</div><div class="sname">${sub}</div>`;
     el.addEventListener('click',()=>{
       if(!unlocked){toast(t('msg.lockedTheme',{n:num(remainingFor(th))}));vib(10);return;}
@@ -111,14 +112,14 @@ function buildSkinGrid(targetId='skin-grid',opts={onlyUnlocked:true}){
     const el=document.createElement('div');
     el.className='skin-card'+(S.skin===s.id?' active':'')+(unlocked?'':' locked');
     const icon=unlocked?(SKIN_ICONS[s.id]||'✦'):'🔒';
-    const meta=unlocked?s.desc:`Palier ${fmtGoal(s.unlockAt)} dhikr`;
+    const meta=unlocked?tf(`skd.${s.id}`,s.desc):t('rw.tier',{n:fmtGoal(s.unlockAt)});
     el.innerHTML=`<div class="skin-chip skin-prev-${s.id}"><span>${icon}</span></div>
-      <div class="skin-info"><div class="skin-name">${s.name}</div>
+      <div class="skin-info"><div class="skin-name">${tf(`skn.${s.id}`,s.name)}</div>
       <div class="skin-desc">${meta}</div></div>`;
     el.addEventListener('click',()=>{
       if(!unlocked){toast(t('msg.lockedSkin',{n:num(remainingFor(s))}));vib(10);return;}
       S.skin=s.id;save();applyTheme();renderTasbih();buildSkinGrid('skin-grid');vib(18);
-      toast(`✦ Skin « ${s.name} »`);
+      toast(t('set.skinSet',{name:tf(`skn.${s.id}`,s.name)}));
     });
     grid.appendChild(el);
   });
@@ -128,9 +129,9 @@ function buildSkinGrid(targetId='skin-grid',opts={onlyUnlocked:true}){
 function buildAccentGrid(){
   const host=$('theme-grid');host.innerHTML='';host.style.display='block';
   const groups=[
-    {label:'Chaudes', fam:'warm'},
-    {label:'Froides', fam:'cool'},
-    {label:'Neutres', fam:'neutral'},
+    {label:t('grp.warm'),    fam:'warm'},
+    {label:t('grp.cool'),    fam:'cool'},
+    {label:t('grp.neutral'), fam:'neutral'},
   ];
   // Les accents verrouillés (bonus) ne sont PAS montrés ici — ils vivent
   // dans la sheet « Cadeaux à débloquer » pour ne pas encombrer la config.
@@ -142,7 +143,7 @@ function buildAccentGrid(){
     sub.forEach(t=>{
       const el=document.createElement('div');
       el.className='tsw'+(S.accent===t.key?' active':'');
-      el.innerHTML=`<div class="sdot" style="background:${t.color}"></div><div class="sname">${t.name}</div>`;
+      el.innerHTML=`<div class="sdot" style="background:${t.color}"></div><div class="sname">${tf(`thm.${t.key}`,t.name)}</div>`;
       el.addEventListener('click',()=>{S.accent=t.key;save();applyTheme();buildAccentGrid();vib(18);});
       grid.appendChild(el);
     });
@@ -153,11 +154,11 @@ function buildAccentGrid(){
 function buildSoundList(opts={onlyUnlocked:true}){
   const list=$('sound-list');list.innerHTML='';
   const cats=[
-    {id:'nature', label:'Nature & souffle'},
-    {id:'perc',   label:'Percussion & bois'},
-    {id:'melo',   label:'Mélodique & résonant'},
-    {id:'digital',label:'Digital'},
-    {id:'geek',   label:'Clin d\'œil'},
+    {id:'nature', label:t('grp.nature')},
+    {id:'perc',   label:t('grp.perc')},
+    {id:'melo',   label:t('grp.melo')},
+    {id:'digital',label:t('grp.digital')},
+    {id:'geek',   label:t('grp.geek')},
   ];
   cats.forEach(c=>{
     const sub=SOUNDS.filter(s=>(s.cat||'melo')===c.id).filter(s=>opts.onlyUnlocked?isUnlocked(s):true);
@@ -168,8 +169,9 @@ function buildSoundList(opts={onlyUnlocked:true}){
       const unlocked=isUnlocked(s);
       const el=document.createElement('div');
       el.className='sound-chip'+(S.sound===s.id?' active':'')+(unlocked?'':' locked');
-      el.title=unlocked?s.desc:t('msg.unlockAt',{n:fmtGoal(s.unlockAt)});
-      const label=unlocked?s.name:`${s.name} · ${fmtGoal(s.unlockAt)}`;
+      el.title=unlocked?tf(`sdd.${s.id}`,s.desc):t('msg.unlockAt',{n:fmtGoal(s.unlockAt)});
+      const snm=tf(`snd.${s.id}`,s.name);
+      const label=unlocked?snm:`${snm} · ${fmtGoal(s.unlockAt)}`;
       el.innerHTML=`<span class="sc-dot"></span>${label}${unlocked?'':' <span class="sc-lock">🔒</span>'}`;
       el.addEventListener('click',()=>{
         if(!unlocked){toast(t('msg.lockedSound',{n:num(remainingFor(s))}));vib(10);return;}
@@ -188,7 +190,7 @@ function buildAvatarGrid(opts={onlyUnlocked:true}){
     const unlocked=isUnlocked(a);
     const el=document.createElement('div');
     el.className='av-cell'+(S.avatar===a.id?' active':'')+(unlocked?'':' locked');
-    const sub=unlocked?a.name:`${fmtGoal(a.unlockAt)}`;
+    const sub=unlocked?tf(`avt.${a.id}`,a.name):`${fmtGoal(a.unlockAt)}`;
     el.innerHTML=`<div class="av-emoji">${unlocked?a.emoji:'🔒'}</div><div class="av-name">${sub}</div>`;
     el.addEventListener('click',()=>{
       if(!unlocked){toast(t('msg.lockedAvatar',{n:num(remainingFor(a))}));vib(10);return;}
@@ -219,6 +221,14 @@ function buildTitleList(opts={onlyUnlocked:true}){
 
 /* ── Sheet « Cadeaux à débloquer » : liste TOUS les items à unlockAt>0,
    classés par catégorie, avec barre de progression individuelle. ── */
+/* Nom affichable d'une recompense. Chaque famille a son prefixe de cle ; a
+   defaut on retombe sur le nom francais porte par le catalogue. */
+const RW_PREFIX={skin:'skn',title:'ttl',avatar:'avt',theme:'bth',sound:'snd',dhikr:'dhk'};
+function rewardName(it){
+  const pre=RW_PREFIX[it.__cat];
+  return pre&&it.id?tf(`${pre}.${it.id}`,it.name||it.__label):(it.name||it.__label);
+}
+
 function buildBonusSheet(){
   const body=$('bonus-body');if(!body)return;
   const items=allRewards();  // toutes catégories, item.__cat / __label injectés
@@ -228,23 +238,23 @@ function buildBonusSheet(){
   const next=nextReward();
   let html=`<div class="bonus-summary">
     <div class="bonus-count">${summary.unlocked}<span>/${summary.total}</span></div>
-    <div class="bonus-sub">${next?`${t('prof.next')} : ${next.name||next.__label} · ${fmtGoal(next.unlockAt)} ${t('prof.dhikrs')} (${t('prof.remaining')} ${remainingFor(next).toLocaleString(S.lang||'fr')})`:t('prof.allUnlocked')}</div>
+    <div class="bonus-sub">${next?`${t('prof.next')} : ${rewardName(next)} · ${fmtGoal(next.unlockAt)} ${t('prof.dhikrs')} (${t('prof.remaining')} ${remainingFor(next).toLocaleString(S.lang||'fr')})`:t('prof.allUnlocked')}</div>
   </div>`;
   const catOrder=['skin','theme','avatar','sound','dhikr','title'];
   catOrder.forEach(cat=>{
     const g=grouped[cat];if(!g)return;
-    html+=`<div class="bonus-cat"><div class="bonus-cat-title">${g.label}s</div><div class="bonus-list">`;
+    html+=`<div class="bonus-cat"><div class="bonus-cat-title">${g.label}</div><div class="bonus-list">`;
     g.items.sort((a,b)=>a.unlockAt-b.unlockAt).forEach(it=>{
       const u=isUnlocked(it);
       const pct=Math.min(100,((S.allTime|0)/it.unlockAt)*100);
-      const nm=it.name||it.__label;
+      const nm=rewardName(it);
       const emoji=it.emoji||(u?'✓':'🔒');
       html+=`<div class="bonus-row${u?' unlocked':''}">
         <div class="bonus-ic">${emoji}</div>
         <div class="bonus-body">
           <div class="bonus-name">${nm}</div>
           <div class="bonus-prog"><div class="bonus-prog-fill" style="width:${pct}%"></div></div>
-          <div class="bonus-meta">${u?'Débloqué':`${(S.allTime|0).toLocaleString('fr-FR')} / ${fmtGoal(it.unlockAt)} dhikr`}</div>
+          <div class="bonus-meta">${u?t('rw.unlockedTag'):`${(S.allTime|0).toLocaleString(S.lang||'fr')} / ${fmtGoal(it.unlockAt)} ${t('rw.dhikrUnit')}`}</div>
         </div>
       </div>`;
     });
@@ -299,7 +309,7 @@ export function renderStats(){
   if(rn){
     const nxt=nextReward();
     rn.textContent=nxt
-      ?`${t('prof.next')} : ${nxt.__label} · ${fmtGoal(nxt.unlockAt)} ${t('prof.dhikrs')}`
+      ?`${t('prof.next')} : ${rewardName(nxt)} · ${fmtGoal(nxt.unlockAt)} ${t('prof.dhikrs')}`
       :t('prof.allUnlocked');
   }
 }

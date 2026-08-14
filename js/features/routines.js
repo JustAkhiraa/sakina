@@ -4,10 +4,24 @@
 import {S,save,todayKey,emit} from '../core/store.js';
 import {toast,burst,openSheet} from '../core/ui.js';
 import {playSound,vib,getAC} from '../core/audio.js';
-import {t} from '../lib/i18n.js';
+import {t,tf} from '../lib/i18n.js';
 import {ROUTINES} from '../data/routines.js';
 
 const $=id=>document.getElementById(id);
+
+/* Les etapes n'ont pas d'identifiant : on indexe leur texte par un slug.
+   Content-addresse plutot que positionnel — si le texte francais change, la
+   cle change avec lui et l'affichage retombe simplement sur le francais,
+   plutot que de coller une traduction sur la mauvaise etape.
+   Ce calcul doit rester identique a celui de scripts/ (generation des cles). */
+const slug=s=>(s||'').normalize('NFKD').replace(/[̀-ͯ]/g,'')
+  .replace(/[^A-Za-z0-9]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase()
+  .replace(/-{2,}/g,'-').slice(0,34);
+
+export const rtName =r=>tf(`rt.${r.id}.n`,r.name);
+export const rtDesc =r=>tf(`rt.${r.id}.d`,r.desc);
+const stepTitle=st=>tf(`rtx.${slug(st.title)}`,st.title);
+const stepNote =st=>st.note?tf(`rtn.${slug(st.note)}`,st.note):'';
 let _routine=null;
 let _stepIdx=0;
 let _count=0;
@@ -22,7 +36,7 @@ function openPicker(){
   ROUTINES.forEach(r=>{
     const row=document.createElement('div');row.className='row';
     row.innerHTML=`<div class="row-ic">${r.icon}</div>
-      <div class="row-body"><div class="row-name">${r.name}</div><div class="row-sub">${r.desc} · ${t('rt.summary',{n:r.steps.length,r:totalTaps(r)})}</div></div>
+      <div class="row-body"><div class="row-name">${rtName(r)}</div><div class="row-sub">${rtDesc(r)} · ${t('rt.summary',{n:r.steps.length,r:totalTaps(r)})}</div></div>
       <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
     row.addEventListener('click',()=>startRoutine(r));
     list.appendChild(row);
@@ -32,7 +46,7 @@ function openPicker(){
 
 function startRoutine(r){
   _routine=r;_stepIdx=0;_count=0;
-  $('routine-title').textContent=`${r.icon} ${r.name}`;
+  $('routine-title').textContent=`${r.icon} ${rtName(r)}`;
   renderStep();
   openSheet('sh-routine');
 }
@@ -40,13 +54,13 @@ function startRoutine(r){
 function renderStep(){
   const step=_routine.steps[_stepIdx];
   $('rt-step-label').textContent=t('routines.step',{n:_stepIdx+1,total:_routine.steps.length});
-  $('rt-step-title').textContent=step.title;
+  $('rt-step-title').textContent=stepTitle(step);
   // Arabe ou phonétique selon la préférence (bouton abc/عربي + réglage)
   const usePh=S.translit==='ph'&&step.ph;
   $('rt-ar').textContent=usePh?step.ph:(step.ar||'');
   $('rt-ar').classList.toggle('latin',!!usePh);
   $('rt-translit').textContent=S.translit==='ph'?'عربي':'abc';
-  $('rt-note').textContent=step.note||'';
+  $('rt-note').textContent=stepNote(step);
   $('rt-note').style.display=step.note?'block':'none';
   $('rt-count').textContent=_count;
   $('rt-target').textContent='/ '+step.count;
@@ -85,7 +99,7 @@ function tap(){
 
 function finishRoutine(){
   burst();
-  toast(`✦ ${_routine.name} accomplie — qu'Allah l'accepte`);
+  toast(t('rt.done',{name:rtName(_routine)}));
   vib([80,40,80,40,120]);
   setTimeout(()=>openPicker(),700);
 }

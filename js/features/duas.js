@@ -1,6 +1,6 @@
 /* SAKINA — Invocations : catégories, recherche, copie, envoi vers le tasbih */
 import {toast,openSheet} from '../core/ui.js';
-import {t} from '../lib/i18n.js';
+import {t,tf} from '../lib/i18n.js';
 import {DUAS} from '../data/duas.js';
 import {setDhikr} from './tasbih.js';
 import {goPage} from '../core/router.js';
@@ -21,13 +21,10 @@ function copyText(txt){
   });
 }
 
-/* t() renvoie la clé elle-même quand elle manque : on ne peut donc pas se
-   contenter d'un `||`. Ces trois aides retombent proprement sur le texte
-   français du corpus, qui reste la source. */
-const tr=(key,fallback)=>{const v=t(key);return v===key?fallback:v;};
-export const duaTitle=d=>tr(`dua.${d.id}.t`,d.title);
-export const duaOcc  =d=>tr(`dua.${d.id}.o`,d.occasion);
-export const duaCat  =d=>tr(`duacat.${d.catId}`,d.cat);
+/* Repli sur le texte français du corpus quand la clé n'existe pas. */
+export const duaTitle=d=>tf(`dua.${d.id}.t`,d.title);
+export const duaOcc  =d=>tf(`dua.${d.id}.o`,d.occasion);
+export const duaCat  =d=>tf(`duacat.${d.catId}`,d.cat);
 
 function buildCatBar(){
   const bar=$('cat-bar');bar.innerHTML='';

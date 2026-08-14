@@ -20,14 +20,16 @@ export function fmtGoal(n){
 /* Toutes les catégories réunies : sert au balayage des nouveaux paliers.
    Chaque item est enrichi avec `__cat` (id catégorie) et `__label` (nom lisible). */
 export function allRewards(){
-  const tag=(arr,cat,label)=>arr.filter(x=>x.unlockAt>0).map(x=>({...x,__cat:cat,__label:label}));
+  // __label porte la cle i18n de la categorie : le libelle lui-meme depend
+  // de la langue et ne peut pas etre fige ici.
+  const tag=(arr,cat)=>arr.filter(x=>x.unlockAt>0).map(x=>({...x,__cat:cat,__label:t(`rw.${cat}`)}));
   return [
-    ...tag(SKINS,'skin','Skin'),
-    ...tag(BASE_THEMES,'theme','Ambiance'),
-    ...tag(SOUNDS,'sound','Son'),
-    ...tag(BONUS_DHIKRS,'dhikr','Dhikr bonus'),
-    ...tag(AVATARS,'avatar','Avatar'),
-    ...tag(TITLES,'title','Titre'),
+    ...tag(SKINS,'skin'),
+    ...tag(BASE_THEMES,'theme'),
+    ...tag(SOUNDS,'sound'),
+    ...tag(BONUS_DHIKRS,'dhikr'),
+    ...tag(AVATARS,'avatar'),
+    ...tag(TITLES,'title'),
   ];
 }
 

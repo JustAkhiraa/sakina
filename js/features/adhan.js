@@ -30,11 +30,17 @@ import {putBlob,getBlob,delBlob} from '../lib/blobstore.js';
 
 /* Voix intégrées : fichiers attendus dans assets/adhan/. Une entrée dont le
    fichier manque est simplement retirée du choix (voir availableVoices). */
+/* `clip` : ne jouer que les N premières secondes, avec un fondu de sortie.
+   L'enregistrement d'Omar Hisham dure trois minutes ; son premier takbir
+   (« Allāhu akbar » ×2) va de 1,05 s à 11,1 s, suivi d'un silence net de
+   1,35 s — mesuré sur l'enveloppe du fichier, pas estimé. Couper à 12,4 s
+   laisse la phrase entière respirer sans mordre sur la suivante. */
 export const BUILTIN_ADHANS=[
-  {id:'omar',    file:'assets/adhan/omar-hisham.mp3', i18n:'adhan.vOmar'},
-  {id:'makkah',  file:'assets/adhan/makkah.mp3',      i18n:'adhan.vMakkah'},
-  {id:'madinah', file:'assets/adhan/madinah.mp3',     i18n:'adhan.vMadinah'},
-  {id:'fajr',    file:'assets/adhan/fajr.mp3',        i18n:'adhan.vFajr', fajrOnly:true},
+  {id:'omar',       file:'assets/adhan/omar-hisham.mp3', i18n:'adhan.vOmar'},
+  {id:'omar-takbir',file:'assets/adhan/omar-hisham.mp3', i18n:'adhan.vOmarTakbir', clip:12.4},
+  {id:'makkah',     file:'assets/adhan/makkah.mp3',      i18n:'adhan.vMakkah'},
+  {id:'madinah',    file:'assets/adhan/madinah.mp3',     i18n:'adhan.vMadinah'},
+  {id:'fajr',       file:'assets/adhan/fajr.mp3',        i18n:'adhan.vFajr', fajrOnly:true},
 ];
 
 export const CUSTOM_KEY='adhan-custom';
@@ -67,7 +73,7 @@ export async function availableVoices({fajr=false}={}){
   BUILTIN_ADHANS.forEach(a=>{
     if(!probe[a.id])return;
     if(a.fajrOnly&&!fajr)return;
-    list.push({id:a.id,label:t(a.i18n),sub:''});
+    list.push({id:a.id,label:t(a.i18n),sub:a.clip?t('adhan.vOmarTakbirSub'):''});
   });
   const key=fajr?CUSTOM_FAJR_KEY:CUSTOM_KEY;
   if(await getBlob(key))list.push({id:'custom',label:t('adhan.vCustom'),sub:t('adhan.vCustomSub')});
@@ -75,25 +81,54 @@ export async function availableVoices({fajr=false}={}){
 }
 
 /* ── Carillon de repli ──
-   Trois notes descendantes, douces, sans percussion : de quoi marquer
-   l'heure sans imiter un appel à la prière. */
+   Ce n'est PAS un adhân et ça ne cherche pas à l'imiter : une voix ne se
+   synthétise pas avec des oscillateurs, et contrefaire l'appel à la prière
+   serait pire que de ne rien jouer. C'est une sonnerie d'annonce — mais une
+   vraie : cinq notes d'une gamme pentatonique, chacune bâtie sur trois
+   partiels comme une cloche (fondamentale, octave, douzième), avec attaque
+   douce et longue décroissance. Environ six secondes, de quoi s'entendre
+   depuis la pièce d'à côté, là où les trois bips précédents passaient
+   inaperçus. */
 function playChime(volume){
   const ac=getAC();
   if(!ac)return;
-  const now=ac.currentTime;
-  [880,660,440].forEach((f,i)=>{
-    const osc=ac.createOscillator(),gain=ac.createGain();
-    osc.type='sine';osc.frequency.value=f;
-    const at=now+i*0.5;
-    gain.gain.setValueAtTime(0,at);
-    gain.gain.linearRampToValueAtTime(volume*0.25,at+0.06);
-    gain.gain.exponentialRampToValueAtTime(0.0001,at+0.48);
-    osc.connect(gain).connect(ac.destination);
-    osc.start(at);osc.stop(at+0.5);
+  const t0=ac.currentTime+0.05;
+  // Ré–Fa♯–La–Si–La : montée ouverte puis retour, sans tension finale.
+  const notes=[
+    {f:587.33,at:0.00,len:2.6},
+    {f:739.99,at:0.62,len:2.6},
+    {f:880.00,at:1.24,len:2.8},
+    {f:987.77,at:1.98,len:3.0},
+    {f:880.00,at:3.10,len:3.6},
+  ];
+  const master=ac.createGain();
+  master.gain.value=Math.min(1,Math.max(0,volume));
+  master.connect(ac.destination);
+
+  notes.forEach(n=>{
+    // Partiels d'une cloche : la douzième donne le timbre métallique, très
+    // en retrait pour rester doux.
+    [[1,0.30],[2,0.10],[3,0.045]].forEach(([mult,amp])=>{
+      const osc=ac.createOscillator(),g=ac.createGain();
+      osc.type='sine';
+      osc.frequency.value=n.f*mult;
+      const at=t0+n.at;
+      g.gain.setValueAtTime(0,at);
+      g.gain.linearRampToValueAtTime(amp,at+0.04);      // attaque douce
+      g.gain.exponentialRampToValueAtTime(0.0001,at+n.len);
+      osc.connect(g).connect(master);
+      osc.start(at);osc.stop(at+n.len+0.05);
+    });
   });
+  _chimeEnd=t0+6.8;
 }
+let _chimeEnd=0;
+
+let _clipTimer=null,_fadeRaf=null;
 
 export function stopAdhan(){
+  if(_clipTimer){clearTimeout(_clipTimer);_clipTimer=null;}
+  if(_fadeRaf){cancelAnimationFrame(_fadeRaf);_fadeRaf=null;}
   if(_audio){_audio.pause();_audio.currentTime=0;_audio=null;}
   if(_url){URL.revokeObjectURL(_url);_url=null;}
 }
@@ -108,7 +143,7 @@ async function sourceFor(prayerKey){
     return blob?{kind:'blob',blob}:{kind:'chime'};
   }
   const b=BUILTIN_ADHANS.find(a=>a.id===voice);
-  return b?{kind:'file',file:b.file}:{kind:'chime'};
+  return b?{kind:'file',file:b.file,clip:b.clip}:{kind:'chime'};
 }
 
 /* Joue l'appel. `prayerKey` sert à choisir la voix du Fajr. */
@@ -123,6 +158,22 @@ export async function playAdhan(prayerKey='dhuhr'){
   if(src.kind==='blob'){_url=URL.createObjectURL(src.blob);_audio.src=_url;}
   else _audio.src=src.file;
   _audio.onended=stopAdhan;
+  // Coupe demandee : on baisse le volume sur la derniere seconde plutot que
+  // de trancher net, sinon la phrase s'arrete comme un cable arrache.
+  if(src.clip){
+    const FADE=1.0;
+    _clipTimer=setTimeout(()=>{
+      if(!_audio)return;
+      const from=_audio.volume,t0=performance.now();
+      const step=()=>{
+        if(!_audio)return;
+        const k=Math.min(1,(performance.now()-t0)/(FADE*1000));
+        _audio.volume=Math.max(0,from*(1-k));
+        if(k<1)_fadeRaf=requestAnimationFrame(step); else stopAdhan();
+      };
+      step();
+    },Math.max(0,(src.clip-FADE)*1000));
+  }
   // Un fichier absent ou illisible ne doit pas laisser l'heure passer en
   // silence : on retombe sur le carillon.
   _audio.onerror=()=>{stopAdhan();playChime(vol);};
