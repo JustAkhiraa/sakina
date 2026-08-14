@@ -25,6 +25,12 @@ export const TRANSLATIONS=[
   {code:'ms', label:'Malais',           native:'Melayu',    author:'Abdullah Muhammad Basmeih',   mb:1.40},
   {code:'bn', label:'Bengali',          native:'বাংলা',      author:'Abu Bakr Muhammad Zakaria',   mb:2.10},
   {code:'zh', label:'Chinois',          native:'中文',       author:'Ma Jian',                     mb:0.71},
+  {code:'ja', label:'Japonais',         native:'日本語',     author:'Ryoichi Mita',                mb:1.18},
+  {code:'hi', label:'Hindi',            native:'हिन्दी',      author:'Maulana Azizul Haque al-Umari', mb:2.12},
+  {code:'bs', label:'Bosniaque',        native:'Bosanski',  author:'Besim Korkut',                mb:0.75},
+  {code:'so', label:'Somali',           native:'Soomaali',  author:'Mahmud Muhammad Abduh',       mb:0.73},
+  {code:'sw', label:'Swahili',          native:'Kiswahili', author:'Abu Bakr & Nasir Khamis',     mb:1.70},
+  {code:'ha', label:'Haoussa',          native:'Hausa',     author:'Abubakar Mahmoud Gumi',       mb:0.91},
   {code:'tl', label:'Translittération', native:'Latin',     author:'Quran.com',                   mb:0.59},
 ];
 
