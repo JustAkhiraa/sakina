@@ -565,6 +565,20 @@
   <div class="gc" id="more-list" style="margin:8px 16px 20px;border-radius:var(--r-xl);overflow:hidden;"></div>
 </div>
 
+<!-- RECHERCHE GLOBALE -->
+<div class="sheet" id="sh-search" style="max-height:96vh;">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title" data-i18n="search.title">Rechercher</div>
+    <div style="width:32px"></div>
+  </div>
+  <div style="padding:0 16px 4px;flex-shrink:0;">
+    <input class="inp" type="search" id="search-inp" data-i18n-ph="search.ph" placeholder="Sourate, invocation, additif, réglage…" autocomplete="off" enterkeyhint="go">
+  </div>
+  <div class="sh-bd" id="search-res"></div>
+</div>
+
 
 <!-- PROFIL & RECOMPENSES (accessible depuis « Plus ») -->
 <div class="sheet" id="sh-rewards">

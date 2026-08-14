@@ -614,6 +614,9 @@ function openBook(key){
   });
 }
 
+/* Point d'entrée de la recherche globale : ouvrir un livre par sa clé. */
+export const showBook=key=>openBook(key);
+
 export function initBooks(){
   $('btn-open-riyad').addEventListener('click',()=>openBook('riyad'));
   $('btn-open-citadelle').addEventListener('click',()=>openBook('citadelle'));

@@ -193,6 +193,20 @@ function syncTabs(){
   if(_tab!=='scan')stopCamera();
 }
 
+/* Point d'entrée de la recherche globale : ouvrir la feuille sur un onglet
+   précis, et pré-remplir la requête — chercher « E471 » doit mener droit à
+   sa fiche, pas à un formulaire vide. */
+export function openHalal(tab='scan',query=''){
+  openSheet('sh-halal',()=>{
+    _tab=tab;syncTabs();
+    $('halal-scan-result').innerHTML='';
+    renderOrgs();renderBrands();
+    const inp=$('halal-add-inp');
+    if(inp)inp.value=tab==='add'?query:'';
+    searchAdditives(tab==='add'?query:'');
+  });
+}
+
 export function initHalal(){
   $('btn-open-halal').addEventListener('click',()=>{
     openSheet('sh-halal',()=>{

@@ -4,6 +4,7 @@
 import {S,save,todayKey,emit} from '../core/store.js';
 import {toast,burst,openSheet} from '../core/ui.js';
 import {playSound,vib,getAC} from '../core/audio.js';
+import {t} from '../lib/i18n.js';
 import {ROUTINES} from '../data/routines.js';
 
 const $=id=>document.getElementById(id);
@@ -87,6 +88,12 @@ function finishRoutine(){
   toast(`✦ ${_routine.name} accomplie — qu'Allah l'accepte`);
   vib([80,40,80,40,120]);
   setTimeout(()=>openPicker(),700);
+}
+
+/* Point d'entrée de la recherche globale : lancer une routine par son id. */
+export function openRoutine(id){
+  const r=ROUTINES.find(x=>x.id===id);
+  if(r)startRoutine(r);
 }
 
 export function initRoutines(){

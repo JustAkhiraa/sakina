@@ -1,5 +1,6 @@
 /* SAKINA — Invocations : catégories, recherche, copie, envoi vers le tasbih */
 import {toast,openSheet} from '../core/ui.js';
+import {t} from '../lib/i18n.js';
 import {DUAS} from '../data/duas.js';
 import {setDhikr} from './tasbih.js';
 import {goPage} from '../core/router.js';
@@ -56,6 +57,17 @@ function renderDuas(){
       goPage('page-tasbih');toast(`📿 ${d.title}`);
     });
     list.appendChild(card);
+  });
+}
+
+/* Point d'entrée de la recherche globale : ouvrir la recherche d'invocations
+   déjà remplie, pour que le résultat s'affiche sans avoir à retaper. */
+export function openDuaSearch(q=''){
+  openSheet('sh-dsearch',()=>{
+    const inp=$('dsearch-inp');
+    inp.value=q;
+    inp.dispatchEvent(new Event('input',{bubbles:true}));
+    setTimeout(()=>inp.focus(),400);
   });
 }
 

@@ -194,6 +194,31 @@ def check_t_shadowing() -> None:
         NOTES.append("aucune variable locale ne masque la fonction t()")
 
 
+def check_t_imported() -> None:
+    """Appeler t() sans l'importer lève « t is not defined » — mais seulement
+    quand la ligne s'exécute. Une fonction rarement empruntée (ouvrir une
+    routine, refuser la caméra) peut rester cassée des semaines sans que rien
+    ne le signale au chargement. Le cas s'est présenté trois fois."""
+    n = 0
+    for f in js_files():
+        # i18n.js *definit* t : il ne peut pas l'importer de lui-meme.
+        if f.parent.name == "i18n" or f.as_posix().endswith("js/lib/i18n.js"):
+            continue
+        src = f.read_text(encoding="utf-8")
+        if not CALL_T.search(src):
+            continue
+        if re.search(r"""import\s*\{[^}]*\bt\b[^}]*\}\s*from\s*['"][^'"]*lib/i18n\.js['"]""", src):
+            continue
+        line = src[: CALL_T.search(src).start()].count("\n") + 1
+        n += 1
+        ERRORS.append(
+            f"{f.relative_to(ROOT)}:{line} : t() appele sans etre importe "
+            f"— ajoutez import {{t}} from '.../lib/i18n.js'"
+        )
+    if not n:
+        NOTES.append("t() est importe partout ou il est appele")
+
+
 def check_duplicate_exports() -> None:
     """Deux `export const X` dans le même fichier lèvent « Identifier 'X' has
     already been declared » — le module entier ne se charge plus, et toute
@@ -308,6 +333,7 @@ def main() -> int:
         check_imports,
         check_dom_ids,
         check_t_shadowing,
+        check_t_imported,
         check_duplicate_exports,
         check_i18n,
         check_quran,

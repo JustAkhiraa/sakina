@@ -124,6 +124,20 @@ function openMoreSheet(items,shown){
   const rows=[...items];
   if(settingsItem&&!shownIds.has('page-settings')&&!overflowIds.has('page-settings'))
     rows.push(settingsItem);
+  // La recherche globale n'a pas de page à elle : « Plus » est le seul point
+  // atteignable en un geste depuis n'importe où, elle se place donc en tête.
+  const sr=document.createElement('div');
+  sr.className='row';
+  sr.innerHTML=`<div class="row-ic">🔎</div><div class="row-body"><div class="row-name" data-i18n="search.title">${t('search.title')}</div><div class="row-sub" data-i18n="search.sub">${t('search.sub')}</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
+  // Import differé : search.js dépend du routeur, qui dépend de ce module.
+  // En statique le cycle se refermerait ; ici le module n'est chargé qu'au
+  // clic, et le service worker l'a déjà en cache.
+  sr.addEventListener('click',()=>{
+    closeSheet();
+    setTimeout(()=>import('../features/search.js').then(m=>m.openSearch()),220);
+  });
+  list.appendChild(sr);
+
   // Profil & récompenses : ce n'est pas une page mais une feuille, et sa place
   // n'était pas au milieu des réglages — on la sort ici, en tête.
   const rw=document.createElement('div');

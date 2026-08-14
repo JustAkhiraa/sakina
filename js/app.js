@@ -16,6 +16,7 @@ import {initPlaces} from './features/places.js';
 import {initHalal,stopCamera} from './features/halal.js';
 import {initRoutines} from './features/routines.js';
 import {initBooks} from './features/books.js';
+import {initSearch as initGlobalSearch} from './features/search.js';
 import {initDevTools} from './core/devtools.js';
 
 initUI();
@@ -43,6 +44,7 @@ on('lang-changed',()=>{
 });
 initRoutines();
 initBooks();
+initGlobalSearch();
 
 // Engrenage (page Outils) → Réglages · flèche retour → Outils
 document.getElementById('btn-open-settings').addEventListener('click',()=>goPage('page-settings'));

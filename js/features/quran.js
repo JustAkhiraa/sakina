@@ -299,6 +299,11 @@ function buildBookmarks(){
 }
 
 /* ── Init ── */
+/* Point d'entrée de la recherche globale : afficher une sourate donnée.
+   Le passage à la page reste à l'appelant, pour que ce module n'ait pas
+   besoin de connaître le routeur. */
+export const showSurah=n=>renderSurah(n);
+
 export function initQuran(){
   $('quran-scroll').addEventListener('click',deselectAyah);
 
