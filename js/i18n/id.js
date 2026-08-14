@@ -438,4 +438,10 @@ export default {
   "halal.iNote": "Ringkasan dari kesaksian publik para petugas sertifikasi (25 tahun pengalaman, mantan AVS) dan debat-halal.fr.",
   "tools.evtSaved": "✦ Acara tersimpan",
   "tools.evtDeleted": "Acara dihapus",
+  "reg.europe": "Eropa",
+  "reg.mena": "Timur Tengah & Afrika Utara",
+  "reg.asia": "Asia",
+  "reg.africa": "Afrika",
+  "set.langSearch": "Cari bahasa…",
+  "set.noLang": "Tidak ada bahasa yang cocok",
 };

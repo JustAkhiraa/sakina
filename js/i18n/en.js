@@ -438,4 +438,10 @@ export default {
   "halal.iNote": "Summary drawn from public testimony by certifiers (25 years' experience, formerly AVS) and from debat-halal.fr.",
   "tools.evtSaved": "✦ Event saved",
   "tools.evtDeleted": "Event deleted",
+  "reg.europe": "Europe",
+  "reg.mena": "Middle East & North Africa",
+  "reg.asia": "Asia",
+  "reg.africa": "Africa",
+  "set.langSearch": "Search a language…",
+  "set.noLang": "No language matches",
 };

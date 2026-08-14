@@ -438,4 +438,10 @@ export default {
   "halal.iNote": "خلاصة من شهادات علنية لمراقبي اعتماد (خبرة 25 سنة، سابقًا في AVS) ومن debat-halal.fr.",
   "tools.evtSaved": "✦ حُفظ الحدث",
   "tools.evtDeleted": "حُذف الحدث",
+  "reg.europe": "أوروبا",
+  "reg.mena": "الشرق الأوسط وشمال أفريقيا",
+  "reg.asia": "آسيا",
+  "reg.africa": "أفريقيا",
+  "set.langSearch": "ابحث عن لغة…",
+  "set.noLang": "لا توجد لغة مطابقة",
 };

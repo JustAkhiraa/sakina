@@ -438,4 +438,10 @@ export default {
   "halal.iNote": "Sertifika görevlilerinin kamuya açık tanıklıklarından (25 yıllık deneyim, eski AVS) ve debat-halal.fr'den derlenmiştir.",
   "tools.evtSaved": "✦ Etkinlik kaydedildi",
   "tools.evtDeleted": "Etkinlik silindi",
+  "reg.europe": "Avrupa",
+  "reg.mena": "Orta Doğu ve Kuzey Afrika",
+  "reg.asia": "Asya",
+  "reg.africa": "Afrika",
+  "set.langSearch": "Dil ara…",
+  "set.noLang": "Eşleşen dil yok",
 };

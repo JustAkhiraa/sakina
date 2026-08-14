@@ -8,6 +8,11 @@
    Ajouter une langue : déposer <code>.js ici, puis l'inscrire ci-dessous
    et dans LANGS (js/data/catalog.js). scripts/check.py vérifie que les
    trois restent d'accord. */
-export const AVAILABLE_LANGS = ['fr', 'en', 'es', 'ar', 'ru', 'zh', 'ja', 'hi', 'tr', 'ur', 'id'];
+export const AVAILABLE_LANGS = [
+  'fr', 'en', 'es', 'ru', 'bs',              // Europe
+  'ar', 'tr', 'fa',                          // Moyen-Orient & Afrique du Nord
+  'ur', 'hi', 'bn', 'id', 'ms', 'zh', 'ja',  // Asie
+  'so', 'sw', 'ha',                          // Afrique
+];
 
 export const hasLang = code => AVAILABLE_LANGS.includes(code);

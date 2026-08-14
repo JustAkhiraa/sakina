@@ -438,4 +438,10 @@ export default {
   "halal.iNote": "प्रमाणकों की सार्वजनिक गवाहियों (25 वर्ष का अनुभव, पूर्व-AVS) और debat-halal.fr से संकलित सार।",
   "tools.evtSaved": "✦ ईवेंट सहेजा गया",
   "tools.evtDeleted": "ईवेंट हटाया गया",
+  "reg.europe": "यूरोप",
+  "reg.mena": "मध्य पूर्व और उत्तरी अफ़्रीका",
+  "reg.asia": "एशिया",
+  "reg.africa": "अफ़्रीका",
+  "set.langSearch": "भाषा खोजें…",
+  "set.noLang": "कोई भाषा मेल नहीं खाती",
 };

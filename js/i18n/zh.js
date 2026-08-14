@@ -438,4 +438,10 @@ export default {
   "halal.iNote": "综合自认证从业者的公开证词（25 年经验，前 AVS）以及 debat-halal.fr。",
   "tools.evtSaved": "✦ 事件已保存",
   "tools.evtDeleted": "事件已删除",
+  "reg.europe": "欧洲",
+  "reg.mena": "中东与北非",
+  "reg.asia": "亚洲",
+  "reg.africa": "非洲",
+  "set.langSearch": "搜索语言…",
+  "set.noLang": "没有匹配的语言",
 };

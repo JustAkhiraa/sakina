@@ -438,4 +438,10 @@ export default {
   "halal.iNote": "تصدیق کاروں کی عوامی گواہیوں (25 سال کا تجربہ، سابق AVS) اور debat-halal.fr سے ماخوذ خلاصہ۔",
   "tools.evtSaved": "✦ واقعہ محفوظ",
   "tools.evtDeleted": "واقعہ حذف",
+  "reg.europe": "یورپ",
+  "reg.mena": "مشرقِ وسطیٰ اور شمالی افریقہ",
+  "reg.asia": "ایشیا",
+  "reg.africa": "افریقہ",
+  "set.langSearch": "زبان تلاش کریں…",
+  "set.noLang": "کوئی زبان مطابقت نہیں رکھتی",
 };

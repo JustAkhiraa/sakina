@@ -438,4 +438,10 @@ export default {
   "halal.iNote": "Обобщение публичных свидетельств сертификаторов (25 лет опыта, ранее AVS) и материалов debat-halal.fr.",
   "tools.evtSaved": "✦ Событие сохранено",
   "tools.evtDeleted": "Событие удалено",
+  "reg.europe": "Европа",
+  "reg.mena": "Ближний Восток и Северная Африка",
+  "reg.asia": "Азия",
+  "reg.africa": "Африка",
+  "set.langSearch": "Поиск языка…",
+  "set.noLang": "Нет подходящего языка",
 };

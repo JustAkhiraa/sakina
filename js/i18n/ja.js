@@ -438,4 +438,10 @@ export default {
   "halal.iNote": "認証実務者の公開証言（経験25年、元AVS）および debat-halal.fr に基づく要約です。",
   "tools.evtSaved": "✦ 予定を保存しました",
   "tools.evtDeleted": "予定を削除しました",
+  "reg.europe": "ヨーロッパ",
+  "reg.mena": "中東・北アフリカ",
+  "reg.asia": "アジア",
+  "reg.africa": "アフリカ",
+  "set.langSearch": "言語を検索…",
+  "set.noLang": "一致する言語がありません",
 };

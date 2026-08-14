@@ -62,7 +62,7 @@ function buildLangGrid(){
     if(!langs.length)return;
     const h=document.createElement('div');
     h.className='sl';h.style.cssText='margin:10px 4px 6px;text-align:left;';
-    h.textContent=reg.label;
+    h.textContent=t(reg.i18n)||reg.label;
     grid.appendChild(h);
     const row=document.createElement('div');
     row.style.cssText='display:flex;flex-wrap:wrap;justify-content:center;gap:4px;';

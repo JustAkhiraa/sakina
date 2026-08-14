@@ -438,4 +438,10 @@ export default {
   "halal.iNote": "Synthèse issue de témoignages publics de certificateurs (25 ans d'expérience, ex-AVS) et de debat-halal.fr.",
   "tools.evtSaved": "✦ Événement enregistré",
   "tools.evtDeleted": "Événement supprimé",
+  "reg.europe": "Europe",
+  "reg.mena": "Moyen-Orient & Afrique du Nord",
+  "reg.asia": "Asie",
+  "reg.africa": "Afrique",
+  "set.langSearch": "Chercher une langue…",
+  "set.noLang": "Aucune langue ne correspond",
 };

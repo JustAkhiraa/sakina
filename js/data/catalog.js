@@ -275,36 +275,40 @@ export const MADHAB_BY_LANG={
 
 /* Langues rangées par continent. L\'ordre des régions est celui d\'affichage. */
 export const LANG_REGIONS=[
-  {id:'mena',   label:'Moyen-Orient & Afrique du Nord'},
-  {id:'asia',   label:'Asie'},
-  {id:'africa', label:'Afrique'},
-  {id:'europe', label:'Europe'},
-  {id:'americas',label:'Amériques'},
+  {id:'mena',   i18n:'reg.mena',   label:'Moyen-Orient & Afrique du Nord'},
+  {id:'asia',   i18n:'reg.asia',   label:'Asie'},
+  {id:'africa', i18n:'reg.africa', label:'Afrique'},
+  {id:'europe', i18n:'reg.europe', label:'Europe'},
 ];
 
+/* `name` est le nom natif : c'est ainsi qu'on cherche sa propre langue dans
+   une liste. Mais on ne peut pas taper « العربية » avec un clavier latin, ni
+   deviner que le chinois s'écrit « 中文 » — d'où `alt`, les graphies sous
+   lesquelles l'utilisateur risque de chercher (français, anglais, code ISO).
+   Le sélecteur cherche dans name + alt + code. */
 export const LANGS=[
   // Europe
-  {code:'fr',name:'Français', flag:'🇫🇷', region:'europe'},
-  {code:'en',name:'English',  flag:'🇬🇧', region:'europe'},
-  {code:'es',name:'Español',  flag:'🇪🇸', region:'europe'},
-  {code:'ru',name:'Русский',  flag:'🇷🇺', region:'europe'},
-  {code:'bs',name:'Bosanski', flag:'🇧🇦', region:'europe'},
+  {code:'fr',name:'Français', flag:'🇫🇷', region:'europe', alt:'french francais'},
+  {code:'en',name:'English',  flag:'🇬🇧', region:'europe', alt:'anglais english'},
+  {code:'es',name:'Español',  flag:'🇪🇸', region:'europe', alt:'espagnol spanish castellano'},
+  {code:'ru',name:'Русский',  flag:'🇷🇺', region:'europe', alt:'russe russian russkiy'},
+  {code:'bs',name:'Bosanski', flag:'🇧🇦', region:'europe', alt:'bosniaque bosnian bosnien'},
   // Moyen-Orient & Afrique du Nord
-  {code:'ar',name:'العربية',  flag:'🇸🇦', rtl:true,  region:'mena'},
-  {code:'tr',name:'Türkçe',   flag:'🇹🇷', region:'mena'},
-  {code:'fa',name:'فارسی',    flag:'🇮🇷', rtl:true,  region:'mena'},
+  {code:'ar',name:'العربية',  flag:'🇸🇦', rtl:true, region:'mena', alt:'arabe arabic arabiya'},
+  {code:'tr',name:'Türkçe',   flag:'🇹🇷', region:'mena', alt:'turc turkish turkce'},
+  {code:'fa',name:'فارسی',    flag:'🇮🇷', rtl:true, region:'mena', alt:'persan persian farsi iranien'},
   // Asie
-  {code:'ur',name:'اردو',      flag:'🇵🇰', rtl:true,  region:'asia'},
-  {code:'hi',name:'हिन्दी',    flag:'🇮🇳', region:'asia'},
-  {code:'bn',name:'বাংলা',    flag:'🇧🇩', region:'asia'},
-  {code:'id',name:'Indonesia',flag:'🇮🇩', region:'asia'},
-  {code:'ms',name:'Melayu',   flag:'🇲🇾', region:'asia'},
-  {code:'zh',name:'中文',      flag:'🇨🇳', region:'asia'},
-  {code:'ja',name:'日本語',    flag:'🇯🇵', region:'asia'},
+  {code:'ur',name:'اردو',      flag:'🇵🇰', rtl:true, region:'asia', alt:'ourdou urdu pakistan'},
+  {code:'hi',name:'हिन्दी',    flag:'🇮🇳', region:'asia', alt:'hindi inde india'},
+  {code:'bn',name:'বাংলা',    flag:'🇧🇩', region:'asia', alt:'bengali bangla bangladesh'},
+  {code:'id',name:'Indonesia',flag:'🇮🇩', region:'asia', alt:'indonesien indonesian bahasa'},
+  {code:'ms',name:'Melayu',   flag:'🇲🇾', region:'asia', alt:'malais malay malaisie bahasa'},
+  {code:'zh',name:'中文',      flag:'🇨🇳', region:'asia', alt:'chinois chinese mandarin zhongwen'},
+  {code:'ja',name:'日本語',    flag:'🇯🇵', region:'asia', alt:'japonais japanese nihongo'},
   // Afrique
-  {code:'so',name:'Soomaali', flag:'🇸🇴', region:'africa'},
-  {code:'sw',name:'Kiswahili',flag:'🇰🇪', region:'africa'},
-  {code:'ha',name:'Hausa',    flag:'🇳🇬', region:'africa'},
+  {code:'so',name:'Soomaali', flag:'🇸🇴', region:'africa', alt:'somali somalien soomaali'},
+  {code:'sw',name:'Kiswahili',flag:'🇰🇪', region:'africa', alt:'swahili souahili kiswahili'},
+  {code:'ha',name:'Hausa',    flag:'🇳🇬', region:'africa', alt:'haoussa hausa nigeria'},
 ];
 
 export const QADA_PRAYERS=[

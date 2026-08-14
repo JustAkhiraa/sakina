@@ -194,6 +194,30 @@ def check_t_shadowing() -> None:
         NOTES.append("aucune variable locale ne masque la fonction t()")
 
 
+def check_duplicate_exports() -> None:
+    """Deux `export const X` dans le même fichier lèvent « Identifier 'X' has
+    already been declared » — le module entier ne se charge plus, et toute
+    l'application avec lui. Le piège se tend quand on ajoute une constante
+    sans voir qu'elle existe déjà cent lignes plus haut."""
+    decl = re.compile(r"^export\s+(?:const|let|var|function|class)\s+(\w+)", re.M)
+    n = 0
+    for f in js_files():
+        names: dict[str, int] = {}
+        src = f.read_text(encoding="utf-8")
+        for m in decl.finditer(src):
+            line = src[: m.start()].count("\n") + 1
+            if m.group(1) in names:
+                n += 1
+                ERRORS.append(
+                    f"{f.relative_to(ROOT)}:{line} : « {m.group(1)} » deja exporte "
+                    f"ligne {names[m.group(1)]} — le module ne se chargera pas"
+                )
+            else:
+                names[m.group(1)] = line
+    if not n:
+        NOTES.append("aucun export en double")
+
+
 def check_i18n() -> None:
     """Le français fait référence : toute clé utilisée doit y figurer, et la
     couverture des autres langues se mesure par rapport à lui."""
@@ -284,6 +308,7 @@ def main() -> int:
         check_imports,
         check_dom_ids,
         check_t_shadowing,
+        check_duplicate_exports,
         check_i18n,
         check_quran,
         check_books,

@@ -5,7 +5,7 @@
 import {S,save,streak,on} from '../core/store.js';
 import {toast,confirmDlg,openSheet,closeSheet} from '../core/ui.js';
 import {playSound,vib} from '../core/audio.js';
-import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS,BASE_THEMES,AVATARS,TITLES,SKINS} from '../data/catalog.js';
+import {THEMES,SOUNDS,QADA_PRAYERS,MADHABS,LANGS,LANG_REGIONS,BASE_THEMES,AVATARS,TITLES,SKINS} from '../data/catalog.js';
 import {isUnlocked,remainingFor,fmtGoal,rewardsSummary,nextReward,allRewards} from '../core/rewards.js';
 import {applyI18n,setLang,t,n as num} from '../lib/i18n.js';
 import {hasLang} from '../i18n/index.js';
@@ -319,19 +319,54 @@ function buildMadhabList(){
 }
 
 /* ── Langue ── */
-function buildLangList(){
-  const list=document.getElementById('lang-list');list.innerHTML='';
-  LANGS.filter(l=>hasLang(l.code)).forEach(l=>{
-    const row=document.createElement('div');
-    row.className='ob-method-row'+(S.lang===l.code?' sel':'');
-    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${l.flag} ${l.name}</div></div>`;
-    row.addEventListener('click',()=>{
-      vib(16);
-      // setLang pose S.lang puis applique : on enregistre après, sinon on
-      // sauvegarderait l'ancienne langue.
-      setLang(l.code).then(()=>{save();buildLangList();syncPracticeRows();});
-    });
-    list.appendChild(row);
+/* ── Sélecteur de langue ──
+   À dix-huit langues, une liste à plat n'est plus lisible. Deux entrées :
+   les groupes régionaux pour parcourir, la recherche pour aller droit au
+   but. La recherche interroge aussi `alt` (« arabic », « arabe », « ar »),
+   sans quoi on ne pourrait pas atteindre « العربية » au clavier latin. */
+function langRow(l){
+  const row=document.createElement('div');
+  row.className='ob-method-row'+(S.lang===l.code?' sel':'');
+  row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${l.flag} ${l.name}</div></div>`;
+  row.addEventListener('click',()=>{
+    vib(16);
+    // setLang pose S.lang puis applique : on enregistre après, sinon on
+    // sauvegarderait l'ancienne langue.
+    setLang(l.code).then(()=>{save();buildLangList();syncPracticeRows();});
+  });
+  return row;
+}
+
+// Sans les diacritiques, « Türkçe » ne répond pas à « turkce ».
+const fold=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+
+function buildLangList(filter=''){
+  const list=document.getElementById('lang-list');
+  if(!list)return;
+  list.innerHTML='';
+  const all=LANGS.filter(l=>hasLang(l.code));
+  const q=fold(filter.trim());
+
+  if(q){
+    const hits=all.filter(l=>fold(`${l.name} ${l.alt||''} ${l.code}`).includes(q));
+    if(!hits.length){
+      list.innerHTML=`<div class="places-empty">${t('set.noLang')}</div>`;
+      return;
+    }
+    hits.forEach(l=>list.appendChild(langRow(l)));
+    return;
+  }
+
+  LANG_REGIONS.forEach(r=>{
+    const group=all.filter(l=>l.region===r.id);
+    if(!group.length)return;
+    const head=document.createElement('div');
+    head.className='sl';
+    head.style.margin='14px 0 6px';
+    head.dataset.i18n=r.i18n;
+    head.textContent=t(r.i18n)||r.label;
+    list.appendChild(head);
+    group.forEach(l=>list.appendChild(langRow(l)));
   });
 }
 
@@ -599,7 +634,15 @@ export function initSettings(){
   });
 
   document.getElementById('btn-open-madhab').addEventListener('click',()=>openSheet('sh-madhab',buildMadhabList));
-  document.getElementById('btn-open-lang').addEventListener('click',()=>openSheet('sh-lang',buildLangList));
+  // openSheet passe l'element de la feuille au rappel : sans l'arrow, cet
+  // element arriverait dans `filter` et serait pris pour une recherche.
+  document.getElementById('btn-open-lang').addEventListener('click',()=>openSheet('sh-lang',()=>{
+    const q=$('lang-search');
+    if(q)q.value='';
+    buildLangList();
+  }));
+  const langSearch=$('lang-search');
+  if(langSearch)langSearch.addEventListener('input',e=>buildLangList(e.target.value));
   const bonusBtn=document.getElementById('btn-open-bonus');
   if(bonusBtn)bonusBtn.addEventListener('click',()=>openSheet('sh-bonus',buildBonusSheet));
 
