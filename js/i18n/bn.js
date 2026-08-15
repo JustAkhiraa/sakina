@@ -538,7 +538,7 @@ export default {
   "dua.contre-les-mauvaises-pensees.o": "ওয়াসওয়াসার সময়",
   "dua.dhikr-hautement-recompense.t": "অত্যন্ত সওয়াবের জিকির",
   "dua.dhikr-hautement-recompense.o": "সকালে ৩ বার",
-  "dua.istikhara-consultation-divin.t": "ইস্তিখারা",
+  "dua.istikhara-consultation-divin.t": "ইস্তিখারা — কল্যাণ প্রার্থনা",
   "dua.istikhara-consultation-divin.o": "ইস্তিখারার ২ রাকাতের পর",
   "dua.avant-le-repas.t": "খাবারের আগে",
   "dua.avant-le-repas.o": "খাওয়া শুরুর আগে",

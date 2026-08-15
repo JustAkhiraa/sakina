@@ -91,7 +91,7 @@ export default {
   "row.notifTest": "テスト通知を送信",
   "row.quranTr": "クルアーン訳",
   "row.import": "ファイルを取り込む",
-  "row.calcMethod": "計算方法",
+  "row.calcMethod": "礼拝時刻の計算方法",
   "sub.avatar": "節目ごとに解放",
   "sub.titleHon": "解放済みから選択",
   "sub.adhkarScript": "定型文：アラビア語か音写",

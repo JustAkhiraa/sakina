@@ -538,7 +538,7 @@ export default {
   "dua.contre-les-mauvaises-pensees.o": "وسوسے کے وقت",
   "dua.dhikr-hautement-recompense.t": "بہت اجر والا ذکر",
   "dua.dhikr-hautement-recompense.o": "صبح تین بار",
-  "dua.istikhara-consultation-divin.t": "استخارہ",
+  "dua.istikhara-consultation-divin.t": "استخارہ — طلبِ خیر",
   "dua.istikhara-consultation-divin.o": "استخارہ کی دو رکعتوں کے بعد",
   "dua.avant-le-repas.t": "کھانے سے پہلے",
   "dua.avant-le-repas.o": "کھانا شروع کرنے سے پہلے",

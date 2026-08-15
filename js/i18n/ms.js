@@ -538,7 +538,7 @@ export default {
   "dua.contre-les-mauvaises-pensees.o": "Ketika datang waswas (bisikan)",
   "dua.dhikr-hautement-recompense.t": "Zikir berpahala besar",
   "dua.dhikr-hautement-recompense.o": "3 kali pagi",
-  "dua.istikhara-consultation-divin.t": "Istikharah",
+  "dua.istikhara-consultation-divin.t": "Istikharah — memohon petunjuk",
   "dua.istikhara-consultation-divin.o": "Selepas 2 rakaat Istikharah",
   "dua.avant-le-repas.t": "Sebelum makan",
   "dua.avant-le-repas.o": "Sebelum mula makan",

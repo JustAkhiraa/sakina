@@ -817,7 +817,7 @@ export default {
   "snd.sing": "Cuenco tibetano",
   "snd.harp": "Arpa",
   "snd.bell": "Campanita",
-  "snd.glass": "Cristal",
+  "snd.glass": "Vidrio",
   "snd.gong": "Gong",
   "snd.bleep": "Pitido digital",
   "snd.pulse": "Pulso",

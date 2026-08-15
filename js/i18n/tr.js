@@ -538,7 +538,7 @@ export default {
   "dua.contre-les-mauvaises-pensees.o": "Vesvese geldiğinde",
   "dua.dhikr-hautement-recompense.t": "Sevabı büyük bir zikir",
   "dua.dhikr-hautement-recompense.o": "Sabah üç kez",
-  "dua.istikhara-consultation-divin.t": "İstihare",
+  "dua.istikhara-consultation-divin.t": "İstihare — hayırlısını dileme",
   "dua.istikhara-consultation-divin.o": "İstihare namazının iki rekâtından sonra",
   "dua.avant-le-repas.t": "Yemekten önce",
   "dua.avant-le-repas.o": "Yemeğe başlamadan önce",
