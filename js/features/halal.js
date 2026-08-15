@@ -4,7 +4,7 @@
    responsable de sa vérification (abattage, étourdissement, traçabilité…). */
 import {openSheet} from '../core/ui.js';
 import {vib} from '../core/audio.js';
-import {t} from '../lib/i18n.js';
+import {t,tf} from '../lib/i18n.js';
 import {ADDITIVES,ADD_STATUS,HARAM_KEYWORDS} from '../data/additives.js';
 import {CERT_ORGS,CERT_BRANDS} from '../data/halal-certifs.js';
 
@@ -13,12 +13,24 @@ let _tab='scan';
 let _stream=null,_scanLoop=null;
 
 /* ── Encyclopédie des additifs ── */
+/* Nom et note d'un additif, traduits. Le nom est indexe par son code — un
+   identifiant stable et deja unique. La note l'est par un slug de son
+   contenu : 118 additifs ne portent que 73 notes distinctes, et si le texte
+   francais change, la cle change avec lui plutot que de coller une
+   traduction perimee sur la nouvelle phrase.
+   Ce calcul doit rester identique a celui de scripts/. */
+const slug=s=>(s||'').normalize('NFKD').replace(/[̀-ͯ]/g,'')
+  .replace(/[^A-Za-z0-9]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase()
+  .replace(/-{2,}/g,'-').slice(0,34);
+export const addName=a=>tf(`add.${a.code}`,a.name);
+export const addNote=a=>a.note?tf(`adn.${slug(a.note)}`,a.note):'';
+
 function searchAdditives(q){
   const box=$('halal-add-results');
   q=q.trim().toLowerCase().replace(/^e\s*/i,'e');
   if(!q){box.innerHTML=`<div class="places-empty">${t('halal.searchHint')}</div>`;return;}
   const items=ADDITIVES.filter(a=>
-    a.code.toLowerCase().includes(q)||a.name.toLowerCase().includes(q)
+    a.code.toLowerCase().includes(q)||a.name.toLowerCase().includes(q)||addName(a).toLowerCase().includes(q)
   ).slice(0,30);
   box.innerHTML='';
   if(!items.length){
@@ -29,8 +41,8 @@ function searchAdditives(q){
     const st=ADD_STATUS[a.status];
     const el=document.createElement('div');
     el.className='add-card';
-    el.innerHTML=`<div class="add-head ${st.color}"><span class="add-code">${a.code}</span><span class="add-name">${a.name}</span><span class="add-badge">${st.icon} ${st.label}</span></div>
-      <div class="add-note">${a.note}</div>`;
+    el.innerHTML=`<div class="add-head ${st.color}"><span class="add-code">${a.code}</span><span class="add-name">${addName(a)}</span><span class="add-badge">${st.icon} ${st.label}</span></div>
+      <div class="add-note">${addNote(a)}</div>`;
     box.appendChild(el);
   });
 }
@@ -50,7 +62,7 @@ function analyzeProduct(p){
     const a=ADDITIVES.find(x=>x.code.toUpperCase()===code);
     if(a&&(a.status==='haram'||a.status==='douteux')){
       if(!findings.some(f=>f.label.includes(a.code)))
-        findings.push({label:`${a.code} — ${a.name}`,status:a.status,note:a.note});
+        findings.push({label:`${a.code} — ${addName(a)}`,status:a.status,note:addNote(a)});
     }
   });
 

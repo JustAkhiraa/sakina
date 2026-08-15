@@ -21,7 +21,7 @@ import {ADDITIVES,ADD_STATUS} from '../data/additives.js';
 import {showSurah} from './quran.js';
 import {openDuaSearch,duaTitle,duaOcc,duaCat} from './duas.js';
 import {openRoutine} from './routines.js';
-import {openHalal} from './halal.js';
+import {openHalal,addName,addNote} from './halal.js';
 import {showBook} from './books.js';
 
 const $=id=>document.getElementById(id);
@@ -110,7 +110,7 @@ function buildIndex(){
 
   ADDITIVES.forEach(a=>{
     const st=ADD_STATUS[a.status]||{};
-    push('additive',st.icon||'🧪',`${a.code} — ${a.name}`,a.note,'additif e-number',
+    push('additive',st.icon||'🧪',`${a.code} — ${addName(a)}`,addNote(a),`additif e-number ${a.name}`,
       ()=>openHalal('add',a.code));
   });
 

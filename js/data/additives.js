@@ -87,7 +87,7 @@ export const ADDITIVES=[
   {code:'E435',name:'Polysorbate 60',status:'douteux',note:'Acides gras d\'origine animale possible.'},
   {code:'E436',name:'Polysorbate 65',status:'douteux',note:'Acides gras d\'origine animale possible.'},
   {code:'E440',name:'Pectine',status:'halal',note:'Extrait de fruits.'},
-  {code:'E441',name:'Gélatine',status:'haram',note:'Gélatine animale : haram sauf certification halal explicite (bœuf rituel ou poisson).'},
+  {code:'E441',name:'Gélatine',status:'haram',note:'Gélatine animale : haram sauf certification halal explicite (bœuf abattu rituellement ou poisson).'},
   {code:'E442',name:'Phosphatides d\'ammonium',status:'douteux',note:'Acides gras d\'origine animale possible.'},
   {code:'E450',name:'Diphosphates',status:'halal',note:'Minéral.'},
   {code:'E451',name:'Triphosphates',status:'halal',note:'Minéral.'},
