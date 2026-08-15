@@ -5,12 +5,19 @@ import {toast,openSheet,closeSheet} from '../core/ui.js';
 import {computeTimes,fmtTime} from '../lib/astro.js';
 import {toHijri,hijriLabelAr} from '../lib/hijri.js';
 import {CALC_METHODS,MADHABS,CALC_BY_COUNTRY} from '../data/catalog.js';
-import {t} from '../lib/i18n.js';
+import {t,tf} from '../lib/i18n.js';
 
 const $=id=>document.getElementById(id);
 let _cdI=null;
 
 const methodById=id=>CALC_METHODS.find(m=>m.id===id)||CALC_METHODS[0];
+
+/* Nom et description d'une methode de calcul, traduits. Les sigles
+   institutionnels (ISNA, UOIF, JAKIM, Diyanet, Kemenag) n'ont pas de cle :
+   ce sont des marques, tf() retombe alors sur le catalogue. Exportes parce
+   que l'assistant de demarrage affiche la meme liste. */
+export const calcName=m=>tf(`cm.${m.id}.n`,m.name);
+export const calcDesc=m=>tf(`cm.${m.id}.d`,m.desc);
 const asrFactor=()=>(MADHABS.find(m=>m.id===S.madhab)||MADHABS[0]).asrFactor;
 
 /* Le nom se lit dans l'alphabet de l'utilisateur : « DHOUHR » ne dit rien a
@@ -82,7 +89,7 @@ export function renderPrayers(){
   $('greg-date').textContent=now.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
   $('salat-sub').textContent=S.city||`${S.lat.toFixed(2)}°, ${S.lon.toFixed(2)}°`;
   $('loc-txt').textContent=S.city||t('salat.located');
-  $('calc-name').textContent=m.name;
+  $('calc-name').textContent=calcName(m);
 
   const next=findNext(now);
   const grid=$('prayers-grid');grid.innerHTML='';
@@ -119,7 +126,9 @@ export function renderPrayers(){
 /* ── Localisation ── */
 export async function reverseGeocode(lat,lon){
   try{
-    const res=await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=fr`);
+    // Nominatim rend le nom dans la langue demandee : un utilisateur japonais
+    // doit lire « 東京 », pas « Tokyo ».
+    const res=await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=${S.lang||'fr'}`);
     const d=await res.json();
     const a=d.address||{};
     return{
@@ -142,7 +151,7 @@ function autoCalcMethod(country){
 }
 
 export async function geocodeCity(q){
-  const res=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=6&accept-language=fr`);
+  const res=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=6&accept-language=${S.lang||'fr'}`);
   return res.json();
 }
 
@@ -156,7 +165,7 @@ export function requestGPS(){
       S.city=loc.city;
       const auto=autoCalcMethod(loc.country);
       save();renderPrayers();emit('location-changed');
-      if(auto)toast(`📍 ${S.city||t('salat.located')} · ${methodById(S.calcMethod).name}`);
+      if(auto)toast(`📍 ${S.city||t('salat.located')} · ${calcName(methodById(S.calcMethod))}`);
       else toast(S.city?`📍 ${S.city}`:`📍 ${t('salat.located')}`);
     },
     ()=>{
@@ -198,15 +207,21 @@ function buildCalcMethods(){
   const bd=$('calc-bd');bd.innerHTML='';
   CALC_METHODS.forEach(m=>{
     const div=document.createElement('div');div.className='row';
-    div.innerHTML=`<div class="row-ic">🕌</div><div class="row-body"><div class="row-name">${m.name}</div><div class="row-sub">${m.desc}</div></div>${S.calcMethod===m.id?'<svg width="18" height="18" fill="none" stroke="var(--a)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>':''}`;
+    div.innerHTML=`<div class="row-ic">🕌</div><div class="row-body"><div class="row-name">${calcName(m)}</div><div class="row-sub">${calcDesc(m)}</div></div>${S.calcMethod===m.id?'<svg width="18" height="18" fill="none" stroke="var(--a)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>':''}`;
     div.addEventListener('click',()=>{
       S.calcMethod=m.id;S.calcMethodPicked=true;  // choix explicite : l'auto ne l'écrase plus
-      $('calc-name').textContent=m.name;
+      $('calc-name').textContent=calcName(m);
       save();if(S.lat!==null)renderPrayers();
-      closeSheet();toast(t('salat.methodIs',{name:m.name}));
+      closeSheet();toast(t('salat.methodIs',{name:calcName(m)}));
     });
     bd.appendChild(div);
   });
+}
+
+/* La liste des methodes est batie en JS a l'ouverture de la feuille : sans
+   ca, elle garde la langue qu'elle avait ce jour-la. */
+export function refreshSalat(){
+  if($('calc-bd')?.children.length)buildCalcMethods();
 }
 
 export function initSalat(){

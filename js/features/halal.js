@@ -179,7 +179,7 @@ function renderBrands(filter=''){
     const row=document.createElement('div');row.className='brand-row';
     row.innerHTML=`<div class="brand-dot ${b.verdict==='halal'?'ok':'bad'}"></div>
       <div style="flex:1"><div class="brand-name">${b.name}</div><div class="brand-cert">${t('halal.certBy')} ${b.cert}</div></div>
-      <div style="font-size:0.62rem;font-weight:800;color:${b.verdict==='halal'?'var(--ok)':'#fb923c'};">${b.verdict==='halal'?'SEREIN':'DOUTEUX'}</div>`;
+      <div style="font-size:0.62rem;font-weight:800;color:${b.verdict==='halal'?'var(--ok)':'#fb923c'};">${b.verdict==='halal'?t('halal.serene'):t('halal.doubtful')}</div>`;
     wrap.appendChild(row);
   });
   box.appendChild(wrap);
@@ -207,6 +207,16 @@ export function openHalal(tab='scan',query=''){
     if(inp)inp.value=tab==='add'?query:'';
     searchAdditives(tab==='add'?query:'');
   });
+}
+
+/* Changement de langue : additifs, organismes et marques sont bâtis en JS.
+   On ne reconstruit que ce qui a déjà été peuplé. */
+export function refreshHalal(){
+  if($('certs-orgs')?.children.length){
+    renderOrgs();
+    renderBrands($('brand-search')?.value||'');
+  }
+  if($('halal-add-results')?.children.length)searchAdditives($('halal-add-inp')?.value||'');
 }
 
 export function initHalal(){

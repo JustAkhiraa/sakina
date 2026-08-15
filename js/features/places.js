@@ -57,12 +57,12 @@ async function search(){
     const items=(data.elements||[]).map(e=>{
       const lat=e.lat??e.center?.lat,lon=e.lon??e.center?.lon;
       if(lat==null)return null;
-      const t=e.tags||{};
+      const tg=e.tags||{};   // pas `t` : masquerait la fonction de traduction
       return{
-        name:t.name||'Mosquée / salle de prière',
+        name:tg.name||t('places.unnamed'),
         lat,lon,
         dist:distKm(S.lat,S.lon,lat,lon),
-        street:[t['addr:housenumber'],t['addr:street'],t['addr:city']].filter(Boolean).join(' '),
+        street:[tg['addr:housenumber'],tg['addr:street'],tg['addr:city']].filter(Boolean).join(' '),
       };
     }).filter(Boolean).sort((a,b)=>a.dist-b.dist);
 
@@ -92,6 +92,15 @@ async function search(){
 
 function syncUI(){
   document.querySelectorAll('#places-radius .chip').forEach(c=>c.classList.toggle('sel',parseInt(c.dataset.km)===_radius));
+}
+
+/* Changement de langue pendant qu'Overpass repond : le message d'attente
+   resterait dans l'ancienne langue jusqu'a l'arrivee des resultats. On le
+   reecrit sans relancer la requete — les noms des lieux, eux, viennent
+   d'OpenStreetMap et restent tels quels. */
+export function refreshPlaces(){
+  const w=$('places-list')?.querySelector('.q-spinner')?.parentElement;
+  if(w)w.innerHTML=`<div class="q-spinner" style="margin:0 auto 10px"></div>${t('places.searchingRadius',{km:_radius})}`;
 }
 
 export function initPlaces(){

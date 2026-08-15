@@ -2,11 +2,18 @@
 import {S,save,emit} from '../core/store.js';
 import {toast,burst,openSheet,closeSheet,confirmDlg} from '../core/ui.js';
 import {playSound,vib} from '../core/audio.js';
-import {t,n as num} from '../lib/i18n.js';
+import {t,tf,n as num} from '../lib/i18n.js';
 import {QADA_PRAYERS} from '../data/catalog.js';
-import {toHijri,hijriLabelAr,hijriLabelFr,toArabicNum,HIJRI_MONTHS_FR,HIJRI_MONTHS_AR,HIJRI_SACRED,isRamadan,isWhiteDay,isAshura,isArafat} from '../lib/hijri.js';
+import {toHijri,hijriLabelAr,toArabicNum,HIJRI_MONTHS_FR,HIJRI_MONTHS_AR,HIJRI_SACRED,isRamadan,isWhiteDay,isAshura,isArafat} from '../lib/hijri.js';
 
 const $=id=>document.getElementById(id);
+
+/* Les mois hegiriens sont des noms propres arabes : chaque langue les
+   translittere dans son ecriture, le francais de hijri.js servant de repli.
+   Chiffres bruts volontairement : num() insererait un separateur de milliers
+   dans l'annee (1447 → « 1 447 »). */
+const hijMonth=i=>tf(`hij.${i}`,HIJRI_MONTHS_FR[i]);
+const hijriLabel=h=>`${h.day} ${hijMonth(h.month)} ${h.year}`;
 
 /* ══════════ QADÂ' ══════════ */
 let _qdaMode='jours';
@@ -105,24 +112,32 @@ function calcZakat(){
 }
 
 /* ══════════ CONVERTISSEUR HÉGIRIEN ══════════ */
+/* Separe de l'ouverture pour pouvoir etre rejoue au changement de langue :
+   la date du jour et les douze mois sont ecrits en JS. */
+function renderHijriSheet(){
+  const ml=$('hijri-months-list');
+  if(!ml)return;
+  const now=new Date();
+  const h=toHijri(now);
+  $('hconv-hijri-today').textContent=hijriLabelAr(h);
+  $('hconv-greg-today').textContent=now.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+` · ${hijriLabel(h)}`;
+  ml.innerHTML='';
+  HIJRI_MONTHS_FR.forEach((_,i)=>{
+    const sacred=HIJRI_SACRED.includes(i);
+    const div=document.createElement('div');div.className='row';div.style.cursor='default';
+    div.innerHTML=`<div class="row-ic" style="font-family:var(--ff-a);font-size:0.85rem;width:42px;">${HIJRI_MONTHS_AR[i].split(' ')[0]}</div>
+      <div class="row-body"><div class="row-name">${hijMonth(i)}</div><div class="row-sub">${t('tools.monthN',{n:i+1})}${sacred?` · ${t('tools.sacredMonth')}`:''}</div></div>
+      ${sacred?`<div style="font-size:0.62rem;color:var(--a);font-weight:800;padding:2px 7px;border-radius:var(--r-pill);background:var(--a-dim);border:1px solid var(--a-glow);">${t('tools.sacred')}</div>`:''}`;
+    if(i===11)div.style.borderBottom='none';
+    ml.appendChild(div);
+  });
+}
+
 function openHijriSheet(){
   openSheet('sh-hijri',()=>{
+    renderHijriSheet();
     const now=new Date();
-    const h=toHijri(now);
-    $('hconv-hijri-today').textContent=hijriLabelAr(h);
-    $('hconv-greg-today').textContent=now.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+` · ${hijriLabelFr(h)}`;
-    const inp=$('hconv-inp');
-    inp.value=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-    const ml=$('hijri-months-list');ml.innerHTML='';
-    HIJRI_MONTHS_FR.forEach((m,i)=>{
-      const sacred=HIJRI_SACRED.includes(i);
-      const div=document.createElement('div');div.className='row';div.style.cursor='default';
-      div.innerHTML=`<div class="row-ic" style="font-family:var(--ff-a);font-size:0.85rem;width:42px;">${HIJRI_MONTHS_AR[i].split(' ')[0]}</div>
-        <div class="row-body"><div class="row-name">${m}</div><div class="row-sub">${t('tools.monthN',{n:i+1})}${sacred?` · ${t('tools.sacredMonth')}`:''}</div></div>
-        ${sacred?`<div style="font-size:0.62rem;color:var(--a);font-weight:800;padding:2px 7px;border-radius:var(--r-pill);background:var(--a-dim);border:1px solid var(--a-glow);">${t('tools.sacred')}</div>`:''}`;
-      if(i===11)div.style.borderBottom='none';
-      ml.appendChild(div);
-    });
+    $('hconv-inp').value=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
   });
 }
 
@@ -203,7 +218,7 @@ function openEventEditor(y,m,d){
   const dt=new Date(y,m,d);
   $('cal-event-title').textContent=t('tools.event');
   $('cal-event-date').textContent=dt.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-  $('cal-event-hijri').textContent=hijriLabelFr(toHijri(dt));
+  $('cal-event-hijri').textContent=hijriLabel(toHijri(dt));
   $('cal-event-text').value=S.calEvents[_evtDate]||'';
   $('btn-del-cal-event').style.display=S.calEvents[_evtDate]?'block':'none';
   openSheet('sh-cal-event');
@@ -259,7 +274,7 @@ function renderFastingCalendar(){
     else if(isThu)cls+=' thursday';
     if(isWE)cls+=' weekend';
     const dot=(info.ram||info.white||isMon||isThu||info.ash||info.araf)?'<div class="fc-dot"></div>':'';
-    html+=`<div class="${cls}" data-day="${info.d}" title="${hijriLabelFr(info.h)}">${hasEvt?'<div class="fc-evt">✦</div>':''}<span>${info.d}</span><span class="fc-hijri">${toArabicNum(info.h.day)}</span>${dot}</div>`;
+    html+=`<div class="${cls}" data-day="${info.d}" title="${hijriLabel(info.h)}">${hasEvt?'<div class="fc-evt">✦</div>':''}<span>${info.d}</span><span class="fc-hijri">${toArabicNum(info.h.day)}</span>${dot}</div>`;
   });
   html+=`</div>
   <div style="font-size:0.68rem;color:var(--t3);text-align:center;margin-top:8px;">${t('fast.tapDay')}</div>`;
@@ -327,6 +342,16 @@ function renderFastingCalendar(){
 }
 
 /* ══════════ INIT ══════════ */
+/* Changement de langue : qadâ' et calendrier du jeûne sont bâtis en JS, donc
+   invisibles pour applyI18n. On ne les reconstruit que s'ils ont déjà servi —
+   inutile de peupler une zone que l'utilisateur n'a jamais ouverte. */
+export function refreshTools(){
+  if($('qada-zone')?.children.length)renderQada();
+  if($('fasting-bd')?.children.length)renderFastingCalendar();
+  if($('hijri-months-list')?.children.length)renderHijriSheet();
+  if($('z-wealth')?.value)calcZakat();
+}
+
 export function initTools(){
   // Qadâ'
   $('btn-open-qada').addEventListener('click',()=>openSheet('sh-qada',renderQada));
@@ -368,7 +393,7 @@ export function initTools(){
     const d=new Date(val+'T12:00:00');
     const h=toHijri(d);
     $('hconv-result-hijri').textContent=hijriLabelAr(h);
-    $('hconv-result-greg').textContent=`${d.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'})} · ${hijriLabelFr(h)}`;
+    $('hconv-result-greg').textContent=`${d.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'})} · ${hijriLabel(h)}`;
     $('hconv-result').style.display='block';
   });
 

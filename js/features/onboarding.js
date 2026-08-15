@@ -8,7 +8,7 @@ import {THEMES,CALC_METHODS,MADHABS,LANGS,LANG_REGIONS,CALC_BY_LANG,MADHAB_BY_LA
 import {t,applyI18n,setLang} from '../lib/i18n.js';
 import {hasLang} from '../i18n/index.js';
 import {applyTheme,buildBaseThemeGrid} from './settings.js';
-import {renderPrayers,reverseGeocode,geocodeCity} from './salat.js';
+import {renderPrayers,reverseGeocode,geocodeCity,calcName,calcDesc} from './salat.js';
 
 const $=id=>document.getElementById(id);
 const STEPS=5;
@@ -92,7 +92,7 @@ function buildMadhabRow(){
     const el=document.createElement('div');
     el.className='chip'+(S.madhab===m.id?' sel':'');
     el.textContent=`${m.name}`;
-    el.title=m.asrFactor===2?'Asr : ombre ×2':'Asr : ombre ×1';
+    el.title=m.asrFactor===2?t('set.asr2'):t('set.asr1');
     el.addEventListener('click',()=>{S.madhab=m.id;S._madhabTouched=true;save();buildMadhabRow();vib(14);});
     row.appendChild(el);
   });
@@ -118,7 +118,7 @@ function buildMethodList(){
   CALC_METHODS.forEach(m=>{
     const row=document.createElement('div');
     row.className='ob-method-row'+(S.calcMethod===m.id?' sel':'');
-    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${m.name}</div><div class="ob-method-desc">${m.desc}</div></div>`;
+    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${calcName(m)}</div><div class="ob-method-desc">${calcDesc(m)}</div></div>`;
     row.addEventListener('click',()=>{
       S.calcMethod=m.id;S._calcTouched=true;save();buildMethodList();vib(16);
     });
@@ -157,7 +157,7 @@ function wireLocation(){
       const q=e.target.value;
       const box=$('ob-city-results');
       if(!q.trim()){box.innerHTML='';return;}
-      box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">Recherche…</div>';
+      box.innerHTML=`<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">${t('com.searching')}</div>`;
       try{
         const items=await geocodeCity(q);
         box.innerHTML='';

@@ -753,6 +753,9 @@ export function refreshSettings(){
   buildNotifPrayers();
   buildNotifOffset();
   notifSummary();
+  // La feuille Adhân n'est reconstruite que si elle a déjà servi : sinon on
+  // interrogerait IndexedDB pour rien à chaque changement de langue.
+  if($('adhan-voices')?.children.length)buildAdhanSheet();
   adhanSummary();
   renderStats();
   syncPracticeRows();

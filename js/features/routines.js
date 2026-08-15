@@ -31,7 +31,7 @@ function doneTaps(){
   return _routine.steps.slice(0,_stepIdx).reduce((s,x)=>s+x.count,0)+_count;
 }
 
-function openPicker(){
+function buildPicker(){
   const list=$('routines-list');list.innerHTML='';
   ROUTINES.forEach(r=>{
     const row=document.createElement('div');row.className='row';
@@ -41,7 +41,18 @@ function openPicker(){
     row.addEventListener('click',()=>startRoutine(r));
     list.appendChild(row);
   });
-  openSheet('sh-routines');
+}
+
+function openPicker(){buildPicker();openSheet('sh-routines');}
+
+/* Changement de langue : la liste et l'etape en cours sont baties en JS, donc
+   invisibles pour applyI18n. Sans ca, une routine ouverte reste en francais. */
+export function refreshRoutines(){
+  if($('routines-list').children.length)buildPicker();
+  if(_routine){
+    $('routine-title').textContent=`${_routine.icon} ${rtName(_routine)}`;
+    renderStep();
+  }
 }
 
 function startRoutine(r){
