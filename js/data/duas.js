@@ -145,7 +145,9 @@ export const DUAS=[
   {cat:"Omra",id:"entre-le-coin-yemenite-et-la",catId:"umrah",title:'Entre le Coin Yéménite et la Pierre Noire',icon:'⭕',occasion:'À chaque tour du Tawaf',
    arabic:'رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةً وَفِى ٱلْءَاخِرَةِ حَسَنَةً وَقِنَا عَذَابَ ٱلنَّارِ',
    phonetic:"Rabbanā ātinā fi-d-dunyā ḥasanatan wa fi-l-ākhirati ḥasanatan wa qinā 'adhāba-n-nār.",
-   translation:"« Seigneur, accorde-nous une belle part ici-bas et une belle part dans l'au-delà, et protège-nous du châtiment du Feu. »",ref:'Abu Dawud'},
+   /* Le texte est coranique (2:201) ; c'est le fait de le réciter là qui
+      vient du hadith. Le marquer sert les 21 corpus embarqués d'un coup. */
+   translation:"« Seigneur, accorde-nous une belle part ici-bas et une belle part dans l'au-delà, et protège-nous du châtiment du Feu. »",verses:'2:201',ref:"Coran, Al-Baqara (2:201) — récité là d'après Abu Dawud"},
   {cat:"Omra",id:"en-arrivant-a-safa",catId:"umrah",title:'En Arrivant à Safa',icon:'⛰️',occasion:'Au début du Sa\'y, en montant sur Safa',
    arabic:'إِنَّ ٱلصَّفَا وَٱلْمَرْوَةَ مِن شَعَآئِرِ ٱللَّهِ ۝ أَبْدَأُ بِمَا بَدَأَ ٱللَّهُ بِهِ',
    phonetic:"Inna-ṣ-ṣafā wa-l-marwata min sha'ā'iri-llāh. Abda'u bimā bada'a-llāhu bih.",

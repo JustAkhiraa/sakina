@@ -1174,4 +1174,6 @@ export default {
   "dut.en-sortant-des-toilettes": "Allow dambi dhaafkaaga ayaan ku waydiisanayaa.",
   "dut.avant-les-rapports-intimes": "Magaca ilaahay. Allow naga dheeree shaydaanka, kana dheeree shaydaanka waxa aad nagu irsaaqday.",
   "dut.la-talbiya": "Allow waa i kan anigoo ku ajiibay, cid wax kula wadaagta malihid, waana ku ajiibay. Mahadda iyo nicmada iyo boqornimaduba adigay kuu sugnaadeen, cid wax kula wadaagtana majiraan.",
+  "dut.demande-par-le-nom-supreme": "Allow anigu waxaan ku waydiisanayaa anigoo qiraya inaad adigu tahay Ilaahay, ma jiro ilaah xaq lagu caabudo adiga mooyee, adigoo ah Allaha kaliya ee loo la qasdo arrin oo idil, waxna aan dhalin lanana dhalin, umana sugna axad u dhigma.",
+  "dut.apres-chaque-priere": "Ilaahay ayaan dambi dhaaf weydiisanayaa (saddex jeer). Allow adigaa nabad ah, xaggaagana nabadda ayaa ka sugnaatay, waadna baraka badnaatay, allihii weynaanta iyo maamuuska u saaxiibka ahaayow.",
 };

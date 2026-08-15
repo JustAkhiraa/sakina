@@ -1173,4 +1173,6 @@ export default {
   "dut.avant-d-entrer-aux-toilettes": "U ime Allaha. Allahu moj, prizivam Te protiv zla muških i ženskih šejtana.",
   "dut.avant-les-rapports-intimes": "U ime Allaha. Allahu, skloni nas od šejtana i skloni šejtana od onoga čime si nas opskrbio.",
   "dut.la-talbiya": "Odazivam Ti se, Allahu moj, odazivam. Odazivam se Tebi, Koji ravnoga Sebi nemaš, odazivam. Doista, zahvalnost i sve blagodati pripadaju Tebi, kao i sva vlast. Ti Sebi nemaš ravnoga.",
+  "dut.doua-du-voyage": "Allah je najveći, Allah je najveći, Allah je najveći. Neka je slavljen Onaj Koji nam je ovo omogućio, a mi to ne bismo bili sposobni sami učiniti. Mi se, zaista, Gospodaru našem vraćamo. Allahu, molimo Te za dobročinstvo i bogobojaznost na ovom našem putu, i za djela kojima si Ti zadovoljan. Allahu, olakšaj nam ovo putovanje, a razdaljinu njegovu skrati.",
+  "dut.la-main-sur-le-front-de-l-ep": "Allahu, molim Te da mi u njoj podariš dobro i da ono čemu je ona po naravi sklona bude dobro. I utječem Ti se od njenoga zla i zla onoga čemu je po prirodi sklona.",
 };

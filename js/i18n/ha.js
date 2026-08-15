@@ -1177,4 +1177,5 @@ export default {
   "dut.la-main-sur-le-front-de-l-ep": "Ya Allah, lalle ni ina rokonka alherinta da kuma alherin da ka halicceta akan sa, ina kuma neman tsarinka daga sharrinta da kuma sharrin da ka halicceta akan sa.",
   "dut.avant-les-rapports-intimes": "Da sunan Allah. Ya Allah ka nisantar da ni daga shaidan, kuma ka nisantar da shaidan daga abinda ka azurta mu.",
   "dut.la-talbiya": "Ga ni Ya Allah, na amsa kiranka. Ya Allah ba ka da abokin tarayya, na amsa kiranka. Hakika dukkanin yabo da ni'ima da mulki naka ne kai kadai, babu abokin tarayya a gare ka.",
+  "dut.reveil-la-nuit-tahajjud": "Babu wani abin bautawa da cancanta sai Allah, shi kadai yake, ba shi da abokin tarayya; mulki da godiya nasa ne, kuma shi akan dukkan komai mai iko ne. Tsarki ya tabbata ga Allah, godiya ta tabbata ga Allah, kuma babu wanda ya cancanci bauta masa sai Allah; Allah mai girma, babu wata dabara kuma babu karfi sai ga Allah madaukaki mai girma. Ubangiji ka gafarta mini.",
 };
