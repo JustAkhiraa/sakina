@@ -13,6 +13,7 @@
 import {openSheet} from '../core/ui.js';
 import {vib} from '../core/audio.js';
 import {t,tf} from '../lib/i18n.js';
+import {S} from '../core/store.js';
 
 /* Titres de chapitre et intertitres de rubrique, traduits. Indexes par un
    slug de leur contenu francais : si le titre change, la cle change avec
@@ -89,7 +90,7 @@ const BOOKS={
       "Datte, raisin, figue, olive, grenade, banane, jujube, miel — les aliments que le Coran nomme. Puis les remèdes transmis par la Sunna : nigelle, orge, vinaigre, eau de Zamzam.",
       "Pour chacun : les versets et hadiths cités intégralement avec leurs références, puis ce que dit la recherche — méta-analyses, essais randomisés, revues Cochrane — avec ses résultats comme ses limites. Toutes les sources sont rassemblées en fin de lecture.",
     ],
-    src:'books/fruits.json',
+    src:'books/fruits.json',translatable:true,
     srcNotes:['Versets et hadiths cités intégralement ; recherche et rédaction originales — sources en fin de lecture'],
   },
   miracles:{
@@ -102,7 +103,7 @@ const BOOKS={
       "Le Coran met lui-même son authenticité en jeu : produire une seule sourate semblable suffirait à le réfuter. Ce défi, lancé aux plus fins connaisseurs de la langue arabe, n'a jamais été relevé.",
       "Ce guide part de là — l'inimitabilité de la parole selon les savants classiques — avant d'aborder les annonces accomplies, les versets qui décrivent la création, et les signes rapportés par la Sunna. Les comptages sont recalculés sur le texte complet, avec de quoi refaire chaque calcul soi-même.",
     ],
-    src:'books/miracles.json',
+    src:'books/miracles.json',translatable:true,
     srcNotes:['Versets et hadiths cités intégralement ; comptages refaits sur les 6236 versets, dans les deux orthographes — sources et méthode en fin de lecture'],
   },
   salat:{
@@ -146,7 +147,11 @@ const BOOKS={
 };
 
 let _current=null;   // clé du livre ouvert
-const _chaptersCache={};  // JSON des livres « chapitres », en cache par clé
+/* JSON des livres « chapitres ». Indexe par livre+langue pour les guides
+   traduisibles : sans cela, une bascule de langue reservirait la version
+   deja chargee. */
+const _chaptersCache={};
+const cacheKeyFor=key=>BOOKS[key].translatable?`${key}:${S.lang||'fr'}`:key;
 let _view='intro';   // intro | list | chapter | names | guide | pages
 
 /* ── En-tête commun ── */
@@ -185,12 +190,37 @@ function showIntro(){
 
 /* ── Livres « chapitres » (Riyad as-Salihin, Les Aliments…) ──
    `_chaptersCache[key]` met en cache le JSON chargé, `key` = BOOKS[_current].key. */
+/* Les guides que nous avons ecrits peuvent exister traduits, un fichier par
+   langue : books/fruits.en.json a cote de books/fruits.json. On tente la
+   langue courante, puis l'anglais comme pivot, puis le francais d'origine.
+   Le cache est indexe par couple livre+langue pour ne pas servir la version
+   d'une autre langue apres une bascule. */
+function chapterSources(key){
+  const src=BOOKS[key].src;
+  if(!BOOKS[key].translatable)return[src];
+  const lang=S.lang||'fr';
+  const localized=p=>src.replace(/\.json$/,`.${p}.json`);
+  const tries=[];
+  if(lang!=='fr')tries.push(localized(lang));
+  if(lang!=='fr'&&lang!=='en')tries.push(localized('en'));
+  tries.push(src);
+  return tries;
+}
+
 async function loadChapters(key){
-  if(_chaptersCache[key])return _chaptersCache[key];
-  const res=await fetch(BOOKS[key].src);
-  if(!res.ok)throw new Error('load');
-  const data=await res.json();
-  _chaptersCache[key]=data;
+  const cacheKey=cacheKeyFor(key);
+  if(_chaptersCache[cacheKey])return _chaptersCache[cacheKey];
+  let data=null;
+  for(const url of chapterSources(key)){
+    try{
+      const res=await fetch(url);
+      if(!res.ok)continue;          // 404 : cette langue n'est pas traduite
+      data=await res.json();
+      break;
+    }catch{/* fichier absent ou JSON casse : on tente le repli suivant */}
+  }
+  if(!data)throw new Error('load');
+  _chaptersCache[cacheKey]=data;
   return data;
 }
 
@@ -199,7 +229,7 @@ async function openList(filter=''){
   const key=_current;
   const b=BOOKS[key];
   setHeader({title:bookTitle(b),back:true,search:true,searchPh:b.searchPh||t('books.searchPh')});
-  if(!_chaptersCache[key]){
+  if(!_chaptersCache[cacheKeyFor(key)]){
     $('book-bd').innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
     try{await loadChapters(key);}
     catch{$('book-bd').innerHTML=`<div class="places-empty">${t('books.needNet')}</div>`;return;}
@@ -210,7 +240,7 @@ async function openList(filter=''){
 
 function renderList(filter=''){
   const bd=$('book-bd');bd.innerHTML='';
-  const data=_chaptersCache[_current];
+  const data=_chaptersCache[cacheKeyFor(_current)];
   const f=filter.trim().toLowerCase();
   const items=data.chapters.filter(c=>!f||c.title.toLowerCase().includes(f)||chapTitle(c).toLowerCase().includes(f)||String(c.n)===f);
   if(!items.length){
@@ -266,7 +296,7 @@ function formatChapter(text){
 
 function showChapter(n){
   const key=_current;
-  const data=_chaptersCache[key];
+  const data=_chaptersCache[cacheKeyFor(key)];
   const c=data.chapters.find(x=>x.n===n);
   if(!c)return;
   _view='chapter';
@@ -276,7 +306,7 @@ function showChapter(n){
   const bd=$('book-bd');
   const body=BOOKS[key].md?renderCitadelleMarkdown(c.text):formatChapter(c.text);
   bd.innerHTML=`<div class="book-chapter book-read${BOOKS[key].md?' book-md':''}">
-      <div class="book-chap-head">${c.n}. ${c.title}</div>
+      <div class="book-chap-head">${c.n}. ${chapTitle(c)}</div>
       ${body}
       <div class="book-src">${data.author} · ${data.source}</div>
       <div class="book-chap-nav">
