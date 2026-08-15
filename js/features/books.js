@@ -34,6 +34,9 @@ const bookTitle =b=>tf(BOOK_I18N[b.key]||'',b.title);
 const bookAuthor=b=>tf(`bk.${b.key}.a`,b.author);
 const bookDesc  =(b,i)=>tf(`bk.${b.key}.d${i+1}`,b.desc[i]);
 const statLabel =l=>tf(`bks.${slug(l)}`,l);
+/* Certaines valeurs sont des mots et non des nombres — « Intégral »,
+   « Pas à pas ». Un chiffre reste tel quel, un mot passe par i18n. */
+const statVal =v=>/^[\d+\s.,·—-]+$/.test(v)?v:tf(`bkv.${slug(v)}`,v);
 
 
 
@@ -165,7 +168,7 @@ function showIntro(){
     <div class="book-intro-title">${bookTitle(b)}</div>
     ${b.titleAr?`<div class="book-intro-ar">${b.titleAr}</div>`:''}
     <div class="book-intro-author">${bookAuthor(b)}</div>
-    <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${s.val}</b><span>${statLabel(s.label)}</span></div>`).join('')}</div>
+    <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${statVal(s.val)}</b><span>${statLabel(s.label)}</span></div>`).join('')}</div>
     ${b.desc.map((p,i)=>`<p class="book-intro-desc">${bookDesc(b,i)}</p>`).join('')}
     <div class="book-intro-cta" id="book-start">${t('books.start')}</div>
     ${(b.srcNotes||[]).map(n=>`<div class="book-intro-src">${n}</div>`).join('')}

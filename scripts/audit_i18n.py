@@ -72,7 +72,7 @@ OK_SAME = {
     "📳 Vibration", "Avatars", "Skins", "Europe", "Favori", "Novice",
     "Patient", "Sage", "Chaste", "Intention & basmala",
     "Cycle 2/3", "Cycle 3/3", "{n} sections",
-    "Hadiths", "Sections", "Sources",
+    "Hadiths", "Sections", "Sources", "Simple",
     # Auteurs : des noms de personnes
     "Sa'id ibn Ali ibn Wahf Al-Qahtani",
 }
