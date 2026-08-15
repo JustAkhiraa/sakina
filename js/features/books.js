@@ -14,6 +14,29 @@ import {openSheet} from '../core/ui.js';
 import {vib} from '../core/audio.js';
 import {t,tf} from '../lib/i18n.js';
 
+/* Titres de chapitre et intertitres de rubrique, traduits. Indexes par un
+   slug de leur contenu francais : si le titre change, la cle change avec
+   lui plutot que de coller une traduction perimee sur un autre chapitre.
+   Le corps du chapitre, lui, reste en francais — c'est un autre chantier. */
+const slug=x=>(x||'').normalize('NFKD').replace(/[̀-ͯ]/g,'')
+  .replace(/[^A-Za-z0-9]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase()
+  .replace(/-{2,}/g,'-').slice(0,34);
+const chapTitle=c=>tf(`bkc.${slug(c.title)}`,c.title);
+const chapCat  =c=>tf(`bkg.${slug(c.cat)}`,c.cat);
+
+/* La fiche d'un livre — titre, auteur, chiffres, presentation — etait la
+   seule partie de la bibliotheque restee en francais : la liste, elle,
+   etait traduite depuis longtemps. On reutilise ses cles pour le titre et
+   on en ajoute pour le reste. Le corps des chapitres demeure francais. */
+const BOOK_I18N={riyad:'books.riyad',citadelle:'books.citadelle',asma:'books.asma',
+                 fruits:'books.foods',miracles:'books.miracles'};
+const bookTitle =b=>tf(BOOK_I18N[b.key]||'',b.title);
+const bookAuthor=b=>tf(`bk.${b.key}.a`,b.author);
+const bookDesc  =(b,i)=>tf(`bk.${b.key}.d${i+1}`,b.desc[i]);
+const statLabel =l=>tf(`bks.${slug(l)}`,l);
+
+
+
 const $=id=>document.getElementById(id);
 
 const BOOKS={
@@ -139,11 +162,11 @@ function showIntro(){
   const bd=$('book-bd');
   bd.innerHTML=`<div class="book-intro">
     <div class="book-intro-badge">${b.icon}</div>
-    <div class="book-intro-title">${b.title}</div>
+    <div class="book-intro-title">${bookTitle(b)}</div>
     ${b.titleAr?`<div class="book-intro-ar">${b.titleAr}</div>`:''}
-    <div class="book-intro-author">${b.author}</div>
-    <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${s.val}</b><span>${s.label}</span></div>`).join('')}</div>
-    ${b.desc.map(p=>`<p class="book-intro-desc">${p}</p>`).join('')}
+    <div class="book-intro-author">${bookAuthor(b)}</div>
+    <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${s.val}</b><span>${statLabel(s.label)}</span></div>`).join('')}</div>
+    ${b.desc.map((p,i)=>`<p class="book-intro-desc">${bookDesc(b,i)}</p>`).join('')}
     <div class="book-intro-cta" id="book-start">${t('books.start')}</div>
     ${(b.srcNotes||[]).map(n=>`<div class="book-intro-src">${n}</div>`).join('')}
   </div>`;
@@ -172,7 +195,7 @@ async function openList(filter=''){
   _view='list';
   const key=_current;
   const b=BOOKS[key];
-  setHeader({title:b.title,back:true,search:true,searchPh:b.searchPh||t('books.searchPh')});
+  setHeader({title:bookTitle(b),back:true,search:true,searchPh:b.searchPh||t('books.searchPh')});
   if(!_chaptersCache[key]){
     $('book-bd').innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
     try{await loadChapters(key);}
@@ -186,7 +209,7 @@ function renderList(filter=''){
   const bd=$('book-bd');bd.innerHTML='';
   const data=_chaptersCache[_current];
   const f=filter.trim().toLowerCase();
-  const items=data.chapters.filter(c=>!f||c.title.toLowerCase().includes(f)||String(c.n)===f);
+  const items=data.chapters.filter(c=>!f||c.title.toLowerCase().includes(f)||chapTitle(c).toLowerCase().includes(f)||String(c.n)===f);
   if(!items.length){
     bd.innerHTML=`<div class="places-empty">${t('books.noChapter')}</div>`;
     return;
@@ -199,12 +222,12 @@ function renderList(filter=''){
       lastCat=c.cat;
       const h=document.createElement('div');
       h.className='book-cat-head';
-      h.textContent=c.cat;
+      h.textContent=chapCat(c);
       bd.appendChild(h);
     }
     const div=document.createElement('div');
     div.className='book-chap-row';
-    div.innerHTML=`<div class="book-chap-n">${c.n}</div><div class="book-chap-t">${c.title}</div>
+    div.innerHTML=`<div class="book-chap-n">${c.n}</div><div class="book-chap-t">${chapTitle(c)}</div>
       <svg class="row-chev" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
     div.addEventListener('click',()=>showChapter(c.n));
     bd.appendChild(div);
@@ -462,7 +485,7 @@ async function loadAsma(){
 }
 async function openNames(filter=''){
   _view='names';
-  setHeader({title:BOOKS.asma.title,back:true,search:true,searchPh:t('books.searchName')});
+  setHeader({title:bookTitle(BOOKS.asma),back:true,search:true,searchPh:t('books.searchName')});
   if(!_asma){
     $('book-bd').innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
     try{await loadAsma();}

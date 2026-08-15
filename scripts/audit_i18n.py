@@ -72,6 +72,9 @@ OK_SAME = {
     "📳 Vibration", "Avatars", "Skins", "Europe", "Favori", "Novice",
     "Patient", "Sage", "Chaste", "Intention & basmala",
     "Cycle 2/3", "Cycle 3/3", "{n} sections",
+    "Hadiths", "Sections", "Sources",
+    # Auteurs : des noms de personnes
+    "Sa'id ibn Ali ibn Wahf Al-Qahtani",
 }
 # Prefixes de cles dont la valeur peut legitimement etre identique partout
 OK_SAME_PREFIX = ("skn.", "add.E", "cm.", "hij.", "bth.", "dut.")
@@ -93,6 +96,8 @@ FR_SYNONYMS = [
     {"⟳ Détection en cours…", "⟳ Recherche…"},
     {"Thème", "Ambiances"},
     {"Réglages", "Paramètres"},
+    {"Références", "Sources"},
+    {"Rappel", "Mémo", "Note"},
 ]
 
 MARK = re.compile(r"\{(\w+)\}")
