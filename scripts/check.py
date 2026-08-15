@@ -289,7 +289,11 @@ def check_i18n() -> None:
         got = re.findall(r'^\s*"([\w.-]+)"\s*:', src, re.M)
         seen = set(got)
         missing = [k for k in sorted(ref) if k not in seen]
-        extra = [k for k in sorted(seen - ref)]
+        # Les dut.* sont volontairement partielles : elles viennent d'editions
+        # traduites de Hisn al-Muslim, et aucune edition ne couvre les 18
+        # langues. Une dua sans traduction publiee retombe sur le francais,
+        # ce qui est le comportement voulu — pas une lacune a signaler.
+        extra = [k for k in sorted(seen - ref) if not k.startswith("dut.")]
         dup = sorted({k for k in seen if got.count(k) > 1})
         if missing:
             ERRORS.append(

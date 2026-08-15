@@ -35,12 +35,17 @@ function copyText(txt){
    la main, elles restent en francais — mieux vaut un texte fiable dans une
    langue que le lecteur peut ignorer qu'un texte approximatif dans la
    sienne. */
+/* Deux sources de traduction publiee, jamais une retraduction du francais :
+   les duas coraniques servent le corpus embarque de la langue courante, les
+   duas hadithiques une edition traduite de Hisn al-Muslim relevee par
+   scripts/extract_hisn.py. Sans l'une ni l'autre, on retombe sur le
+   francais plutot que d'inventer. */
 export function duaTranslation(d){
   if(d.verses&&TR_BY_CODE[S.lang]){
     const off=versesText(d.verses,S.lang);
     if(off)return off;
   }
-  return d.translation||'';
+  return tf(`dut.${d.id}`,d.translation||'');
 }
 
 /* Le corpus se charge une fois par langue, puis on redessine : le rendu
