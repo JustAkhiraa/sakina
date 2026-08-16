@@ -1296,4 +1296,7 @@ export default {
   "books.asmaNasheed": "99 नामों का नशीद",
   "books.asmaNasheedSub": "निरंतर पाठ · क्रम से",
   "books.asmaNasheedFail": "नशीद उपलब्ध नहीं 🎧",
+  "books.asmaVerse": "क़ुरआन में यह नाम",
+  "books.asmaAsk": "चिंतन के लिए",
+  "books.asmaInv": "दुआ",
 };

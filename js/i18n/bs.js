@@ -1313,4 +1313,7 @@ export default {
   "books.asmaNasheed": "Nešid 99 imena",
   "books.asmaNasheedSub": "Neprekidno učenje · redom",
   "books.asmaNasheedFail": "Nešid nedostupan 🎧",
+  "books.asmaVerse": "Ime u Kur'anu",
+  "books.asmaAsk": "Za razmišljanje",
+  "books.asmaInv": "Dova",
 };

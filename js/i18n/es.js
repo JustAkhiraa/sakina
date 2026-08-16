@@ -1320,4 +1320,7 @@ export default {
   "books.asmaNasheed": "Nashid de los 99 Nombres",
   "books.asmaNasheedSub": "Canto continuo · recitados en orden",
   "books.asmaNasheedFail": "Nashid no disponible 🎧",
+  "books.asmaVerse": "El Nombre en el Corán",
+  "books.asmaAsk": "Para meditar",
+  "books.asmaInv": "Súplica",
 };

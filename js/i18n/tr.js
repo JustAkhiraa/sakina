@@ -1320,4 +1320,7 @@ export default {
   "books.asmaNasheed": "99 İsim ilahisi",
   "books.asmaNasheedSub": "Kesintisiz okuma · sırayla",
   "books.asmaNasheedFail": "İlahi kullanılamıyor 🎧",
+  "books.asmaVerse": "Kur'an'da bu isim",
+  "books.asmaAsk": "Üzerinde düşünmek için",
+  "books.asmaInv": "Dua",
 };

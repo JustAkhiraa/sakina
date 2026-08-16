@@ -1301,4 +1301,7 @@ export default {
   "books.asmaNasheed": "Nashidi ya Majina 99",
   "books.asmaNasheedSub": "Usomaji endelevu · kwa mpangilio",
   "books.asmaNasheedFail": "Nashidi haipatikani 🎧",
+  "books.asmaVerse": "Jina hili katika Qur'ani",
+  "books.asmaAsk": "Kwa kutafakari",
+  "books.asmaInv": "Dua",
 };

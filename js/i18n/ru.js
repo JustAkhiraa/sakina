@@ -1302,4 +1302,7 @@ export default {
   "books.asmaNasheed": "Нашид 99 имён",
   "books.asmaNasheedSub": "Непрерывное чтение · по порядку",
   "books.asmaNasheedFail": "Нашид недоступен 🎧",
+  "books.asmaVerse": "Это имя в Коране",
+  "books.asmaAsk": "Для размышления",
+  "books.asmaInv": "Мольба",
 };

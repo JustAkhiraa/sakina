@@ -16,6 +16,9 @@ import {t,tf} from '../lib/i18n.js';
 import {S} from '../core/store.js';
 
 import {BOOKS} from '../data/books.js';
+import {SURAHS} from '../data/surahs.js';
+import {SURAH_NAMES} from '../data/surah-names.js';
+import {versesText,preloadTr} from './quran.js';
 /* Titres de chapitre et intertitres de rubrique, traduits. Indexes par un
    slug de leur contenu francais : si le titre change, la cle change avec
    lui plutot que de coller une traduction perimee sur un autre chapitre.
@@ -529,17 +532,31 @@ function renderNames(filter=''){
    Fermé par défaut : la liste reste compacte, un clic ouvre le détail. */
 function asmaDetail(x){
   const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
-  if(!x.inv&&!(x.intro&&x.intro.length))return'';
+  const ask=(x.ask||[]).map((q,i)=>tf(`ask.${x.n}.${i+1}`,q));
+  if(!x.verse&&!x.inv&&!ask.length&&!(x.intro&&x.intro.length))return'';
   let inner='';
+  // Le Nom dans le Coran. On ne cite pas un texte : on renvoie a un verset,
+  // que le corpus de la langue lue rend dans sa traduction publiee.
+  if(x.verse){
+    const n=parseInt(x.verse,10);
+    const s=SURAHS[n-1]||{};
+    const nom=S.lang==='ar'?(s.ar||''):((SURAH_NAMES[S.lang]||[])[n-1]||s.fr||'');
+    const txt=versesText(x.verse,S.lang)||versesText(x.verse,'fr')||'';
+    inner+=`<div class="asma-sec-t">${t('books.asmaVerse')}</div>`;
+    if(txt)inner+=`<p class="asma-inv-fr">${esc(txt)}</p>`;
+    inner+=`<p class="asma-inv-tr">${esc(t('duas.refQuran',{s:nom,v:x.verse}))}</p>`;
+  }
+  // Ancien contenu tiers, encore present sur les Noms pas encore repris.
   if(x.inv){
-    inner+=`<div class="asma-sec-t">Invocation</div>`;
+    inner+=`<div class="asma-sec-t">${t('books.asmaInv')}</div>`;
     if(x.inv.fr)inner+=`<p class="asma-inv-fr">${esc(x.inv.fr)}</p>`;
     if(x.inv.ar)inner+=`<p class="asma-inv-ar" lang="ar" dir="rtl">${esc(x.inv.ar)}</p>`;
     if(x.inv.tr)inner+=`<p class="asma-inv-tr">${esc(x.inv.tr)}</p>`;
   }
-  if(x.intro&&x.intro.length){
-    inner+=`<div class="asma-sec-t">Introspection</div><ul class="asma-intro">`+
-      x.intro.map(q=>`<li>${esc(q)}</li>`).join('')+`</ul>`;
+  const questions=ask.length?ask:(x.intro||[]);
+  if(questions.length){
+    inner+=`<div class="asma-sec-t">${t('books.asmaAsk')}</div><ul class="asma-intro">`+
+      questions.map(q=>`<li>${esc(q)}</li>`).join('')+`</ul>`;
   }
   return `<details class="asma-detail"><summary class="asma-detail-sum">✦ ${t('books.asmaReflect')}</summary><div class="asma-detail-bd">${inner}</div></details>`;
 }

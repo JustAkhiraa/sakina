@@ -1313,4 +1313,7 @@ export default {
   "books.asmaNasheed": "Nasyid 99 Nama",
   "books.asmaNasheedSub": "Alunan berterusan · mengikut urutan",
   "books.asmaNasheedFail": "Nasyid tidak tersedia 🎧",
+  "books.asmaVerse": "Nama ini dalam Al-Quran",
+  "books.asmaAsk": "Untuk direnungi",
+  "books.asmaInv": "Doa",
 };

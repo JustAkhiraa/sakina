@@ -1320,4 +1320,7 @@ export default {
   "books.asmaNasheed": "99 Names nasheed",
   "books.asmaNasheedSub": "Continuous recitation · in order",
   "books.asmaNasheedFail": "Nasheed unavailable 🎧",
+  "books.asmaVerse": "The Name in the Qur'an",
+  "books.asmaAsk": "To ponder",
+  "books.asmaInv": "Supplication",
 };

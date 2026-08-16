@@ -1316,4 +1316,7 @@ export default {
   "books.asmaNasheed": "Nashidar Sunaye 99",
   "books.asmaNasheedSub": "Karatu mai ci gaba · bi da tsari",
   "books.asmaNasheedFail": "Nashida ba ta samuwa 🎧",
+  "books.asmaVerse": "Wannan suna a cikin Alqur'ani",
+  "books.asmaAsk": "Don yin tunani",
+  "books.asmaInv": "Addu'a",
 };

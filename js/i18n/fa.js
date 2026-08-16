@@ -1296,4 +1296,7 @@ export default {
   "books.asmaNasheed": "نشید ۹۹ نام",
   "books.asmaNasheedSub": "خوانش پیوسته · به ترتیب",
   "books.asmaNasheedFail": "نشید در دسترس نیست 🎧",
+  "books.asmaVerse": "این نام در قرآن",
+  "books.asmaAsk": "برای تأمل",
+  "books.asmaInv": "دعا",
 };

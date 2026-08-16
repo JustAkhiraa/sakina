@@ -1296,4 +1296,7 @@ export default {
   "books.asmaNasheed": "Anachid des 99 Noms",
   "books.asmaNasheedSub": "Le chant en continu · récités dans l'ordre",
   "books.asmaNasheedFail": "Anachid indisponible 🎧",
+  "books.asmaVerse": "Le Nom dans le Coran",
+  "books.asmaAsk": "À méditer",
+  "books.asmaInv": "Invocation",
 };

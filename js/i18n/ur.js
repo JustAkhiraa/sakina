@@ -1296,4 +1296,7 @@ export default {
   "books.asmaNasheed": "99 ناموں کا نشید",
   "books.asmaNasheedSub": "مسلسل خوانی · ترتیب سے",
   "books.asmaNasheedFail": "نشید دستیاب نہیں 🎧",
+  "books.asmaVerse": "قرآن میں یہ نام",
+  "books.asmaAsk": "غور کے لیے",
+  "books.asmaInv": "دعا",
 };

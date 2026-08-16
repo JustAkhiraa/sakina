@@ -1296,4 +1296,7 @@ export default {
   "books.asmaNasheed": "نشيد الأسماء الحسنى",
   "books.asmaNasheedSub": "إنشاد متواصل · بالترتيب",
   "books.asmaNasheedFail": "النشيد غير متاح 🎧",
+  "books.asmaVerse": "الاسم في القرآن",
+  "books.asmaAsk": "للتأمل",
+  "books.asmaInv": "دعاء",
 };

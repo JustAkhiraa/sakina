@@ -1307,4 +1307,7 @@ export default {
   "books.asmaNasheed": "99の御名のナシード",
   "books.asmaNasheedSub": "連続再生 · 順番に唱えます",
   "books.asmaNasheedFail": "ナシードを再生できません 🎧",
+  "books.asmaVerse": "クルアーンにおけるこの御名",
+  "books.asmaAsk": "省みる",
+  "books.asmaInv": "ドゥアー",
 };

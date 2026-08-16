@@ -1296,4 +1296,7 @@ export default {
   "books.asmaNasheed": "৯৯ নামের নাশিদ",
   "books.asmaNasheedSub": "একটানা পাঠ · ক্রমানুসারে",
   "books.asmaNasheedFail": "নাশিদ পাওয়া যাচ্ছে না 🎧",
+  "books.asmaVerse": "কুরআনে এই নাম",
+  "books.asmaAsk": "চিন্তার জন্য",
+  "books.asmaInv": "দোয়া",
 };

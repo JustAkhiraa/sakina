@@ -1296,4 +1296,7 @@ export default {
   "books.asmaNasheed": "九十九尊名颂唱",
   "books.asmaNasheedSub": "连续吟诵 · 按序诵读",
   "books.asmaNasheedFail": "颂唱不可用 🎧",
+  "books.asmaVerse": "《古兰经》中的此名",
+  "books.asmaAsk": "静思",
+  "books.asmaInv": "祈祷",
 };

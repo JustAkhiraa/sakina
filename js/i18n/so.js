@@ -1314,4 +1314,7 @@ export default {
   "books.asmaNasheed": "Nashiidka 99 Magac",
   "books.asmaNasheedSub": "Akhris joogto ah · siday u kala horreeyaan",
   "books.asmaNasheedFail": "Nashiidku ma diyaar aha 🎧",
+  "books.asmaVerse": "Magaca Quraanka dhexdiisa",
+  "books.asmaAsk": "Wax la milicsado",
+  "books.asmaInv": "Duco",
 };

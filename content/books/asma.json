@@ -1,1710 +1,1662 @@
 {
-  "title": "Les 99 Noms d'Allah",
-  "titleAr": "أسماء الله الحسنى",
-  "source": "Al-Asma' al-Husna — recensés d'après la tradition sunnite classique",
-  "names": [
-    {
-      "n": 0,
-      "ar": "اللّٰه",
-      "tr": "Allah",
-      "fr": "Le Nom suprême",
-      "desc": "Le nom propre de Dieu, le Nom suprême qui englobe tous les attributs de perfection. Les 99 « plus beaux noms » en sont les qualités.",
-      "af": "000_allah"
-    },
-    {
-      "n": 1,
-      "ar": "الرَّحْمَنُ",
-      "tr": "Ar-Rahmân",
-      "fr": "Le Tout Miséricordieux",
-      "desc": "Celui dont la miséricorde embrasse toute la création, croyants comme mécréants, en ce bas monde.",
-      "af": "001_ar-rahman",
-      "inv": {
-        "ar": "يَا رَحْمَانُ، رَبَّنَا آمَنَّا فَاغْفِرْ لَنَا وَارْحَمْنَا وَأَنْتَ خَيْرُ الرَّاحِمِينَ",
-        "tr": "Yâ Rahmânu ! Rabbanâ ! Âmannâ fa-ghfir lanâ wa-rhamnâ wa-anta khayru ar-râhimîna.",
-        "fr": "Ô Tout-Miséricordieux ! Notre Seigneur ! Nous croyons, alors couvre nos fautes et fais-nous miséricorde, car Tu es le Meilleur des miséricordieux."
-      },
-      "intro": [
-        "Que puis-je faire pour cultiver cette attitude bienveillante envers moi-même et les autres ?",
-        "Je sélectionne trois actions concrètes à mettre en place, dès aujourd'hui, dans mon quotidien."
-      ]
-    },
-    {
-      "n": 2,
-      "ar": "الرَّحِيمُ",
-      "tr": "Ar-Rahîm",
-      "fr": "Le Très Miséricordieux",
-      "desc": "Celui qui réserve une miséricorde particulière aux croyants dans l'au-delà.",
-      "af": "002_ar-rahim",
-      "inv": {
-        "fr": "Ô Très-Miséricordieux ! Fais-moi miséricorde en m'ouvrant l'entrée de Ton paradis. Et accorde-moi la gloire d'être en Ta proximité.",
-        "ar": "يَا رَحِيمُ، ارْحَمْنِي بِدُخُولِ جَنَّتِكَ وَالتَّنَعُّمِ بِقُرْبِكَ",
-        "tr": "Yâ Rahîmu ! Irham-nî bi-dukhûli jannati-ka wa-t-tana'umi bi-qurbi-ka"
-      },
-      "intro": [
-        "Comment le pardon d'Allâh influence-t-il ma capacité à pardonner aux autres ?",
-        "Je consacre un temps à la lecture et à l'exégèse (tafsîr) des versets du Coran qui mettent en lumière la Miséricorde d'Allâh. Je cherche à comprendre leurs enseignements et les diffuse autour de moi."
-      ]
-    },
-    {
-      "n": 3,
-      "ar": "الْمَلِكُ",
-      "tr": "Al-Malik",
-      "fr": "Le Souverain",
-      "desc": "Le Roi absolu, à qui appartient la royauté des cieux et de la terre, sans partenaire.",
-      "af": "003_al-malik",
-      "inv": {
-        "fr": "Ô Roi de ce monde et de l'Au-delà, Roi absolument parfait ! Place-moi à l'apogée, en présence de la Gloire et du Royaume immense par ses biens et éminent par ses possibilités.",
-        "ar": "يَا مَالِكَ الدُّنْيَا وَالآخِرَةِ مُلْكاً تَامّاً كَامِلاً، اجْعَلْنِي فِي الوُصُولِ إلى حَضْرَةِ النَّعِيمِ وَالمُلْكِ الكَبِيرِ جَادّاً عَامِلاً",
-        "tr": "Yâ Mâlika ad-dunyâ wa-'l-âkhirati mulkan tâmman kâmilan ! Ij'al-nî fî 'l-wusûli ilâ hadrati 'n-na'îmi wa-'l-mulki 'l-kabîri jâddan 'âmilan."
-      },
-      "intro": [
-        "Comment puis-je agir avec gratitude et de manière responsable avec toutes les ressources dont je dispose, tout en reconnaissant que tout vient d'Allâh ?",
-        "Je modère ma recherche des biens matériels de ce monde, en gardant à l'esprit qu'Allâh est le Seul Roi, Vrai Possesseur de tout."
-      ]
-    },
-    {
-      "n": 4,
-      "ar": "الْقُدُّوسُ",
-      "tr": "Al-Quddûs",
-      "fr": "Le Très Saint",
-      "desc": "Le Pur, exempt de tout défaut, de tout manque et de toute imperfection.",
-      "af": "004_al-quddus",
-      "inv": {
-        "fr": "Ô Saint ! Purifie-moi de mes fautes, de mes vices et de mes égarements. Et purifie-moi des péchés et des méfaits.",
-        "ar": "يَا قُدُّوسُ، قَدِّسْنِي عَنِ العُيُوبِ وَالآفَاتِ وَطَهِّرْنِي مِنَ الذُّنُوبِ وَالسَّيِّئَاتِ",
-        "tr": "Yâ Quddûsu ! Qaddis-nî 'ani l-'uyûbi wa-l-âfâti wa-tahhir-nî mina dh-dhunûbi wa-s-sayyi'ât."
-      },
-      "intro": [
-        "En quoi la compréhension de la perfection d'Allâh peut-elle m'inspirer à viser l'excellence dans mes actions au quotidien ?",
-        "J'apprends à reconnaître mes propres imperfections et j'aspire à m'en purifier. Je m'efforce d'agir avec intégrité et j'évite les comportements qui pourraient ternir cette pureté en moi."
-      ]
-    },
-    {
-      "n": 5,
-      "ar": "السَّلَامُ",
-      "tr": "As-Salâm",
-      "fr": "La Paix",
-      "desc": "Celui qui est exempt de tout défaut et qui accorde la paix à Ses créatures.",
-      "af": "005_as-salam",
-      "inv": {
-        "fr": "Ô Allâh, Tu es la Paix et c'est de Toi que provient la paix. Béni sois-Tu, ô Toi qui as la Majesté et la Munificence.",
-        "ar": "اللَّهُمَّ أَنْتَ السَّلامُ وَمِنْكَ السَّلامُ تَبَارَكْتَ يا ذا الجَلالِ وَالإِكْرامِ",
-        "tr": "Allâhumma anta s-salâm wa minka s-salâm tabârakta yâ dhal jalâli wa l-ikrâmi."
-      },
-      "intro": [
-        "En quoi le fait de connaître As-Salâm peut-il m'encourager à surmonter la peur et l'insécurité, et à aborder les obstacles de la vie avec confiance et sérénité ?",
-        "Je réfléchis à trois choses en lien avec la protection d'Allâh pour lesquelles je suis reconnaissant(e). Cela peut aller des petites choses, comme un trajet en sécurité, jusqu'aux moments les plus angoissants."
-      ]
-    },
-    {
-      "n": 6,
-      "ar": "الْمُؤْمِنُ",
-      "tr": "Al-Mu'min",
-      "fr": "Le Rassurant",
-      "desc": "Celui qui donne la sécurité et la foi, qui confirme la vérité par Ses signes.",
-      "af": "006_al-mumin",
-      "inv": {
-        "fr": "Ô Sécurisant ! Sécurise-moi au Jour de la Grande Épouvante. Et gratifie-moi au travers de l'élévation croissante de ma foi.",
-        "ar": "يَا مُؤْمِنُ، آمِنِّي يَوْمَ الفَزَعِ الأَكْبَرِ وَارْزُقْنِي مِنْ مَزِيدِ الإِيمَانِ بِكَ الحَظَّ الأَوْفَرَ",
-        "tr": "Yâ Mu'minu ! Âmin-nî yawma 'l-faza'i 'l-akbari wa-'rzuq-nî min mazîdi 'l-îmâni bi-ka 'l-hazza 'l-awfara."
-      },
-      "intro": [
-        "Quels actes d'adoration puis-je ajouter à ma routine spirituelle pour renforcer ma foi et trouver la tranquillité auprès d'Al-Mu'min, le Gardien de la foi ?",
-        "Lorsque je me sens submergé(e) par le stress, je fais mes ablutions et je confie à Al-Mu'min toutes mes préoccupations pour (re)trouver la paix intérieure."
-      ]
-    },
-    {
-      "n": 7,
-      "ar": "الْمُهَيْمِنُ",
-      "tr": "Al-Muhaymin",
-      "fr": "Le Prépondérant",
-      "desc": "Le Témoin qui veille sur toute chose, le Gardien et le Protecteur.",
-      "af": "007_al-muhaymin",
-      "inv": {
-        "fr": "Ô Protecteur ! Mets-moi au service de Ta providence. Fais en sorte que je sois témoin de Ta protection, que je puisse être fidèle à mon engagement envers Toi, préservant avec attention ma foi.",
-        "ar": "يَا مُهَيْمِنُ، اجْعَلْنِي لِمُهَيْمَنَتِكَ شَاهِداً وَرَائِياً وَلأَمَانَاتِكَ وَعَهْدِكَ حَافِظاً وَرَاعِياً",
-        "tr": "Yâ Muhayminu ! Ij'al-nî li-muhaymanati-ka shâhidan wa-râ'iyan wa-li-amânâti-ka wa-'ahdi-ka hâfizan wa-râ'iyan."
-      },
-      "intro": [
-        "Que dois-je changer dans mes interactions avec les autres pour créer ce sentiment de sécurité et de protection ?",
-        "Je m'imagine sous la Bienveillance et la Protection d'Allâh tout au long de ma journée. Face à des défis, je me rappelle qu'Al-Muhaimin est Attentif et veille sur moi."
-      ]
-    },
-    {
-      "n": 8,
-      "ar": "الْعَزِيزُ",
-      "tr": "Al-'Azîz",
-      "fr": "Le Tout-Puissant",
-      "desc": "Le Puissant, l'Invincible, que rien ne peut atteindre ni contraindre.",
-      "af": "008_al-aziz",
-      "inv": {
-        "fr": "Il n'y a pas de divinité en dehors de Dieu, l'Un, le Vainqueur de toute chose, Seigneur des cieux et de la terre et de ce qu'il y a entre eux, le Tout-Puissant, Celui qui ne cesse de pardonner.",
-        "ar": "لَا إِلَٰهَ إِلَّا اللَّهُ الوَاحِدُ القَهَّارُ، رَبُّ السَّمَوَاتِ وَالأَرْضِ وَمَا بَيْنَهُمَا العَزِيزُ الغَفَّارُ",
-        "tr": "Lâ ilâha illâ llâhu l-wâhidu l-qahhâru, rabbu s-samâwâti wa-l-ardi wa-mâ baynahuma al-'azîzu l-ġaffâru."
-      },
-      "intro": [
-        "En quoi méditer sur le nom Al-'Aziz peut-il m'aider à développer une attitude d'humilité face aux défis de la vie ?",
-        "Pour puiser de la force et de la détermination face à mes défis, je me souviens que j'ai Al-'Aziz à mes côtés, Celui pour Qui rien ne résiste, et rien n'est insurmontable."
-      ]
-    },
-    {
-      "n": 9,
-      "ar": "الْجَبَّارُ",
-      "tr": "Al-Jabbâr",
-      "fr": "Le Contraignant",
-      "desc": "Celui dont la volonté s'impose à toute la création et qui répare toute chose brisée.",
-      "af": "009_al-jabbar",
-      "inv": {
-        "fr": "Ô Contraignant ! Répare mon état conformément à Ta volonté. Et protège-moi de tout sentiment d'orgueil envers Tes serviteurs.",
-        "ar": "يَا جَبَّارُ، اجْبُرْ حَالِي بِمُوَافَقَةِ مُرَادِكَ وَلَا تَجْعَلْنِي جَبَّاراً عَلَى عِبَادِكَ",
-        "tr": "Yâ Jabbâru ! Ujbur hâlî bi-muwâfaqati murâdi-ka wa-lâ taj'al-nî jabbâran 'alâ 'ibâdi-ka."
-      },
-      "intro": [
-        "Quand me suis-je senti(e) brisé(e), et comment Al-Jabbâr m'a-t-il totalement réparé(e) et renforcé(e) ?",
-        "Je médite sur le nom Al-Jabbâr, Celui qui transforme mes situations difficiles en belles opportunités, pour m'aider à développer une attitude de sérénité et de confiance."
-      ]
-    },
-    {
-      "n": 10,
-      "ar": "الْمُتَكَبِّرُ",
-      "tr": "Al-Mutakabbir",
-      "fr": "Le Superbe",
-      "desc": "Celui à qui appartient la Grandeur véritable, à laquelle nulle autre ne peut prétendre.",
-      "af": "010_al-mutakabbir",
-      "inv": {
-        "fr": "Ô Majestueux ! Place-moi avec les humbles face à Ta grandeur. Ainsi qu'avec ceux qui se soumettent paisiblement à Ton jugement et Ta sentence.",
-        "ar": "يَا مُتَكَبِّرُ، اجْعَلْنِي مِنَ المُتَوَاضِعِينَ لِكِبْرِيَائِكَ الخَاضِعِينَ لِحُكْمِكَ وَقَضَائِكَ",
-        "tr": "Yâ Mutakabbiru ! Ij'al-nî mina 'l-mutawâdi'îna li-kibriyâ'i-ka 'l-khâdi'îna li-hukmi-ka wa-qadâ'i-ka."
-      },
-      "intro": [
-        "En quoi méditer sur le nom Al-Mutakabbir peut m'aider à atténuer mes traits d'arrogance et à développer l'humilité ?",
-        "J'observe attentivement les détails qui m'entourent : la magnificence d'Al-Mutakabbir se reflète dans la plus petite des créations et je ressens une humilité profonde devant la grandeur d'Allâh."
-      ]
-    },
-    {
-      "n": 11,
-      "ar": "الْخَالِقُ",
-      "tr": "Al-Khâliq",
-      "fr": "Le Créateur",
-      "desc": "Celui qui crée toute chose à partir du néant, sans modèle préalable.",
-      "af": "011_al-khaliq",
-      "inv": {
-        "fr": "Ô Créateur ! Crée en mon cœur un chemin vers l'obéissance. Et préserve-moi, parmi Tes créatures, de toute injustice ou tyrannie.",
-        "ar": "يَا خَالِقُ، اخْلِقْ فِي قَلْبِي تَوْفِيقَ الطَّاعَةِ وَاعْصِمْنِي بَيْنَ خَلْقِكَ مِنْ كُلِّ ظَلَامَةٍ وَتَبَاعَةٍ",
-        "tr": "Yâ Khâliqu ! Ikhliq fî qalb-î tawfîqan li-'t-tâ'ati wa-'sim-nî bayna khalqi-ka min kulli zalâmatin wa-tabâ'atin."
-      },
-      "intro": [
-        "Qu'ai-je observé aujourd'hui qui me rappelle de remercier Allâh pour avoir créé tout ce qui m'entoure ?",
-        "Je médite sur la manière dont chaque élément de la création prend forme par la Volonté d'Al-Khâliq. Puis, je me concentre sur un détail, comme la symétrie d'une feuille d'arbre, et je me souviens de la Perfection d'Allâh."
-      ]
-    },
-    {
-      "n": 12,
-      "ar": "الْبَارِئُ",
-      "tr": "Al-Bâri'",
-      "fr": "Le Producteur",
-      "desc": "Celui qui donne l'existence, distingue et façonne chaque créature.",
-      "af": "012_al-bari",
-      "inv": {
-        "fr": "Ô Producteur ! Place-moi parmi les meilleurs des êtres formés. Et habitue-moi aux nobles comportements.",
-        "ar": "يَا بَارِئُ، اجْعَلْنِي مِنْ خَيْرِ البَرِيَّةِ وَخَلِّقْنِي بِأَخْلَاقٍ حَسَنَةٍ سَوِيَّةٍ",
-        "tr": "Yâ Bâri'u ! Ij'al-nî min khayri 'l-barîyati wa-khalliq-nî bi-akhlâqin hasanatin sawiya."
-      },
-      "intro": [
-        "Comment puis-je m'inspirer d'Al-Bari' pour aborder ma vie de manière plus équilibrée, saine et écologique ?",
-        "Je me documente sur la diversité de la nature. Je réalise que chaque création est à sa place et interagit harmonieusement, reflétant l'équilibre et la proportion parfaite de la création d'Allâh."
-      ]
-    },
-    {
-      "n": 13,
-      "ar": "الْمُصَوِّرُ",
-      "tr": "Al-Musawwir",
-      "fr": "Le Formateur",
-      "desc": "Celui qui donne à chaque chose sa forme particulière, unique et harmonieuse.",
-      "af": "013_al-musawwir",
-      "inv": {
-        "fr": "Ô Formateur ! Façonne-moi d'une forme vouée à Ton service. Et donne-moi les lumières qui clarifient la connaissance de Ta seigneurie.",
-        "ar": "يَا مُصَوِّرُ، صَوِّرْنِي بِصُورَةِ عُبُودِيَّتِكَ وَنَوِّرْنِي بِأَنْوَارِ مَعْرِفَةِ رُبُوبِيَّتِكَ",
-        "tr": "Yâ Musawwiru ! Sawwir-nî bi-sûrati 'ubûdiyyati-ka wa-nawwir-nî bi-anwâri ma'rifati rubûbiyyati-ka."
-      },
-      "intro": [
-        "Comment puis-je voir la beauté qu'Al-Musawwir a inscrit en moi-même et en autrui ?",
-        "Je prends un moment pour me rappeler que je suis une création façonnée par Al-Musawwir, d'une beauté unique et harmonieuse. Chaque personne que je croise est aussi une magnifique création d'Allâh."
-      ]
-    },
-    {
-      "n": 14,
-      "ar": "الْغَفَّارُ",
-      "tr": "Al-Ghaffâr",
-      "fr": "Le Grand Pardonneur",
-      "desc": "Celui qui pardonne encore et encore, qui couvre les péchés de Ses serviteurs.",
-      "af": "014_al-ghaffar",
-      "inv": {
-        "fr": "Ô Pardonneur ! Pardonne-moi tous mes péchés, grands ou petits, les bourrasques des négligences et la vanité dans les désirs.",
-        "ar": "يَا غَفَّارُ، اغْفِرْ لِي جَمِيعَ الكَبَائِرِ وَالصَّغَائِرِ وَهَوَاجِمَ الغَفْلَاتِ وَهَوَاجِسَ الضَّمَائِرِ",
-        "tr": "Yâ Ghaffâru ! Ighfir lî jamî'a 'l-kabâ'iri wa-'s-saghâ'iri wa-hawâjima 'l-ghaflâti wa-hawâjisa 'd-damâ'ir."
-      },
-      "intro": [
-        "Comment améliorer ma routine spirituelle pour y introduire davantage de moments où je demande Pardon ?",
-        "Je choisis un moment tranquille pour réfléchir aux fautes que j'ai commises. Avec sincérité, je demande pardon à Allâh, imaginant mes péchés doucement recouverts de Sa Miséricorde. Je m'autorise à ressentir un apaisement, me libérant du fardeau des remords."
-      ]
-    },
-    {
-      "n": 15,
-      "ar": "الْقَهَّارُ",
-      "tr": "Al-Qahhâr",
-      "fr": "Le Dominateur",
-      "desc": "Celui qui domine toute chose par Sa force, à qui rien ni personne ne résiste.",
-      "af": "015_al-qahhar",
-      "inv": {
-        "fr": "Ô Dominateur ! Place Ta grande force devant mes yeux. Et ne me conforte pas dans l'absence de crainte envers Ton châtiment.",
-        "ar": "يَا قَهَّارُ، أَشْهِدْنِي قَهْرَكَ وَلَا تُؤَمِّنِّي مَكْرَكَ",
-        "tr": "Yâ Qahhâru ! Ashhid-nî qahra-ka wa-lâ tu'am-min-nî makra-ka."
-      },
-      "intro": [
-        "Comment puis-je puiser dans la compréhension d'Al-Qahhâr, Celui qui est Victorieux et Prédominant, pour surmonter les défis et les obstacles dans ma vie ?",
-        "J'imagine les situations ou les défis qui m'inquiètent. Je répète le nom Al-Qahhâr, en visualisant ces situations comme étant totalement prises en charge. Je sens ma détermination se renforcer, car Allâh est avec moi."
-      ]
-    },
-    {
-      "n": 16,
-      "ar": "الْوَهَّابُ",
-      "tr": "Al-Wahhâb",
-      "fr": "Le Grand Donateur",
-      "desc": "Celui qui donne sans compter et sans attendre de retour.",
-      "af": "016_al-wahhab",
-      "inv": {
-        "fr": "« Notre Seigneur, ne fais pas dévier nos cœurs après que Tu nous as guidés et offre-nous, par pure grâce de Ta part, un amour rayonnant (une miséricorde). Vraiment Tu es Celui qui ne cesse d'offrir gracieusement ! » [Sourate 3, La Famille d'Imrân, 8]",
-        "ar": "﴿رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً إِنَّكَ أَنتَ الْوَهَّابُ﴾",
-        "tr": "Rabbanâ lâ tuzigh qulûbanâ ba'da idh hadaytanâ wa-hab lanâ min ladunka rahmatan innaka anta al-Wahhâbu !"
-      },
-      "intro": [
-        "Comment la réflexion sur le nom Al-Wahhâb peut-elle m'encourager à être plus généreux envers les autres, sans attendre en retour ?",
-        "Je choisis de partager concrètement quelque chose avec les autres : du temps, une compétence ou un geste. Je peux, par exemple, préparer un repas pour un voisin, aider un ami dans une tâche ou faire un don à une association. En agissant de manière désintéressée, je ressens la satisfaction de donner, comme un reflet de la générosité divine."
-      ]
-    },
-    {
-      "n": 17,
-      "ar": "الرَّزَّاقُ",
-      "tr": "Ar-Razzâq",
-      "fr": "Le Grand Pourvoyeur",
-      "desc": "Celui qui pourvoit à la subsistance de toutes Ses créatures.",
-      "af": "017_ar-razzaq",
-      "inv": {
-        "fr": "Ô Pourvoyeur ! Offre-moi une science utile. Et accorde-moi une subsistance licite et vaste.",
-        "ar": "يَا رَزَّاقُ، ارْزُقْنِي عِلْماً نَافِعاً وَرِزْقاً حَلَالاً وَاسِعاً",
-        "tr": "Yâ Razzâqu ! Urzuq-nî 'ilman nâfi'an wa-rizqan halâlân wâsi'an."
-      },
-      "intro": [
-        "Je me rappelle d'une période où je me suis senti(e) limité(e) en termes de ressources. Durant ce temps, comment Ar-Razzâq a-t-Il pourvu à mes besoins et m'a-t-Il aidé(e) à traverser cette situation ?",
-        "Chaque jour, je prends un moment pour exprimer ma gratitude pour tout ce dont je dispose."
-      ]
-    },
-    {
-      "n": 18,
-      "ar": "الْفَتَّاحُ",
-      "tr": "Al-Fattâh",
-      "fr": "Celui qui ouvre",
-      "desc": "Celui qui ouvre les portes de la miséricorde, de la victoire et de la connaissance.",
-      "af": "018_al-fattah",
-      "inv": {
-        "fr": "Ô Victorieux ! Ouvre-moi les portes de la béatitude. Et nomme-moi parmi ceux que Tu as certifiés être les êtres volontaires.",
-        "ar": "يَا فَتَّاحُ، افْتَحْ لِي أَبْوَابَ السَّعَادَةِ وَحَقِّقْنِي بِحَقَائِقِ أَهْلِ الإِرَادَةِ",
-        "tr": "Yâ Fattâhu ! Iftah lî abwâba 's-sa'âdati wa-haqqiq-nî bi-haqâ'iqi ahli 'l-irâda."
-      },
-      "intro": [
-        "Existe-t-il un domaine dans ma vie où je me sens actuellement bloqué(e) et que je peux confier à Al-Fattâh ?",
-        "Je réfléchis à un défi que je rencontre. Je m'imagine comme étant soutenu(e) par la Puissance d'Allâh. Je garde cette pensée positive, je m'en remets à Al-Fattâh et je cherche les opportunités cachées pour une solution."
-      ]
-    },
-    {
-      "n": 19,
-      "ar": "الْعَلِيمُ",
-      "tr": "Al-'Alîm",
-      "fr": "L'Omniscient",
-      "desc": "Celui dont la science embrasse tout : le visible, le caché, le passé et l'avenir.",
-      "af": "019_al-alim",
-      "inv": {
-        "fr": "Ô Omniscient ! Enseigne-moi une part de Ton savoir qui Te rendra Satisfait de moi, et pardonne-moi ce que Tu sais de moi.",
-        "ar": "يَا عَلِيمُ، عَلِّمْنِي مِنْ عِلْمِكَ مَا تَرْضَى بِهِ عَنِّي وَلَا تُؤَاخِذْنِي بِمَا تَعْلَمُهُ مِنِّي",
-        "tr": "Yâ 'Alîmu ! 'Allim-nî min 'ilmi-ka ma tardâ bi-hi 'an-nî wa-lâ tu'âkhidh-nî bi-mâ ta'lamu-hu min-nî."
-      },
-      "intro": [
-        "Quel savoir utile pour mon âme puis-je rechercher cette année ? Comment puis-je commencer cette apprentissage ?",
-        "En cas de doute ou d'incertitude, je répète ce nom pour me rappeler que rien ne Lui échappe. En prenant conscience de Sa connaissance infinie, je cultive une confiance en Lui ainsi qu'une attitude d'humilité."
-      ]
-    },
-    {
-      "n": 20,
-      "ar": "الْقَابِضُ",
-      "tr": "Al-Qâbid",
-      "fr": "Celui qui retient",
-      "desc": "Celui qui restreint la subsistance ou les âmes selon Sa sagesse.",
-      "af": "020_al-qabid",
-      "inv": {
-        "fr": "Ô Celui qui retient ! Retiens mon âme contre ses propres passions.",
-        "ar": "يَا قَابِضُ، اقْبِضْنِي عَنْ مُتَابَعَةِ دَوَاعِي النَّفْسِ",
-        "tr": "Yâ Qâbidu ! Iqbid-nî 'an mutâba'ati dawâ'i n-nafsi."
-      },
-      "intro": [
-        "Je me souviens d'un moment où quelque chose de cher à mon cœur m'a été retirée. Comment ai-je réagi à cet instant-là ?",
-        "Je prends conscience que les moments de contrainte sont temporaires et qu'ils renferment une sagesse qu'Allâh connaît. Il est Celui qui m'aide à traverser ces épreuves, en cultivant en moi la patience et la résilience."
-      ]
-    },
-    {
-      "n": 21,
-      "ar": "الْبَاسِطُ",
-      "tr": "Al-Bâsit",
-      "fr": "Celui qui étend",
-      "desc": "Celui qui élargit la subsistance et ouvre les cœurs à Ses serviteurs.",
-      "af": "021_al-basit",
-      "inv": {
-        "fr": "Ô Prodigue ! Étends mes souhaits vers les grâces de Ta proximité.",
-        "ar": "يَا بَاسِطُ، ابْسُطْ أَمَنِيَّ بِتَنَسُّمِ نَفَحَاتِ الأُنْسِ",
-        "tr": "Yâ Bâsitu ! Ibsit amaniyya bi-tanassumi nafahâti 'l-uns."
-      },
-      "intro": [
-        "Comment puis-je adopter une perspective plus ouverte et généreuse envers les autres et les situations ?",
-        "Je me rappelle qu'Allâh déploie les opportunités et les solutions dans ma vie, car Il est Al-Bâsit, Celui qui dilate et étend."
-      ]
-    },
-    {
-      "n": 22,
-      "ar": "الْخَافِضُ",
-      "tr": "Al-Khâfid",
-      "fr": "Celui qui abaisse",
-      "desc": "Celui qui abaisse les orgueilleux et les injustes.",
-      "af": "022_al-khafid",
-      "inv": {
-        "fr": "Ô Celui qui abaisse ! Abaisse mes passions afin d'obtenir Ton amour.",
-        "ar": "يَا خَافِضُ، اخْفِضْ لِي هَوَايَ لِابْتِغَاءِ مَحَابِّكَ",
-        "tr": "Yâ Khâfidu ! Ikhfid lî hawâya li-'btighâ'i mahâbbi-ka."
-      },
-      "intro": [
-        "Quelles actions concrètes puis-je entreprendre pour cultiver une attitude d'humilité et de modestie ?",
-        "Je prends conscience des moments où j'ai pu agir avec arrogance envers les autres. Si des pensées d'orgueil surgissent, je reviens au nom Al-Khâfid pour me rappeler que c'est Allâh qui a le pouvoir d'élever et d'abaisser."
-      ]
-    },
-    {
-      "n": 23,
-      "ar": "الرَّافِعُ",
-      "tr": "Ar-Râfi'",
-      "fr": "Celui qui élève",
-      "desc": "Celui qui élève en rang Ses saints et les croyants sincères.",
-      "af": "023_ar-rafi",
-      "inv": {
-        "fr": "Ô Celui qui élève ! Élève-moi par Ta proximité lorsque Tu me rappelleras à Toi.",
-        "ar": "يَا رَافِعُ، ارْفَعْنِي بِقُرْبِكَ وَالإِيوَاءِ إِلَى جَنَابِكَ",
-        "tr": "Yâ Râfi'u ! Irfa'-nî bi-qurbi-ka wa-'l-îwâ'i ilâ janâbi-ka."
-      },
-      "intro": [
-        "Quelles sont les situations actuelles où je pourrais ressentir le besoin d'être redressé(e) par Ar-Râfi' ?",
-        "Lorsque je me sens découragé(e), je me rappelle qu'Allâh va m'aider à me redresser et à m'élever à travers l'épreuve. En utilisant le nom Ar-Râfi', j'éprouve un regain de détermination pour surmonter les obstacles."
-      ]
-    },
-    {
-      "n": 24,
-      "ar": "الْمُعِزُّ",
-      "tr": "Al-Mu'izz",
-      "fr": "Celui qui donne la puissance",
-      "desc": "Celui qui accorde la gloire et l'honneur à qui Il veut.",
-      "af": "024_al-muizz",
-      "inv": {
-        "fr": "« Notre Seigneur, Possesseur de la Royauté, Tu accordes la Royauté à qui Tu veux, et Tu retires la Royauté à qui Tu veux, et Tu honores qui Tu veux, et Tu abaisses qui Tu veux. Le bien est dans Tes mains. Vraiment, Tu es Puissant sur toute chose ! » [Sourate 3, La Famille d'Imrân, 26]",
-        "ar": "﴿قُلِ اللَّهُمَّ مَالِكَ الْمُلْكِ تُؤْتِي الْمُلْكَ مَن تَشَاءُ وَتَنزِعُ الْمُلْكَ مِمَّن تَشَاءُ وَتُعِزُّ مَن تَشَاءُ وَتُذِلُّ مَن تَشَاءُ بِيَدِكَ الْخَيْرُ إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ﴾",
-        "tr": "Allâhumma Mâlik al-mulk tu'tî al-mulk man tachâ'u wa tanzi'u al-mulka min man tachâ'u wa-tu'izzu man tachâ'u wa-tudhillu man tachâ'u biyadika al-khayru innaka 'alâ kulli chay'in Qadîr !"
-      },
-      "intro": [
-        "Que puis-je améliorer en moi pour traiter les autres avec respect et reconnaître la dignité de chaque individu ?",
-        "Je choisis une personne dans ma vie avec qui j'interagis fréquemment. Je me rappelle du nom Al-Mu'izz pour m'encourager à traiter cette personne avec respect et dignité."
-      ]
-    },
-    {
-      "n": 25,
-      "ar": "الْمُذِلُّ",
-      "tr": "Al-Mudhill",
-      "fr": "Celui qui humilie",
-      "desc": "Celui qui rabaisse et humilie qui Il veut, par justice.",
-      "af": "025_al-mudhill",
-      "inv": {
-        "fr": "« Notre Seigneur, Possesseur de la Royauté, Tu accordes la Royauté à qui Tu veux, et Tu retires la Royauté à qui Tu veux, et Tu honores qui Tu veux, et Tu abaisses qui Tu veux. Le bien est dans Tes mains. Vraiment, Tu es Puissant sur toute chose ! » [Sourate 3, La Famille d'Imrân, 26]",
-        "ar": "﴿قُلِ اللَّهُمَّ مَالِكَ الْمُلْكِ تُؤْتِي الْمُلْكَ مَن تَشَاءُ وَتَنزِعُ الْمُلْكَ مِمَّن تَشَاءُ وَتُعِزُّ مَن تَشَاءُ وَتُذِلُّ مَن تَشَاءُ بِيَدِكَ الْخَيْرُ إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ﴾",
-        "tr": "Allâhumma Mâlik al-mulk tu'tî al-mulk man tachâ'u wa tanzi'u al mulka min man tachâ'u wa-tu'izzu man tachâ'u wa-tudhillu man tachâ'u biyadika al-khayru innaka 'alâ kulli chay'in Qadîr !"
-      },
-      "intro": [
-        "Quels sont les moments où mon ego a eu tendance à réagir de manière disproportionnée ? Quelles leçons en tirer pour mieux le maîtriser ?",
-        "J'évite les jugements hâtifs en prenant un instant pour comprendre la perspective de l'autre. Je m'exprime avec respect et bienveillance pour éviter toute forme d'humiliation."
-      ]
-    },
-    {
-      "n": 26,
-      "ar": "السَّمِيعُ",
-      "tr": "As-Samî'",
-      "fr": "L'Audient",
-      "desc": "Celui qui entend tout, y compris le murmure le plus discret.",
-      "af": "026_as-sami",
-      "inv": {
-        "fr": "Ô Celui qui entend ! Fais-moi entendre Tes pieuses et bonnes nouvelles. Et place-moi parmi ceux qui écoutent avec beaucoup d'attention Tes interdictions et Tes recommandations.",
-        "ar": "يَا سَمِيعُ، أَسْمِعْنِي بِلَطَائِفِ إِسْمَاعِكَ مَنْ عَلِمْتَ فِيهِ الخَيْرَ وَاجْعَلْنِي مِنَ المُرَاعِينَ لِسَمْعِكَ فِي كُلِّ نَهْيٍ وَأَمْرٍ",
-        "tr": "Yâ Samî'u ! Asmi'-nî bi-latâ'ifi ismâ'i-ka man 'alimta fî-hi 'l-khayra wa-j'al-nî mina 'r-murâ'îna li-sam'i-ka fî kulli nahyin wa-amrin."
-      },
-      "intro": [
-        "Que dois-je améliorer dans mon langage pour que mes paroles soient douces à entendre ?",
-        "Je prends un moment chaque jour pour faire des invocations, je me rappelle qu'Allâh est As-Samî', qu'Il entend toutes mes prières."
-      ]
-    },
-    {
-      "n": 27,
-      "ar": "الْبَصِيرُ",
-      "tr": "Al-Basîr",
-      "fr": "Le Clairvoyant",
-      "desc": "Celui qui voit tout, en tous lieux et en tout temps.",
-      "af": "027_al-basir",
-      "inv": {
-        "fr": "Ô Clairvoyant ! Rends-moi clairvoyant dans Ta religion lorsque les choses sont troubles. Octroie-moi une vision juste pour m'éloigner de tout ce qui est illicite.",
-        "ar": "يَا بَصِيرُ، اجْعَلْنِي بَصِيراً فِي دِينِكَ عِنْدَ اشْتِبَاهِ الأُمُورِ، ذَا بَصِيرَةٍ تَامَّةٍ فِي اجْتِنَابِ كُلِّ مَحْظُورٍ",
-        "tr": "Yâ Basîru ! Ij'al-nî basîran fî dîni-ka 'inda 'shtibâhi 'l-umûri, dhâ basîratin tâmmatin fî 'jtinâbi kulli mahzûr."
-      },
-      "intro": [
-        "Dans quelles situations quotidiennes pourrais-je être plus attentif/attentive à mes actions en me rappelant qu'Allâh voit tout ?",
-        "Tout au long de ma journée, je me demande si mes actes et mes paroles plaisent à Allâh pour cultiver une conscience plus profonde de mes actions. Le soir, j'identifie les moments où j'aurais pu agir d'une meilleure manière."
-      ]
-    },
-    {
-      "n": 28,
-      "ar": "الْحَكَمُ",
-      "tr": "Al-Hakam",
-      "fr": "Le Juge",
-      "desc": "L'Arbitre suprême qui tranche entre Ses créatures avec justice.",
-      "af": "028_al-hakam",
-      "inv": {
-        "fr": "Ô Juge ! Compte-moi parmi ceux qui s'en remettent en toute confiance à la sentence de Ta volonté, et aux arrêtés de Ta loi qu'ils glorifient.",
-        "ar": "يَا حَكَمُ، اجْعَلْنِي لِحُكْمِ إِرَادَتِكَ مُسَلِّماً وَلِأَحْكَامِ شَرِيعَتِكَ مُعَظِّماً",
-        "tr": "Yâ Hakamu ! Ij'al-nî li-hukmi irâdati-ka musalliman wa-li-ahkâmi sharî'ati-ka mu'azziman."
-      },
-      "intro": [
-        "Suis-je frustré(e) ou plein(e) de regrets à cause d'événements passés ? Comment la compréhension qu'Allâh est Al-Hakam peut-elle changer ma façon de voir le passé ?",
-        "Je me rappelle qu'Allâh est le Décisionnaire ultime et que Sa sagesse dépasse ma compréhension. Je cultive une attitude de confiance en Son jugement et en Sa sagesse."
-      ]
-    },
-    {
-      "n": 29,
-      "ar": "الْعَدْلُ",
-      "tr": "Al-'Adl",
-      "fr": "Le Juste",
-      "desc": "Celui qui est équité absolue, dont les jugements sont exempts de toute injustice.",
-      "af": "029_al-adl",
-      "inv": {
-        "fr": "Ô Justice ! Place-moi parmi ceux qui maintiennent la justice dans tous leurs actes. Et qui implorent vigoureusement pour atteindre les degrés de l'excellence.",
-        "ar": "يَا عَدْلُ، اجْعَلْنِي مِمَّنْ يَقُومُ بِالعَدْلِ فِي جَمِيعِ عَمَلِهِ وَيَبْلُغُ مِنَ الرُّقِيِّ فِي دَرَجَاتِ الإِحْسَانِ غَايَةَ أَمَلِهِ",
-        "tr": "Yâ 'Âdlu ! Ij'al-nî min-man yaqûmu bi-'l-'âdli fî jamî'i 'amali-hi wa-yablughu mina 'r-ruqî fî darajâti 'l-ihsâni ghâyata amali-hi."
-      },
-      "intro": [
-        "Comment puis-je m'engager pour apporter plus de justice et de justesse dans ce monde ?",
-        "Chaque jour, j'agis avec équité et équilibre. En cas d'injustice, je me souviens qu'Allâh est le Juste et que Sa justice triomphe toujours."
-      ]
-    },
-    {
-      "n": 30,
-      "ar": "اللَّطِيفُ",
-      "tr": "Al-Latîf",
-      "fr": "Le Subtil, le Bienveillant",
-      "desc": "Celui dont la douceur atteint jusqu'aux détails les plus fins de Ses créatures.",
-      "af": "030_al-latif",
-      "inv": {
-        "fr": "Ô Bienveillant ! Prends pitié de moi lors de Ton décret et de Ta sentence. Et donne-moi une part de Tes honneurs et de Tes grâces.",
-        "ar": "يَا لَطِيفُ، أَلْطُفْ بِي فِي قَدَرِكَ وَقَضَائِكَ وَاقْسِمْ لِي مِنْ جَزِيلِ بِرِّكَ وَآلَائِكَ",
-        "tr": "Yâ Latîfu ! Ultuf bî fî qadari-ka wa-qadâ'i-ka wa-'qsim lî min jazîli birri-ka wa-âlâ'i-ka."
-      },
-      "intro": [
-        "Quel événement de ma vie, dont je ne comprenais pas le sens profond à l'époque, a maintenant révélé la Délicatesse et la Subtilité d'Allâh ?",
-        "Je m'émerveille de la nature qui m'entoure, contemplant ses détails subtils comme la délicatesse d'une fleur. Cela me rappelle qu'Allâh crée chaque élément avec douceur."
-      ]
-    },
-    {
-      "n": 31,
-      "ar": "الْخَبِيرُ",
-      "tr": "Al-Khabîr",
-      "fr": "Le Parfaitement Informé",
-      "desc": "Celui à qui rien n'échappe, connaissant la réalité intime de toute chose.",
-      "af": "031_al-khabir",
-      "inv": {
-        "fr": "Ô Bien-Informé ! Fais que je sois informé de mes défauts enfouis. Qu'ainsi je Te demande pardon pour tous mes péchés.",
-        "ar": "يَا خَبِيرُ، اجْعَلْنِي خَبِيراً بِخَفِيَّاتِ عُيُوبِي مُسْتَغْفِراً مِنْ جَمِيعِ ذُنُوبِي",
-        "tr": "Yâ Khabîru ! Ij'al-nî khabîran bi-khafayyâti 'uyûbî mustaghfiran min jamî'i dhunûbî."
-      },
-      "intro": [
-        "Quelle est cette invocation que je n'ai même pas formulée, et que pourtant Allâh a entendue et exaucée ?",
-        "Durant mes invocations, je me rappelle que je parle à Al-Khabîr, Celui qui connaît les pensées les plus secrètes de mon cœur. Je Lui demande le bien que je n'ose exprimer et le pardon pour mes péchés, même ceux que j'ai oubliés."
-      ]
-    },
-    {
-      "n": 32,
-      "ar": "الْحَلِيمُ",
-      "tr": "Al-Halîm",
-      "fr": "Le Longanime",
-      "desc": "Celui qui use de patience et ne se hâte pas de châtier.",
-      "af": "032_al-halim",
-      "inv": {
-        "fr": "Ô Clément ! Éduque-moi selon l'éthique de la clémence. Et réalise mon être par les vérités de Ta science.",
-        "ar": "يَا حَلِيمُ، خَلِّقْنِي بِخُلُقِ الحِلْمِ وَحَقِّقْنِي بِحَقَائِقِ العِلْمِ",
-        "tr": "Yâ Halîmu ! Khalliq-nî bi-khuluqi 'l-hilm wa-haqqiq-nî bi-haqâ'iqi 'l-'ilm."
-      },
-      "intro": [
-        "Quel est mon niveau actuel de clémence et de douceur ? Comment puis-je les développer davantage ?",
-        "Face à une situation conflictuelle, je me rappelle qu'Allâh est plein de clémence envers Ses créatures, même lorsque nous faisons des erreurs. Je prends une profonde inspiration et m'efforce de répondre avec patience et tolérance, plutôt que de réagir impulsivement."
-      ]
-    },
-    {
-      "n": 33,
-      "ar": "الْعَظِيمُ",
-      "tr": "Al-'Azhîm",
-      "fr": "L'Immense",
-      "desc": "Celui dont la grandeur dépasse tout entendement.",
-      "af": "033_al-azhim",
-      "inv": {
-        "fr": "Ô Immense, d'une grandeur ne pouvant être atteinte même par les conjectures de ceux qui méditent ! Dote-moi d'une capacité de raisonnement qui puisse m'élever aux rangs des véridiques.",
-        "ar": "يَا عَظِيمُ بِعَظَمَةٍ لَا تُحِيطُ بِهَا أَوْهَامُ المُتَفَكِّرِينَ، اجْعَلْنِي عَظِيمَ الهِمَّةِ فِي التَرَقِّي فِي مَقَامَاتِ أَهْلِ التَّمْكِينِ",
-        "tr": "Yâ 'Azîmu bi-'azamatin lâ tuhîtu bi-hâ awhâmu 'l-mutafakkirîna ! Ij'al-nî 'azîma 'l-himmati fî 't-taraqqî fî maqâmâti ahli 't-tamkîn."
-      },
-      "intro": [
-        "Quelle est la dernière expérience où j'ai été émerveillé(e) par la Grandeur et la Magnificence d'Allâh ?",
-        "Lorsque je me trouve face à des défis, je me rappelle que j'ai Al-'Azîm avec moi, l'Incommensurable, Celui qui est capable de tout et qui est plus Immense que n'importe quelle épreuve."
-      ]
-    },
-    {
-      "n": 34,
-      "ar": "الْغَفُورُ",
-      "tr": "Al-Ghafûr",
-      "fr": "Le Tout-Pardonnant",
-      "desc": "Celui qui pardonne largement à quiconque se repent sincèrement.",
-      "af": "034_al-ghafur",
-      "inv": {
-        "fr": "Ô Allâh ! Pardonne-moi ce que Tu sais de moi, et mieux que moi ! Et si je recommence, pardonne-moi encore ! Ô Allâh ! Pardonne-moi pour les promesses faites et non tenues ! Ô Allâh ! Pardonne-moi les désirs de mon âme et les égarements de mes paroles !",
-        "ar": "اللَّهُمَّ اغْفِرْ لِي مَا أَنْتَ أَعْلَمُ بِهِ مِنِّي فَإِنْ عُدْتُ فَعُدْ عَلَيَّ بِالمَغْفِرَةِ اللَّهُمَّ اغْفِرْ لِي مَا وَأَيْتُ مِنْ نَفْسِي وَلَمْ تَجِدْ لَهُ وَفَاءً عِنْدِي اللَّهُمَّ اغْفِرْ شَهَوَاتِ الجَنَانِ وَهَفَوَاتِ اللِّسَانِ",
-        "tr": "Allâhumma ighfir lî mâ anta 'alamu bihi minnî, fa'in 'udtu fa 'ud 'alayya bi-l-maghfira ! Allâhumma ighfir lî mâ wa'aytu min nafsî wa lam tajid lahu wafa'an 'indî, Allâhumma ighfir li chahawâti al-janân wa hafawâti l-lisâni."
-      },
-      "intro": [
-        "Est-il facile pour moi de demander pardon à Allâh ? Comment puis-je accomplir cette pratique de manière plus régulière ?",
-        "Chaque soir, je demande pardon à Allâh en L'invoquant par Son nom Al-Ghafûr. J'imagine qu'Allâh efface toutes mes fautes."
-      ]
-    },
-    {
-      "n": 35,
-      "ar": "الشَّكُورُ",
-      "tr": "Ash-Shakûr",
-      "fr": "Le Très Reconnaissant",
-      "desc": "Celui qui récompense généreusement les moindres bonnes actions.",
-      "af": "035_ash-shakur",
-      "inv": {
-        "fr": "« Permets-moi, ô Seigneur, de rendre grâce pour les bienfaits dont Tu m'as comblé, ainsi que mes père et mère, et que je fasse une bonne œuvre que tu agrées et fais-moi entrer, par Ta miséricorde, parmi Tes serviteurs vertueux. » [Sourate 27, Les Fourmis, 19]",
-        "ar": "﴿وَقَالَ رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَى وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ وَأَدْخِلْنِي بِرَحْمَتِكَ فِي عِبَادِكَ الصَّالِحِينَ﴾",
-        "tr": "Rabbi awzi'nî an ashkura ni'matika llatî an'amta 'alayya wa 'alâ wâlidayya wa an a'mala sâlihan tardâhu wa adkhilnî bi rahmatika fî 'ibâdika s-sâlihîn."
-      },
-      "intro": [
-        "Quelles sont les petites choses de la vie quotidienne pour lesquelles je pourrais être plus reconnaissant(e) ?",
-        "Chaque soir, je prends un moment pour réfléchir aux nombreuses bénédictions reçues au cours de la journée et je remercie sincèrement Allâh."
-      ]
-    },
-    {
-      "n": 36,
-      "ar": "الْعَلِيُّ",
-      "tr": "Al-'Aliyy",
-      "fr": "Le Très Haut",
-      "desc": "Celui qui est au-dessus de toute chose par Son essence, Ses attributs et Sa puissance.",
-      "af": "036_al-aliyy",
-      "inv": {
-        "fr": "Ô Très-Haut, à qui appartiennent les caractéristiques de l'élévation et de la noblesse ! Fais que j'atteigne, par Ton pouvoir, les hauts degrés de l'obéissance.",
-        "ar": "يَا عَلِيُّ ذَا اسْتِحْقَاقِ لِنُعُوتِ العَلَاءِ وَالجَلَالِ، اجْعَلْنِي عِنْدَكَ مِنَ الأَعْلِينَ فِي دَرَجَاتِ الكَمَالِ",
-        "tr": "Yâ 'Alî, dhâ istihqâqi li-nu'ûti 'l-'alâ'i wa-'l-jalâli ! Ij'al-nî 'inda-ka mina 'l-a'lîna fî darajâti 'l-kamâli."
-      },
-      "intro": [
-        "Quelles sont les expériences passées où j'ai ressenti une élévation spirituelle, et comment puis-je les reproduire ?",
-        "Je me fixe un objectif spirituel qui reflète la recherche de l'excellence (ihsân) et de l'humilité. Ainsi, je nourris une humble aspiration à m'élever spirituellement."
-      ]
-    },
-    {
-      "n": 37,
-      "ar": "الْكَبِيرُ",
-      "tr": "Al-Kabîr",
-      "fr": "Le Très Grand",
-      "desc": "Celui dont la grandeur est absolue, à qui rien ne peut se comparer.",
-      "af": "037_al-kabir",
-      "inv": {
-        "fr": "Ô Grandissime, nulle grandeur si ce n'est Toi ! Place-moi parmi ceux qui s'immergent dans Ton immense Royaume.",
-        "ar": "يَا كَبِيرُ فَلَا كَبِيراً إِلَّا أَنْتَ، اجْعَلْنِي مِنَ الكُبَرَاءِ المُخْتَصِّينَ بِالمُلْكِ الكَبِيرِ",
-        "tr": "Yâ Kabîru, fa-lâ kabîran illâ wa-huwa ! Ij'al-nî mina 'l-kubarâ'i 'l-mukhtassîna bi-'l-mulki 'l-kabîr."
-      },
-      "intro": [
-        "Quel est le principal problème de ma vie actuellement ? Comment puis-je le relativiser en présence d'Al-Kabîr ?",
-        "Lorsque les soucis m'accablent, je médite sur la grandeur infinie d'Allâh. Mes préoccupations deviennent minuscules devant Son immensité, je prends du recul et je gagne en sérénité."
-      ]
-    },
-    {
-      "n": 38,
-      "ar": "الْحَفِيظُ",
-      "tr": "Al-Hafîz",
-      "fr": "Le Préservateur",
-      "desc": "Celui qui protège Ses créatures et préserve tous les actes.",
-      "af": "038_al-hafiz",
-      "inv": {
-        "fr": "Ô Celui qui préserve ! Préserve-moi des fautes qui occasionnent Ton châtiment. Et fais de moi un gardien de ce que Tu nous donnes à préserver dans Ton livre.",
-        "ar": "يَا حَفِيظُ، احْفَظْنِي عَنْ مُوَاقِعَةِ مُوجِبَاتِ عَذَابِكَ وَاجْعَلْنِي حَفِيظاً لِمَا اسْتَحْفَظْتَنِي مِنْ كِتَابِكَ",
-        "tr": "Yâ Hafîzu ! Ihfaz-nî 'an muwâqi'ati mûjibâti 'adhâbi-ka wa-'j'al-nî hafîzan li-mâ 'stahfazta-nî min kitâbi-ka."
-      },
-      "intro": [
-        "Quelles sont les compétences que je possède et que je pourrais mettre au service des autres pour les soutenir ?",
-        "Chaque jour, je consacre un moment à soutenir quelqu'un de manière significative. Cela peut être une action simple comme une écoute attentive, un sourire ou une main tendue."
-      ]
-    },
-    {
-      "n": 39,
-      "ar": "الْمُقِيتُ",
-      "tr": "Al-Muqît",
-      "fr": "Celui qui nourrit",
-      "desc": "Celui qui donne à chacun sa juste part de nourriture et de moyens.",
-      "af": "039_al-muqit",
-      "inv": {
-        "fr": "Ô Soutien ! Soutiens-moi extérieurement et intérieurement dans les meilleurs moments. Et préserve-moi de Ta colère à toute heure.",
-        "ar": "يَا مُقِيتُ، أَقِتْنِي ظَاهِراً وَبَاطِناً بِأَحْسَنِ الأَقْوَاتِ وَصُنِّي مِنْ غَضَبِكَ فِي جَمِيعِ الأَوْقَاتِ",
-        "tr": "Yâ Muqîtu ! Aqit-ni zâhiran wa-bâtinan bi-ahsani 'l-aqwâti wa-sun-nî min ghadabi-ka fî jamî'i 'l-awqât."
-      },
-      "intro": [
-        "Comment puis-je aider à créer un environnement de soutien au sein de ma famille, de ma communauté ou de mon lieu de travail ?",
-        "Je renforce ma capacité à être un soutien pour les autres, pour refléter le rôle d'Al-Muqît dans ma vie."
-      ]
-    },
-    {
-      "n": 40,
-      "ar": "الْحَسِيبُ",
-      "tr": "Al-Hasîb",
-      "fr": "Celui qui suffit",
-      "desc": "Celui qui est le Compte suffisant, qui juge et rétribue Ses serviteurs.",
-      "af": "040_al-hasib",
-      "inv": {
-        "fr": "« Allâh nous suffit, quel excellent Garant ! » [Sourate 3, La Famille d'Imrân, 173]",
-        "ar": "﴿وَقَالُوا حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ﴾",
-        "tr": "Hasbunâ Allâh wa ni'ma al-wakîl !"
-      },
-      "intro": [
-        "Quels sont les aspects de ma vie que je devrais examiner de plus près en vue d'être plus conscient(e) de mes actions ?",
-        "Je prends conscience de mes actes : j'identifie ceux qui me rendent fier(e) et ceux qui pourraient être améliorés. Je prends des mesures pour progresser dans ma quête spirituelle."
-      ]
-    },
-    {
-      "n": 41,
-      "ar": "الْجَلِيلُ",
-      "tr": "Al-Jalîl",
-      "fr": "Le Majestueux",
-      "desc": "Celui qui possède la majesté et la magnificence absolues.",
-      "af": "041_al-jalil",
-      "inv": {
-        "fr": "Ô Majestueux ! Il n'existe de noblesse comparable à la Tienne ! Place-moi, par crainte de Toi et conscience de Ta Noblesse, dans un endroit noble.",
-        "ar": "يَا جَلِيلُ فَلَا جَلِيلَ إِلَّا وَهُوَ لِجَلَالِهِ مُسْتَكِينٌ، اجْعَلْنِي مِنْ هَيْبَتِكَ وَإِجْلَالِكَ فِي مَقَامٍ مَكِينٍ",
-        "tr": "Yâ Jalîlu, fa-lâ jalîla illâ wa-huwa li-jalâli-Hi mustakînun ! Ij'al-nî min haybati-ka wa-ijlâli-ka fî maqâmin makînin."
-      },
-      "intro": [
-        "De quelle manière puis-je honorer la Majesté divine dans ma façon de parler, d'agir et d'interagir avec les autres ?",
-        "Je consacre un moment à la contemplation silencieuse. Je ferme les yeux, respire profondément, et je médite sur la Majesté et la Sainteté d'Allâh en tant qu'Al-Jalîl."
-      ]
-    },
-    {
-      "n": 42,
-      "ar": "الْكَرِيمُ",
-      "tr": "Al-Karîm",
-      "fr": "Le Généreux",
-      "desc": "Celui qui accorde le bien même à qui ne le mérite pas.",
-      "af": "042_al-karim",
-      "inv": {
-        "fr": "Ô Généreux ! Honore-moi par Ton obéissance et Ton amour. Honore-moi par la contemplation de Ta noble Face, en Ta proximité, dans Ton Jardin (Paradis).",
-        "ar": "يَا كَرِيمُ، اجْعَلْنِي مِنَ المُكْرَمِينَ بِطَاعَتِكَ وَمَحَبَّتِكَ وَأَكْرِمْنِي بِالنَّظَرِ إِلَى وَجْهِكَ الكَرِيمِ فِي جِوَارِكَ وَجَنَّتِكَ",
-        "tr": "Yâ Karîmu ! Ij'al-nî mina 'l-mukramîna bi-tâ'ati-ka wa-mahabbati-ka wa-akrim-nî bi-'n-nazari ilâ wajhi-ka 'l-karîmi fî jiwâri-ka wa-jannati-ka."
-      },
-      "intro": [
-        "Ai-je réfléchi à la manière dont Allâh a surpassé mes attentes dans ma vie ? Et moi, lorsque je viens en aide aux autres, comment puis-je chercher à surpasser leurs attentes ?",
-        "Je choisis une action de générosité envers quelqu'un de mon entourage, que ce soit par un acte de gentillesse, un cadeau, ou du temps et de l'attention."
-      ]
-    },
-    {
-      "n": 43,
-      "ar": "الرَّقِيبُ",
-      "tr": "Ar-Raqîb",
-      "fr": "L'Observateur",
-      "desc": "Celui qui veille sur toute chose, dont rien n'est ignoré.",
-      "af": "043_ar-raqib",
-      "inv": {
-        "fr": "Ô Vigilant ! Offre-moi une part de Ta vigilance qui m'éloignera des désobéissances. Et permets-moi d'être témoin de Ta proximité, ce qui m'écartera de l'insouciance et de l'oubli.",
-        "ar": "يَا رَقِيبُ، ارْزُقْنِي مِنْ مُرَاقَبَتِكَ مَا يَمْنَعُنِي مِنَ العِصْيَانِ وَمِنْ مُشَاهَدَةِ قُرْبِكَ مَا يُذْهِبُ بِدَوَاعِي الغَفْلَةِ وَالنِّسْيَانِ",
-        "tr": "Yâ Raqîbu ! Urzuq-nî min murâqabati-ka mâ yamna'u-nî mina 'l-'isyâni wa-min mushâhadati qurbi-ka mâ yudhhibu bi-dawâ'î 'l-ghaflati wa-'n-nisyân."
-      },
-      "intro": [
-        "Comment puis-je développer une conscience plus profonde du fait qu'Allâh est Ar-Raqîb et observe toutes mes actions ?",
-        "Lorsque je me sens submergé(e) par le stress d'une situation où je perds le contrôle, je me rappelle qu'Allâh est Vigilant et prend soin de moi, à chaque instant de ma vie."
-      ]
-    },
-    {
-      "n": 44,
-      "ar": "الْمُجِيبُ",
-      "tr": "Al-Mujîb",
-      "fr": "Celui qui exauce",
-      "desc": "Celui qui répond aux invocations de Ses serviteurs.",
-      "af": "044_al-mujib",
-      "inv": {
-        "fr": "Ô Celui qui répond à l'appel ! Réponds à celui qui T'implore par Tes Noms excellents. Et permets-moi d'être parmi ceux qui répondent à Ton appel et suivent Tes messagers.",
-        "ar": "يَا مُجِيبُ، اسْتَجِبْ لِمَنْ دَعَاكَ بِأَسْمَائِكَ الحُسْنَى وَسَأَلَكَ وَاجْعَلْنِي مِمَّنْ أَجَابَ دَعْوَتَكَ وَاتَّبَعَ رُسُلَكَ",
-        "tr": "Yâ Mujîbu ! Istajib li-man da'â-ka bi-asmâ'i-ka 'l-husnâ wa-sa'ala-ka wa-'j'al-nî mim-man ajâba da'wata-ka wa-atba'a rusula-ka."
-      },
-      "intro": [
-        "À quelles occasions ai-je ressenti qu'Allâh était tout proche, et avait exaucé mes prières ?",
-        "Je débute un carnet où je consigne mes invocations, qu'elles soient personnelles ou universelles. En les écrivant, je me rappelle qu'Allâh répond à celui qui demande."
-      ]
-    },
-    {
-      "n": 45,
-      "ar": "الْوَاسِعُ",
-      "tr": "Al-Wâsi'",
-      "fr": "L'Immense",
-      "desc": "Celui dont la miséricorde, la science et les dons embrassent toute chose.",
-      "af": "045_al-wasi",
-      "inv": {
-        "fr": "Ô Englobant ! Ô Toi dont la miséricorde et la science englobent toute chose. Offre-moi une part de miséricorde et de science qui me couvre et me suffise.",
-        "ar": "يَا وَاسِعُ وَسِعْتَ كُلَّ شَيْءٍ رَحْمَةً وَعِلْماً، أَوْسِعْنِي مِنَ الرَّحْمَةِ وَالعِلْمِ حَظّاً وَافِرًا",
-        "tr": "Yâ Wâsi'u, wasi'ta kulla shay'in rahmatan wa-'ilman ! Awsi'-nî mina 'r-rahmati wa-'l-'ilmi hazzan wâfiran."
-      },
-      "intro": [
-        "Je me souviens d'un moment où Allâh a rendu l'impossible possible. Comment cette expérience a-t-elle impacté ma foi et ma confiance en Allâh ?",
-        "Lorsque je fais face à des défis ou à des moments de doute, je me rappelle que l'abondance d'Allâh peut ouvrir des voies insoupçonnées."
-      ]
-    },
-    {
-      "n": 46,
-      "ar": "الْحَكِيمُ",
-      "tr": "Al-Hakîm",
-      "fr": "Le Sage",
-      "desc": "Celui qui place chaque chose à sa juste place par une sagesse infinie.",
-      "af": "046_al-hakim",
-      "inv": {
-        "fr": "Ô Sage, Celui dont rien n'échappe à Sa science ! Donne-moi la science qui me rapprochera des actes méritoires et m'éloignera des actions détestables.",
-        "ar": "يَا حَكِيمُ فَحِكْمَتُهُ لَا يَشُذُّ شَيْءٌ عَنْهَا، هَبْ لِي حِكْمَةً تَحْمِلُنِي عَلَى مَحَاسِنِ الأَفْعَالِ وَتَرْكِ القَبَائِحِ مِنْهَا",
-        "tr": "Yâ Hakîmu, fa-hikmatu-Hu lâ yashudhdhu shay'un 'an-hâ ! Hab lî hikmatan tahmilu-nî 'alâ mahâsini 'l-af'âli wa-tarki 'l-qabâ'ihi min-hâ."
-      },
-      "intro": [
-        "Ai-je déjà vécu une situation dont la sagesse m'échappait au départ, mais s'est finalement révélée à mes yeux avec le temps ?",
-        "Quand je me retrouve confronté(e) à une décision difficile dans une situation complexe, j'invoque Al-Hakîm, le Sage par excellence. Je Lui demande de m'éclairer sur la voie de la sagesse pour prendre la meilleure décision possible."
-      ]
-    },
-    {
-      "n": 47,
-      "ar": "الْوَدُودُ",
-      "tr": "Al-Wadûd",
-      "fr": "Le Très Aimant",
-      "desc": "Celui qui aime Ses serviteurs vertueux et est aimé d'eux.",
-      "af": "047_al-wadud",
-      "inv": {
-        "fr": "Ô Bien-aimant qui aime Ses amis et Ses élus ! Place dans mon cœur une affection infinie envers Toi. Et place dans le cœur des croyants une affection profonde pour moi.",
-        "ar": "يَا وَدُودُ يَوَدُّ أَوْلِيَاءَهُ وَأَصْفِيَاءَهُ المُقَرَّبِينَ، اجْعَلْ فِي قَلْبِي وُدّاً لَكَ وَاجْعَلْ لِي وُدّاً فِي قُلُوبِ المُؤْمِنِينَ",
-        "tr": "Yâ Wadûdu, yawaddu awliyâ'a-Hu wa-asfiyâ'a-Hu 'l-muqarrabîna ! Ij'al fî qalb-î wuddan la-Ka wa-'j'al lî wuddan fî qulûbi 'l-mu'minîn."
-      },
-      "intro": [
-        "En quoi puis-je devenir un canal d'amour et de bienveillance envers le monde qui m'entoure ?",
-        "Chaque jour, je n'oublie pas d'offrir à mes proches une manifestation d'amour, que ce soit par un geste, une parole ou simplement par ma présence bienveillante."
-      ]
-    },
-    {
-      "n": 48,
-      "ar": "الْمَجِيدُ",
-      "tr": "Al-Majîd",
-      "fr": "Le Très Glorieux",
-      "desc": "Celui dont la gloire est parfaite et dont les bienfaits sont infinis.",
-      "af": "048_al-majid",
-      "inv": {
-        "fr": "Ô Glorieux ! Ta Gloire est majestueuse, elle englobe l'Excellence ! Offre-moi une part de la plus haute honorabilité dans la mesure du possible pour un être humain.",
-        "ar": "يَا مَجِيدُ بِمَعْنَى عَظَمِ الشَّأْنِ وَعُمُومِ الإِحْسَانِ، ارْزُقْنِي مِنَ المَجْدِ مَا هُوَ غَايَةُ الإِمْكَانِ فِي طَاقَةِ الإِنْسَانِ",
-        "tr": "Yâ Majîdu bi-ma'nâ 'azami 'sh-sha'ni wa-'umûmi 'l-ihsâni ! Urzuq-nî mina 'l-majdi mâ huwa ghâyata 'l-imkâni fî tâqati 'l-insân."
-      },
-      "intro": [
-        "Qu'est-ce qui m'émerveille le plus dans la création d'Allâh et me rappelle Sa gloire infinie ?",
-        "Je cultive l'humilité en reconnaissant que ma propre grandeur est insignifiante comparée à celle d'Allâh. Cela m'aide à rester humble et à rechercher Sa satisfaction."
-      ]
-    },
-    {
-      "n": 49,
-      "ar": "الْبَاعِثُ",
-      "tr": "Al-Bâ'ith",
-      "fr": "Le Ressusciteur",
-      "desc": "Celui qui ressuscitera les morts au Jour du Jugement.",
-      "af": "049_al-baith",
-      "inv": {
-        "fr": "Ô Celui qui ressuscite ! Illumine mes meilleures pensées par celles qui sont dans les coffres de Ton secret. Et renforce-moi, au Jour de la Résurrection, par une merveilleuse récompense et une belle bonté.",
-        "ar": "يَا بَاعِثُ، ابْعَثْ لِي خَوَاطِرَ الخَيْرِ مِنْ خَزَائِنِ السِّرِّ وَأَثْبِتْنِي يَوْمَ البَعْثِ بِجَزِيلِ الأَجْرِ وَجَمِيلِ البِرِّ",
-        "tr": "Yâ Bâ'ithu ! Ib'ath lî khawâtira 'l-khayri min khazâ'ini 's-sirri wa-athbit-nî yawma 'l-ba'thi bi-jazîli 'l-ajri wa-jamîl 'l-birr."
-      },
-      "intro": [
-        "À quel moment de ma vie ai-je ressenti un éveil spirituel qui m'a conduit à des changements significatifs dans mon rapport au divin ?",
-        "Je suis reconnaissant(e) qu'Al-Bâ'ith m'accorde, chaque matin, une nouvelle opportunité de me rapprocher de Lui et de progresser spirituellement."
-      ]
-    },
-    {
-      "n": 50,
-      "ar": "الشَّهِيدُ",
-      "tr": "Ash-Shahîd",
-      "fr": "Le Témoin",
-      "desc": "Celui qui est présent en tout lieu et témoin de toute chose.",
-      "af": "050_ash-shahid",
-      "inv": {
-        "fr": "Ô Témoin ! Fais que je sois un témoin humble, rempli d'une crainte révérentielle face à Ta Présence et que je me contente à travers Ta science.",
-        "ar": "يَا شَهِيدُ، اجْعَلْنِي لِشَهَادَتِكَ مُتَّقِياً وَبِعِلْمِكَ مُكْتَفِيَاً",
-        "tr": "Yâ Shahîdu ! Ij'al-nî li-shâhidiyyati-ka muttaqiyan wa-bi-'ilmi-ka muktafiyan."
-      },
-      "intro": [
-        "Comment puis-je être plus conscient(e) de la présence d'Allâh dans ma vie quotidienne ?",
-        "Avant d'agir dans une situation donnée, je prends un moment pour me souvenir qu'Allâh est le Témoin de mes actions. Cela guide ma conduite et oriente mes choix."
-      ]
-    },
-    {
-      "n": 51,
-      "ar": "الْحَقُّ",
-      "tr": "Al-Haqq",
-      "fr": "La Vérité",
-      "desc": "La Vérité en Lui-même ; Son existence, Sa parole et Sa promesse sont vraies.",
-      "af": "051_al-haqq",
-      "inv": {
-        "fr": "Ô Véridique ! Exauce mon souhait d'accéder à l'une des vérités de Ton unicité. Et permets-moi d'œuvrer au maintien de Ton droit et de rester en dehors des limites de Tes interdits.",
-        "ar": "يَا حَقُّ، حَقِّقْ رَجَائِي فِي بُلُوغِ حَقِيقَةٍ مِنْ حَقَائِقِ تَوْحِيدِكَ وَاسْتَعْمِلْنِي بِالقِيَامِ بِحَقِّكَ وَالوُقُوفِ عَلَى حُدُودِكَ",
-        "tr": "Yâ Haqqu ! Haqqiq rajâ'-î fî bulûghi haqîqatin min haqâ'iqi tawhîdi-ka wa-'sta'mil-nî bi-'l-qiyâmi bi-haqqi-ka wa-'l-wuqûfi 'alâ hudûdi-ka."
-      },
-      "intro": [
-        "Comment puis-je incorporer davantage la quête de vérité dans mes actions et mes décisions quotidiennes ?",
-        "À chaque prise de parole, je réfléchis, en amont, à mes paroles : sont-elles justes et alignées avec la vérité ?"
-      ]
-    },
-    {
-      "n": 52,
-      "ar": "الْوَكِيلُ",
-      "tr": "Al-Wakîl",
-      "fr": "Le Garant",
-      "desc": "Celui à qui on s'en remet totalement, qui gère les affaires de Ses serviteurs.",
-      "af": "052_al-wakil",
-      "inv": {
-        "fr": "Ô Garant ! Fais que je sois parmi ceux qui se confient à Toi en toute occasion. Et ne m'abandonne pas à ma propre personne, fût-ce le temps d'un battement de cils.",
-        "ar": "يَا وَكِيلُ، اجْعَلْنِي مِنَ المُتَوَكِّلِينَ عَلَيْكَ فِي الأُمُورِ كُلِّهَا وَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ وَلَا أَقَلَّ مِنْهَا",
-        "tr": "Yâ Wakîlu ! Ij'al-nî mina 'l-mutawakkilîna 'alay-ka fî 'l-umûri kulli-hâ wa-lâ takil-nî ilâ nafs-î tarfata 'aynin wa-lâ aqalla min-hâ."
-      },
-      "intro": [
-        "Quels sont les aspects de ma vie sur lesquels j'ai du mal à lâcher prise ? Comment m'en remettre à Allâh ?",
-        "Chaque fois que je me sens inquiet(e) ou insatisfait(e), je répète « Hasbiya Allâhu wa ni'ma l-wakîl » (Allâh me suffit, Il est le Meilleur Garant), pour me rappeler qu'Il est mon soutien et qu'Il résoudra tous mes problèmes."
-      ]
-    },
-    {
-      "n": 53,
-      "ar": "الْقَوِيُّ",
-      "tr": "Al-Qawiyy",
-      "fr": "Le Très Fort",
-      "desc": "Celui dont la force est parfaite, absolue et sans faiblesse.",
-      "af": "053_al-qawiyy",
-      "inv": {
-        "fr": "Ô Puissant ! Donne-moi la force d'agir en toute obéissance et honorabilité. Et éloigne-moi du mal provenant de ma propre personne et du mal qui peut provenir de tout être malveillant.",
-        "ar": "يَا قَوِيُّ، قَوِّنِي عَلَى العَمَلِ بِكُلِّ طَاعَةٍ وَبِرٍّ وَقِنِي شَرَّ نَفْسِي وَشَرَّ كُلِّ ذِي شَرٍّ",
-        "tr": "Yâ Qawiyyu ! Qawwi-nî 'alâ 'l-'amali bi-kulli tâ'atin wa-birrin wa-qinî sharra nafs-î wa sharra kulli dhî sharrin."
-      },
-      "intro": [
-        "Quelles sont les situations où j'ai expérimenté la puissance d'Allâh me guidant à travers la difficulté ?",
-        "Je réfléchis à une situation actuelle qui nécessite de la force, de la persévérance et du courage de ma part. Je répète le nom Al-Qawiyy pour Lui demander Son aide."
-      ]
-    },
-    {
-      "n": 54,
-      "ar": "الْمَتِينُ",
-      "tr": "Al-Matîn",
-      "fr": "L'Inébranlable",
-      "desc": "Celui dont la puissance est ferme et solide, sans lassitude ni fatigue.",
-      "af": "054_al-matin",
-      "inv": {
-        "fr": "Ô Inébranlable ! Fais que ma religion soit ferme et que ma certitude soit forte et constante.",
-        "ar": "يَا مَتِينُ، اجْعَلْ دِينِي مَتِيناً وَيَقِينِي قَوِيّاً مَكِيناً",
-        "tr": "Yâ Matînu ! Ij'al dîn-î matînan wa-yaqîn-î qawiyyan makînan."
-      },
-      "intro": [
-        "Ai-je tendance à éviter les défis par peur de l'échec ? Comment puis-je les aborder avec confiance ?",
-        "Avant de commencer une tâche exigeante, je vais méditer sur le nom Al-Matîn et me rappeler que je suis soutenu(e) par la Puissance d'Allâh."
-      ]
-    },
-    {
-      "n": 55,
-      "ar": "الْوَلِيُّ",
-      "tr": "Al-Waliyy",
-      "fr": "Le Protecteur",
-      "desc": "L'Ami et le Protecteur des croyants.",
-      "af": "055_al-waliyy",
-      "inv": {
-        "fr": "Ô Protecteur ! Fais que, sous Ta protection, je sois protégé(e). Et que je maintienne l'accomplissement de Tes commandements.",
-        "ar": "يَا وَلِيُّ، اجْعَلْنِي بِوِلَايَتِكَ إِيَّايَ وَلِيّاً وَبِرِعَايَةِ حُقُوقِكَ وَفِيّاً",
-        "tr": "Yâ Walî ! Ij'al-nî bi-wilâyati-ka iyyâya waliyyan wa-bi-ri'âyati huqûqi-ka wafiyan."
-      },
-      "intro": [
-        "Quelles actions puis-je entreprendre pour renforcer cette amitié avec Allâh et sentir Sa proximité dans ma vie ?",
-        "Je prends un moment pour parler à Allâh comme si je m'adressais à un ami cher. Je partage avec Lui mes joies, mes peines, mes espoirs et mes préoccupations. Dans ces moments, je suis sincère et ouvert(e), convaincu(e) qu'Allâh m'écoute avec compassion et bienveillance."
-      ]
-    },
-    {
-      "n": 56,
-      "ar": "الْحَمِيدُ",
-      "tr": "Al-Hamîd",
-      "fr": "Le Très Digne de louanges",
-      "desc": "Celui qui mérite toute louange pour ce qu'Il est et ce qu'Il fait.",
-      "af": "056_al-hamid",
-      "inv": {
-        "fr": "Ô Loué ! Fais que je sois parmi ceux qui Te louent et Te sont reconnaissants. Et place-moi sous la bannière de Ta louange, en compagnie des Prophètes, des véridiques, des témoins (martyrs) et des saints.",
-        "ar": "يَا حَمِيدُ، اجْعَلْنِي مِنَ الحَامِدِينَ لَكَ وَالشَّاكِرِينَ وَاحْشُرْنِي تَحْتَ لِوَاءِ الحَمْدِ فِي زُمْرَةِ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ وَالصَّالِحِينَ",
-        "tr": "Yâ Hamîdu ! Ij'al-nî mina 'l-hâmidîna la-ka wa-'sh-shakirîna wa-'hshur-nî tahta liwâ'î 'l-hamdi fî zumrati 'n-nabiyyîna wa-'s-siddîqîna wa-'sh-shuhadâ'î wa-'s-sâlihîn."
-      },
-      "intro": [
-        "Comment puis-je transformer les moments où je ressens la Grâce d'Allâh en instants de louanges ?",
-        "Chaque soir, je réfléchis aux bénédictions de ma journée, et je loue sincèrement Allâh, le Seul digne de louanges."
-      ]
-    },
-    {
-      "n": 57,
-      "ar": "الْمُحْصِي",
-      "tr": "Al-Muhsî",
-      "fr": "Celui qui recense",
-      "desc": "Celui qui dénombre chaque chose, jusqu'au plus infime détail.",
-      "af": "057_al-muhsi",
-      "inv": {
-        "fr": "Ô Celui qui dénombre toute chose en nombre, contenu et quantité ! Fais que je sois parmi ceux qui énumèrent Tes noms avec engagement et persévérance.",
-        "ar": "يَا مُحْصِيَ كُلِّ شَيْءٍ عَدَداً وَإِحَاطَةً وَقَدْراً، اجْعَلْنِي مِنَ المُحْصِينَ لِأَسْمَائِكَ عَقْداً وَإِطَاقَةً وَحَصْراً",
-        "tr": "Yâ Muhsiya kulli shay'in 'adadan wa-ihâtatan wa-qadran ! Ij'al-nî mina 'l-muhsîna li-asmâ'i-ka 'aqdan wa-itâqatan wa-hasran."
-      },
-      "intro": [
-        "Quels sont les moments où je peux être plus attentif à la manière dont chaque acte est enregistré par Al-Muhsî ?",
-        "Je prends quelques instants pour réfléchir à mes actions de la journée et à la manière dont Allâh les compte et les enregistre."
-      ]
-    },
-    {
-      "n": 58,
-      "ar": "الْمُبْدِئُ",
-      "tr": "Al-Mubdi'",
-      "fr": "Celui qui initie",
-      "desc": "Celui qui commence toute chose, l'Initiateur de la création.",
-      "af": "058_al-mubdi",
-      "inv": {
-        "fr": "Ô Celui qui produit sans modèle ! Celui qui régénère ! Compte-moi parmi ceux qui donnent la prévalence à ce que Tu agrées, qui choisissent de Te satisfaire en astreignant leurs envies, et qui se tournent vers Ta porte, sincères, nécessiteux, submergés de confiance en Toi.",
-        "ar": "يَا مُبْدِئُ يَا مُعِيدُ، اجْعَلْنِي مِمَّنْ يَبْدَأُ بِمَحَابِّكَ عَلَى مُرَادِهِ وَاخْتِيَارِهِ وَيَعُودُ إِلَى بَابِكَ بِصِدْقِ اعْتِمَادِهِ وَافْتِقَارِهِ",
-        "tr": "Yâ Mubdi'u ! Yâ Mu'îdu ! Ij'al-nî mim-man yabda'u bi-mahâbbi-ka 'alâ murâdi-hi wa-'khtiyâri-hi wa-ya'ûdu ilâ bâbi-ka bi-sidq i'timâdi-hi wa-'ftiqâri-hi."
-      },
-      "intro": [
-        "En quoi puis-je reconnaître les nouvelles opportunités dans ma vie comme des dons d'Allâh ?",
-        "Je considère les opportunités qui se présentent à moi comme des nouveaux chapitres bénis par Allâh."
-      ]
-    },
-    {
-      "n": 59,
-      "ar": "الْمُعِيدُ",
-      "tr": "Al-Mu'îd",
-      "fr": "Celui qui recommence",
-      "desc": "Celui qui recrée après la mort, qui refait toute chose.",
-      "af": "059_al-muid",
-      "inv": {
-        "fr": "Ô Seigneur ! Du fait que Tu fais revenir, je T'implore de me compter parmi ceux qui retournent à Toi, repentants, le cœur sain.",
-        "ar": "اَللَّهُمَّ إِنِّي أَسْأَلُكَ بِاسْمِكَ يَا مُعِيدُ اِجْعَلْنِي مِمَّنْ يَعُودُ إِلَيْكَ تَائِبًا بِقَلبٍ سَلِيمٍ",
-        "tr": "Allâhumma innî as'aluka bismika yâ Mu'îdu ! Ij'al-nî mim-man ya'ûdu ilâyka tâ'iban bi-qalbin salîmin."
-      },
-      "intro": [
-        "Lorsque ma foi baisse, est-ce que j'ai tendance à abandonner ma pratique ? Comment puis-je mieux surmonter ces moments ?",
-        "Durant mes moments de découragement, je me rappelle qu'Allâh est Al-Mu'îd et qu'Il a le pouvoir de restaurer ma foi."
-      ]
-    },
-    {
-      "n": 60,
-      "ar": "الْمُحْيِي",
-      "tr": "Al-Muhyî",
-      "fr": "Celui qui donne la vie",
-      "desc": "Celui qui insuffle la vie et fait sortir le vivant du non-vivant.",
-      "af": "060_al-muhyi",
-      "inv": {
-        "fr": "Ô Vivant qui précède tout être vivant, ô Vivant qui demeure après tout être vivant, ô Vivant auquel aucun être vivant n'est comparable ! Ravive mon cœur d'une lumière de Ta part.",
-        "ar": "يَا حَيّاً قَبْلَ كُلِّ حَيٍّ يَا حَيّاً بَعْدَ كُلِّ حَيٍّ أَحْيِ قَلْبِي بِنُورٍ مِنْ لَدُنْكَ",
-        "tr": "Yâ hayâ qabla kulli hayin, Yâ hayâ ba'da kulli hayin. Ahyi qalbî bi-nûrin min ladunka."
-      },
-      "intro": [
-        "Comment puis-je utiliser ma vitalité et ma santé pour accomplir des actions qui Lui plaisent ?",
-        "Je m'engage à vivre cette journée avec énergie et intention, en cherchant des moyens d'utiliser ma vitalité pour accomplir des actions qui honorent Allâh."
-      ]
-    },
-    {
-      "n": 61,
-      "ar": "الْمُمِيتُ",
-      "tr": "Al-Mumît",
-      "fr": "Celui qui donne la mort",
-      "desc": "Celui qui fait mourir toute âme au terme fixé.",
-      "af": "061_al-mumit",
-      "inv": {
-        "fr": "Ô Celui qui donne la vie ! Ô Celui qui la retire ! Redonne vie à mon cœur par la conscience de Ton unicité et de Ta connaissance. Et fais mourir mon ego par la contemplation de Ta grandeur et la crainte révérentielle envers Toi.",
-        "ar": "يَا مُحْيِي يَا مُمِيتُ، أَحْيِ قَلْبِي بِوُجُودِ تَوْحِيدِكَ وَمَعْرِفَتِكَ وَأَمِتْ نَفْسِي بِشُهُودِ عَظَمَتِكَ وَهَيْبَتِكَ",
-        "tr": "Yâ Muhyî ! Yâ Mumîtu ! Ahyi qalb-î bi-wujûd tawhîdi-ka wa-ma'rifati-ka wa-amit nafs-î bi-shuhûdi 'azamati-ka wa-haybati-ka."
-      },
-      "intro": [
-        "Comment puis-je mieux me préparer, tant sur le plan spirituel que pratique, à accueillir la mort au sein de mon foyer ?",
-        "Je vis chaque jour avec gratitude, avec l'intention d'œuvrer dans le bien pour ma vie dans l'Au-delà. Je demande également à Allâh de m'accorder une bonne fin et de m'accueillir dans Sa miséricorde."
-      ]
-    },
-    {
-      "n": 62,
-      "ar": "الْحَيُّ",
-      "tr": "Al-Hayy",
-      "fr": "Le Vivant",
-      "desc": "Celui qui possède la vie parfaite, éternelle, sans début ni fin.",
-      "af": "062_al-hayy",
-      "inv": {
-        "fr": "Ô Vivant ! Donne-moi une vie saine. Et abreuve-moi du plus doux des breuvages : Ton amour.",
-        "ar": "يَا حَيُّ، أَحْيِنِي حَيَاةً طَيِّبَةً وَاسْقِنِي مِنْ شَرَابِ مَحَبَّتِكَ أَعْذَبَهُ",
-        "tr": "Yâ Hayyu ! Ahyi-nî hayâtan tayyibatan wa-'sqi-nî min sharâbi mahabbati-ka a'dhaba-hu."
-      },
-      "intro": [
-        "Quels sont les moyens concrets par lesquels je peux exprimer ma dépendance envers Allâh dans la poursuite de mes objectifs ?",
-        "Je prends conscience de mon souffle, du battement de mon cœur et de l'énergie qui circule en moi. Je me rappelle qu'Allâh est le Vivant éternel, et je Lui exprime ma gratitude pour le don de la vie."
-      ]
-    },
-    {
-      "n": 63,
-      "ar": "الْقَيُّومُ",
-      "tr": "Al-Qayyûm",
-      "fr": "Le Subsistant par Lui-même",
-      "desc": "Celui qui subsiste par Lui-même et par qui subsiste toute chose.",
-      "af": "063_al-qayyum",
-      "inv": {
-        "fr": "Ô Immuable ! Fais que je prenne conscience de Ton soutien afin que je me réjouisse de mes épreuves. Et que je prenne conscience du pouvoir de la présence de Tes miséricordes, celles qui adoucissent les douleurs.",
-        "ar": "يَا قَيُّومُ، هَبْ لِي مِنْ مَعْرِفَةِ قَيُّومِيَّتِكَ مَا أَسْتَرِيحُ بِهِ مِنْ كَدِّ التَّدْبِيرِ، وَمِنْ مُشَاهَدَةِ أَلْطَافِكَ مَا يَتَيَسَّرُ بِهِ كُلُّ عَسِيرٍ",
-        "tr": "Yâ Qayyûmu ! Hab lî min ma'rifati qayyûmiyya-ti-ka mâ astarîhu bi-hi min kaddi 't-tadbîri wa-min mushâhadati altâfi-ka mâ yatayassaru bi-hi kullu 'asîrin."
-      },
-      "intro": [
-        "Quels sont les domaines de ma vie où je ressens le besoin de confier davantage mes préoccupations à Allâh ?",
-        "Pour maintenir mon cœur vivant, je prends un temps de dhikr pour répéter « Yâ Hayyu, Yâ Qayyûm, Lâ ilâha illâ Anta » (Ô Vivant, Ô Immuable, nulle divinité en dehors de Toi)."
-      ]
-    },
-    {
-      "n": 64,
-      "ar": "الْوَاجِدُ",
-      "tr": "Al-Wâjid",
-      "fr": "Celui qui trouve",
-      "desc": "Celui à qui rien n'échappe, qui possède tout ce qu'Il veut sans effort.",
-      "af": "064_al-wajid",
-      "inv": {
-        "fr": "Ô Existant ! Fais que je reçoive, au travers de Ton abondance, la richesse et qu'à travers elle j'existe. Et grâce à ce don, que j'atteigne la connaissance de Ton Être.",
-        "ar": "يَا وَاجِدُ، أَوْجِدْنِي مِنْ جُودِكَ وَجْداً بَالِغاً وَوُجُوداً، وَأَنِلْنِي مِنْ عِرْفَانِ وَحْدَانِيَّتِكَ عَطَاءً سَابِغاً وَجُوداً",
-        "tr": "Yâ Wâjidu ! Awjid-nî min jûdi-ka wajdan bâlighan wa-wujûdan wa-anil-nî min 'irfâni wahdâniyyati-ka 'atâ'an sâbighan wa-jûdan."
-      },
-      "intro": [
-        "Quels sont les moments de ma vie où j'ai réalisé qu'Allâh m'avait accordé précisément ce dont j'avais besoin ?",
-        "Lorsqu'il me manque quelque chose dans ma vie, je me tourne vers Al-Wâjid pour Lui demander, car Il est Celui qui ne manque de rien et qui donne sans compter."
-      ]
-    },
-    {
-      "n": 65,
-      "ar": "الْمَاجِدُ",
-      "tr": "Al-Mâjid",
-      "fr": "Le Très Noble",
-      "desc": "Celui qui possède la noblesse, la générosité et la gloire absolues.",
-      "af": "065_al-majid",
-      "inv": {
-        "fr": "Ô Illustre dont les Attributs sont nobles et les Noms excellents ! Offre-moi par la ferveur de mes aspirations une élévation qui me positionne dans la plus Haute des Cours.",
-        "ar": "يَا مَاجِدُ فَأَوْصَافُهُ مَجِيدَةٌ وَأَسْمَاؤُهُ حُسْنَى، أَعْطِنِي مِنْ مُجَاهِدَةِ الهِمَّةِ مَا أَرْقَى بِهِ إِلَى المَحَلِّ الأَسْنَى",
-        "tr": "Yâ Mâjidu, fa-awsâfu-Hu majîdatun wa-asmâ'u-Hu husnâ ! A'tinî min mujâhidati 'l-himmati mâ arqâ bi-hi ilâ 'l-mahalli 'l-asnâ."
-      },
-      "intro": [
-        "Est-ce que je pratique la glorification d'Allâh régulièrement ? Comment pourrais-je consacrer davantage de temps à cette adoration ?",
-        "Je contemple la beauté qui m'entoure pour m'émerveiller devant la Gloire d'Allâh tout en récitant le tasbîh."
-      ]
-    },
-    {
-      "n": 66,
-      "ar": "الْوَاحِدُ",
-      "tr": "Al-Wâhid",
-      "fr": "L'Unique",
-      "desc": "Celui qui est Un dans Son essence, Ses attributs et Ses actes.",
-      "af": "066_al-wahid",
-      "inv": {
-        "fr": "Ô Unique ! Fais de moi un monothéiste par la reconnaissance de Ton unité. Et un témoin soutenu par Ton unicité.",
-        "ar": "يَا وَاحِدُ، اجْعَلْنِي مُوَحِّداً بِوُجُودِ وَحْدَانِيَّتِكَ مُؤَيَّداً بِشُهُودِ فَرْدَانِيَّتِكَ",
-        "tr": "Yâ Wâhidu ! Ij'al-nî mûjidan bi-wujûdi wahdâniyya-ti-ka mu'ayyadan bi-shuhûdi fardâniyyati-ka."
-      },
-      "intro": [
-        "Comment puis-je offrir une explication claire et accessible de l'unicité d'Allâh à ceux qui cherchent à Le connaître ?",
-        "Je consacre du temps à méditer ce nom et je m'engage à approfondir ma compréhension de l'unicité d'Allâh."
-      ]
-    },
-    {
-      "n": 67,
-      "ar": "الْأَحَدُ",
-      "tr": "Al-Ahad",
-      "fr": "L'Un",
-      "desc": "L'Unique absolu, sans partenaire, sans semblable ni équivalent.",
-      "af": "067_al-ahad",
-      "inv": {
-        "fr": "Mon Dieu je T'implore, ô Dieu, Toi l'Un, l'Unique, le Tout-Puissant, qui n'a pas engendré et n'est pas engendré et qui n'a point d'égal, d'absoudre mes péchés ! Car Tu es Celui qui pardonne sans-cesse, le Très-Miséricordieux.",
-        "ar": "اَللَّهُمَّ إِنِّي أَسْأَلُكَ يَا اللَّهُ بِأَنَّكَ الوَاحِدُ الأَحَدُ الصَّمَدُ الَّذِي لَمْ يَلِدْ وَلَمْ يُولَدْ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ أَنْ تَغْفِرَ لِي ذُنُوبِي إِنَّكَ أَنْتَ الغَفُورُ الرَّحِيمُ",
-        "tr": "Allâhumma innî as'aluka yâ Allâhu bi-annaka l-wâhidu l-ahadu s-samadu lladhî lam yalid wa-lâm yûlad wa-lâm yakun lahu kufuwan ahad, an taghfira lî dhunûbî innaka anta l-ghafûru r-rahîmu."
-      },
-      "intro": [
-        "Quels moments de ma vie reflètent le mieux ma conviction en l'unicité d'Allâh, et comment puis-je entretenir ma foi en l'Unique ?",
-        "Chaque jour, je me rappelle de l'unicité d'Allâh grâce au tahlîl : en répétant plusieurs fois (minimum 33 fois) « Lâ ilâha illâ Allâh »."
-      ]
-    },
-    {
-      "n": 68,
-      "ar": "الصَّمَدُ",
-      "tr": "As-Samad",
-      "fr": "Le Recours suprême",
-      "desc": "Celui vers qui se tourne toute créature dans le besoin, qui n'a besoin de rien.",
-      "af": "068_as-samad",
-      "inv": {
-        "fr": "Ô Inébranlable ! Fais-moi don d'une servitude éternelle envers Ta présence. Et compte-moi parmi ceux qui T'obéissent et qui aspirent à Toi, éternellement, dans tous leurs actes.",
-        "ar": "يَا صَمَدُ، ارْزُقْنِي صَمَدِيَّةً تَقْتَضِي دَوَامَ الحُضُورِ وَاجْعَلْنِي مِمَّنْ يَصْمُدُ إِلَيْكَ بِهِمَّتِهِ فِي جَمِيعِ الأُمُورِ",
-        "tr": "Yâ Samadu ! Urzuq-nî samadiyyatan taqtadî dawâma 'l-hudûri wa-Ij'al-nî mim-man yasmudu ilay-ka bi-himmati-hi fî jamî'i 'l-umûr."
-      },
-      "intro": [
-        "À quels moments de ma vie ai-je cherché des solutions en dehors d'Allâh et comment éviter de répéter cette erreur ?",
-        "Je médite sur le fait que tout ce dont j'ai besoin dépend d'Allâh, plaçant ma confiance en Lui pour guider mes jours."
-      ]
-    },
-    {
-      "n": 69,
-      "ar": "الْقَادِرُ",
-      "tr": "Al-Qâdir",
-      "fr": "Le Détenteur du pouvoir",
-      "desc": "Celui qui a le pouvoir absolu sur toute chose.",
-      "af": "069_al-qadir",
-      "inv": {
-        "fr": "Ô Puissant ! Fais naître en moi une capacité habile afin que j'atteigne l'obéissance. Octroie-moi une force qui me préservera des transgressions.",
-        "ar": "يَا قَادِرُ، اخْلُقْ لِي قُدْرَةً صَالِحَةً لِإِكْتِسَابِ الطَّاعَاتِ وَقُوَّةً مَانِعَةً مِنِ ارْتِكَابِ المُخَالَفَاتِ",
-        "tr": "Yâ Qâdiru ! Ukhluq lî qudratan sâlihatan li-'ktisâbi 't-tâ'âti wa-quwwatan mâni'atan min irtikâbi 'l-mukhâlafât."
-      },
-      "intro": [
-        "Ai-je déjà douté de la capacité d'Allâh à résoudre mes problèmes, et comment puis-je renforcer ma foi en Lui dans ces moments ?",
-        "Chaque fois que je fais face à un problème, je demande à Allâh de guider mes actions et de me donner la force nécessaire pour réussir."
-      ]
-    },
-    {
-      "n": 70,
-      "ar": "الْمُقْتَدِرُ",
-      "tr": "Al-Muqtadir",
-      "fr": "Le Puissant Déterminant",
-      "desc": "Celui dont la puissance s'exerce sans obstacle, avec une maîtrise parfaite.",
-      "af": "070_al-muqtadir",
-      "inv": {
-        "fr": "Ô Tout-Puissant ! Compte-moi parmi ceux que Tu éduques à travers la vision (le témoignage) de Ta Toute-Puissance et parmi ceux qui Te craignent avec révérence, tant dans leur quiétude que dans leurs mouvements.",
-        "ar": "يَا مُقْتَدِرُ، اجْعَلْنِي بِشُهُودِ اقْتِدَارِكَ وَرَهْبَتِكَ مِمَّنْ يَتَأَدَّبُ بَيْنَ يَدَيْكَ فِي سُكُونِهِ وَحَرَكَتِهِ",
-        "tr": "Yâ Muqtadiru ! Ij'al-nî bi-shuhûdi 'qtidâri-ka wa-rahbati-ka mim-man yata'addabu bayna yaday-ka fî sukûni-hi wa-harakati-hi."
-      },
-      "intro": [
-        "Dans quelles situations est-ce que je peux reconnaître la manifestation de la Puissance d'Allâh ?",
-        "Lorsque je me sens impuissant(e), je me rappelle que j'ai Allâh, le Tout-Puissant avec moi."
-      ]
-    },
-    {
-      "n": 71,
-      "ar": "الْمُقَدِّمُ",
-      "tr": "Al-Muqaddim",
-      "fr": "Celui qui avance",
-      "desc": "Celui qui met en avant qui Il veut par Sa sagesse.",
-      "af": "071_al-muqaddim",
-      "inv": {
-        "fr": "Ô Celui qui précède ! Ô Celui qui retarde ! Place-moi à l'avant, en compagnie des prédécesseurs à la Maison de la Paix. Et ne me place pas à l'arrière, parmi ceux qui sont éreintés par leurs propres péchés.",
-        "ar": "يَا مُقَدِّمُ يَا مُؤَخِّرُ، قَدِّمْنِي فِي حِلْيَةِ السَّابِقِينَ إِلَى دَارِ السَّلَامِ وَلَا تُؤَخِّرْنِي مَعَ الهَالِكِينَ بِاجْتِرَاحِ الآثَامِ",
-        "tr": "Yâ Muqaddimu ! Yâ Mu'akhkhiru ! Qaddim-nî fî hilyati 's-sâbiqîna ilâ dâri 's-salâmi wa-lâ tu'akh-khir-nî ma'a 'l-hâlikîna bi-'jtirâmi 'l-âthâm."
-      },
-      "intro": [
-        "Comment pourrais-je davantage laisser Allâh guider mes choix pour prévoir ce qui est le mieux pour moi ?",
-        "Pour atteindre mes objectifs, j'élabore un plan précis avec des étapes claires. Enfin, j'agis avec confiance, sachant qu'Allâh est Celui qui anticipe et guide chaque avancée."
-      ]
-    },
-    {
-      "n": 72,
-      "ar": "الْمُؤَخِّرُ",
-      "tr": "Al-Mu'akhkhir",
-      "fr": "Celui qui recule",
-      "desc": "Celui qui retarde ou repousse qui Il veut selon Sa sagesse.",
-      "af": "072_al-muakhkhir",
-      "inv": {
-        "fr": "Mon Dieu j'implore Ton Pardon et Ta Grâce dans ce monde comme dans l'Au-delà.",
-        "ar": "اَللَّهُمَّ إِنِّي أَسْأَلُكَ العَفْوَ وَالعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ",
-        "tr": "Allâhumma innî as'aluka l-'afwa wa-l-'âfiyyata fî d-dunyâ wa-l-âkhirati."
-      },
-      "intro": [
-        "Est-ce que je ressens parfois le besoin de précipiter les choses dans ma vie ? Comment puis-je cultiver la patience ?",
-        "Face à un contretemps, je relativise en plaçant ma confiance en Allâh. Je me rappelle qu'Il a un plan parfait et que tout se déroule selon Sa volonté."
-      ]
-    },
-    {
-      "n": 73,
-      "ar": "الْأَوَّلُ",
-      "tr": "Al-Awwal",
-      "fr": "Le Premier",
-      "desc": "Celui qui n'a pas de commencement, avant qui il n'y a rien.",
-      "af": "073_al-awwal",
-      "inv": {
-        "fr": "Ô Premier ! Inscris-moi, par Ton pouvoir, dans les premiers parmi les devanciers.",
-        "ar": "يَا أَوَّلُ، اكْتُبْنِي عِنْدَكَ فِي أَوَائِلِ السَّابِقِينَ",
-        "tr": "Yâ Awwalu ! Uktub-nî 'inda-ka fî awâ'ili as-sâbiqîna."
-      },
-      "intro": [
-        "Quels aspects de ma vie pourraient bénéficier d'un nouveau départ ?",
-        "Je me visualise entamant un nouveau chapitre dans ma vie, notant les actions à entreprendre. Je les mets en œuvre avec confiance, sachant qu'Allâh est Celui qui facilite les débuts."
-      ]
-    },
-    {
-      "n": 74,
-      "ar": "الْآخِرُ",
-      "tr": "Al-Âkhir",
-      "fr": "Le Dernier",
-      "desc": "Celui qui n'a pas de fin, après qui il n'y a rien.",
-      "af": "074_al-akhir",
-      "inv": {
-        "fr": "Ô Dernier ! Scelle ma vie avec le sceau de ceux qui ont atteint la certitude.",
-        "ar": "يَا آخِرُ، اخْتِمْ لِي بِخَوَاتِمِ أَهْلِ اليَقِينِ",
-        "tr": "Yâ Âkhiru ! Ikhtim lî bi-khawâtimi ahli 'l-yaqîni."
-      },
-      "intro": [
-        "Est-ce que je trouve la paix intérieure en remettant à Allâh les résultats ultimes de mes actions ?",
-        "Je garde à l'esprit qu'Allâh est le Dernier et place ma confiance en Lui pour guider mes pas vers ce qui est ultimement bénéfique."
-      ]
-    },
-    {
-      "n": 75,
-      "ar": "الظَّاهِرُ",
-      "tr": "Az-Zâhir",
-      "fr": "L'Apparent",
-      "desc": "Celui dont l'existence est manifeste par les signes de Sa création.",
-      "af": "075_az-zahir",
-      "inv": {
-        "fr": "Ô Apparent ! Embellis mon apparence avec les excellences de la religion.",
-        "ar": "يَا ظَاهِرُ، حَسِّنْ ظَاهِرِي بِوَظَائِفِ الدِّينِ",
-        "tr": "Yâ Zâhiru ! Hassin zâhirî bi-wazâ'ifi 'd-dîn."
-      },
-      "intro": [
-        "Quels signes d'Allâh ai-je remarqués aujourd'hui dans Sa création qui ont particulièrement retenu mon attention ?",
-        "Chaque jour, je repère trois signes évidents d'Allâh autour de moi, renforçant ma foi et ma gratitude envers Sa création extraordinaire."
-      ]
-    },
-    {
-      "n": 76,
-      "ar": "الْبَاطِنُ",
-      "tr": "Al-Bâtin",
-      "fr": "Le Caché",
-      "desc": "Celui dont la réalité échappe à la perception des créatures.",
-      "af": "076_al-batin",
-      "inv": {
-        "fr": "Ô Intérieur ! Pare mon intériorité des douceurs de la certitude.",
-        "ar": "يَا بَاطِنُ، زَيِّنْ بَاطِنِي بِلَطَائِفِ اليَقِينِ",
-        "tr": "Yâ Bâtinu ! Zayyin bâtinî bi-latâ'ifi 'l-yaqîni."
-      },
-      "intro": [
-        "Quels éléments de la création me touchent profondément et pourquoi ?",
-        "Chaque jour, je médite sur la subtile présence d'Allâh. Je repère les moments où Sa proximité se manifeste."
-      ]
-    },
-    {
-      "n": 77,
-      "ar": "الْوَالِي",
-      "tr": "Al-Wâlî",
-      "fr": "Le Maître souverain",
-      "desc": "Celui qui gouverne toute chose et dispose de la création.",
-      "af": "077_al-wali",
-      "inv": {
-        "fr": "Ô Ami qui gouverne tous mes états ! Prends-moi en charge, guide-moi vers Toi. Compte-moi parmi ceux qui Te sont spéciaux et qui restent sous Ta protection.",
-        "ar": "يَا وَالِي، تَوَلَّنِي بِهِدَايَتِكَ وَاجْعَلْنِي مِنْ خَاصَّتِكَ وَأَهْلِ وِلَايَتِكَ",
-        "tr": "Yâ Wâlî ! Tawalla-nî bi-hidâyati-ka wa-'j'al-nî min khâssati-ka wa-ahli wilâyati-ka."
-      },
-      "intro": [
-        "Quelles sont les situations où j'ai ressenti qu'Allâh me guidait, de manière particulièrement claire ?",
-        "Je me rappelle qu'Allâh est le Gouverneur suprême de toute chose. Je lâche prise et confie ma vie à Al-Wâlî, le Meilleur des Tuteurs."
-      ]
-    },
-    {
-      "n": 78,
-      "ar": "الْمُتَعَالِي",
-      "tr": "Al-Muta'âlî",
-      "fr": "Le Très Sublime",
-      "desc": "Celui qui transcende tout ce que les créatures peuvent Lui attribuer d'imparfait.",
-      "af": "078_al-mutaali",
-      "inv": {
-        "fr": "Ô Transcendant ! Accorde-moi le don d'être témoin de Ton exaltation, Car elle illumine l'obscurité et clarifie les doutes (problèmes).",
-        "ar": "يَا مُتَعَالِي، ازْزُقْنِي مِنْ شُهُودِ تَعَالِيكَ مَا يُنِيرُ الظُّلُمَاتِ وَيُوَضِّحُ المُشْكِلَاتِ",
-        "tr": "Yâ Muta'âlî ! Urzuq-nî min shuhûdi ta'âliyi-ka mâ yunîru 'z-zulumâti wa-yuwaddihu 'l-mushkilât."
-      },
-      "intro": [
-        "Comment conçois-je Allâh ? Quelles sont les premières Qualités sublimes qui me viennent à l'esprit ?",
-        "Je me rappelle de la Grandeur, de la Puissance et de la Magnificence d'Allâh. Je sais qu'Il surpasse en bien toutes mes pensées à Son égard et je Lui demande de me guider."
-      ]
-    },
-    {
-      "n": 79,
-      "ar": "الْبَرُّ",
-      "tr": "Al-Barr",
-      "fr": "Le Bienfaiteur",
-      "desc": "Celui qui répand Sa bonté sur toute Sa création.",
-      "af": "079_al-barr",
-      "inv": {
-        "fr": "Ô Bonté ! Fais que je sois bon, humble, pieux face à Ton pouvoir. Et qu'ainsi, par bonté envers moi, Tu sois Contenté et Satisfait.",
-        "ar": "يَا بَرُّ، اجْعَلْنِي عِنْدَكَ بَرّاً تَقِيّاً وَمِنْ بِرِّكَ رَاضِياً مَرْضِيّاً",
-        "tr": "Yâ Barru ! Ij'al-nî 'inda-ka bârran taqiyyan wa-min birri-ka râdiyan mardîyan."
-      },
-      "intro": [
-        "Comment puis-je renforcer ma gratitude envers les bienfaits quotidiens d'Allâh, qu'ils soient matériels ou spirituels ?",
-        "Je note au moins trois choses pour lesquelles je suis reconnaissant(e) envers Allâh, qu'elles soient liées à ma vie matérielle ou spirituelle."
-      ]
-    },
-    {
-      "n": 80,
-      "ar": "التَّوَّابُ",
-      "tr": "At-Tawwâb",
-      "fr": "Celui qui accueille le repentir",
-      "desc": "Celui qui accepte sans cesse le retour de Ses serviteurs vers Lui.",
-      "af": "080_at-tawwab",
-      "inv": {
-        "fr": "Ô Celui qui accepte le repentir ! Accorde-moi les bienfaits d'un retour authentique vers Toi. Ne me laisse pas me discréditer par une quelconque séduction ou abandon.",
-        "ar": "يَا تَوَّابُ، ارْزُقْنِي إِلَيْكَ تَوْبَةً نَصُوحاً وَلَا تَدَعْ لِي إِلَى المُخَالَفَةِ مَيْلاً وَلَا جُنُوحاً",
-        "tr": "Yâ Tawwâbu ! Urzuq-nî ilay-ka tawbatan nasûhan wa-lâ tada' lî ilâ al-mukhâlafati maylan wa-lâ junûhan."
-      },
-      "intro": [
-        "Comment puis-je cultiver un état d'esprit de repentir constant dans ma vie quotidienne ?",
-        "Je réfléchis aux actions où j'ai mal agit, je prends conscience de cela et je demande à Allâh Son pardon, en Lui promettant de m'améliorer."
-      ]
-    },
-    {
-      "n": 81,
-      "ar": "الْمُنْتَقِمُ",
-      "tr": "Al-Muntaqim",
-      "fr": "Le Vengeur",
-      "desc": "Celui qui punit les oppresseurs et rend justice après avoir laissé un délai.",
-      "af": "081_al-muntaqim",
-      "inv": {
-        "fr": "« Notre Seigneur, arme-nous de patience, affermis nos pas et accorde-nous une issue et une victoire sur les injustes ! Certes, nulle autre divinité en dehors de Toi, le Puissant, le Justicier. »",
-        "ar": "﴿رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَافْتَحْ عَلَيْنَا وَانْصُرْنَا عَلَى القَوْمِ الظَّالِمِينَ إِنَّكَ أَنْتَ اللَّهُ لَا إِلَهَ إِلَّا أَنْتَ العَزِيزُ ذُو انْتِقَامٍ﴾",
-        "tr": "Rabbanâ afrigh 'alaynâ sabran wa thabet aqdamanâ wa iftah 'alaynâ wa 'insurnâ 'alâ al-qawm az-zâlimîna innâ lâ ilaha illâ anta al-'azîz dhû intiqâm."
-      },
-      "intro": [
-        "Ai-je déjà expérimenté les conséquences de mes actes, que ce soit positif ou négatif ?",
-        "Je me rappelle qu'Allâh assure une justice parfaite pour cultiver une conscience plus profonde de l'impact de mes actions."
-      ]
-    },
-    {
-      "n": 82,
-      "ar": "الْعَفُوُّ",
-      "tr": "Al-'Afuww",
-      "fr": "Celui qui efface",
-      "desc": "Celui qui efface totalement les péchés, comme s'ils n'avaient jamais été.",
-      "af": "082_al-afuww",
-      "inv": {
-        "fr": "Ô Celui qui efface les péchés ! Couvre mes fautes par Ton Excellence et Ta Bonté. Et traite-moi avec la Générosité et la Grâce qui T'appartiennent.",
-        "ar": "يَا عَفُوُّ، اعْفُ عَنِّي بِفَضْلِكَ وَإِحْسَانِكَ وَعَامِلْنِي بِكَرَمِكَ وَامْتِنَانِكَ",
-        "tr": "Yâ 'Afûwu ! U'fu 'an-nî bi-fadli-ka wa-ihsâni-ka wa-'âmil-nî bi-karami-ka wa-'mtinâni-ka."
-      },
-      "intro": [
-        "Quels comportements ou attitudes dois-je abandonner pour mieux refléter la qualité de l'indulgence ?",
-        "Je réfléchis aux moments nécessitant clémence, envers moi-même ou autrui. J'exprime ce repentir sincèrement, en invoquant Al-'Afuww."
-      ]
-    },
-    {
-      "n": 83,
-      "ar": "الرَّءُوفُ",
-      "tr": "Ar-Ra'ûf",
-      "fr": "Le Très Doux",
-      "desc": "Celui dont la compassion et la bienveillance sont infinies.",
-      "af": "083_ar-rauf",
-      "inv": {
-        "fr": "Ô Indulgent ! Sois Clément, Miséricordieux envers moi dans les deux mondes. Et de Ta grande Clémence envers les croyants, accorde-moi une belle part. Fais-moi part de cette immense chance.",
-        "ar": "يَا رَؤُوفُ، كُنْ لِي فِي الدَّارَيْنِ رَؤُوفاً رَحِيماً وَاقْسِمْ لِي مِنَ الرَّأْفَةِ بِالمُؤْمِنِينَ قِسْماً وَافِراً وَحَظّاً عَظِيماً",
-        "tr": "Yâ Ra'ûf ! Kun lî fî 'd-dârayna ra'ûfan rahîman wa-'qsim lî min 'r-ra'fati bi-'l-mu'minîna qisman wâfiran wa-hazzan 'azîman."
-      },
-      "intro": [
-        "Dans quelles situations ai-je besoin de faire preuve de plus de tendresse envers moi-même et envers autrui ?",
-        "Chaque jour, je choisis une personne de mon entourage et lui exprime ma bienveillance, que ce soit par un mot gentil, un geste attentionné ou un acte de soutien."
-      ]
-    },
-    {
-      "n": 84,
-      "ar": "مَالِكُ الْمُلْكِ",
-      "tr": "Mâlik al-Mulk",
-      "fr": "Le Souverain absolu",
-      "desc": "Celui à qui appartient toute la royauté, qu'Il donne à qui Il veut.",
-      "af": "084_malik-al-mulk",
-      "inv": {
-        "fr": "Ô Détenteur de la Royauté ! Je me réfugie en Toi pour éviter les chemins de la perdition.",
-        "ar": "يَا مَالِكَ المُلْكِ، أَعُوذُ بِكَ مِنْ مَسَالِكِ المُلْكِ",
-        "tr": "Yâ Mâlik-ul-Mulk ! A'ûdhu bi-ka min masâliki 'l-mulk."
-      },
-      "intro": [
-        "Les biens matériels prennent-ils de l'importance dans ma vie ?",
-        "Je médite sur le fait que tout appartient à Allâh. Que vais-je emporter avec moi, si ce n'est mes œuvres ? Cela me rappelle l'importance de partager ce que j'ai et de me détacher des biens matériels, en vue de l'Au-delà."
-      ]
-    },
-    {
-      "n": 85,
-      "ar": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
-      "tr": "Dhûl-Jalâli wal-Ikrâm",
-      "fr": "Détenteur de la majesté et de la générosité",
-      "desc": "Celui qui réunit toute grandeur et toute générosité.",
-      "af": "085_dhul-jalali-wal-ikram",
-      "inv": {
-        "fr": "Ô Celui à qui appartiennent la Majesté et la Générosité ! Offre-nous la Voie qui requiert la rectitude. Gloire à Toi, notre Seigneur, Tu es certes Celui qui offre sans cesse, le Très-Généreux.",
-        "ar": "يَا ذَا الجَلَالِ وَالإِكْرَامِ، اهْدِنَا الصِّرَاطَ المُسْتَقِيمَ تَبَارَكْتَ رَبَّنَا إِنَّكَ أَنْتَ الوَهَّابُ الكَرِيمُ",
-        "tr": "Yâ Dhâl-Jalâli wal-Ikrâmi ! Ihdinâ sirata al-mustaqîma tabârakta rabbânâ innaka anta al-wahhâb al-karîm."
-      },
-      "intro": [
-        "Quelles actions puis-je entreprendre pour honorer la perfection d'Allâh dans mes interactions avec les autres ?",
-        "Lorsque je cherche absolument la perfection en moi et autour de moi, je me rappelle qu'Allâh Seul est parfait, ce qui me permet de relativiser mon imperfection."
-      ]
-    },
-    {
-      "n": 86,
-      "ar": "الْمُقْسِطُ",
-      "tr": "Al-Muqsit",
-      "fr": "L'Équitable",
-      "desc": "Celui qui juge et agit avec la plus parfaite équité.",
-      "af": "086_al-muqsit",
-      "inv": {
-        "fr": "Ô Équitable ! Juge-moi selon Ta Bonté et Tes Bienfaits et ce quel que soit mon état, et ne me juge pas d'après Ton Équité et Ta Justice.",
-        "ar": "يَا مُقْسِطُ، اسْتَعْمِلْنِي بِالقِسْطِ فِي جَمِيعِ أَحْوَالِي بِفَضْلِكَ وَلَا تُعَامِلْنِي بِقِسْطِكَ وَعَدْلِكَ",
-        "tr": "Yâ Muqsitu ! Ista'mil-nî bi-'l-qisti fî jamî'i ahwâlî bi-fadli-ka wa-lâ tu'âmil-nî bi-qisti-ka wa-'adli-ka."
-      },
-      "intro": [
-        "Est-ce que je tends vers la justice dans mes décisions et actions au quotidien ? Si non, comment m'améliorer ?",
-        "Je prends conscience des moments où j'ai agit avec équité et ceux où je pourrais améliorer mes jugements. Je m'engage à agir de manière plus juste et équitable à l'avenir."
-      ]
-    },
-    {
-      "n": 87,
-      "ar": "الْجَامِعُ",
-      "tr": "Al-Jâmi'",
-      "fr": "Celui qui rassemble",
-      "desc": "Celui qui rassemblera les créatures au Jour de la Résurrection.",
-      "af": "087_al-jami",
-      "inv": {
-        "fr": "Ô Celui qui réunit ! Rassemble les dispersements de mon être par Tes mains qui réunissent. Et soude ensemble mes tentatives afin de n'être qu'un devant Toi. Puis, au jour du Rassemblement, accorde-moi une part d'honneur pour être en Ta compagnie et pouvoir Te contempler.",
-        "ar": "يَا جَامِعُ، اجْمَعْ مُفْتَرِقَاتِ كَوْنِي فِي جَمْعِ الجَمْعِ بَيْنَ يَدَيْكَ وَارْزُقْنِي يَوْمَ الجَمْعِ قُرْبَكَ وَالنَّظَرَ إِلَيْكَ",
-        "tr": "Yâ Jâmi'u ! Ijma' mutafarriqât kawn-î fî jam'i 'l-jâm'i bayna yaday-ka wa-'rzuq-nî yawma 'l-jam'i qurba-ka wa-'n-nazara ilay-ka."
-      },
-      "intro": [
-        "Comment puis-je concrètement contribuer à l'unité et à l'harmonie dans ma communauté ?",
-        "J'organise un rassemblement pour un objectif noble, que ce soit en famille ou entre amis restant réceptif(ve) aux enseignements et aux bienfaits qui en découlent."
-      ]
-    },
-    {
-      "n": 88,
-      "ar": "الْغَنِيُّ",
-      "tr": "Al-Ghaniyy",
-      "fr": "Le Riche par Lui-même",
-      "desc": "Celui qui se suffit à Lui-même et dont toute chose dépend.",
-      "af": "088_al-ghaniyy",
-      "inv": {
-        "fr": "Ô Riche absolu ! Accorde-moi la richesse de connaître Ton honorabilité et Tes bienfaits. Par Ta beauté et Ta bonté, et par Ton excellence et Ta magnificence, sois Bienveillant envers moi le jour où je retournerais vers Toi.",
-        "ar": "يَا غَنِيُّ، اجْعَلْنِي غَنِيّاً بِافْتِقَارِي إِلَى كَرَمِكَ وَأَفْضَالِكَ وَكُنْ بِي حَفِيّاً يَوْمَ وُرُودِي عَلَيْكَ بِإِحْسَانِكَ وَإِجْمَالِكَ",
-        "tr": "Yâ Ghanî ! Ij'al-nî ghaniyyan bi-'ftiqârî ilâ karami-ka wa-afdâli-ka wa-kun bî hafiyyan yawma wurûd-î 'alay-ka bi-ihsâni-ka wa-ijmâli-ka."
-      },
-      "intro": [
-        "Quels sont les besoins que je ressens actuellement, qu'ils soient d'ordre matériel, émotionnel ou spirituel, que je puisse confier à Allâh, en reconnaissant Sa qualité d'Al-Ghaniyy ?",
-        "J'invoque Allâh tout en étant confiant(e) en Sa capacité à répondre à tous mes besoins de la meilleure façon."
-      ]
-    },
-    {
-      "n": 89,
-      "ar": "الْمُغْنِي",
-      "tr": "Al-Mughnî",
-      "fr": "Celui qui enrichit",
-      "desc": "Celui qui accorde la richesse et la suffisance à qui Il veut.",
-      "af": "089_al-mughni",
-      "inv": {
-        "fr": "Ô Celui qui rend libre de toute dépendance ! Écarte-moi de tous les mondes en me dirigeant vers Toi. Et accorde-moi la grâce de réaliser des œuvres sincères en plaçant ma confiance en Toi.",
-        "ar": "يَا مُغْنِي، أَغْنِنِي عَنِ العَوَالِمِ كُلِّهَا بِالانْقِطَاعِ إِلَيْكَ وَأَعِنِّي عَلَى أُمُورِي بِصِدْقِ التَّوْكِيلِ عَلَيْكَ",
-        "tr": "Yâ Mughnî ! Aghni-nî 'ani 'l-'awâlimi kulli-hâ bi-'l-inqitâ'i ilay-ka wa-a'in-nî 'alâ umûrî bi-sidqi 't-tawkîli 'alay-ka."
-      },
-      "intro": [
-        "Est-ce que je ressens fréquemment un sentiment d'insatisfaction dans ma vie ? Comment surmonter cela ?",
-        "Je fais une liste de mes besoins et préoccupations actuels, puis je les remets à Allâh en tant qu'Al-Mughnî dans mes prières quotidiennes."
-      ]
-    },
-    {
-      "n": 90,
-      "ar": "الْمَانِعُ",
-      "tr": "Al-Mâni'",
-      "fr": "Celui qui préserve",
-      "desc": "Celui qui empêche ce qui doit être empêché par sagesse.",
-      "af": "090_al-mani",
-      "inv": {
-        "fr": "Ô Celui qui repousse ! Préserve-moi, par la pureté de Ta face, du mal siégeant chez les malveillants. Et garde-moi, par la perfection de Ta protection, d'emprunter la voie des péchés.",
-        "ar": "يَا مَانِعُ، امْنَعْنِي بِلُطْفِ عِنَايَتِكَ مِنْ شَرِّ الأَشْرَارِ وَاحْفَظْنِي بِحُسْنِ رِعَايَتِكَ مِنِ اقْتِحَامِ الأَوْزَارِ",
-        "tr": "Yâ Mâni'u ! Imna'-nî bi-lutfi 'inâyati-ka min sharri 'l-ashrâri wa-'hfaz-nî bi-husni ri'âyati-ka mina 'qtihâmi 'l-awzâr."
-      },
-      "intro": [
-        "Quels sont les bénéfices personnels que je retire en respectant les interdictions divines ?",
-        "Je médite sur une interdiction divine qui guide mes actions, en cherchant à en comprendre la sagesse et à l'appliquer consciencieusement dans ma vie."
-      ]
-    },
-    {
-      "n": 91,
-      "ar": "الضَّارُّ",
-      "tr": "Ad-Dârr",
-      "fr": "Celui qui peut nuire",
-      "desc": "Celui qui décrète l'épreuve à qui Il veut, selon Sa sagesse.",
-      "af": "091_ad-darr",
-      "inv": {
-        "fr": "Ô Celui qui nuit ! Ô Favorable ! Compte-moi parmi ceux pour qui ce monde n'est que nuisance, parmi ceux qui aspirent à la Vie dernière, qui abandonnent leurs passions et leurs désirs pour contempler les bienfaits éclatants.",
-        "ar": "يَا ضَارُّ يَا نَافِعُ، اِجْعَلْنِي مِمَّنْ يُضَرُّ بِدُنْيَاهُ لِطَلَبِ الآخِرَةِ وَيَذَرُ هَوَاهُ وَمُنَاهُ لِشُهُودِ المَنَافِعِ الفَاخِرَةِ",
-        "tr": "Yâ Dârru ! Yâ Nâfi'u ! Ij'al-nî mim-man yudarru bi-dunyâ-hu li-talabi 'l-âkhirati wa-yadharu hawâ-hu wa-munâhu li-shuhûdi 'l-manâfi'i 'l-fâkhirati."
-      },
-      "intro": [
-        "Quelles leçons puis-je tirer des épreuves de ma vie pour en faire un tremplin dans ma quête spirituelle ?",
-        "En période de difficultés, je garde patience, car je suis conscient(e) qu'Allâh détient la sagesse sur ce qui est meilleur pour moi, et que cette épreuve est une chance de me rapprocher de Lui."
-      ]
-    },
-    {
-      "n": 92,
-      "ar": "النَّافِعُ",
-      "tr": "An-Nâfi'",
-      "fr": "Le Bienfaiteur",
-      "desc": "Celui qui apporte le bien et le profit à qui Il veut.",
-      "af": "092_an-nafi",
-      "inv": {
-        "fr": "Ô Celui qui nuit ! Ô Favorable ! Seigneur, Connaisseur du manifesté et du non-manifesté, Seigneur et Possesseur de toutes choses, je demande Ta protection contre les méfaits de mon âme, les méfaits du diable.",
-        "ar": "يَا ضَارُّ يَا نَافِعُ، اَللَّهُمَّ عَالِمُ الغَيْبِ وَالشَّهَادَةِ رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَمِنْ شَرِّ الشَّيْطَانِ",
-        "tr": "Yâ Dârru ! Yâ Nâfi'u ! Allâhumma 'âlima al-ghaybi wa-ch-chahâdati, rabba kulli chay'in wa-mâlîkahu, a'ûdhu bika min charri nafsî, wa-min charri ch-chaytâni."
-      },
-      "intro": [
-        "Dans quelles situations récentes ai-je remarqué les bienfaits d'Allâh se manifester de manière évidente ?",
-        "Je réfléchis aux bienfaits qu'Allâh m'apporte. Ensuite, j'exprime ma gratitude envers Lui et je cherche des moyens pour partager ces bienfaits avec ceux qui m'entourent."
-      ]
-    },
-    {
-      "n": 93,
-      "ar": "النُّورُ",
-      "tr": "An-Nûr",
-      "fr": "La Lumière",
-      "desc": "Celui qui illumine les cieux et la terre, et guide les cœurs.",
-      "af": "093_an-nur",
-      "inv": {
-        "fr": "Ô Lumière des cieux et de la terre, en ce sens qu'Il guide les pieux ! Accorde-moi une lumière qui me permette de marcher parmi les êtres (serviteurs).",
-        "ar": "يَا نُورَ السَّمَوَاتِ وَالأَرْضِ بِمَعْنَى الهِدَايَةِ لِأَهْلِهَا وَالإِرْشَادِ، اجْعَلْ لِي نُوراً أَمْشِي بِهِ فِي العِبَادِ",
-        "tr": "Yâ Nûra 's-samawâti wa-'l-ardi bi-ma'nâ 'l-hidâyati li-ahli-hâ wa-'l-irshâdi ! Ij'al lî nûran amshî bi-hi fî 'l-'ibâd."
-      },
-      "intro": [
-        "Comment puis-je refléter la lumière divine pour inviter les autres vers le bien et la vérité ?",
-        "Je demande à Allâh de guider mes pas tout au long de la journée, en illuminant ma compréhension et en éclairant ma route."
-      ]
-    },
-    {
-      "n": 94,
-      "ar": "الْهَادِي",
-      "tr": "Al-Hâdî",
-      "fr": "Le Guide",
-      "desc": "Celui qui guide vers la vérité et vers le droit chemin.",
-      "af": "094_al-hadi",
-      "inv": {
-        "fr": "Ô Guide ! Guide-moi vers les bonnes œuvres. Et embellis-moi avec le plus noble des états.",
-        "ar": "يَا هَادِي، اهْدِنِي لِأَحْسَنِ الأَعْمَالِ وَزَيِّنِي بِأَشْرَفِ الأَحْوَالِ",
-        "tr": "Yâ Hâdî ! Ihdi-nî li-ahsani 'l-a'mâli wa-zayyin-nî bi-ashrafi 'l-ahwâli."
-      },
-      "intro": [
-        "À quelles occasions ai-je ressenti la guidance d'Allâh me dirigeant vers ce qui est meilleur pour moi ?",
-        "Je demande à Allâh de toujours me guider dans les décisions à prendre. Je suis attentif(ve) aux signes qui se manifestent et j'agis en conséquence. J'exprime ma gratitude envers Allâh pour Sa présence constante dans ma vie."
-      ]
-    },
-    {
-      "n": 95,
-      "ar": "الْبَدِيعُ",
-      "tr": "Al-Badî'",
-      "fr": "L'Inventeur",
-      "desc": "Celui qui crée sans modèle préalable, l'Auteur incomparable de la création.",
-      "af": "095_al-badi",
-      "inv": {
-        "fr": "Ô Créateur des cieux et de la terre, qui n'a ni pareil ni égal ! Laisse-moi connaître les merveilles de Ta sagesse. Celles qui ôtent tout doute et éclairent tout soupçon.",
-        "ar": "يَا بَدِيعَ السَّمَوَاتِ وَالأَرْضِ عَنْ غَيْرِ قِيَاسٍ وَلَا مِثَالٍ، أَظْهِرْ لِي مِنْ بَدَائِعِ حِكْمَتِكَ مَا يَنْفِي كُلَّ الْتِبَاسٍ وَيُوَضِّحُ كُلَّ إِشْكَالٍ",
-        "tr": "Yâ Badî'a 's-samawâti wa-'l-ardi 'an ghayri qiyâsin wa-lâ mithâlin ! Azhir lî min badâ'i'i hikmati-ka mâ yanfî kulla 'ltibâsin wa-yuwaddihu kulla ishkâlin."
-      },
-      "intro": [
-        "Comment puis-je développer une sensibilité plus profonde pour apercevoir les merveilles de la création d'Allâh au quotidien ?",
-        "Je planifie une sortie pour aller explorer les créations merveilleuses d'Allâh et me rappeler Sa capacité infinie à créer sans modèle préalable."
-      ]
-    },
-    {
-      "n": 96,
-      "ar": "الْبَاقِي",
-      "tr": "Al-Bâqî",
-      "fr": "L'Éternel",
-      "desc": "Celui qui subsiste à jamais, alors que toute autre chose périt.",
-      "af": "096_al-baqi",
-      "inv": {
-        "fr": "Ô Éternel, dont la permanence n'a ni début ni fin ! Accorde-moi, de la Station de la Permanence, la part la plus agréable.",
-        "ar": "يَا بَاقِي، فَلَا انْتِهَاءَ لِبَقَائِهِ وَلَا آخِرَ، هَبْ لِي مِنْ مَقَامِ البَقَاءِ الحَظَّ الوَافِرَ",
-        "tr": "Yâ Bâqî, fa-lâ 'ntihâ'a li-baqâ'i-Hi wa-lâ âkhir ! Hab lî min maqâmi 'l-baqâ'i 'l-hazza 'l-wâfira."
-      },
-      "intro": [
-        "Comment puis-je éviter de me laisser absorber par les distractions temporaires et orienter mes actions vers ce qui est bénéfique pour l'Au-delà ?",
-        "Je médite sur la nature éphémère de ce monde. Je m'engage à investir mon temps et mon énergie dans des actions qui auront un impact pour ma vie dans l'Au-delà."
-      ]
-    },
-    {
-      "n": 97,
-      "ar": "الْوَارِثُ",
-      "tr": "Al-Wârith",
-      "fr": "L'Héritier",
-      "desc": "Celui qui demeure après la disparition de toutes les créatures.",
-      "af": "097_al-warith",
-      "inv": {
-        "fr": "Ô Héritier ! Compte-moi parmi les héritiers de Ta perfection dans un endroit noble. Et fais que je sois, par Ton avantage, parmi les héritiers de Ton Jardin béni (Paradis).",
-        "ar": "يَا وَارِثُ، أَخْصُصْنِي مِنْ وِرَاثَةِ خَوَاصِّكَ بِمَقَامٍ كَرِيمٍ وَاجْعَلْنِي بِفَضْلِكَ مِنْ وَرَثَةِ جَنَّةِ النَّعِيمِ",
-        "tr": "Yâ Wârith ! Ukhsus-nî min wirâthati khawâssi-ka bi-maqâmin karîmin wa-'j'al-nî bi-fadli-ka min warathati jannati 'n-na'îm."
-      },
-      "intro": [
-        "Quelles sont les empreintes que je laisse derrière moi ? Quelles actions bénéfiques aimerais-je accomplir avant qu'il ne soit trop tard ?",
-        "Chaque jour, je cultive une attitude de détachement en reconnaissant qu'Allâh est le véritable Héritier de toutes choses."
-      ]
-    },
-    {
-      "n": 98,
-      "ar": "الرَّشِيدُ",
-      "tr": "Ar-Rashîd",
-      "fr": "Le Guide de la rectitude",
-      "desc": "Celui qui mène toute chose à sa perfection par une sagesse infaillible.",
-      "af": "098_ar-rashid",
-      "inv": {
-        "fr": "Ô Celui qui agit avec sagesse et droiture ! Dirige-moi vers l'obéissance et l'amour pour Toi. Et fais de moi un guide pour Tes serviteurs cheminant sur la voie de Ton unicité et de Ta sagesse.",
-        "ar": "يَا رَشِيدُ، أَرْشِدْنِي إِلَى طَاعَتِكَ وَمَحَبَّتِكَ وَاجْعَلْنِي مُرْشِداً لِعِبَادِكَ إِلَى طَرِيقِ تَوْحِيدِكَ وَمَعْرِفَتِكَ",
-        "tr": "Yâ Rashîd ! Arshid-nî ilâ tâ'ati-ka wa-mahabbati-ka wa-'j'al-nî murshidan li-'ibâdi-ka ilâ tarîqi tawhîdi-ka wa-ma'rifati-ka."
-      },
-      "intro": [
-        "Comment puis-je exprimer ma gratitude envers Allâh pour Ses sages ordonnances dans ma vie ?",
-        "Je repense à une époque où Allâh m'a guidé(e) d'une manière extraordinaire : lorsque Sa lumière a éclairé mon chemin, et que Sa sagesse a guidé mes pas. Quelles leçons en ai-je tirées ?"
-      ]
-    },
-    {
-      "n": 99,
-      "ar": "الصَّبُورُ",
-      "tr": "As-Sabûr",
-      "fr": "Le Très Patient",
-      "desc": "Celui qui use de patience et ne se hâte pas de punir les fautifs.",
-      "af": "099_as-sabur",
-      "inv": {
-        "fr": "Ô Très-Patient ! Accorde-moi la patience dans l'obéissance, et préserve-moi de la désobéissance. Rends-moi patient dans les épreuves et dans les moments de bien-être.",
-        "ar": "يَا صَبُورُ، صَبِّرْنِي عَلَى طَاعَتِكَ وَعَنْ مَعْصِيَتِكَ وَاجْعَلْنِي صَبُوراً فِي بَلْوَاكَ وَعَافِيَتِكَ",
-        "tr": "Yâ Sabûr ! Sabbir-nî 'alâ tâ'ati-ka wa-'an ma'siyati-ka wa-'j'al-nî sabûran fî balwâ-ka wa-'âfiyati-ka."
-      },
-      "intro": [
-        "Comment puis-je pratiquer la patience envers les autres, en reconnaissant que chacun porte ses faiblesses et ses erreurs, tout comme Allâh est patient envers moi ?",
-        "À chaque signe d'impatience, je respire profondément et invoque As-Sabûr, pour réagir avec calme et patience."
-      ]
-    }
-  ],
-  "audioSource": {
-    "name": "MohammedAbidNafi/99-Names-of-Allah",
-    "license": "MIT",
-    "note": "Récitations locales dans books/asma-audio/ (converties en MP3, renommées {n}_{nom}.mp3)"
+ "title": "Les 99 Noms d'Allah",
+ "titleAr": "أسماء الله الحسنى",
+ "source": "Al-Asma' al-Husna — recensés d'après la tradition sunnite classique",
+ "names": [
+  {
+   "n": 0,
+   "ar": "اللّٰه",
+   "tr": "Allah",
+   "fr": "Le Nom suprême",
+   "desc": "Le nom propre de Dieu, le Nom suprême qui englobe tous les attributs de perfection. Les 99 « plus beaux noms » en sont les qualités.",
+   "af": "000_allah"
   },
-  "invocationSource": {
-    "collection": "Les Essentiels",
-    "author": "Souad El Mansouri",
-    "title": "Les 99 Noms d'Allah",
-    "publisher": "Al Bouraq",
-    "note": "Source des sections Invocation & Introspection de chaque nom."
+  {
+   "n": 1,
+   "ar": "الرَّحْمَنُ",
+   "tr": "Ar-Rahmân",
+   "fr": "Le Tout Miséricordieux",
+   "desc": "Celui dont la miséricorde embrasse toute la création, croyants comme mécréants, en ce bas monde.",
+   "af": "001_ar-rahman",
+   "verse": "17:110",
+   "ask": [
+    "Allah se laisse appeler par ce Nom comme par le Nom d'Allah lui-même. Lequel me vient spontanément quand je L'invoque, et pourquoi celui-là ?",
+    "Je choisis aujourd'hui une personne envers qui ma patience s'épuise, et je lui accorde ce que j'attends d'Allah pour moi."
+   ]
+  },
+  {
+   "n": 2,
+   "ar": "الرَّحِيمُ",
+   "tr": "Ar-Rahîm",
+   "fr": "Le Très Miséricordieux",
+   "desc": "Celui qui réserve une miséricorde particulière aux croyants dans l'au-delà.",
+   "af": "002_ar-rahim",
+   "verse": "4:110",
+   "ask": [
+    "Ce verset lie la miséricorde au fait de reconnaître son tort. Qu'est-ce que je n'ai pas encore reconnu ?",
+    "Je nomme une faute précise, je demande pardon pour elle aujourd'hui, et je décide de ce que je change."
+   ]
+  },
+  {
+   "n": 3,
+   "ar": "الْمَلِكُ",
+   "tr": "Al-Malik",
+   "fr": "Le Souverain",
+   "desc": "Le Roi absolu, à qui appartient la royauté des cieux et de la terre, sans partenaire.",
+   "af": "003_al-malik",
+   "verse": "20:114",
+   "ask": [
+    "Si la royauté véritable appartient à Allah seul, sur quoi est-ce que je me crois souverain sans l'être ?",
+    "Je repère une chose que je tiens pour acquise — santé, temps, revenu — et je la traite aujourd'hui comme un prêt."
+   ]
+  },
+  {
+   "n": 4,
+   "ar": "الْقُدُّوسُ",
+   "tr": "Al-Quddûs",
+   "fr": "Le Très Saint",
+   "desc": "Le Pur, exempt de tout défaut, de tout manque et de toute imperfection.",
+   "af": "004_al-quddus",
+   "verse": "62:1",
+   "ask": [
+    "Tout ce qui est dans les cieux et sur terre Le glorifie. Qu'est-ce qui, dans ma journée, ne Le glorifie pas encore ?",
+    "Je choisis une tâche ordinaire et je la fais aujourd'hui avec l'intention qu'elle devienne adoration."
+   ]
+  },
+  {
+   "n": 5,
+   "ar": "السَّلَامُ",
+   "tr": "As-Salâm",
+   "fr": "La Paix",
+   "desc": "Celui qui est exempt de tout défaut et qui accorde la paix à Ses créatures.",
+   "af": "005_as-salam",
+   "verse": "59:23",
+   "ask": [
+    "La paix vient de Lui, elle ne se fabrique pas. Où est-ce que je la cherche ailleurs ?",
+    "Je désigne une inquiétude que je remâche, et je la Lui remets aujourd'hui, une fois, sans y revenir."
+   ]
+  },
+  {
+   "n": 6,
+   "ar": "الْمُؤْمِنُ",
+   "tr": "Al-Mu'min",
+   "fr": "Le Rassurant",
+   "desc": "Celui qui donne la sécurité et la foi, qui confirme la vérité par Ses signes.",
+   "af": "006_al-mumin",
+   "verse": "59:23",
+   "ask": [
+    "Il donne la sécurité. Qu'est-ce que je protège avec anxiété, comme si cela ne dépendait que de moi ?",
+    "Je rassure aujourd'hui quelqu'un qui a peur — d'un mot, d'un geste, d'une présence."
+   ]
+  },
+  {
+   "n": 7,
+   "ar": "الْمُهَيْمِنُ",
+   "tr": "Al-Muhaymin",
+   "fr": "Le Prépondérant",
+   "desc": "Le Témoin qui veille sur toute chose, le Gardien et le Protecteur.",
+   "af": "007_al-muhaymin",
+   "verse": "59:23",
+   "ask": [
+    "Rien ne Lui échappe et rien ne se fait sans qu'Il le veille. Cela me pèse-t-il ou me repose-t-il ?",
+    "Je fais aujourd'hui, seul et sans témoin, un bien que personne ne saura."
+   ]
+  },
+  {
+   "n": 8,
+   "ar": "الْعَزِيزُ",
+   "tr": "Al-'Azîz",
+   "fr": "Le Tout-Puissant",
+   "desc": "Le Puissant, l'Invincible, que rien ne peut atteindre ni contraindre.",
+   "af": "008_al-aziz",
+   "verse": "3:6",
+   "ask": [
+    "Sa puissance ne se discute pas. À quelle puissance humaine est-ce que j'accorde plus de poids qu'elle n'en a ?",
+    "Je repère une crainte du jugement des gens, et je fais aujourd'hui ce qui est juste malgré elle."
+   ]
+  },
+  {
+   "n": 9,
+   "ar": "الْجَبَّارُ",
+   "tr": "Al-Jabbâr",
+   "fr": "Le Contraignant",
+   "desc": "Celui dont la volonté s'impose à toute la création et qui répare toute chose brisée.",
+   "af": "009_al-jabbar",
+   "verse": "59:23",
+   "ask": [
+    "Il contraint ce que nul ne peut plier, et Il redresse ce qui est brisé. Qu'est-ce qui est brisé chez moi ?",
+    "Je porte aujourd'hui devant Lui une chose que je n'arrive pas à réparer par mes propres forces."
+   ]
+  },
+  {
+   "n": 10,
+   "ar": "الْمُتَكَبِّرُ",
+   "tr": "Al-Mutakabbir",
+   "fr": "Le Superbe",
+   "desc": "Celui à qui appartient la Grandeur véritable, à laquelle nulle autre ne peut prétendre.",
+   "af": "010_al-mutakabbir",
+   "verse": "59:23",
+   "ask": [
+    "La grandeur ne revient qu'à Lui. Sur quoi est-ce que je me hausse devant les autres ?",
+    "Je reconnais aujourd'hui un tort devant quelqu'un que je considère comme mon inférieur."
+   ]
+  },
+  {
+   "n": 11,
+   "ar": "الْخَالِقُ",
+   "tr": "Al-Khâliq",
+   "fr": "Le Créateur",
+   "desc": "Celui qui crée toute chose à partir du néant, sans modèle préalable.",
+   "af": "011_al-khaliq",
+   "verse": "6:102",
+   "ask": [
+    "Il est le Créateur de toute chose. Est-ce que je regarde encore ce qui m'entoure, ou est-ce que je ne le vois plus ?",
+    "Je m'arrête aujourd'hui une minute devant une chose créée — un visage, un arbre, le ciel — et je la regarde vraiment."
+   ]
+  },
+  {
+   "n": 12,
+   "ar": "الْبَارِئُ",
+   "tr": "Al-Bâri'",
+   "fr": "Le Producteur",
+   "desc": "Celui qui donne l'existence, distingue et façonne chaque créature.",
+   "af": "012_al-bari",
+   "verse": "59:24",
+   "ask": [
+    "Il produit sans modèle, à partir de rien. Qu'est-ce que je crois impossible à recommencer dans ma vie ?",
+    "Je reprends aujourd'hui une chose que j'avais abandonnée, ne serait-ce que par un premier geste."
+   ]
+  },
+  {
+   "n": 13,
+   "ar": "الْمُصَوِّرُ",
+   "tr": "Al-Musawwir",
+   "fr": "Le Formateur",
+   "desc": "Celui qui donne à chaque chose sa forme particulière, unique et harmonieuse.",
+   "af": "013_al-musawwir",
+   "inv": {
+    "fr": "Ô Formateur ! Façonne-moi d'une forme vouée à Ton service. Et donne-moi les lumières qui clarifient la connaissance de Ta seigneurie.",
+    "ar": "يَا مُصَوِّرُ، صَوِّرْنِي بِصُورَةِ عُبُودِيَّتِكَ وَنَوِّرْنِي بِأَنْوَارِ مَعْرِفَةِ رُبُوبِيَّتِكَ",
+    "tr": "Yâ Musawwiru ! Sawwir-nî bi-sûrati 'ubûdiyyati-ka wa-nawwir-nî bi-anwâri ma'rifati rubûbiyyati-ka."
+   },
+   "intro": [
+    "Comment puis-je voir la beauté qu'Al-Musawwir a inscrit en moi-même et en autrui ?",
+    "Je prends un moment pour me rappeler que je suis une création façonnée par Al-Musawwir, d'une beauté unique et harmonieuse. Chaque personne que je croise est aussi une magnifique création d'Allâh."
+   ]
+  },
+  {
+   "n": 14,
+   "ar": "الْغَفَّارُ",
+   "tr": "Al-Ghaffâr",
+   "fr": "Le Grand Pardonneur",
+   "desc": "Celui qui pardonne encore et encore, qui couvre les péchés de Ses serviteurs.",
+   "af": "014_al-ghaffar",
+   "inv": {
+    "fr": "Ô Pardonneur ! Pardonne-moi tous mes péchés, grands ou petits, les bourrasques des négligences et la vanité dans les désirs.",
+    "ar": "يَا غَفَّارُ، اغْفِرْ لِي جَمِيعَ الكَبَائِرِ وَالصَّغَائِرِ وَهَوَاجِمَ الغَفْلَاتِ وَهَوَاجِسَ الضَّمَائِرِ",
+    "tr": "Yâ Ghaffâru ! Ighfir lî jamî'a 'l-kabâ'iri wa-'s-saghâ'iri wa-hawâjima 'l-ghaflâti wa-hawâjisa 'd-damâ'ir."
+   },
+   "intro": [
+    "Comment améliorer ma routine spirituelle pour y introduire davantage de moments où je demande Pardon ?",
+    "Je choisis un moment tranquille pour réfléchir aux fautes que j'ai commises. Avec sincérité, je demande pardon à Allâh, imaginant mes péchés doucement recouverts de Sa Miséricorde. Je m'autorise à ressentir un apaisement, me libérant du fardeau des remords."
+   ]
+  },
+  {
+   "n": 15,
+   "ar": "الْقَهَّارُ",
+   "tr": "Al-Qahhâr",
+   "fr": "Le Dominateur",
+   "desc": "Celui qui domine toute chose par Sa force, à qui rien ni personne ne résiste.",
+   "af": "015_al-qahhar",
+   "inv": {
+    "fr": "Ô Dominateur ! Place Ta grande force devant mes yeux. Et ne me conforte pas dans l'absence de crainte envers Ton châtiment.",
+    "ar": "يَا قَهَّارُ، أَشْهِدْنِي قَهْرَكَ وَلَا تُؤَمِّنِّي مَكْرَكَ",
+    "tr": "Yâ Qahhâru ! Ashhid-nî qahra-ka wa-lâ tu'am-min-nî makra-ka."
+   },
+   "intro": [
+    "Comment puis-je puiser dans la compréhension d'Al-Qahhâr, Celui qui est Victorieux et Prédominant, pour surmonter les défis et les obstacles dans ma vie ?",
+    "J'imagine les situations ou les défis qui m'inquiètent. Je répète le nom Al-Qahhâr, en visualisant ces situations comme étant totalement prises en charge. Je sens ma détermination se renforcer, car Allâh est avec moi."
+   ]
+  },
+  {
+   "n": 16,
+   "ar": "الْوَهَّابُ",
+   "tr": "Al-Wahhâb",
+   "fr": "Le Grand Donateur",
+   "desc": "Celui qui donne sans compter et sans attendre de retour.",
+   "af": "016_al-wahhab",
+   "inv": {
+    "fr": "« Notre Seigneur, ne fais pas dévier nos cœurs après que Tu nous as guidés et offre-nous, par pure grâce de Ta part, un amour rayonnant (une miséricorde). Vraiment Tu es Celui qui ne cesse d'offrir gracieusement ! » [Sourate 3, La Famille d'Imrân, 8]",
+    "ar": "﴿رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً إِنَّكَ أَنتَ الْوَهَّابُ﴾",
+    "tr": "Rabbanâ lâ tuzigh qulûbanâ ba'da idh hadaytanâ wa-hab lanâ min ladunka rahmatan innaka anta al-Wahhâbu !"
+   },
+   "intro": [
+    "Comment la réflexion sur le nom Al-Wahhâb peut-elle m'encourager à être plus généreux envers les autres, sans attendre en retour ?",
+    "Je choisis de partager concrètement quelque chose avec les autres : du temps, une compétence ou un geste. Je peux, par exemple, préparer un repas pour un voisin, aider un ami dans une tâche ou faire un don à une association. En agissant de manière désintéressée, je ressens la satisfaction de donner, comme un reflet de la générosité divine."
+   ]
+  },
+  {
+   "n": 17,
+   "ar": "الرَّزَّاقُ",
+   "tr": "Ar-Razzâq",
+   "fr": "Le Grand Pourvoyeur",
+   "desc": "Celui qui pourvoit à la subsistance de toutes Ses créatures.",
+   "af": "017_ar-razzaq",
+   "inv": {
+    "fr": "Ô Pourvoyeur ! Offre-moi une science utile. Et accorde-moi une subsistance licite et vaste.",
+    "ar": "يَا رَزَّاقُ، ارْزُقْنِي عِلْماً نَافِعاً وَرِزْقاً حَلَالاً وَاسِعاً",
+    "tr": "Yâ Razzâqu ! Urzuq-nî 'ilman nâfi'an wa-rizqan halâlân wâsi'an."
+   },
+   "intro": [
+    "Je me rappelle d'une période où je me suis senti(e) limité(e) en termes de ressources. Durant ce temps, comment Ar-Razzâq a-t-Il pourvu à mes besoins et m'a-t-Il aidé(e) à traverser cette situation ?",
+    "Chaque jour, je prends un moment pour exprimer ma gratitude pour tout ce dont je dispose."
+   ]
+  },
+  {
+   "n": 18,
+   "ar": "الْفَتَّاحُ",
+   "tr": "Al-Fattâh",
+   "fr": "Celui qui ouvre",
+   "desc": "Celui qui ouvre les portes de la miséricorde, de la victoire et de la connaissance.",
+   "af": "018_al-fattah",
+   "inv": {
+    "fr": "Ô Victorieux ! Ouvre-moi les portes de la béatitude. Et nomme-moi parmi ceux que Tu as certifiés être les êtres volontaires.",
+    "ar": "يَا فَتَّاحُ، افْتَحْ لِي أَبْوَابَ السَّعَادَةِ وَحَقِّقْنِي بِحَقَائِقِ أَهْلِ الإِرَادَةِ",
+    "tr": "Yâ Fattâhu ! Iftah lî abwâba 's-sa'âdati wa-haqqiq-nî bi-haqâ'iqi ahli 'l-irâda."
+   },
+   "intro": [
+    "Existe-t-il un domaine dans ma vie où je me sens actuellement bloqué(e) et que je peux confier à Al-Fattâh ?",
+    "Je réfléchis à un défi que je rencontre. Je m'imagine comme étant soutenu(e) par la Puissance d'Allâh. Je garde cette pensée positive, je m'en remets à Al-Fattâh et je cherche les opportunités cachées pour une solution."
+   ]
+  },
+  {
+   "n": 19,
+   "ar": "الْعَلِيمُ",
+   "tr": "Al-'Alîm",
+   "fr": "L'Omniscient",
+   "desc": "Celui dont la science embrasse tout : le visible, le caché, le passé et l'avenir.",
+   "af": "019_al-alim",
+   "inv": {
+    "fr": "Ô Omniscient ! Enseigne-moi une part de Ton savoir qui Te rendra Satisfait de moi, et pardonne-moi ce que Tu sais de moi.",
+    "ar": "يَا عَلِيمُ، عَلِّمْنِي مِنْ عِلْمِكَ مَا تَرْضَى بِهِ عَنِّي وَلَا تُؤَاخِذْنِي بِمَا تَعْلَمُهُ مِنِّي",
+    "tr": "Yâ 'Alîmu ! 'Allim-nî min 'ilmi-ka ma tardâ bi-hi 'an-nî wa-lâ tu'âkhidh-nî bi-mâ ta'lamu-hu min-nî."
+   },
+   "intro": [
+    "Quel savoir utile pour mon âme puis-je rechercher cette année ? Comment puis-je commencer cette apprentissage ?",
+    "En cas de doute ou d'incertitude, je répète ce nom pour me rappeler que rien ne Lui échappe. En prenant conscience de Sa connaissance infinie, je cultive une confiance en Lui ainsi qu'une attitude d'humilité."
+   ]
+  },
+  {
+   "n": 20,
+   "ar": "الْقَابِضُ",
+   "tr": "Al-Qâbid",
+   "fr": "Celui qui retient",
+   "desc": "Celui qui restreint la subsistance ou les âmes selon Sa sagesse.",
+   "af": "020_al-qabid",
+   "inv": {
+    "fr": "Ô Celui qui retient ! Retiens mon âme contre ses propres passions.",
+    "ar": "يَا قَابِضُ، اقْبِضْنِي عَنْ مُتَابَعَةِ دَوَاعِي النَّفْسِ",
+    "tr": "Yâ Qâbidu ! Iqbid-nî 'an mutâba'ati dawâ'i n-nafsi."
+   },
+   "intro": [
+    "Je me souviens d'un moment où quelque chose de cher à mon cœur m'a été retirée. Comment ai-je réagi à cet instant-là ?",
+    "Je prends conscience que les moments de contrainte sont temporaires et qu'ils renferment une sagesse qu'Allâh connaît. Il est Celui qui m'aide à traverser ces épreuves, en cultivant en moi la patience et la résilience."
+   ]
+  },
+  {
+   "n": 21,
+   "ar": "الْبَاسِطُ",
+   "tr": "Al-Bâsit",
+   "fr": "Celui qui étend",
+   "desc": "Celui qui élargit la subsistance et ouvre les cœurs à Ses serviteurs.",
+   "af": "021_al-basit",
+   "inv": {
+    "fr": "Ô Prodigue ! Étends mes souhaits vers les grâces de Ta proximité.",
+    "ar": "يَا بَاسِطُ، ابْسُطْ أَمَنِيَّ بِتَنَسُّمِ نَفَحَاتِ الأُنْسِ",
+    "tr": "Yâ Bâsitu ! Ibsit amaniyya bi-tanassumi nafahâti 'l-uns."
+   },
+   "intro": [
+    "Comment puis-je adopter une perspective plus ouverte et généreuse envers les autres et les situations ?",
+    "Je me rappelle qu'Allâh déploie les opportunités et les solutions dans ma vie, car Il est Al-Bâsit, Celui qui dilate et étend."
+   ]
+  },
+  {
+   "n": 22,
+   "ar": "الْخَافِضُ",
+   "tr": "Al-Khâfid",
+   "fr": "Celui qui abaisse",
+   "desc": "Celui qui abaisse les orgueilleux et les injustes.",
+   "af": "022_al-khafid",
+   "inv": {
+    "fr": "Ô Celui qui abaisse ! Abaisse mes passions afin d'obtenir Ton amour.",
+    "ar": "يَا خَافِضُ، اخْفِضْ لِي هَوَايَ لِابْتِغَاءِ مَحَابِّكَ",
+    "tr": "Yâ Khâfidu ! Ikhfid lî hawâya li-'btighâ'i mahâbbi-ka."
+   },
+   "intro": [
+    "Quelles actions concrètes puis-je entreprendre pour cultiver une attitude d'humilité et de modestie ?",
+    "Je prends conscience des moments où j'ai pu agir avec arrogance envers les autres. Si des pensées d'orgueil surgissent, je reviens au nom Al-Khâfid pour me rappeler que c'est Allâh qui a le pouvoir d'élever et d'abaisser."
+   ]
+  },
+  {
+   "n": 23,
+   "ar": "الرَّافِعُ",
+   "tr": "Ar-Râfi'",
+   "fr": "Celui qui élève",
+   "desc": "Celui qui élève en rang Ses saints et les croyants sincères.",
+   "af": "023_ar-rafi",
+   "inv": {
+    "fr": "Ô Celui qui élève ! Élève-moi par Ta proximité lorsque Tu me rappelleras à Toi.",
+    "ar": "يَا رَافِعُ، ارْفَعْنِي بِقُرْبِكَ وَالإِيوَاءِ إِلَى جَنَابِكَ",
+    "tr": "Yâ Râfi'u ! Irfa'-nî bi-qurbi-ka wa-'l-îwâ'i ilâ janâbi-ka."
+   },
+   "intro": [
+    "Quelles sont les situations actuelles où je pourrais ressentir le besoin d'être redressé(e) par Ar-Râfi' ?",
+    "Lorsque je me sens découragé(e), je me rappelle qu'Allâh va m'aider à me redresser et à m'élever à travers l'épreuve. En utilisant le nom Ar-Râfi', j'éprouve un regain de détermination pour surmonter les obstacles."
+   ]
+  },
+  {
+   "n": 24,
+   "ar": "الْمُعِزُّ",
+   "tr": "Al-Mu'izz",
+   "fr": "Celui qui donne la puissance",
+   "desc": "Celui qui accorde la gloire et l'honneur à qui Il veut.",
+   "af": "024_al-muizz",
+   "inv": {
+    "fr": "« Notre Seigneur, Possesseur de la Royauté, Tu accordes la Royauté à qui Tu veux, et Tu retires la Royauté à qui Tu veux, et Tu honores qui Tu veux, et Tu abaisses qui Tu veux. Le bien est dans Tes mains. Vraiment, Tu es Puissant sur toute chose ! » [Sourate 3, La Famille d'Imrân, 26]",
+    "ar": "﴿قُلِ اللَّهُمَّ مَالِكَ الْمُلْكِ تُؤْتِي الْمُلْكَ مَن تَشَاءُ وَتَنزِعُ الْمُلْكَ مِمَّن تَشَاءُ وَتُعِزُّ مَن تَشَاءُ وَتُذِلُّ مَن تَشَاءُ بِيَدِكَ الْخَيْرُ إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ﴾",
+    "tr": "Allâhumma Mâlik al-mulk tu'tî al-mulk man tachâ'u wa tanzi'u al-mulka min man tachâ'u wa-tu'izzu man tachâ'u wa-tudhillu man tachâ'u biyadika al-khayru innaka 'alâ kulli chay'in Qadîr !"
+   },
+   "intro": [
+    "Que puis-je améliorer en moi pour traiter les autres avec respect et reconnaître la dignité de chaque individu ?",
+    "Je choisis une personne dans ma vie avec qui j'interagis fréquemment. Je me rappelle du nom Al-Mu'izz pour m'encourager à traiter cette personne avec respect et dignité."
+   ]
+  },
+  {
+   "n": 25,
+   "ar": "الْمُذِلُّ",
+   "tr": "Al-Mudhill",
+   "fr": "Celui qui humilie",
+   "desc": "Celui qui rabaisse et humilie qui Il veut, par justice.",
+   "af": "025_al-mudhill",
+   "inv": {
+    "fr": "« Notre Seigneur, Possesseur de la Royauté, Tu accordes la Royauté à qui Tu veux, et Tu retires la Royauté à qui Tu veux, et Tu honores qui Tu veux, et Tu abaisses qui Tu veux. Le bien est dans Tes mains. Vraiment, Tu es Puissant sur toute chose ! » [Sourate 3, La Famille d'Imrân, 26]",
+    "ar": "﴿قُلِ اللَّهُمَّ مَالِكَ الْمُلْكِ تُؤْتِي الْمُلْكَ مَن تَشَاءُ وَتَنزِعُ الْمُلْكَ مِمَّن تَشَاءُ وَتُعِزُّ مَن تَشَاءُ وَتُذِلُّ مَن تَشَاءُ بِيَدِكَ الْخَيْرُ إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ﴾",
+    "tr": "Allâhumma Mâlik al-mulk tu'tî al-mulk man tachâ'u wa tanzi'u al mulka min man tachâ'u wa-tu'izzu man tachâ'u wa-tudhillu man tachâ'u biyadika al-khayru innaka 'alâ kulli chay'in Qadîr !"
+   },
+   "intro": [
+    "Quels sont les moments où mon ego a eu tendance à réagir de manière disproportionnée ? Quelles leçons en tirer pour mieux le maîtriser ?",
+    "J'évite les jugements hâtifs en prenant un instant pour comprendre la perspective de l'autre. Je m'exprime avec respect et bienveillance pour éviter toute forme d'humiliation."
+   ]
+  },
+  {
+   "n": 26,
+   "ar": "السَّمِيعُ",
+   "tr": "As-Samî'",
+   "fr": "L'Audient",
+   "desc": "Celui qui entend tout, y compris le murmure le plus discret.",
+   "af": "026_as-sami",
+   "inv": {
+    "fr": "Ô Celui qui entend ! Fais-moi entendre Tes pieuses et bonnes nouvelles. Et place-moi parmi ceux qui écoutent avec beaucoup d'attention Tes interdictions et Tes recommandations.",
+    "ar": "يَا سَمِيعُ، أَسْمِعْنِي بِلَطَائِفِ إِسْمَاعِكَ مَنْ عَلِمْتَ فِيهِ الخَيْرَ وَاجْعَلْنِي مِنَ المُرَاعِينَ لِسَمْعِكَ فِي كُلِّ نَهْيٍ وَأَمْرٍ",
+    "tr": "Yâ Samî'u ! Asmi'-nî bi-latâ'ifi ismâ'i-ka man 'alimta fî-hi 'l-khayra wa-j'al-nî mina 'r-murâ'îna li-sam'i-ka fî kulli nahyin wa-amrin."
+   },
+   "intro": [
+    "Que dois-je améliorer dans mon langage pour que mes paroles soient douces à entendre ?",
+    "Je prends un moment chaque jour pour faire des invocations, je me rappelle qu'Allâh est As-Samî', qu'Il entend toutes mes prières."
+   ]
+  },
+  {
+   "n": 27,
+   "ar": "الْبَصِيرُ",
+   "tr": "Al-Basîr",
+   "fr": "Le Clairvoyant",
+   "desc": "Celui qui voit tout, en tous lieux et en tout temps.",
+   "af": "027_al-basir",
+   "inv": {
+    "fr": "Ô Clairvoyant ! Rends-moi clairvoyant dans Ta religion lorsque les choses sont troubles. Octroie-moi une vision juste pour m'éloigner de tout ce qui est illicite.",
+    "ar": "يَا بَصِيرُ، اجْعَلْنِي بَصِيراً فِي دِينِكَ عِنْدَ اشْتِبَاهِ الأُمُورِ، ذَا بَصِيرَةٍ تَامَّةٍ فِي اجْتِنَابِ كُلِّ مَحْظُورٍ",
+    "tr": "Yâ Basîru ! Ij'al-nî basîran fî dîni-ka 'inda 'shtibâhi 'l-umûri, dhâ basîratin tâmmatin fî 'jtinâbi kulli mahzûr."
+   },
+   "intro": [
+    "Dans quelles situations quotidiennes pourrais-je être plus attentif/attentive à mes actions en me rappelant qu'Allâh voit tout ?",
+    "Tout au long de ma journée, je me demande si mes actes et mes paroles plaisent à Allâh pour cultiver une conscience plus profonde de mes actions. Le soir, j'identifie les moments où j'aurais pu agir d'une meilleure manière."
+   ]
+  },
+  {
+   "n": 28,
+   "ar": "الْحَكَمُ",
+   "tr": "Al-Hakam",
+   "fr": "Le Juge",
+   "desc": "L'Arbitre suprême qui tranche entre Ses créatures avec justice.",
+   "af": "028_al-hakam",
+   "inv": {
+    "fr": "Ô Juge ! Compte-moi parmi ceux qui s'en remettent en toute confiance à la sentence de Ta volonté, et aux arrêtés de Ta loi qu'ils glorifient.",
+    "ar": "يَا حَكَمُ، اجْعَلْنِي لِحُكْمِ إِرَادَتِكَ مُسَلِّماً وَلِأَحْكَامِ شَرِيعَتِكَ مُعَظِّماً",
+    "tr": "Yâ Hakamu ! Ij'al-nî li-hukmi irâdati-ka musalliman wa-li-ahkâmi sharî'ati-ka mu'azziman."
+   },
+   "intro": [
+    "Suis-je frustré(e) ou plein(e) de regrets à cause d'événements passés ? Comment la compréhension qu'Allâh est Al-Hakam peut-elle changer ma façon de voir le passé ?",
+    "Je me rappelle qu'Allâh est le Décisionnaire ultime et que Sa sagesse dépasse ma compréhension. Je cultive une attitude de confiance en Son jugement et en Sa sagesse."
+   ]
+  },
+  {
+   "n": 29,
+   "ar": "الْعَدْلُ",
+   "tr": "Al-'Adl",
+   "fr": "Le Juste",
+   "desc": "Celui qui est équité absolue, dont les jugements sont exempts de toute injustice.",
+   "af": "029_al-adl",
+   "inv": {
+    "fr": "Ô Justice ! Place-moi parmi ceux qui maintiennent la justice dans tous leurs actes. Et qui implorent vigoureusement pour atteindre les degrés de l'excellence.",
+    "ar": "يَا عَدْلُ، اجْعَلْنِي مِمَّنْ يَقُومُ بِالعَدْلِ فِي جَمِيعِ عَمَلِهِ وَيَبْلُغُ مِنَ الرُّقِيِّ فِي دَرَجَاتِ الإِحْسَانِ غَايَةَ أَمَلِهِ",
+    "tr": "Yâ 'Âdlu ! Ij'al-nî min-man yaqûmu bi-'l-'âdli fî jamî'i 'amali-hi wa-yablughu mina 'r-ruqî fî darajâti 'l-ihsâni ghâyata amali-hi."
+   },
+   "intro": [
+    "Comment puis-je m'engager pour apporter plus de justice et de justesse dans ce monde ?",
+    "Chaque jour, j'agis avec équité et équilibre. En cas d'injustice, je me souviens qu'Allâh est le Juste et que Sa justice triomphe toujours."
+   ]
+  },
+  {
+   "n": 30,
+   "ar": "اللَّطِيفُ",
+   "tr": "Al-Latîf",
+   "fr": "Le Subtil, le Bienveillant",
+   "desc": "Celui dont la douceur atteint jusqu'aux détails les plus fins de Ses créatures.",
+   "af": "030_al-latif",
+   "inv": {
+    "fr": "Ô Bienveillant ! Prends pitié de moi lors de Ton décret et de Ta sentence. Et donne-moi une part de Tes honneurs et de Tes grâces.",
+    "ar": "يَا لَطِيفُ، أَلْطُفْ بِي فِي قَدَرِكَ وَقَضَائِكَ وَاقْسِمْ لِي مِنْ جَزِيلِ بِرِّكَ وَآلَائِكَ",
+    "tr": "Yâ Latîfu ! Ultuf bî fî qadari-ka wa-qadâ'i-ka wa-'qsim lî min jazîli birri-ka wa-âlâ'i-ka."
+   },
+   "intro": [
+    "Quel événement de ma vie, dont je ne comprenais pas le sens profond à l'époque, a maintenant révélé la Délicatesse et la Subtilité d'Allâh ?",
+    "Je m'émerveille de la nature qui m'entoure, contemplant ses détails subtils comme la délicatesse d'une fleur. Cela me rappelle qu'Allâh crée chaque élément avec douceur."
+   ]
+  },
+  {
+   "n": 31,
+   "ar": "الْخَبِيرُ",
+   "tr": "Al-Khabîr",
+   "fr": "Le Parfaitement Informé",
+   "desc": "Celui à qui rien n'échappe, connaissant la réalité intime de toute chose.",
+   "af": "031_al-khabir",
+   "inv": {
+    "fr": "Ô Bien-Informé ! Fais que je sois informé de mes défauts enfouis. Qu'ainsi je Te demande pardon pour tous mes péchés.",
+    "ar": "يَا خَبِيرُ، اجْعَلْنِي خَبِيراً بِخَفِيَّاتِ عُيُوبِي مُسْتَغْفِراً مِنْ جَمِيعِ ذُنُوبِي",
+    "tr": "Yâ Khabîru ! Ij'al-nî khabîran bi-khafayyâti 'uyûbî mustaghfiran min jamî'i dhunûbî."
+   },
+   "intro": [
+    "Quelle est cette invocation que je n'ai même pas formulée, et que pourtant Allâh a entendue et exaucée ?",
+    "Durant mes invocations, je me rappelle que je parle à Al-Khabîr, Celui qui connaît les pensées les plus secrètes de mon cœur. Je Lui demande le bien que je n'ose exprimer et le pardon pour mes péchés, même ceux que j'ai oubliés."
+   ]
+  },
+  {
+   "n": 32,
+   "ar": "الْحَلِيمُ",
+   "tr": "Al-Halîm",
+   "fr": "Le Longanime",
+   "desc": "Celui qui use de patience et ne se hâte pas de châtier.",
+   "af": "032_al-halim",
+   "inv": {
+    "fr": "Ô Clément ! Éduque-moi selon l'éthique de la clémence. Et réalise mon être par les vérités de Ta science.",
+    "ar": "يَا حَلِيمُ، خَلِّقْنِي بِخُلُقِ الحِلْمِ وَحَقِّقْنِي بِحَقَائِقِ العِلْمِ",
+    "tr": "Yâ Halîmu ! Khalliq-nî bi-khuluqi 'l-hilm wa-haqqiq-nî bi-haqâ'iqi 'l-'ilm."
+   },
+   "intro": [
+    "Quel est mon niveau actuel de clémence et de douceur ? Comment puis-je les développer davantage ?",
+    "Face à une situation conflictuelle, je me rappelle qu'Allâh est plein de clémence envers Ses créatures, même lorsque nous faisons des erreurs. Je prends une profonde inspiration et m'efforce de répondre avec patience et tolérance, plutôt que de réagir impulsivement."
+   ]
+  },
+  {
+   "n": 33,
+   "ar": "الْعَظِيمُ",
+   "tr": "Al-'Azhîm",
+   "fr": "L'Immense",
+   "desc": "Celui dont la grandeur dépasse tout entendement.",
+   "af": "033_al-azhim",
+   "inv": {
+    "fr": "Ô Immense, d'une grandeur ne pouvant être atteinte même par les conjectures de ceux qui méditent ! Dote-moi d'une capacité de raisonnement qui puisse m'élever aux rangs des véridiques.",
+    "ar": "يَا عَظِيمُ بِعَظَمَةٍ لَا تُحِيطُ بِهَا أَوْهَامُ المُتَفَكِّرِينَ، اجْعَلْنِي عَظِيمَ الهِمَّةِ فِي التَرَقِّي فِي مَقَامَاتِ أَهْلِ التَّمْكِينِ",
+    "tr": "Yâ 'Azîmu bi-'azamatin lâ tuhîtu bi-hâ awhâmu 'l-mutafakkirîna ! Ij'al-nî 'azîma 'l-himmati fî 't-taraqqî fî maqâmâti ahli 't-tamkîn."
+   },
+   "intro": [
+    "Quelle est la dernière expérience où j'ai été émerveillé(e) par la Grandeur et la Magnificence d'Allâh ?",
+    "Lorsque je me trouve face à des défis, je me rappelle que j'ai Al-'Azîm avec moi, l'Incommensurable, Celui qui est capable de tout et qui est plus Immense que n'importe quelle épreuve."
+   ]
+  },
+  {
+   "n": 34,
+   "ar": "الْغَفُورُ",
+   "tr": "Al-Ghafûr",
+   "fr": "Le Tout-Pardonnant",
+   "desc": "Celui qui pardonne largement à quiconque se repent sincèrement.",
+   "af": "034_al-ghafur",
+   "inv": {
+    "fr": "Ô Allâh ! Pardonne-moi ce que Tu sais de moi, et mieux que moi ! Et si je recommence, pardonne-moi encore ! Ô Allâh ! Pardonne-moi pour les promesses faites et non tenues ! Ô Allâh ! Pardonne-moi les désirs de mon âme et les égarements de mes paroles !",
+    "ar": "اللَّهُمَّ اغْفِرْ لِي مَا أَنْتَ أَعْلَمُ بِهِ مِنِّي فَإِنْ عُدْتُ فَعُدْ عَلَيَّ بِالمَغْفِرَةِ اللَّهُمَّ اغْفِرْ لِي مَا وَأَيْتُ مِنْ نَفْسِي وَلَمْ تَجِدْ لَهُ وَفَاءً عِنْدِي اللَّهُمَّ اغْفِرْ شَهَوَاتِ الجَنَانِ وَهَفَوَاتِ اللِّسَانِ",
+    "tr": "Allâhumma ighfir lî mâ anta 'alamu bihi minnî, fa'in 'udtu fa 'ud 'alayya bi-l-maghfira ! Allâhumma ighfir lî mâ wa'aytu min nafsî wa lam tajid lahu wafa'an 'indî, Allâhumma ighfir li chahawâti al-janân wa hafawâti l-lisâni."
+   },
+   "intro": [
+    "Est-il facile pour moi de demander pardon à Allâh ? Comment puis-je accomplir cette pratique de manière plus régulière ?",
+    "Chaque soir, je demande pardon à Allâh en L'invoquant par Son nom Al-Ghafûr. J'imagine qu'Allâh efface toutes mes fautes."
+   ]
+  },
+  {
+   "n": 35,
+   "ar": "الشَّكُورُ",
+   "tr": "Ash-Shakûr",
+   "fr": "Le Très Reconnaissant",
+   "desc": "Celui qui récompense généreusement les moindres bonnes actions.",
+   "af": "035_ash-shakur",
+   "inv": {
+    "fr": "« Permets-moi, ô Seigneur, de rendre grâce pour les bienfaits dont Tu m'as comblé, ainsi que mes père et mère, et que je fasse une bonne œuvre que tu agrées et fais-moi entrer, par Ta miséricorde, parmi Tes serviteurs vertueux. » [Sourate 27, Les Fourmis, 19]",
+    "ar": "﴿وَقَالَ رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَى وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ وَأَدْخِلْنِي بِرَحْمَتِكَ فِي عِبَادِكَ الصَّالِحِينَ﴾",
+    "tr": "Rabbi awzi'nî an ashkura ni'matika llatî an'amta 'alayya wa 'alâ wâlidayya wa an a'mala sâlihan tardâhu wa adkhilnî bi rahmatika fî 'ibâdika s-sâlihîn."
+   },
+   "intro": [
+    "Quelles sont les petites choses de la vie quotidienne pour lesquelles je pourrais être plus reconnaissant(e) ?",
+    "Chaque soir, je prends un moment pour réfléchir aux nombreuses bénédictions reçues au cours de la journée et je remercie sincèrement Allâh."
+   ]
+  },
+  {
+   "n": 36,
+   "ar": "الْعَلِيُّ",
+   "tr": "Al-'Aliyy",
+   "fr": "Le Très Haut",
+   "desc": "Celui qui est au-dessus de toute chose par Son essence, Ses attributs et Sa puissance.",
+   "af": "036_al-aliyy",
+   "inv": {
+    "fr": "Ô Très-Haut, à qui appartiennent les caractéristiques de l'élévation et de la noblesse ! Fais que j'atteigne, par Ton pouvoir, les hauts degrés de l'obéissance.",
+    "ar": "يَا عَلِيُّ ذَا اسْتِحْقَاقِ لِنُعُوتِ العَلَاءِ وَالجَلَالِ، اجْعَلْنِي عِنْدَكَ مِنَ الأَعْلِينَ فِي دَرَجَاتِ الكَمَالِ",
+    "tr": "Yâ 'Alî, dhâ istihqâqi li-nu'ûti 'l-'alâ'i wa-'l-jalâli ! Ij'al-nî 'inda-ka mina 'l-a'lîna fî darajâti 'l-kamâli."
+   },
+   "intro": [
+    "Quelles sont les expériences passées où j'ai ressenti une élévation spirituelle, et comment puis-je les reproduire ?",
+    "Je me fixe un objectif spirituel qui reflète la recherche de l'excellence (ihsân) et de l'humilité. Ainsi, je nourris une humble aspiration à m'élever spirituellement."
+   ]
+  },
+  {
+   "n": 37,
+   "ar": "الْكَبِيرُ",
+   "tr": "Al-Kabîr",
+   "fr": "Le Très Grand",
+   "desc": "Celui dont la grandeur est absolue, à qui rien ne peut se comparer.",
+   "af": "037_al-kabir",
+   "inv": {
+    "fr": "Ô Grandissime, nulle grandeur si ce n'est Toi ! Place-moi parmi ceux qui s'immergent dans Ton immense Royaume.",
+    "ar": "يَا كَبِيرُ فَلَا كَبِيراً إِلَّا أَنْتَ، اجْعَلْنِي مِنَ الكُبَرَاءِ المُخْتَصِّينَ بِالمُلْكِ الكَبِيرِ",
+    "tr": "Yâ Kabîru, fa-lâ kabîran illâ wa-huwa ! Ij'al-nî mina 'l-kubarâ'i 'l-mukhtassîna bi-'l-mulki 'l-kabîr."
+   },
+   "intro": [
+    "Quel est le principal problème de ma vie actuellement ? Comment puis-je le relativiser en présence d'Al-Kabîr ?",
+    "Lorsque les soucis m'accablent, je médite sur la grandeur infinie d'Allâh. Mes préoccupations deviennent minuscules devant Son immensité, je prends du recul et je gagne en sérénité."
+   ]
+  },
+  {
+   "n": 38,
+   "ar": "الْحَفِيظُ",
+   "tr": "Al-Hafîz",
+   "fr": "Le Préservateur",
+   "desc": "Celui qui protège Ses créatures et préserve tous les actes.",
+   "af": "038_al-hafiz",
+   "inv": {
+    "fr": "Ô Celui qui préserve ! Préserve-moi des fautes qui occasionnent Ton châtiment. Et fais de moi un gardien de ce que Tu nous donnes à préserver dans Ton livre.",
+    "ar": "يَا حَفِيظُ، احْفَظْنِي عَنْ مُوَاقِعَةِ مُوجِبَاتِ عَذَابِكَ وَاجْعَلْنِي حَفِيظاً لِمَا اسْتَحْفَظْتَنِي مِنْ كِتَابِكَ",
+    "tr": "Yâ Hafîzu ! Ihfaz-nî 'an muwâqi'ati mûjibâti 'adhâbi-ka wa-'j'al-nî hafîzan li-mâ 'stahfazta-nî min kitâbi-ka."
+   },
+   "intro": [
+    "Quelles sont les compétences que je possède et que je pourrais mettre au service des autres pour les soutenir ?",
+    "Chaque jour, je consacre un moment à soutenir quelqu'un de manière significative. Cela peut être une action simple comme une écoute attentive, un sourire ou une main tendue."
+   ]
+  },
+  {
+   "n": 39,
+   "ar": "الْمُقِيتُ",
+   "tr": "Al-Muqît",
+   "fr": "Celui qui nourrit",
+   "desc": "Celui qui donne à chacun sa juste part de nourriture et de moyens.",
+   "af": "039_al-muqit",
+   "inv": {
+    "fr": "Ô Soutien ! Soutiens-moi extérieurement et intérieurement dans les meilleurs moments. Et préserve-moi de Ta colère à toute heure.",
+    "ar": "يَا مُقِيتُ، أَقِتْنِي ظَاهِراً وَبَاطِناً بِأَحْسَنِ الأَقْوَاتِ وَصُنِّي مِنْ غَضَبِكَ فِي جَمِيعِ الأَوْقَاتِ",
+    "tr": "Yâ Muqîtu ! Aqit-ni zâhiran wa-bâtinan bi-ahsani 'l-aqwâti wa-sun-nî min ghadabi-ka fî jamî'i 'l-awqât."
+   },
+   "intro": [
+    "Comment puis-je aider à créer un environnement de soutien au sein de ma famille, de ma communauté ou de mon lieu de travail ?",
+    "Je renforce ma capacité à être un soutien pour les autres, pour refléter le rôle d'Al-Muqît dans ma vie."
+   ]
+  },
+  {
+   "n": 40,
+   "ar": "الْحَسِيبُ",
+   "tr": "Al-Hasîb",
+   "fr": "Celui qui suffit",
+   "desc": "Celui qui est le Compte suffisant, qui juge et rétribue Ses serviteurs.",
+   "af": "040_al-hasib",
+   "inv": {
+    "fr": "« Allâh nous suffit, quel excellent Garant ! » [Sourate 3, La Famille d'Imrân, 173]",
+    "ar": "﴿وَقَالُوا حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ﴾",
+    "tr": "Hasbunâ Allâh wa ni'ma al-wakîl !"
+   },
+   "intro": [
+    "Quels sont les aspects de ma vie que je devrais examiner de plus près en vue d'être plus conscient(e) de mes actions ?",
+    "Je prends conscience de mes actes : j'identifie ceux qui me rendent fier(e) et ceux qui pourraient être améliorés. Je prends des mesures pour progresser dans ma quête spirituelle."
+   ]
+  },
+  {
+   "n": 41,
+   "ar": "الْجَلِيلُ",
+   "tr": "Al-Jalîl",
+   "fr": "Le Majestueux",
+   "desc": "Celui qui possède la majesté et la magnificence absolues.",
+   "af": "041_al-jalil",
+   "inv": {
+    "fr": "Ô Majestueux ! Il n'existe de noblesse comparable à la Tienne ! Place-moi, par crainte de Toi et conscience de Ta Noblesse, dans un endroit noble.",
+    "ar": "يَا جَلِيلُ فَلَا جَلِيلَ إِلَّا وَهُوَ لِجَلَالِهِ مُسْتَكِينٌ، اجْعَلْنِي مِنْ هَيْبَتِكَ وَإِجْلَالِكَ فِي مَقَامٍ مَكِينٍ",
+    "tr": "Yâ Jalîlu, fa-lâ jalîla illâ wa-huwa li-jalâli-Hi mustakînun ! Ij'al-nî min haybati-ka wa-ijlâli-ka fî maqâmin makînin."
+   },
+   "intro": [
+    "De quelle manière puis-je honorer la Majesté divine dans ma façon de parler, d'agir et d'interagir avec les autres ?",
+    "Je consacre un moment à la contemplation silencieuse. Je ferme les yeux, respire profondément, et je médite sur la Majesté et la Sainteté d'Allâh en tant qu'Al-Jalîl."
+   ]
+  },
+  {
+   "n": 42,
+   "ar": "الْكَرِيمُ",
+   "tr": "Al-Karîm",
+   "fr": "Le Généreux",
+   "desc": "Celui qui accorde le bien même à qui ne le mérite pas.",
+   "af": "042_al-karim",
+   "inv": {
+    "fr": "Ô Généreux ! Honore-moi par Ton obéissance et Ton amour. Honore-moi par la contemplation de Ta noble Face, en Ta proximité, dans Ton Jardin (Paradis).",
+    "ar": "يَا كَرِيمُ، اجْعَلْنِي مِنَ المُكْرَمِينَ بِطَاعَتِكَ وَمَحَبَّتِكَ وَأَكْرِمْنِي بِالنَّظَرِ إِلَى وَجْهِكَ الكَرِيمِ فِي جِوَارِكَ وَجَنَّتِكَ",
+    "tr": "Yâ Karîmu ! Ij'al-nî mina 'l-mukramîna bi-tâ'ati-ka wa-mahabbati-ka wa-akrim-nî bi-'n-nazari ilâ wajhi-ka 'l-karîmi fî jiwâri-ka wa-jannati-ka."
+   },
+   "intro": [
+    "Ai-je réfléchi à la manière dont Allâh a surpassé mes attentes dans ma vie ? Et moi, lorsque je viens en aide aux autres, comment puis-je chercher à surpasser leurs attentes ?",
+    "Je choisis une action de générosité envers quelqu'un de mon entourage, que ce soit par un acte de gentillesse, un cadeau, ou du temps et de l'attention."
+   ]
+  },
+  {
+   "n": 43,
+   "ar": "الرَّقِيبُ",
+   "tr": "Ar-Raqîb",
+   "fr": "L'Observateur",
+   "desc": "Celui qui veille sur toute chose, dont rien n'est ignoré.",
+   "af": "043_ar-raqib",
+   "inv": {
+    "fr": "Ô Vigilant ! Offre-moi une part de Ta vigilance qui m'éloignera des désobéissances. Et permets-moi d'être témoin de Ta proximité, ce qui m'écartera de l'insouciance et de l'oubli.",
+    "ar": "يَا رَقِيبُ، ارْزُقْنِي مِنْ مُرَاقَبَتِكَ مَا يَمْنَعُنِي مِنَ العِصْيَانِ وَمِنْ مُشَاهَدَةِ قُرْبِكَ مَا يُذْهِبُ بِدَوَاعِي الغَفْلَةِ وَالنِّسْيَانِ",
+    "tr": "Yâ Raqîbu ! Urzuq-nî min murâqabati-ka mâ yamna'u-nî mina 'l-'isyâni wa-min mushâhadati qurbi-ka mâ yudhhibu bi-dawâ'î 'l-ghaflati wa-'n-nisyân."
+   },
+   "intro": [
+    "Comment puis-je développer une conscience plus profonde du fait qu'Allâh est Ar-Raqîb et observe toutes mes actions ?",
+    "Lorsque je me sens submergé(e) par le stress d'une situation où je perds le contrôle, je me rappelle qu'Allâh est Vigilant et prend soin de moi, à chaque instant de ma vie."
+   ]
+  },
+  {
+   "n": 44,
+   "ar": "الْمُجِيبُ",
+   "tr": "Al-Mujîb",
+   "fr": "Celui qui exauce",
+   "desc": "Celui qui répond aux invocations de Ses serviteurs.",
+   "af": "044_al-mujib",
+   "inv": {
+    "fr": "Ô Celui qui répond à l'appel ! Réponds à celui qui T'implore par Tes Noms excellents. Et permets-moi d'être parmi ceux qui répondent à Ton appel et suivent Tes messagers.",
+    "ar": "يَا مُجِيبُ، اسْتَجِبْ لِمَنْ دَعَاكَ بِأَسْمَائِكَ الحُسْنَى وَسَأَلَكَ وَاجْعَلْنِي مِمَّنْ أَجَابَ دَعْوَتَكَ وَاتَّبَعَ رُسُلَكَ",
+    "tr": "Yâ Mujîbu ! Istajib li-man da'â-ka bi-asmâ'i-ka 'l-husnâ wa-sa'ala-ka wa-'j'al-nî mim-man ajâba da'wata-ka wa-atba'a rusula-ka."
+   },
+   "intro": [
+    "À quelles occasions ai-je ressenti qu'Allâh était tout proche, et avait exaucé mes prières ?",
+    "Je débute un carnet où je consigne mes invocations, qu'elles soient personnelles ou universelles. En les écrivant, je me rappelle qu'Allâh répond à celui qui demande."
+   ]
+  },
+  {
+   "n": 45,
+   "ar": "الْوَاسِعُ",
+   "tr": "Al-Wâsi'",
+   "fr": "L'Immense",
+   "desc": "Celui dont la miséricorde, la science et les dons embrassent toute chose.",
+   "af": "045_al-wasi",
+   "inv": {
+    "fr": "Ô Englobant ! Ô Toi dont la miséricorde et la science englobent toute chose. Offre-moi une part de miséricorde et de science qui me couvre et me suffise.",
+    "ar": "يَا وَاسِعُ وَسِعْتَ كُلَّ شَيْءٍ رَحْمَةً وَعِلْماً، أَوْسِعْنِي مِنَ الرَّحْمَةِ وَالعِلْمِ حَظّاً وَافِرًا",
+    "tr": "Yâ Wâsi'u, wasi'ta kulla shay'in rahmatan wa-'ilman ! Awsi'-nî mina 'r-rahmati wa-'l-'ilmi hazzan wâfiran."
+   },
+   "intro": [
+    "Je me souviens d'un moment où Allâh a rendu l'impossible possible. Comment cette expérience a-t-elle impacté ma foi et ma confiance en Allâh ?",
+    "Lorsque je fais face à des défis ou à des moments de doute, je me rappelle que l'abondance d'Allâh peut ouvrir des voies insoupçonnées."
+   ]
+  },
+  {
+   "n": 46,
+   "ar": "الْحَكِيمُ",
+   "tr": "Al-Hakîm",
+   "fr": "Le Sage",
+   "desc": "Celui qui place chaque chose à sa juste place par une sagesse infinie.",
+   "af": "046_al-hakim",
+   "inv": {
+    "fr": "Ô Sage, Celui dont rien n'échappe à Sa science ! Donne-moi la science qui me rapprochera des actes méritoires et m'éloignera des actions détestables.",
+    "ar": "يَا حَكِيمُ فَحِكْمَتُهُ لَا يَشُذُّ شَيْءٌ عَنْهَا، هَبْ لِي حِكْمَةً تَحْمِلُنِي عَلَى مَحَاسِنِ الأَفْعَالِ وَتَرْكِ القَبَائِحِ مِنْهَا",
+    "tr": "Yâ Hakîmu, fa-hikmatu-Hu lâ yashudhdhu shay'un 'an-hâ ! Hab lî hikmatan tahmilu-nî 'alâ mahâsini 'l-af'âli wa-tarki 'l-qabâ'ihi min-hâ."
+   },
+   "intro": [
+    "Ai-je déjà vécu une situation dont la sagesse m'échappait au départ, mais s'est finalement révélée à mes yeux avec le temps ?",
+    "Quand je me retrouve confronté(e) à une décision difficile dans une situation complexe, j'invoque Al-Hakîm, le Sage par excellence. Je Lui demande de m'éclairer sur la voie de la sagesse pour prendre la meilleure décision possible."
+   ]
+  },
+  {
+   "n": 47,
+   "ar": "الْوَدُودُ",
+   "tr": "Al-Wadûd",
+   "fr": "Le Très Aimant",
+   "desc": "Celui qui aime Ses serviteurs vertueux et est aimé d'eux.",
+   "af": "047_al-wadud",
+   "inv": {
+    "fr": "Ô Bien-aimant qui aime Ses amis et Ses élus ! Place dans mon cœur une affection infinie envers Toi. Et place dans le cœur des croyants une affection profonde pour moi.",
+    "ar": "يَا وَدُودُ يَوَدُّ أَوْلِيَاءَهُ وَأَصْفِيَاءَهُ المُقَرَّبِينَ، اجْعَلْ فِي قَلْبِي وُدّاً لَكَ وَاجْعَلْ لِي وُدّاً فِي قُلُوبِ المُؤْمِنِينَ",
+    "tr": "Yâ Wadûdu, yawaddu awliyâ'a-Hu wa-asfiyâ'a-Hu 'l-muqarrabîna ! Ij'al fî qalb-î wuddan la-Ka wa-'j'al lî wuddan fî qulûbi 'l-mu'minîn."
+   },
+   "intro": [
+    "En quoi puis-je devenir un canal d'amour et de bienveillance envers le monde qui m'entoure ?",
+    "Chaque jour, je n'oublie pas d'offrir à mes proches une manifestation d'amour, que ce soit par un geste, une parole ou simplement par ma présence bienveillante."
+   ]
+  },
+  {
+   "n": 48,
+   "ar": "الْمَجِيدُ",
+   "tr": "Al-Majîd",
+   "fr": "Le Très Glorieux",
+   "desc": "Celui dont la gloire est parfaite et dont les bienfaits sont infinis.",
+   "af": "048_al-majid",
+   "inv": {
+    "fr": "Ô Glorieux ! Ta Gloire est majestueuse, elle englobe l'Excellence ! Offre-moi une part de la plus haute honorabilité dans la mesure du possible pour un être humain.",
+    "ar": "يَا مَجِيدُ بِمَعْنَى عَظَمِ الشَّأْنِ وَعُمُومِ الإِحْسَانِ، ارْزُقْنِي مِنَ المَجْدِ مَا هُوَ غَايَةُ الإِمْكَانِ فِي طَاقَةِ الإِنْسَانِ",
+    "tr": "Yâ Majîdu bi-ma'nâ 'azami 'sh-sha'ni wa-'umûmi 'l-ihsâni ! Urzuq-nî mina 'l-majdi mâ huwa ghâyata 'l-imkâni fî tâqati 'l-insân."
+   },
+   "intro": [
+    "Qu'est-ce qui m'émerveille le plus dans la création d'Allâh et me rappelle Sa gloire infinie ?",
+    "Je cultive l'humilité en reconnaissant que ma propre grandeur est insignifiante comparée à celle d'Allâh. Cela m'aide à rester humble et à rechercher Sa satisfaction."
+   ]
+  },
+  {
+   "n": 49,
+   "ar": "الْبَاعِثُ",
+   "tr": "Al-Bâ'ith",
+   "fr": "Le Ressusciteur",
+   "desc": "Celui qui ressuscitera les morts au Jour du Jugement.",
+   "af": "049_al-baith",
+   "inv": {
+    "fr": "Ô Celui qui ressuscite ! Illumine mes meilleures pensées par celles qui sont dans les coffres de Ton secret. Et renforce-moi, au Jour de la Résurrection, par une merveilleuse récompense et une belle bonté.",
+    "ar": "يَا بَاعِثُ، ابْعَثْ لِي خَوَاطِرَ الخَيْرِ مِنْ خَزَائِنِ السِّرِّ وَأَثْبِتْنِي يَوْمَ البَعْثِ بِجَزِيلِ الأَجْرِ وَجَمِيلِ البِرِّ",
+    "tr": "Yâ Bâ'ithu ! Ib'ath lî khawâtira 'l-khayri min khazâ'ini 's-sirri wa-athbit-nî yawma 'l-ba'thi bi-jazîli 'l-ajri wa-jamîl 'l-birr."
+   },
+   "intro": [
+    "À quel moment de ma vie ai-je ressenti un éveil spirituel qui m'a conduit à des changements significatifs dans mon rapport au divin ?",
+    "Je suis reconnaissant(e) qu'Al-Bâ'ith m'accorde, chaque matin, une nouvelle opportunité de me rapprocher de Lui et de progresser spirituellement."
+   ]
+  },
+  {
+   "n": 50,
+   "ar": "الشَّهِيدُ",
+   "tr": "Ash-Shahîd",
+   "fr": "Le Témoin",
+   "desc": "Celui qui est présent en tout lieu et témoin de toute chose.",
+   "af": "050_ash-shahid",
+   "inv": {
+    "fr": "Ô Témoin ! Fais que je sois un témoin humble, rempli d'une crainte révérentielle face à Ta Présence et que je me contente à travers Ta science.",
+    "ar": "يَا شَهِيدُ، اجْعَلْنِي لِشَهَادَتِكَ مُتَّقِياً وَبِعِلْمِكَ مُكْتَفِيَاً",
+    "tr": "Yâ Shahîdu ! Ij'al-nî li-shâhidiyyati-ka muttaqiyan wa-bi-'ilmi-ka muktafiyan."
+   },
+   "intro": [
+    "Comment puis-je être plus conscient(e) de la présence d'Allâh dans ma vie quotidienne ?",
+    "Avant d'agir dans une situation donnée, je prends un moment pour me souvenir qu'Allâh est le Témoin de mes actions. Cela guide ma conduite et oriente mes choix."
+   ]
+  },
+  {
+   "n": 51,
+   "ar": "الْحَقُّ",
+   "tr": "Al-Haqq",
+   "fr": "La Vérité",
+   "desc": "La Vérité en Lui-même ; Son existence, Sa parole et Sa promesse sont vraies.",
+   "af": "051_al-haqq",
+   "inv": {
+    "fr": "Ô Véridique ! Exauce mon souhait d'accéder à l'une des vérités de Ton unicité. Et permets-moi d'œuvrer au maintien de Ton droit et de rester en dehors des limites de Tes interdits.",
+    "ar": "يَا حَقُّ، حَقِّقْ رَجَائِي فِي بُلُوغِ حَقِيقَةٍ مِنْ حَقَائِقِ تَوْحِيدِكَ وَاسْتَعْمِلْنِي بِالقِيَامِ بِحَقِّكَ وَالوُقُوفِ عَلَى حُدُودِكَ",
+    "tr": "Yâ Haqqu ! Haqqiq rajâ'-î fî bulûghi haqîqatin min haqâ'iqi tawhîdi-ka wa-'sta'mil-nî bi-'l-qiyâmi bi-haqqi-ka wa-'l-wuqûfi 'alâ hudûdi-ka."
+   },
+   "intro": [
+    "Comment puis-je incorporer davantage la quête de vérité dans mes actions et mes décisions quotidiennes ?",
+    "À chaque prise de parole, je réfléchis, en amont, à mes paroles : sont-elles justes et alignées avec la vérité ?"
+   ]
+  },
+  {
+   "n": 52,
+   "ar": "الْوَكِيلُ",
+   "tr": "Al-Wakîl",
+   "fr": "Le Garant",
+   "desc": "Celui à qui on s'en remet totalement, qui gère les affaires de Ses serviteurs.",
+   "af": "052_al-wakil",
+   "inv": {
+    "fr": "Ô Garant ! Fais que je sois parmi ceux qui se confient à Toi en toute occasion. Et ne m'abandonne pas à ma propre personne, fût-ce le temps d'un battement de cils.",
+    "ar": "يَا وَكِيلُ، اجْعَلْنِي مِنَ المُتَوَكِّلِينَ عَلَيْكَ فِي الأُمُورِ كُلِّهَا وَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ وَلَا أَقَلَّ مِنْهَا",
+    "tr": "Yâ Wakîlu ! Ij'al-nî mina 'l-mutawakkilîna 'alay-ka fî 'l-umûri kulli-hâ wa-lâ takil-nî ilâ nafs-î tarfata 'aynin wa-lâ aqalla min-hâ."
+   },
+   "intro": [
+    "Quels sont les aspects de ma vie sur lesquels j'ai du mal à lâcher prise ? Comment m'en remettre à Allâh ?",
+    "Chaque fois que je me sens inquiet(e) ou insatisfait(e), je répète « Hasbiya Allâhu wa ni'ma l-wakîl » (Allâh me suffit, Il est le Meilleur Garant), pour me rappeler qu'Il est mon soutien et qu'Il résoudra tous mes problèmes."
+   ]
+  },
+  {
+   "n": 53,
+   "ar": "الْقَوِيُّ",
+   "tr": "Al-Qawiyy",
+   "fr": "Le Très Fort",
+   "desc": "Celui dont la force est parfaite, absolue et sans faiblesse.",
+   "af": "053_al-qawiyy",
+   "inv": {
+    "fr": "Ô Puissant ! Donne-moi la force d'agir en toute obéissance et honorabilité. Et éloigne-moi du mal provenant de ma propre personne et du mal qui peut provenir de tout être malveillant.",
+    "ar": "يَا قَوِيُّ، قَوِّنِي عَلَى العَمَلِ بِكُلِّ طَاعَةٍ وَبِرٍّ وَقِنِي شَرَّ نَفْسِي وَشَرَّ كُلِّ ذِي شَرٍّ",
+    "tr": "Yâ Qawiyyu ! Qawwi-nî 'alâ 'l-'amali bi-kulli tâ'atin wa-birrin wa-qinî sharra nafs-î wa sharra kulli dhî sharrin."
+   },
+   "intro": [
+    "Quelles sont les situations où j'ai expérimenté la puissance d'Allâh me guidant à travers la difficulté ?",
+    "Je réfléchis à une situation actuelle qui nécessite de la force, de la persévérance et du courage de ma part. Je répète le nom Al-Qawiyy pour Lui demander Son aide."
+   ]
+  },
+  {
+   "n": 54,
+   "ar": "الْمَتِينُ",
+   "tr": "Al-Matîn",
+   "fr": "L'Inébranlable",
+   "desc": "Celui dont la puissance est ferme et solide, sans lassitude ni fatigue.",
+   "af": "054_al-matin",
+   "inv": {
+    "fr": "Ô Inébranlable ! Fais que ma religion soit ferme et que ma certitude soit forte et constante.",
+    "ar": "يَا مَتِينُ، اجْعَلْ دِينِي مَتِيناً وَيَقِينِي قَوِيّاً مَكِيناً",
+    "tr": "Yâ Matînu ! Ij'al dîn-î matînan wa-yaqîn-î qawiyyan makînan."
+   },
+   "intro": [
+    "Ai-je tendance à éviter les défis par peur de l'échec ? Comment puis-je les aborder avec confiance ?",
+    "Avant de commencer une tâche exigeante, je vais méditer sur le nom Al-Matîn et me rappeler que je suis soutenu(e) par la Puissance d'Allâh."
+   ]
+  },
+  {
+   "n": 55,
+   "ar": "الْوَلِيُّ",
+   "tr": "Al-Waliyy",
+   "fr": "Le Protecteur",
+   "desc": "L'Ami et le Protecteur des croyants.",
+   "af": "055_al-waliyy",
+   "inv": {
+    "fr": "Ô Protecteur ! Fais que, sous Ta protection, je sois protégé(e). Et que je maintienne l'accomplissement de Tes commandements.",
+    "ar": "يَا وَلِيُّ، اجْعَلْنِي بِوِلَايَتِكَ إِيَّايَ وَلِيّاً وَبِرِعَايَةِ حُقُوقِكَ وَفِيّاً",
+    "tr": "Yâ Walî ! Ij'al-nî bi-wilâyati-ka iyyâya waliyyan wa-bi-ri'âyati huqûqi-ka wafiyan."
+   },
+   "intro": [
+    "Quelles actions puis-je entreprendre pour renforcer cette amitié avec Allâh et sentir Sa proximité dans ma vie ?",
+    "Je prends un moment pour parler à Allâh comme si je m'adressais à un ami cher. Je partage avec Lui mes joies, mes peines, mes espoirs et mes préoccupations. Dans ces moments, je suis sincère et ouvert(e), convaincu(e) qu'Allâh m'écoute avec compassion et bienveillance."
+   ]
+  },
+  {
+   "n": 56,
+   "ar": "الْحَمِيدُ",
+   "tr": "Al-Hamîd",
+   "fr": "Le Très Digne de louanges",
+   "desc": "Celui qui mérite toute louange pour ce qu'Il est et ce qu'Il fait.",
+   "af": "056_al-hamid",
+   "inv": {
+    "fr": "Ô Loué ! Fais que je sois parmi ceux qui Te louent et Te sont reconnaissants. Et place-moi sous la bannière de Ta louange, en compagnie des Prophètes, des véridiques, des témoins (martyrs) et des saints.",
+    "ar": "يَا حَمِيدُ، اجْعَلْنِي مِنَ الحَامِدِينَ لَكَ وَالشَّاكِرِينَ وَاحْشُرْنِي تَحْتَ لِوَاءِ الحَمْدِ فِي زُمْرَةِ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ وَالصَّالِحِينَ",
+    "tr": "Yâ Hamîdu ! Ij'al-nî mina 'l-hâmidîna la-ka wa-'sh-shakirîna wa-'hshur-nî tahta liwâ'î 'l-hamdi fî zumrati 'n-nabiyyîna wa-'s-siddîqîna wa-'sh-shuhadâ'î wa-'s-sâlihîn."
+   },
+   "intro": [
+    "Comment puis-je transformer les moments où je ressens la Grâce d'Allâh en instants de louanges ?",
+    "Chaque soir, je réfléchis aux bénédictions de ma journée, et je loue sincèrement Allâh, le Seul digne de louanges."
+   ]
+  },
+  {
+   "n": 57,
+   "ar": "الْمُحْصِي",
+   "tr": "Al-Muhsî",
+   "fr": "Celui qui recense",
+   "desc": "Celui qui dénombre chaque chose, jusqu'au plus infime détail.",
+   "af": "057_al-muhsi",
+   "inv": {
+    "fr": "Ô Celui qui dénombre toute chose en nombre, contenu et quantité ! Fais que je sois parmi ceux qui énumèrent Tes noms avec engagement et persévérance.",
+    "ar": "يَا مُحْصِيَ كُلِّ شَيْءٍ عَدَداً وَإِحَاطَةً وَقَدْراً، اجْعَلْنِي مِنَ المُحْصِينَ لِأَسْمَائِكَ عَقْداً وَإِطَاقَةً وَحَصْراً",
+    "tr": "Yâ Muhsiya kulli shay'in 'adadan wa-ihâtatan wa-qadran ! Ij'al-nî mina 'l-muhsîna li-asmâ'i-ka 'aqdan wa-itâqatan wa-hasran."
+   },
+   "intro": [
+    "Quels sont les moments où je peux être plus attentif à la manière dont chaque acte est enregistré par Al-Muhsî ?",
+    "Je prends quelques instants pour réfléchir à mes actions de la journée et à la manière dont Allâh les compte et les enregistre."
+   ]
+  },
+  {
+   "n": 58,
+   "ar": "الْمُبْدِئُ",
+   "tr": "Al-Mubdi'",
+   "fr": "Celui qui initie",
+   "desc": "Celui qui commence toute chose, l'Initiateur de la création.",
+   "af": "058_al-mubdi",
+   "inv": {
+    "fr": "Ô Celui qui produit sans modèle ! Celui qui régénère ! Compte-moi parmi ceux qui donnent la prévalence à ce que Tu agrées, qui choisissent de Te satisfaire en astreignant leurs envies, et qui se tournent vers Ta porte, sincères, nécessiteux, submergés de confiance en Toi.",
+    "ar": "يَا مُبْدِئُ يَا مُعِيدُ، اجْعَلْنِي مِمَّنْ يَبْدَأُ بِمَحَابِّكَ عَلَى مُرَادِهِ وَاخْتِيَارِهِ وَيَعُودُ إِلَى بَابِكَ بِصِدْقِ اعْتِمَادِهِ وَافْتِقَارِهِ",
+    "tr": "Yâ Mubdi'u ! Yâ Mu'îdu ! Ij'al-nî mim-man yabda'u bi-mahâbbi-ka 'alâ murâdi-hi wa-'khtiyâri-hi wa-ya'ûdu ilâ bâbi-ka bi-sidq i'timâdi-hi wa-'ftiqâri-hi."
+   },
+   "intro": [
+    "En quoi puis-je reconnaître les nouvelles opportunités dans ma vie comme des dons d'Allâh ?",
+    "Je considère les opportunités qui se présentent à moi comme des nouveaux chapitres bénis par Allâh."
+   ]
+  },
+  {
+   "n": 59,
+   "ar": "الْمُعِيدُ",
+   "tr": "Al-Mu'îd",
+   "fr": "Celui qui recommence",
+   "desc": "Celui qui recrée après la mort, qui refait toute chose.",
+   "af": "059_al-muid",
+   "inv": {
+    "fr": "Ô Seigneur ! Du fait que Tu fais revenir, je T'implore de me compter parmi ceux qui retournent à Toi, repentants, le cœur sain.",
+    "ar": "اَللَّهُمَّ إِنِّي أَسْأَلُكَ بِاسْمِكَ يَا مُعِيدُ اِجْعَلْنِي مِمَّنْ يَعُودُ إِلَيْكَ تَائِبًا بِقَلبٍ سَلِيمٍ",
+    "tr": "Allâhumma innî as'aluka bismika yâ Mu'îdu ! Ij'al-nî mim-man ya'ûdu ilâyka tâ'iban bi-qalbin salîmin."
+   },
+   "intro": [
+    "Lorsque ma foi baisse, est-ce que j'ai tendance à abandonner ma pratique ? Comment puis-je mieux surmonter ces moments ?",
+    "Durant mes moments de découragement, je me rappelle qu'Allâh est Al-Mu'îd et qu'Il a le pouvoir de restaurer ma foi."
+   ]
+  },
+  {
+   "n": 60,
+   "ar": "الْمُحْيِي",
+   "tr": "Al-Muhyî",
+   "fr": "Celui qui donne la vie",
+   "desc": "Celui qui insuffle la vie et fait sortir le vivant du non-vivant.",
+   "af": "060_al-muhyi",
+   "inv": {
+    "fr": "Ô Vivant qui précède tout être vivant, ô Vivant qui demeure après tout être vivant, ô Vivant auquel aucun être vivant n'est comparable ! Ravive mon cœur d'une lumière de Ta part.",
+    "ar": "يَا حَيّاً قَبْلَ كُلِّ حَيٍّ يَا حَيّاً بَعْدَ كُلِّ حَيٍّ أَحْيِ قَلْبِي بِنُورٍ مِنْ لَدُنْكَ",
+    "tr": "Yâ hayâ qabla kulli hayin, Yâ hayâ ba'da kulli hayin. Ahyi qalbî bi-nûrin min ladunka."
+   },
+   "intro": [
+    "Comment puis-je utiliser ma vitalité et ma santé pour accomplir des actions qui Lui plaisent ?",
+    "Je m'engage à vivre cette journée avec énergie et intention, en cherchant des moyens d'utiliser ma vitalité pour accomplir des actions qui honorent Allâh."
+   ]
+  },
+  {
+   "n": 61,
+   "ar": "الْمُمِيتُ",
+   "tr": "Al-Mumît",
+   "fr": "Celui qui donne la mort",
+   "desc": "Celui qui fait mourir toute âme au terme fixé.",
+   "af": "061_al-mumit",
+   "inv": {
+    "fr": "Ô Celui qui donne la vie ! Ô Celui qui la retire ! Redonne vie à mon cœur par la conscience de Ton unicité et de Ta connaissance. Et fais mourir mon ego par la contemplation de Ta grandeur et la crainte révérentielle envers Toi.",
+    "ar": "يَا مُحْيِي يَا مُمِيتُ، أَحْيِ قَلْبِي بِوُجُودِ تَوْحِيدِكَ وَمَعْرِفَتِكَ وَأَمِتْ نَفْسِي بِشُهُودِ عَظَمَتِكَ وَهَيْبَتِكَ",
+    "tr": "Yâ Muhyî ! Yâ Mumîtu ! Ahyi qalb-î bi-wujûd tawhîdi-ka wa-ma'rifati-ka wa-amit nafs-î bi-shuhûdi 'azamati-ka wa-haybati-ka."
+   },
+   "intro": [
+    "Comment puis-je mieux me préparer, tant sur le plan spirituel que pratique, à accueillir la mort au sein de mon foyer ?",
+    "Je vis chaque jour avec gratitude, avec l'intention d'œuvrer dans le bien pour ma vie dans l'Au-delà. Je demande également à Allâh de m'accorder une bonne fin et de m'accueillir dans Sa miséricorde."
+   ]
+  },
+  {
+   "n": 62,
+   "ar": "الْحَيُّ",
+   "tr": "Al-Hayy",
+   "fr": "Le Vivant",
+   "desc": "Celui qui possède la vie parfaite, éternelle, sans début ni fin.",
+   "af": "062_al-hayy",
+   "inv": {
+    "fr": "Ô Vivant ! Donne-moi une vie saine. Et abreuve-moi du plus doux des breuvages : Ton amour.",
+    "ar": "يَا حَيُّ، أَحْيِنِي حَيَاةً طَيِّبَةً وَاسْقِنِي مِنْ شَرَابِ مَحَبَّتِكَ أَعْذَبَهُ",
+    "tr": "Yâ Hayyu ! Ahyi-nî hayâtan tayyibatan wa-'sqi-nî min sharâbi mahabbati-ka a'dhaba-hu."
+   },
+   "intro": [
+    "Quels sont les moyens concrets par lesquels je peux exprimer ma dépendance envers Allâh dans la poursuite de mes objectifs ?",
+    "Je prends conscience de mon souffle, du battement de mon cœur et de l'énergie qui circule en moi. Je me rappelle qu'Allâh est le Vivant éternel, et je Lui exprime ma gratitude pour le don de la vie."
+   ]
+  },
+  {
+   "n": 63,
+   "ar": "الْقَيُّومُ",
+   "tr": "Al-Qayyûm",
+   "fr": "Le Subsistant par Lui-même",
+   "desc": "Celui qui subsiste par Lui-même et par qui subsiste toute chose.",
+   "af": "063_al-qayyum",
+   "inv": {
+    "fr": "Ô Immuable ! Fais que je prenne conscience de Ton soutien afin que je me réjouisse de mes épreuves. Et que je prenne conscience du pouvoir de la présence de Tes miséricordes, celles qui adoucissent les douleurs.",
+    "ar": "يَا قَيُّومُ، هَبْ لِي مِنْ مَعْرِفَةِ قَيُّومِيَّتِكَ مَا أَسْتَرِيحُ بِهِ مِنْ كَدِّ التَّدْبِيرِ، وَمِنْ مُشَاهَدَةِ أَلْطَافِكَ مَا يَتَيَسَّرُ بِهِ كُلُّ عَسِيرٍ",
+    "tr": "Yâ Qayyûmu ! Hab lî min ma'rifati qayyûmiyya-ti-ka mâ astarîhu bi-hi min kaddi 't-tadbîri wa-min mushâhadati altâfi-ka mâ yatayassaru bi-hi kullu 'asîrin."
+   },
+   "intro": [
+    "Quels sont les domaines de ma vie où je ressens le besoin de confier davantage mes préoccupations à Allâh ?",
+    "Pour maintenir mon cœur vivant, je prends un temps de dhikr pour répéter « Yâ Hayyu, Yâ Qayyûm, Lâ ilâha illâ Anta » (Ô Vivant, Ô Immuable, nulle divinité en dehors de Toi)."
+   ]
+  },
+  {
+   "n": 64,
+   "ar": "الْوَاجِدُ",
+   "tr": "Al-Wâjid",
+   "fr": "Celui qui trouve",
+   "desc": "Celui à qui rien n'échappe, qui possède tout ce qu'Il veut sans effort.",
+   "af": "064_al-wajid",
+   "inv": {
+    "fr": "Ô Existant ! Fais que je reçoive, au travers de Ton abondance, la richesse et qu'à travers elle j'existe. Et grâce à ce don, que j'atteigne la connaissance de Ton Être.",
+    "ar": "يَا وَاجِدُ، أَوْجِدْنِي مِنْ جُودِكَ وَجْداً بَالِغاً وَوُجُوداً، وَأَنِلْنِي مِنْ عِرْفَانِ وَحْدَانِيَّتِكَ عَطَاءً سَابِغاً وَجُوداً",
+    "tr": "Yâ Wâjidu ! Awjid-nî min jûdi-ka wajdan bâlighan wa-wujûdan wa-anil-nî min 'irfâni wahdâniyyati-ka 'atâ'an sâbighan wa-jûdan."
+   },
+   "intro": [
+    "Quels sont les moments de ma vie où j'ai réalisé qu'Allâh m'avait accordé précisément ce dont j'avais besoin ?",
+    "Lorsqu'il me manque quelque chose dans ma vie, je me tourne vers Al-Wâjid pour Lui demander, car Il est Celui qui ne manque de rien et qui donne sans compter."
+   ]
+  },
+  {
+   "n": 65,
+   "ar": "الْمَاجِدُ",
+   "tr": "Al-Mâjid",
+   "fr": "Le Très Noble",
+   "desc": "Celui qui possède la noblesse, la générosité et la gloire absolues.",
+   "af": "065_al-majid",
+   "inv": {
+    "fr": "Ô Illustre dont les Attributs sont nobles et les Noms excellents ! Offre-moi par la ferveur de mes aspirations une élévation qui me positionne dans la plus Haute des Cours.",
+    "ar": "يَا مَاجِدُ فَأَوْصَافُهُ مَجِيدَةٌ وَأَسْمَاؤُهُ حُسْنَى، أَعْطِنِي مِنْ مُجَاهِدَةِ الهِمَّةِ مَا أَرْقَى بِهِ إِلَى المَحَلِّ الأَسْنَى",
+    "tr": "Yâ Mâjidu, fa-awsâfu-Hu majîdatun wa-asmâ'u-Hu husnâ ! A'tinî min mujâhidati 'l-himmati mâ arqâ bi-hi ilâ 'l-mahalli 'l-asnâ."
+   },
+   "intro": [
+    "Est-ce que je pratique la glorification d'Allâh régulièrement ? Comment pourrais-je consacrer davantage de temps à cette adoration ?",
+    "Je contemple la beauté qui m'entoure pour m'émerveiller devant la Gloire d'Allâh tout en récitant le tasbîh."
+   ]
+  },
+  {
+   "n": 66,
+   "ar": "الْوَاحِدُ",
+   "tr": "Al-Wâhid",
+   "fr": "L'Unique",
+   "desc": "Celui qui est Un dans Son essence, Ses attributs et Ses actes.",
+   "af": "066_al-wahid",
+   "inv": {
+    "fr": "Ô Unique ! Fais de moi un monothéiste par la reconnaissance de Ton unité. Et un témoin soutenu par Ton unicité.",
+    "ar": "يَا وَاحِدُ، اجْعَلْنِي مُوَحِّداً بِوُجُودِ وَحْدَانِيَّتِكَ مُؤَيَّداً بِشُهُودِ فَرْدَانِيَّتِكَ",
+    "tr": "Yâ Wâhidu ! Ij'al-nî mûjidan bi-wujûdi wahdâniyya-ti-ka mu'ayyadan bi-shuhûdi fardâniyyati-ka."
+   },
+   "intro": [
+    "Comment puis-je offrir une explication claire et accessible de l'unicité d'Allâh à ceux qui cherchent à Le connaître ?",
+    "Je consacre du temps à méditer ce nom et je m'engage à approfondir ma compréhension de l'unicité d'Allâh."
+   ]
+  },
+  {
+   "n": 67,
+   "ar": "الْأَحَدُ",
+   "tr": "Al-Ahad",
+   "fr": "L'Un",
+   "desc": "L'Unique absolu, sans partenaire, sans semblable ni équivalent.",
+   "af": "067_al-ahad",
+   "inv": {
+    "fr": "Mon Dieu je T'implore, ô Dieu, Toi l'Un, l'Unique, le Tout-Puissant, qui n'a pas engendré et n'est pas engendré et qui n'a point d'égal, d'absoudre mes péchés ! Car Tu es Celui qui pardonne sans-cesse, le Très-Miséricordieux.",
+    "ar": "اَللَّهُمَّ إِنِّي أَسْأَلُكَ يَا اللَّهُ بِأَنَّكَ الوَاحِدُ الأَحَدُ الصَّمَدُ الَّذِي لَمْ يَلِدْ وَلَمْ يُولَدْ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ أَنْ تَغْفِرَ لِي ذُنُوبِي إِنَّكَ أَنْتَ الغَفُورُ الرَّحِيمُ",
+    "tr": "Allâhumma innî as'aluka yâ Allâhu bi-annaka l-wâhidu l-ahadu s-samadu lladhî lam yalid wa-lâm yûlad wa-lâm yakun lahu kufuwan ahad, an taghfira lî dhunûbî innaka anta l-ghafûru r-rahîmu."
+   },
+   "intro": [
+    "Quels moments de ma vie reflètent le mieux ma conviction en l'unicité d'Allâh, et comment puis-je entretenir ma foi en l'Unique ?",
+    "Chaque jour, je me rappelle de l'unicité d'Allâh grâce au tahlîl : en répétant plusieurs fois (minimum 33 fois) « Lâ ilâha illâ Allâh »."
+   ]
+  },
+  {
+   "n": 68,
+   "ar": "الصَّمَدُ",
+   "tr": "As-Samad",
+   "fr": "Le Recours suprême",
+   "desc": "Celui vers qui se tourne toute créature dans le besoin, qui n'a besoin de rien.",
+   "af": "068_as-samad",
+   "inv": {
+    "fr": "Ô Inébranlable ! Fais-moi don d'une servitude éternelle envers Ta présence. Et compte-moi parmi ceux qui T'obéissent et qui aspirent à Toi, éternellement, dans tous leurs actes.",
+    "ar": "يَا صَمَدُ، ارْزُقْنِي صَمَدِيَّةً تَقْتَضِي دَوَامَ الحُضُورِ وَاجْعَلْنِي مِمَّنْ يَصْمُدُ إِلَيْكَ بِهِمَّتِهِ فِي جَمِيعِ الأُمُورِ",
+    "tr": "Yâ Samadu ! Urzuq-nî samadiyyatan taqtadî dawâma 'l-hudûri wa-Ij'al-nî mim-man yasmudu ilay-ka bi-himmati-hi fî jamî'i 'l-umûr."
+   },
+   "intro": [
+    "À quels moments de ma vie ai-je cherché des solutions en dehors d'Allâh et comment éviter de répéter cette erreur ?",
+    "Je médite sur le fait que tout ce dont j'ai besoin dépend d'Allâh, plaçant ma confiance en Lui pour guider mes jours."
+   ]
+  },
+  {
+   "n": 69,
+   "ar": "الْقَادِرُ",
+   "tr": "Al-Qâdir",
+   "fr": "Le Détenteur du pouvoir",
+   "desc": "Celui qui a le pouvoir absolu sur toute chose.",
+   "af": "069_al-qadir",
+   "inv": {
+    "fr": "Ô Puissant ! Fais naître en moi une capacité habile afin que j'atteigne l'obéissance. Octroie-moi une force qui me préservera des transgressions.",
+    "ar": "يَا قَادِرُ، اخْلُقْ لِي قُدْرَةً صَالِحَةً لِإِكْتِسَابِ الطَّاعَاتِ وَقُوَّةً مَانِعَةً مِنِ ارْتِكَابِ المُخَالَفَاتِ",
+    "tr": "Yâ Qâdiru ! Ukhluq lî qudratan sâlihatan li-'ktisâbi 't-tâ'âti wa-quwwatan mâni'atan min irtikâbi 'l-mukhâlafât."
+   },
+   "intro": [
+    "Ai-je déjà douté de la capacité d'Allâh à résoudre mes problèmes, et comment puis-je renforcer ma foi en Lui dans ces moments ?",
+    "Chaque fois que je fais face à un problème, je demande à Allâh de guider mes actions et de me donner la force nécessaire pour réussir."
+   ]
+  },
+  {
+   "n": 70,
+   "ar": "الْمُقْتَدِرُ",
+   "tr": "Al-Muqtadir",
+   "fr": "Le Puissant Déterminant",
+   "desc": "Celui dont la puissance s'exerce sans obstacle, avec une maîtrise parfaite.",
+   "af": "070_al-muqtadir",
+   "inv": {
+    "fr": "Ô Tout-Puissant ! Compte-moi parmi ceux que Tu éduques à travers la vision (le témoignage) de Ta Toute-Puissance et parmi ceux qui Te craignent avec révérence, tant dans leur quiétude que dans leurs mouvements.",
+    "ar": "يَا مُقْتَدِرُ، اجْعَلْنِي بِشُهُودِ اقْتِدَارِكَ وَرَهْبَتِكَ مِمَّنْ يَتَأَدَّبُ بَيْنَ يَدَيْكَ فِي سُكُونِهِ وَحَرَكَتِهِ",
+    "tr": "Yâ Muqtadiru ! Ij'al-nî bi-shuhûdi 'qtidâri-ka wa-rahbati-ka mim-man yata'addabu bayna yaday-ka fî sukûni-hi wa-harakati-hi."
+   },
+   "intro": [
+    "Dans quelles situations est-ce que je peux reconnaître la manifestation de la Puissance d'Allâh ?",
+    "Lorsque je me sens impuissant(e), je me rappelle que j'ai Allâh, le Tout-Puissant avec moi."
+   ]
+  },
+  {
+   "n": 71,
+   "ar": "الْمُقَدِّمُ",
+   "tr": "Al-Muqaddim",
+   "fr": "Celui qui avance",
+   "desc": "Celui qui met en avant qui Il veut par Sa sagesse.",
+   "af": "071_al-muqaddim",
+   "inv": {
+    "fr": "Ô Celui qui précède ! Ô Celui qui retarde ! Place-moi à l'avant, en compagnie des prédécesseurs à la Maison de la Paix. Et ne me place pas à l'arrière, parmi ceux qui sont éreintés par leurs propres péchés.",
+    "ar": "يَا مُقَدِّمُ يَا مُؤَخِّرُ، قَدِّمْنِي فِي حِلْيَةِ السَّابِقِينَ إِلَى دَارِ السَّلَامِ وَلَا تُؤَخِّرْنِي مَعَ الهَالِكِينَ بِاجْتِرَاحِ الآثَامِ",
+    "tr": "Yâ Muqaddimu ! Yâ Mu'akhkhiru ! Qaddim-nî fî hilyati 's-sâbiqîna ilâ dâri 's-salâmi wa-lâ tu'akh-khir-nî ma'a 'l-hâlikîna bi-'jtirâmi 'l-âthâm."
+   },
+   "intro": [
+    "Comment pourrais-je davantage laisser Allâh guider mes choix pour prévoir ce qui est le mieux pour moi ?",
+    "Pour atteindre mes objectifs, j'élabore un plan précis avec des étapes claires. Enfin, j'agis avec confiance, sachant qu'Allâh est Celui qui anticipe et guide chaque avancée."
+   ]
+  },
+  {
+   "n": 72,
+   "ar": "الْمُؤَخِّرُ",
+   "tr": "Al-Mu'akhkhir",
+   "fr": "Celui qui recule",
+   "desc": "Celui qui retarde ou repousse qui Il veut selon Sa sagesse.",
+   "af": "072_al-muakhkhir",
+   "inv": {
+    "fr": "Mon Dieu j'implore Ton Pardon et Ta Grâce dans ce monde comme dans l'Au-delà.",
+    "ar": "اَللَّهُمَّ إِنِّي أَسْأَلُكَ العَفْوَ وَالعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ",
+    "tr": "Allâhumma innî as'aluka l-'afwa wa-l-'âfiyyata fî d-dunyâ wa-l-âkhirati."
+   },
+   "intro": [
+    "Est-ce que je ressens parfois le besoin de précipiter les choses dans ma vie ? Comment puis-je cultiver la patience ?",
+    "Face à un contretemps, je relativise en plaçant ma confiance en Allâh. Je me rappelle qu'Il a un plan parfait et que tout se déroule selon Sa volonté."
+   ]
+  },
+  {
+   "n": 73,
+   "ar": "الْأَوَّلُ",
+   "tr": "Al-Awwal",
+   "fr": "Le Premier",
+   "desc": "Celui qui n'a pas de commencement, avant qui il n'y a rien.",
+   "af": "073_al-awwal",
+   "inv": {
+    "fr": "Ô Premier ! Inscris-moi, par Ton pouvoir, dans les premiers parmi les devanciers.",
+    "ar": "يَا أَوَّلُ، اكْتُبْنِي عِنْدَكَ فِي أَوَائِلِ السَّابِقِينَ",
+    "tr": "Yâ Awwalu ! Uktub-nî 'inda-ka fî awâ'ili as-sâbiqîna."
+   },
+   "intro": [
+    "Quels aspects de ma vie pourraient bénéficier d'un nouveau départ ?",
+    "Je me visualise entamant un nouveau chapitre dans ma vie, notant les actions à entreprendre. Je les mets en œuvre avec confiance, sachant qu'Allâh est Celui qui facilite les débuts."
+   ]
+  },
+  {
+   "n": 74,
+   "ar": "الْآخِرُ",
+   "tr": "Al-Âkhir",
+   "fr": "Le Dernier",
+   "desc": "Celui qui n'a pas de fin, après qui il n'y a rien.",
+   "af": "074_al-akhir",
+   "inv": {
+    "fr": "Ô Dernier ! Scelle ma vie avec le sceau de ceux qui ont atteint la certitude.",
+    "ar": "يَا آخِرُ، اخْتِمْ لِي بِخَوَاتِمِ أَهْلِ اليَقِينِ",
+    "tr": "Yâ Âkhiru ! Ikhtim lî bi-khawâtimi ahli 'l-yaqîni."
+   },
+   "intro": [
+    "Est-ce que je trouve la paix intérieure en remettant à Allâh les résultats ultimes de mes actions ?",
+    "Je garde à l'esprit qu'Allâh est le Dernier et place ma confiance en Lui pour guider mes pas vers ce qui est ultimement bénéfique."
+   ]
+  },
+  {
+   "n": 75,
+   "ar": "الظَّاهِرُ",
+   "tr": "Az-Zâhir",
+   "fr": "L'Apparent",
+   "desc": "Celui dont l'existence est manifeste par les signes de Sa création.",
+   "af": "075_az-zahir",
+   "inv": {
+    "fr": "Ô Apparent ! Embellis mon apparence avec les excellences de la religion.",
+    "ar": "يَا ظَاهِرُ، حَسِّنْ ظَاهِرِي بِوَظَائِفِ الدِّينِ",
+    "tr": "Yâ Zâhiru ! Hassin zâhirî bi-wazâ'ifi 'd-dîn."
+   },
+   "intro": [
+    "Quels signes d'Allâh ai-je remarqués aujourd'hui dans Sa création qui ont particulièrement retenu mon attention ?",
+    "Chaque jour, je repère trois signes évidents d'Allâh autour de moi, renforçant ma foi et ma gratitude envers Sa création extraordinaire."
+   ]
+  },
+  {
+   "n": 76,
+   "ar": "الْبَاطِنُ",
+   "tr": "Al-Bâtin",
+   "fr": "Le Caché",
+   "desc": "Celui dont la réalité échappe à la perception des créatures.",
+   "af": "076_al-batin",
+   "inv": {
+    "fr": "Ô Intérieur ! Pare mon intériorité des douceurs de la certitude.",
+    "ar": "يَا بَاطِنُ، زَيِّنْ بَاطِنِي بِلَطَائِفِ اليَقِينِ",
+    "tr": "Yâ Bâtinu ! Zayyin bâtinî bi-latâ'ifi 'l-yaqîni."
+   },
+   "intro": [
+    "Quels éléments de la création me touchent profondément et pourquoi ?",
+    "Chaque jour, je médite sur la subtile présence d'Allâh. Je repère les moments où Sa proximité se manifeste."
+   ]
+  },
+  {
+   "n": 77,
+   "ar": "الْوَالِي",
+   "tr": "Al-Wâlî",
+   "fr": "Le Maître souverain",
+   "desc": "Celui qui gouverne toute chose et dispose de la création.",
+   "af": "077_al-wali",
+   "inv": {
+    "fr": "Ô Ami qui gouverne tous mes états ! Prends-moi en charge, guide-moi vers Toi. Compte-moi parmi ceux qui Te sont spéciaux et qui restent sous Ta protection.",
+    "ar": "يَا وَالِي، تَوَلَّنِي بِهِدَايَتِكَ وَاجْعَلْنِي مِنْ خَاصَّتِكَ وَأَهْلِ وِلَايَتِكَ",
+    "tr": "Yâ Wâlî ! Tawalla-nî bi-hidâyati-ka wa-'j'al-nî min khâssati-ka wa-ahli wilâyati-ka."
+   },
+   "intro": [
+    "Quelles sont les situations où j'ai ressenti qu'Allâh me guidait, de manière particulièrement claire ?",
+    "Je me rappelle qu'Allâh est le Gouverneur suprême de toute chose. Je lâche prise et confie ma vie à Al-Wâlî, le Meilleur des Tuteurs."
+   ]
+  },
+  {
+   "n": 78,
+   "ar": "الْمُتَعَالِي",
+   "tr": "Al-Muta'âlî",
+   "fr": "Le Très Sublime",
+   "desc": "Celui qui transcende tout ce que les créatures peuvent Lui attribuer d'imparfait.",
+   "af": "078_al-mutaali",
+   "inv": {
+    "fr": "Ô Transcendant ! Accorde-moi le don d'être témoin de Ton exaltation, Car elle illumine l'obscurité et clarifie les doutes (problèmes).",
+    "ar": "يَا مُتَعَالِي، ازْزُقْنِي مِنْ شُهُودِ تَعَالِيكَ مَا يُنِيرُ الظُّلُمَاتِ وَيُوَضِّحُ المُشْكِلَاتِ",
+    "tr": "Yâ Muta'âlî ! Urzuq-nî min shuhûdi ta'âliyi-ka mâ yunîru 'z-zulumâti wa-yuwaddihu 'l-mushkilât."
+   },
+   "intro": [
+    "Comment conçois-je Allâh ? Quelles sont les premières Qualités sublimes qui me viennent à l'esprit ?",
+    "Je me rappelle de la Grandeur, de la Puissance et de la Magnificence d'Allâh. Je sais qu'Il surpasse en bien toutes mes pensées à Son égard et je Lui demande de me guider."
+   ]
+  },
+  {
+   "n": 79,
+   "ar": "الْبَرُّ",
+   "tr": "Al-Barr",
+   "fr": "Le Bienfaiteur",
+   "desc": "Celui qui répand Sa bonté sur toute Sa création.",
+   "af": "079_al-barr",
+   "inv": {
+    "fr": "Ô Bonté ! Fais que je sois bon, humble, pieux face à Ton pouvoir. Et qu'ainsi, par bonté envers moi, Tu sois Contenté et Satisfait.",
+    "ar": "يَا بَرُّ، اجْعَلْنِي عِنْدَكَ بَرّاً تَقِيّاً وَمِنْ بِرِّكَ رَاضِياً مَرْضِيّاً",
+    "tr": "Yâ Barru ! Ij'al-nî 'inda-ka bârran taqiyyan wa-min birri-ka râdiyan mardîyan."
+   },
+   "intro": [
+    "Comment puis-je renforcer ma gratitude envers les bienfaits quotidiens d'Allâh, qu'ils soient matériels ou spirituels ?",
+    "Je note au moins trois choses pour lesquelles je suis reconnaissant(e) envers Allâh, qu'elles soient liées à ma vie matérielle ou spirituelle."
+   ]
+  },
+  {
+   "n": 80,
+   "ar": "التَّوَّابُ",
+   "tr": "At-Tawwâb",
+   "fr": "Celui qui accueille le repentir",
+   "desc": "Celui qui accepte sans cesse le retour de Ses serviteurs vers Lui.",
+   "af": "080_at-tawwab",
+   "inv": {
+    "fr": "Ô Celui qui accepte le repentir ! Accorde-moi les bienfaits d'un retour authentique vers Toi. Ne me laisse pas me discréditer par une quelconque séduction ou abandon.",
+    "ar": "يَا تَوَّابُ، ارْزُقْنِي إِلَيْكَ تَوْبَةً نَصُوحاً وَلَا تَدَعْ لِي إِلَى المُخَالَفَةِ مَيْلاً وَلَا جُنُوحاً",
+    "tr": "Yâ Tawwâbu ! Urzuq-nî ilay-ka tawbatan nasûhan wa-lâ tada' lî ilâ al-mukhâlafati maylan wa-lâ junûhan."
+   },
+   "intro": [
+    "Comment puis-je cultiver un état d'esprit de repentir constant dans ma vie quotidienne ?",
+    "Je réfléchis aux actions où j'ai mal agit, je prends conscience de cela et je demande à Allâh Son pardon, en Lui promettant de m'améliorer."
+   ]
+  },
+  {
+   "n": 81,
+   "ar": "الْمُنْتَقِمُ",
+   "tr": "Al-Muntaqim",
+   "fr": "Le Vengeur",
+   "desc": "Celui qui punit les oppresseurs et rend justice après avoir laissé un délai.",
+   "af": "081_al-muntaqim",
+   "inv": {
+    "fr": "« Notre Seigneur, arme-nous de patience, affermis nos pas et accorde-nous une issue et une victoire sur les injustes ! Certes, nulle autre divinité en dehors de Toi, le Puissant, le Justicier. »",
+    "ar": "﴿رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَافْتَحْ عَلَيْنَا وَانْصُرْنَا عَلَى القَوْمِ الظَّالِمِينَ إِنَّكَ أَنْتَ اللَّهُ لَا إِلَهَ إِلَّا أَنْتَ العَزِيزُ ذُو انْتِقَامٍ﴾",
+    "tr": "Rabbanâ afrigh 'alaynâ sabran wa thabet aqdamanâ wa iftah 'alaynâ wa 'insurnâ 'alâ al-qawm az-zâlimîna innâ lâ ilaha illâ anta al-'azîz dhû intiqâm."
+   },
+   "intro": [
+    "Ai-je déjà expérimenté les conséquences de mes actes, que ce soit positif ou négatif ?",
+    "Je me rappelle qu'Allâh assure une justice parfaite pour cultiver une conscience plus profonde de l'impact de mes actions."
+   ]
+  },
+  {
+   "n": 82,
+   "ar": "الْعَفُوُّ",
+   "tr": "Al-'Afuww",
+   "fr": "Celui qui efface",
+   "desc": "Celui qui efface totalement les péchés, comme s'ils n'avaient jamais été.",
+   "af": "082_al-afuww",
+   "inv": {
+    "fr": "Ô Celui qui efface les péchés ! Couvre mes fautes par Ton Excellence et Ta Bonté. Et traite-moi avec la Générosité et la Grâce qui T'appartiennent.",
+    "ar": "يَا عَفُوُّ، اعْفُ عَنِّي بِفَضْلِكَ وَإِحْسَانِكَ وَعَامِلْنِي بِكَرَمِكَ وَامْتِنَانِكَ",
+    "tr": "Yâ 'Afûwu ! U'fu 'an-nî bi-fadli-ka wa-ihsâni-ka wa-'âmil-nî bi-karami-ka wa-'mtinâni-ka."
+   },
+   "intro": [
+    "Quels comportements ou attitudes dois-je abandonner pour mieux refléter la qualité de l'indulgence ?",
+    "Je réfléchis aux moments nécessitant clémence, envers moi-même ou autrui. J'exprime ce repentir sincèrement, en invoquant Al-'Afuww."
+   ]
+  },
+  {
+   "n": 83,
+   "ar": "الرَّءُوفُ",
+   "tr": "Ar-Ra'ûf",
+   "fr": "Le Très Doux",
+   "desc": "Celui dont la compassion et la bienveillance sont infinies.",
+   "af": "083_ar-rauf",
+   "inv": {
+    "fr": "Ô Indulgent ! Sois Clément, Miséricordieux envers moi dans les deux mondes. Et de Ta grande Clémence envers les croyants, accorde-moi une belle part. Fais-moi part de cette immense chance.",
+    "ar": "يَا رَؤُوفُ، كُنْ لِي فِي الدَّارَيْنِ رَؤُوفاً رَحِيماً وَاقْسِمْ لِي مِنَ الرَّأْفَةِ بِالمُؤْمِنِينَ قِسْماً وَافِراً وَحَظّاً عَظِيماً",
+    "tr": "Yâ Ra'ûf ! Kun lî fî 'd-dârayna ra'ûfan rahîman wa-'qsim lî min 'r-ra'fati bi-'l-mu'minîna qisman wâfiran wa-hazzan 'azîman."
+   },
+   "intro": [
+    "Dans quelles situations ai-je besoin de faire preuve de plus de tendresse envers moi-même et envers autrui ?",
+    "Chaque jour, je choisis une personne de mon entourage et lui exprime ma bienveillance, que ce soit par un mot gentil, un geste attentionné ou un acte de soutien."
+   ]
+  },
+  {
+   "n": 84,
+   "ar": "مَالِكُ الْمُلْكِ",
+   "tr": "Mâlik al-Mulk",
+   "fr": "Le Souverain absolu",
+   "desc": "Celui à qui appartient toute la royauté, qu'Il donne à qui Il veut.",
+   "af": "084_malik-al-mulk",
+   "inv": {
+    "fr": "Ô Détenteur de la Royauté ! Je me réfugie en Toi pour éviter les chemins de la perdition.",
+    "ar": "يَا مَالِكَ المُلْكِ، أَعُوذُ بِكَ مِنْ مَسَالِكِ المُلْكِ",
+    "tr": "Yâ Mâlik-ul-Mulk ! A'ûdhu bi-ka min masâliki 'l-mulk."
+   },
+   "intro": [
+    "Les biens matériels prennent-ils de l'importance dans ma vie ?",
+    "Je médite sur le fait que tout appartient à Allâh. Que vais-je emporter avec moi, si ce n'est mes œuvres ? Cela me rappelle l'importance de partager ce que j'ai et de me détacher des biens matériels, en vue de l'Au-delà."
+   ]
+  },
+  {
+   "n": 85,
+   "ar": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+   "tr": "Dhûl-Jalâli wal-Ikrâm",
+   "fr": "Détenteur de la majesté et de la générosité",
+   "desc": "Celui qui réunit toute grandeur et toute générosité.",
+   "af": "085_dhul-jalali-wal-ikram",
+   "inv": {
+    "fr": "Ô Celui à qui appartiennent la Majesté et la Générosité ! Offre-nous la Voie qui requiert la rectitude. Gloire à Toi, notre Seigneur, Tu es certes Celui qui offre sans cesse, le Très-Généreux.",
+    "ar": "يَا ذَا الجَلَالِ وَالإِكْرَامِ، اهْدِنَا الصِّرَاطَ المُسْتَقِيمَ تَبَارَكْتَ رَبَّنَا إِنَّكَ أَنْتَ الوَهَّابُ الكَرِيمُ",
+    "tr": "Yâ Dhâl-Jalâli wal-Ikrâmi ! Ihdinâ sirata al-mustaqîma tabârakta rabbânâ innaka anta al-wahhâb al-karîm."
+   },
+   "intro": [
+    "Quelles actions puis-je entreprendre pour honorer la perfection d'Allâh dans mes interactions avec les autres ?",
+    "Lorsque je cherche absolument la perfection en moi et autour de moi, je me rappelle qu'Allâh Seul est parfait, ce qui me permet de relativiser mon imperfection."
+   ]
+  },
+  {
+   "n": 86,
+   "ar": "الْمُقْسِطُ",
+   "tr": "Al-Muqsit",
+   "fr": "L'Équitable",
+   "desc": "Celui qui juge et agit avec la plus parfaite équité.",
+   "af": "086_al-muqsit",
+   "inv": {
+    "fr": "Ô Équitable ! Juge-moi selon Ta Bonté et Tes Bienfaits et ce quel que soit mon état, et ne me juge pas d'après Ton Équité et Ta Justice.",
+    "ar": "يَا مُقْسِطُ، اسْتَعْمِلْنِي بِالقِسْطِ فِي جَمِيعِ أَحْوَالِي بِفَضْلِكَ وَلَا تُعَامِلْنِي بِقِسْطِكَ وَعَدْلِكَ",
+    "tr": "Yâ Muqsitu ! Ista'mil-nî bi-'l-qisti fî jamî'i ahwâlî bi-fadli-ka wa-lâ tu'âmil-nî bi-qisti-ka wa-'adli-ka."
+   },
+   "intro": [
+    "Est-ce que je tends vers la justice dans mes décisions et actions au quotidien ? Si non, comment m'améliorer ?",
+    "Je prends conscience des moments où j'ai agit avec équité et ceux où je pourrais améliorer mes jugements. Je m'engage à agir de manière plus juste et équitable à l'avenir."
+   ]
+  },
+  {
+   "n": 87,
+   "ar": "الْجَامِعُ",
+   "tr": "Al-Jâmi'",
+   "fr": "Celui qui rassemble",
+   "desc": "Celui qui rassemblera les créatures au Jour de la Résurrection.",
+   "af": "087_al-jami",
+   "inv": {
+    "fr": "Ô Celui qui réunit ! Rassemble les dispersements de mon être par Tes mains qui réunissent. Et soude ensemble mes tentatives afin de n'être qu'un devant Toi. Puis, au jour du Rassemblement, accorde-moi une part d'honneur pour être en Ta compagnie et pouvoir Te contempler.",
+    "ar": "يَا جَامِعُ، اجْمَعْ مُفْتَرِقَاتِ كَوْنِي فِي جَمْعِ الجَمْعِ بَيْنَ يَدَيْكَ وَارْزُقْنِي يَوْمَ الجَمْعِ قُرْبَكَ وَالنَّظَرَ إِلَيْكَ",
+    "tr": "Yâ Jâmi'u ! Ijma' mutafarriqât kawn-î fî jam'i 'l-jâm'i bayna yaday-ka wa-'rzuq-nî yawma 'l-jam'i qurba-ka wa-'n-nazara ilay-ka."
+   },
+   "intro": [
+    "Comment puis-je concrètement contribuer à l'unité et à l'harmonie dans ma communauté ?",
+    "J'organise un rassemblement pour un objectif noble, que ce soit en famille ou entre amis restant réceptif(ve) aux enseignements et aux bienfaits qui en découlent."
+   ]
+  },
+  {
+   "n": 88,
+   "ar": "الْغَنِيُّ",
+   "tr": "Al-Ghaniyy",
+   "fr": "Le Riche par Lui-même",
+   "desc": "Celui qui se suffit à Lui-même et dont toute chose dépend.",
+   "af": "088_al-ghaniyy",
+   "inv": {
+    "fr": "Ô Riche absolu ! Accorde-moi la richesse de connaître Ton honorabilité et Tes bienfaits. Par Ta beauté et Ta bonté, et par Ton excellence et Ta magnificence, sois Bienveillant envers moi le jour où je retournerais vers Toi.",
+    "ar": "يَا غَنِيُّ، اجْعَلْنِي غَنِيّاً بِافْتِقَارِي إِلَى كَرَمِكَ وَأَفْضَالِكَ وَكُنْ بِي حَفِيّاً يَوْمَ وُرُودِي عَلَيْكَ بِإِحْسَانِكَ وَإِجْمَالِكَ",
+    "tr": "Yâ Ghanî ! Ij'al-nî ghaniyyan bi-'ftiqârî ilâ karami-ka wa-afdâli-ka wa-kun bî hafiyyan yawma wurûd-î 'alay-ka bi-ihsâni-ka wa-ijmâli-ka."
+   },
+   "intro": [
+    "Quels sont les besoins que je ressens actuellement, qu'ils soient d'ordre matériel, émotionnel ou spirituel, que je puisse confier à Allâh, en reconnaissant Sa qualité d'Al-Ghaniyy ?",
+    "J'invoque Allâh tout en étant confiant(e) en Sa capacité à répondre à tous mes besoins de la meilleure façon."
+   ]
+  },
+  {
+   "n": 89,
+   "ar": "الْمُغْنِي",
+   "tr": "Al-Mughnî",
+   "fr": "Celui qui enrichit",
+   "desc": "Celui qui accorde la richesse et la suffisance à qui Il veut.",
+   "af": "089_al-mughni",
+   "inv": {
+    "fr": "Ô Celui qui rend libre de toute dépendance ! Écarte-moi de tous les mondes en me dirigeant vers Toi. Et accorde-moi la grâce de réaliser des œuvres sincères en plaçant ma confiance en Toi.",
+    "ar": "يَا مُغْنِي، أَغْنِنِي عَنِ العَوَالِمِ كُلِّهَا بِالانْقِطَاعِ إِلَيْكَ وَأَعِنِّي عَلَى أُمُورِي بِصِدْقِ التَّوْكِيلِ عَلَيْكَ",
+    "tr": "Yâ Mughnî ! Aghni-nî 'ani 'l-'awâlimi kulli-hâ bi-'l-inqitâ'i ilay-ka wa-a'in-nî 'alâ umûrî bi-sidqi 't-tawkîli 'alay-ka."
+   },
+   "intro": [
+    "Est-ce que je ressens fréquemment un sentiment d'insatisfaction dans ma vie ? Comment surmonter cela ?",
+    "Je fais une liste de mes besoins et préoccupations actuels, puis je les remets à Allâh en tant qu'Al-Mughnî dans mes prières quotidiennes."
+   ]
+  },
+  {
+   "n": 90,
+   "ar": "الْمَانِعُ",
+   "tr": "Al-Mâni'",
+   "fr": "Celui qui préserve",
+   "desc": "Celui qui empêche ce qui doit être empêché par sagesse.",
+   "af": "090_al-mani",
+   "inv": {
+    "fr": "Ô Celui qui repousse ! Préserve-moi, par la pureté de Ta face, du mal siégeant chez les malveillants. Et garde-moi, par la perfection de Ta protection, d'emprunter la voie des péchés.",
+    "ar": "يَا مَانِعُ، امْنَعْنِي بِلُطْفِ عِنَايَتِكَ مِنْ شَرِّ الأَشْرَارِ وَاحْفَظْنِي بِحُسْنِ رِعَايَتِكَ مِنِ اقْتِحَامِ الأَوْزَارِ",
+    "tr": "Yâ Mâni'u ! Imna'-nî bi-lutfi 'inâyati-ka min sharri 'l-ashrâri wa-'hfaz-nî bi-husni ri'âyati-ka mina 'qtihâmi 'l-awzâr."
+   },
+   "intro": [
+    "Quels sont les bénéfices personnels que je retire en respectant les interdictions divines ?",
+    "Je médite sur une interdiction divine qui guide mes actions, en cherchant à en comprendre la sagesse et à l'appliquer consciencieusement dans ma vie."
+   ]
+  },
+  {
+   "n": 91,
+   "ar": "الضَّارُّ",
+   "tr": "Ad-Dârr",
+   "fr": "Celui qui peut nuire",
+   "desc": "Celui qui décrète l'épreuve à qui Il veut, selon Sa sagesse.",
+   "af": "091_ad-darr",
+   "inv": {
+    "fr": "Ô Celui qui nuit ! Ô Favorable ! Compte-moi parmi ceux pour qui ce monde n'est que nuisance, parmi ceux qui aspirent à la Vie dernière, qui abandonnent leurs passions et leurs désirs pour contempler les bienfaits éclatants.",
+    "ar": "يَا ضَارُّ يَا نَافِعُ، اِجْعَلْنِي مِمَّنْ يُضَرُّ بِدُنْيَاهُ لِطَلَبِ الآخِرَةِ وَيَذَرُ هَوَاهُ وَمُنَاهُ لِشُهُودِ المَنَافِعِ الفَاخِرَةِ",
+    "tr": "Yâ Dârru ! Yâ Nâfi'u ! Ij'al-nî mim-man yudarru bi-dunyâ-hu li-talabi 'l-âkhirati wa-yadharu hawâ-hu wa-munâhu li-shuhûdi 'l-manâfi'i 'l-fâkhirati."
+   },
+   "intro": [
+    "Quelles leçons puis-je tirer des épreuves de ma vie pour en faire un tremplin dans ma quête spirituelle ?",
+    "En période de difficultés, je garde patience, car je suis conscient(e) qu'Allâh détient la sagesse sur ce qui est meilleur pour moi, et que cette épreuve est une chance de me rapprocher de Lui."
+   ]
+  },
+  {
+   "n": 92,
+   "ar": "النَّافِعُ",
+   "tr": "An-Nâfi'",
+   "fr": "Le Bienfaiteur",
+   "desc": "Celui qui apporte le bien et le profit à qui Il veut.",
+   "af": "092_an-nafi",
+   "inv": {
+    "fr": "Ô Celui qui nuit ! Ô Favorable ! Seigneur, Connaisseur du manifesté et du non-manifesté, Seigneur et Possesseur de toutes choses, je demande Ta protection contre les méfaits de mon âme, les méfaits du diable.",
+    "ar": "يَا ضَارُّ يَا نَافِعُ، اَللَّهُمَّ عَالِمُ الغَيْبِ وَالشَّهَادَةِ رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَمِنْ شَرِّ الشَّيْطَانِ",
+    "tr": "Yâ Dârru ! Yâ Nâfi'u ! Allâhumma 'âlima al-ghaybi wa-ch-chahâdati, rabba kulli chay'in wa-mâlîkahu, a'ûdhu bika min charri nafsî, wa-min charri ch-chaytâni."
+   },
+   "intro": [
+    "Dans quelles situations récentes ai-je remarqué les bienfaits d'Allâh se manifester de manière évidente ?",
+    "Je réfléchis aux bienfaits qu'Allâh m'apporte. Ensuite, j'exprime ma gratitude envers Lui et je cherche des moyens pour partager ces bienfaits avec ceux qui m'entourent."
+   ]
+  },
+  {
+   "n": 93,
+   "ar": "النُّورُ",
+   "tr": "An-Nûr",
+   "fr": "La Lumière",
+   "desc": "Celui qui illumine les cieux et la terre, et guide les cœurs.",
+   "af": "093_an-nur",
+   "inv": {
+    "fr": "Ô Lumière des cieux et de la terre, en ce sens qu'Il guide les pieux ! Accorde-moi une lumière qui me permette de marcher parmi les êtres (serviteurs).",
+    "ar": "يَا نُورَ السَّمَوَاتِ وَالأَرْضِ بِمَعْنَى الهِدَايَةِ لِأَهْلِهَا وَالإِرْشَادِ، اجْعَلْ لِي نُوراً أَمْشِي بِهِ فِي العِبَادِ",
+    "tr": "Yâ Nûra 's-samawâti wa-'l-ardi bi-ma'nâ 'l-hidâyati li-ahli-hâ wa-'l-irshâdi ! Ij'al lî nûran amshî bi-hi fî 'l-'ibâd."
+   },
+   "intro": [
+    "Comment puis-je refléter la lumière divine pour inviter les autres vers le bien et la vérité ?",
+    "Je demande à Allâh de guider mes pas tout au long de la journée, en illuminant ma compréhension et en éclairant ma route."
+   ]
+  },
+  {
+   "n": 94,
+   "ar": "الْهَادِي",
+   "tr": "Al-Hâdî",
+   "fr": "Le Guide",
+   "desc": "Celui qui guide vers la vérité et vers le droit chemin.",
+   "af": "094_al-hadi",
+   "inv": {
+    "fr": "Ô Guide ! Guide-moi vers les bonnes œuvres. Et embellis-moi avec le plus noble des états.",
+    "ar": "يَا هَادِي، اهْدِنِي لِأَحْسَنِ الأَعْمَالِ وَزَيِّنِي بِأَشْرَفِ الأَحْوَالِ",
+    "tr": "Yâ Hâdî ! Ihdi-nî li-ahsani 'l-a'mâli wa-zayyin-nî bi-ashrafi 'l-ahwâli."
+   },
+   "intro": [
+    "À quelles occasions ai-je ressenti la guidance d'Allâh me dirigeant vers ce qui est meilleur pour moi ?",
+    "Je demande à Allâh de toujours me guider dans les décisions à prendre. Je suis attentif(ve) aux signes qui se manifestent et j'agis en conséquence. J'exprime ma gratitude envers Allâh pour Sa présence constante dans ma vie."
+   ]
+  },
+  {
+   "n": 95,
+   "ar": "الْبَدِيعُ",
+   "tr": "Al-Badî'",
+   "fr": "L'Inventeur",
+   "desc": "Celui qui crée sans modèle préalable, l'Auteur incomparable de la création.",
+   "af": "095_al-badi",
+   "inv": {
+    "fr": "Ô Créateur des cieux et de la terre, qui n'a ni pareil ni égal ! Laisse-moi connaître les merveilles de Ta sagesse. Celles qui ôtent tout doute et éclairent tout soupçon.",
+    "ar": "يَا بَدِيعَ السَّمَوَاتِ وَالأَرْضِ عَنْ غَيْرِ قِيَاسٍ وَلَا مِثَالٍ، أَظْهِرْ لِي مِنْ بَدَائِعِ حِكْمَتِكَ مَا يَنْفِي كُلَّ الْتِبَاسٍ وَيُوَضِّحُ كُلَّ إِشْكَالٍ",
+    "tr": "Yâ Badî'a 's-samawâti wa-'l-ardi 'an ghayri qiyâsin wa-lâ mithâlin ! Azhir lî min badâ'i'i hikmati-ka mâ yanfî kulla 'ltibâsin wa-yuwaddihu kulla ishkâlin."
+   },
+   "intro": [
+    "Comment puis-je développer une sensibilité plus profonde pour apercevoir les merveilles de la création d'Allâh au quotidien ?",
+    "Je planifie une sortie pour aller explorer les créations merveilleuses d'Allâh et me rappeler Sa capacité infinie à créer sans modèle préalable."
+   ]
+  },
+  {
+   "n": 96,
+   "ar": "الْبَاقِي",
+   "tr": "Al-Bâqî",
+   "fr": "L'Éternel",
+   "desc": "Celui qui subsiste à jamais, alors que toute autre chose périt.",
+   "af": "096_al-baqi",
+   "inv": {
+    "fr": "Ô Éternel, dont la permanence n'a ni début ni fin ! Accorde-moi, de la Station de la Permanence, la part la plus agréable.",
+    "ar": "يَا بَاقِي، فَلَا انْتِهَاءَ لِبَقَائِهِ وَلَا آخِرَ، هَبْ لِي مِنْ مَقَامِ البَقَاءِ الحَظَّ الوَافِرَ",
+    "tr": "Yâ Bâqî, fa-lâ 'ntihâ'a li-baqâ'i-Hi wa-lâ âkhir ! Hab lî min maqâmi 'l-baqâ'i 'l-hazza 'l-wâfira."
+   },
+   "intro": [
+    "Comment puis-je éviter de me laisser absorber par les distractions temporaires et orienter mes actions vers ce qui est bénéfique pour l'Au-delà ?",
+    "Je médite sur la nature éphémère de ce monde. Je m'engage à investir mon temps et mon énergie dans des actions qui auront un impact pour ma vie dans l'Au-delà."
+   ]
+  },
+  {
+   "n": 97,
+   "ar": "الْوَارِثُ",
+   "tr": "Al-Wârith",
+   "fr": "L'Héritier",
+   "desc": "Celui qui demeure après la disparition de toutes les créatures.",
+   "af": "097_al-warith",
+   "inv": {
+    "fr": "Ô Héritier ! Compte-moi parmi les héritiers de Ta perfection dans un endroit noble. Et fais que je sois, par Ton avantage, parmi les héritiers de Ton Jardin béni (Paradis).",
+    "ar": "يَا وَارِثُ، أَخْصُصْنِي مِنْ وِرَاثَةِ خَوَاصِّكَ بِمَقَامٍ كَرِيمٍ وَاجْعَلْنِي بِفَضْلِكَ مِنْ وَرَثَةِ جَنَّةِ النَّعِيمِ",
+    "tr": "Yâ Wârith ! Ukhsus-nî min wirâthati khawâssi-ka bi-maqâmin karîmin wa-'j'al-nî bi-fadli-ka min warathati jannati 'n-na'îm."
+   },
+   "intro": [
+    "Quelles sont les empreintes que je laisse derrière moi ? Quelles actions bénéfiques aimerais-je accomplir avant qu'il ne soit trop tard ?",
+    "Chaque jour, je cultive une attitude de détachement en reconnaissant qu'Allâh est le véritable Héritier de toutes choses."
+   ]
+  },
+  {
+   "n": 98,
+   "ar": "الرَّشِيدُ",
+   "tr": "Ar-Rashîd",
+   "fr": "Le Guide de la rectitude",
+   "desc": "Celui qui mène toute chose à sa perfection par une sagesse infaillible.",
+   "af": "098_ar-rashid",
+   "inv": {
+    "fr": "Ô Celui qui agit avec sagesse et droiture ! Dirige-moi vers l'obéissance et l'amour pour Toi. Et fais de moi un guide pour Tes serviteurs cheminant sur la voie de Ton unicité et de Ta sagesse.",
+    "ar": "يَا رَشِيدُ، أَرْشِدْنِي إِلَى طَاعَتِكَ وَمَحَبَّتِكَ وَاجْعَلْنِي مُرْشِداً لِعِبَادِكَ إِلَى طَرِيقِ تَوْحِيدِكَ وَمَعْرِفَتِكَ",
+    "tr": "Yâ Rashîd ! Arshid-nî ilâ tâ'ati-ka wa-mahabbati-ka wa-'j'al-nî murshidan li-'ibâdi-ka ilâ tarîqi tawhîdi-ka wa-ma'rifati-ka."
+   },
+   "intro": [
+    "Comment puis-je exprimer ma gratitude envers Allâh pour Ses sages ordonnances dans ma vie ?",
+    "Je repense à une époque où Allâh m'a guidé(e) d'une manière extraordinaire : lorsque Sa lumière a éclairé mon chemin, et que Sa sagesse a guidé mes pas. Quelles leçons en ai-je tirées ?"
+   ]
+  },
+  {
+   "n": 99,
+   "ar": "الصَّبُورُ",
+   "tr": "As-Sabûr",
+   "fr": "Le Très Patient",
+   "desc": "Celui qui use de patience et ne se hâte pas de punir les fautifs.",
+   "af": "099_as-sabur",
+   "inv": {
+    "fr": "Ô Très-Patient ! Accorde-moi la patience dans l'obéissance, et préserve-moi de la désobéissance. Rends-moi patient dans les épreuves et dans les moments de bien-être.",
+    "ar": "يَا صَبُورُ، صَبِّرْنِي عَلَى طَاعَتِكَ وَعَنْ مَعْصِيَتِكَ وَاجْعَلْنِي صَبُوراً فِي بَلْوَاكَ وَعَافِيَتِكَ",
+    "tr": "Yâ Sabûr ! Sabbir-nî 'alâ tâ'ati-ka wa-'an ma'siyati-ka wa-'j'al-nî sabûran fî balwâ-ka wa-'âfiyati-ka."
+   },
+   "intro": [
+    "Comment puis-je pratiquer la patience envers les autres, en reconnaissant que chacun porte ses faiblesses et ses erreurs, tout comme Allâh est patient envers moi ?",
+    "À chaque signe d'impatience, je respire profondément et invoque As-Sabûr, pour réagir avec calme et patience."
+   ]
   }
+ ],
+ "audioSource": {
+  "name": "MohammedAbidNafi/99-Names-of-Allah",
+  "license": "MIT",
+  "note": "Récitations locales dans books/asma-audio/ (converties en MP3, renommées {n}_{nom}.mp3)"
+ },
+ "invocationSource": {
+  "collection": "Les Essentiels",
+  "author": "Souad El Mansouri",
+  "title": "Les 99 Noms d'Allah",
+  "publisher": "Al Bouraq",
+  "note": "Source des sections Invocation & Introspection de chaque nom."
+ }
 }
