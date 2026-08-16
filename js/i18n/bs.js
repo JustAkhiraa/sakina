@@ -1263,4 +1263,5 @@ export default {
   "bkv.simple": "Jednostavno",
   "quran.noFav": "Nema favorita",
   "quran.noNote": "Nema bilješki",
+  "duas.langFallback": "Objavljeni prijevod na {lang} — za ovu dovu nema izdanja na vašem jeziku.",
 };

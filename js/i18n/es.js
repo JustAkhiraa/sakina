@@ -1246,4 +1246,5 @@ export default {
   "bkv.simple": "Sencillo",
   "quran.noFav": "Ningún favorito",
   "quran.noNote": "Ninguna nota",
+  "duas.langFallback": "Traducción publicada en {lang}: no hay edición en su idioma para esta súplica.",
 };

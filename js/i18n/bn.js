@@ -1246,4 +1246,5 @@ export default {
   "bkv.simple": "সরল",
   "quran.noFav": "এখনও কোনো প্রিয় নেই",
   "quran.noNote": "এখনও কোনো নোট নেই",
+  "duas.langFallback": "{lang}-এ প্রকাশিত অনুবাদ — এই দোয়ার জন্য আপনার ভাষায় কোনো সংস্করণ নেই।",
 };

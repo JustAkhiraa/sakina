@@ -589,6 +589,7 @@ export default {
   "tj.qalqala": "Qalqala",
   "tj.ikhfa": "Ikhfâ",
   "tj.idgham": "Idghâm",
+  "duas.langFallback": "Traduction publiée en {lang} — aucune édition dans votre langue pour cette invocation.",
   "duas.copy": "📋 Copier",
   "duas.count": "📿 Compter",
   "adhan.vOmar": "Omar Hisham Al-Arabi",

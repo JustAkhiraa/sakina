@@ -1266,4 +1266,5 @@ export default {
   "bkv.simple": "Sauƙi",
   "quran.noFav": "Babu abin da aka fi so tukuna",
   "quran.noNote": "Babu bayanin kula tukuna",
+  "duas.langFallback": "Fassarar da aka buga da {lang} — babu bugu a harshenka don wannan addu'ar.",
 };

@@ -1,7 +1,8 @@
 /* SAKINA — Invocations : catégories, recherche, copie, envoi vers le tasbih */
 import {toast,openSheet} from '../core/ui.js';
-import {t,tf,tfSrc} from '../lib/i18n.js';
+import {t,tf,tfSrc,tfSrcLang} from '../lib/i18n.js';
 import {DUAS} from '../data/duas.js';
+import {LANGS} from '../data/catalog.js';
 import {setDhikr} from './tasbih.js';
 import {goPage} from '../core/router.js';
 import {S} from '../core/store.js';
@@ -43,6 +44,23 @@ export function duaTranslation(d){
     if(off)return off;
   }
   return tfSrc(`dut.${d.id}`,d.translation||'');
+}
+
+/* Langue reellement servie, pour la marquer quand ce n'est pas celle du
+   lecteur. Quatre invocations n'existent dans aucune edition traduite
+   (deux ne relevent pas de Hisn al-Muslim) : elles resteront en francais
+   partout, autant le dire plutot que de laisser croire a un oubli. */
+export function duaTranslationLang(d){
+  if(d.verses&&TR_BY_CODE[S.lang]&&versesText(d.verses,S.lang))return S.lang;
+  return tfSrcLang(`dut.${d.id}`);
+}
+
+/* Etiquette de langue, vide quand la traduction est bien dans la langue lue. */
+export function duaLangTag(d){
+  const src=duaTranslationLang(d);
+  if(src===(S.lang||'fr'))return '';
+  const nom=(LANGS.find(l=>l.code===src)||{}).name||src.toUpperCase();
+  return `<span class="dua-tr-lang" title="${t('duas.langFallback',{lang:nom})}">${src.toUpperCase()}</span>`;
 }
 
 /* Le corpus se charge une fois par langue, puis on redessine : le rendu
@@ -89,7 +107,7 @@ function renderDuas(){
     const arHtml=arabicHtml(d);
     const card=document.createElement('div');card.className='dua-card gc';
     card.innerHTML=`<div class="dua-head"><div class="dua-num">${i+1}</div><div style="flex:1"><div class="dua-title">${d.icon||'✦'} ${duaTitle(d)}</div><div class="dua-occ">${duaOcc(d)}</div></div><div class="dua-chev"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div>
-      <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-ph">${d.phonetic||''}</div><div class="dua-tr">${duaTranslation(d)}</div><div class="dua-ref">📚 ${d.ref||''}</div>
+      <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-ph">${d.phonetic||''}</div><div class="dua-tr">${duaTranslation(d)}${duaLangTag(d)}</div><div class="dua-ref">📚 ${d.ref||''}</div>
       <div class="dua-acts"><div class="dua-act dua-act-copy">${t('duas.copy')}</div><div class="dua-act dua-act-use">${t('duas.count')}</div></div></div>`;
     card.querySelector('.dua-head').addEventListener('click',()=>card.classList.toggle('open'));
     card.querySelector('.dua-act-copy').addEventListener('click',e=>{
@@ -131,7 +149,7 @@ function initSearch(){
       const arHtml=arabicHtml(d);
       const el=document.createElement('div');el.className='dua-card gc open';
       el.innerHTML=`<div class="dua-head"><div class="dua-num">✦</div><div style="flex:1"><div class="dua-title">${d.icon||''} ${duaTitle(d)}</div><div class="dua-occ">${duaCat(d)} · ${duaOcc(d)}</div></div></div>
-        <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-tr">${duaTranslation(d)}</div><div class="dua-ref">📚 ${d.ref||''}</div></div>`;
+        <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-tr">${duaTranslation(d)}${duaLangTag(d)}</div><div class="dua-ref">📚 ${d.ref||''}</div></div>`;
       res.appendChild(el);
     });
   });

@@ -1246,4 +1246,5 @@ export default {
   "bkv.simple": "ساده",
   "quran.noFav": "هنوز موردی نشان نشده",
   "quran.noNote": "هنوز یادداشتی نیست",
+  "duas.langFallback": "ترجمهٔ منتشرشده به {lang} — برای این دعا نسخه‌ای به زبان شما موجود نیست.",
 };

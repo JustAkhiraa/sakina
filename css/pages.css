@@ -168,6 +168,10 @@
 .dua-ph{font-size:0.82rem;color:var(--t2);line-height:1.85;font-style:italic;padding:10px 20px;border-top:1px solid var(--bor2);}
 .dua-tr{font-size:0.86rem;color:var(--t1);line-height:1.8;padding:12px 20px;border-top:1px solid var(--bor2);}
 .dua-ref{font-size:0.66rem;color:var(--t3);padding:6px 20px 14px;text-align:right;font-style:italic;}
+/* Marque la traduction servie dans une autre langue que celle qui est lue :
+   aucune edition publiee ne couvre les 28 invocations dans les 17 langues,
+   et un melange non signale se lit comme un oubli. */
+.dua-tr-lang{display:inline-block;margin-left:8px;padding:1px 6px;border-radius:var(--r-sm);background:var(--sur2);border:1px solid var(--bor);font-size:0.6rem;font-weight:700;letter-spacing:0.04em;color:var(--t3);vertical-align:middle;font-style:normal;}
 .dua-pause{display:block;background:rgba(251,146,60,0.1);border:1px dashed rgba(251,146,60,0.28);border-radius:var(--r-sm);padding:6px 12px;margin:6px 0;font-size:0.75rem;color:#fb923c;font-family:var(--ff-b);font-style:normal;}
 .dua-acts{display:flex;gap:8px;padding:4px 20px 16px;}
 .dua-act{flex:1;padding:10px;border-radius:var(--r-md);background:var(--sur2);border:1px solid var(--bor);font-size:0.72rem;font-weight:700;color:var(--t2);cursor:pointer;text-align:center;transition:all 0.18s;}

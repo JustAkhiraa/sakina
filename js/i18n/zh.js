@@ -1246,4 +1246,5 @@ export default {
   "bkv.simple": "简明",
   "quran.noFav": "暂无收藏",
   "quran.noNote": "暂无笔记",
+  "duas.langFallback": "{lang}版已出版译文——本祈祷词尚无您所用语言的版本。",
 };

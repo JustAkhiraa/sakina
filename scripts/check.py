@@ -289,11 +289,14 @@ def check_i18n() -> None:
         got = re.findall(r'^\s*"([\w.-]+)"\s*:', src, re.M)
         seen = set(got)
         missing = [k for k in sorted(ref) if k not in seen]
-        # Les dut.* sont volontairement partielles : elles viennent d'editions
-        # traduites de Hisn al-Muslim, et aucune edition ne couvre les 18
-        # langues. Une dua sans traduction publiee retombe sur le francais,
-        # ce qui est le comportement voulu — pas une lacune a signaler.
-        extra = [k for k in sorted(seen - ref) if not k.startswith("dut.")]
+        # Certaines familles ont leur francais dans les donnees, pas dans
+        # fr.js : les absentes de la reference y sont donc normales.
+        #  · dut.*  traductions publiees d'invocations — aucune edition ne
+        #    couvre les 18 langues, le repli sur le francais est voulu ;
+        #  · rtx.* / rtn.*  libelles d'etapes de routine, dont le francais
+        #    vit dans js/data/routines.js.
+        hors_dico = ("dut.", "rtx.", "rtn.")
+        extra = [k for k in sorted(seen - ref) if not k.startswith(hors_dico)]
         dup = sorted({k for k in seen if got.count(k) > 1})
         if missing:
             ERRORS.append(
@@ -324,6 +327,19 @@ def check_quran() -> None:
 
     if not (ROOT / "content/quran/quran-ar.json").exists():
         ERRORS.append("content/quran/quran-ar.json manquant : le lecteur n'a plus de texte arabe")
+
+    # Les corpus moissonnes depuis le web gardent parfois leurs entites HTML.
+    # Le rendu passe par textContent (quran.js), donc « &quot; » s'affiche en
+    # toutes lettres. Reparable d'un coup : scripts/clean_entities.py --write
+    ent = re.compile(r"&(?:[a-zA-Z][a-zA-Z0-9]{1,10}|#\d{1,6}|#x[0-9a-fA-F]{1,5});")
+    for p in sorted(ROOT.glob("content/quran/quran-*.json")):
+        n = len(ent.findall(p.read_text(encoding="utf-8")))
+        if n:
+            ERRORS.append(
+                f"content/quran/{p.name} : {n} entité(s) HTML brute(s), affichées "
+                f"telles quelles — python scripts/clean_entities.py --write"
+            )
+
     NOTES.append(f"corpus : {len(declared)} traductions déclarées")
 
 

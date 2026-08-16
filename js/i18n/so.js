@@ -1264,4 +1264,5 @@ export default {
   "bkv.simple": "Fudud",
   "quran.noFav": "Wax la jecelyahay ma jiro",
   "quran.noNote": "Qoraal ma jiro",
+  "duas.langFallback": "Turjumaad la daabacay oo {lang} ah — daabacaad afkaaga ah oo ducadan ah ma jirto.",
 };

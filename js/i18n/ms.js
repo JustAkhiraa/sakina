@@ -1246,4 +1246,5 @@ export default {
   "bkv.simple": "Ringkas",
   "quran.noFav": "Tiada kegemaran lagi",
   "quran.noNote": "Tiada nota lagi",
+  "duas.langFallback": "Terjemahan terbitan dalam bahasa {lang} — tiada edisi dalam bahasa anda bagi doa ini.",
 };

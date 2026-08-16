@@ -55,17 +55,26 @@ def slug(s):
 
 
 # ── Gisement 3 : les champs traduisibles des donnees ─────────────────────
-# (fichier, tableau exporte, champ-identifiant, champ-texte, gabarit de cle)
+# (fichier, tableau exporte, champ-identifiant, champ-texte, gabarit de cle
+#  [, motif d'exclusion])
 # Le tableau doit etre nomme : catalog.js en porte dix-sept, et une regle
 # posee sur le fichier entier les attraperait tous — c'est ainsi qu'un nom
 # de son s'est retrouve indexe comme un theme.
+#
+# Le sixieme element est facultatif : un motif cherche dans l'enregistrement.
+# S'il correspond, le texte est deja servi autrement a l'execution et n'a pas
+# a etre traduit dans les dictionnaires. Une invocation portant « verses: »
+# est rendue depuis content/quran/quran-<langue>.json (duas.js:41) ; la
+# reclamer en turc revenait a demander une traduction qui existe deja, et
+# c'est ce qui faisait dire a l'inventaire qu'il « manque toujours des trucs ».
 SOURCES = [
     ("js/data/additives.js", "ADDITIVES",  "code",  "name",        "add.{cle}"),
     ("js/data/additives.js", "ADDITIVES",  "code",  "note",        "adn.{slug}"),
 
     ("js/data/duas.js",      "DUAS",       "id",    "title",       "dua.{cle}.t"),
     ("js/data/duas.js",      "DUAS",       "id",    "occasion",    "dua.{cle}.o"),
-    ("js/data/duas.js",      "DUAS",       "id",    "translation", "dut.{cle}"),
+    ("js/data/duas.js",      "DUAS",       "id",    "translation", "dut.{cle}",
+                                                    r"verses\s*:\s*['\"]"),
     ("js/data/duas.js",      "DUAS",       "catId", "cat",         "duacat.{cle}"),
 
     ("js/data/routines.js",  "ROUTINES",   "id",    "name",        "rt.{cle}.n"),
@@ -162,7 +171,9 @@ def _tableau(src, nom):
 def cles_donnees():
     out = {}
     cache = {}
-    for fichier, tableau, cle_champ, val_champ, gabarit in SOURCES:
+    for regle in SOURCES:
+        fichier, tableau, cle_champ, val_champ, gabarit = regle[:5]
+        exclu = re.compile(regle[5]) if len(regle) > 5 else None
         p = ROOT / fichier
         if not p.exists():
             continue
@@ -170,6 +181,8 @@ def cles_donnees():
             cache[fichier] = p.read_text(encoding="utf-8")
         corps = _tableau(cache[fichier], tableau)
         for bloc in _chaines_js(corps):
+            if exclu and exclu.search(bloc):
+                continue                     # servi ailleurs a l'execution
             val = _champ(bloc, val_champ)
             if not val:
                 continue

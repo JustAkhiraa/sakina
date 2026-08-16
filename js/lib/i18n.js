@@ -68,6 +68,22 @@ export function tfSrc(key,original){
   return _cur[key]||(_en&&_en[key])||original;
 }
 
+/* Dans quelle langue tfSrc a-t-il repondu ? Renvoie le code de langue.
+
+   Les editions publiees ne couvrent pas toutes les invocations : selon la
+   langue, une liste peut melanger le turc, l'anglais et le francais. Le
+   melange lui-meme est inevitable — on ne fabrique pas une traduction qui
+   n'existe pas —, mais il ne doit pas etre silencieux, sinon le lecteur
+   croit a un oubli. L'appelant s'en sert pour marquer discretement les
+   lignes qui ne sont pas dans sa langue. */
+export function tfSrcLang(key){
+  const cur=S.lang||'fr';
+  if(cur==='fr')return 'fr';
+  if(_cur[key])return cur;
+  if(_en&&_en[key])return 'en';
+  return 'fr';
+}
+
 export {AVAILABLE_LANGS};
 
 export function isRTL(){return !!(LANGS.find(l=>l.code===S.lang)||{}).rtl;}

@@ -1246,4 +1246,5 @@ export default {
   "bkv.simple": "सरल",
   "quran.noFav": "अभी कोई पसंदीदा नहीं",
   "quran.noNote": "अभी कोई नोट नहीं",
+  "duas.langFallback": "{lang} में प्रकाशित अनुवाद — इस दुआ के लिए आपकी भाषा में कोई संस्करण नहीं है।",
 };

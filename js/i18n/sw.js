@@ -1251,4 +1251,5 @@ export default {
   "dut.entrer-a-la-mosquee": "Ewe Mwenyezi Mungu, nifungulie milango ya rehema zako.",
   "dut.sortir-de-la-mosquee": "Kwa jina la Mwenyezi Mungu, na rehema na amani zimfikie Mtume wa Mwenyezi Mungu. Ewe Mwenyezi Mungu, hakika mimi nakuomba katika fadhila zako; ewe Mwenyezi Mungu, nilinde kutokana na shetani aliyeepushwa na rehema zako.",
   "dut.se-suffire-du-licite": "Ewe Mwenyezi Mungu, nitosheleze kwa halali yako kutokana na haramu yako, na unitosheleze kwa fadhila zako nisiwahitaji wengine usio Wewe.",
+  "duas.langFallback": "Tafsiri iliyochapishwa kwa {lang} — hakuna toleo katika lugha yako kwa dua hii.",
 };

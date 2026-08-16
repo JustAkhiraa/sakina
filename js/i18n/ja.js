@@ -1257,4 +1257,5 @@ export default {
   "bkv.simple": "かんたん",
   "quran.noFav": "お気に入りはまだありません",
   "quran.noNote": "メモはまだありません",
+  "duas.langFallback": "{lang}の刊行訳です。このドゥアーにはお使いの言語の版がありません。",
 };
