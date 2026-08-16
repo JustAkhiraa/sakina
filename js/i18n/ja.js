@@ -1269,4 +1269,8 @@ export default {
   "hds.ibnhibban": "イブン・ヒッバーン",
   "hds.ibnabishayba": "イブン・アビー・シャイバ",
   "hds.bayhaqi": "バイハキー",
+  "mdh.maliki": "マーリク派",
+  "mdh.hanafi": "ハナフィー派",
+  "mdh.shafii": "シャーフィイー派",
+  "mdh.hanbali": "ハンバリー派",
 };

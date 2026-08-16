@@ -74,7 +74,7 @@ function renderQada(){
     const q=S.qada[p.key]||0,dn=S.qdone[p.key]||0,isDone=q===0;
     const row=document.createElement('div');row.className='qada-row gc';
     row.innerHTML=`<div class="qada-row-icon">${p.icon}</div>
-      <div class="qada-row-name"><div class="qada-row-title">${p.name}${isDone?` <span class="done-badge">${t('tools.upToDateBadge')}</span>`:''}</div><div class="qada-row-ar">${p.arabic}</div><div class="qada-done-count">${dn} ${t('tools.madeUp')}</div></div>
+      <div class="qada-row-name"><div class="qada-row-title">${t(`pr.${p.key}`)}${isDone?` <span class="done-badge">${t('tools.upToDateBadge')}</span>`:''}</div><div class="qada-row-ar">${p.arabic}</div><div class="qada-done-count">${dn} ${t('tools.madeUp')}</div></div>
       <div class="qada-ctrls"><div class="qada-btn minus">−</div><div class="qada-val${isDone?' done':''}">${q}</div><div class="qada-btn plus">+</div></div>`;
     row.querySelector('.qada-btn.plus').addEventListener('click',e=>{
       e.stopPropagation();

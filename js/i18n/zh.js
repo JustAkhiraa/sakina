@@ -1258,4 +1258,8 @@ export default {
   "hds.ibnhibban": "伊本·希班",
   "hds.ibnabishayba": "伊本·艾比·舍伊拜",
   "hds.bayhaqi": "白哈基",
+  "mdh.maliki": "马立克派",
+  "mdh.hanafi": "哈乃斐派",
+  "mdh.shafii": "沙斐仪派",
+  "mdh.hanbali": "罕百里派",
 };

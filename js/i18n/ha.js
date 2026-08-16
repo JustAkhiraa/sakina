@@ -1278,4 +1278,8 @@ export default {
   "hds.ibnhibban": "Ibn Hibban",
   "hds.ibnabishayba": "Ibn Abi Shaiba",
   "hds.bayhaqi": "al-Baihaqi",
+  "mdh.maliki": "Malikiyya",
+  "mdh.hanafi": "Hanafiyya",
+  "mdh.shafii": "Shafi'iyya",
+  "mdh.hanbali": "Hanbaliyya",
 };

@@ -92,6 +92,7 @@ SOURCES = [
     ("js/data/catalog.js",   "CALC_METHODS","id",   "name",        "cm.{cle}.n"),
     ("js/data/catalog.js",   "CALC_METHODS","id",   "desc",        "cm.{cle}.d"),
     ("js/data/catalog.js",   "LANG_REGIONS","id",   "label",       "reg.{cle}"),
+    ("js/data/catalog.js",   "MADHABS",    "id",    "name",        "mdh.{cle}"),
 ]
 
 # Les sigles institutionnels et les noms propres n'ont pas de cle : tf()
@@ -102,7 +103,7 @@ SANS_CLE = {"cm.12.n", "cm.2.n", "cm.13.n", "cm.20.n", "cm.17.n", "cm.15.d"}
 # pour ne pas les confondre avec des cles statiques manquantes.
 DYNAMIQUES = re.compile(
     r"^(add|adn|dua|dut|duacat|rt|rtx|rtn|bth|skn|skd|thm|snd|avt|ttl|cm|reg"
-    r"|hij|bkc|bkg|bks|bkv|bk|gd|crit)\.")
+    r"|mdh|hds|pr|hij|bkc|bkg|bks|bkv|bk|gd|crit)\.")
 
 
 def dico(code):

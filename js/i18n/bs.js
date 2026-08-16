@@ -1275,4 +1275,8 @@ export default {
   "hds.ibnhibban": "Ibn Hibban",
   "hds.ibnabishayba": "Ibn Ebi Šejbe",
   "hds.bayhaqi": "Bejheki",
+  "mdh.maliki": "Malikijski",
+  "mdh.hanafi": "Hanefijski",
+  "mdh.shafii": "Šafijski",
+  "mdh.hanbali": "Hanbelijski",
 };

@@ -1264,4 +1264,8 @@ export default {
   "hds.ibnhibban": "Ибн Хиббан",
   "hds.ibnabishayba": "Ибн Аби Шайба",
   "hds.bayhaqi": "аль-Байхаки",
+  "mdh.maliki": "Маликитский",
+  "mdh.hanafi": "Ханафитский",
+  "mdh.shafii": "Шафиитский",
+  "mdh.hanbali": "Ханбалитский",
 };

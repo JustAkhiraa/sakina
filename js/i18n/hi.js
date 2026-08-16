@@ -1258,4 +1258,8 @@ export default {
   "hds.ibnhibban": "इब्न हिब्बान",
   "hds.ibnabishayba": "इब्न अबी शैबा",
   "hds.bayhaqi": "अल-बैहक़ी",
+  "mdh.maliki": "मालिकी",
+  "mdh.hanafi": "हनफ़ी",
+  "mdh.shafii": "शाफ़िई",
+  "mdh.hanbali": "हंबली",
 };

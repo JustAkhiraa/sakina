@@ -5,7 +5,7 @@ import {S,save,emit} from '../core/store.js';
 import {toast} from '../core/ui.js';
 import {vib} from '../core/audio.js';
 import {THEMES,CALC_METHODS,MADHABS,LANGS,LANG_REGIONS,CALC_BY_LANG,MADHAB_BY_LANG} from '../data/catalog.js';
-import {t,applyI18n,setLang} from '../lib/i18n.js';
+import {t,tf,applyI18n,setLang} from '../lib/i18n.js';
 import {hasLang} from '../i18n/index.js';
 import {applyTheme,buildBaseThemeGrid} from './settings.js';
 import {renderPrayers,reverseGeocode,geocodeCity,calcName,calcDesc} from './salat.js';
@@ -91,7 +91,7 @@ function buildMadhabRow(){
   MADHABS.forEach(m=>{
     const el=document.createElement('div');
     el.className='chip'+(S.madhab===m.id?' sel':'');
-    el.textContent=`${m.name}`;
+    el.textContent=tf(`mdh.${m.id}`,m.name);
     el.title=m.asrFactor===2?t('set.asr2'):t('set.asr1');
     el.addEventListener('click',()=>{S.madhab=m.id;S._madhabTouched=true;save();buildMadhabRow();vib(14);});
     row.appendChild(el);
@@ -104,7 +104,7 @@ function buildAccentGrid(){
   THEMES.filter(x=>!x.unlockAt).forEach(th=>{
     const el=document.createElement('div');
     el.className='tsw'+(S.accent===th.key?' active':'');
-    el.innerHTML=`<div class="sdot" style="background:${th.color}"></div><div class="sname">${th.name}</div>`;
+    el.innerHTML=`<div class="sdot" style="background:${th.color}"></div><div class="sname">${tf(`thm.${th.key}`,th.name)}</div>`;
     el.addEventListener('click',()=>{
       S.accent=th.key;save();applyTheme();buildAccentGrid();vib(18);
     });

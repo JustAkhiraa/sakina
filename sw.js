@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v92';
+const VERSION='sakina-v93';
 const SHELL=[
   './',
   './index.html',

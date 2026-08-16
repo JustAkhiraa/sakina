@@ -1258,4 +1258,8 @@ export default {
   "hds.ibnhibban": "Ibn Hibban",
   "hds.ibnabishayba": "Ibn Abi Chayba",
   "hds.bayhaqi": "al-Bayhaqi",
+  "mdh.maliki": "Malikite",
+  "mdh.hanafi": "Hanafite",
+  "mdh.shafii": "Chaféite",
+  "mdh.hanbali": "Hanbalite",
 };

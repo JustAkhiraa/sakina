@@ -200,6 +200,16 @@ function buildAvatarGrid(opts={onlyUnlocked:true}){
   });
 }
 
+/* Nom d'un titre honorifique dans la langue lue. Les vingt et une cles
+   ttl.* existaient dans les dix-huit dictionnaires mais n'etaient lues que
+   par la feuille des cadeaux : la liste des titres et le badge du profil
+   affichaient le nom francais du catalogue a tout le monde. */
+const titleName=ti=>tf(`ttl.${ti.id}`,ti.name);
+
+/* Meme histoire pour les ecoles juridiques : le catalogue ne porte que
+   l'adjectif francais. */
+export const madhabName=m=>tf(`mdh.${m.id}`,m.name);
+
 /* ── Titres ── L'emoji devient le pictogramme et se colle au nom affiché. */
 function buildTitleList(opts={onlyUnlocked:true}){
   const list=$('title-list');if(!list)return;list.innerHTML='';
@@ -208,7 +218,7 @@ function buildTitleList(opts={onlyUnlocked:true}){
     const row=document.createElement('div');
     row.className='title-row'+(S.titleId===ti.id?' sel':'')+(unlocked?'':' locked');
     row.innerHTML=`<div class="title-emoji">${ti.emoji||'✦'}</div>
-      <div style="flex:1"><div class="title-name">${ti.name}</div>
+      <div style="flex:1"><div class="title-name">${titleName(ti)}</div>
       <div class="title-sub">${unlocked?t('reward.unlocked'):t('msg.unlockAt',{n:fmtGoal(ti.unlockAt)})}</div></div>
       <div class="title-lock">${unlocked?'':'🔒'}</div>`;
     row.addEventListener('click',()=>{
@@ -268,7 +278,7 @@ const qdaTotal=()=>QADA_PRAYERS.reduce((s,p)=>s+(S.qada[p.key]||0),0);
 function currentAvatar(){return (AVATARS.find(a=>a.id===S.avatar&&isUnlocked(a))||AVATARS[0]).emoji;}
 function currentTitle(){
   const ti=TITLES.find(x=>x.id===S.titleId&&isUnlocked(x))||TITLES[0];
-  return `${ti.emoji||''} ${ti.name}`.trim();
+  return `${ti.emoji||''} ${titleName(ti)}`.trim();
 }
 
 /* ── Système de flamme progressive ─────────────────────────────────────
@@ -320,7 +330,7 @@ function buildMadhabList(){
   MADHABS.forEach(m=>{
     const row=document.createElement('div');
     row.className='ob-method-row'+(S.madhab===m.id?' sel':'');
-    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${m.name} <span style="font-family:var(--ff-a);color:var(--t2);font-weight:400;">${m.ar}</span></div><div class="ob-method-desc">${m.asrFactor===2?t('set.asr2'):t('set.asr1')}</div></div>`;
+    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${madhabName(m)} <span style="font-family:var(--ff-a);color:var(--t2);font-weight:400;">${m.ar}</span></div><div class="ob-method-desc">${m.asrFactor===2?t('set.asr2'):t('set.asr1')}</div></div>`;
     row.addEventListener('click',()=>{
       S.madhab=m.id;save();buildMadhabList();syncPracticeRows();
       if(S.lat!==null)renderPrayers();
@@ -385,7 +395,7 @@ function buildLangList(filter=''){
 function syncPracticeRows(){
   const m=MADHABS.find(x=>x.id===S.madhab)||MADHABS[0];
   const l=LANGS.find(x=>x.code===S.lang)||LANGS[0];
-  document.getElementById('madhab-current').textContent=`${m.name} · ${m.ar}`;
+  document.getElementById('madhab-current').textContent=`${madhabName(m)} · ${m.ar}`;
   document.getElementById('lang-current').textContent=`${l.flag} ${l.name}`;
 }
 
@@ -462,10 +472,13 @@ function toggleNav(id){
 /* ── Rappels de prière ──
    L'interrupteur principal demande l'autorisation au navigateur ; sans elle
    on ne l'allume pas, pour ne pas laisser croire que les rappels arrivent. */
+/* Les noms viennent de pr.*, deja traduits partout — « Dhouhr » et « Icha »
+   etaient les graphies francaises, servies telles quelles aux dix-sept
+   autres langues. */
 const NOTIF_PRAYERS=[
-  {key:'fajr',name:'Fajr'},{key:'dhuhr',name:'Dhouhr'},{key:'asr',name:'Asr'},
-  {key:'maghrib',name:'Maghrib'},{key:'isha',name:'Icha'},
+  {key:'fajr'},{key:'dhuhr'},{key:'asr'},{key:'maghrib'},{key:'isha'},
 ];
+const prayerName=p=>t(`pr.${p.key}`);
 
 function notifSummary(){
   const sub=$('notif-sub'),state=$('notif-state');
@@ -496,7 +509,7 @@ function buildNotifPrayers(){
     const row=document.createElement('div');
     row.className='row';
     if(i===NOTIF_PRAYERS.length-1)row.style.borderBottom='none';
-    row.innerHTML=`<div class="row-body"><div class="row-name">${p.name}</div></div><div class="tog${on?' on':''}"></div>`;
+    row.innerHTML=`<div class="row-body"><div class="row-name">${prayerName(p)}</div></div><div class="tog${on?' on':''}"></div>`;
     row.querySelector('.tog').addEventListener('click',function(){
       const cur={...(S.notifPrayers||{})};
       cur[p.key]=cur[p.key]===false;
@@ -602,7 +615,7 @@ function buildAdhanPrayers(){
     const row=document.createElement('div');
     row.className='row';
     if(i===NOTIF_PRAYERS.length-1)row.style.borderBottom='none';
-    row.innerHTML=`<div class="row-body"><div class="row-name">${p.name}</div></div><div class="tog${on?' on':''}"></div>`;
+    row.innerHTML=`<div class="row-body"><div class="row-name">${prayerName(p)}</div></div><div class="tog${on?' on':''}"></div>`;
     row.querySelector('.tog').addEventListener('click',function(){
       const cur={...(S.adhanPrayers||{})};
       cur[p.key]=cur[p.key]===false;

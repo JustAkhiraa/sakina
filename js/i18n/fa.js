@@ -1258,4 +1258,8 @@ export default {
   "hds.ibnhibban": "ابن‌حبان",
   "hds.ibnabishayba": "ابن ابی‌شیبه",
   "hds.bayhaqi": "بیهقی",
+  "mdh.maliki": "مالکی",
+  "mdh.hanafi": "حنفی",
+  "mdh.shafii": "شافعی",
+  "mdh.hanbali": "حنبلی",
 };
