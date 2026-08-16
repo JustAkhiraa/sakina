@@ -439,7 +439,10 @@ async function loadAsma(){
 async function openNames(filter=''){
   _view='names';
   setHeader({title:bookTitle(BOOKS.asma),back:true,search:true,searchPh:t('books.searchName')});
-  if(!_asma){
+  // On teste la langue, pas seulement la presence du cache : sans cela, un
+  // retour au francais gardait les cent Noms en japonais, parce que
+  // loadAsma() — qui sait recharger — n'etait jamais rappele.
+  if(!_asma||_asmaLang!==(S.lang||'fr')){
     $('book-bd').innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
     try{await loadAsma();}
     catch{$('book-bd').innerHTML=`<div class="places-empty">${t('books.needNet')}</div>`;return;}
@@ -611,6 +614,21 @@ function openBook(key){
 
 /* Point d'entrée de la recherche globale : ouvrir un livre par sa clé. */
 export const showBook=key=>openBook(key);
+
+/* Redessine la bibliotheque apres un changement de langue.
+
+   La bibliotheque etait le seul module a ne pas figurer dans la liste de
+   app.js : la feuille restait telle qu'elle avait ete bâtie, et repasser
+   du japonais au francais laissait les cent Noms en japonais. */
+export function refreshBooks(){
+  const feuille=document.getElementById('sh-book');
+  if(!feuille||!feuille.classList.contains('open')||!_current)return;
+  if(_view==='intro')      showIntro();
+  else if(_view==='names') openNames($('book-search').value||'');
+  else if(_view==='list')  openList($('book-search').value||'');
+  else if(_view==='guide') openGuide();
+  else if(_view==='pages') openPages();
+}
 
 export function initBooks(){
   $('btn-open-riyad').addEventListener('click',()=>openBook('riyad'));

@@ -15,7 +15,7 @@ import {initOnboarding} from './features/onboarding.js';
 import {initPlaces,refreshPlaces} from './features/places.js';
 import {initHalal,stopCamera,refreshHalal} from './features/halal.js';
 import {initRoutines,refreshRoutines} from './features/routines.js';
-import {initBooks} from './features/books.js';
+import {initBooks,refreshBooks} from './features/books.js';
 import {initSearch as initGlobalSearch} from './features/search.js';
 import {initDevTools} from './core/devtools.js';
 
@@ -42,7 +42,7 @@ on('lang-changed',()=>{
   renderTasbih();buildDhikrBar();
   renderNavbar();
   refreshDuas();refreshQuranHeader();refreshSettings();refreshRoutines();
-  refreshTools();refreshHalal();refreshPlaces();refreshSalat();
+  refreshTools();refreshHalal();refreshPlaces();refreshSalat();refreshBooks();
 });
 initRoutines();
 initBooks();
