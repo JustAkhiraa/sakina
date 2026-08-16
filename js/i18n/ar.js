@@ -650,7 +650,7 @@ export default {
   "skn.wii": "الجهاز الأبيض",
   "skn.doodle": "دفتر ملاحظات",
   "grp.dark": "الداكنة",
-  "grp.light": "الفاتحة",
+  "grp.light": "ألوان فاتحة",
   "grp.warm": "الدافئة",
   "grp.cool": "الباردة",
   "grp.neutral": "المحايدة",
