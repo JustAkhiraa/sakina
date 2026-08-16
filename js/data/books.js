@@ -44,7 +44,7 @@ export const BOOKS={
       "« Les Plus Beaux Noms » d'Allah — 99 noms rapportés par la tradition, chacun révélant une facette de Sa majesté, de Sa miséricorde et de Sa perfection.",
       "« À Allah appartiennent les plus beaux noms. Invoquez-Le par ces noms » (Coran 7:180). Cette lecture est un moyen d'accroître la connaissance d'Allah et l'attachement à Lui.",
     ],
-    src:'content/books/asma.json',
+    src:'content/books/asma.json',translatable:true,
     srcNotes:["D'après la tradition classique — références coraniques et prophétiques","Invocation &amp; introspection de chaque nom : « Les Essentiels — Les 99 Noms d'Allah » de Souad El Mansouri, éditions Al Bouraq"],
   },
   fruits:{

@@ -18,6 +18,7 @@ import {S} from '../core/store.js';
 import {BOOKS} from '../data/books.js';
 import {SURAHS} from '../data/surahs.js';
 import {SURAH_NAMES} from '../data/surah-names.js';
+import {PHONETICS} from '../data/phonetics.js';
 import {versesText,preloadTr} from './quran.js';
 /* Titres de chapitre et intertitres de rubrique, traduits. Indexes par un
    slug de leur contenu francais : si le titre change, la cle change avec
@@ -416,13 +417,24 @@ function renderCitadelleMarkdown(md){
 }
 
 /* ── 99 Noms d'Allah : chargement + rendu en cartes ── */
-let _asma=null;
+/* Les 99 Noms se chargent par langue, comme les guides : asma.ja.json a cote
+   de asma.json. Le chargeur allait auparavant chercher le fichier francais
+   en dur — le verset arrivait bien traduit depuis le corpus, mais le sens du
+   Nom, sa description et les questions restaient en francais, c'est-a-dire
+   la plus grande partie de la fiche. */
+let _asma=null,_asmaLang=null;
 async function loadAsma(){
-  if(_asma)return _asma;
-  const res=await fetch(BOOKS.asma.src);
-  if(!res.ok)throw new Error('load');
-  _asma=await res.json();
-  return _asma;
+  const lang=S.lang||'fr';
+  if(_asma&&_asmaLang===lang)return _asma;
+  for(const url of chapterSources('asma')){
+    try{
+      const res=await fetch(url);
+      if(!res.ok)continue;
+      _asma=await res.json();_asmaLang=lang;
+      return _asma;
+    }catch{/* fichier absent : on tente le repli suivant */}
+  }
+  throw new Error('load');
 }
 async function openNames(filter=''){
   _view='names';
@@ -512,7 +524,7 @@ function renderNames(filter=''){
           <svg class="ic-stop" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>
         </div>
       </div>
-      <div class="asma-tr">${x.tr}</div>
+      <div class="asma-tr${PHONETICS[S.lang]?' asma-tr-script':''}">${asmaTr(x)}</div>
       <div class="asma-fr">${x.fr}</div>
       <div class="asma-desc">${x.desc}</div>
       ${asmaDetail(x)}
@@ -530,6 +542,11 @@ function renderNames(filter=''){
 
 /* Dépliant « Invocation & introspection » d'un nom (si présent dans asma.json).
    Fermé par défaut : la liste reste compacte, un clic ouvre le détail. */
+/* « Ar-Rahmân » en lettres latines ne se lit pas plus qu'une phonetique
+   latine : meme reponse, la translitteration passe dans l'ecriture du
+   lecteur. La forme latine reste indexee pour la recherche. */
+const asmaTr=x=>(PHONETICS[S.lang]||{})[`asma.${x.n}`]||x.tr;
+
 function asmaDetail(x){
   const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
   const ask=(x.ask||[]).map((q,i)=>tf(`ask.${x.n}.${i+1}`,q));

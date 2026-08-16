@@ -870,6 +870,9 @@
   border:1px solid var(--bord);border-radius:50%;background:rgba(var(--a-rgb),0.06);}
 .asma-ar{font-family:'Amiri Quran','Amiri',serif;font-size:1.75rem;line-height:1.4;color:var(--t1);}
 .asma-tr{font-family:var(--ff-s);font-size:1.05rem;font-weight:600;color:var(--t1);margin-top:4px;}
+/* Hors alphabet latin, la police à empattements du projet n'a pas les
+   glyphes voulus : on laisse la police du système rendre l'écriture. */
+.asma-tr-script{font-family:inherit;letter-spacing:0.01em;}
 .asma-fr{font-size:0.9rem;color:var(--a);font-style:italic;margin-top:2px;}
 .asma-desc{font-size:0.9rem;line-height:1.6;color:var(--t2);margin-top:8px;}
 /* Carte cliquable : joue la récitation du nom */

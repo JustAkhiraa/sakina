@@ -37,7 +37,10 @@ CONSONNES = ["th", "dh", "sh", "kh", "gh",
              "ḥ", "ṣ", "ḍ", "ṭ", "ẓ",
              "b", "t", "j", "d", "r", "z", "s", "f", "q", "k", "l", "m",
              "n", "h", "w", "y", "'", "’", "ʾ", "ʿ"]
-LONGUES = {"ā": "a", "ī": "i", "ū": "u"}
+# Deux conventions cohabitent dans le projet : le macron pour les
+# invocations (« Rabbi-shraḥ lī ṣadrī »), l'accent circonflexe pour les noms
+# des 99 (« Ar-Rahmân »). Toutes deux notent la voyelle longue.
+LONGUES = {"ā": "a", "ī": "i", "ū": "u", "â": "a", "î": "i", "û": "u"}
 BREVES = {"a", "i", "u", "e", "o"}
 
 
@@ -296,6 +299,13 @@ def vers_ja(texte):
                 out.append(table["a"] + ("イ" if suiv[1] == "ay" else "ウ"))
                 n += 2
                 continue
+            # Le « h » final d'un mot ne se rend pas en japonais : la voyelle
+            # longue qui precede le porte deja. « Allāh » donne アッラー, non
+            # アッラフ ; « Bismi-llāh » donne ビスミ・ッラー.
+            if c == "h" and (suiv is None or suiv[0] in "|~") \
+                    and n and js[n - 1][0] == "V" and js[n - 1][2]:
+                n += 1
+                continue
             if c == "n":
                 out.append("ン")            # le seul son en coda du japonais
             elif c == "m":
@@ -345,6 +355,22 @@ def vers_zh(texte):
     return "".join(out)
 
 
+# Le nom divin s'ecrit « Allah » dans les donnees, sans macron : la regle du
+# « h » final ne s'y applique pas et la conversion rendait アッラフ. Il est
+# trop frequent pour qu'on le laisse mal ecrit, et chaque ecriture a de
+# toute facon sa forme recue.
+EXCEPTIONS = {
+    "allah":  {"ru": "Аллах", "hi": "अल्लाह", "bn": "আল্লাহ",
+               "ja": "アッラー", "zh": "Allāh"},
+    "allāh":  {"ru": "Аллах", "hi": "अल्लाह", "bn": "আল্লাহ",
+               "ja": "アッラー", "zh": "Allāh"},
+}
+
+
+def _exception(texte, code):
+    return EXCEPTIONS.get(texte.strip().lower(), {}).get(code)
+
+
 ECRITURES = {
     "ru": vers_ru,
     "hi": lambda s: vers_indien(s, DEV),
@@ -379,6 +405,15 @@ def _slug(s):
     s = "".join(c for c in s if not unicodedata.combining(c))
     s = re.sub(r"[^A-Za-z0-9]+", "-", s).strip("-").lower()
     return re.sub(r"-{2,}", "-", s)[:34]
+
+
+def lire_asma():
+    """Translitteration des 99 Noms, indexee par leur numero.
+
+    « Ar-Rahmân » en lettres latines pose la meme difficulte que la ligne
+    phonetique des invocations : un lecteur japonais ne le lit pas."""
+    d = json.loads((ROOT / "content/books/asma.json").read_text(encoding="utf-8"))
+    return {f"asma.{x['n']}": x["tr"] for x in d["names"] if x.get("tr")}
 
 
 def lire_duas():
@@ -427,10 +462,13 @@ def main():
         return 0
 
     if "--write" in sys.argv:
-        etapes = lire_etapes()
-        table = {code: {**{did: f(ph) for did, ph in duas},
-                        **{f"rtx.{k}": f(v) for k, v in etapes.items()}}
-                 for code, f in ECRITURES.items()}
+        etapes, asma = lire_etapes(), lire_asma()
+        table = {}
+        for code, f in ECRITURES.items():
+            g = lambda v, c=code, f=f: _exception(v, c) or f(v)
+            table[code] = {**{did: g(ph) for did, ph in duas},
+                           **{f"rtx.{k}": g(v) for k, v in etapes.items()},
+                           **{k: g(v) for k, v in asma.items()}}
         corps = ",\n".join(
             f"  {code}: " + json.dumps(t, ensure_ascii=False, indent=2)
             .replace("\n", "\n  ")
