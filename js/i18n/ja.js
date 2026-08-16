@@ -1255,4 +1255,6 @@ export default {
   "bkv.pas-a-pas": "ステップごと",
   "bkv.refaits": "再計算済み",
   "bkv.simple": "かんたん",
+  "quran.noFav": "お気に入りはまだありません",
+  "quran.noNote": "メモはまだありません",
 };

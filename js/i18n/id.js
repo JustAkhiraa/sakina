@@ -1244,4 +1244,6 @@ export default {
   "bkv.pas-a-pas": "Langkah demi langkah",
   "bkv.refaits": "Dihitung ulang",
   "bkv.simple": "Sederhana",
+  "quran.noFav": "Belum ada favorit",
+  "quran.noNote": "Belum ada catatan",
 };

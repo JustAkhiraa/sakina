@@ -1244,4 +1244,6 @@ export default {
   "bkv.pas-a-pas": "ধাপে ধাপে",
   "bkv.refaits": "পুনঃগণিত",
   "bkv.simple": "সরল",
+  "quran.noFav": "এখনও কোনো প্রিয় নেই",
+  "quran.noNote": "এখনও কোনো নোট নেই",
 };

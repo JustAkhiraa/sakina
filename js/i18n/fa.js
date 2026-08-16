@@ -1244,4 +1244,6 @@ export default {
   "bkv.pas-a-pas": "گام به گام",
   "bkv.refaits": "بازمحاسبه",
   "bkv.simple": "ساده",
+  "quran.noFav": "هنوز موردی نشان نشده",
+  "quran.noNote": "هنوز یادداشتی نیست",
 };

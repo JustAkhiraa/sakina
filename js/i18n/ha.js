@@ -1264,4 +1264,6 @@ export default {
   "bkv.pas-a-pas": "Mataki-mataki",
   "bkv.refaits": "An sake lissafi",
   "bkv.simple": "Sauƙi",
+  "quran.noFav": "Babu abin da aka fi so tukuna",
+  "quran.noNote": "Babu bayanin kula tukuna",
 };

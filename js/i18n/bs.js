@@ -1261,4 +1261,6 @@ export default {
   "bkv.pas-a-pas": "Korak po korak",
   "bkv.refaits": "Ponovljeni",
   "bkv.simple": "Jednostavno",
+  "quran.noFav": "Nema favorita",
+  "quran.noNote": "Nema bilješki",
 };

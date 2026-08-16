@@ -1251,4 +1251,6 @@ export default {
   "dut.apres-chaque-priere": "I ask Allah for forgiveness (three times). O Allah, You are as-Salam and from You is all peace; blessed are You, O Possessor of majesty and honour.",
   "dut.avant-les-ablutions": "In the name of Allah.",
   "dut.avant-d-entrer-aux-toilettes": "In the name of Allah. O Allah, I take refuge with You from all evil and evil doers.",
+  "quran.noFav": "No favourites yet",
+  "quran.noNote": "No notes yet",
 };

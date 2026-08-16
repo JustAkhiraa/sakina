@@ -1244,4 +1244,6 @@ export default {
   "bkv.pas-a-pas": "循序渐进",
   "bkv.refaits": "已重算",
   "bkv.simple": "简明",
+  "quran.noFav": "暂无收藏",
+  "quran.noNote": "暂无笔记",
 };

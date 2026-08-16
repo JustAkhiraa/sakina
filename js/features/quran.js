@@ -306,7 +306,7 @@ function buildBookmarks(){
   const fl=$('bk-favs-list');fl.innerHTML='';
   const favs=Object.values(S.quranFavs).sort((a,b)=>(b.ts||0)-(a.ts||0));
   if(!favs.length){
-    fl.innerHTML='<div style="text-align:center;padding:32px;font-size:0.82rem;color:var(--t3);">Aucun favori</div>';
+    fl.innerHTML=`<div style="text-align:center;padding:32px;font-size:0.82rem;color:var(--t3);">${t('quran.noFav')}</div>`;
   }else{
     favs.forEach(f=>{
       const[s,a]=f.key.split(':');
@@ -319,7 +319,7 @@ function buildBookmarks(){
   const nl=$('bk-notes-list');nl.innerHTML='';
   const notes=Object.entries(S.quranNotes);
   if(!notes.length){
-    nl.innerHTML='<div style="text-align:center;padding:32px;font-size:0.82rem;color:var(--t3);">Aucune note</div>';
+    nl.innerHTML=`<div style="text-align:center;padding:32px;font-size:0.82rem;color:var(--t3);">${t('quran.noNote')}</div>`;
   }else{
     notes.forEach(([key,txt])=>{
       const[s,a]=key.split(':');

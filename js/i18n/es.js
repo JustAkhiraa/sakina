@@ -1244,4 +1244,6 @@ export default {
   "bkv.pas-a-pas": "Paso a paso",
   "bkv.refaits": "Rehechos",
   "bkv.simple": "Sencillo",
+  "quran.noFav": "Ningún favorito",
+  "quran.noNote": "Ninguna nota",
 };

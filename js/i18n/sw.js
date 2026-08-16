@@ -1244,4 +1244,6 @@ export default {
   "bkv.pas-a-pas": "Hatua kwa hatua",
   "bkv.refaits": "Zimehesabiwa upya",
   "bkv.simple": "Rahisi",
+  "quran.noFav": "Hakuna vipendwa bado",
+  "quran.noNote": "Hakuna madokezo bado",
 };

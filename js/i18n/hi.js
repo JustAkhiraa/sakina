@@ -1244,4 +1244,6 @@ export default {
   "bkv.pas-a-pas": "चरण दर चरण",
   "bkv.refaits": "पुनर्गणित",
   "bkv.simple": "सरल",
+  "quran.noFav": "अभी कोई पसंदीदा नहीं",
+  "quran.noNote": "अभी कोई नोट नहीं",
 };

@@ -1262,4 +1262,6 @@ export default {
   "bkv.pas-a-pas": "Tallaabo tallaabo",
   "bkv.refaits": "Dib loo xisaabiyay",
   "bkv.simple": "Fudud",
+  "quran.noFav": "Wax la jecelyahay ma jiro",
+  "quran.noNote": "Qoraal ma jiro",
 };
