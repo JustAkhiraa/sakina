@@ -4,6 +4,7 @@ import {t,tf,tfSrc,tfSrcLang} from '../lib/i18n.js';
 import {DUAS} from '../data/duas.js';
 import {LANGS} from '../data/catalog.js';
 import {SURAHS} from '../data/surahs.js';
+import {PHONETICS} from '../data/phonetics.js';
 import {SURAH_NAMES} from '../data/surah-names.js';
 import {setDhikr} from './tasbih.js';
 import {goPage} from '../core/router.js';
@@ -56,6 +57,27 @@ export function duaTranslationLang(d){
   if(d.verses&&TR_BY_CODE[S.lang]&&versesText(d.verses,S.lang))return S.lang;
   return tfSrcLang(`dut.${d.id}`);
 }
+
+/* ── Phonetique ──
+   La romanisation savante — « Rabbi-shraḥ lī ṣadrī » — n'aide que qui lit
+   l'alphabet latin. Elle est retranscrite dans cinq autres ecritures par
+   scripts/translit.py.
+
+   Trois langues n'ont pas de ligne du tout, et c'est voulu : l'arabe, le
+   persan et l'ourdou lisent deja l'ecriture du texte affiche au-dessus,
+   une phonetique y serait la copie de l'original. */
+const SANS_PHONETIQUE=new Set(['ar','fa','ur']);
+export function duaPhonetic(d){
+  const code=S.lang||'fr';
+  if(SANS_PHONETIQUE.has(code))return '';
+  return (PHONETICS[code]||{})[d.id]||d.phonetic||'';
+}
+
+/* L'italique de la romanisation signale un mot etranger dans un texte latin.
+   Sur des katakana ou une devanagari elle n'apporte rien et deforme le
+   trace : on ne la garde que pour les ecritures qui la connaissent. */
+export const phoneticClass=()=>
+  PHONETICS[S.lang]?'dua-ph dua-ph-script':'dua-ph';
 
 /* ── Reference de la source ──
    Elle etait figee en francais — « Coran, Taha (20:25-28) », « Abu Dawud &
@@ -136,7 +158,7 @@ function renderDuas(){
     const arHtml=arabicHtml(d);
     const card=document.createElement('div');card.className='dua-card gc';
     card.innerHTML=`<div class="dua-head"><div class="dua-num">${i+1}</div><div style="flex:1"><div class="dua-title">${d.icon||'✦'} ${duaTitle(d)}</div><div class="dua-occ">${duaOcc(d)}</div></div><div class="dua-chev"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div>
-      <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-ph">${d.phonetic||''}</div><div class="dua-tr">${duaTranslation(d)}${duaLangTag(d)}</div><div class="dua-ref">📚 ${duaRef(d)}</div>
+      <div class="dua-body"><div class="dua-ar">${arHtml}</div>${(ph=>ph?`<div class="${phoneticClass()}">${ph}</div>`:'')(duaPhonetic(d))}<div class="dua-tr">${duaTranslation(d)}${duaLangTag(d)}</div><div class="dua-ref">📚 ${duaRef(d)}</div>
       <div class="dua-acts"><div class="dua-act dua-act-copy">${t('duas.copy')}</div><div class="dua-act dua-act-use">${t('duas.count')}</div></div></div>`;
     card.querySelector('.dua-head').addEventListener('click',()=>card.classList.toggle('open'));
     card.querySelector('.dua-act-copy').addEventListener('click',e=>{

@@ -166,6 +166,9 @@
 .dua-card.open .dua-body{max-height:1600px;opacity:1;}
 .dua-ar{font-family:var(--ff-a);font-size:1.45rem;line-height:2.3;color:var(--a);text-align:right;padding:18px 20px 12px;direction:rtl;letter-spacing:0.01em;}
 .dua-ph{font-size:0.82rem;color:var(--t2);line-height:1.85;font-style:italic;padding:10px 20px;border-top:1px solid var(--bor2);}
+/* L'italique dit « mot etranger » dans un texte latin ; sur des katakana ou
+   une devanagari elle ne dit rien et deforme le trace. */
+.dua-ph-script{font-style:normal;letter-spacing:0.01em;}
 .dua-tr{font-size:0.86rem;color:var(--t1);line-height:1.8;padding:12px 20px;border-top:1px solid var(--bor2);}
 .dua-ref{font-size:0.66rem;color:var(--t3);padding:6px 20px 14px;text-align:right;font-style:italic;}
 /* Marque la traduction servie dans une autre langue que celle qui est lue :
