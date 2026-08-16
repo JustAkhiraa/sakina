@@ -34,7 +34,7 @@ def charge(chemin):
     return mod.LOTS
 
 
-def applique(lots):
+def applique(lots, remplace=False):
     langues = sorted(p.stem for p in I18N.glob("*.js") if p.stem != "index")
     total = 0
     for code in langues:
@@ -42,16 +42,25 @@ def applique(lots):
         src = p.read_text(encoding="utf-8")
         ajouts = []
         for cle, par_langue in lots.items():
-            if f'"{cle}"' in src:
-                continue
             val = par_langue.get(code)
             if val is None:
                 continue
-            ajouts.append(f"  {json.dumps(cle)}: {json.dumps(val, ensure_ascii=False)},")
+            ligne = f"  {json.dumps(cle)}: {json.dumps(val, ensure_ascii=False)},"
+            if f'"{cle}"' in src:
+                if not remplace:
+                    continue
+                # on reecrit la ligne sur place, sans deplacer la cle
+                nouveau = re.sub(rf'^\s*"{re.escape(cle)}"\s*:.*$', ligne,
+                                 src, count=1, flags=re.M)
+                if nouveau != src:
+                    src = nouveau
+                    total += 1
+                continue
+            ajouts.append(ligne)
         if ajouts:
-            p.write_text(re.sub(r"\n\};\s*$", "\n" + "\n".join(ajouts) + "\n};\n", src),
-                         encoding="utf-8")
+            src = re.sub(r"\n\};\s*$", "\n" + "\n".join(ajouts) + "\n};\n", src)
             total += len(ajouts)
+        p.write_text(src, encoding="utf-8")
         manque = [c for c in lots if not lots[c].get(code)]
         etat = f"+{len(ajouts)}"
         if manque:
@@ -64,12 +73,15 @@ def main():
     if len(sys.argv) < 2:
         print(__doc__)
         return 1
+    remplace = "--remplace" in sys.argv
     for chemin in sys.argv[1:]:
+        if chemin.startswith("--"):
+            continue
         p = Path(chemin)
         if not p.is_absolute():
             p = ROOT / p
-        print(f"── {p.name}")
-        applique(charge(p))
+        print(f"── {p.name}{'  (réécriture)' if remplace else ''}")
+        applique(charge(p), remplace)
     return 0
 
 

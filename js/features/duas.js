@@ -3,6 +3,8 @@ import {toast,openSheet} from '../core/ui.js';
 import {t,tf,tfSrc,tfSrcLang} from '../lib/i18n.js';
 import {DUAS} from '../data/duas.js';
 import {LANGS} from '../data/catalog.js';
+import {SURAHS} from '../data/surahs.js';
+import {SURAH_NAMES} from '../data/surah-names.js';
 import {setDhikr} from './tasbih.js';
 import {goPage} from '../core/router.js';
 import {S} from '../core/store.js';
@@ -53,6 +55,33 @@ export function duaTranslation(d){
 export function duaTranslationLang(d){
   if(d.verses&&TR_BY_CODE[S.lang]&&versesText(d.verses,S.lang))return S.lang;
   return tfSrcLang(`dut.${d.id}`);
+}
+
+/* ── Reference de la source ──
+   Elle etait figee en francais — « Coran, Taha (20:25-28) », « Abu Dawud &
+   Tirmidhi » — et s'affichait telle quelle sous une interface japonaise.
+   On la recompose : le nom de sourate vient de SURAH_NAMES, deja traduit
+   dans dix-sept langues, et les recueils d'un petit dictionnaire ferme.
+   `ref` ne sert plus que de repli si la donnee n'est pas structuree. */
+export function duaRef(d){
+  const bouts=[];
+  if(d.verses){
+    const n=parseInt(d.verses,10);
+    const s=SURAHS[n-1]||{};
+    // SURAH_NAMES donne le sens du nom, traduit dans dix-sept langues.
+    // L'arabe en est absent, et c'est normal : pour ce lecteur le nom de
+    // la sourate est le nom arabe, pas sa traduction.
+    const nom=S.lang==='ar'?(s.ar||'')
+             :((SURAH_NAMES[S.lang]||[])[n-1]||s.fr||'');
+    bouts.push(t('duas.refQuran',{s:nom,v:d.verses}));
+  }
+  const rec=(d.sources||[]).map(s=>t(`hds.${s}`));
+  if(rec.length){
+    const liste=rec.join(t('duas.refSep'));
+    // Pour un verset, le recueil dit ou on le recite, pas d'ou il vient.
+    bouts.push(d.srcHow==='recited'?t('duas.refRecited',{src:liste}):liste);
+  }
+  return bouts.length?bouts.join(t('duas.refSep')):(d.ref||'');
 }
 
 /* Etiquette de langue, vide quand la traduction est bien dans la langue lue. */
@@ -107,7 +136,7 @@ function renderDuas(){
     const arHtml=arabicHtml(d);
     const card=document.createElement('div');card.className='dua-card gc';
     card.innerHTML=`<div class="dua-head"><div class="dua-num">${i+1}</div><div style="flex:1"><div class="dua-title">${d.icon||'✦'} ${duaTitle(d)}</div><div class="dua-occ">${duaOcc(d)}</div></div><div class="dua-chev"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div>
-      <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-ph">${d.phonetic||''}</div><div class="dua-tr">${duaTranslation(d)}${duaLangTag(d)}</div><div class="dua-ref">📚 ${d.ref||''}</div>
+      <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-ph">${d.phonetic||''}</div><div class="dua-tr">${duaTranslation(d)}${duaLangTag(d)}</div><div class="dua-ref">📚 ${duaRef(d)}</div>
       <div class="dua-acts"><div class="dua-act dua-act-copy">${t('duas.copy')}</div><div class="dua-act dua-act-use">${t('duas.count')}</div></div></div>`;
     card.querySelector('.dua-head').addEventListener('click',()=>card.classList.toggle('open'));
     card.querySelector('.dua-act-copy').addEventListener('click',e=>{
@@ -149,7 +178,7 @@ function initSearch(){
       const arHtml=arabicHtml(d);
       const el=document.createElement('div');el.className='dua-card gc open';
       el.innerHTML=`<div class="dua-head"><div class="dua-num">✦</div><div style="flex:1"><div class="dua-title">${d.icon||''} ${duaTitle(d)}</div><div class="dua-occ">${duaCat(d)} · ${duaOcc(d)}</div></div></div>
-        <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-tr">${duaTranslation(d)}${duaLangTag(d)}</div><div class="dua-ref">📚 ${d.ref||''}</div></div>`;
+        <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-tr">${duaTranslation(d)}${duaLangTag(d)}</div><div class="dua-ref">📚 ${duaRef(d)}</div></div>`;
       res.appendChild(el);
     });
   });
