@@ -1246,4 +1246,9 @@ export default {
   "bkv.simple": "Rahisi",
   "quran.noFav": "Hakuna vipendwa bado",
   "quran.noNote": "Hakuna madokezo bado",
+  "dut.au-reveil-standard": "Sifa njema zote ni za Mwenyezi Mungu ambaye ametupa uhai baada ya kutufisha, na ni kwake tu kufufuliwa.",
+  "dut.gratitude-pour-la-sante": "Sifa njema zote ni za Mwenyezi Mungu ambaye amenipa uzima wa mwili wangu, na akanirudishia roho yangu, na akaniruhusu kumtaja.",
+  "dut.entrer-a-la-mosquee": "Ewe Mwenyezi Mungu, nifungulie milango ya rehema zako.",
+  "dut.sortir-de-la-mosquee": "Kwa jina la Mwenyezi Mungu, na rehema na amani zimfikie Mtume wa Mwenyezi Mungu. Ewe Mwenyezi Mungu, hakika mimi nakuomba katika fadhila zako; ewe Mwenyezi Mungu, nilinde kutokana na shetani aliyeepushwa na rehema zako.",
+  "dut.se-suffire-du-licite": "Ewe Mwenyezi Mungu, nitosheleze kwa halali yako kutokana na haramu yako, na unitosheleze kwa fadhila zako nisiwahitaji wengine usio Wewe.",
 };
