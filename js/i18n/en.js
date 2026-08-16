@@ -1244,4 +1244,11 @@ export default {
   "bkv.pas-a-pas": "Step by step",
   "bkv.refaits": "Recomputed",
   "bkv.simple": "Simple",
+  "dut.au-reveil-standard": "All praise is for Allah who gave us life after having taken it from us and unto Him is the resurrection.",
+  "dut.gratitude-pour-la-sante": "All praise is for Allah who restored to me my health and returned my soul and has allowed me to remember Him.",
+  "dut.reveil-la-nuit-tahajjud": "None has the right to be worshipped except Allah, alone, without any partner, to Him belong sovereignty and praise and He is over all things wholly capable. How perfect Allah is, and all praise is for Allah, and none has the right to be worshipped except Allah, Allah is the greatest and there is no power nor might except with Allah, The Most High, The Supreme. O my Lord, forgive me.",
+  "dut.demande-par-le-nom-supreme": "O Allah, I ask You, as I bear witness that You are Allah, none has the right to be worshipped except You, The One, as-Samad, Who begets not nor was He begotten, and there is none like unto Him.",
+  "dut.apres-chaque-priere": "I ask Allah for forgiveness (three times). O Allah, You are as-Salam and from You is all peace; blessed are You, O Possessor of majesty and honour.",
+  "dut.avant-les-ablutions": "In the name of Allah.",
+  "dut.avant-d-entrer-aux-toilettes": "In the name of Allah. O Allah, I take refuge with You from all evil and evil doers.",
 };

@@ -1,6 +1,6 @@
 /* SAKINA — Invocations : catégories, recherche, copie, envoi vers le tasbih */
 import {toast,openSheet} from '../core/ui.js';
-import {t,tf} from '../lib/i18n.js';
+import {t,tf,tfSrc} from '../lib/i18n.js';
 import {DUAS} from '../data/duas.js';
 import {setDhikr} from './tasbih.js';
 import {goPage} from '../core/router.js';
@@ -25,27 +25,24 @@ function copyText(txt){
 }
 
 /* ── Sens de l'invocation ──
-   Huit des invocations sont des versets du Coran. Pour celles-la on ne
-   retraduit RIEN : on sert la traduction publiee que l'application embarque
-   deja (Saheeh International en anglais, Ma Jian en chinois, Diyanet en
-   turc…), exactement celle qu'affiche le lecteur. Une traduction de
-   traduction serait une degradation sur un texte qu'on recite.
+   Jamais de retraduction du francais, deux sources publiees seulement :
 
-   Les autres viennent de recueils de hadiths : sans traduction publiee sous
-   la main, elles restent en francais — mieux vaut un texte fiable dans une
-   langue que le lecteur peut ignorer qu'un texte approximatif dans la
-   sienne. */
-/* Deux sources de traduction publiee, jamais une retraduction du francais :
-   les duas coraniques servent le corpus embarque de la langue courante, les
-   duas hadithiques une edition traduite de Hisn al-Muslim relevee par
-   scripts/extract_hisn.py. Sans l'une ni l'autre, on retombe sur le
-   francais plutot que d'inventer. */
+   · les huit invocations qui sont des versets servent le corpus coranique
+     embarque dans la langue courante — Saheeh International en anglais,
+     Ma Jian en chinois, Diyanet en turc —, exactement le texte qu'affiche
+     le lecteur ;
+   · les autres viennent de recueils de hadiths et servent une edition
+     traduite de Hisn al-Muslim, relevee par scripts/extract_hisn.py.
+
+   Sans l'une ni l'autre, on retombe sur le francais d'origine : mieux vaut
+   un texte fiable dans une langue que le lecteur peut ignorer qu'un texte
+   approximatif dans la sienne. */
 export function duaTranslation(d){
   if(d.verses&&TR_BY_CODE[S.lang]){
     const off=versesText(d.verses,S.lang);
     if(off)return off;
   }
-  return tf(`dut.${d.id}`,d.translation||'');
+  return tfSrc(`dut.${d.id}`,d.translation||'');
 }
 
 /* Le corpus se charge une fois par langue, puis on redessine : le rendu

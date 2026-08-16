@@ -58,6 +58,16 @@ export function tf(key,fallback){
   return v===key?fallback:v;
 }
 
+/* Variante de tf pour les contenus dont le francais est l'original et non
+   un repli : les traductions publiees des invocations, par exemple. La
+   chaine ordinaire remonte jusqu'a l'anglais, ce qui ferait lire l'anglais
+   a un francophone alors que le texte francais est la source. Ici la
+   langue courante decide seule ; a defaut, l'anglais ; a defaut, l'original. */
+export function tfSrc(key,original){
+  if((S.lang||'fr')==='fr')return _cur[key]||original;
+  return _cur[key]||(_en&&_en[key])||original;
+}
+
 export {AVAILABLE_LANGS};
 
 export function isRTL(){return !!(LANGS.find(l=>l.code===S.lang)||{}).rtl;}
