@@ -42,6 +42,10 @@ function copyText(txt){
    un texte fiable dans une langue que le lecteur peut ignorer qu'un texte
    approximatif dans la sienne. */
 export function duaTranslation(d){
+  // L'arabe n'a pas de traduction a servir : le texte est deja au-dessus.
+  // Lui montrer l'anglais serait absurde, et le compter comme une lacune
+  // reviendrait a reclamer la traduction de l'arabe vers l'arabe.
+  if((S.lang||'fr')==='ar')return '';
   if(d.verses&&TR_BY_CODE[S.lang]){
     const off=versesText(d.verses,S.lang);
     if(off)return off;
@@ -54,6 +58,7 @@ export function duaTranslation(d){
    (deux ne relevent pas de Hisn al-Muslim) : elles resteront en francais
    partout, autant le dire plutot que de laisser croire a un oubli. */
 export function duaTranslationLang(d){
+  if((S.lang||'fr')==='ar')return 'ar';
   if(d.verses&&TR_BY_CODE[S.lang]&&versesText(d.verses,S.lang))return S.lang;
   return tfSrcLang(`dut.${d.id}`);
 }
@@ -158,7 +163,7 @@ function renderDuas(){
     const arHtml=arabicHtml(d);
     const card=document.createElement('div');card.className='dua-card gc';
     card.innerHTML=`<div class="dua-head"><div class="dua-num">${i+1}</div><div style="flex:1"><div class="dua-title">${d.icon||'✦'} ${duaTitle(d)}</div><div class="dua-occ">${duaOcc(d)}</div></div><div class="dua-chev"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div></div>
-      <div class="dua-body"><div class="dua-ar">${arHtml}</div>${(ph=>ph?`<div class="${phoneticClass()}">${ph}</div>`:'')(duaPhonetic(d))}<div class="dua-tr">${duaTranslation(d)}${duaLangTag(d)}</div><div class="dua-ref">📚 ${duaRef(d)}</div>
+      <div class="dua-body"><div class="dua-ar">${arHtml}</div>${(ph=>ph?`<div class="${phoneticClass()}">${ph}</div>`:'')(duaPhonetic(d))}${(tr=>tr?`<div class="dua-tr">${tr}${duaLangTag(d)}</div>`:'')(duaTranslation(d))}<div class="dua-ref">📚 ${duaRef(d)}</div>
       <div class="dua-acts"><div class="dua-act dua-act-copy">${t('duas.copy')}</div><div class="dua-act dua-act-use">${t('duas.count')}</div></div></div>`;
     card.querySelector('.dua-head').addEventListener('click',()=>card.classList.toggle('open'));
     card.querySelector('.dua-act-copy').addEventListener('click',e=>{
@@ -200,7 +205,7 @@ function initSearch(){
       const arHtml=arabicHtml(d);
       const el=document.createElement('div');el.className='dua-card gc open';
       el.innerHTML=`<div class="dua-head"><div class="dua-num">✦</div><div style="flex:1"><div class="dua-title">${d.icon||''} ${duaTitle(d)}</div><div class="dua-occ">${duaCat(d)} · ${duaOcc(d)}</div></div></div>
-        <div class="dua-body"><div class="dua-ar">${arHtml}</div><div class="dua-tr">${duaTranslation(d)}${duaLangTag(d)}</div><div class="dua-ref">📚 ${duaRef(d)}</div></div>`;
+        <div class="dua-body"><div class="dua-ar">${arHtml}</div>${(tr=>tr?`<div class="dua-tr">${tr}${duaLangTag(d)}</div>`:'')(duaTranslation(d))}<div class="dua-ref">📚 ${duaRef(d)}</div></div>`;
       res.appendChild(el);
     });
   });

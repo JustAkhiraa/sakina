@@ -112,6 +112,16 @@ def dico(code):
     return set(re.findall(r'^\s*"([\w.-]+)"\s*:', src, re.M))
 
 
+def sans_objet(code, cle):
+    """Cette cle a-t-elle un sens dans cette langue ?
+
+    Le sens d'une invocation n'a pas a etre traduit en arabe : le texte
+    arabe est deja affiche au-dessus, et duas.js n'affiche donc aucune
+    ligne de traduction dans cette langue. Les compter comme manquantes
+    reviendrait a reclamer une traduction de l'arabe vers l'arabe."""
+    return code == "ar" and cle.startswith("dut.")
+
+
 def cles_html():
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     # -title et -aria comptent autant que le reste : ils ne se voient pas,
@@ -279,9 +289,10 @@ def main():
         cible = args[i + 1] if i + 1 < len(args) else None
     if cible:
         d = dico(cible)
-        manque = sorted(k for k, v in inv.items()
+        attendu = {k: v for k, v in inv.items() if not sans_objet(cible, k)}
+        manque = sorted(k for k, v in attendu.items()
                         if k not in d and not (cible == "fr" and v["fr"]))
-        print(f"── {cible} : {len(manque)} cle(s) a traduire sur {len(inv)}\n")
+        print(f"── {cible} : {len(manque)} cle(s) a traduire sur {len(attendu)}\n")
         for k in manque:
             src = inv[k]["fr"] or fr.get(k) or ""
             print(f"{k}\n    {src[:110]}")
@@ -315,11 +326,13 @@ def main():
         d = dico(code)
         # Le francais est couvert des que le texte existe, qu'il soit dans
         # fr.js ou directement dans les donnees.
-        n = sum(1 for k, v in inv.items()
-                if k in d or (code == "fr" and v["fr"]))
-        pct = 100 * n / max(1, len(inv))
+        attendu = {k for k in inv if not sans_objet(code, k)}
+        n = sum(1 for k in attendu
+                if k in d or (code == "fr" and inv[k]["fr"]))
+        pct = 100 * n / max(1, len(attendu))
         barre = "█" * int(pct / 5) + "·" * (20 - int(pct / 5))
-        print(f"   {code}  {barre} {pct:5.1f}%  {len(inv)-n:>4} manquante(s)")
+        note = "" if len(attendu) == len(inv) else f"  (sur {len(attendu)})"
+        print(f"   {code}  {barre} {pct:5.1f}%  {len(attendu)-n:>4} manquante(s){note}")
     return 1 if hors_fr else 0
 
 

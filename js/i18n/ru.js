@@ -1285,4 +1285,6 @@ export default {
   "a11y.settings": "Настройки",
   "a11y.back": "Назад",
   "a11y.toggleTranslit": "Переключить арабский / транслитерацию",
+  "rtx.al-fatiha": "Аль-Фатиха",
+  "rtx.astaghfirullah-3": "Астагфируллах ×3",
 };

@@ -1290,4 +1290,6 @@ export default {
   "a11y.settings": "設定",
   "a11y.back": "戻る",
   "a11y.toggleTranslit": "アラビア語と音写を切り替え",
+  "rtx.al-fatiha": "開端章",
+  "rtx.astaghfirullah-3": "アスタグフィルッラー ×3",
 };

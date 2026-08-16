@@ -1296,4 +1296,6 @@ export default {
   "a11y.settings": "Postavke",
   "a11y.back": "Nazad",
   "a11y.toggleTranslit": "Prebaci arapski / transliteraciju",
+  "rtx.al-fatiha": "El-Fatiha",
+  "rtx.astaghfirullah-3": "Estagfirullah ×3",
 };

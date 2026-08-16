@@ -1279,4 +1279,6 @@ export default {
   "a11y.settings": "设置",
   "a11y.back": "返回",
   "a11y.toggleTranslit": "切换阿拉伯文／音译",
+  "rtx.al-fatiha": "开端章",
+  "rtx.astaghfirullah-3": "阿斯泰格菲鲁拉 ×3",
 };

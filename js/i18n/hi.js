@@ -1279,4 +1279,6 @@ export default {
   "a11y.settings": "सेटिंग्स",
   "a11y.back": "वापस",
   "a11y.toggleTranslit": "अरबी / लिप्यंतरण बदलें",
+  "rtx.al-fatiha": "अल-फ़ातिहा",
+  "rtx.astaghfirullah-3": "अस्तग़्फ़िरुल्लाह ×3",
 };

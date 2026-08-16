@@ -40,8 +40,29 @@ def aplati(s):
     return "".join(c for c in s if not unicodedata.combining(c)).lower()
 
 
-def lignes(pdf, depuis):
-    doc = fitz.open(pdf)
+def lignes(source, depuis):
+    """Lignes numerotees par page, depuis un PDF ou un relevé OCR.
+
+    Les editions scannees passent par hisn_ocr.py, qui depose son texte dans
+    scripts/out/. Les lire ici evite un second outil qui ferait la meme chose
+    avec une autre syntaxe."""
+    if source.suffix == ".txt":
+        txt = source.read_text(encoding="utf-8", errors="replace")
+        # UTF-8 relu en latin-1 par l'OCR : « Qurâ€™an » pour « Qur'an »
+        if "â€" in txt:
+            txt = txt.encode("latin-1", "ignore").decode("utf-8", "ignore")
+        out, page = [], 0
+        for brut in txt.split("\n"):
+            s = brut.strip()
+            m = re.fullmatch(r"<<<PAGE (\d+)>>>", s)
+            if m:
+                page = int(m.group(1))
+                continue
+            if s and page >= depuis:
+                out.append((page, s))
+        return out
+
+    doc = fitz.open(source)
     out = []
     for n in range(depuis, doc.page_count):
         for brut in doc[n].get_text().split("\n"):
@@ -95,7 +116,8 @@ def sections(lg):
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("pdf", help="nom du fichier dans inspirations/docs trad/")
+    ap.add_argument("pdf", help="PDF dans inspirations/docs trad/, ou relevé "
+                                ".txt dans scripts/out/")
     ap.add_argument("titres", nargs="*", help="fragments de titre de rubrique")
     ap.add_argument("--mot", action="append", default=[],
                     help="cherche un mot dans le corps, pas dans les titres")
@@ -111,11 +133,11 @@ def main():
                     help="ne pas tronquer les lignes")
     a = ap.parse_args()
 
-    pdf = PDFS / a.pdf
-    if not pdf.exists():
-        print(f"introuvable : {pdf}")
+    src = (ROOT / "scripts" / "out" / a.pdf) if a.pdf.endswith(".txt") else (PDFS / a.pdf)
+    if not src.exists():
+        print(f"introuvable : {src}")
         return 1
-    lg = lignes(pdf, a.depuis)
+    lg = lignes(src, a.depuis)
 
     if a.num:
         # Toutes les editions heritent de la numerotation de l'original, ce

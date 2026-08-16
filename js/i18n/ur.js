@@ -1279,4 +1279,6 @@ export default {
   "a11y.settings": "ترتیبات",
   "a11y.back": "واپس",
   "a11y.toggleTranslit": "عربی / نقل حرفی کے درمیان تبدیلی",
+  "rtx.al-fatiha": "الفاتحہ",
+  "rtx.astaghfirullah-3": "استغفر اللہ ×3",
 };

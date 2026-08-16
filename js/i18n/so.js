@@ -1297,4 +1297,6 @@ export default {
   "a11y.settings": "Dejinta",
   "a11y.back": "Dib u noqo",
   "a11y.toggleTranslit": "U beddel Carabi / higgaadin",
+  "rtx.al-fatiha": "Al-Faatixa",
+  "rtx.astaghfirullah-3": "Astaghfirullaah ×3",
 };

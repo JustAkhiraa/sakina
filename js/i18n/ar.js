@@ -1279,4 +1279,6 @@ export default {
   "a11y.settings": "الإعدادات",
   "a11y.back": "رجوع",
   "a11y.toggleTranslit": "التبديل بين العربية والنطق",
+  "rtx.al-fatiha": "الفاتحة",
+  "rtx.astaghfirullah-3": "أستغفر الله ×3",
 };

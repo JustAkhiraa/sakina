@@ -1279,4 +1279,6 @@ export default {
   "a11y.settings": "تنظیمات",
   "a11y.back": "بازگشت",
   "a11y.toggleTranslit": "جابه‌جایی میان عربی و آوانویسی",
+  "rtx.al-fatiha": "فاتحه",
+  "rtx.astaghfirullah-3": "استغفرالله ×۳",
 };

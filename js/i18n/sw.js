@@ -1284,4 +1284,6 @@ export default {
   "a11y.settings": "Mipangilio",
   "a11y.back": "Rudi",
   "a11y.toggleTranslit": "Badilisha Kiarabu / matamshi",
+  "rtx.al-fatiha": "Al-Fatiha",
+  "rtx.astaghfirullah-3": "Astaghfirullah ×3",
 };

@@ -1279,4 +1279,6 @@ export default {
   "a11y.settings": "Réglages",
   "a11y.back": "Retour",
   "a11y.toggleTranslit": "Basculer arabe / phonétique",
+  "rtx.al-fatiha": "Al-Fâtiha",
+  "rtx.astaghfirullah-3": "Astaghfiroullah ×3",
 };

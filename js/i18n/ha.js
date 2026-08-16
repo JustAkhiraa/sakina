@@ -1299,4 +1299,6 @@ export default {
   "a11y.settings": "Saituna",
   "a11y.back": "Koma",
   "a11y.toggleTranslit": "Sauya Larabci / rubutun furuci",
+  "rtx.al-fatiha": "Al-Fatiha",
+  "rtx.astaghfirullah-3": "Astaghfirullah ×3",
 };

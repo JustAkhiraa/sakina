@@ -1279,4 +1279,6 @@ export default {
   "a11y.settings": "সেটিংস",
   "a11y.back": "ফিরে যান",
   "a11y.toggleTranslit": "আরবি / প্রতিবর্ণীকরণ বদল",
+  "rtx.al-fatiha": "আল-ফাতিহা",
+  "rtx.astaghfirullah-3": "আস্তাগফিরুল্লাহ ×৩",
 };
