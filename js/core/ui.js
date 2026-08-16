@@ -16,19 +16,41 @@ export function burst(){
   setTimeout(()=>el.remove(),700);
 }
 
-/* ── Sheets ── */
+/* ── Sheets ──
+   La classe `open` est posée deux frames plus tard, le temps que le
+   navigateur ait pris en compte la position de départ : sans ce délai la
+   transition de montée ne se joue pas.
+
+   Ce report ouvrait une course. Le rappel `cb` d'une feuille peut en ouvrir
+   une autre aussitôt — ouvrir « Mosquées à proximité » sans position
+   déclenche le GPS, dont le refus ouvre « Choisir une ville ». La seconde
+   feuille retirait bien `open` à la première, mais la frame en attente de
+   la première la lui remettait juste après. Résultat : une feuille fantôme,
+   visible sans voile derrière elle, que plus rien ne fermait puisque `_sh`
+   désignait désormais l'autre.
+
+   D'où le jeton : la frame ne pose `open` que si elle est toujours
+   d'actualité. */
 let _sh=null;
+let _seq=0;
 export function openSheet(id,cb){
   if(_sh)_sh.classList.remove('open');
   const sh=document.getElementById(id);
+  if(!sh)return;
   const ov=document.getElementById('overlay');
+  const mine=++_seq;
   _sh=sh;
   ov.classList.add('open');
-  requestAnimationFrame(()=>requestAnimationFrame(()=>sh.classList.add('open')));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    if(_seq===mine&&_sh===sh)sh.classList.add('open');
+  }));
   if(cb)cb();
 }
 export function closeSheet(){
+  _seq++;                       // annule une ouverture encore en vol
   if(_sh)_sh.classList.remove('open');
+  // Filet de sécurité : rien ne doit rester ouvert sans voile derrière.
+  document.querySelectorAll('.sheet.open').forEach(s=>s.classList.remove('open'));
   document.getElementById('overlay').classList.remove('open');
   _sh=null;
 }
