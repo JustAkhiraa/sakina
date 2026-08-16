@@ -354,7 +354,10 @@ function langRow(l){
     vib(16);
     // setLang pose S.lang puis applique : on enregistre après, sinon on
     // sauvegarderait l'ancienne langue.
-    setLang(l.code).then(()=>{save();buildLangList();syncPracticeRows();});
+    setLang(l.code).then(()=>{
+      save();buildLangList();syncPracticeRows();
+      offerQuranTr(l.code);
+    });
   });
   return row;
 }
@@ -694,14 +697,16 @@ function wireAdhan(){
 function quranTrSummary(){
   const el=document.getElementById('quran-tr-sub');
   if(!el)return;
-  const on=TRANSLATIONS.filter(t=>S.quranTr.includes(t.code)).map(t=>t.label);
+  const on=TRANSLATIONS.filter(x=>S.quranTr.includes(x.code)).map(x=>x.native);
   el.textContent=on.length<=3
     ? on.join(' · ')
-    : `${on.slice(0,2).join(' · ')} et ${on.length-2} autres`;
+    : t('set.trSummaryMore',{first:on.slice(0,2).join(' · '),n:on.length-2});
 }
 
-function buildQuranTrList(){
-  const host=document.getElementById('quran-tr-list');
+/* La meme liste sert deux fois : dans les reglages, et dans la fenetre
+   proposee au changement de langue. D'ou l'hote en parametre. */
+function buildQuranTrList(hostId='quran-tr-list'){
+  const host=document.getElementById(hostId);
   if(!host)return;
   if(!Array.isArray(S.quranTr)||!S.quranTr.length){S.quranTr=['fr'];save();}
   host.innerHTML='';
@@ -714,7 +719,11 @@ function buildQuranTrList(){
     if(i===TRANSLATIONS.length-1)row.style.borderBottom='none';
     row.innerHTML=
       `<div class="row-body">`+
-        `<div class="row-name">${tr.label} <span style="color:var(--t2);font-weight:400">· ${tr.native}</span></div>`+
+        // Le nom natif d'abord : « Türkçe » se reconnait dans toutes les
+        // langues, « Turc » seulement en francais — et cette liste s'ouvrait
+        // en francais sous une interface japonaise. Le libelle francais
+        // suit, sauf quand il redit le nom natif (« Français · Français »).
+        `<div class="row-name">${tr.native}${tr.label!==tr.native?` <span style="color:var(--t2);font-weight:400">· ${tr.label}</span>`:''}</div>`+
         `<div class="row-sub">${tr.author} · ${tr.mb.toFixed(2)} Mo</div>`+
       `</div><div class="tog${on?' on':''}"></div>`;
     const tog=row.querySelector('.tog');
@@ -726,6 +735,7 @@ function buildQuranTrList(){
         S.quranTr=S.quranTr.filter(c=>c!==tr.code);
         tog.classList.remove('on');save();
         quranTrSummary();refreshTranslations();
+        syncQuranTrToggles(tr.code,false);
         return;
       }
       tog.classList.add('on');
@@ -735,16 +745,65 @@ function buildQuranTrList(){
         S.quranTr=[...S.quranTr,tr.code];save();
         quranTrSummary();
         await refreshTranslations();
-        row.querySelector('.row-sub').textContent=`${tr.author} · disponible hors ligne`;
+        row.querySelector('.row-sub').textContent=`${tr.author} · ${t('set.offlineReady')}`;
         toast(t('set.langAdded',{name:tr.label}));
+        syncQuranTrToggles(tr.code,true);
       }catch{
         tog.classList.remove('on');
         row.querySelector('.row-sub').textContent=`${tr.author} · ${tr.mb.toFixed(2)} Mo`;
         toast(t('set.downloadFail'));
       }
     });
+    row.dataset.trCode=tr.code;
     host.appendChild(row);
   });
+}
+
+/* Les deux listes coexistent a l'ecran : basculer un interrupteur dans
+   l'une doit se voir dans l'autre, sinon la fenetre refermee ment. */
+function syncQuranTrToggles(code,on){
+  document.querySelectorAll(`[data-tr-code="${code}"] .tog`).forEach(el=>{
+    el.classList.toggle('on',on);
+  });
+}
+
+/* ── Traduction du Coran proposee au changement de langue ──
+   Choisir le japonais pour l'interface et continuer a lire les versets en
+   francais n'a guere de sens, mais activer la traduction d'autorite serait
+   presomptueux : elle pese plusieurs mega-octets et le lecteur a peut-etre
+   choisi les siennes. On propose donc, une seule fois par langue. */
+export function offerQuranTr(code){
+  const tr=TRANSLATIONS.find(x=>x.code===code);
+  if(!tr||S.quranTr.includes(code))return;
+  S.trOffered=Array.isArray(S.trOffered)?S.trOffered:[];
+  if(S.trOffered.includes(code))return;      // deja propose, on n'insiste pas
+  S.trOffered=[...S.trOffered,code];save();
+
+  const q=document.getElementById('tr-offer-q');
+  if(!q)return;
+  // La question est posee dans la langue qu'on vient de choisir : le nom de
+  // cette langue doit y figurer tel qu'elle se nomme, pas « Turc ».
+  q.textContent=t('set.trOfferQ',{lang:tr.native||tr.label});
+  const poids=document.getElementById('tr-offer-size');
+  if(poids)poids.textContent=t('set.trOfferSize',{author:tr.author,mb:tr.mb.toFixed(2)});
+  openSheet('sh-tr-offer');
+
+  const oui=document.getElementById('tr-offer-yes');
+  const non=document.getElementById('tr-offer-no');
+  const fini=()=>{oui.onclick=null;non.onclick=null;};
+  non.onclick=()=>{fini();closeSheet();};
+  oui.onclick=async()=>{
+    fini();closeSheet();
+    try{
+      await preloadTr(code);
+      S.quranTr=[...S.quranTr,code];save();
+      quranTrSummary();await refreshTranslations();
+      toast(t('set.langAdded',{name:tr.label}));
+    }catch{toast(t('set.downloadFail'));}
+    buildQuranTrList();
+    buildQuranTrList('quran-tr-list-sheet');
+    openSheet('sh-quran-tr');
+  };
 }
 
 /* ── Rafraichissement au changement de langue ──
