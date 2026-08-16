@@ -314,35 +314,80 @@ def check_i18n() -> None:
 def check_quran() -> None:
     reg = read("js/data/translations.js")
     declared = set(re.findall(r"code:'(\w+)'", reg))
-    on_disk = {p.stem.replace("quran-", "") for p in ROOT.glob("data/quran-*.json")}
+    on_disk = {p.stem.replace("quran-", "") for p in ROOT.glob("content/quran/quran-*.json")}
     on_disk.discard("ar")  # le texte arabe n'est pas une traduction
 
     for c in sorted(declared - on_disk):
-        ERRORS.append(f"translations.js : « {c} » déclaré mais data/quran-{c}.json manquant")
+        ERRORS.append(f"translations.js : « {c} » déclaré mais content/quran/quran-{c}.json manquant")
     for c in sorted(on_disk - declared):
-        NOTES.append(f"data/quran-{c}.json présent mais non déclaré dans translations.js")
+        NOTES.append(f"content/quran/quran-{c}.json présent mais non déclaré dans translations.js")
 
-    if not (ROOT / "data/quran-ar.json").exists():
-        ERRORS.append("data/quran-ar.json manquant : le lecteur n'a plus de texte arabe")
+    if not (ROOT / "content/quran/quran-ar.json").exists():
+        ERRORS.append("content/quran/quran-ar.json manquant : le lecteur n'a plus de texte arabe")
     NOTES.append(f"corpus : {len(declared)} traductions déclarées")
 
 
 # ── 6. Livres ────────────────────────────────────────────────────────────
 def check_books() -> None:
     src = read("js/features/books.js")
-    for path in re.findall(r"src:'(books/[^']+)'", src):
+    for path in re.findall(r"(?:src|textSrc):'(content/books/[^']+)'", src):
         if not (ROOT / path).exists():
             ERRORS.append(f"books.js : « {path} » déclaré mais absent")
 
-    for p in sorted(ROOT.glob("books/*.json")):
-        rel = f"books/{p.name}"
+    # Les guides traduisibles existent en plusieurs fichiers — fruits.en.json
+    # a cote de fruits.json — charges par la langue courante et non declares
+    # dans BOOKS. Ce ne sont pas des orphelins.
+    localise = re.compile(r"\.[a-z]{2}\.json$")
+    for p in sorted(ROOT.glob("content/books/*.json")):
+        if localise.search(p.name):
+            continue
+        rel = f"content/books/{p.name}"
         if rel not in src:
             NOTES.append(f"{rel} présent mais référencé nulle part dans books.js")
         try:
             json.loads(p.read_text(encoding="utf-8"))
         except json.JSONDecodeError as e:
             ERRORS.append(f"{rel} : JSON invalide ({e})")
-    NOTES.append(f"livres : {len(list(ROOT.glob('books/*.json')))} JSON validés")
+    NOTES.append(f"livres : {len(list(ROOT.glob('content/books/*.json')))} JSON validés")
+
+
+
+# ── 8. Inventaire i18n ───────────────────────────────────────────────────
+def check_i18n_inventory() -> None:
+    """Le texte traduisible ne vit pas qu'en js/i18n/ : il vient aussi des
+    donnees, ou les traductions se greffent par tf('cle', francais). Ce repli
+    est silencieux — une cle absente affiche le francais sans rien signaler.
+    C'est ce qui laissait passer des ecrans non traduits.
+
+    scripts/i18n_scan.py denombre les trois gisements ; on verifie ici qu'aucun
+    texte affichable n'echappe a la fois au dictionnaire et aux donnees."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    try:
+        import i18n_scan
+    except Exception as e:                       # outil casse : on le dit
+        ERRORS.append(f"i18n_scan.py illisible ({e})")
+        return
+    finally:
+        sys.path.pop(0)
+
+    inv = i18n_scan.inventaire()
+    orphelines = [k for k, v in inv.items() if not v["dans_fr"]]
+    for k in sorted(orphelines)[:10]:
+        ERRORS.append(
+            f"i18n : « {k} » est affichee ({inv[k]['source']}) mais n'a de "
+            f"texte ni dans fr.js ni dans les donnees"
+        )
+    if len(orphelines) > 10:
+        ERRORS.append(f"i18n : … et {len(orphelines)-10} autre(s)")
+
+    manques = {c: sum(1 for k in inv if k not in i18n_scan.dico(c))
+               for c in i18n_scan.LANGS}
+    total = sum(manques.values())
+    pire = max(manques.items(), key=lambda x: x[1])
+    NOTES.append(
+        f"inventaire i18n : {len(inv)} cles traduisibles, {total} traduction(s) "
+        f"manquante(s) au total (max {pire[1]} en {pire[0]})"
+    )
 
 
 def main() -> int:
@@ -356,6 +401,7 @@ def main() -> int:
         check_i18n,
         check_quran,
         check_books,
+        check_i18n_inventory,
     ):
         try:
             fn()

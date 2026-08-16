@@ -53,7 +53,7 @@ const BOOKS={
       "« Les Jardins des Vertueux » est un recueil de hadiths authentiques compilé au XIIIᵉ siècle par l'imam Yahya ibn Sharaf an-Nawawi, l'un des plus grands savants du hadith et du fiqh shafiite de l'histoire musulmane.",
       "Organisé en 373 chapitres thématiques — sincérité, patience, bonté envers les parents, adab du quotidien, repentir — c'est l'un des recueils les plus lus au monde pour ancrer la foi dans le comportement de tous les jours.",
     ],
-    src:'books/riyad.json',
+    src:'content/books/riyad.json',
     srcNotes:['Texte intégral, reproduit tel quel — édition riyad.fr.tc'],
   },
   citadelle:{
@@ -65,7 +65,7 @@ const BOOKS={
       "« Hisn al-Muslim » rassemble des invocations authentiques tirées du Coran et de la Sunna pour chaque instant du quotidien : réveil, repas, voyage, épreuves — afin que le rappel d'Allah accompagne le musulman à chaque moment.",
       "Une lecture continue et soignée, du début à la fin, pensée pour un confort optimal — arabe, translittération et traduction mis en valeur.",
     ],
-    textSrc:'books/citadelle.json',
+    textSrc:'content/books/citadelle.json',
     srcNotes:["Texte intégral — Hisn al-Muslim, Sa'îd Ibn 'Alî Ibn Wahf Al-Qahtânî"],
   },
   asma:{
@@ -77,7 +77,7 @@ const BOOKS={
       "« Les Plus Beaux Noms » d'Allah — 99 noms rapportés par la tradition, chacun révélant une facette de Sa majesté, de Sa miséricorde et de Sa perfection.",
       "« À Allah appartiennent les plus beaux noms. Invoquez-Le par ces noms » (Coran 7:180). Cette lecture est un moyen d'accroître la connaissance d'Allah et l'attachement à Lui.",
     ],
-    src:'books/asma.json',
+    src:'content/books/asma.json',
     srcNotes:["D'après la tradition classique — références coraniques et prophétiques","Invocation &amp; introspection de chaque nom : « Les Essentiels — Les 99 Noms d'Allah » de Souad El Mansouri, éditions Al Bouraq"],
   },
   fruits:{
@@ -90,7 +90,7 @@ const BOOKS={
       "Datte, raisin, figue, olive, grenade, banane, jujube, miel — les aliments que le Coran nomme. Puis les remèdes transmis par la Sunna : nigelle, orge, vinaigre, eau de Zamzam.",
       "Pour chacun : les versets et hadiths cités intégralement avec leurs références, puis ce que dit la recherche — méta-analyses, essais randomisés, revues Cochrane — avec ses résultats comme ses limites. Toutes les sources sont rassemblées en fin de lecture.",
     ],
-    src:'books/fruits.json',translatable:true,
+    src:'content/books/fruits.json',translatable:true,
     srcNotes:['Versets et hadiths cités intégralement ; recherche et rédaction originales — sources en fin de lecture'],
   },
   miracles:{
@@ -103,7 +103,7 @@ const BOOKS={
       "Le Coran met lui-même son authenticité en jeu : produire une seule sourate semblable suffirait à le réfuter. Ce défi, lancé aux plus fins connaisseurs de la langue arabe, n'a jamais été relevé.",
       "Ce guide part de là — l'inimitabilité de la parole selon les savants classiques — avant d'aborder les annonces accomplies, les versets qui décrivent la création, et les signes rapportés par la Sunna. Les comptages sont recalculés sur le texte complet, avec de quoi refaire chaque calcul soi-même.",
     ],
-    src:'books/miracles.json',translatable:true,
+    src:'content/books/miracles.json',translatable:true,
     srcNotes:['Versets et hadiths cités intégralement ; comptages refaits sur les 6236 versets, dans les deux orthographes — sources et méthode en fin de lecture'],
   },
   salat:{
@@ -191,7 +191,7 @@ function showIntro(){
 /* ── Livres « chapitres » (Riyad as-Salihin, Les Aliments…) ──
    `_chaptersCache[key]` met en cache le JSON chargé, `key` = BOOKS[_current].key. */
 /* Les guides que nous avons ecrits peuvent exister traduits, un fichier par
-   langue : books/fruits.en.json a cote de books/fruits.json. On tente la
+   langue : books/fruits.en.json a cote de content/books/fruits.json. On tente la
    langue courante, puis l'anglais comme pivot, puis le francais d'origine.
    Le cache est indexe par couple livre+langue pour ne pas servir la version
    d'une autre langue apres une bascule. */
@@ -526,13 +526,13 @@ async function openNames(filter=''){
   }
   renderNames(filter);
 }
-/* Récitation d'un nom : fichiers locaux books/asma-audio/{af}.mp3, où `af`
+/* Récitation d'un nom : fichiers locaux content/audio/asma/{af}.mp3, où `af`
    (dans asma.json) est du type "001_ar-rahman" — triés par numéro, nom lisible.
    Récitations issues du dépôt MIT MohammedAbidNafi/99-Names-of-Allah (cf.
    `audioSource`), converties en MP3. Locaux = hors-ligne + cache SW. */
 function asmaAudioSrc(n){
   const nm=_asma&&_asma.names.find(x=>x.n===n);
-  return `books/asma-audio/${(nm&&nm.af)||String(n).padStart(3,'0')}.mp3`;
+  return `content/audio/asma/${(nm&&nm.af)||String(n).padStart(3,'0')}.mp3`;
 }
 let _asmaAudio=null,_asmaPlaying=null;   // null = rien en lecture (n=0 = Allah, donc pas 0 comme sentinelle)
 function playName(n,card){
@@ -551,7 +551,7 @@ function playName(n,card){
 /* ── Anachid des 99 Noms : lecture continue du chant ──
    Objet Audio persistant (hors DOM) : filtrer la liste re-render la bannière
    sans interrompre la lecture ; l'icône est restaurée depuis `_nasheedOn`. */
-const NASHEED_SRC='books/asma-audio/nasheed-99-noms.mp3';
+const NASHEED_SRC='content/audio/asma/nasheed-99-noms.mp3';
 let _nasheedAudio=null,_nasheedOn=false;
 function stopNasheed(){
   if(_nasheedAudio&&!_nasheedAudio.paused)_nasheedAudio.pause();

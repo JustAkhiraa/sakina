@@ -11,7 +11,7 @@
       elle est rangée dans IndexedDB et fonctionne ensuite hors ligne, sans
       réseau ni dépendance. Les voix intégrées ci-dessous sont déclarées mais
       ne s'affichent que si le fichier correspondant existe réellement dans
-      assets/adhan/ — le jour où on en dépose un, il apparaît tout seul.
+      content/audio/adhan/ — le jour où on en dépose un, il apparaît tout seul.
 
    2. À défaut d'enregistrement, un carillon de synthèse marque l'heure. Ce
       n'est pas un adhân et il ne le remplace pas : c'est un signal sonore,
@@ -28,7 +28,7 @@ import {getAC} from '../core/audio.js';
 import {t} from '../lib/i18n.js';
 import {putBlob,getBlob,delBlob} from '../lib/blobstore.js';
 
-/* Voix intégrées : fichiers attendus dans assets/adhan/. Une entrée dont le
+/* Voix intégrées : fichiers attendus dans content/audio/adhan/. Une entrée dont le
    fichier manque est simplement retirée du choix (voir availableVoices). */
 /* `clip` : ne jouer que les N premières secondes, avec un fondu de sortie.
    L'enregistrement d'Omar Hisham dure trois minutes ; son premier takbir
@@ -36,11 +36,11 @@ import {putBlob,getBlob,delBlob} from '../lib/blobstore.js';
    1,35 s — mesuré sur l'enveloppe du fichier, pas estimé. Couper à 12,4 s
    laisse la phrase entière respirer sans mordre sur la suivante. */
 export const BUILTIN_ADHANS=[
-  {id:'omar',       file:'assets/adhan/omar-hisham.mp3', i18n:'adhan.vOmar'},
-  {id:'omar-takbir',file:'assets/adhan/omar-hisham.mp3', i18n:'adhan.vOmarTakbir', clip:12.4},
-  {id:'makkah',     file:'assets/adhan/makkah.mp3',      i18n:'adhan.vMakkah'},
-  {id:'madinah',    file:'assets/adhan/madinah.mp3',     i18n:'adhan.vMadinah'},
-  {id:'fajr',       file:'assets/adhan/fajr.mp3',        i18n:'adhan.vFajr', fajrOnly:true},
+  {id:'omar',       file:'content/audio/adhan/omar-hisham.mp3', i18n:'adhan.vOmar'},
+  {id:'omar-takbir',file:'content/audio/adhan/omar-hisham.mp3', i18n:'adhan.vOmarTakbir', clip:12.4},
+  {id:'makkah',     file:'content/audio/adhan/makkah.mp3',      i18n:'adhan.vMakkah'},
+  {id:'madinah',    file:'content/audio/adhan/madinah.mp3',     i18n:'adhan.vMadinah'},
+  {id:'fajr',       file:'content/audio/adhan/fajr.mp3',        i18n:'adhan.vFajr', fajrOnly:true},
 ];
 
 export const CUSTOM_KEY='adhan-custom';

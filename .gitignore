@@ -4,3 +4,7 @@ inspirations/
 # Caches Python des scripts de verification
 scripts/__pycache__/
 __pycache__/
+
+# Artefacts produits par les scripts (regenerables)
+scripts/out/
+scripts/hisn_ocr_*.txt

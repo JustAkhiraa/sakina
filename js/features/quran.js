@@ -1,5 +1,5 @@
-/* SAKINA — Lecteur du Coran : texte embarqué (data/quran-ar.json, uthmanî) et
-   traduction française embarquée (data/quran-fr.json, Montada Islamic
+/* SAKINA — Lecteur du Coran : texte embarqué (content/quran/quran-ar.json, uthmanî) et
+   traduction française embarquée (content/quran/quran-fr.json, Montada Islamic
    Foundation), avec l'API Quran.com en secours. Coloration tajwid
    (heuristique), favoris, notes, reprise de lecture.
    Seule la récitation audio reste distante (CDN islamic.network). */
@@ -94,7 +94,7 @@ function onVerseEnded(){
 const _corpus={};
 async function loadCorpus(kind){
   if(_corpus[kind])return _corpus[kind];
-  const res=await fetch(`data/quran-${kind}.json`);
+  const res=await fetch(`content/quran/quran-${kind}.json`);
   if(!res.ok)throw new Error('corpus indisponible');
   _corpus[kind]=await res.json();
   return _corpus[kind];

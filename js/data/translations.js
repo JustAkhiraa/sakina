@@ -1,6 +1,6 @@
 /* SAKINA — Traductions du Coran disponibles hors ligne.
 
-   Chaque entrée correspond à un fichier data/quran-<code>.json : un tableau
+   Chaque entrée correspond à un fichier content/quran/quran-<code>.json : un tableau
    de 114 sourates, chacune un tableau de versets dans l'ordre. Le verset a
    de la sourate n se lit donc data[n-1][a-1].
 

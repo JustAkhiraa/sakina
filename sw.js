@@ -27,7 +27,7 @@ const SHELL=[
 /* Corpus coranique embarqué (~2,3 Mo). Mis en cache à part du shell : s'il
    échoue, l'application s'installe quand même et le lecteur retombera sur
    l'API. */
-const CORPUS=['./data/quran-ar.json','./data/quran-fr.json'];
+const CORPUS=['./content/quran/quran-ar.json','./content/quran/quran-fr.json'];
 
 self.addEventListener('install',e=>{
   e.waitUntil(
@@ -50,7 +50,7 @@ self.addEventListener('fetch',e=>{
 
   // Corpus coraniques : cache d'abord. Une langue téléchargée une fois depuis
   // les réglages reste ensuite disponible hors connexion.
-  if(url.origin===location.origin&&url.pathname.includes('/data/quran-')){
+  if(url.origin===location.origin&&url.pathname.includes('/content/quran/quran-')){
     e.respondWith(
       caches.match(e.request).then(hit=>hit||fetch(e.request).then(res=>{
         const copy=res.clone();
@@ -65,7 +65,7 @@ self.addEventListener('fetch',e=>{
   // mégaoctets ; le mettre dans SHELL rendrait la première installation
   // longue pour une fonction que tout le monde n'active pas. Il se met en
   // cache tout seul à la première écoute, et reste disponible hors ligne.
-  if(url.origin===location.origin&&url.pathname.includes('/assets/adhan/')){
+  if(url.origin===location.origin&&url.pathname.includes('/content/audio/adhan/')){
     e.respondWith(
       caches.match(e.request).then(hit=>hit||fetch(e.request).then(res=>{
         if(res.ok){const copy=res.clone();caches.open(VERSION).then(c=>c.put(e.request,copy));}

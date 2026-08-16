@@ -561,7 +561,7 @@ function initNotifSettings(){
 /* ── Appel à la prière ──
    La liste des voix se reconstruit à chaque ouverture : elle dépend de ce que
    l'utilisateur a importé et des fichiers réellement présents dans
-   assets/adhan/, qui peuvent apparaître entre deux versions. */
+   content/audio/adhan/, qui peuvent apparaître entre deux versions. */
 function adhanSummary(){
   const sub=$('adhan-sub');
   if(!sub)return;

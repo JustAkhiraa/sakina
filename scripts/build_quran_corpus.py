@@ -87,7 +87,7 @@ def build(code: str) -> None:
     if total != 6236:
         raise SystemExit(f"✗ {total} versets au total, 6236 attendus — corpus abandonné")
 
-    path = ROOT / f"data/quran-{code}.json"
+    path = ROOT / f"content/quran/quran-{code}.json"
     path.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
     mb = path.stat().st_size / 1_048_576
     print(f"   ✓ {path.relative_to(ROOT)} — {total} versets, {mb:.2f} Mo")
