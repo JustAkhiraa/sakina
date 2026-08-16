@@ -132,7 +132,11 @@ def main():
         if lg not in have:
             print(f"{code}: pack de langue « {lg} » non installe — ignore")
             continue
-        out = ROOT / "scripts" / f"hisn_ocr_{code}.txt"
+        # Sous scripts/out/, avec le reste des artefacts regenerables : depose
+        # dans scripts/ ces relevés finissaient par entrer dans le depot.
+        dossier = ROOT / "scripts" / "out"
+        dossier.mkdir(exist_ok=True)
+        out = dossier / f"hisn_ocr_{code}.txt"
         print(f"{code}: OCR de {name} ({lg}) …")
         n = ocr_pdf(exe, pdf, lg, out)
         chars = len(out.read_text(encoding='utf-8'))
