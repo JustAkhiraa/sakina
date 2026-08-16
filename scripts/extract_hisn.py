@@ -73,11 +73,22 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent
 PDFS = ROOT / "inspirations" / "docs trad"
 
+# Editions a texte extractible. Celles qui sont scannees passent d'abord par
+# scripts/ocr_hisn.py — leur arabe est alors illisible, mais la langue locale
+# se lit, et c'est elle qu'on cherche.
 BOOKS = [
     ("bs", "bs_Hisnul_muslim.pdf"),
     ("ha", "ha_garkuwan_musulmi.pdf"),
     ("ja", "ja_Hisn_Almuslim.pdf"),
     ("so", "so_Xisnul_Muslim.pdf"),
+    ("es", "es_Muslim_bastion.pdf"),
+    ("ru", "ru_Dua_iz_korana_i_sunny.pdf"),
+    ("tr", "tr_Hisnul_Muslim.pdf"),
+    ("fa", "fa_hisn_muslim.pdf"),
+    ("hi", "risala_hi_hisnul-muslim_4.0.pdf"),
+    ("bn", "risala_bn_hisn_almuslim.pdf"),
+    ("id", "id_hisn_almuslim.pdf"),
+    ("zh", "risala_zh_hisn_new.pdf"),
 ]
 
 MIN_LEN, MIN_SCORE, MIN_MARGIN = 30, 0.95, 0.06

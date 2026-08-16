@@ -37,11 +37,31 @@ CANDIDATES = [
     Path.home() / "AppData/Local/Programs/Tesseract-OCR/tesseract.exe",
 ]
 
+# Editions scannees : le PDF, et la langue Tesseract a employer.
+# Les langues absentes d'ici ont du texte extractible — extract_hisn.py
+# les lit directement, l'OCR n'a rien a leur apporter.
 BOOKS = {
     "en": ("en_Hisn_El_Muslim.pdf", "eng"),
     "sw": ("sw_Kinga_Ya_Muislamu.pdf", "swa"),
+    "ur": ("ur_Hisnul_Muslim.pdf", "urd"),
+    "hi": ("risala_hi_hisnul-muslim_4.0.pdf", "hin"),
+    "bn": ("risala_bn_hisn_almuslim.pdf", "ben"),
+    "zh": ("risala_zh_hisn_new.pdf", "chi_sim"),
+    "ru": ("ru_Dua_iz_korana_i_sunny.pdf", "rus"),
+    "es": ("es_Muslim_bastion.pdf", "spa"),
+    "tr": ("tr_Hisnul_Muslim.pdf", "tur"),
+    "fa": ("fa_hisn_muslim.pdf", "fas"),
+    "id": ("id_hisn_almuslim.pdf", "ind"),
+    "ms": ("ms_hisn_muslim.pdf", "msa"),
 }
 DPI = 300
+
+# Installer les packs dans Program Files demande les droits administrateur.
+# On pointe donc Tesseract vers le depot tessdata tel qu'il a ete telecharge :
+# --tessdata-dir accepte n'importe quel dossier, et celui-la porte les 129
+# langues d'un coup.
+TESSDATA = (Path(__file__).resolve().parent.parent
+            / "inspirations/asset/tessdata-main/tessdata-main")
 
 
 def tesseract():
@@ -55,9 +75,13 @@ def tesseract():
     sys.exit("tesseract introuvable — winget install UB-Mannheim.TesseractOCR")
 
 
+def tessdata_args():
+    return ["--tessdata-dir", str(TESSDATA)] if TESSDATA.is_dir() else []
+
+
 def langs(exe):
-    out = subprocess.run([str(exe), "--list-langs"], capture_output=True,
-                         text=True).stdout
+    out = subprocess.run([str(exe), "--list-langs"] + tessdata_args(),
+                         capture_output=True, text=True).stdout
     return {l.strip() for l in out.splitlines()[1:] if l.strip()}
 
 
@@ -73,7 +97,7 @@ def ocr_pdf(exe, pdf, lang, out_path):
         for i in range(n):
             doc[i].get_pixmap(matrix=mat).save(img)
             subprocess.run([str(exe), str(img), str(base), "-l", lang,
-                            "--psm", "6"],
+                            "--psm", "6"] + tessdata_args(),
                            capture_output=True, check=False)
             txt = base.with_suffix(".txt")
             page = txt.read_text(encoding="utf-8", errors="replace") if txt.exists() else ""

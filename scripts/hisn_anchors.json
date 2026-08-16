@@ -34,6 +34,12 @@
     "mooyee,adigoo ah allaha kaliya,  ee",
     "loo la qasdo arrin oo idil,waxna aan"
    ]
+  },
+  "ru": {
+   "score": 0.96,
+   "margin": 0.12,
+   "page": 56,
+   "context": []
   }
  },
  "debloquer-une-situation": {
@@ -87,6 +93,12 @@
     "44 .  Waxa uu dhahayo amase uu yeelayo",
     "qofka dambaaba."
    ]
+  },
+  "bn": {
+   "score": 0.957,
+   "margin": 0.085,
+   "page": 97,
+   "context": []
   }
  },
  "dhikr-hautement-recompense": {
@@ -138,6 +150,12 @@
     "118) ŠTA KAŽE ONOJ KO SE PLAŠI DA BI SVOJIM",
     "OKOM MOGAO UREĆI NEKOGA"
    ]
+  },
+  "bn": {
+   "score": 1.0,
+   "margin": 0.081,
+   "page": 128,
+   "context": []
   }
  },
  "la-main-sur-le-front-de-l-ep": {
@@ -172,6 +190,21 @@
     "khayrkeeda iyo khayrka aad ku abuurtay,",
     "waxaana kaa magangalayaa sharkeeda",
     "iyo sharka aad ku abuurtay.} haddii uu"
+   ]
+  },
+  "tr": {
+   "score": 0.96,
+   "margin": 0.1,
+   "page": 38,
+   "context": [
+    "74- Câbir b. Abdullah -Allah ondan râzı olsun- şöyle der:",
+    "\"Rasûlullah -sallallahu aleyhi ve sellem- bize, Kur’ân’dan bir sûre öğretir",
+    "gibi tüm işlerde istihâre etmeyi öğretir ve şöyle buyururdu:",
+    "-Sizden biriniz bir işi yapmaya karar verirse, (beş vakit) farz namazın",
+    "dışında iki rekat (nâfile) namaz kılsın. Sonra şöyle desin:",
+    "-Allahım! İlmine başvurarak senden (bu iki şeyden) en hayırlı olanını",
+    "isterim. Kudretine dayanarak senden (bu iki şeyden) en uygun olanını takdir",
+    "etmeni isterim.Senden, yüce ihsanını isterim.Sen güç yetirirsin, ben güç"
    ]
   }
  },
@@ -240,61 +273,49 @@
     "“waxaan ilaahay uga magan galayaa",
     "shaydaanka laga dheereeyey naxariista"
    ]
-  }
- },
- "entre-le-coin-yemenite-et-la": {
-  "bs": {
-   "score": 0.958,
-   "margin": 0.062,
-   "page": 82,
+  },
+  "ru": {
+   "score": 1.0,
+   "margin": 0.186,
+   "page": 150,
+   "context": []
+  },
+  "tr": {
+   "score": 0.953,
+   "margin": 0.093,
+   "page": 75,
    "context": [
-    "217. Poslanik,  , vršeći tavaf oko Kabe, učio je slijedeću dovu",
-    "između njenog Jemenskog ugla i Crnoga kamena: \"Rabbena",
-    "atina fi-d-dun’ja haseneten ve fi-l-ahireti haseneten ve kina",
-    "'azabe-n-nari».",
-    "Gospodaru naš, daj nam dobro na ovome svijetu i dobro na",
-    "drugome svijetu. Sačuvaj nas džehenemske vatre. (D, H, BG,",
-    "FŠS)",
-    "108) DOVA PRILIKOM",
-    "BORAVKA NA SAFFI I MERVI"
+    "etsin.\"2",
+    "EŞİYLE CİNSEL İLİŞKİYE GİRMEDEN ÖNCE YAPILAN DUÂ:",
+    "192- \"Allah’ın adıyla. Allahım! Bizi şeytandan, şeytanı da bizi rızıklandıra-",
+    "cağın çocuktan uzak tut.\"3",
+    "ÖFKELENİNCE YAPILAN DUÂ:",
+    "193- \"Allah’ın rahmetinden kovulmuş şeytandan, Allah’a sığınırım.\"4",
+    "BELÂYA UĞRAYAN BİR KİMSEYİ GÖREN KİMSENİN YAPACAĞI DUÂ:",
+    "194- \"Sana verdiği belâdan beni âfiyette kılan ve yarattıklarının çoğuna",
+    "tercih ederek beni üstün kılan Allah’a hamd olsun.\"5",
+    "1 Ebu Dâvud:2160 Elbânî hasen demiştir.",
+    "2 Ebu Dâvud, (2/248); İbn-i Mâce (1/617); bkz. Sahih-i İbn-i Mâce (1/324).",
+    "3 Buhâri, (6/141); Müslim, (2/1028)."
    ]
   },
-  "ja": {
-   "score": 0.958,
-   "margin": 0.083,
-   "page": 158,
-   "context": [
-    "ラッバナー アーティナー フィッドゥニヤー ハ",
-    "サナ。ワ フィルアーヒラティ ハサナ。ワ キナ",
-    "ー アザーバンナール。",
-    "① 訳者注：イスラーム第一の聖地マッカのハラーム･マスジドの中心に",
-    "あるカァバ神殿は立方体に近い形をしており、その4 つの角には支柱",
-    "がありますが、各々の支柱には名称があります。「黒石のある柱」は",
-    "文字通り黒い石のはまっている柱で、タワーフ（下記訳者注参照）す",
-    "るときの出発点です。",
-    "② 訳者注：「タワーフ」は巡礼の諸義務行為の内の1 つ。アッラーを崇",
-    "拝するためにカァバ神殿の周囲を7 回逆時計回りに廻ることです。",
-    "③ 訳者注：「イエメン柱」とは、黒石のある柱からタワーフを始めたと",
-    "き最後に通る柱。",
-    "「私たちの主よ，現世で私たちに善きものを与え，"
-   ]
+  "fa": {
+   "score": 0.977,
+   "margin": 0.093,
+   "page": 103,
+   "context": []
   },
-  "so": {
-   "score": 0.958,
-   "margin": 0.083,
-   "page": 190,
-   "context": [
-    "117- Ducada u dhaxaysa ruknil yamaani-",
-    "ga iyo xajarul-aswadka.",
-    "235- {rabbanaa aatinaa fiddunyaa xas-",
-    "anatan wa fil aakhirati xasanatan, wa",
-    "qinaa cadaabannaar}.",
-    "«rabbiganow nasii aduunka dhexdiisa",
-    "wanaag, aakhiro dhexdeedana wanaag,",
-    "nagana ilaali cadaabka naarta».",
-    "118- Ducada joogsashada safa iyo",
-    "marwa."
-   ]
+  "hi": {
+   "score": 1.0,
+   "margin": 0.116,
+   "page": 103,
+   "context": []
+  },
+  "bn": {
+   "score": 1.0,
+   "margin": 0.093,
+   "page": 108,
+   "context": []
   }
  },
  "apres-les-ablutions": {
@@ -340,6 +361,12 @@
     "て、それから家族に挨拶をする。」",
     "12．マスジドへ行く時のドアー"
    ]
+  },
+  "hi": {
+   "score": 1.0,
+   "margin": 0.077,
+   "page": 18,
+   "context": []
   }
  },
  "la-talbiya": {
@@ -377,6 +404,12 @@
     "116- Allaahu-akbarta markuu yimaado",
     "tiirka madow."
    ]
+  },
+  "bn": {
+   "score": 0.98,
+   "margin": 0.08,
+   "page": 124,
+   "context": []
   }
  },
  "se-suffire-du-licite": {
@@ -395,6 +428,18 @@
     "① 訳者注：ハラームとはイスラーム法上非合法と規定された物事で、ハ",
     "ラールとはそこにおいて合法と規定された物事。"
    ]
+  },
+  "ru": {
+   "score": 1.0,
+   "margin": 0.171,
+   "page": 109,
+   "context": []
+  },
+  "bn": {
+   "score": 1.0,
+   "margin": 0.073,
+   "page": 85,
+   "context": []
   }
  },
  "au-reveil-standard": {
@@ -410,6 +455,12 @@
     "れの御許に私たちを復活させるお方アッラーに称え",
     "あれ。」"
    ]
+  },
+  "ru": {
+   "score": 1.0,
+   "margin": 0.1,
+   "page": 8,
+   "context": []
   }
  },
  "gratitude-pour-la-sante": {
@@ -428,6 +479,18 @@
     "iina ogalaaday xusiddiisa».",
     "2- Ducada xirashada dharka"
    ]
+  },
+  "ru": {
+   "score": 1.0,
+   "margin": 0.133,
+   "page": 10,
+   "context": []
+  },
+  "bn": {
+   "score": 1.0,
+   "margin": 0.111,
+   "page": 10,
+   "context": []
   }
  },
  "protection-totale-3": {
@@ -448,6 +511,12 @@
     "ku sugan dhulka iyo cirka, allena waa",
     "maqal badane cilmi badane ah”."
    ]
+  },
+  "bn": {
+   "score": 0.98,
+   "margin": 0.1,
+   "page": 60,
+   "context": []
   }
  },
  "apres-chaque-priere": {
@@ -470,6 +539,12 @@
     "allihii weynaanta iyo maamuuska u",
     "saaxiibka ahaayow”."
    ]
+  },
+  "bn": {
+   "score": 1.0,
+   "margin": 0.06,
+   "page": 43,
+   "context": []
   }
  }
 }
