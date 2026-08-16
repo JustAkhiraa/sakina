@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Génère un corpus coranique embarquable depuis l'API de Quran.com.
 
-    python scripts/build_quran_corpus.py ja hi bs so sw ha
-    python scripts/build_quran_corpus.py --list
+    python scripts/quran_corpus.py ja hi bs so sw ha
+    python scripts/quran_corpus.py --list
 
 Le README de data/ disait « ces fichiers sont produits à partir de l'API »
 sans fournir de quoi les reproduire : voilà le script manquant.

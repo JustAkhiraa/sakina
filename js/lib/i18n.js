@@ -105,6 +105,15 @@ export function applyI18n(){
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{
     el.innerHTML=t(el.dataset.i18nHtml);
   });
+  // Infobulles et libelles d'accessibilite. Ils ne se voient pas, ce qui est
+  // precisement le probleme : un lecteur d'ecran japonais annoncait
+  // « Réglages » en francais parce que rien ne les rattachait au dictionnaire.
+  document.querySelectorAll('[data-i18n-title]').forEach(el=>{
+    el.title=t(el.dataset.i18nTitle);
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>{
+    el.setAttribute('aria-label',t(el.dataset.i18nAria));
+  });
 }
 
 /* Charge puis applique — à utiliser au démarrage et à chaque changement. */

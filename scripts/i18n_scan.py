@@ -114,8 +114,12 @@ def dico(code):
 
 def cles_html():
     html = (ROOT / "index.html").read_text(encoding="utf-8")
+    # -title et -aria comptent autant que le reste : ils ne se voient pas,
+    # ce qui est bien la raison pour laquelle ils avaient echappe aux passes
+    # de traduction precedentes.
     return {k: "index.html"
-            for k in re.findall(r'data-i18n(?:-html|-ph)?="([\w.-]+)"', html)}
+            for k in re.findall(
+                r'data-i18n(?:-html|-ph|-title|-aria)?="([\w.-]+)"', html)}
 
 
 def cles_code():

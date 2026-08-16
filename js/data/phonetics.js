@@ -1,7 +1,7 @@
 /* SAKINA — Phonetique des invocations, par ecriture.
-   Genere par scripts/translit.py depuis la romanisation savante
+   Genere par scripts/duas_translit.py depuis la romanisation savante
    de js/data/duas.js. Ne pas modifier a la main : corriger la
-   regle dans translit.py et regenerer, sinon la correction ne
+   regle dans duas_translit.py et regenerer, sinon la correction ne
    vaut que pour une invocation au lieu des trente-sept.
 
    L'arabe, le persan et l'ourdou sont absents a dessein : ils

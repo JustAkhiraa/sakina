@@ -40,15 +40,31 @@ js/
                         Asr par facteur d'ombre), qibla, distance Ka'ba
     hijri.js            Calendrier hégirien tabulaire (données numériques propres)
   data/                 Catalogues : dhikrs, douas, 114 sourates, routines,
-                        additifs & certifications halal, méthodes de calcul
+                        additifs & certifications halal, méthodes de calcul,
+                        phonétique des invocations par écriture (généré)
+  i18n/                 Un dictionnaire par langue (18) + index.js
   features/             Un module par écran : tasbih, salat, qibla, duas, quran,
                         settings, tools (Qadâ'/Rak'ah/Zakat/hégirien/jeûne),
                         books, routines, places, halal, onboarding
-books/                  Textes : Riyad as-Salihin, Citadelle du Musulman,
-                        Asma ul-Husna (+ récitations MP3), Les Aliments dans
-                        le Coran et la Sunna, Les Miracles du Coran
+content/                Contenu servi à l'exécution
+  quran/                22 corpus (texte arabe + 21 traductions publiées)
+  books/                Riyad as-Salihin, Citadelle du Musulman, Asma ul-Husna,
+                        Les Aliments dans le Coran et la Sunna, Les Miracles
+                        du Coran — un fichier par langue quand il est traduit
+  audio/                Adhâns et récitations des 99 Noms
+sources/                Matière d'où le contenu est tiré, jamais servie au client
+  books/                Chapitres en markdown + leur script de construction
+  duas/                 Relevés des éditions publiées de Hisn al-Muslim,
+                        une par langue, avec le numéro d'entrée de l'édition
+  ui/                   Lots de chaînes d'interface, distribués aux 18 langues
+scripts/                Outillage. Préfixe = domaine, suffixe = action :
+                        check         intégrité avant commit (à lancer toujours)
+                        i18n_*        inventaire, ajout, qualité, textes oubliés
+                        quran_*       corpus, noms de sourates, entités HTML
+                        hisn_*        extraction, OCR, découpage en rubriques
+                        duas_translit phonétique vers les écritures non latines
+                        out/          artefacts régénérables (hors dépôt)
 docs/                   Guides (README.html rendu, PUBLISH.html)
-tools/                  Scripts dev (extraction PDF)
 ```
 
 **Communication inter-modules** : imports directs quand la dépendance est naturelle, `CustomEvent` DOM (`stats-changed`, `location-changed`) pour éviter les cycles.

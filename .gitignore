@@ -6,5 +6,5 @@ scripts/__pycache__/
 __pycache__/
 
 # Artefacts produits par les scripts (regenerables)
+# Les relevés OCR vivent tous sous scripts/out/ désormais.
 scripts/out/
-scripts/hisn_ocr_*.txt

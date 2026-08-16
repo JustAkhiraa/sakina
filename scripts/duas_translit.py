@@ -18,9 +18,9 @@ Deux ecritures sont volontairement absentes :
     ecriture perso-arabe y serait la copie du texte original.
 Pour ces trois langues l'application masque la ligne plutot que d'inventer.
 
-    python scripts/translit.py --demo          # controle sur des mots connus
-    python scripts/translit.py --duas          # apercu des 37 invocations
-    python scripts/translit.py --write         # ecrit js/data/phonetics.js
+    python scripts/duas_translit.py --demo          # controle sur des mots connus
+    python scripts/duas_translit.py --duas          # apercu des 37 invocations
+    python scripts/duas_translit.py --write         # ecrit js/data/phonetics.js
 """
 import json
 import re
@@ -406,9 +406,9 @@ def main():
             for code, t in table.items())
         entete = (
             "/* SAKINA — Phonetique des invocations, par ecriture.\n"
-            "   Genere par scripts/translit.py depuis la romanisation savante\n"
+            "   Genere par scripts/duas_translit.py depuis la romanisation savante\n"
             "   de js/data/duas.js. Ne pas modifier a la main : corriger la\n"
-            "   regle dans translit.py et regenerer, sinon la correction ne\n"
+            "   regle dans duas_translit.py et regenerer, sinon la correction ne\n"
             "   vaut que pour une invocation au lieu des trente-sept.\n\n"
             "   L'arabe, le persan et l'ourdou sont absents a dessein : ils\n"
             "   lisent deja l'alphabet du texte affiche au-dessus. */\n")

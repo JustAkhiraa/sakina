@@ -1,5 +1,5 @@
 /* SAKINA — Sens du nom de chaque sourate, par langue.
-   Genere par scripts/build_surah_names.py depuis l'API de Quran.com.
+   Genere par scripts/quran_names.py depuis l'API de Quran.com.
    Ne contient que les langues reellement traduites : une langue absente
    signifie que l'API n'a pas mieux que l'anglais, et l'application
    n'affiche alors que la translitteration et le nom arabe. */

@@ -54,8 +54,8 @@ etant compose plus gros que le corps.
 
 Usage
 -----
-    python scripts/extract_hisn.py            # rapport des ancrages surs
-    python scripts/extract_hisn.py --all      # inclut les ancrages ecartes
+    python scripts/hisn_extract.py            # rapport des ancrages surs
+    python scripts/hisn_extract.py --all      # inclut les ancrages ecartes
 """
 import argparse
 import json
@@ -74,7 +74,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PDFS = ROOT / "inspirations" / "docs trad"
 
 # Editions a texte extractible. Celles qui sont scannees passent d'abord par
-# scripts/ocr_hisn.py — leur arabe est alors illisible, mais la langue locale
+# scripts/hisn_ocr.py — leur arabe est alors illisible, mais la langue locale
 # se lit, et c'est elle qu'on cherche.
 BOOKS = [
     ("bs", "bs_Hisnul_muslim.pdf"),

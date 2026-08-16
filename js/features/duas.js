@@ -36,7 +36,7 @@ function copyText(txt){
      Ma Jian en chinois, Diyanet en turc —, exactement le texte qu'affiche
      le lecteur ;
    · les autres viennent de recueils de hadiths et servent une edition
-     traduite de Hisn al-Muslim, relevee par scripts/extract_hisn.py.
+     traduite de Hisn al-Muslim, relevee par scripts/hisn_extract.py.
 
    Sans l'une ni l'autre, on retombe sur le francais d'origine : mieux vaut
    un texte fiable dans une langue que le lecteur peut ignorer qu'un texte
@@ -61,7 +61,7 @@ export function duaTranslationLang(d){
 /* ── Phonetique ──
    La romanisation savante — « Rabbi-shraḥ lī ṣadrī » — n'aide que qui lit
    l'alphabet latin. Elle est retranscrite dans cinq autres ecritures par
-   scripts/translit.py.
+   scripts/duas_translit.py.
 
    Trois langues n'ont pas de ligne du tout, et c'est voulu : l'arabe, le
    persan et l'ourdou lisent deja l'ecriture du texte affiche au-dessus,

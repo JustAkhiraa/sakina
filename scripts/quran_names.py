@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Noms de sourates traduits, depuis l'API de Quran.com.
 
-    python scripts/build_surah_names.py
+    python scripts/quran_names.py
 
 « Al-Fatiha » ne dit rien à un lecteur qui n'a jamais vu l'alphabet latin.
 L'API expose, pour certaines langues, le SENS du nom de chaque sourate
@@ -56,7 +56,7 @@ def main() -> int:
     )
     path.write_text(
         "/* SAKINA — Sens du nom de chaque sourate, par langue.\n"
-        "   Genere par scripts/build_surah_names.py depuis l'API de Quran.com.\n"
+        "   Genere par scripts/quran_names.py depuis l'API de Quran.com.\n"
         "   Ne contient que les langues reellement traduites : une langue absente\n"
         "   signifie que l'API n'a pas mieux que l'anglais, et l'application\n"
         "   n'affiche alors que la translitteration et le nom arabe. */\n"

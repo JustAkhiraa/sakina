@@ -3,17 +3,17 @@
 """OCR des editions scannees de Hisn al-Muslim.
 
 Deux des six editions fournies sont des images et non du texte :
-en_Hisn_El_Muslim.pdf et sw_Kinga_Ya_Muislamu.pdf. extract_hisn.py ne peut
+en_Hisn_El_Muslim.pdf et sw_Kinga_Ya_Muislamu.pdf. hisn_extract.py ne peut
 rien en tirer. On les passe donc par Tesseract, page par page.
 
 Le rendu se fait a 300 DPI : en dessous, l'OCR confond les caracteres
 proches sur ces scans ; au-dessus, le gain est nul et le temps double.
 Seule la langue locale est reconnue — l'arabe de ces pages sert d'ancre
-dans extract_hisn.py, pas de texte a lire, et le pack `ara` n'est pas
+dans hisn_extract.py, pas de texte a lire, et le pack `ara` n'est pas
 installe.
 
-    python scripts/ocr_hisn.py en        # ecrit scripts/hisn_ocr_en.txt
-    python scripts/ocr_hisn.py --list    # etat des editions et des packs
+    python scripts/hisn_ocr.py en        # ecrit scripts/out/hisn_ocr_en.txt
+    python scripts/hisn_ocr.py --list    # etat des editions et des packs
 """
 import subprocess
 import sys
@@ -38,7 +38,7 @@ CANDIDATES = [
 ]
 
 # Editions scannees : le PDF, et la langue Tesseract a employer.
-# Les langues absentes d'ici ont du texte extractible — extract_hisn.py
+# Les langues absentes d'ici ont du texte extractible — hisn_extract.py
 # les lit directement, l'OCR n'a rien a leur apporter.
 BOOKS = {
     "en": ("en_Hisn_El_Muslim.pdf", "eng"),

@@ -5,7 +5,7 @@
 Source : « Fortification of the Muslim through remembrance and supplication
 from the Qur'an and Sunnah », Sa'id Ibn 'Ali Ibn Wahf al-Qahtani, Ministry of
 Islamic Affairs, Riyad, 1435 H. Le PDF est un scan : le texte vient de l'OCR
-(scripts/ocr_hisn.py, puis scripts/hisn_ocr_en.txt), relu ligne a ligne.
+(scripts/hisn_ocr.py, puis scripts/out/hisn_ocr_en.txt), relu ligne a ligne.
 Cette edition numerote ses invocations entre parentheses.
 
 L'anglais compte double ici : c'est le repli quand une langue n'a pas encore

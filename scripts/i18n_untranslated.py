@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Inventaire des textes visibles non traduisibles.
 
-    python scripts/i18n_audit.py
+    python scripts/i18n_untranslated.py
 
 Deux façons pour un texte d'échapper à la traduction :
 

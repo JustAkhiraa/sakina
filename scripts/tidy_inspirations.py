@@ -32,8 +32,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "inspirations" / "docs trad"
 OUT = DOCS / "_ecartes"
 
-# Le fichier de reference pour chaque langue : celui qu'ocr_hisn.py et
-# extract_hisn.py vont lire. Tout autre exemplaire du meme livre est du
+# Le fichier de reference pour chaque langue : celui qu'hisn_ocr.py et
+# hisn_extract.py vont lire. Tout autre exemplaire du meme livre est du
 # surplus.
 GARDES = {
     "bs_Hisnul_muslim.pdf", "en_Hisn_El_Muslim.pdf", "es_Muslim_bastion.pdf",

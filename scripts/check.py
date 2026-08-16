@@ -330,14 +330,14 @@ def check_quran() -> None:
 
     # Les corpus moissonnes depuis le web gardent parfois leurs entites HTML.
     # Le rendu passe par textContent (quran.js), donc « &quot; » s'affiche en
-    # toutes lettres. Reparable d'un coup : scripts/clean_entities.py --write
+    # toutes lettres. Reparable d'un coup : scripts/quran_entities.py --write
     ent = re.compile(r"&(?:[a-zA-Z][a-zA-Z0-9]{1,10}|#\d{1,6}|#x[0-9a-fA-F]{1,5});")
     for p in sorted(ROOT.glob("content/quran/quran-*.json")):
         n = len(ent.findall(p.read_text(encoding="utf-8")))
         if n:
             ERRORS.append(
                 f"content/quran/{p.name} : {n} entité(s) HTML brute(s), affichées "
-                f"telles quelles — python scripts/clean_entities.py --write"
+                f"telles quelles — python scripts/quran_entities.py --write"
             )
 
     NOTES.append(f"corpus : {len(declared)} traductions déclarées")

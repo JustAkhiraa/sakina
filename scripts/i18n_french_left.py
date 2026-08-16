@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Inventaire complet des textes francais restants.
 
-    python scripts/fr_inventory.py
+    python scripts/i18n_french_left.py
 
-i18n_audit.py ne regarde que ce qui atteint un puits DOM. Or une bonne part
+i18n_untranslated.py ne regarde que ce qui atteint un puits DOM. Or une bonne part
 du francais restant vit dans les DONNEES — noms de sons, de themes, libelles
 de methodes de calcul, notes d'additifs — que l'interface affiche telles
 quelles. Ce script balaie tout : sources JS (code et donnees) et index.html,

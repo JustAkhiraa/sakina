@@ -11,8 +11,8 @@ poser sur chaque chemin d'affichage.
 Le decodage se fait sur les chaines apres analyse JSON, jamais sur le texte du
 fichier : « &quot; » devenu guillemet nu au milieu d'une chaine casserait tout.
 
-    python scripts/clean_entities.py           # etat des lieux
-    python scripts/clean_entities.py --write   # corrige
+    python scripts/quran_entities.py           # etat des lieux
+    python scripts/quran_entities.py --write   # corrige
 """
 import html
 import json
