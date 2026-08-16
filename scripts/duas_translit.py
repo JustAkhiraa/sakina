@@ -112,8 +112,11 @@ RU_C = {"b": "б", "t": "т", "th": "с", "j": "дж", "ḥ": "х", "kh": "х",
         "ṣ": "с", "ḍ": "д", "ṭ": "т", "ẓ": "з", "'": "'", "gh": "г",
         "f": "ф", "q": "к", "k": "к", "l": "л", "m": "м", "n": "н",
         "h": "х", "w": "в", "y": "й"}
-RU_V = {"a": "а", "i": "и", "u": "у"}
-RU_VL = {"a": "а̄", "i": "ӣ", "u": "ӯ"}
+# « e » et « o » n'appartiennent pas a la romanisation savante de l'arabe,
+# mais certaines lignes en portent (noms propres, conventions locales). Les
+# omettre faisait planter la conversion sur une seule etape de routine.
+RU_V = {"a": "а", "i": "и", "u": "у", "e": "э", "o": "о"}
+RU_VL = {"a": "а̄", "i": "ӣ", "u": "ӯ", "e": "э̄", "o": "о̄"}
 RU_D = {"ay": "ай", "aw": "ау"}
 # « й » suivi d'une voyelle donne я/ю/е en russe : plus lisible.
 RU_YOD = {"а": "я", "у": "ю", "и": "и", "а̄": "я̄", "ӯ": "ю̄", "ӣ": "ӣ"}
@@ -152,10 +155,10 @@ DEV = {
        "ṣ": "स", "ḍ": "द", "ṭ": "त", "ẓ": "ज़", "'": "अ", "gh": "ग़",
        "f": "फ़", "q": "क़", "k": "क", "l": "ल", "m": "म", "n": "न",
        "h": "ह", "w": "व", "y": "य"},
- "M": {"a": "", "i": "ि", "u": "ु"},
- "ML": {"a": "ा", "i": "ी", "u": "ू"},
- "I": {"a": "अ", "i": "इ", "u": "उ"},
- "IL": {"a": "आ", "i": "ई", "u": "ऊ"},
+ "M": {"a": "", "i": "ि", "u": "ु", "e": "े", "o": "ो"},
+ "ML": {"a": "ा", "i": "ी", "u": "ू", "e": "े", "o": "ो"},
+ "I": {"a": "अ", "i": "इ", "u": "उ", "e": "ए", "o": "ओ"},
+ "IL": {"a": "आ", "i": "ई", "u": "ऊ", "e": "ए", "o": "ओ"},
  "D": {"ay": "ै", "aw": "ौ"},
  "ID": {"ay": "ऐ", "aw": "औ"},
  "virama": "्",
@@ -170,10 +173,10 @@ BEN = {
        "h": "হ", "w": "ওয়", "y": "য়"},
  # La voyelle inherente du bengali est un « ô », pas un « a » : contrairement
  # au devanagari, le « a » bref arabe doit porter sa matra.
- "M": {"a": "া", "i": "ি", "u": "ু"},
- "ML": {"a": "া", "i": "ী", "u": "ূ"},
- "I": {"a": "আ", "i": "ই", "u": "উ"},
- "IL": {"a": "আ", "i": "ঈ", "u": "ঊ"},
+ "M": {"a": "া", "i": "ি", "u": "ু", "e": "ে", "o": "ো"},
+ "ML": {"a": "া", "i": "ী", "u": "ূ", "e": "ে", "o": "ো"},
+ "I": {"a": "আ", "i": "ই", "u": "উ", "e": "এ", "o": "ও"},
+ "IL": {"a": "আ", "i": "ঈ", "u": "ঊ", "e": "এ", "o": "ও"},
  "D": {"ay": "ৈ", "aw": "ৌ"},
  "ID": {"ay": "ঐ", "aw": "ঔ"},
  "virama": "্",
@@ -261,7 +264,7 @@ KANA = {
 # Voyelle d'appui d'une consonne sans voyelle, choisie pour rester lisible.
 APPUI = {"t": "o", "ṭ": "o", "d": "o", "ḍ": "o", "j": "u", "sh": "u",
          "ch": "u", "k": "u", "q": "u", "g": "u"}
-KANA_V = {"a": "ア", "i": "イ", "u": "ウ"}
+KANA_V = {"a": "ア", "i": "イ", "u": "ウ", "e": "エ", "o": "オ"}
 KANA_D = {"ay": "アイ", "aw": "アウ"}
 
 
@@ -324,8 +327,8 @@ ZH_C = {"b": "b", "t": "t", "th": "s", "j": "j", "ḥ": "h", "kh": "h",
         "ṣ": "s", "ḍ": "d", "ṭ": "t", "ẓ": "z", "'": "'", "gh": "g",
         "f": "f", "q": "k", "k": "k", "l": "l", "m": "m", "n": "n",
         "h": "h", "w": "w", "y": "y"}
-ZH_V = {"a": "a", "i": "i", "u": "u"}
-ZH_VL = {"a": "ā", "i": "ī", "u": "ū"}
+ZH_V = {"a": "a", "i": "i", "u": "u", "e": "e", "o": "o"}
+ZH_VL = {"a": "ā", "i": "ī", "u": "ū", "e": "ē", "o": "ō"}
 
 
 def vers_zh(texte):
@@ -352,6 +355,32 @@ ECRITURES = {
 
 
 # ── Sortie ───────────────────────────────────────────────────────────────
+def lire_etapes():
+    """Phonetique des etapes de routine, indexee par le slug du titre.
+
+    Meme probleme que pour les invocations : la ligne phonetique des adhkar
+    du matin s'affichait en romanisation savante sous une interface
+    japonaise. Meme cle que rtx.* pour rester en phase avec le titre."""
+    src = (ROOT / "js/data/routines.js").read_text(encoding="utf-8")
+    out = {}
+    for bloc in re.findall(r"\{[^{}]*\bph\s*:[^{}]*\}", src, re.S):
+        def champ(nom):
+            m = re.search(nom + r"\s*:\s*(['\"])((?:\\.|(?!\1).)*)\1", bloc, re.S)
+            return m.group(2).replace("\\'", "'") if m else ""
+        titre, ph = champ("title"), champ("ph")
+        if titre and ph:
+            out[_slug(titre)] = ph
+    return out
+
+
+def _slug(s):
+    """Meme calcul que routines.js, pour que les cles se correspondent."""
+    s = unicodedata.normalize("NFKD", s or "")
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = re.sub(r"[^A-Za-z0-9]+", "-", s).strip("-").lower()
+    return re.sub(r"-{2,}", "-", s)[:34]
+
+
 def lire_duas():
     src = (ROOT / "js/data/duas.js").read_text(encoding="utf-8")
     blocs, prof, deb = [], 0, None
@@ -398,7 +427,9 @@ def main():
         return 0
 
     if "--write" in sys.argv:
-        table = {code: {did: f(ph) for did, ph in duas}
+        etapes = lire_etapes()
+        table = {code: {**{did: f(ph) for did, ph in duas},
+                        **{f"rtx.{k}": f(v) for k, v in etapes.items()}}
                  for code, f in ECRITURES.items()}
         corps = ",\n".join(
             f"  {code}: " + json.dumps(t, ensure_ascii=False, indent=2)
@@ -415,7 +446,8 @@ def main():
         (ROOT / "js/data/phonetics.js").write_text(
             entete + "export const PHONETICS={\n" + corps + "\n};\n",
             encoding="utf-8")
-        print(f"js/data/phonetics.js — {len(ECRITURES)} écritures × {len(duas)} invocations")
+        print(f"js/data/phonetics.js — {len(ECRITURES)} écritures × "
+              f"{len(duas)} invocations et {len(etapes)} étape(s) de routine")
         return 0
 
     print(__doc__)

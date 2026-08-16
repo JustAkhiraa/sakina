@@ -219,7 +219,7 @@ def livres_traduisibles():
     """Seuls les guides que nous avons ecrits. Riyad as-Salihin, la Citadelle
     et les 99 Noms sont des traductions publiees : leurs 371 titres de
     chapitres ne sont pas a nous, et les compter fausserait la couverture."""
-    src = (ROOT / "js/features/books.js").read_text(encoding="utf-8")
+    src = (ROOT / "js/data/books.js").read_text(encoding="utf-8")
     noms = set()
     for bloc in re.findall(r"\{[^{}]*?translatable\s*:\s*true[^{}]*?\}", src, re.S):
         m = re.search(r"src\s*:\s*'content/books/([\w.-]+)'", bloc)

@@ -6,6 +6,7 @@ import {toast,burst,openSheet} from '../core/ui.js';
 import {playSound,vib,getAC} from '../core/audio.js';
 import {t,tf} from '../lib/i18n.js';
 import {ROUTINES} from '../data/routines.js';
+import {PHONETICS} from '../data/phonetics.js';
 
 const $=id=>document.getElementById(id);
 
@@ -21,6 +22,11 @@ const slug=s=>(s||'').normalize('NFKD').replace(/[̀-ͯ]/g,'')
 export const rtName =r=>tf(`rt.${r.id}.n`,r.name);
 export const rtDesc =r=>tf(`rt.${r.id}.d`,r.desc);
 const stepTitle=st=>tf(`rtx.${slug(st.title)}`,st.title);
+/* Phonetique dans l'ecriture du lecteur, comme pour les invocations.
+   L'arabe, le persan et l'ourdou n'en ont pas besoin : ils lisent deja le
+   texte original, que le bouton de bascule leur rend. */
+const stepPhonetic=st=>
+  (PHONETICS[S.lang]||{})[`rtx.${slug(st.title)}`]||st.ph||'';
 const stepNote =st=>st.note?tf(`rtn.${slug(st.note)}`,st.note):'';
 let _routine=null;
 let _stepIdx=0;
@@ -68,9 +74,13 @@ function renderStep(){
   $('rt-step-title').textContent=stepTitle(step);
   // Arabe ou phonétique selon la préférence (bouton abc/عربي + réglage)
   const usePh=S.translit==='ph'&&step.ph;
-  $('rt-ar').textContent=usePh?step.ph:(step.ar||'');
-  $('rt-ar').classList.toggle('latin',!!usePh);
-  $('rt-translit').textContent=S.translit==='ph'?'عربي':'abc';
+  $('rt-ar').textContent=usePh?stepPhonetic(step):(step.ar||'');
+  // La classe « latin » met le texte en italique — un usage propre a
+  // l'alphabet latin, qui deforme katakana et devanagari.
+  $('rt-ar').classList.toggle('latin',!!usePh&&!PHONETICS[S.lang]);
+  // « abc » ne veut rien dire a qui ne lit pas l'alphabet latin : le bouton
+  // porte le nom de l'ecriture vers laquelle il bascule.
+  $('rt-translit').textContent=S.translit==='ph'?t('routines.toArabic'):t('routines.toPhonetic');
   $('rt-note').textContent=stepNote(step);
   $('rt-note').style.display=step.note?'block':'none';
   $('rt-count').textContent=_count;

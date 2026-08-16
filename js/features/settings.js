@@ -287,13 +287,15 @@ function currentTitle(){
    14-29 j → 🔥🔥🔥  · 30-99 j → ⭐🔥  · 100+ j → 👑🔥
    Le CSS ajoute un léger scintillement au-dessus de 3 jours. */
 function streakBadge(n){
+  // La premiere ligne passait par t(), les six autres non : c'est « Étincelle »
+  // qui s'affichait sous une interface japonaise.
   if(n<=0) return {icon:'🌫️',cls:'st-cold',label:t('prof.noStreak')};
-  if(n<3)  return {icon:'🕯️',cls:'st-spark',label:'Étincelle'};
-  if(n<7)  return {icon:'🔥',cls:'st-flame',label:'En feu'};
-  if(n<14) return {icon:'🔥🔥',cls:'st-flame st-hot',label:'Brasier'};
-  if(n<30) return {icon:'🔥🔥🔥',cls:'st-flame st-hot',label:'Fournaise'};
-  if(n<100)return {icon:'⭐🔥',cls:'st-flame st-star',label:'Étoile ardente'};
-  return {icon:'👑🔥',cls:'st-flame st-crown',label:'Souverain·e'};
+  if(n<3)  return {icon:'🕯️',cls:'st-spark',label:t('streak.spark')};
+  if(n<7)  return {icon:'🔥',cls:'st-flame',label:t('streak.fire')};
+  if(n<14) return {icon:'🔥🔥',cls:'st-flame st-hot',label:t('streak.blaze')};
+  if(n<30) return {icon:'🔥🔥🔥',cls:'st-flame st-hot',label:t('streak.furnace')};
+  if(n<100)return {icon:'⭐🔥',cls:'st-flame st-star',label:t('streak.star')};
+  return {icon:'👑🔥',cls:'st-flame st-crown',label:t('streak.crown')};
 }
 
 export function renderStats(){

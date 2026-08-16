@@ -345,7 +345,7 @@ def check_quran() -> None:
 
 # ── 6. Livres ────────────────────────────────────────────────────────────
 def check_books() -> None:
-    src = read("js/features/books.js")
+    src = read("js/data/books.js")
     for path in re.findall(r"(?:src|textSrc):'(content/books/[^']+)'", src):
         if not (ROOT / path).exists():
             ERRORS.append(f"books.js : « {path} » déclaré mais absent")
@@ -366,6 +366,69 @@ def check_books() -> None:
             ERRORS.append(f"{rel} : JSON invalide ({e})")
     NOTES.append(f"livres : {len(list(ROOT.glob('content/books/*.json')))} JSON validés")
 
+
+
+# ── 7 bis. Francais en dur dans l'affichage ──────────────────────────────
+def check_i18n_leaks() -> None:
+    """La regle qui manquait : aucun texte francais ecrit en dur dans
+    js/features, js/core ou js/lib.
+
+    Compter les cles manquantes ne suffisait pas. Le francais ne fuyait pas
+    par des traductions absentes mais par du texte jamais confie au
+    dictionnaire — une fonction qui traduit sa premiere ligne et oublie les
+    six suivantes. Le francais vit dans js/data et js/i18n/fr.js ; ailleurs,
+    il est une erreur."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    try:
+        import i18n_leaks
+    except Exception as e:
+        ERRORS.append(f"i18n_leaks.py illisible ({e})")
+        return
+    finally:
+        sys.path.pop(0)
+
+    trouvees = []
+    for f in sorted(list((ROOT / "js/features").glob("*.js"))
+                    + list((ROOT / "js/core").glob("*.js"))
+                    + list((ROOT / "js/lib").glob("*.js"))):
+        src = f.read_text(encoding="utf-8")
+        for ligne, val, pos, sans in i18n_leaks.chaines(src):
+            if not i18n_leaks.suspecte(val):
+                continue
+            deb = sans.rfind("\n", 0, pos) + 1
+            fin = sans.find("\n", pos)
+            if "i18n:" in sans[deb:fin if fin > 0 else len(sans)]:
+                continue
+            autour = sans[max(0, pos - 160):pos + 40]
+            if i18n_leaks.SORTIES.search(autour) or "<" in autour:
+                trouvees.append((f.relative_to(ROOT).as_posix(), ligne, val))
+
+    for chemin, ligne, val in trouvees[:8]:
+        ERRORS.append(f"{chemin}:{ligne} : français en dur — « {val[:60]} »")
+    if len(trouvees) > 8:
+        ERRORS.append(f"… et {len(trouvees)-8} autre(s) — python scripts/i18n_leaks.py")
+    if not trouvees:
+        NOTES.append("aucun français en dur dans le code d'affichage")
+
+
+# ── 7 ter. Chaque livre a sa clé de titre ────────────────────────────────
+def check_books_i18n() -> None:
+    """« Comment faire la Salât » s'est affiche en francais dans les
+    dix-sept langues parce qu'on avait ajoute le livre a BOOKS sans
+    l'inscrire dans BOOK_I18N. La table doit couvrir le catalogue."""
+    data = read("js/data/books.js")
+    vue = read("js/features/books.js")
+    livres = set(re.findall(r"^  (\w+)\s*:\s*\{", data, re.M))
+    m = re.search(r"const BOOK_I18N=\{(.*?)\};", vue, re.S)
+    if not m:
+        ERRORS.append("books.js : table BOOK_I18N introuvable")
+        return
+    mappes = set(re.findall(r"(\w+)\s*:\s*'", m.group(1)))
+    for k in sorted(livres - mappes):
+        ERRORS.append(
+            f"books.js : « {k} » est dans le catalogue mais pas dans "
+            f"BOOK_I18N — son titre restera en français partout")
+    NOTES.append(f"bibliothèque : {len(livres)} livres, tous avec leur clé de titre")
 
 
 # ── 8. Inventaire i18n ───────────────────────────────────────────────────
@@ -396,7 +459,11 @@ def check_i18n_inventory() -> None:
     if len(orphelines) > 10:
         ERRORS.append(f"i18n : … et {len(orphelines)-10} autre(s)")
 
-    manques = {c: sum(1 for k in inv if k not in i18n_scan.dico(c))
+    # Une cle sans objet dans une langue n'est pas une lacune : le sens d'une
+    # invocation n'a pas a etre traduit en arabe.
+    manques = {c: sum(1 for k in inv
+                      if k not in i18n_scan.dico(c)
+                      and not i18n_scan.sans_objet(c, k))
                for c in i18n_scan.LANGS}
     total = sum(manques.values())
     pire = max(manques.items(), key=lambda x: x[1])
@@ -417,6 +484,8 @@ def main() -> int:
         check_i18n,
         check_quran,
         check_books,
+        check_books_i18n,
+        check_i18n_leaks,
         check_i18n_inventory,
     ):
         try:

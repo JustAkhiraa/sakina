@@ -15,6 +15,7 @@ import {vib} from '../core/audio.js';
 import {t,tf} from '../lib/i18n.js';
 import {S} from '../core/store.js';
 
+import {BOOKS} from '../data/books.js';
 /* Titres de chapitre et intertitres de rubrique, traduits. Indexes par un
    slug de leur contenu francais : si le titre change, la cle change avec
    lui plutot que de coller une traduction perimee sur un autre chapitre.
@@ -29,8 +30,14 @@ const chapCat  =c=>tf(`bkg.${slug(c.cat)}`,c.cat);
    seule partie de la bibliotheque restee en francais : la liste, elle,
    etait traduite depuis longtemps. On reutilise ses cles pour le titre et
    on en ajoute pour le reste. Le corps des chapitres demeure francais. */
+/* Un livre absent de cette table garde son titre francais dans toutes les
+   langues : c'est ce qui est arrive a « Comment faire la Salât » et
+   « Faire les ablutions », ajoutes a BOOKS mais pas ici, alors que leurs
+   cles existaient. La table est verifiee par check.py — il n'y a plus
+   moyen d'ajouter un livre en oubliant sa cle. */
 const BOOK_I18N={riyad:'books.riyad',citadelle:'books.citadelle',asma:'books.asma',
-                 fruits:'books.foods',miracles:'books.miracles'};
+                 fruits:'books.foods',miracles:'books.miracles',
+                 salat:'books.salatGuide',wudu:'books.wudu'};
 const bookTitle =b=>tf(BOOK_I18N[b.key]||'',b.title);
 const bookAuthor=b=>tf(`bk.${b.key}.a`,b.author);
 const bookDesc  =(b,i)=>tf(`bk.${b.key}.d${i+1}`,b.desc[i]);
@@ -43,108 +50,6 @@ const statVal =v=>/^[\d+\s.,·—-]+$/.test(v)?v:tf(`bkv.${slug(v)}`,v);
 
 const $=id=>document.getElementById(id);
 
-const BOOKS={
-  riyad:{
-    key:'riyad',icon:'📗',type:'chapters',
-    title:'Riyad as-Salihin',titleAr:'رياض الصالحين',
-    author:"Imam an-Nawawi · traduction Salaheddine Kechrid",
-    stats:[{val:'373',label:'Chapitres'},{val:'1896',label:'Hadiths'},{val:'VIIIᵉ s.',label:'Hégire'}],
-    desc:[
-      "« Les Jardins des Vertueux » est un recueil de hadiths authentiques compilé au XIIIᵉ siècle par l'imam Yahya ibn Sharaf an-Nawawi, l'un des plus grands savants du hadith et du fiqh shafiite de l'histoire musulmane.",
-      "Organisé en 373 chapitres thématiques — sincérité, patience, bonté envers les parents, adab du quotidien, repentir — c'est l'un des recueils les plus lus au monde pour ancrer la foi dans le comportement de tous les jours.",
-    ],
-    src:'content/books/riyad.json',
-    srcNotes:['Texte intégral, reproduit tel quel — édition riyad.fr.tc'],
-  },
-  citadelle:{
-    key:'citadelle',icon:'📘',type:'pages',
-    title:'La Citadelle du Musulman',titleAr:'حصن المسلم',
-    author:"Sa'id ibn Ali ibn Wahf Al-Qahtani",
-    stats:[{val:'146',label:'Sections'},{val:'Intégral',label:'Édition'}],
-    desc:[
-      "« Hisn al-Muslim » rassemble des invocations authentiques tirées du Coran et de la Sunna pour chaque instant du quotidien : réveil, repas, voyage, épreuves — afin que le rappel d'Allah accompagne le musulman à chaque moment.",
-      "Une lecture continue et soignée, du début à la fin, pensée pour un confort optimal — arabe, translittération et traduction mis en valeur.",
-    ],
-    textSrc:'content/books/citadelle.json',
-    srcNotes:["Texte intégral — Hisn al-Muslim, Sa'îd Ibn 'Alî Ibn Wahf Al-Qahtânî"],
-  },
-  asma:{
-    key:'asma',icon:'✨',type:'names',
-    title:"Les 99 Noms d'Allah",titleAr:'أسماء الله الحسنى',
-    author:"Al-Asma' al-Husna — tradition sunnite classique",
-    stats:[{val:'99',label:'Noms'},{val:'Ar → Fr',label:'Traduction'}],
-    desc:[
-      "« Les Plus Beaux Noms » d'Allah — 99 noms rapportés par la tradition, chacun révélant une facette de Sa majesté, de Sa miséricorde et de Sa perfection.",
-      "« À Allah appartiennent les plus beaux noms. Invoquez-Le par ces noms » (Coran 7:180). Cette lecture est un moyen d'accroître la connaissance d'Allah et l'attachement à Lui.",
-    ],
-    src:'content/books/asma.json',
-    srcNotes:["D'après la tradition classique — références coraniques et prophétiques","Invocation &amp; introspection de chaque nom : « Les Essentiels — Les 99 Noms d'Allah » de Souad El Mansouri, éditions Al Bouraq"],
-  },
-  fruits:{
-    key:'fruits',icon:'🌿',type:'chapters',md:true,
-    title:'Les Aliments dans le Coran et la Sunna',titleAr:'الأطعمة في القرآن والسنة',
-    author:'Guide original — versets, hadiths et recherche nutritionnelle actuelle',
-    searchPh:'Chercher un aliment (datte, miel, nigelle…)',
-    stats:[{val:'12',label:'Aliments'},{val:'Coran',label:'Versets exacts'},{val:'60+',label:'Sources'}],
-    desc:[
-      "Datte, raisin, figue, olive, grenade, banane, jujube, miel — les aliments que le Coran nomme. Puis les remèdes transmis par la Sunna : nigelle, orge, vinaigre, eau de Zamzam.",
-      "Pour chacun : les versets et hadiths cités intégralement avec leurs références, puis ce que dit la recherche — méta-analyses, essais randomisés, revues Cochrane — avec ses résultats comme ses limites. Toutes les sources sont rassemblées en fin de lecture.",
-    ],
-    src:'content/books/fruits.json',translatable:true,
-    srcNotes:['Versets et hadiths cités intégralement ; recherche et rédaction originales — sources en fin de lecture'],
-  },
-  miracles:{
-    key:'miracles',icon:'✦',type:'chapters',md:true,
-    title:'Les Miracles du Coran',titleAr:'معجزات القرآن',
-    author:"Guide original — le défi du Coran, la Sunna et les sources",
-    searchPh:'Chercher un chapitre (défi, Rome, comptages…)',
-    stats:[{val:'16',label:'Chapitres'},{val:'61',label:'Versets cités'},{val:'Refaits',label:'Calculs vérifiés'}],
-    desc:[
-      "Le Coran met lui-même son authenticité en jeu : produire une seule sourate semblable suffirait à le réfuter. Ce défi, lancé aux plus fins connaisseurs de la langue arabe, n'a jamais été relevé.",
-      "Ce guide part de là — l'inimitabilité de la parole selon les savants classiques — avant d'aborder les annonces accomplies, les versets qui décrivent la création, et les signes rapportés par la Sunna. Les comptages sont recalculés sur le texte complet, avec de quoi refaire chaque calcul soi-même.",
-    ],
-    src:'content/books/miracles.json',translatable:true,
-    srcNotes:['Versets et hadiths cités intégralement ; comptages refaits sur les 6236 versets, dans les deux orthographes — sources et méthode en fin de lecture'],
-  },
-  salat:{
-    key:'salat',icon:'🧎',type:'guide',
-    title:'Comment faire la Salât',titleAr:'الصلاة',
-    author:'Guide pratique — apprentissage général',
-    stats:[{val:'5',label:'Prières'},{val:'Pas à pas',label:'Méthode'},{val:'Claire',label:'Lecture'}],
-    desc:[
-      "Une fiche d'apprentissage pour comprendre l'ordre général de la prière : intention, takbîr, récitation, inclinaison, prosternation, tashahhud et salâm.",
-      "Selon les écoles et les mosquées, certains détails peuvent varier. Gardez ce guide comme base de révision et suivez l'enseignement de votre imam pour les points précis.",
-    ],
-    sections:[
-      {sk:'salat.s1',icon:'🧭',title:'Avant de commencer',points:['Être en état de pureté avec les ablutions.','Prier dans un endroit propre, couvert correctement.','Se tourner vers la Qibla et savoir quelle prière on accomplit.','L’intention se fait dans le cœur, sans obligation de la prononcer.']},
-      {sk:'salat.s2',icon:'1',title:'Entrée en prière',points:['Lever les mains puis dire : Allahu Akbar.','Poser les mains et commencer avec calme.','Réciter Al-Fâtiha, puis une sourate ou quelques versets dans les deux premières unités.']},
-      {sk:'salat.s3',icon:'2',title:'Rukûʿ — inclinaison',points:['Dire Allahu Akbar puis s’incliner, dos posé et mains sur les genoux.','Dire plusieurs fois : Subhâna Rabbiyal ʿAzîm.','Se relever en disant : Samiʿa Allahu liman hamidah, puis Rabbana wa laka-l-hamd.']},
-      {sk:'salat.s4',icon:'3',title:'Sujûd — prosternation',points:['Dire Allahu Akbar puis se prosterner.','Poser le front, le nez, les mains, les genoux et les pieds.','Dire plusieurs fois : Subhâna Rabbiyal Aʿlâ.','S’asseoir brièvement, puis faire une deuxième prosternation.']},
-      {sk:'salat.s5',icon:'4',title:'Tashahhud & salâm',points:['À la fin, s’asseoir et réciter le tashahhud.','Ajouter la prière sur le Prophète ﷺ.','Clore par le salâm à droite puis à gauche : As-salâmu ʿalaykum wa rahmatullah.']},
-      {sk:'salat.s6',icon:'🧩',title:'Nombre d’unités',points:['Fajr : 2 rakʿât.','Dhuhr : 4 rakʿât.','ʿAsr : 4 rakʿât.','Maghrib : 3 rakʿât.','ʿIshâ : 4 rakʿât.']},
-    ],
-  },
-  wudu:{
-    key:'wudu',icon:'💧',type:'guide',
-    title:'Faire les ablutions',titleAr:'الوضوء',
-    author:'Wudû’ — purification avant la prière',
-    stats:[{val:'7',label:'Étapes'},{val:'Avant',label:'Salât'},{val:'Simple',label:'Mémo'}],
-    desc:[
-      "Les ablutions préparent à la prière et installent une intention de pureté, de concentration et de respect avant de se présenter devant Allah.",
-      "Cette fiche donne l'ordre pratique le plus courant. Pour les détails de votre école juridique, suivez l'avis enseigné par votre mosquée ou professeur.",
-    ],
-    sections:[
-      {sk:'wudu.s1',icon:'🤲',title:'Intention & basmala',points:['Avoir l’intention de faire les ablutions pour la prière.','Dire : Bismillah.','Éviter le gaspillage d’eau, même si l’eau est disponible.']},
-      {sk:'wudu.s2',icon:'1',title:'Mains',points:['Laver les deux mains jusqu’aux poignets.','Faire passer l’eau entre les doigts.','Répéter jusqu’à trois fois.']},
-      {sk:'wudu.s3',icon:'2',title:'Bouche & nez',points:['Rincer la bouche.','Inspirer légèrement de l’eau dans le nez puis l’expulser.','Faire doucement si l’on jeûne.']},
-      {sk:'wudu.s4',icon:'3',title:'Visage',points:['Laver tout le visage : du haut du front au menton, et d’une oreille à l’autre.','Veiller aux contours du nez, de la barbe et du menton.']},
-      {sk:'wudu.s5',icon:'4',title:'Bras',points:['Laver le bras droit jusqu’au coude inclus.','Puis laver le bras gauche jusqu’au coude inclus.','Ne pas oublier l’arrière des coudes.']},
-      {sk:'wudu.s6',icon:'5',title:'Tête & oreilles',points:['Passer les mains mouillées sur la tête.','Essuyer les oreilles avec les doigts humides.','Un seul passage suffit dans la pratique courante.']},
-      {sk:'wudu.s7',icon:'6',title:'Pieds',points:['Laver le pied droit jusqu’à la cheville incluse, puis le gauche.','Passer entre les orteils.','Vérifier que le talon est bien mouillé.']},
-      {sk:'wudu.s8',icon:'✨',title:'Après les ablutions',points:['Dire l’attestation de foi.','Garder le calme et partir vers la prière sans se précipiter.','Si les ablutions sont annulées, il faut les refaire avant de prier.']},
-    ],
-  },
-};
 
 let _current=null;   // clé du livre ouvert
 /* JSON des livres « chapitres ». Indexe par livre+langue pour les guides
@@ -166,7 +71,7 @@ function setHeader({title,back=false,search=false,searchPh=''}){
 function showIntro(){
   _view='intro';
   const b=BOOKS[_current];
-  setHeader({title:'Bibliothèque',back:true});
+  setHeader({title:t('nav.library'),back:true});
   const bd=$('book-bd');
   bd.innerHTML=`<div class="book-intro">
     <div class="book-intro-badge">${b.icon}</div>
@@ -347,7 +252,7 @@ async function openPages(){
     .map(p=>renderCitadelleMarkdown(p.text))
     .join('');
   bd.innerHTML=`<div class="book-chapter book-md book-read">${html}
-    <div class="book-src">Hisn al-Muslim — La Citadelle du Musulman · Sa'îd Ibn 'Alî Ibn Wahf Al-Qahtânî · texte intégral</div></div>`;
+    <div class="book-src">${t('books.citadelleSrc')}</div></div>`;
   foldToc(bd);
   bd.scrollTop=0;
 }
@@ -561,7 +466,7 @@ function stopNasheed(){
 function toggleNasheed(banner){
   if(!_nasheedAudio){_nasheedAudio=new Audio(NASHEED_SRC);
     _nasheedAudio.onended=()=>{_nasheedOn=false;document.querySelectorAll('.asma-nasheed.playing').forEach(b=>b.classList.remove('playing'));};
-    _nasheedAudio.onerror=()=>{_nasheedOn=false;banner.classList.remove('playing');toast('Anachid indisponible 🎧');};
+    _nasheedAudio.onerror=()=>{_nasheedOn=false;banner.classList.remove('playing');toast(t('books.asmaNasheedFail'));};
   }
   if(_nasheedOn){stopNasheed();return;}
   if(_asmaAudio&&!_asmaAudio.paused){_asmaAudio.pause();_asmaPlaying=null;
@@ -571,14 +476,14 @@ function toggleNasheed(banner){
 }
 
 function nasheedBanner(){
-  return `<div class="asma-nasheed${_nasheedOn?' playing':''}" role="button" tabindex="0" aria-label="Écouter l'anachid des 99 Noms">
+  return `<div class="asma-nasheed${_nasheedOn?' playing':''}" role="button" tabindex="0" aria-label="${t('books.asmaNasheedA11y')}">
     <div class="asma-nasheed-ic">
       <svg class="ic-play" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       <svg class="ic-stop" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
     </div>
     <div class="asma-nasheed-tx">
-      <div class="asma-nasheed-t">Anachid des 99 Noms</div>
-      <div class="asma-nasheed-s">Le chant en continu · récités dans l'ordre</div>
+      <div class="asma-nasheed-t">${t('books.asmaNasheed')}</div>
+      <div class="asma-nasheed-s">${t('books.asmaNasheedSub')}</div>
     </div>
     <div class="asma-nasheed-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
   </div>`;
@@ -595,7 +500,7 @@ function renderNames(filter=''){
   const items=_asma.names.filter(x=>!f||x.tr.toLowerCase().includes(f)||x.fr.toLowerCase().includes(f)||String(x.n)===f||x.ar.includes(filter.trim()));
   if(!items.length){bd.innerHTML=nasheedBanner()+`<div class="places-empty">${t('books.noName')}</div>`;bindNasheed(bd);return;}
   bd.innerHTML=nasheedBanner()+`<div class="asma-list">${items.map(x=>`
-    <div class="asma-card" data-n="${x.n}" role="button" tabindex="0" aria-label="Écouter ${x.tr}">
+    <div class="asma-card" data-n="${x.n}" role="button" tabindex="0" aria-label="${t('books.listenName',{name:x.tr})}">
       <div class="asma-head">
         <div class="asma-n">${x.n||'★'}</div>
         <div class="asma-ar" lang="ar" dir="rtl">${x.ar}</div>
@@ -636,7 +541,7 @@ function asmaDetail(x){
     inner+=`<div class="asma-sec-t">Introspection</div><ul class="asma-intro">`+
       x.intro.map(q=>`<li>${esc(q)}</li>`).join('')+`</ul>`;
   }
-  return `<details class="asma-detail"><summary class="asma-detail-sum">✦ Invocation &amp; introspection</summary><div class="asma-detail-bd">${inner}</div></details>`;
+  return `<details class="asma-detail"><summary class="asma-detail-sum">✦ ${t('books.asmaReflect')}</summary><div class="asma-detail-bd">${inner}</div></details>`;
 }
 
 /* ── Apprendre : fiches pratiques lisibles en étapes courtes ── */
