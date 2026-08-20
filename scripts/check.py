@@ -431,6 +431,37 @@ def check_books_i18n() -> None:
     NOTES.append(f"bibliothèque : {len(livres)} livres, tous avec leur clé de titre")
 
 
+# ── 7 quater. Thèmes annoncés sans style ─────────────────────────────────
+def check_themes() -> None:
+    """Le catalogue annonce des récompenses, les tokens leur donnent leurs
+    couleurs, et rien ne vérifiait que les deux listes se correspondent.
+
+    Huit accents et huit ambiances étaient annoncés sans exister en CSS.
+    Un accent sans règle retombe sur :root — « Ardoise », « Cuivre » et
+    « Argent » affichaient tous de l'or. Une ambiance sans règle garde les
+    tokens sombres alors qu'applyTheme peint déjà le fond avec la teinte
+    annoncée : les six ambiances claires donnaient un texte clair sur fond
+    clair."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    try:
+        import theme_gaps
+    except Exception as e:
+        ERRORS.append(f"theme_gaps.py illisible ({e})")
+        return
+    finally:
+        sys.path.pop(0)
+
+    trous = theme_gaps.manquants()
+    for libelle, attr, d in trous[:8]:
+        ERRORS.append(
+            f'catalog.js : {libelle} « {d} » est proposé mais {attr}="{d}" '
+            f"n'existe dans aucun CSS")
+    if len(trous) > 8:
+        ERRORS.append(f"… et {len(trous)-8} autre(s) — python scripts/theme_gaps.py")
+    if not trous:
+        NOTES.append("thèmes, accents et skins : tous ceux proposés ont leur style")
+
+
 # ── 8. Inventaire i18n ───────────────────────────────────────────────────
 def check_i18n_inventory() -> None:
     """Le texte traduisible ne vit pas qu'en js/i18n/ : il vient aussi des
@@ -486,6 +517,7 @@ def main() -> int:
         check_books,
         check_books_i18n,
         check_i18n_leaks,
+        check_themes,
         check_i18n_inventory,
     ):
         try:
