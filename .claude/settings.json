@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PYTHONIOENCODING=utf-8 python scripts/hook_check.py",
+            "timeout": 60,
+            "statusMessage": "Vérification du projet…"
+          }
+        ]
+      }
+    ]
+  }
+}

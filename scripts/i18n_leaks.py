@@ -87,8 +87,14 @@ def suspecte(val):
     # Une cle de dictionnaire n'est pas du texte : « duas.copied »
     if re.fullmatch(r"[\w.-]+", v) and "." in v:
         return False
-    # Du CSS, une classe, un selecteur
-    if re.fullmatch(r"[\w #.>:\[\]=-]+", v) and not DIACRITIQUES.search(v):
+    # Du CSS, une classe, un selecteur — mais la garde doit rester etroite.
+    # Ecrite « tout ce qui n'est fait que de mots et d'espaces », elle
+    # ecartait aussi les phrases francaises sans accent : « Aucune invocation
+    # pour cette recherche » passait pour un selecteur. On ne l'applique donc
+    # qu'a ce qui ne ressemble pas a de la prose, c'est-a-dire a ce qui ne
+    # contient pas deux mots separes par une espace.
+    prose = re.search(r"[A-Za-zÀ-ÿ]{2,}\s+[A-Za-zÀ-ÿ]{2,}", v)
+    if not prose and re.fullmatch(r"[\w #.>:\[\]=-]+", v):
         return False
     return True
 
