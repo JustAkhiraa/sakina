@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "PYTHONIOENCODING=utf-8 python scripts/hook_check.py",
+            "command": "f=\"${CLAUDE_PROJECT_DIR:-.}/scripts/hook_check.py\"; [ -f \"$f\" ] && PYTHONIOENCODING=utf-8 python \"$f\" || true",
             "timeout": 60,
             "statusMessage": "Vérification du projet…"
           }

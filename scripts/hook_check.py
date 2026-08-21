@@ -35,14 +35,33 @@ def chemin(charge):
     return ""
 
 
+def dans_ce_projet(p):
+    """Le fichier touche appartient-il bien au projet de ce script ?
+
+    Deux projets tournent en parallele sur cette machine, et un crochet
+    charge dans la mauvaise session ne doit rien faire. Le script se situe
+    par rapport a lui-meme, pas par rapport au repertoire courant : c'est la
+    seule ancre qu'on ne peut pas se tromper.
+    """
+    try:
+        Path(p).resolve().relative_to(ROOT)
+        return True
+    except (ValueError, OSError):
+        return False
+
+
 def main():
     try:
         charge = json.loads(sys.stdin.read() or "{}")
     except json.JSONDecodeError:
         return 0                      # entree illisible : on ne bloque rien
 
-    p = chemin(charge).replace("\\", "/")
+    brut = chemin(charge)
+    p = brut.replace("\\", "/")
     if not p or not SURVEILLE.search(p):
+        return 0
+    # Chemin absolu venu d'ailleurs : ce n'est pas notre affaire.
+    if Path(p).is_absolute() and not dans_ce_projet(brut):
         return 0
 
     r = subprocess.run([sys.executable, str(ROOT / "scripts" / "check.py")],
@@ -51,11 +70,16 @@ def main():
     if r.returncode == 0:
         return 0
 
-    # On ne renvoie que les erreurs : les notes rendraient le retour illisible.
+    # check.py liste ses notes, puis une ligne « ✗ N probleme(s) », puis les
+    # fautes. On ne renvoie que ce qui suit cette ligne : les notes noieraient
+    # le message, et deviner un prefixe par faute s'est revele fragile.
     sortie = (r.stdout or "") + (r.stderr or "")
-    fautes = [l.rstrip() for l in sortie.splitlines()
-              if l.strip().startswith(("✗", "-", "•")) or "  - " in l]
-    detail = "\n".join(fautes[:12]) or sortie[-900:]
+    lignes_sortie = sortie.splitlines()
+    debut = next((k for k, l in enumerate(lignes_sortie)
+                  if l.lstrip().startswith("✗")), None)
+    fautes = ([l.strip() for l in lignes_sortie[debut + 1:] if l.strip()]
+              if debut is not None else [])
+    detail = chr(10).join(fautes[:12]) or sortie[-900:]
     print(json.dumps({
         "decision": "block",
         "reason": ("scripts/check.py échoue après cette édition :\n\n"
