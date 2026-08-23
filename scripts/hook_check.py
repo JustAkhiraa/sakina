@@ -20,6 +20,11 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Le JSON rendu porte des guillemets francais : sans cela Windows
+# l'ecrirait en cp1252 et l'appelant le relirait de travers. On ne
+# depend pas de PYTHONIOENCODING, que la commande peut oublier.
+sys.stdout.reconfigure(encoding="utf-8")
+
 ROOT = Path(__file__).resolve().parent.parent
 
 # Ce que check.py couvre reellement. Inutile de tourner sur le reste.
