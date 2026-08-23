@@ -33,6 +33,13 @@ ARABE = re.compile(r"[؀-ۿﭐ-﷿ﹰ-﻿]")
 TITRE = re.compile(r"^[^\Wa-zß-öø-ÿ\d]*[A-ZÇĞİÖŞÜIÂÎÛÑÁÉÍÓÚ0-9'’\"()\[\]\-–,.:!?& ]{10,}$")
 
 
+# Les editions persane, ourdoue et arabe numerotent en chiffres indo-arabes.
+# Sans cette table, --num ne trouve rien chez elles.
+CHIFFRES = str.maketrans("۰۱۲۳۴۵۶۷۸۹"
+                         "٠١٢٣٤٥٦٧٨٩",
+                         "01234567890123456789")
+
+
 def aplati(s):
     """Sans diacritiques ni casse. Python abaisse « İ » en i + point
     combinant : sans NFKD, « CÂMİYE » ne rencontrerait jamais « camiye »."""
@@ -59,7 +66,7 @@ def lignes(source, depuis):
                 page = int(m.group(1))
                 continue
             if s and page >= depuis:
-                out.append((page, s))
+                out.append((page, s.translate(CHIFFRES)))
         return out
 
     doc = fitz.open(source)
@@ -68,19 +75,31 @@ def lignes(source, depuis):
         for brut in doc[n].get_text().split("\n"):
             s = brut.strip()
             if s:
-                out.append((n, s))
+                out.append((n, s.translate(CHIFFRES)))
     doc.close()
     return out
+
+
+# Les langues cibles a ecriture arabe — persan, ourdou — demandent l'inverse
+# du filtre latin : c'est leur texte qu'il faut garder, pas ecarter. Pose par
+# --rtl, faute de quoi lisible() rejetait la totalite d'une edition persane.
+RTL = False
 
 
 def lisible(s):
     """Garde ce qui ressemble a de la prose.
 
-    Il ne suffit pas d'ecarter l'arabe : l'edition indonesienne l'encode dans
-    une police maison qui ressort en charabia latin (« B1א », « );B%1. »),
-    repete quatre fois par ligne. Exiger un mot d'au moins trois minuscules
-    ecarte ce bruit, les lettres isolees et la numerotation, sans toucher a la
-    prose — les titres, tout en capitales, sont reconnus a part."""
+    En alphabet latin, il ne suffit pas d'ecarter l'arabe : l'edition
+    indonesienne l'encode dans une police maison qui ressort en charabia
+    latin (« B1א », « );B%1. »), repete quatre fois par ligne. Exiger un mot
+    d'au moins trois minuscules ecarte ce bruit, les lettres isolees et la
+    numerotation, sans toucher a la prose — les titres, tout en capitales,
+    sont reconnus a part.
+
+    En ecriture arabe, la regle s'inverse : on garde les lignes qui portent
+    assez de lettres arabes pour etre du texte."""
+    if RTL:
+        return len(ARABE.findall(s)) >= 4
     if len(ARABE.findall(s)) > len(s) * 0.3:
         return False
     return bool(re.search(r"[a-zà-öø-ÿçğıöşü]{3}", s))
@@ -92,7 +111,15 @@ def recolle(corps):
     L'extraction rend parfois un mot par ligne. On rassemble tout, puis on
     redecoupe sur la numerotation de l'edition, qui borne les invocations."""
     texte = re.sub(r"\s+", " ", " ".join(corps)).strip()
-    texte = re.sub(r"(?<!\d)(\d{1,3})\s*[.\-–]\s*(?=[“\"'(A-ZÀ-Ý])", r"\n\1. ", texte)
+    if RTL:
+        # En ecriture arabe le numero n'est pas toujours suivi d'un point, et
+        # ce qui suit est une lettre arabe ou un chevron, jamais une capitale
+        # latine. L'edition persane ecrit aussi bien « ۴۴ «اللهم » que
+        # « ۱- «سبحان ».
+        coupe = r"(?<!\d)(\d{1,3})\s*[.\-–]?\s*(?=[«\u0600-\u06FF])"
+    else:
+        coupe = r"(?<!\d)(\d{1,3})\s*[.\-–]\s*(?=[“\"'(A-ZÀ-Ý])"
+    texte = re.sub(coupe, lambda m: "\n" + m.group(1) + ". ", texte)
     return [l.strip() for l in texte.split("\n") if l.strip()]
 
 
@@ -131,7 +158,11 @@ def main():
                     help="ne pas recoller les paragraphes")
     ap.add_argument("--large", action="store_true",
                     help="ne pas tronquer les lignes")
+    ap.add_argument("--rtl", action="store_true",
+                    help="édition en écriture arabe (persan, ourdou)")
     a = ap.parse_args()
+    global RTL
+    RTL = a.rtl
 
     src = (ROOT / "scripts" / "out" / a.pdf) if a.pdf.endswith(".txt") else (PDFS / a.pdf)
     if not src.exists():
