@@ -99,6 +99,17 @@ export function applyI18n(){
   // sans cette passe les placeholders resteraient en francais.
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
     el.placeholder=t(el.dataset.i18nPh);
+    // Un placeholder n'est pas une etiquette : il disparait a la saisie et
+    // les lecteurs d'ecran ne s'accordent pas sur son annonce. Les vingt
+    // champs de l'application n'en avaient aucune. Plutot que d'ecrire
+    // vingt libelles a traduire, on reprend la cle du placeholder : le nom
+    // accessible suit la langue sans rien de plus a maintenir.
+    // On repose l'etiquette a chaque passe : posee une seule fois, elle
+    // gardait la langue du premier rendu. Un champ qui declare sa propre
+    // cle (data-i18n-aria) ou porte un vrai <label> garde les siens.
+    if(!el.dataset.i18nAria&&!el.labels?.length){
+      el.setAttribute('aria-label',t(el.dataset.i18nPh));
+    }
   });
   // Les paragraphes explicatifs portent de l'emphase (<strong>) : textContent
   // l'effacerait, on injecte donc le balisage de la traduction.

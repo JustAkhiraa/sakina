@@ -32,6 +32,7 @@ export function burst(){
    D'où le jeton : la frame ne pose `open` que si elle est toujours
    d'actualité. */
 let _sh=null;
+let _avant=null;      // element qui avait le focus avant l'ouverture
 let _seq=0;
 export function openSheet(id,cb){
   if(_sh)_sh.classList.remove('open');
@@ -39,10 +40,32 @@ export function openSheet(id,cb){
   if(!sh)return;
   const ov=document.getElementById('overlay');
   const mine=++_seq;
+  // On retient d'ou l'on vient pour y revenir a la fermeture : sans cela le
+  // clavier repart du haut de la page a chaque feuille refermee, et un
+  // lecteur d'ecran relit tout depuis le debut.
+  if(!_sh)_avant=document.activeElement;
   _sh=sh;
   ov.classList.add('open');
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    if(_seq===mine&&_sh===sh)sh.classList.add('open');
+    if(_seq===mine&&_sh===sh){
+      sh.classList.add('open');
+      // La feuille se comporte en boite de dialogue : le focus y entre, sur
+      // le premier element utile ou sur la feuille elle-meme.
+      //
+      // Une image en retard suffit a tout rater : fermee, la feuille est
+      // visibility:hidden, et focus() sur un element invisible ne fait rien.
+      // On attend donc que la classe ait pris effet.
+      requestAnimationFrame(()=>{
+        // Un champ de saisie d'abord : ouvrir une feuille de recherche doit
+        // poser le curseur dans la recherche. querySelector suit l'ordre du
+        // document et non celui du selecteur — sans ce choix explicite, le
+        // focus tombait sur la croix de fermeture, qui vient avant.
+        const cible=sh.querySelector('input:not([type="hidden"])')
+                  ||sh.querySelector('button,[tabindex]:not([tabindex="-1"])');
+        if(cible){cible.focus({preventScroll:true});}
+        else{sh.tabIndex=-1;sh.focus({preventScroll:true});}
+      });
+    }
   }));
   if(cb)cb();
 }
@@ -53,6 +76,11 @@ export function closeSheet(){
   document.querySelectorAll('.sheet.open').forEach(s=>s.classList.remove('open'));
   document.getElementById('overlay').classList.remove('open');
   _sh=null;
+  // Retour au point de depart, pour que le clavier ne reparte pas du haut.
+  if(_avant&&document.contains(_avant)){
+    try{_avant.focus({preventScroll:true});}catch{}
+  }
+  _avant=null;
 }
 export const sheetOpen=()=>_sh!==null;
 

@@ -1316,7 +1316,10 @@
   <div id="imm-hint" data-i18n="tasbih.immHint">Touchez n'importe où pour compter</div>
 </div>
 
-<div id="toast"></div>
+<!-- role="status" + aria-live : le toast annonce des confirmations et des
+     erreurs. Sans cela un lecteur d'écran ne les entend jamais. « polite »
+     attend la fin de l'action en cours plutôt que de l'interrompre. -->
+<div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 <div id="confirm-box">
   <div id="confirm-msg"></div>
   <div id="confirm-acts">
