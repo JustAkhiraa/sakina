@@ -75,3 +75,17 @@ docs/                   Guides (README.html rendu, PUBLISH.html)
 
 - `api.quran.com` — texte uthmani + traduction Hamidullah (fr, id 136), cache offline via SW
 - `nominatim.openstreetmap.org` — géocodage inverse & recherche de ville
+
+## Licence
+
+Le **code** est sous [licence MIT](LICENSE) : reprenez-le, modifiez-le,
+redistribuez-le, y compris commercialement.
+
+Les **contenus embarqués** — traductions du Coran, invocations relevées
+d'éditions publiées, récitations — appartiennent à leurs auteurs et ne sont
+pas couverts par cette licence. Origine et conditions, source par source :
+[CONTENU.md](CONTENU.md).
+
+Qui reprend ce dépôt pour publier sa propre application doit lire ce second
+fichier. Reprendre le code est libre ; rediffuser les contenus ne l'est pas
+nécessairement.
