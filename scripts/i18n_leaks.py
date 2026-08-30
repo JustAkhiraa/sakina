@@ -32,9 +32,13 @@ ROOT = Path(__file__).resolve().parent.parent
 # oubli qui traverse dix-sept langues.
 DIACRITIQUES = re.compile(r"[àâäçéèêëîïôöùûüœæÀÂÄÇÉÈÊËÎÏÔÖÙÛÜŒÆ]")
 MOTS = re.compile(
-    r"\b(le|la|les|un|une|des|du|de|au|aux|et|ou|est|sont|dans|pour|par|sur"
+    r"(?<![-\w])(le|la|les|un|une|des|du|de|au|aux|et|ou|est|sont|dans|pour|par|sur"
     r"|avec|sans|vous|votre|vos|votre|cette|ce|ces|plus|moins|jour|jours"
-    r"|prière|prières|invocation|aucun|aucune|tout|toute|tous)\b",
+    r"|prière|prières|invocation|aucun|aucune|tout|toute|tous"
+    r"|sourate|sourates|verset|versets|chapitre|chapitres|note|notes"
+    r"|page|pages|copie|impossible|supprimer|ajouter|modifier|annuler"
+    r"|enregistrer|rechercher|chercher|erreur|réglages|paramètres"
+    r"|semaine|mois|année|heure|heures|minute|minutes|seconde|secondes)(?![-\w])",
     re.I)
 
 # Chaines qui ressemblent a du francais sans en etre, ou qui ne s'affichent
@@ -65,6 +69,30 @@ def chaines(src):
             yield sans[:m.start()].count("\n") + 1, val, m.start(), sans
 
 
+def sans_interpolations(val):
+    """Retire chaque ${...} en comptant les accolades.
+
+    Un motif ne peut suivre qu'une profondeur fixee d'avance ; celui d'ici
+    n'en gerait qu'une. Le gabarit des resultats halal en imbrique trois, et
+    `${f.note}` restait donc dans le texte examine : « note » ressortait
+    comme du francais affiche alors que c'est un acces de propriete."""
+    out, i, n = [], 0, len(val)
+    while i < n:
+        if val[i] == "$" and i + 1 < n and val[i + 1] == "{":
+            profondeur, i = 1, i + 2
+            while i < n and profondeur:
+                if val[i] == "{":
+                    profondeur += 1
+                elif val[i] == "}":
+                    profondeur -= 1
+                i += 1
+            out.append(" ")
+        else:
+            out.append(val[i])
+            i += 1
+    return "".join(out)
+
+
 def texte_affiche(val):
     """Ce qui restera a l'ecran, une fois le gabarit resolu.
 
@@ -72,7 +100,7 @@ def texte_affiche(val):
     retirer ce qui n'est pas du texte avant de chercher du francais, sinon
     chaque `${t('cle')}` et chaque nom de classe CSS ressort comme une fuite.
     """
-    v = re.sub(r"\$\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}", " ", val)  # interpolations
+    v = sans_interpolations(val)
     v = re.sub(r"<[^>]*>", " ", v)                              # balises et attributs
     v = re.sub(r"&[a-z]+;", " ", v)                             # entites
     return v.strip()
@@ -99,12 +127,25 @@ def suspecte(val):
     return True
 
 
-def main():
-    tout = "--tout" in sys.argv
+def fichiers():
+    """Les fichiers qui affichent. La racine de js/ porte les points d'entree
+    de page — app.js, privacy.js : « ils affichent peu » n'est pas « rien »,
+    la page de confidentialite est entierement pilotee depuis privacy.js."""
+    return sorted(list((ROOT / "js/features").glob("*.js"))
+                  + list((ROOT / "js/core").glob("*.js"))
+                  + list((ROOT / "js/lib").glob("*.js"))
+                  + list((ROOT / "js").glob("*.js")))
+
+
+def scanner(tout=False):
+    """Les fuites, sous forme (chemin, ligne, texte).
+
+    check.py avait sa propre copie de cette boucle. Elargir la liste des
+    dossiers ici ne changeait donc rien a la verification, et une faute de
+    test introduite dans js/privacy.js est passee inapercue. Une seule
+    boucle desormais, appelee des deux cotes."""
     fuites = []
-    for f in sorted(list((ROOT / "js/features").glob("*.js"))
-                    + list((ROOT / "js/core").glob("*.js"))
-                    + list((ROOT / "js/lib").glob("*.js"))):
+    for f in fichiers():
         src = f.read_text(encoding="utf-8")
         for ligne, val, pos, sans in chaines(src):
             if not suspecte(val):
@@ -125,6 +166,11 @@ def main():
                     continue
             fuites.append((f.relative_to(ROOT).as_posix(), ligne, val))
 
+    return fuites
+
+
+def main():
+    fuites = scanner("--tout" in sys.argv)
     for chemin, ligne, val in fuites:
         print(f"{chemin}:{ligne}  « {val[:90]} »")
     print(f"\n{len(fuites)} chaîne(s) française(s) en dur dans le code d'affichage")

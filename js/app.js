@@ -38,7 +38,7 @@ initNotifications();  // reprend les rappels programmés au démarrage
 /* Changement de langue : les pages bâties en JS doivent être reconstruites,
    applyI18n ne touchant que les éléments marqués data-i18n. */
 on('lang-changed',()=>{
-  if(S.lat!==null){renderPrayers();onQiblaShow();}
+  if(S.lat!==null)onQiblaShow();   // refreshSalat redessine la page Prière
   renderTasbih();buildDhikrBar();
   renderNavbar();
   refreshDuas();refreshQuranHeader();refreshSettings();refreshRoutines();

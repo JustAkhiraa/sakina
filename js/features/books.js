@@ -46,6 +46,12 @@ const bookTitle =b=>tf(BOOK_I18N[b.key]||'',b.title);
 const bookAuthor=b=>tf(`bk.${b.key}.a`,b.author);
 const bookDesc  =(b,i)=>tf(`bk.${b.key}.d${i+1}`,b.desc[i]);
 const statLabel =l=>tf(`bks.${slug(l)}`,l);
+/* Note de source et invitation de recherche : deux textes du catalogue qui
+   partaient bruts a l'ecran. Le premier explique d'ou vient le livre, le
+   second est le nom accessible du champ de recherche — un lecteur japonais
+   lisait « Chercher un aliment (datte, miel, nigelle…) ». */
+const bookSrcNote =(b,i,n)=>tf(`bkn.${b.key}.${i+1}`,n);
+const bookSearchPh=b=>b.searchPh?tf(`bkp.${b.key}`,b.searchPh):t('books.searchPh');
 /* Certaines valeurs sont des mots et non des nombres — « Intégral »,
    « Pas à pas ». Un chiffre reste tel quel, un mot passe par i18n. */
 const statVal =v=>/^[\d+\s.,·—-]+$/.test(v)?v:tf(`bkv.${slug(v)}`,v);
@@ -68,7 +74,15 @@ function setHeader({title,back=false,search=false,searchPh=''}){
   $('book-title').textContent=title;
   $('btn-book-back').style.display=back?'flex':'none';
   $('book-search-wrap').style.display=search?'block':'none';
-  if(search&&searchPh)$('book-search').placeholder=searchPh;
+  /* Le champ porte data-i18n-ph : applyI18n y pose le placeholder generique
+     et en derive le nom accessible. Un livre qui propose sa propre invitation
+     doit refaire les deux, sinon un lecteur d'ecran annonce « chercher un
+     chapitre » au-dessus d'un champ qui dit « chercher un aliment ». */
+  if(search&&searchPh){
+    const el=$('book-search');
+    el.placeholder=searchPh;
+    el.setAttribute('aria-label',searchPh);
+  }
 }
 
 /* ── Écran d'introduction (commun à tous les livres) ── */
@@ -85,7 +99,7 @@ function showIntro(){
     <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${statVal(s.val)}</b><span>${statLabel(s.label)}</span></div>`).join('')}</div>
     ${b.desc.map((p,i)=>`<p class="book-intro-desc">${bookDesc(b,i)}</p>`).join('')}
     <div class="book-intro-cta" id="book-start">${t('books.start')}</div>
-    ${(b.srcNotes||[]).map(n=>`<div class="book-intro-src">${n}</div>`).join('')}
+    ${(b.srcNotes||[]).map((n,i)=>`<div class="book-intro-src">${bookSrcNote(b,i,n)}</div>`).join('')}
   </div>`;
   $('book-start').addEventListener('click',()=>{
     vib(16);
@@ -137,7 +151,7 @@ async function openList(filter=''){
   _view='list';
   const key=_current;
   const b=BOOKS[key];
-  setHeader({title:bookTitle(b),back:true,search:true,searchPh:b.searchPh||t('books.searchPh')});
+  setHeader({title:bookTitle(b),back:true,search:true,searchPh:bookSearchPh(b)});
   if(!_chaptersCache[cacheKeyFor(key)]){
     $('book-bd').innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
     try{await loadChapters(key);}
@@ -244,7 +258,7 @@ async function loadCitadelleText(){
 async function openPages(){
   _view='pages';
   const b=BOOKS.citadelle;
-  setHeader({title:b.title,back:true});
+  setHeader({title:bookTitle(b),back:true});
   const bd=$('book-bd');
   bd.innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
   try{await loadCitadelleText();}
@@ -585,7 +599,7 @@ function asmaDetail(x){
 function openGuide(){
   _view='guide';
   const b=BOOKS[_current];
-  setHeader({title:b.title,back:true});
+  setHeader({title:bookTitle(b),back:true});
   const bd=$('book-bd');
   bd.innerHTML=`<div class="learn-reader">
     <div class="learn-hero">

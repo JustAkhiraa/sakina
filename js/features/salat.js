@@ -220,8 +220,24 @@ function buildCalcMethods(){
 
 /* La liste des methodes est batie en JS a l'ouverture de la feuille : sans
    ca, elle garde la langue qu'elle avait ce jour-la. */
+/* Redessine ce qui ne depend pas de la position.
+
+   La page Priere n'etait rafraichie qu'a travers renderPrayers(), qui rend
+   la main aussitot quand aucune position n'est connue. Or c'est l'etat d'un
+   nouvel utilisateur : la date restait donc en francais sous une interface
+   japonaise, de meme que le nom de la methode de calcul et le libelle de la
+   banniere. Ces trois-la ne demandent pourtant aucune position. */
 export function refreshSalat(){
   if($('calc-bd')?.children.length)buildCalcMethods();
+
+  const now=new Date();
+  $('hijri-date').textContent=hijriLabelAr(toHijri(now));
+  $('greg-date').textContent=now.toLocaleDateString(S.lang||'fr',
+    {weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  $('calc-name').textContent=calcName(methodById(S.calcMethod));
+  if(S.lat===null)$('next-name').textContent=t('salat.next');
+
+  if(S.lat!==null)renderPrayers();
 }
 
 export function initSalat(){

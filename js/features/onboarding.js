@@ -1,7 +1,7 @@
 /* SAKINA — Assistant de première configuration (bienvenue).
    Affiché une seule fois : apparence, méthode de calcul, position.
    Les utilisateurs migrés depuis l'ancienne app ne le voient pas. */
-import {S,save,emit} from '../core/store.js';
+import {S,save,emit,on} from '../core/store.js';
 import {toast} from '../core/ui.js';
 import {vib} from '../core/audio.js';
 import {THEMES,CALC_METHODS,MADHABS,LANGS,LANG_REGIONS,CALC_BY_LANG,MADHAB_BY_LANG} from '../data/catalog.js';
@@ -75,9 +75,7 @@ function buildLangGrid(){
         if(!S._calcTouched){const m=CALC_BY_LANG[l.code];if(m)S.calcMethod=m;}
         if(!S._madhabTouched){const md=MADHAB_BY_LANG[l.code];if(md)S.madhab=md;}
         vib(16);
-        setLang(l.code).then(()=>{
-          save();buildLangGrid();buildMethodList();buildMadhabRow();showStep(_step);
-        });
+        setLang(l.code).then(()=>{save();redessine();});
       });
       row.appendChild(el);
     });
@@ -194,19 +192,31 @@ function finish(){
   vib([50,30,50]);
 }
 
-export function initOnboarding(){
-  const ob=$('onboard');
-  if(!ob)return;
-  if(S.onboarded){ob.remove();return;}
+/* Tout ce que l'assistant batit en JS, au meme endroit.
 
+   Le changement de langue redessinait trois grilles sur cinq : les deux
+   grilles de themes gardaient la langue du demarrage. Tenir la liste a la
+   main etait la cause — la voici tenue une seule fois. */
+function redessine(){
   buildLangGrid();
   buildAccentGrid();
   buildBaseThemeGrid('ob-base-theme-grid');
   buildMethodList();
   buildMadhabRow();
   syncFmtSeg();
+  showStep(_step);
+}
+
+export function initOnboarding(){
+  const ob=$('onboard');
+  if(!ob)return;
+  if(S.onboarded){ob.remove();return;}
+
   wireLocation();
+  redessine();
   showStep(0);
+  // Si la langue change ailleurs pendant que l'assistant est ouvert.
+  on('lang-changed',redessine);
 
   document.querySelectorAll('#ob-translit-seg .seg-opt').forEach(opt=>{
     opt.classList.toggle('active',opt.dataset.tr===S.translit);

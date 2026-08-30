@@ -18,7 +18,7 @@ import {SURAHS} from '../data/surahs.js';
 import {DUAS} from '../data/duas.js';
 import {ROUTINES} from '../data/routines.js';
 import {ADDITIVES,ADD_STATUS} from '../data/additives.js';
-import {showSurah} from './quran.js';
+import {showSurah,surahName} from './quran.js';
 import {openDuaSearch,duaTitle,duaOcc,duaCat} from './duas.js';
 import {openRoutine} from './routines.js';
 import {openHalal,addName,addNote} from './halal.js';
@@ -91,7 +91,7 @@ function buildIndex(){
   // Une sourate se cherche par son nom translittéré, son nom arabe ou son
   // numéro : « 36 », « Ya-Sin » et « يس » doivent mener au même endroit.
   SURAHS.forEach(s=>push(
-    'surah','﴾﴿',`${s.n}. ${s.fr}`,`${s.ar} · ${s.v} ${t('quran.verses')}`,`sourate surah ${s.n}`,
+    'surah','﴾﴿',`${s.n}. ${surahName(s)}`,`${s.ar} · ${s.v} ${t('quran.verses')}`,`sourate surah ${s.n}`,
     ()=>{goPage('page-quran');showSurah(s.n);}
   ));
 

@@ -448,7 +448,7 @@ function buildStartPageSelect(){
     if(it.id===S.nav.startPage)opt.selected=true;
     sel.appendChild(opt);
   });
-  sel.onchange=()=>{S.nav.startPage=sel.value;save();toast('Page d\'ouverture : '+sel.options[sel.selectedIndex].text);};
+  sel.onchange=()=>{S.nav.startPage=sel.value;save();toast(t('set.startPageIs',{name:sel.options[sel.selectedIndex].text}));};
 }
 
 function moveNav(id,delta){

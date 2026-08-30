@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v99';
+const VERSION='sakina-v105';
 const SHELL=[
   './',
   './index.html',
@@ -7,7 +7,7 @@ const SHELL=[
   './manifest.webmanifest',
   './assets/icon.svg',
   './css/tokens.css','./css/base.css','./css/pages.css',
-  './js/app.js',
+  './js/app.js','./js/privacy.js',
   './js/core/store.js','./js/core/ui.js','./js/core/audio.js','./js/core/router.js',
   './js/core/nav.js','./js/core/rewards.js','./js/core/devtools.js',
   './js/lib/astro.js','./js/lib/hijri.js','./js/lib/i18n.js','./js/lib/blobstore.js',
