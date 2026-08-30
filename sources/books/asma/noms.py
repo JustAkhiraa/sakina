@@ -290,6 +290,154 @@ NOMS = {
     "Je fais aujourd'hui une invocation seul, sans rien en dire à personne.",
 ]),
 
+63: ("2:255", [
+    "Rien ne Le tient debout que Lui-même, et ni assoupissement ni sommeil ne Le prennent. Sur quel appui est-ce que je m'endors ?",
+    "Je repère une chose que je porte comme si elle tenait à ma seule vigilance, et je dors dessus ce soir.",
+]),
+64: ("93:7", [
+    "Il l'a trouvé avant qu'il ne Le cherche. Où en étais-je, la fois où cela m'est arrivé ?",
+    "Je raconte aujourd'hui à quelqu'un une fois où j'ai été retrouvé, sans en faire une leçon.",
+]),
+65: ("11:73", [
+    "Cette noblesse est dite à une famille dans l'embarras, pas dans la gloire. Est-ce que je la reconnais dans mes moments étroits ?",
+    "Je Le loue aujourd'hui à voix haute dans une circonstance banale, pas seulement dans l'épreuve.",
+]),
+66: ("13:16", [
+    "Le verset oppose ceux qui ne peuvent rien pour eux-mêmes à Celui qui crée tout. À qui est-ce que je prête un pouvoir qu'il n'a pas ?",
+    "Je nomme une personne dont j'attends ce que Lui seul donne, et je remets ma demande à sa place.",
+]),
+67: ("112:1", [
+    "« Il est Allah, l'Un. » Est-ce que je Le pense un, ou est-ce que je me Le représente ?",
+    "Je récite aujourd'hui Al-Ikhlas trois fois, lentement, en m'arrêtant sur chaque mot.",
+]),
+68: ("112:2", [
+    "Tout se tourne vers Lui, et Lui ne se tourne vers rien. Vers quoi est-ce que je me tourne en premier ?",
+    "La prochaine fois que je manque de quelque chose aujourd'hui, je Le demande avant de demander à un homme.",
+]),
+69: ("6:65", [
+    "Il peut faire venir l'épreuve d'en haut, d'en bas, ou de nous les uns contre les autres. Laquelle des trois est-ce que j'oublie ?",
+    "Je repère une division que j'entretiens avec un musulman, et je fais un pas vers lui aujourd'hui.",
+]),
+70: ("18:45", [
+    "Cette vie est décrite comme une herbe sèche que le vent disperse. Qu'est-ce que je bâtis dessus ?",
+    "Je donne aujourd'hui à une chose qui restera autant de temps qu'à une chose qui passe.",
+]),
+71: ("16:61", [
+    "Nul ne peut avancer son terme d'une heure. Qu'est-ce que je crois pouvoir hâter ?",
+    "Je cesse aujourd'hui de forcer une chose qui n'avance pas, et je la Lui remets.",
+]),
+72: ("71:4", [
+    "Il diffère, et le sursis est une faveur, non un oubli. Qu'est-ce que je fais du mien ?",
+    "Je nomme une chose que je remettrais volontiers à demain, et je la fais aujourd'hui.",
+]),
+73: ("57:3", [
+    "Il est le Premier : rien ne Le précède. Qu'est-ce qui passe avant Lui dans l'ordre de ma journée ?",
+    "Je fais aujourd'hui de ma première pensée au réveil un rappel de Lui, avant tout le reste.",
+]),
+74: ("57:3", [
+    "Il est le Dernier : tout finit, Il demeure. Qu'est-ce que je traite comme si cela durait ?",
+    "Je choisis une chose à laquelle je tiens, et je m'exerce aujourd'hui à la voir comme prêtée.",
+]),
+75: ("57:3", [
+    "Il est le Patent : Ses signes sont partout. Lequel ai-je cessé de voir à force de le voir ?",
+    "Je m'arrête aujourd'hui devant une chose ordinaire — un arbre, une main, un souffle — et j'y lis un signe.",
+]),
+76: ("57:3", [
+    "Il est le Latent : rien de moi ne Lui échappe. Qu'est-ce que je garde caché de tous ?",
+    "Je Lui dis aujourd'hui, en détail, une chose que je n'ai dite à personne.",
+]),
+77: ("13:11", [
+    "Le verset dit qu'Il ne change rien à un peuple tant qu'il ne change ce qui est en lui. Qu'est-ce que j'attends de Lui sans y avoir mis ma part ?",
+    "Je nomme une chose que je demande depuis longtemps, et je fais aujourd'hui le premier geste qui me revient.",
+]),
+78: ("13:9", [
+    "Il connaît l'insondable aussi bien que l'observable. Qu'est-ce que je soigne devant les autres et néglige seul ?",
+    "Je choisis aujourd'hui un acte que personne ne verra, et je le fais avec le même soin qu'un acte vu.",
+]),
+79: ("52:28", [
+    "Ceux du Paradis disent l'avoir invoqué avant, dans la vie d'ici-bas. Qu'est-ce que je remets à plus tard ?",
+    "Je prends aujourd'hui l'habitude que je comptais prendre « quand j'aurai le temps », en commençant petit.",
+]),
+80: ("9:104", [
+    "C'est Lui qui accueille le repentir, pas moi qui l'arrache. Est-ce que je me repens, ou est-ce que je négocie ?",
+    "Je reviens aujourd'hui sur une faute pour laquelle j'ai demandé pardon sans rien changer, et je change une chose.",
+]),
+81: ("32:22", [
+    "La vengeance annoncée vise celui qui se détourne après avoir été rappelé. De quel rappel me suis-je détourné ?",
+    "Je reprends aujourd'hui un conseil que j'ai reçu et écarté, et j'en applique une part.",
+]),
+82: ("4:149", [
+    "Le verset met le pardon d'un tort à côté de la puissance de Dieu. Quel tort est-ce que je garde ?",
+    "Je pardonne aujourd'hui une chose sans le dire à celui qui me l'a faite.",
+]),
+83: ("59:10", [
+    "Ceux qui viennent après demandent à n'avoir aucune rancune envers ceux qui ont cru. Envers qui en ai-je ?",
+    "Je fais aujourd'hui une invocation pour un musulman avec qui je suis en froid, en le nommant.",
+]),
+84: ("3:26", [
+    "Il donne la souveraineté et la reprend, élève et abaisse. Quelle place est-ce que je crois avoir gagnée seul ?",
+    "Je remercie aujourd'hui, nommément, quelqu'un par qui m'est venu ce que je croyais tenir de moi.",
+]),
+85: ("55:78", [
+    "Majesté et générosité sont dites d'un même souffle. Est-ce que je sépare la crainte de l'espoir ?",
+    "Je dis aujourd'hui à voix haute une chose que je crains de Lui, puis une chose que j'espère de Lui.",
+]),
+86: ("3:18", [
+    "Il maintient la justice, et les anges et les savants en témoignent avec Lui. Où est-ce que je penche du côté qui m'arrange ?",
+    "Je tranche aujourd'hui une affaire contre mon propre intérêt, parce qu'elle est juste.",
+]),
+87: ("3:9", [
+    "Il rassemblera les hommes pour un jour sans doute possible. Est-ce que j'y pense en choisissant mes compagnies ?",
+    "Je passe aujourd'hui un moment avec quelqu'un qui me rapproche de Lui, plutôt qu'avec ce qui m'en distrait.",
+]),
+88: ("35:15", [
+    "Le verset renverse les rôles : les pauvres, c'est nous. De quoi est-ce que je me crois riche ?",
+    "Je nomme aujourd'hui trois choses que je n'ai pas produites et sans lesquelles ma journée s'arrêterait.",
+]),
+89: ("53:48", [
+    "C'est Lui qui enrichit et qui pourvoit. Qu'est-ce que je crois devoir à mon seul travail ?",
+    "Je donne aujourd'hui une part de ce que je viens de recevoir, avant de l'avoir rangée avec le reste.",
+]),
+90: ("59:2", [
+    "Ils croyaient leurs forteresses imprenables, et elles n'ont rien empêché. Quelle est la mienne ?",
+    "Je nomme la sécurité sur laquelle je m'appuie — un compte, un statut, une santé — et je Lui confie aujourd'hui ce qu'elle protège.",
+]),
+91: ("10:107", [
+    "S'Il atteint d'un mal, nul autre ne l'écarte. Auprès de qui est-ce que je cours d'abord ?",
+    "Devant la prochaine contrariété d'aujourd'hui, je L'invoque avant de chercher qui blâmer.",
+]),
+92: ("6:17", [
+    "S'Il accorde un bien, nul ne l'arrête. Est-ce que je crains les hommes autant que je Le crains ?",
+    "Je fais aujourd'hui une chose juste que je repoussais par peur de ce qu'on en dirait.",
+]),
+93: ("24:35", [
+    "Il est la lumière des cieux et de la terre. Qu'est-ce qui, chez moi, reste dans l'ombre ?",
+    "Je nomme une chose que je cache, et je la Lui expose aujourd'hui, en détail.",
+]),
+94: ("25:31", [
+    "Il suffit comme guide et comme soutien. À quel autre guide est-ce que je demande ma route ?",
+    "Avant la prochaine décision d'aujourd'hui, je consulte ce qui vient de Lui avant de consulter mon envie.",
+]),
+95: ("2:117", [
+    "Il crée sans modèle : « Sois », et cela est. Qu'est-ce que je crois impossible à recommencer ?",
+    "Je reprends aujourd'hui une chose que j'avais abandonnée, ne serait-ce que par le premier geste.",
+]),
+96: ("55:27", [
+    "Tout passe, et seule demeure la Face de ton Seigneur. À quoi est-ce que je m'accroche comme si cela restait ?",
+    "Je consacre aujourd'hui un moment à une chose qui me suivra, et je le prends sur ce qui ne me suivra pas.",
+]),
+97: ("15:23", [
+    "C'est Lui qui hérite de toute chose. À qui est-ce que je destine ce que je bâtis ?",
+    "Je mets aujourd'hui en ordre une chose que je laisserai — un écrit, une dette, une parole due.",
+]),
+98: ("72:2", [
+    "Ce qu'ils ont entendu conduit à la rectitude, et ils y ont cru. Qu'est-ce que je sais juste sans encore le suivre ?",
+    "Je prends aujourd'hui une chose que je sais droite et que je diffère, et je m'y tiens une fois.",
+]),
+99: ("35:45", [
+    "S'Il devait reprendre les hommes sur-le-champ, il ne resterait rien de vivant. De quel sursis est-ce que je vis ?",
+    "Je supporte aujourd'hui, sans le relever, un tort que j'aurais relevé — comme il m'est supporté.",
+]),
 }
 
 

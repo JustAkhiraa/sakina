@@ -45,7 +45,7 @@ export const BOOKS={
       "« À Allah appartiennent les plus beaux noms. Invoquez-Le par ces noms » (Coran 7:180). Cette lecture est un moyen d'accroître la connaissance d'Allah et l'attachement à Lui.",
     ],
     src:'content/books/asma.json',translatable:true,
-    srcNotes:["D'après la tradition classique — références coraniques et prophétiques","Invocation &amp; introspection de chaque nom : « Les Essentiels — Les 99 Noms d'Allah » de Souad El Mansouri, éditions Al Bouraq"],
+    srcNotes:["D'après la tradition classique — références coraniques et prophétiques"],
   },
   fruits:{
     key:'fruits',icon:'🌿',type:'chapters',md:true,
