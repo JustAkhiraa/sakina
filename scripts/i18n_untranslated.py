@@ -31,6 +31,10 @@ FRENCH = re.compile(
     re.I,
 )
 # Ce qui n'est pas du texte d'interface
+# Balises dont le texte appartient au bloc qui les contient.
+EN_LIGNE = {"strong", "em", "b", "i", "br", "small", "code",
+            "sub", "sup", "u", "mark"}
+
 SKIP = re.compile(
     r"^[\s\d.,:;%/\\|+*=<>~^&#@_'\"-]*$"        # ponctuation, nombres
     r"|^[a-z][a-z0-9-]*$"                        # identifiants, classes
@@ -173,7 +177,12 @@ def audit_html() -> list[tuple[int, str, str]]:
     # Les balises en ligne ne coupent pas une phrase : on les efface pour que
     # « Le <strong>Qadâ'</strong> consiste… » compte comme un seul texte.
     INLINE = re.compile(r"</?(?:strong|em|b|i|span|br|small|code|sub|sup)\b[^>]*>")
-    marked = re.compile(r"\bdata-i18n(?:-html|-ph)?\s*=")
+    # `data-i18n-js` : le texte est pose par le script, qui passe par t().
+    # Le francais du balisage n'est qu'un garde-fou si le JS ne tourne pas.
+    # `data-i18n-js` : le texte est pose par le script, qui passe par t().
+    # Sa valeur nomme la cle employee ; nu, il signale un texte compose
+    # (un endonyme de langue, un assemblage de plusieurs cles).
+    marked = re.compile(r"\bdata-i18n(?:-html|-ph)?\s*=|\bdata-i18n-js\b")
     out, seen = [], set()
 
     for m in re.finditer(r"<(\w+)([^>]*)>((?:[^<]|" + INLINE.pattern + r")+)<", html):
@@ -183,6 +192,14 @@ def audit_html() -> list[tuple[int, str, str]]:
         text = INLINE.sub("", inner).replace("\n", " ").strip()
         text = re.sub(r"\s{2,}", " ", text)
         if len(text) < 2 or SKIP.match(text) or marked.search(attrs):
+            continue
+        # Une enveloppe dont le texte vient d'un descendant marque n'est
+        # pas un manque : c'est la forme normale du balisage.
+        if marked.search(inner):
+            continue
+        # Une balise en ligne non marquee n'a pas de texte a elle : il
+        # appartient a son bloc, qui sera signale s'il manque un marquage.
+        if tag in EN_LIGNE and not marked.search(attrs):
             continue
         if not FRENCH.search(text) and not re.search(r"[A-Za-zÀ-ÿ]{4}", text):
             continue

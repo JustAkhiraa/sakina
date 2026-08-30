@@ -1,5 +1,5 @@
 /* SAKINA — Invocations : catégories, recherche, copie, envoi vers le tasbih */
-import {toast,openSheet,closeSheet} from '../core/ui.js';
+import {toast,openSheet,closeSheet,confirmDlg} from '../core/ui.js';
 import {t,tf,tfSrc,tfSrcLang} from '../lib/i18n.js';
 import {DUAS} from '../data/duas.js';
 import {LANGS} from '../data/catalog.js';
@@ -216,64 +216,204 @@ function initSearch(){
 /* Rebati les puces et les cartes apres un changement de langue. initDuas
    ne convient pas : il rebrancherait les ecouteurs de recherche a chaque
    fois, et ils s'empileraient. */
-/* ── Serie personnalisee ──
-   On coche des invocations, elles s'enchainent ensuite une par une dans le
-   lecteur de routines. L'ordre est celui des ajouts : cocher, c'est mettre
-   a la suite. S.duaSeries ne garde que des identifiants — si une invocation
-   disparait du catalogue, elle est simplement ignoree a la lecture. */
-export function serieIds(){return Array.isArray(S.duaSeries)?S.duaSeries:[];}
+/* ── Series d'invocations ──
 
-function serieToggle(id){
-  const l=serieIds().slice();
-  const i=l.indexOf(id);
-  if(i<0)l.push(id); else l.splice(i,1);
-  S.duaSeries=l;save();
-  buildSerie();refreshDuas();vib(14);
+   Plusieurs series, chacune nommee. Les moments ne se ressemblent pas : le
+   matin n'est pas le coucher, ni la maladie ; une seule serie obligerait a
+   defaire pour refaire.
+
+   S.duaSets = [{id, nom, ids:[...]}]. L'ancien S.duaSeries — un simple
+   tableau d'identifiants — devient la premiere serie, pour ne rien perdre de
+   ce qui avait ete compose. */
+function sets(){
+  if(!Array.isArray(S.duaSets)){
+    const ancienne=Array.isArray(S.duaSeries)?S.duaSeries:[];
+    S.duaSets=ancienne.length
+      ?[{id:'s'+Date.now(),nom:t('serie.defaultName'),ids:ancienne}]
+      :[];
+    delete S.duaSeries;
+    save();
+  }
+  return S.duaSets;
+}
+const setById=id=>sets().find(x=>x.id===id);
+let _edit=null;          // identifiant de la serie en cours d'edition
+let _brouillon=[];       // sa selection, avant enregistrement
+
+/* ── Composition ── */
+function brouillonToggle(id){
+  const i=_brouillon.indexOf(id);
+  if(i<0)_brouillon.push(id); else _brouillon.splice(i,1);
+  buildComposer();vib(14);
 }
 
-function buildSerie(){
+/* Le choix est groupe par categorie : trente-sept lignes en vrac obligent a
+   tout lire pour retrouver une invocation qu'on connait deja. Les categories
+   existaient dans les donnees, elles ne servaient qu'au filtre du haut. */
+function buildComposer(){
   const bd=$('serie-bd');if(!bd)return;
-  const l=serieIds();
   bd.innerHTML='';
-  $('serie-count').textContent=t('serie.count',{n:l.length});
-  $('serie-start').style.display=l.length?'flex':'none';
-  $('serie-clear').style.display=l.length?'block':'none';
-  $('serie-clear').onclick=()=>{S.duaSeries=[];save();buildSerie();refreshDuas();vib(14);};
-  $('serie-start').onclick=lanceSerie;
-  DUAS.forEach(x=>{
-    const rang=l.indexOf(x.id);
-    const row=document.createElement('div');
-    row.className='row'+(rang>=0?' sel':'');
-    row.innerHTML=`<div class="row-ic">${rang>=0?rang+1:(x.icon||'✦')}</div>`
-      +`<div class="row-body"><div class="row-name">${duaTitle(x)}</div>`
-      +`<div class="row-sub">${duaOcc(x)}</div></div>`
-      +`<div class="serie-mark">${rang>=0?'✓':'+'}</div>`;
-    row.addEventListener('click',()=>serieToggle(x.id));
-    bd.appendChild(row);
+  $('serie-count').textContent=t('serie.count',{n:_brouillon.length});
+  $('serie-save').disabled=!_brouillon.length;
+  $('serie-del').hidden=!_edit;
+
+  const parCat=new Map();
+  DUAS.forEach(d=>{
+    if(!parCat.has(d.catId))parCat.set(d.catId,[]);
+    parCat.get(d.catId).push(d);
+  });
+  parCat.forEach((liste,cid)=>{
+    const titre=document.createElement('div');
+    titre.className='sl';titre.style.cssText='margin:14px 0 6px;';
+    titre.textContent=duaCat(liste[0]);
+    bd.appendChild(titre);
+    const grp=document.createElement('div');
+    grp.className='gc';grp.style.cssText='border-radius:var(--r-xl);overflow:hidden;';
+    liste.forEach(x=>{
+      const rang=_brouillon.indexOf(x.id);
+      const row=document.createElement('div');
+      row.className='row'+(rang>=0?' sel':'');
+      row.innerHTML=`<div class="row-ic">${rang>=0?rang+1:(x.icon||'✦')}</div>`
+        +`<div class="row-body"><div class="row-name">${duaTitle(x)}</div>`
+        +`<div class="row-sub">${duaOcc(x)}</div></div>`
+        +`<div class="serie-mark">${rang>=0?'✓':'+'}</div>`;
+      row.addEventListener('click',()=>brouillonToggle(x.id));
+      grp.appendChild(row);
+    });
+    bd.appendChild(grp);
   });
 }
 
-function lanceSerie(){
-  const steps=serieIds()
-    .map(id=>DUAS.find(x=>x.id===id))
-    .filter(Boolean)
+export function openComposer(id){
+  _edit=id||null;
+  const s0=_edit?setById(_edit):null;
+  _brouillon=s0?s0.ids.slice():[];
+  $('serie-nom').value=s0?s0.nom:'';
+  $('serie-titre').textContent=_edit?t('serie.editTitle'):t('serie.newTitle');
+  buildComposer();
+  openSheet('sh-dua-serie');
+}
+
+function enregistre(){
+  if(!_brouillon.length){toast(t('serie.empty'));return;}
+  const nom=($('serie-nom').value||'').trim()||t('serie.defaultName');
+  const l=sets();
+  if(_edit){
+    const s0=setById(_edit);
+    if(s0){s0.nom=nom;s0.ids=_brouillon.slice();}
+  }else{
+    l.push({id:'s'+Date.now(),nom,ids:_brouillon.slice()});
+  }
+  save();vib([20,40,20]);
+  toast(t('serie.saved',{name:nom}));
+  closeSheet();
+  setTimeout(()=>{refreshSerieCard();openSeries();},240);
+}
+
+async function supprime(){
+  if(!_edit)return;
+  const s0=setById(_edit);
+  if(!(await confirmDlg(t('serie.delAsk',{name:s0?s0.nom:''}),
+                        {okLabel:t('serie.delOk')})))return;
+  S.duaSets=sets().filter(x=>x.id!==_edit);
+  save();closeSheet();refreshSerieCard();
+  toast(t('serie.deleted'));
+}
+
+/* ── Liste des series enregistrees ── */
+function buildSeries(){
+  const bd=$('series-bd');if(!bd)return;
+  bd.innerHTML='';
+  const l=sets();
+  if(!l.length){
+    bd.innerHTML=`<div class="places-empty">${t('serie.none')}</div>`;
+    return;
+  }
+  const grp=document.createElement('div');
+  grp.className='gc';grp.style.cssText='border-radius:var(--r-xl);overflow:hidden;';
+  l.forEach(s0=>{
+    const noms=s0.ids.map(id=>DUAS.find(x=>x.id===id)).filter(Boolean).slice(0,2)
+      .map(duaTitle).join(' · ');
+    const row=document.createElement('div');
+    row.className='row';
+    row.innerHTML=`<div class="row-ic" style="color:var(--a);">✦</div>`
+      +`<div class="row-body"><div class="row-name">${s0.nom}</div>`
+      +`<div class="row-sub">${t('serie.count',{n:s0.ids.length})}`
+      +`${noms?' · '+noms:''}</div></div>`
+      +`<button class="serie-edit" data-edit="${s0.id}" aria-label="${t('serie.edit')}">`
+      +`<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>`;
+    row.addEventListener('click',e=>{
+      const b=e.target.closest('[data-edit]');
+      if(b){openSheet('sh-dua-serie');openComposer(b.dataset.edit);return;}
+      lance(s0);
+    });
+    grp.appendChild(row);
+  });
+  bd.appendChild(grp);
+}
+
+export function openSeries(){buildSeries();openSheet('sh-dua-series');}
+
+function lance(s0){
+  const steps=s0.ids.map(id=>DUAS.find(x=>x.id===id)).filter(Boolean)
     .map(x=>({title:duaTitle(x),ar:arabicHtml(x),ph:duaPhonetic(x),
               count:1,note:duaOcc(x)}));
   if(!steps.length){toast(t('serie.empty'));return;}
-  closeSheet();
-  setTimeout(()=>startSeries(steps,t('serie.title')),240);
+  vib(18);closeSheet();
+  setTimeout(()=>startSeries(steps,s0.nom),240);
 }
 
-export function openSerie(){buildSerie();openSheet('sh-dua-serie');}
+/* ── La carte de la page Invocations ──
+   Vide, elle invite. Composee, elle rappelle ce qu'on a bati et se lance d'un
+   tap : l'investissement doit se voir, sinon rien ne ramene. */
+function refreshSerieCard(){
+  const carte=$('btn-dua-serie');
+  if(!carte)return;
+  const l=sets();
+  const composee=l.length>0;
+
+  carte.classList.toggle('composee',composee);
+  $('serie-card-go').hidden=!composee;
+  $('serie-card-edit').hidden=!composee;
+  $('serie-card-chev').hidden=composee;
+
+  if(composee){
+    $('serie-card-t').textContent=l.length===1?l[0].nom:t('serie.mine');
+    $('serie-card-s').textContent=l.length===1
+      ? t('serie.count',{n:l[0].ids.length})
+      : l.map(x=>x.nom).slice(0,3).join(' · ')+(l.length>3?'…':'');
+    const routines=$('duas-routines-banner');
+    if(routines&&carte.nextElementSibling!==routines)
+      routines.parentNode.insertBefore(carte,routines);
+  }else{
+    $('serie-card-t').textContent=t('serie.compose');
+    $('serie-card-s').textContent=t('serie.composeSub');
+    const routines=$('duas-routines-banner');
+    if(routines&&routines.nextElementSibling!==carte)
+      routines.parentNode.insertBefore(carte,routines.nextSibling);
+  }
+}
 
 export function refreshDuas(){
-  buildSerie();
+  refreshSerieCard();
   buildCatBar();
   renderDuas();
 }
 
 export function initDuas(){
-  $('btn-dua-serie')?.addEventListener('click',openSerie);
+  $('btn-dua-serie')?.addEventListener('click',e=>{
+    const l=sets();
+    // Le crayon ouvre la liste ; le reste lance — une serie unique part
+    // directement, plusieurs series demandent laquelle.
+    if(e.target.closest('#serie-card-edit')){openSeries();return;}
+    if(!l.length){openComposer();return;}
+    if(l.length===1){lance(l[0]);return;}
+    openSeries();
+  });
+  $('serie-save')?.addEventListener('click',enregistre);
+  $('serie-del')?.addEventListener('click',supprime);
+  $('serie-new')?.addEventListener('click',()=>{closeSheet();setTimeout(()=>openComposer(),240);});
+  refreshSerieCard();
   buildCatBar();
   renderDuas();
   initSearch();

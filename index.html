@@ -52,7 +52,7 @@
     </button>
     <div id="t-title-wrap">
       <div id="t-title">Subhanallah</div>
-      <div id="t-sub">Rappel · 33</div>
+      <div id="t-sub" data-i18n-js="tasbih.inNext">Rappel · 33</div>
       <div id="prog-track"><div id="prog-fill"></div></div>
     </div>
     <button class="ib" id="btn-edit" aria-label="Configurer" data-i18n-aria="a11y.configure">
@@ -69,7 +69,7 @@
       <button id="tap-btn">
         <div id="cnum">0</div>
         <div id="clabel" data-i18n="tap.label">APPUYER</div>
-        <div id="lap-badge">Tour 1</div>
+        <div id="lap-badge" data-i18n-js="tasbih.lap">Tour 1</div>
       </button>
     </div>
     <div id="stats-row">
@@ -117,7 +117,7 @@
       <div id="next-banner"><span id="next-name" data-i18n="salat.next">PROCHAINE</span><span id="next-cd">--:--:--</span></div>
     </div>
     <div id="loc-bar" class="gc">
-      <div id="loc-icon">📍</div><div id="loc-txt">Appuyer pour choisir ma position</div>
+      <div id="loc-icon">📍</div><div id="loc-txt" data-i18n="salat.pickLoc">Appuyer pour choisir ma position</div>
       <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     </div>
     <div class="sl" data-i18n="salat.prayers">Prières du jour</div>
@@ -169,10 +169,20 @@
     </button>
   </div>
   <div class="pscroll">
-    <div id="btn-dua-serie" class="gc" style="display:flex;align-items:center;gap:12px;cursor:pointer;">
-      <div style="font-size:1.3rem;">✦</div>
-      <div style="flex:1;"><div style="font-size:0.85rem;font-weight:700;color:var(--t1);" data-i18n="serie.row">Ma série d'invocations</div><div style="font-size:0.67rem;color:var(--t2);" data-i18n="serie.rowSub">Choisissez vos douas — elles s'enchaînent une par une</div></div>
-      <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    <div id="btn-dua-serie" class="gc serie-card">
+      <div class="serie-ic">✦</div>
+      <div class="serie-body">
+        <div class="serie-t" id="serie-card-t" data-i18n-js="serie.compose">Composer ma série</div>
+        <div class="serie-s" id="serie-card-s" data-i18n-js="serie.composeSub">Vos douas, dans votre ordre</div>
+      </div>
+      <button class="serie-go" id="serie-card-go" hidden>
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <span data-i18n="serie.go">Lancer</span>
+      </button>
+      <button class="serie-edit" id="serie-card-edit" data-i18n-aria="serie.edit" hidden>
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+      </button>
+      <svg class="row-chev serie-chev" id="serie-card-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     </div>
     <div id="duas-routines-banner" class="gc">
       <div style="font-size:1.3rem;">🛡️</div>
@@ -193,7 +203,7 @@
       </button>
       <div id="quran-surah-title">
         <div id="quran-surah-name">Al-Fatiha</div>
-        <div id="quran-surah-info">Sourate 1 · 7 versets · La Mecque</div>
+        <div id="quran-surah-info" data-i18n-js="quran.surahMeta">Sourate 1 · 7 versets · La Mecque</div>
       </div>
       <button class="ib" id="btn-quran-read" data-i18n-aria="quran.readingMode"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></button>
       <button class="ib" id="btn-quran-bookmarks" aria-label="Favoris et notes" data-i18n-aria="a11y.favNotes">
@@ -387,7 +397,7 @@
       </div>
       <div class="row" style="border-bottom:none" id="btn-open-lang">
         <div class="row-ic">🌐</div>
-        <div class="row-body"><div class="row-name" data-i18n="row.lang">Langue</div><div class="row-sub" id="lang-current">Français</div></div>
+        <div class="row-body"><div class="row-name" data-i18n="row.lang">Langue</div><div class="row-sub" id="lang-current" data-i18n-js>Français</div></div>
         <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </div>
     </div>
@@ -609,7 +619,7 @@
     <!-- Profil -->
     <div id="prof-card" class="gc">
       <div id="prof-av">🕋</div>
-      <div><div id="prof-name">Sakina</div><div id="prof-sub">0 sessions</div></div>
+      <div><div id="prof-name">Sakina</div><div id="prof-sub" data-i18n-js>0 sessions</div></div>
     </div>
 
     <!-- Stats -->
@@ -961,16 +971,35 @@
 </div>
 
 <!-- SÉRIE D'INVOCATIONS COMPOSÉE PAR LE LECTEUR -->
+<!-- SÉRIES D'INVOCATIONS — la liste de celles qu'on a enregistrées -->
+<div class="sheet" id="sh-dua-series">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title" data-i18n="serie.mine">Mes séries</div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="sh-bd">
+    <div id="series-bd"></div>
+    <button class="serie-new" id="serie-new" data-i18n="serie.newTitle">Nouvelle série</button>
+  </div>
+</div>
+
+<!-- COMPOSITEUR — nommer une série et choisir ses invocations par catégorie -->
 <div class="sheet" id="sh-dua-serie">
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title" data-i18n="serie.title">Ma série</div>
-    <button class="close-b" id="serie-clear" data-i18n-aria="serie.clear" style="display:none;">⌫</button>
+    <div class="sh-title" id="serie-titre" data-i18n-js="serie.newTitle">Nouvelle série</div>
+    <button class="ok-b" id="serie-save">✓</button>
   </div>
   <div class="sh-bd">
-    <div class="sl" style="margin:0 0 4px;"><span id="serie-count">0 invocation</span></div>
-    <div class="ok-b" id="serie-start" style="display:none;width:auto;padding:12px 24px;margin:0 0 14px;align-items:center;justify-content:center;gap:8px;font-size:0.86rem;" data-i18n="serie.start">✦ Lancer la série</div>
+    <input id="serie-nom" type="text" maxlength="40" data-i18n-ph="serie.namePh"
+           placeholder="Nom de la série — Matin, Avant de dormir…">
+    <div class="serie-barre" data-i18n-js="serie.count">
+      <span id="serie-count" data-i18n-js="serie.count">0 invocation</span>
+      <button class="serie-del" id="serie-del" hidden data-i18n="serie.delete">Supprimer</button>
+    </div>
     <div id="serie-bd"></div>
   </div>
 </div>
@@ -1172,7 +1201,7 @@
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <div class="sh-title" id="cal-event-title">Événement</div>
+    <div class="sh-title" id="cal-event-title" data-i18n-js="tools.event">Événement</div>
     <button class="ok-b" id="btn-save-cal-event">✓</button>
   </div>
   <div class="sh-bd">
@@ -1219,7 +1248,7 @@
   </div>
   <div class="sh-bd">
     <div id="rt-total-track"><div id="rt-total-fill"></div></div>
-    <div id="rt-step-label" class="sl" style="margin:12px 0 4px;text-align:center;">Étape 1/9</div>
+    <div id="rt-step-label" class="sl" data-i18n-js="routines.step" style="margin:12px 0 4px;text-align:center;">Étape 1/9</div>
     <div id="rt-step-title"></div>
     <div id="rt-tap" class="gc">
       <div id="rt-ar"></div>

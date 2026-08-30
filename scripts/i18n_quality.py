@@ -45,6 +45,11 @@ SCRIPTS = {
 # Valeurs identiques au francais qui le sont a bon droit : marques, sigles,
 # noms propres, unites, termes techniques universels.
 OK_SAME = {
+    # Identiques en francais et en anglais, sans que rien manque :
+    "Contact",
+    "Note — S.{s}:{a}",
+    "Juz' {n}",
+
     # Skins et themes : des noms, pas des mots
     "AMOLED", "Sakura", "Matrix", "Voxel", "Terminal", "Midgar", "Zellige",
     "Retro CRT", "Liquid Glass", "Neon Lime", "Copper Dawn", "Royal Cinzel",
@@ -77,10 +82,17 @@ OK_SAME = {
     "Sa'id ibn Ali ibn Wahf Al-Qahtani",
 }
 # Prefixes de cles dont la valeur peut legitimement etre identique partout
-OK_SAME_PREFIX = ("skn.", "add.E", "cm.", "hij.", "bth.", "dut.")
+# « hds. » : les noms des recueils de hadith — Bukhari, Muslim, Abu Dawud,
+# Tirmidhi, Ibn Hibban, al-Bayhaqi. Ce sont des noms propres : les traduire
+# serait les rendre meconnaissables a qui cherche la reference.
+OK_SAME_PREFIX = ("skn.", "add.E", "cm.", "hij.", "bth.", "dut.", "hds.")
 
 # Cles dont le sens autorise une meme traduction (synonymes courts)
-OK_COLLIDE = {"com.ok", "com.yes", "com.close", "com.done", "com.back"}
+OK_COLLIDE = {"com.ok", "com.yes", "com.close", "com.done", "com.back",
+              # « Ma série » et « Mes séries » ne se distinguent pas en
+              # anglais, en indonésien ni en malais. La fusion est la
+              # langue, pas une perte.
+              "serie.mine", "serie.defaultName"}
 
 # Le francais emploie parfois deux tournures pour une meme idee, la ou une
 # autre langue n'en a qu'une. La fusion est alors correcte, pas une perte :
