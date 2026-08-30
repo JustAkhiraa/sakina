@@ -68,6 +68,14 @@ function startRoutine(r){
   openSheet('sh-routine');
 }
 
+/* Une suite composee par le lecteur, jouee par le meme moteur que les
+   routines du catalogue. Rien de neuf ici : startRoutine accepte n'importe
+   quel objet de cette forme, il suffisait de le lui donner. */
+export function startSeries(steps,nom){
+  if(!steps.length)return;
+  startRoutine({id:'serie',name:nom,icon:'✦',desc:'',steps});
+}
+
 function renderStep(){
   const step=_routine.steps[_stepIdx];
   $('rt-step-label').textContent=t('routines.step',{n:_stepIdx+1,total:_routine.steps.length});

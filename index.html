@@ -114,7 +114,7 @@
     <div id="date-card" class="gc">
       <div id="hijri-date">—</div>
       <div id="greg-date">—</div>
-      <div id="next-banner"><span id="next-name">PROCHAINE</span><span id="next-cd">--:--:--</span></div>
+      <div id="next-banner"><span id="next-name" data-i18n="salat.next">PROCHAINE</span><span id="next-cd">--:--:--</span></div>
     </div>
     <div id="loc-bar" class="gc">
       <div id="loc-icon">📍</div><div id="loc-txt">Appuyer pour choisir ma position</div>
@@ -128,7 +128,7 @@
     <div class="gc" style="margin:0 16px;border-radius:var(--r-xl);overflow:hidden;">
       <div class="row" id="btn-calc">
         <div class="row-ic">🕌</div>
-        <div class="row-body"><div class="row-name" id="calc-name">Muslim World League</div><div class="row-sub" data-i18n="row.calcMethod">Méthode de calcul des horaires</div></div>
+        <div class="row-body"><div class="row-name" id="calc-name" data-i18n="cm.3.n">Muslim World League</div><div class="row-sub" data-i18n="row.calcMethod">Méthode de calcul des horaires</div></div>
         <div class="row-right"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></div>
       </div>
     </div>
@@ -169,6 +169,11 @@
     </button>
   </div>
   <div class="pscroll">
+    <div id="btn-dua-serie" class="gc" style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+      <div style="font-size:1.3rem;">✦</div>
+      <div style="flex:1;"><div style="font-size:0.85rem;font-weight:700;color:var(--t1);" data-i18n="serie.row">Ma série d'invocations</div><div style="font-size:0.67rem;color:var(--t2);" data-i18n="serie.rowSub">Choisissez vos douas — elles s'enchaînent une par une</div></div>
+      <svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </div>
     <div id="duas-routines-banner" class="gc">
       <div style="font-size:1.3rem;">🛡️</div>
       <div style="flex:1;"><div style="font-size:0.85rem;font-weight:700;color:var(--t1);" data-i18n="row.routines">Routines &amp; Protection</div><div style="font-size:0.67rem;color:var(--t2);" data-i18n="sub.routines">Matin, Al-Ma'thûrât, après la prière — guidés pas à pas</div></div>
@@ -190,6 +195,7 @@
         <div id="quran-surah-name">Al-Fatiha</div>
         <div id="quran-surah-info">Sourate 1 · 7 versets · La Mecque</div>
       </div>
+      <button class="ib" id="btn-quran-read" data-i18n-aria="quran.readingMode"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></button>
       <button class="ib" id="btn-quran-bookmarks" aria-label="Favoris et notes" data-i18n-aria="a11y.favNotes">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
       </button>
@@ -954,13 +960,31 @@
   </div>
 </div>
 
+<!-- SÉRIE D'INVOCATIONS COMPOSÉE PAR LE LECTEUR -->
+<div class="sheet" id="sh-dua-serie">
+  <div class="sh-grip"></div>
+  <div class="sh-hd">
+    <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="sh-title" data-i18n="serie.title">Ma série</div>
+    <button class="close-b" id="serie-clear" data-i18n-aria="serie.clear" style="display:none;">⌫</button>
+  </div>
+  <div class="sh-bd">
+    <div class="sl" style="margin:0 0 4px;"><span id="serie-count">0 invocation</span></div>
+    <div class="ok-b" id="serie-start" style="display:none;width:auto;padding:12px 24px;margin:0 0 14px;align-items:center;justify-content:center;gap:8px;font-size:0.86rem;" data-i18n="serie.start">✦ Lancer la série</div>
+    <div id="serie-bd"></div>
+  </div>
+</div>
+
 <!-- ÉDITEUR DE NOTE -->
 <div class="sheet" id="sh-quran-note">
   <div class="sh-grip"></div>
   <div class="sh-hd">
     <button class="close-b" data-close-sheet><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
     <div class="sh-title" id="note-sheet-title" data-i18n="quran.addNote">Ajouter une note</div>
-    <button class="ok-b" id="btn-save-note">✓</button>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="close-b" id="btn-del-note" data-i18n-aria="quran.noteDelete" style="display:none;">🗑</button>
+      <button class="ok-b" id="btn-save-note">✓</button>
+    </div>
   </div>
   <div class="sh-bd">
     <div id="note-ayah-preview" style="font-family:var(--ff-a);font-size:1.1rem;color:var(--a);direction:rtl;text-align:right;padding:12px 0;border-bottom:1px solid var(--bor2);margin-bottom:12px;line-height:1.9;"></div>

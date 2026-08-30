@@ -1037,3 +1037,42 @@
   border-bottom:none;padding:8px 0 0;margin-bottom:20px;}
 .book-read .book-chap-head::after{content:"";display:block;width:46px;height:2px;margin:12px auto 0;
   background:linear-gradient(90deg,transparent,var(--a),transparent);}
+
+/* ── Coran : mode lecture ────────────────────────────────────────────────
+   Le lecteur ordinaire sert a consulter : fond nuit, legende du tajwid,
+   barre d'action, navigation. Pour lire longtemps il faut l'inverse — du
+   papier et rien d'autre.
+
+   On redefinit les jetons sur la page : tout ce qui est dedans (versets,
+   numeros, en-tete, feuilles) suit sans qu'aucune regle de composant soit
+   reecrite. C'est un parti pris assume — un seul aspect, quel que soit le
+   theme choisi ailleurs. */
+#page-quran.reading{
+  --sur:#F1E7D3; --sur2:#E8DCC4; --bor:rgba(74,56,30,0.16); --bor2:rgba(74,56,30,0.08);
+  --t1:#2C2417; --t2:#6A5B42; --t3:#9A8B72;
+  --a:#8A6A2F; --a2:#6E5326; --a-rgb:138,106,47;
+  background:#F7F0E1;
+  /* La couleur du texte est heritee du body, donc calculee avant la
+     redefinition des jetons ci-dessus : sans cette ligne, les versets
+     restaient en clair sur le papier. */
+  color:var(--t1);
+}
+#page-quran.reading #quran-hd{background:transparent;border-bottom-color:var(--bor2);
+  backdrop-filter:none;-webkit-backdrop-filter:none;}
+#page-quran.reading #tajwid-legend{display:none;}
+#page-quran.reading #quran-basmala{text-shadow:none;padding:26px 8px 20px;}
+#page-quran.reading #quran-scroll{padding:0 clamp(16px,7vw,44px) 120px;}
+#page-quran.reading .qv-ayah{font-size:1.62rem;line-height:2.75;}
+#page-quran.reading .qv-num{opacity:.62;}
+#page-quran.reading .qv-ayah.selected{background:rgba(180,140,40,0.20);
+  outline-color:rgba(140,105,30,0.45);}
+/* Le bouton du mode reste lisible sur le papier. */
+#page-quran.reading #btn-quran-read{background:rgba(138,106,47,0.13);color:var(--a2);}
+
+/* ── Série d'invocations : la marque de sélection ───────────────────────
+   Le numero remplace l'icone une fois l'invocation ajoutee : l'ordre de la
+   serie est celui des ajouts, autant qu'il se voie. */
+.serie-mark{font-size:1rem;font-weight:800;color:var(--t3);width:24px;text-align:center;}
+#serie-bd .row.sel .serie-mark{color:var(--a);}
+#serie-bd .row.sel .row-ic{background:rgba(var(--a-rgb),0.16);color:var(--a);
+  font-size:0.85rem;font-weight:800;}

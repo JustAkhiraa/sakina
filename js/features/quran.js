@@ -5,7 +5,7 @@
    Seule la récitation audio reste distante (CDN islamic.network). */
 import {S,save} from '../core/store.js';
 import {t} from '../lib/i18n.js';
-import {toast,burst,openSheet,closeSheet} from '../core/ui.js';
+import {toast,burst,openSheet,closeSheet,confirmDlg} from '../core/ui.js';
 import {SURAHS,JUZ_STARTS} from '../data/surahs.js';
 import {SURAH_NAMES} from '../data/surah-names.js';
 import {TR_BY_CODE} from '../data/translations.js';
@@ -22,6 +22,20 @@ const surahMeaning=n=>{
   const list=SURAH_NAMES[S.lang];
   return list&&list[n-1]?list[n-1]:'';
 };
+
+/* Sous une ecriture non latine, « Al-Fatiha » ne se lit pas. On promeut
+   alors le nom localise en ligne principale et la translitteration descend
+   en second — elle sert a reconnaitre la sourate, pas a la lire. En arabe
+   c'est le nom d'origine qui prime.
+   books.js et duas.js faisaient deja ce choix chacun de leur cote ; la
+   liste des sourates et la recherche globale, non. */
+const ECRITURE_NON_LATINE=new Set(['ar','fa','ur','hi','bn','ru','zh','ja']);
+const scriptLocal=()=>ECRITURE_NON_LATINE.has(S.lang||'fr');
+export const surahName=s=>{
+  if((S.lang||'fr')==='ar')return s.ar;
+  return scriptLocal()?(surahMeaning(s.n)||s.fr):s.fr;
+};
+export const surahSub=s=>scriptLocal()?s.fr:surahMeaning(s.n);
 
 let _surah=1,_verses=[],_transl={},_selAyah=null;
 const _cache={};
@@ -56,7 +70,7 @@ function updatePlayerPill(){
   const pill=$('quran-player');
   if(_playingKey){
     const[s,a]=_playingKey.split(':');
-    pill.querySelector('span').textContent=`▶ ${SURAHS[s-1].fr} · verset ${a}`;
+    pill.querySelector('span').textContent='▶ '+t('quran.playingRef',{name:surahName(SURAHS[s-1]),a});
     pill.classList.add('show');
   }else{
     pill.classList.remove('show');
@@ -222,7 +236,7 @@ async function renderSurah(n){
   _surah=n;
   const surah=SURAHS[n-1];
   const mean=surahMeaning(n);
-  $('quran-surah-name').textContent=`${surah.ar} — ${surah.fr}`+(mean?` · ${mean}`:'');
+  $('quran-surah-name').textContent=`${surah.ar} — ${surahName(surah)}`+(surahSub(surah)?` · ${surahSub(surah)}`:'');
   $('quran-surah-info').textContent=t('quran.surahMeta',{n,v:surah.v,origin:surah.t==='Makki'?t('quran.makki'):t('quran.madani')});
   $('quran-basmala').style.display=(n===9)?'none':'block';
 
@@ -239,6 +253,23 @@ async function renderSurah(n){
     loading.style.display='none';
     errEl.style.display='block';
   }
+}
+
+/* ── Mode lecture ──
+   Une classe sur la page suffit : le CSS y redefinit les jetons de couleur,
+   tout ce qui est dedans suit. L'etat est garde d'une session a l'autre —
+   celui qui lit longuement n'a pas a le reactiver chaque fois. */
+export function applyReadingMode(){
+  const p=document.getElementById('page-quran');
+  if(!p)return;
+  p.classList.toggle('reading',!!S.quranReading);
+  const b=document.getElementById('btn-quran-read');
+  if(b)b.setAttribute('aria-pressed',S.quranReading?'true':'false');
+}
+function toggleReadingMode(){
+  S.quranReading=!S.quranReading;save();
+  applyReadingMode();
+  toast(S.quranReading?t('quran.readingOn'):t('quran.readingOff'));
 }
 
 function renderVerses(){
@@ -275,11 +306,11 @@ function deselectAyah(){
 function buildSurahList(filter=''){
   const bd=$('surah-list-bd');bd.innerHTML='';
   const f=filter.toLowerCase();
-  SURAHS.filter(s=>!f||s.fr.toLowerCase().includes(f)||s.ar.includes(filter)||String(s.n).includes(filter))
+  SURAHS.filter(s=>!f||s.fr.toLowerCase().includes(f)||surahName(s).toLowerCase().includes(f)||s.ar.includes(filter)||String(s.n).includes(filter))
     .forEach(s=>{
       const div=document.createElement('div');
       div.className='surah-item'+(s.n===_surah?' active-surah':'');
-      div.innerHTML=`<div class="surah-num">${s.n}</div><div style="flex:1"><div class="surah-fr">${s.fr}</div><div class="surah-info">${surahMeaning(s.n)?surahMeaning(s.n)+' · ':''}${s.v} ${t('quran.verses')}</div></div><div class="surah-ar">${s.ar}</div><div class="surah-type ${s.t.toLowerCase()}">${s.t==='Makki'?t('quran.makki'):t('quran.madani')}</div>`;
+      div.innerHTML=`<div class="surah-num">${s.n}</div><div style="flex:1"><div class="surah-fr">${surahName(s)}</div><div class="surah-info">${surahSub(s)?surahSub(s)+' · ':''}${s.v} ${t('quran.verses')}</div></div><div class="surah-ar">${s.ar}</div><div class="surah-type ${s.t.toLowerCase()}">${s.t==='Makki'?t('quran.makki'):t('quran.madani')}</div>`;
       div.addEventListener('click',()=>{
         closeSheet();
         $('quran-scroll').scrollTop=0;
@@ -291,7 +322,7 @@ function buildSurahList(filter=''){
 function buildJuzTabs(){
   const tabs=$('quran-tabs');tabs.innerHTML='';
   for(let i=1;i<=30;i++){
-    const el=document.createElement('div');el.className='qtab';el.textContent=`Juz' ${i}`;
+    const el=document.createElement('div');el.className='qtab';el.textContent=t('quran.juz',{n:i});
     el.addEventListener('click',()=>{
       closeSheet();
       $('quran-scroll').scrollTop=0;
@@ -311,7 +342,7 @@ function buildBookmarks(){
     favs.forEach(f=>{
       const[s,a]=f.key.split(':');
       const div=document.createElement('div');div.className='bk-item';
-      div.innerHTML=`<div class="bk-item-ref">Sourate ${s}, Verset ${a}</div><div class="bk-item-ar">${f.text}</div>`;
+      div.innerHTML=`<div class="bk-item-ref">${t('quran.ayahRef',{s,a})}</div><div class="bk-item-ar">${f.text}</div>`;
       div.addEventListener('click',()=>{closeSheet();renderSurah(parseInt(s));});
       fl.appendChild(div);
     });
@@ -325,7 +356,7 @@ function buildBookmarks(){
       const[s,a]=key.split(':');
       const v=_verses.find(x=>x.verse_key===key);
       const div=document.createElement('div');div.className='bk-item';
-      div.innerHTML=`<div class="bk-item-ref">Sourate ${s}, Verset ${a}</div>${v?`<div class="bk-item-ar">${v.text_uthmani}</div>`:''}<div class="bk-item-note">✏️ ${txt}</div>`;
+      div.innerHTML=`<div class="bk-item-ref">${t('quran.ayahRef',{s,a})}</div>${v?`<div class="bk-item-ar">${v.text_uthmani}</div>`:''}<div class="bk-item-note">✏️ ${txt}</div>`;
       div.addEventListener('click',()=>{closeSheet();renderSurah(parseInt(s));});
       nl.appendChild(div);
     });
@@ -346,7 +377,7 @@ export function refreshQuranHeader(){
   const s=SURAHS[_surah-1];
   if(!s)return;
   const mean=surahMeaning(_surah);
-  $('quran-surah-name').textContent=`${s.ar} — ${s.fr}`+(mean?` · ${mean}`:'');
+  $('quran-surah-name').textContent=`${s.ar} — ${surahName(s)}`+(surahSub(s)?` · ${surahSub(s)}`:'');
   $('quran-surah-info').textContent=t('quran.surahMeta',
     {n:_surah,v:s.v,origin:s.t==='Makki'?t('quran.makki'):t('quran.madani')});
 }
@@ -368,7 +399,7 @@ export function initQuran(){
     const verse=_verses.find(v=>v.verse_key===_selAyah);
     if(!verse)return;
     const[s,a]=_selAyah.split(':');
-    $('transl-ayah-ref').textContent=`Sourate ${s}, Verset ${a}`;
+    $('transl-ayah-ref').textContent=t('quran.ayahRef',{s,a});
     $('transl-arabic').textContent=verse.text_uthmani;
     renderTranslations($('transl-text'),_transl[_selAyah]);
     // La barre d'action masquait le panneau sur iPhone : on la retire pendant la lecture
@@ -397,7 +428,7 @@ export function initQuran(){
     const v=_verses.find(x=>x.verse_key===_selAyah);
     if(!v)return;
     navigator.clipboard.writeText(`${v.text_uthmani}\n[${_selAyah}]`)
-      .then(()=>toast(t('quran.copied'))).catch(()=>toast('Copie impossible'));
+      .then(()=>toast(t('quran.copied'))).catch(()=>toast(t('quran.copyFail')));
     deselectAyah();
   });
 
@@ -405,10 +436,21 @@ export function initQuran(){
     if(!_selAyah)return;
     const v=_verses.find(x=>x.verse_key===_selAyah);
     const[s,a]=_selAyah.split(':');
-    $('note-sheet-title').textContent=`Note — S.${s}:${a}`;
+    $('note-sheet-title').textContent=t('quran.noteTitle',{s,a});
     $('note-ayah-preview').textContent=v?.text_uthmani||'';
     $('note-textarea').value=S.quranNotes[_selAyah]||'';
+    $('btn-del-note').style.display=S.quranNotes[_selAyah]?'flex':'none';
     openSheet('sh-quran-note');
+  });
+  /* Supprimer une note demandait d'effacer tout son texte puis de valider :
+     le code supprimait bien, mais rien ne l'indiquait. Un bouton visible,
+     montre seulement quand une note existe. */
+  $('btn-del-note').addEventListener('click',async()=>{
+    if(!_selAyah)return;
+    if(!(await confirmDlg(t('quran.noteDelAsk'),{okLabel:t('quran.noteDelOk')})))return;
+    delete S.quranNotes[_selAyah];
+    save();renderVerses();closeSheet();deselectAyah();
+    toast(t('quran.noteDel'));
   });
   $('btn-save-note').addEventListener('click',()=>{
     if(!_selAyah)return;
@@ -418,6 +460,7 @@ export function initQuran(){
     save();renderVerses();closeSheet();deselectAyah();
   });
 
+  $('btn-quran-read').addEventListener('click',toggleReadingMode);
   $('btn-quran-list').addEventListener('click',()=>{
     buildSurahList();buildJuzTabs();
     $('surah-search').value='';
@@ -439,6 +482,7 @@ export function initQuran(){
 }
 
 export function onQuranShow(){
+  applyReadingMode();
   if(_loaded)return;
   _loaded=true;
   renderSurah(S.quranLast?.surah||1);

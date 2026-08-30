@@ -1,5 +1,5 @@
 /* SAKINA — Invocations : catégories, recherche, copie, envoi vers le tasbih */
-import {toast,openSheet} from '../core/ui.js';
+import {toast,openSheet,closeSheet} from '../core/ui.js';
 import {t,tf,tfSrc,tfSrcLang} from '../lib/i18n.js';
 import {DUAS} from '../data/duas.js';
 import {LANGS} from '../data/catalog.js';
@@ -7,8 +7,10 @@ import {SURAHS} from '../data/surahs.js';
 import {PHONETICS} from '../data/phonetics.js';
 import {SURAH_NAMES} from '../data/surah-names.js';
 import {setDhikr} from './tasbih.js';
+import {startSeries} from './routines.js';
+import {vib} from '../core/audio.js';
 import {goPage} from '../core/router.js';
-import {S} from '../core/store.js';
+import {S,save} from '../core/store.js';
 import {preloadTr,versesText,corpusReady} from './quran.js';
 import {TR_BY_CODE} from '../data/translations.js';
 
@@ -214,12 +216,64 @@ function initSearch(){
 /* Rebati les puces et les cartes apres un changement de langue. initDuas
    ne convient pas : il rebrancherait les ecouteurs de recherche a chaque
    fois, et ils s'empileraient. */
+/* ── Serie personnalisee ──
+   On coche des invocations, elles s'enchainent ensuite une par une dans le
+   lecteur de routines. L'ordre est celui des ajouts : cocher, c'est mettre
+   a la suite. S.duaSeries ne garde que des identifiants — si une invocation
+   disparait du catalogue, elle est simplement ignoree a la lecture. */
+export function serieIds(){return Array.isArray(S.duaSeries)?S.duaSeries:[];}
+
+function serieToggle(id){
+  const l=serieIds().slice();
+  const i=l.indexOf(id);
+  if(i<0)l.push(id); else l.splice(i,1);
+  S.duaSeries=l;save();
+  buildSerie();refreshDuas();vib(14);
+}
+
+function buildSerie(){
+  const bd=$('serie-bd');if(!bd)return;
+  const l=serieIds();
+  bd.innerHTML='';
+  $('serie-count').textContent=t('serie.count',{n:l.length});
+  $('serie-start').style.display=l.length?'flex':'none';
+  $('serie-clear').style.display=l.length?'block':'none';
+  $('serie-clear').onclick=()=>{S.duaSeries=[];save();buildSerie();refreshDuas();vib(14);};
+  $('serie-start').onclick=lanceSerie;
+  DUAS.forEach(x=>{
+    const rang=l.indexOf(x.id);
+    const row=document.createElement('div');
+    row.className='row'+(rang>=0?' sel':'');
+    row.innerHTML=`<div class="row-ic">${rang>=0?rang+1:(x.icon||'✦')}</div>`
+      +`<div class="row-body"><div class="row-name">${duaTitle(x)}</div>`
+      +`<div class="row-sub">${duaOcc(x)}</div></div>`
+      +`<div class="serie-mark">${rang>=0?'✓':'+'}</div>`;
+    row.addEventListener('click',()=>serieToggle(x.id));
+    bd.appendChild(row);
+  });
+}
+
+function lanceSerie(){
+  const steps=serieIds()
+    .map(id=>DUAS.find(x=>x.id===id))
+    .filter(Boolean)
+    .map(x=>({title:duaTitle(x),ar:arabicHtml(x),ph:duaPhonetic(x),
+              count:1,note:duaOcc(x)}));
+  if(!steps.length){toast(t('serie.empty'));return;}
+  closeSheet();
+  setTimeout(()=>startSeries(steps,t('serie.title')),240);
+}
+
+export function openSerie(){buildSerie();openSheet('sh-dua-serie');}
+
 export function refreshDuas(){
+  buildSerie();
   buildCatBar();
   renderDuas();
 }
 
 export function initDuas(){
+  $('btn-dua-serie')?.addEventListener('click',openSerie);
   buildCatBar();
   renderDuas();
   initSearch();
