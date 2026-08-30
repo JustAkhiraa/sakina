@@ -29,15 +29,33 @@ python scripts/i18n_scan.py --missing fa # ce qui manque dans une langue
 
 ### 1. Trouver l'édition
 
-Dans `inspirations/docs trad/`. Sonder d'abord si le texte s'extrait :
+Dans `inspirations/docs trad/`. **Sonder les trois voies dans cet ordre** —
+c'est le pas qui a été sauté, et trois éditions sont restées classées « sans
+source » des mois durant alors qu'elles étaient lisibles :
 
-```bash
-python scripts/hisn_sections.py <fichier>.pdf     # table des rubriques
+```python
+import fitz
+d = fitz.open(chemin)
+print(sum(len(d[i].get_text()) for i in range(min(d.page_count, 40))) // 40)
 ```
 
-Moins de 50 caractères par page = scan. Passer par
-`python scripts/hisn_ocr.py <langue>` (dépose dans `scripts/out/`), que
-`hisn_sections.py` sait relire directement.
+1. **Plus de 500 caractères par page, texte juste** — on lit directement.
+   C'est le cas du chinois et du hindi ; personne n'avait regardé.
+2. **Du texte, mais dans le désordre** — les mots sortent en ordre visuel,
+   coupés aux ligatures, en formes de présentation. Ce n'est pas du charabia :
+   les coordonnées, elles, sont justes. `scripts/fa_pdf.py` reconstruit au
+   caractère (regrouper par ligne, lire de droite à gauche, garder les
+   espaces du PDF, NFKC). C'est le cas du persan.
+3. **Du texte, mais aux mauvais points Unicode** — la police est hérité.
+   Le PDF s'affiche juste, donc l'OCR des pages rendues lit juste. C'est le
+   cas du hindi (ि ↔ ब échangés) et du bengali.
+4. **Moins de 50 caractères par page** — vrai scan, seul l'OCR reste :
+   `python scripts/hisn_ocr.py <langue>` (dépose dans `scripts/out/`).
+
+**L'OCR n'est pas le premier recours, c'est le dernier.** Il lit bien mais
+perd des lignes entières aux sauts de page — en persan il tronquait une
+invocation sur quatre, en silence. Une couche texte reconstruite est
+complète par construction.
 
 ### 2. Se repérer
 
@@ -47,7 +65,15 @@ Trois points d'entrée, du plus fiable au moins :
 python scripts/hisn_sections.py <fichier> --num 66      # numéro d'entrée
 python scripts/hisn_sections.py <fichier> "abdestten"   # titre de rubrique
 python scripts/hisn_sections.py <fichier> --mot "..."   # mot du texte
+python scripts/fa_rubrique.py "داخل شدن به توالت"        # persan, par rubrique
+python scripts/fa_rubrique.py --liste                    # ses 109 rubriques
 ```
+
+**Vérifier la numérotation avant de s'y fier.** La chinoise numérote ses 267
+entrées, strictement croissantes : repère parfait. La persane numérote *par
+rubrique* et repart à 1 à chaque fois — s'y fier donnait n'importe quoi. La
+hindi porte les deux à la fois. Un `--num 207` qui ne trouve rien n'est pas
+une invocation absente, c'est une numérotation différente.
 
 **La numérotation est le meilleur repère** — elle vient de l'original et se
 retrouve d'une édition à l'autre. Mais vérifier : l'édition espagnole suit la
@@ -77,9 +103,12 @@ python scripts/check.py
   `hisn_sections.py` l'écarte déjà.
 - **L'OCR malais** produit du bruit (« kKkesihatan » pour « kesihatan »).
   Corriger ce qui est manifeste, jamais deviner.
-- **L'ourdou** (nastaliq) et le **bengali** (police non standard) sont
-  illisibles. Il faut d'autres éditions — un EPUB conviendrait,
-  `scripts/epub_read.py` est prêt.
+- **L'ourdou** n'a pas de couche texte du tout (3 à 18 caractères par page)
+  et le nastaliq résiste à l'OCR. Seul cas encore bloqué : il faut une autre
+  édition, un EPUB conviendrait, `scripts/epub_read.py` est prêt.
+- **Le bengali** sort en encodage hérité : la police mappe ses glyphes sur
+  de mauvais points Unicode (হ ressort en ি). Le PDF *s'affiche* juste, donc
+  l'OCR des pages rendues devrait le lire — c'est la piste, pas encore faite.
 - **Quatre invocations** ne figurent dans aucune édition : `avant-le-repas`,
   `apres-le-repas` (autres formulations), `en-voyant-la-ka-ba` (al-Bayhaqi)
   et `apres-les-2-rak-ahs-en-commu` (Ibn Abi Chayba).

@@ -11,11 +11,15 @@ Le bruit d'OCR a ete corrige la ou il etait manifeste et sans ambiguite —
 « kKkesihatan » pour « kesihatan », « bertawal,<kal » pour « bertawakkal ».
 Rien d'autre n'a ete touche.
 
-Cette edition numerote ses chapitres, pas ses invocations : le numero entre
-crochets est celui du chapitre.
+Cette edition numerote ses chapitres **et** ses invocations : le titre porte
+le numero de chapitre (« 124. Bacaan… ») et l'invocation le sien entre
+parentheses juste apres (« (243) »). Ce second reperage avait ete manque, et
+onze invocations ont ete laissees de cote pour rien : la parenthese suit la
+numerotation commune et se cherche directement. Le numero entre crochets
+ci-dessous est celui de l'invocation.
 
-Onze invocations restent a relever : cette edition les place dans des
-chapitres que l'OCR rend mal, et il vaut mieux les laisser que de deviner.
+Restent absentes les quatre que nulle edition ne porte : avant-le-repas,
+apres-le-repas, en-voyant-la-ka-ba et apres-les-2-rak-ahs-en-commu.
 """
 import json
 import re
@@ -109,11 +113,52 @@ MS = {
  "setiap sesuatu. Tiada Tuhan melainkan Allah Yang Esa, tiada sekutu bagiNya. "
  "Allah telah menepati janjiNya dan membela hambaNya dan mengalahkan tentera "
  "musuh dengan sendiriNya.",
+# [86] Protection totale, trois fois
+"protection-totale-3":
+ "Dengan Nama Allah yang tidak memberi mudharat bersama nama-Nya oleh "
+ "sesuatu di bumi dan tidak juga di langit, Dialah Yang Maha Mendengar lagi "
+ "Maha Mengetahui. (tiga kali)",
+# [136] Se suffire du licite
+"se-suffire-du-licite":
+ "Ya Allah, cukupkanlah aku dengan segala perkara yang telah Engkau halalkan "
+ "daripada segala perkara yang telah Engkau haramkan. Kayakanlah aku dengan "
+ "kelebihan Engkau daripada meminta kepada orang lain.",
+# [139] Debloquer une situation
+"debloquer-une-situation":
+ "Ya Allah, tidak ada kemudahan kecuali sesuatu yang Engkau permudahkan, "
+ "Engkau menjadikan kedukaan itu mudah sekiranya Engkau kehendaki.",
+# [191] La main sur le front de l'epouse
+"la-main-sur-le-front-de-l-ep":
+ "Ya Allah, aku memohon kepada-Mu kebaikannya dan segala yang telah Engkau "
+ "ciptakan dalam wataknya, dan aku berlindung dengan-Mu daripada "
+ "kejahatannya dan kejahatan yang telah Engkau ciptakan dalam wataknya.",
+# [207] Doua du voyage
+"doua-du-voyage":
+ "Allah Maha Besar, Allah Maha Besar, Allah Maha Besar. Maha Suci Tuhan yang "
+ "telah memudahkan kenderaan ini untuk kami, sedang kami sebelum ini tidak "
+ "terdaya menguasainya. Sesungguhnya kepada Tuhan kamilah kami akan kembali. "
+ "Ya Allah, kami memohon kepada-Mu dalam perjalanan kami kebaikan dan "
+ "ketaqwaan dan amalan yang Engkau redhai. Ya Allah, ringankanlah perjalanan "
+ "kami dan pendekkanlah jaraknya. Ya Allah, Engkaulah Teman dalam perjalanan "
+ "dan Pengurus bagi ahli keluarga. Ya Allah, aku memohon perlindungan-Mu "
+ "dari kesulitan perjalanan, pandangan yang menyedihkan, dan kejahatan yang "
+ "boleh menimpa harta dan ahli keluarga.",
+# [233] La talbiya
+"la-talbiya":
+ "Ku sambut seruan-Mu ya Ilahi, ku sambut seruan-Mu. Ku sambut seruan-Mu, "
+ "tiada sekutu bagi-Mu, ku sambut seruan-Mu. Sesungguhnya segala puji, "
+ "nikmat dan kerajaan adalah milik-Mu, tiada sekutu bagi-Mu.",
+# [243] En cas de douleur
+"en-cas-de-douleur":
+ "Letak tangan di tempat sakit kemudian baca “Bismillah” tiga kali, dan "
+ "baca tujuh kali: Aku berlindung dengan Allah dan kekuasaan-Nya dari "
+ "kejahatan yang aku dapati dan aku takuti.",
 }
 
 AUTRES = {
     "rtx.al-fatiha": "Al-Fatihah",
     "rtx.astaghfirullah-3": "Astaghfirullah ×3",
+
 }
 
 
