@@ -68,19 +68,16 @@ fichier de relevé correspondant, dans `sources/duas/`.
 
 ### Les 99 Noms — `content/books/asma*.json`
 
-Trente-sept des quatre-vingt-dix-neuf Noms portent encore une section
-« Invocation » et « Introspection » tirées de :
+**Plus aucune dépendance.** Le livre ne contient plus rien d'une œuvre tierce.
 
-> *Les Essentiels — Les 99 Noms d'Allah*, Souad El Mansouri, éditions Al Bouraq.
+Il a longtemps porté les sections « Invocation » et « Introspection » de
+*Les Essentiels — Les 99 Noms d'Allah* (Souad El Mansouri, éditions Al Bouraq).
+Les quatre-vingt-dix-neuf Noms citent désormais un **renvoi coranique** — une
+référence, pas un texte, servie depuis le corpus dans la traduction publiée de
+la langue du lecteur — suivi de deux questions écrites pour ce projet.
 
-Les soixante-deux autres ne les portent plus : ils ont été remplacés par un
-**renvoi coranique** — une référence, pas un texte — et par deux questions
-écrites par nous. Le verset arrive du corpus, dans la traduction publiée de la
-langue du lecteur.
-
-Quand les trente-sept derniers auront reçu le même traitement, cette dépendance
-disparaîtra entièrement du dépôt. C'est un chantier ouvert, pas un choix
-définitif.
+Le texte des versets reste soumis aux droits de son traducteur, comme partout
+ailleurs dans l'application : voir la section sur les traductions du Coran.
 
 ### Récitations des 99 Noms — `content/audio/asma/`
 
