@@ -1,7 +1,7 @@
 {
  "title": "アッラーの99の美名",
  "titleAr": "أسماء الله الحسنى",
- "source": "Al-Asma' al-Husna — recensés d'après la tradition sunnite classique",
+ "source": "アル＝アスマー・アル＝フスナー — 古典スンナ派の伝承による",
  "names": [
   {
    "n": 0,
@@ -174,14 +174,10 @@
    "fr": "形を与える御方",
    "desc": "造られたものそれぞれに、固有のかたちを授ける御方。",
    "af": "013_al-musawwir",
-   "inv": {
-    "fr": "Ô Formateur ! Façonne-moi d'une forme vouée à Ton service. Et donne-moi les lumières qui clarifient la connaissance de Ta seigneurie.",
-    "ar": "يَا مُصَوِّرُ، صَوِّرْنِي بِصُورَةِ عُبُودِيَّتِكَ وَنَوِّرْنِي بِأَنْوَارِ مَعْرِفَةِ رُبُوبِيَّتِكَ",
-    "tr": "Yâ Musawwiru ! Sawwir-nî bi-sûrati 'ubûdiyyati-ka wa-nawwir-nî bi-anwâri ma'rifati rubûbiyyati-ka."
-   },
-   "intro": [
-    "Comment puis-je voir la beauté qu'Al-Musawwir a inscrit en moi-même et en autrui ?",
-    "Je prends un moment pour me rappeler que je suis une création façonnée par Al-Musawwir, d'une beauté unique et harmonieuse. Chaque personne que je croise est aussi une magnifique création d'Allâh."
+   "verse": "59:24",
+   "ask": [
+    "御方は一つひとつに固有の形を与えられた。私は自分の形の何を責めているか。",
+    "今日、誰かについて、その人が選んだのではないことを私が難じていると気づいたら、黙る。"
    ]
   },
   {
@@ -191,14 +187,10 @@
    "fr": "よく赦す御方",
    "desc": "何度でも、覆い隠すように罪を赦す御方。",
    "af": "014_al-ghaffar",
-   "inv": {
-    "fr": "Ô Pardonneur ! Pardonne-moi tous mes péchés, grands ou petits, les bourrasques des négligences et la vanité dans les désirs.",
-    "ar": "يَا غَفَّارُ، اغْفِرْ لِي جَمِيعَ الكَبَائِرِ وَالصَّغَائِرِ وَهَوَاجِمَ الغَفْلَاتِ وَهَوَاجِسَ الضَّمَائِرِ",
-    "tr": "Yâ Ghaffâru ! Ighfir lî jamî'a 'l-kabâ'iri wa-'s-saghâ'iri wa-hawâjima 'l-ghaflâti wa-hawâjisa 'd-damâ'ir."
-   },
-   "intro": [
-    "Comment améliorer ma routine spirituelle pour y introduire davantage de moments où je demande Pardon ?",
-    "Je choisis un moment tranquille pour réfléchir aux fautes que j'ai commises. Avec sincérité, je demande pardon à Allâh, imaginant mes péchés doucement recouverts de Sa Miséricorde. Je m'autorise à ressentir un apaisement, me libérant du fardeau des remords."
+   "verse": "20:82",
+   "ask": [
+    "赦しは、悔い改め、信じ、善を行い、そのうえで貫く者に約束されている。私はどこで歩みを止めるか。",
+    "口にしただけで何も変えなかった悔い改めを今日ひとつ取り上げ、一つだけ改める。"
    ]
   },
   {
@@ -208,14 +200,10 @@
    "fr": "圧倒的な御方",
    "desc": "その意志の前にすべてが従う御方。",
    "af": "015_al-qahhar",
-   "inv": {
-    "fr": "Ô Dominateur ! Place Ta grande force devant mes yeux. Et ne me conforte pas dans l'absence de crainte envers Ton châtiment.",
-    "ar": "يَا قَهَّارُ، أَشْهِدْنِي قَهْرَكَ وَلَا تُؤَمِّنِّي مَكْرَكَ",
-    "tr": "Yâ Qahhâru ! Ashhid-nî qahra-ka wa-lâ tu'am-min-nî makra-ka."
-   },
-   "intro": [
-    "Comment puis-je puiser dans la compréhension d'Al-Qahhâr, Celui qui est Victorieux et Prédominant, pour surmonter les défis et les obstacles dans ma vie ?",
-    "J'imagine les situations ou les défis qui m'inquiètent. Je répète le nom Al-Qahhâr, en visualisant ces situations comme étant totalement prises en charge. Je sens ma détermination se renforcer, car Allâh est avec moi."
+   "verse": "38:65",
+   "ask": [
+    "御方の支配に抗えるものはない。私は、値しないものに何を屈しているか。",
+    "私を支配している習慣を一つ名指し、今日一度だけそれに従わない。"
    ]
   },
   {
@@ -225,14 +213,10 @@
    "fr": "惜しみなく与える御方",
    "desc": "見返りを求めず、求められる前に与える御方。",
    "af": "016_al-wahhab",
-   "inv": {
-    "fr": "« Notre Seigneur, ne fais pas dévier nos cœurs après que Tu nous as guidés et offre-nous, par pure grâce de Ta part, un amour rayonnant (une miséricorde). Vraiment Tu es Celui qui ne cesse d'offrir gracieusement ! » [Sourate 3, La Famille d'Imrân, 8]",
-    "ar": "﴿رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً إِنَّكَ أَنتَ الْوَهَّابُ﴾",
-    "tr": "Rabbanâ lâ tuzigh qulûbanâ ba'da idh hadaytanâ wa-hab lanâ min ladunka rahmatan innaka anta al-Wahhâbu !"
-   },
-   "intro": [
-    "Comment la réflexion sur le nom Al-Wahhâb peut-elle m'encourager à être plus généreux envers les autres, sans attendre en retour ?",
-    "Je choisis de partager concrètement quelque chose avec les autres : du temps, une compétence ou un geste. Je peux, par exemple, préparer un repas pour un voisin, aider un ami dans une tâche ou faire un don à une association. En agissant de manière désintéressée, je ressens la satisfaction de donner, comme un reflet de la générosité divine."
+   "verse": "3:8",
+   "ask": [
+    "この節は導きのあとの堅持を求めている。今、私の堅持を脅かしているものは何か。",
+    "今日、誰も私に期待していない施しを、見返りを求めずに一つ行う。"
    ]
   },
   {
@@ -242,14 +226,10 @@
    "fr": "糧を授ける御方",
    "desc": "すべての生き物に、生きるに必要なものを届ける御方。",
    "af": "017_ar-razzaq",
-   "inv": {
-    "fr": "Ô Pourvoyeur ! Offre-moi une science utile. Et accorde-moi une subsistance licite et vaste.",
-    "ar": "يَا رَزَّاقُ، ارْزُقْنِي عِلْماً نَافِعاً وَرِزْقاً حَلَالاً وَاسِعاً",
-    "tr": "Yâ Razzâqu ! Urzuq-nî 'ilman nâfi'an wa-rizqan halâlân wâsi'an."
-   },
-   "intro": [
-    "Je me rappelle d'une période où je me suis senti(e) limité(e) en termes de ressources. Durant ce temps, comment Ar-Razzâq a-t-Il pourvu à mes besoins et m'a-t-Il aidé(e) à traverser cette situation ?",
-    "Chaque jour, je prends un moment pour exprimer ma gratitude pour tout ce dont je dispose."
+   "verse": "51:58",
+   "ask": [
+    "糧は御方から来るのであって、私の努力だけからではない。私の努力が、いつしか私の拠り所になっていないか。",
+    "今日、受け取ったものの一部を、余るのを待たずに分ける。"
    ]
   },
   {
@@ -259,14 +239,10 @@
    "fr": "道を開く御方",
    "desc": "閉ざされたものを開き、真実によって裁く御方。",
    "af": "018_al-fattah",
-   "inv": {
-    "fr": "Ô Victorieux ! Ouvre-moi les portes de la béatitude. Et nomme-moi parmi ceux que Tu as certifiés être les êtres volontaires.",
-    "ar": "يَا فَتَّاحُ، افْتَحْ لِي أَبْوَابَ السَّعَادَةِ وَحَقِّقْنِي بِحَقَائِقِ أَهْلِ الإِرَادَةِ",
-    "tr": "Yâ Fattâhu ! Iftah lî abwâba 's-sa'âdati wa-haqqiq-nî bi-haqâ'iqi ahli 'l-irâda."
-   },
-   "intro": [
-    "Existe-t-il un domaine dans ma vie où je me sens actuellement bloqué(e) et que je peux confier à Al-Fattâh ?",
-    "Je réfléchis à un défi que je rencontre. Je m'imagine comme étant soutenu(e) par la Puissance d'Allâh. Je garde cette pensée positive, je m'en remets à Al-Fattâh et je cherche les opportunités cachées pour une solution."
+   "verse": "34:26",
+   "ask": [
+    "御方は閉ざされたものを開き、もつれたものを裁かれる。私はどの状況を御方に差し出すのをやめたか。",
+    "閉じたと思っていた扉を今日ひとつ叩き直す——手続き、頼み、仲直りのいずれか。"
    ]
   },
   {
@@ -276,14 +252,10 @@
    "fr": "すべてを知る御方",
    "desc": "顕れたものも隠れたものも、余すところなく知る御方。",
    "af": "019_al-alim",
-   "inv": {
-    "fr": "Ô Omniscient ! Enseigne-moi une part de Ton savoir qui Te rendra Satisfait de moi, et pardonne-moi ce que Tu sais de moi.",
-    "ar": "يَا عَلِيمُ، عَلِّمْنِي مِنْ عِلْمِكَ مَا تَرْضَى بِهِ عَنِّي وَلَا تُؤَاخِذْنِي بِمَا تَعْلَمُهُ مِنِّي",
-    "tr": "Yâ 'Alîmu ! 'Allim-nî min 'ilmi-ka ma tardâ bi-hi 'an-nî wa-lâ tu'âkhidh-nî bi-mâ ta'lamu-hu min-nî."
-   },
-   "intro": [
-    "Quel savoir utile pour mon âme puis-je rechercher cette année ? Comment puis-je commencer cette apprentissage ?",
-    "En cas de doute ou d'incertitude, je répète ce nom pour me rappeler que rien ne Lui échappe. En prenant conscience de Sa connaissance infinie, je cultive une confiance en Lui ainsi qu'une attitude d'humilité."
+   "verse": "2:32",
+   "ask": [
+    "天使たちは、教えられたこと以外は知らないと認めた。私はどこで、自分の意見を知識と取り違えているか。",
+    "今日、その場しのぎの答えを作りそうなところで「分かりません」と言う。"
    ]
   },
   {
@@ -293,14 +265,10 @@
    "fr": "引き締める御方",
    "desc": "糧も命も、望むままに差し控える御方。",
    "af": "020_al-qabid",
-   "inv": {
-    "fr": "Ô Celui qui retient ! Retiens mon âme contre ses propres passions.",
-    "ar": "يَا قَابِضُ، اقْبِضْنِي عَنْ مُتَابَعَةِ دَوَاعِي النَّفْسِ",
-    "tr": "Yâ Qâbidu ! Iqbid-nî 'an mutâba'ati dawâ'i n-nafsi."
-   },
-   "intro": [
-    "Je me souviens d'un moment où quelque chose de cher à mon cœur m'a été retirée. Comment ai-je réagi à cet instant-là ?",
-    "Je prends conscience que les moments de contrainte sont temporaires et qu'ils renferment une sagesse qu'Allâh connaît. Il est Celui qui m'aide à traverser ces épreuves, en cultivant en moi la patience et la résilience."
+   "verse": "2:245",
+   "ask": [
+    "御方は広げるのと同じだけ狭められ、そのどちらも恩恵である。狭められるとき、私はそれを信じているか。",
+    "今ある欠乏を一つ見定め、豊かさなら隠してしまったであろうものを今日そこに探す。"
    ]
   },
   {
@@ -310,14 +278,10 @@
    "fr": "押し広げる御方",
    "desc": "糧も心も、望むままに広げる御方。",
    "af": "021_al-basit",
-   "inv": {
-    "fr": "Ô Prodigue ! Étends mes souhaits vers les grâces de Ta proximité.",
-    "ar": "يَا بَاسِطُ، ابْسُطْ أَمَنِيَّ بِتَنَسُّمِ نَفَحَاتِ الأُنْسِ",
-    "tr": "Yâ Bâsitu ! Ibsit amaniyya bi-tanassumi nafahâti 'l-uns."
-   },
-   "intro": [
-    "Comment puis-je adopter une perspective plus ouverte et généreuse envers les autres et les situations ?",
-    "Je me rappelle qu'Allâh déploie les opportunités et les solutions dans ma vie, car Il est Al-Bâsit, Celui qui dilate et étend."
+   "verse": "2:245",
+   "ask": [
+    "御方は限りなく恩恵を広げられる。私は広く受け取り、狭く与えていないか。",
+    "今日一度だけ、求められた以上のものを、口に出さずに与える。"
    ]
   },
   {
@@ -327,14 +291,10 @@
    "fr": "低くする御方",
    "desc": "高ぶる者を引き下ろす御方。",
    "af": "022_al-khafid",
-   "inv": {
-    "fr": "Ô Celui qui abaisse ! Abaisse mes passions afin d'obtenir Ton amour.",
-    "ar": "يَا خَافِضُ، اخْفِضْ لِي هَوَايَ لِابْتِغَاءِ مَحَابِّكَ",
-    "tr": "Yâ Khâfidu ! Ikhfid lî hawâya li-'btighâ'i mahâbbi-ka."
-   },
-   "intro": [
-    "Quelles actions concrètes puis-je entreprendre pour cultiver une attitude d'humilité et de modestie ?",
-    "Je prends conscience des moments où j'ai pu agir avec arrogance envers les autres. Si des pensées d'orgueil surgissent, je reviens au nom Al-Khâfid pour me rappeler que c'est Allâh qui a le pouvoir d'élever et d'abaisser."
+   "verse": "56:3",
+   "ask": [
+    "かの日は、ある者を低くし、ある者を高くする。私は現世のどの序列に寄りかかっているか。",
+    "今日、自分を目立たせる機会を一つ手放す。"
    ]
   },
   {
@@ -344,14 +304,10 @@
    "fr": "高く上げる御方",
    "desc": "望む者の位を引き上げる御方。",
    "af": "023_ar-rafi",
-   "inv": {
-    "fr": "Ô Celui qui élève ! Élève-moi par Ta proximité lorsque Tu me rappelleras à Toi.",
-    "ar": "يَا رَافِعُ، ارْفَعْنِي بِقُرْبِكَ وَالإِيوَاءِ إِلَى جَنَابِكَ",
-    "tr": "Yâ Râfi'u ! Irfa'-nî bi-qurbi-ka wa-'l-îwâ'i ilâ janâbi-ka."
-   },
-   "intro": [
-    "Quelles sont les situations actuelles où je pourrais ressentir le besoin d'être redressé(e) par Ar-Râfi' ?",
-    "Lorsque je me sens découragé(e), je me rappelle qu'Allâh va m'aider à me redresser et à m'élever à travers l'épreuve. En utilisant le nom Ar-Râfi', j'éprouve un regain de détermination pour surmonter les obstacles."
+   "verse": "58:11",
+   "ask": [
+    "御方は、信じる者と知識を授かった者の位を高められる。今週、私は何を学んだか。",
+    "今日、宗教について具体的なことを一つ学び、一度それを行う。"
    ]
   },
   {
@@ -361,14 +317,10 @@
    "fr": "栄誉を授ける御方",
    "desc": "望む者に力と誉れを与える御方。",
    "af": "024_al-muizz",
-   "inv": {
-    "fr": "« Notre Seigneur, Possesseur de la Royauté, Tu accordes la Royauté à qui Tu veux, et Tu retires la Royauté à qui Tu veux, et Tu honores qui Tu veux, et Tu abaisses qui Tu veux. Le bien est dans Tes mains. Vraiment, Tu es Puissant sur toute chose ! » [Sourate 3, La Famille d'Imrân, 26]",
-    "ar": "﴿قُلِ اللَّهُمَّ مَالِكَ الْمُلْكِ تُؤْتِي الْمُلْكَ مَن تَشَاءُ وَتَنزِعُ الْمُلْكَ مِمَّن تَشَاءُ وَتُعِزُّ مَن تَشَاءُ وَتُذِلُّ مَن تَشَاءُ بِيَدِكَ الْخَيْرُ إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ﴾",
-    "tr": "Allâhumma Mâlik al-mulk tu'tî al-mulk man tachâ'u wa tanzi'u al-mulka min man tachâ'u wa-tu'izzu man tachâ'u wa-tudhillu man tachâ'u biyadika al-khayru innaka 'alâ kulli chay'in Qadîr !"
-   },
-   "intro": [
-    "Que puis-je améliorer en moi pour traiter les autres avec respect et reconnaître la dignité de chaque individu ?",
-    "Je choisis une personne dans ma vie avec qui j'interagis fréquemment. Je me rappelle du nom Al-Mu'izz pour m'encourager à traiter cette personne avec respect et dignité."
+   "verse": "3:26",
+   "ask": [
+    "誉れは御方から来るのであって、奪い取るものではない。私は誰に認められようとしているか。",
+    "今日、誰も目を留めない人に敬意を示す。"
    ]
   },
   {
@@ -378,14 +330,10 @@
    "fr": "卑しめる御方",
    "desc": "望む者から誉れを取り去る御方。",
    "af": "025_al-mudhill",
-   "inv": {
-    "fr": "« Notre Seigneur, Possesseur de la Royauté, Tu accordes la Royauté à qui Tu veux, et Tu retires la Royauté à qui Tu veux, et Tu honores qui Tu veux, et Tu abaisses qui Tu veux. Le bien est dans Tes mains. Vraiment, Tu es Puissant sur toute chose ! » [Sourate 3, La Famille d'Imrân, 26]",
-    "ar": "﴿قُلِ اللَّهُمَّ مَالِكَ الْمُلْكِ تُؤْتِي الْمُلْكَ مَن تَشَاءُ وَتَنزِعُ الْمُلْكَ مِمَّن تَشَاءُ وَتُعِزُّ مَن تَشَاءُ وَتُذِلُّ مَن تَشَاءُ بِيَدِكَ الْخَيْرُ إِنَّكَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ﴾",
-    "tr": "Allâhumma Mâlik al-mulk tu'tî al-mulk man tachâ'u wa tanzi'u al mulka min man tachâ'u wa-tu'izzu man tachâ'u wa-tudhillu man tachâ'u biyadika al-khayru innaka 'alâ kulli chay'in Qadîr !"
-   },
-   "intro": [
-    "Quels sont les moments où mon ego a eu tendance à réagir de manière disproportionnée ? Quelles leçons en tirer pour mieux le maîtriser ?",
-    "J'évite les jugements hâtifs en prenant un instant pour comprendre la perspective de l'autre. Je m'exprime avec respect et bienveillance pour éviter toute forme d'humiliation."
+   "verse": "3:26",
+   "ask": [
+    "御方は望む者を低くされる。私の中の何が、その低さを招いているか。",
+    "誰かに向けている侮りを一つ見つけ、今日それを手放す。"
    ]
   },
   {
@@ -395,14 +343,10 @@
    "fr": "すべてを聞く御方",
    "desc": "声に出された言葉も、心の内も聞き届ける御方。",
    "af": "026_as-sami",
-   "inv": {
-    "fr": "Ô Celui qui entend ! Fais-moi entendre Tes pieuses et bonnes nouvelles. Et place-moi parmi ceux qui écoutent avec beaucoup d'attention Tes interdictions et Tes recommandations.",
-    "ar": "يَا سَمِيعُ، أَسْمِعْنِي بِلَطَائِفِ إِسْمَاعِكَ مَنْ عَلِمْتَ فِيهِ الخَيْرَ وَاجْعَلْنِي مِنَ المُرَاعِينَ لِسَمْعِكَ فِي كُلِّ نَهْيٍ وَأَمْرٍ",
-    "tr": "Yâ Samî'u ! Asmi'-nî bi-latâ'ifi ismâ'i-ka man 'alimta fî-hi 'l-khayra wa-j'al-nî mina 'r-murâ'îna li-sam'i-ka fî kulli nahyin wa-amrin."
-   },
-   "intro": [
-    "Que dois-je améliorer dans mon langage pour que mes paroles soient douces à entendre ?",
-    "Je prends un moment chaque jour pour faire des invocations, je me rappelle qu'Allâh est As-Samî', qu'Il entend toutes mes prières."
+   "verse": "2:127",
+   "ask": [
+    "イブラーヒームとイスマーイールは築いたうえで、受け入れられるよう願った。私は自分の行いについてそう願っているか。",
+    "次の礼拝のあと、今日はそれが受け入れられるよう願う——次のことに移る前に。"
    ]
   },
   {
@@ -412,14 +356,10 @@
    "fr": "すべてを見る御方",
    "desc": "闇の中の最も小さなものまで見通す御方。",
    "af": "027_al-basir",
-   "inv": {
-    "fr": "Ô Clairvoyant ! Rends-moi clairvoyant dans Ta religion lorsque les choses sont troubles. Octroie-moi une vision juste pour m'éloigner de tout ce qui est illicite.",
-    "ar": "يَا بَصِيرُ، اجْعَلْنِي بَصِيراً فِي دِينِكَ عِنْدَ اشْتِبَاهِ الأُمُورِ، ذَا بَصِيرَةٍ تَامَّةٍ فِي اجْتِنَابِ كُلِّ مَحْظُورٍ",
-    "tr": "Yâ Basîru ! Ij'al-nî basîran fî dîni-ka 'inda 'shtibâhi 'l-umûri, dhâ basîratin tâmmatin fî 'jtinâbi kulli mahzûr."
-   },
-   "intro": [
-    "Dans quelles situations quotidiennes pourrais-je être plus attentif/attentive à mes actions en me rappelant qu'Allâh voit tout ?",
-    "Tout au long de ma journée, je me demande si mes actes et mes paroles plaisent à Allâh pour cultiver une conscience plus profonde de mes actions. Le soir, j'identifie les moments où j'aurais pu agir d'une meilleure manière."
+   "verse": "42:11",
+   "ask": [
+    "御方に似たものは何もない。それでいて、私のすべてを見ておられる。ひとりだと思うとき、私は何をしているか。",
+    "今日、誰も見ていない時を一つ選び、見られているかのように振る舞う。"
    ]
   },
   {
@@ -429,14 +369,10 @@
    "fr": "公正に裁く御方",
    "desc": "真実によって裁き、その判決を誰も覆せない御方。",
    "af": "028_al-hakam",
-   "inv": {
-    "fr": "Ô Juge ! Compte-moi parmi ceux qui s'en remettent en toute confiance à la sentence de Ta volonté, et aux arrêtés de Ta loi qu'ils glorifient.",
-    "ar": "يَا حَكَمُ، اجْعَلْنِي لِحُكْمِ إِرَادَتِكَ مُسَلِّماً وَلِأَحْكَامِ شَرِيعَتِكَ مُعَظِّماً",
-    "tr": "Yâ Hakamu ! Ij'al-nî li-hukmi irâdati-ka musalliman wa-li-ahkâmi sharî'ati-ka mu'azziman."
-   },
-   "intro": [
-    "Suis-je frustré(e) ou plein(e) de regrets à cause d'événements passés ? Comment la compréhension qu'Allâh est Al-Hakam peut-elle changer ma façon de voir le passé ?",
-    "Je me rappelle qu'Allâh est le Décisionnaire ultime et que Sa sagesse dépasse ma compréhension. Je cultive une attitude de confiance en Son jugement et en Sa sagesse."
+   "verse": "6:114",
+   "ask": [
+    "御方のほかに裁き手を求めるだろうか。私はまずどの法廷に事を持ち込んでいるか。",
+    "抱え続けている争いを一つ見つけ、今日、都合ではなく理が何と言うかを調べる。"
    ]
   },
   {
@@ -446,14 +382,10 @@
    "fr": "公明正大な御方",
    "desc": "各人にふさわしいものを、余すところなく与える御方。",
    "af": "029_al-adl",
-   "inv": {
-    "fr": "Ô Justice ! Place-moi parmi ceux qui maintiennent la justice dans tous leurs actes. Et qui implorent vigoureusement pour atteindre les degrés de l'excellence.",
-    "ar": "يَا عَدْلُ، اجْعَلْنِي مِمَّنْ يَقُومُ بِالعَدْلِ فِي جَمِيعِ عَمَلِهِ وَيَبْلُغُ مِنَ الرُّقِيِّ فِي دَرَجَاتِ الإِحْسَانِ غَايَةَ أَمَلِهِ",
-    "tr": "Yâ 'Âdlu ! Ij'al-nî min-man yaqûmu bi-'l-'âdli fî jamî'i 'amali-hi wa-yablughu mina 'r-ruqî fî darajâti 'l-ihsâni ghâyata amali-hi."
-   },
-   "intro": [
-    "Comment puis-je m'engager pour apporter plus de justice et de justesse dans ce monde ?",
-    "Chaque jour, j'agis avec équité et équilibre. En cas d'injustice, je me souviens qu'Allâh est le Juste et que Sa justice triomphe toujours."
+   "verse": "16:90",
+   "ask": [
+    "御方は公正と善行を命じられる——一方は当然の務め、他方はそれに加わるもの。私に欠けているのはどちらか。",
+    "今日、誰かに当然の分を返し、そのうえで当然ではない何かを加える。"
    ]
   },
   {
@@ -463,14 +395,10 @@
    "fr": "深い慈しみの御方",
    "desc": "被造物に優しく、その細やかな事情まで知る御方。",
    "af": "030_al-latif",
-   "inv": {
-    "fr": "Ô Bienveillant ! Prends pitié de moi lors de Ton décret et de Ta sentence. Et donne-moi une part de Tes honneurs et de Tes grâces.",
-    "ar": "يَا لَطِيفُ، أَلْطُفْ بِي فِي قَدَرِكَ وَقَضَائِكَ وَاقْسِمْ لِي مِنْ جَزِيلِ بِرِّكَ وَآلَائِكَ",
-    "tr": "Yâ Latîfu ! Ultuf bî fî qadari-ka wa-qadâ'i-ka wa-'qsim lî min jazîli birri-ka wa-âlâ'i-ka."
-   },
-   "intro": [
-    "Quel événement de ma vie, dont je ne comprenais pas le sens profond à l'époque, a maintenant révélé la Délicatesse et la Subtilité d'Allâh ?",
-    "Je m'émerveille de la nature qui m'entoure, contemplant ses détails subtils comme la délicatesse d'une fleur. Cela me rappelle qu'Allâh crée chaque élément avec douceur."
+   "verse": "6:103",
+   "ask": [
+    "どの眼差しも御方には届かず、御方はすべての眼差しに届かれる。それは私の見方を変えるか。",
+    "今日、誰も気づかない細部に心を配る——手入れ、清潔、正確さのいずれか。"
    ]
   },
   {
@@ -480,14 +408,10 @@
    "fr": "すべてを知り尽くす御方",
    "desc": "物事の内側まで、その帰結まで知る御方。",
    "af": "031_al-khabir",
-   "inv": {
-    "fr": "Ô Bien-Informé ! Fais que je sois informé de mes défauts enfouis. Qu'ainsi je Te demande pardon pour tous mes péchés.",
-    "ar": "يَا خَبِيرُ، اجْعَلْنِي خَبِيراً بِخَفِيَّاتِ عُيُوبِي مُسْتَغْفِراً مِنْ جَمِيعِ ذُنُوبِي",
-    "tr": "Yâ Khabîru ! Ij'al-nî khabîran bi-khafayyâti 'uyûbî mustaghfiran min jamî'i dhunûbî."
-   },
-   "intro": [
-    "Quelle est cette invocation que je n'ai même pas formulée, et que pourtant Allâh a entendue et exaucée ?",
-    "Durant mes invocations, je me rappelle que je parle à Al-Khabîr, Celui qui connaît les pensées les plus secrètes de mon cœur. Je Lui demande le bien que je n'ose exprimer et le pardon pour mes péchés, même ceux que j'ai oubliés."
+   "verse": "49:13",
+   "ask": [
+    "最も尊いのは最も敬虔な者であり、それを知るのは御方だけである。私は人を、ほかのどんな序列で計っているか。",
+    "出自や地位で誰かを判じている自分に気づいたら、今日それを捨てる。"
    ]
   },
   {
@@ -497,14 +421,10 @@
    "fr": "寛容な御方",
    "desc": "罰する力を持ちながら、急いで罰しない御方。",
    "af": "032_al-halim",
-   "inv": {
-    "fr": "Ô Clément ! Éduque-moi selon l'éthique de la clémence. Et réalise mon être par les vérités de Ta science.",
-    "ar": "يَا حَلِيمُ، خَلِّقْنِي بِخُلُقِ الحِلْمِ وَحَقِّقْنِي بِحَقَائِقِ العِلْمِ",
-    "tr": "Yâ Halîmu ! Khalliq-nî bi-khuluqi 'l-hilm wa-haqqiq-nî bi-haqâ'iqi 'l-'ilm."
-   },
-   "intro": [
-    "Quel est mon niveau actuel de clémence et de douceur ? Comment puis-je les développer davantage ?",
-    "Face à une situation conflictuelle, je me rappelle qu'Allâh est plein de clémence envers Ses créatures, même lorsque nous faisons des erreurs. Je prends une profonde inspiration et m'efforce de répondre avec patience et tolérance, plutôt que de réagir impulsivement."
+   "verse": "2:263",
+   "ask": [
+    "優しい言葉は、施したうえで傷つけるよりまさる。私は施しを、あとの咎めで台無しにしなかったか。",
+    "今日、恩に着せずに与え、心の中でさえそれを蒸し返さない。"
    ]
   },
   {
@@ -514,14 +434,10 @@
    "fr": "至大なる御方",
    "desc": "その偉大さに人の思いが及ばない御方。",
    "af": "033_al-azhim",
-   "inv": {
-    "fr": "Ô Immense, d'une grandeur ne pouvant être atteinte même par les conjectures de ceux qui méditent ! Dote-moi d'une capacité de raisonnement qui puisse m'élever aux rangs des véridiques.",
-    "ar": "يَا عَظِيمُ بِعَظَمَةٍ لَا تُحِيطُ بِهَا أَوْهَامُ المُتَفَكِّرِينَ، اجْعَلْنِي عَظِيمَ الهِمَّةِ فِي التَرَقِّي فِي مَقَامَاتِ أَهْلِ التَّمْكِينِ",
-    "tr": "Yâ 'Azîmu bi-'azamatin lâ tuhîtu bi-hâ awhâmu 'l-mutafakkirîna ! Ij'al-nî 'azîma 'l-himmati fî 't-taraqqî fî maqâmâti ahli 't-tamkîn."
-   },
-   "intro": [
-    "Quelle est la dernière expérience où j'ai été émerveillé(e) par la Grandeur et la Magnificence d'Allâh ?",
-    "Lorsque je me trouve face à des défis, je me rappelle que j'ai Al-'Azîm avec moi, l'Incommensurable, Celui qui est capable de tout et qui est plus Immense que n'importe quelle épreuve."
+   "verse": "56:96",
+   "ask": [
+    "命じられていることは単純だ——御名を讃えよ。昨日、私は何度それを心なく口にしたか。",
+    "今日「スブハーナ・ラッビヤル・アズィーム」を十回、ゆっくり、一語ずつ意味を汲みながら唱える。"
    ]
   },
   {
@@ -531,14 +447,10 @@
    "fr": "よく覆い赦す御方",
    "desc": "罪を覆い、それを暴かない御方。",
    "af": "034_al-ghafur",
-   "inv": {
-    "fr": "Ô Allâh ! Pardonne-moi ce que Tu sais de moi, et mieux que moi ! Et si je recommence, pardonne-moi encore ! Ô Allâh ! Pardonne-moi pour les promesses faites et non tenues ! Ô Allâh ! Pardonne-moi les désirs de mon âme et les égarements de mes paroles !",
-    "ar": "اللَّهُمَّ اغْفِرْ لِي مَا أَنْتَ أَعْلَمُ بِهِ مِنِّي فَإِنْ عُدْتُ فَعُدْ عَلَيَّ بِالمَغْفِرَةِ اللَّهُمَّ اغْفِرْ لِي مَا وَأَيْتُ مِنْ نَفْسِي وَلَمْ تَجِدْ لَهُ وَفَاءً عِنْدِي اللَّهُمَّ اغْفِرْ شَهَوَاتِ الجَنَانِ وَهَفَوَاتِ اللِّسَانِ",
-    "tr": "Allâhumma ighfir lî mâ anta 'alamu bihi minnî, fa'in 'udtu fa 'ud 'alayya bi-l-maghfira ! Allâhumma ighfir lî mâ wa'aytu min nafsî wa lam tajid lahu wafa'an 'indî, Allâhumma ighfir li chahawâti al-janân wa hafawâti l-lisâni."
-   },
-   "intro": [
-    "Est-il facile pour moi de demander pardon à Allâh ? Comment puis-je accomplir cette pratique de manière plus régulière ?",
-    "Chaque soir, je demande pardon à Allâh en L'invoquant par Son nom Al-Ghafûr. J'imagine qu'Allâh efface toutes mes fautes."
+   "verse": "39:53",
+   "ask": [
+    "御方は、その慈悲に絶望することを禁じられた。私はどの過ちについて絶望しているか。",
+    "今日、赦されないと思い込んでいる過ちを名指し、それについて赦しを乞う。"
    ]
   },
   {
@@ -548,14 +460,10 @@
    "fr": "深く感謝を受け入れる御方",
    "desc": "わずかな善に報い、それを幾倍にもする御方。",
    "af": "035_ash-shakur",
-   "inv": {
-    "fr": "« Permets-moi, ô Seigneur, de rendre grâce pour les bienfaits dont Tu m'as comblé, ainsi que mes père et mère, et que je fasse une bonne œuvre que tu agrées et fais-moi entrer, par Ta miséricorde, parmi Tes serviteurs vertueux. » [Sourate 27, Les Fourmis, 19]",
-    "ar": "﴿وَقَالَ رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَى وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ وَأَدْخِلْنِي بِرَحْمَتِكَ فِي عِبَادِكَ الصَّالِحِينَ﴾",
-    "tr": "Rabbi awzi'nî an ashkura ni'matika llatî an'amta 'alayya wa 'alâ wâlidayya wa an a'mala sâlihan tardâhu wa adkhilnî bi rahmatika fî 'ibâdika s-sâlihîn."
-   },
-   "intro": [
-    "Quelles sont les petites choses de la vie quotidienne pour lesquelles je pourrais être plus reconnaissant(e) ?",
-    "Chaque soir, je prends un moment pour réfléchir aux nombreuses bénédictions reçues au cours de la journée et je remercie sincèrement Allâh."
+   "verse": "42:23",
+   "ask": [
+    "御方は、行われた善をさらに善いものにされる。私はそれに見合うだけのものを御方に期待しているか。",
+    "今日、数えるには小さすぎると決めつけずに、ごく小さな善を一つ行う。"
    ]
   },
   {
@@ -565,14 +473,10 @@
    "fr": "至高の御方",
    "desc": "被造物のすべてを超えて高くいます御方。",
    "af": "036_al-aliyy",
-   "inv": {
-    "fr": "Ô Très-Haut, à qui appartiennent les caractéristiques de l'élévation et de la noblesse ! Fais que j'atteigne, par Ton pouvoir, les hauts degrés de l'obéissance.",
-    "ar": "يَا عَلِيُّ ذَا اسْتِحْقَاقِ لِنُعُوتِ العَلَاءِ وَالجَلَالِ، اجْعَلْنِي عِنْدَكَ مِنَ الأَعْلِينَ فِي دَرَجَاتِ الكَمَالِ",
-    "tr": "Yâ 'Alî, dhâ istihqâqi li-nu'ûti 'l-'alâ'i wa-'l-jalâli ! Ij'al-nî 'inda-ka mina 'l-a'lîna fî darajâti 'l-kamâli."
-   },
-   "intro": [
-    "Quelles sont les expériences passées où j'ai ressenti une élévation spirituelle, et comment puis-je les reproduire ?",
-    "Je me fixe un objectif spirituel qui reflète la recherche de l'excellence (ihsân) et de l'humilité. Ainsi, je nourris une humble aspiration à m'élever spirituellement."
+   "verse": "2:255",
+   "ask": [
+    "御方は至高であり、何一つ御方を逃れない。私は一日のうちで、何を御方の上に置いているか。",
+    "目覚めて最初に思うことを見定め、明日はそれを御方のあとに回す。"
    ]
   },
   {
@@ -582,14 +486,10 @@
    "fr": "偉大なる御方",
    "desc": "その威厳が他のいかなるものにも比しえない御方。",
    "af": "037_al-kabir",
-   "inv": {
-    "fr": "Ô Grandissime, nulle grandeur si ce n'est Toi ! Place-moi parmi ceux qui s'immergent dans Ton immense Royaume.",
-    "ar": "يَا كَبِيرُ فَلَا كَبِيراً إِلَّا أَنْتَ، اجْعَلْنِي مِنَ الكُبَرَاءِ المُخْتَصِّينَ بِالمُلْكِ الكَبِيرِ",
-    "tr": "Yâ Kabîru, fa-lâ kabîran illâ wa-huwa ! Ij'al-nî mina 'l-kubarâ'i 'l-mukhtassîna bi-'l-mulki 'l-kabîr."
-   },
-   "intro": [
-    "Quel est le principal problème de ma vie actuellement ? Comment puis-je le relativiser en présence d'Al-Kabîr ?",
-    "Lorsque les soucis m'accablent, je médite sur la grandeur infinie d'Allâh. Mes préoccupations deviennent minuscules devant Son immensité, je prends du recul et je gagne en sérénité."
+   "verse": "31:30",
+   "ask": [
+    "御方のほかに呼ばれるものは、みな空しい。私は御方を呼ぶ前に、何に助けを求めているか。",
+    "次に困りごとが来たら、まず御方を呼ぶ——電話より先に、計算より先に。"
    ]
   },
   {
@@ -599,14 +499,10 @@
    "fr": "守り保つ御方",
    "desc": "被造物を保ち、その行いを記録にとどめる御方。",
    "af": "038_al-hafiz",
-   "inv": {
-    "fr": "Ô Celui qui préserve ! Préserve-moi des fautes qui occasionnent Ton châtiment. Et fais de moi un gardien de ce que Tu nous donnes à préserver dans Ton livre.",
-    "ar": "يَا حَفِيظُ، احْفَظْنِي عَنْ مُوَاقِعَةِ مُوجِبَاتِ عَذَابِكَ وَاجْعَلْنِي حَفِيظاً لِمَا اسْتَحْفَظْتَنِي مِنْ كِتَابِكَ",
-    "tr": "Yâ Hafîzu ! Ihfaz-nî 'an muwâqi'ati mûjibâti 'adhâbi-ka wa-'j'al-nî hafîzan li-mâ 'stahfazta-nî min kitâbi-ka."
-   },
-   "intro": [
-    "Quelles sont les compétences que je possède et que je pourrais mettre au service des autres pour les soutenir ?",
-    "Chaque jour, je consacre un moment à soutenir quelqu'un de manière significative. Cela peut être une action simple comme une écoute attentive, un sourire ou une main tendue."
+   "verse": "11:57",
+   "ask": [
+    "御方はすべてのものの保全に心を配られる。私は何を失うことを恐れているか。",
+    "不安げに見張っているものを一つ、今日は御方の守りに委ね、握る手をゆるめる。"
    ]
   },
   {
@@ -616,14 +512,10 @@
    "fr": "糧を行き渡らせる御方",
    "desc": "各人にその分を、過不足なく届ける御方。",
    "af": "039_al-muqit",
-   "inv": {
-    "fr": "Ô Soutien ! Soutiens-moi extérieurement et intérieurement dans les meilleurs moments. Et préserve-moi de Ta colère à toute heure.",
-    "ar": "يَا مُقِيتُ، أَقِتْنِي ظَاهِراً وَبَاطِناً بِأَحْسَنِ الأَقْوَاتِ وَصُنِّي مِنْ غَضَبِكَ فِي جَمِيعِ الأَوْقَاتِ",
-    "tr": "Yâ Muqîtu ! Aqit-ni zâhiran wa-bâtinan bi-ahsani 'l-aqwâti wa-sun-nî min ghadabi-ka fî jamî'i 'l-awqât."
-   },
-   "intro": [
-    "Comment puis-je aider à créer un environnement de soutien au sein de ma famille, de ma communauté ou de mon lieu de travail ?",
-    "Je renforce ma capacité à être un soutien pour les autres, pour refléter le rôle d'Al-Muqît dans ma vie."
+   "verse": "4:85",
+   "ask": [
+    "御方はすべてを見守り、その勘定を保たれる。私は近ごろ誰のために、何のために取りなしたか。",
+    "今日、自分では言えない誰かのために口を開く。"
    ]
   },
   {
@@ -633,14 +525,10 @@
    "fr": "清算を司る御方",
    "desc": "すべての行いを数え、報いを定めるに足る御方。",
    "af": "040_al-hasib",
-   "inv": {
-    "fr": "« Allâh nous suffit, quel excellent Garant ! » [Sourate 3, La Famille d'Imrân, 173]",
-    "ar": "﴿وَقَالُوا حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ﴾",
-    "tr": "Hasbunâ Allâh wa ni'ma al-wakîl !"
-   },
-   "intro": [
-    "Quels sont les aspects de ma vie que je devrais examiner de plus près en vue d'être plus conscient(e) de mes actions ?",
-    "Je prends conscience de mes actes : j'identifie ceux qui me rendent fier(e) et ceux qui pourraient être améliorés. Je prends des mesures pour progresser dans ma quête spirituelle."
+   "verse": "4:86",
+   "ask": [
+    "この節は、受けた挨拶よりよいもので返すよう求めている。私はどこで、ちょうど同じだけを返しているか。",
+    "今日、受けた礼にそれ以上のもので応える——より満たされた挨拶、ひと言の上乗せ。"
    ]
   },
   {
@@ -650,14 +538,10 @@
    "fr": "荘厳なる御方",
    "desc": "その荘厳さの前に、被造物が畏れをおぼえる御方。",
    "af": "041_al-jalil",
-   "inv": {
-    "fr": "Ô Majestueux ! Il n'existe de noblesse comparable à la Tienne ! Place-moi, par crainte de Toi et conscience de Ta Noblesse, dans un endroit noble.",
-    "ar": "يَا جَلِيلُ فَلَا جَلِيلَ إِلَّا وَهُوَ لِجَلَالِهِ مُسْتَكِينٌ، اجْعَلْنِي مِنْ هَيْبَتِكَ وَإِجْلَالِكَ فِي مَقَامٍ مَكِينٍ",
-    "tr": "Yâ Jalîlu, fa-lâ jalîla illâ wa-huwa li-jalâli-Hi mustakînun ! Ij'al-nî min haybati-ka wa-ijlâli-ka fî maqâmin makînin."
-   },
-   "intro": [
-    "De quelle manière puis-je honorer la Majesté divine dans ma façon de parler, d'agir et d'interagir avec les autres ?",
-    "Je consacre un moment à la contemplation silencieuse. Je ferme les yeux, respire profondément, et je médite sur la Majesté et la Sainteté d'Allâh en tant qu'Al-Jalîl."
+   "verse": "55:78",
+   "ask": [
+    "御方において威厳と寛大さは一つである。私は畏れと望みを切り離していないか。",
+    "今日、御方について畏れることを一つ、望むことを一つ、声に出して言う。"
    ]
   },
   {
@@ -667,14 +551,10 @@
    "fr": "寛大な御方",
    "desc": "求められずとも与え、与えたことを責めない御方。",
    "af": "042_al-karim",
-   "inv": {
-    "fr": "Ô Généreux ! Honore-moi par Ton obéissance et Ton amour. Honore-moi par la contemplation de Ta noble Face, en Ta proximité, dans Ton Jardin (Paradis).",
-    "ar": "يَا كَرِيمُ، اجْعَلْنِي مِنَ المُكْرَمِينَ بِطَاعَتِكَ وَمَحَبَّتِكَ وَأَكْرِمْنِي بِالنَّظَرِ إِلَى وَجْهِكَ الكَرِيمِ فِي جِوَارِكَ وَجَنَّتِكَ",
-    "tr": "Yâ Karîmu ! Ij'al-nî mina 'l-mukramîna bi-tâ'ati-ka wa-mahabbati-ka wa-akrim-nî bi-'n-nazari ilâ wajhi-ka 'l-karîmi fî jiwâri-ka wa-jannati-ka."
-   },
-   "intro": [
-    "Ai-je réfléchi à la manière dont Allâh a surpassé mes attentes dans ma vie ? Et moi, lorsque je viens en aide aux autres, comment puis-je chercher à surpasser leurs attentes ?",
-    "Je choisis une action de générosité envers quelqu'un de mon entourage, que ce soit par un acte de gentillesse, un cadeau, ou du temps et de l'attention."
+   "verse": "82:6",
+   "ask": [
+    "「何があなたを、尊いあなたの主について惑わせたのか」。正直に、私は何と答えるか。",
+    "御方が赦してくださるからと甘えている安易さを見つけ、今日それを止める。"
    ]
   },
   {
@@ -684,14 +564,10 @@
    "fr": "見守り続ける御方",
    "desc": "被造物から目を離さず、常に見張る御方。",
    "af": "043_ar-raqib",
-   "inv": {
-    "fr": "Ô Vigilant ! Offre-moi une part de Ta vigilance qui m'éloignera des désobéissances. Et permets-moi d'être témoin de Ta proximité, ce qui m'écartera de l'insouciance et de l'oubli.",
-    "ar": "يَا رَقِيبُ، ارْزُقْنِي مِنْ مُرَاقَبَتِكَ مَا يَمْنَعُنِي مِنَ العِصْيَانِ وَمِنْ مُشَاهَدَةِ قُرْبِكَ مَا يُذْهِبُ بِدَوَاعِي الغَفْلَةِ وَالنِّسْيَانِ",
-    "tr": "Yâ Raqîbu ! Urzuq-nî min murâqabati-ka mâ yamna'u-nî mina 'l-'isyâni wa-min mushâhadati qurbi-ka mâ yudhhibu bi-dawâ'î 'l-ghaflati wa-'n-nisyân."
-   },
-   "intro": [
-    "Comment puis-je développer une conscience plus profonde du fait qu'Allâh est Ar-Raqîb et observe toutes mes actions ?",
-    "Lorsque je me sens submergé(e) par le stress d'une situation où je perds le contrôle, je me rappelle qu'Allâh est Vigilant et prend soin de moi, à chaque instant de ma vie."
+   "verse": "4:1",
+   "ask": [
+    "御方は見守る御方であり、この節はその見守りを血のつながりに結びつけている。私はどの縁を切れるままにしたか。",
+    "今日、避けている身内に、たとえ短い言伝てでも連絡を取り直す。"
    ]
   },
   {
@@ -701,14 +577,10 @@
    "fr": "祈りに応える御方",
    "desc": "呼びかける者に、その求めのとおり、あるいはそれ以上に応える御方。",
    "af": "044_al-mujib",
-   "inv": {
-    "fr": "Ô Celui qui répond à l'appel ! Réponds à celui qui T'implore par Tes Noms excellents. Et permets-moi d'être parmi ceux qui répondent à Ton appel et suivent Tes messagers.",
-    "ar": "يَا مُجِيبُ، اسْتَجِبْ لِمَنْ دَعَاكَ بِأَسْمَائِكَ الحُسْنَى وَسَأَلَكَ وَاجْعَلْنِي مِمَّنْ أَجَابَ دَعْوَتَكَ وَاتَّبَعَ رُسُلَكَ",
-    "tr": "Yâ Mujîbu ! Istajib li-man da'â-ka bi-asmâ'i-ka 'l-husnâ wa-sa'ala-ka wa-'j'al-nî mim-man ajâba da'wata-ka wa-atba'a rusula-ka."
-   },
-   "intro": [
-    "À quelles occasions ai-je ressenti qu'Allâh était tout proche, et avait exaucé mes prières ?",
-    "Je débute un carnet où je consigne mes invocations, qu'elles soient personnelles ou universelles. En les écrivant, je me rappelle qu'Allâh répond à celui qui demande."
+   "verse": "11:61",
+   "ask": [
+    "御方は近く、応えてくださる。私は最後にいつ、はっきりしたことを御方に願ったか。",
+    "今日、漠然とした祈りではなく、名指しの明確な願いを一つ立てる。"
    ]
   },
   {
@@ -718,14 +590,10 @@
    "fr": "広大無辺の御方",
    "desc": "その知識も慈悲も糧も、限りを知らない御方。",
    "af": "045_al-wasi",
-   "inv": {
-    "fr": "Ô Englobant ! Ô Toi dont la miséricorde et la science englobent toute chose. Offre-moi une part de miséricorde et de science qui me couvre et me suffise.",
-    "ar": "يَا وَاسِعُ وَسِعْتَ كُلَّ شَيْءٍ رَحْمَةً وَعِلْماً، أَوْسِعْنِي مِنَ الرَّحْمَةِ وَالعِلْمِ حَظّاً وَافِرًا",
-    "tr": "Yâ Wâsi'u, wasi'ta kulla shay'in rahmatan wa-'ilman ! Awsi'-nî mina 'r-rahmati wa-'l-'ilmi hazzan wâfiran."
-   },
-   "intro": [
-    "Je me souviens d'un moment où Allâh a rendu l'impossible possible. Comment cette expérience a-t-elle impacté ma foi et ma confiance en Allâh ?",
-    "Lorsque je fais face à des défis ou à des moments de doute, je me rappelle que l'abondance d'Allâh peut ouvrir des voies insoupçonnées."
+   "verse": "2:268",
+   "ask": [
+    "悪魔は貧しさを約束し、アッラーは赦しと豊かさを約束される。私はどちらの声を聞いているか。",
+    "今日、少し痛む額を、まさに痛むからこそ差し出す。"
    ]
   },
   {
@@ -735,14 +603,10 @@
    "fr": "英明な御方",
    "desc": "すべてをあるべき場所に置く御方。その定めに無駄はない。",
    "af": "046_al-hakim",
-   "inv": {
-    "fr": "Ô Sage, Celui dont rien n'échappe à Sa science ! Donne-moi la science qui me rapprochera des actes méritoires et m'éloignera des actions détestables.",
-    "ar": "يَا حَكِيمُ فَحِكْمَتُهُ لَا يَشُذُّ شَيْءٌ عَنْهَا، هَبْ لِي حِكْمَةً تَحْمِلُنِي عَلَى مَحَاسِنِ الأَفْعَالِ وَتَرْكِ القَبَائِحِ مِنْهَا",
-    "tr": "Yâ Hakîmu, fa-hikmatu-Hu lâ yashudhdhu shay'un 'an-hâ ! Hab lî hikmatan tahmilu-nî 'alâ mahâsini 'l-af'âli wa-tarki 'l-qabâ'ihi min-hâ."
-   },
-   "intro": [
-    "Ai-je déjà vécu une situation dont la sagesse m'échappait au départ, mais s'est finalement révélée à mes yeux avec le temps ?",
-    "Quand je me retrouve confronté(e) à une décision difficile dans une situation complexe, j'invoque Al-Hakîm, le Sage par excellence. Je Lui demande de m'éclairer sur la voie de la sagesse pour prendre la meilleure décision possible."
+   "verse": "34:27",
+   "ask": [
+    "御方の英知は、すべてをあるべき場所に置く。私は御方のどの定めを受け入れていないか。",
+    "受けた断りを一つ思い返し、今日それが何を避けさせてくれたのかを探す。"
    ]
   },
   {
@@ -752,14 +616,10 @@
    "fr": "慈愛深き御方",
    "desc": "しもべを愛し、しもべに愛される御方。",
    "af": "047_al-wadud",
-   "inv": {
-    "fr": "Ô Bien-aimant qui aime Ses amis et Ses élus ! Place dans mon cœur une affection infinie envers Toi. Et place dans le cœur des croyants une affection profonde pour moi.",
-    "ar": "يَا وَدُودُ يَوَدُّ أَوْلِيَاءَهُ وَأَصْفِيَاءَهُ المُقَرَّبِينَ، اجْعَلْ فِي قَلْبِي وُدّاً لَكَ وَاجْعَلْ لِي وُدّاً فِي قُلُوبِ المُؤْمِنِينَ",
-    "tr": "Yâ Wadûdu, yawaddu awliyâ'a-Hu wa-asfiyâ'a-Hu 'l-muqarrabîna ! Ij'al fî qalb-î wuddan la-Ka wa-'j'al lî wuddan fî qulûbi 'l-mu'minîn."
-   },
-   "intro": [
-    "En quoi puis-je devenir un canal d'amour et de bienveillance envers le monde qui m'entoure ?",
-    "Chaque jour, je n'oublie pas d'offrir à mes proches une manifestation d'amour, que ce soit par un geste, une parole ou simplement par ma présence bienveillante."
+   "verse": "85:14",
+   "ask": [
+    "御方は赦し、そして愛される——その二つは一つである。私は御方が私を愛しておられると信じているか、ただ耐えておられるだけだと思っているか。",
+    "今日、誰かに「アッラーのためにあなたを愛している」と、ほかの理由なしに伝える。"
    ]
   },
   {
@@ -769,14 +629,10 @@
    "fr": "栄光に満ちた御方",
    "desc": "その誉れと寛大さに極まりがない御方。",
    "af": "048_al-majid",
-   "inv": {
-    "fr": "Ô Glorieux ! Ta Gloire est majestueuse, elle englobe l'Excellence ! Offre-moi une part de la plus haute honorabilité dans la mesure du possible pour un être humain.",
-    "ar": "يَا مَجِيدُ بِمَعْنَى عَظَمِ الشَّأْنِ وَعُمُومِ الإِحْسَانِ، ارْزُقْنِي مِنَ المَجْدِ مَا هُوَ غَايَةُ الإِمْكَانِ فِي طَاقَةِ الإِنْسَانِ",
-    "tr": "Yâ Majîdu bi-ma'nâ 'azami 'sh-sha'ni wa-'umûmi 'l-ihsâni ! Urzuq-nî mina 'l-majdi mâ huwa ghâyata 'l-imkâni fî tâqati 'l-insân."
-   },
-   "intro": [
-    "Qu'est-ce qui m'émerveille le plus dans la création d'Allâh et me rappelle Sa gloire infinie ?",
-    "Je cultive l'humilité en reconnaissant que ma propre grandeur est insignifiante comparée à celle d'Allâh. Cela m'aide à rester humble et à rechercher Sa satisfaction."
+   "verse": "11:73",
+   "ask": [
+    "讃美と栄光は御方に帰し、天使たちはそれをある家族に思い起こさせた。私の家はそれを思い起こさせるか。",
+    "今日、家の中で、家族の前で、讃美の言葉を声に出す。"
    ]
   },
   {
@@ -786,14 +642,10 @@
    "fr": "よみがえらせる御方",
    "desc": "死者を墓から立ち上がらせる御方。",
    "af": "049_al-baith",
-   "inv": {
-    "fr": "Ô Celui qui ressuscite ! Illumine mes meilleures pensées par celles qui sont dans les coffres de Ton secret. Et renforce-moi, au Jour de la Résurrection, par une merveilleuse récompense et une belle bonté.",
-    "ar": "يَا بَاعِثُ، ابْعَثْ لِي خَوَاطِرَ الخَيْرِ مِنْ خَزَائِنِ السِّرِّ وَأَثْبِتْنِي يَوْمَ البَعْثِ بِجَزِيلِ الأَجْرِ وَجَمِيلِ البِرِّ",
-    "tr": "Yâ Bâ'ithu ! Ib'ath lî khawâtira 'l-khayri min khazâ'ini 's-sirri wa-athbit-nî yawma 'l-ba'thi bi-jazîli 'l-ajri wa-jamîl 'l-birr."
-   },
-   "intro": [
-    "À quel moment de ma vie ai-je ressenti un éveil spirituel qui m'a conduit à des changements significatifs dans mon rapport au divin ?",
-    "Je suis reconnaissant(e) qu'Al-Bâ'ith m'accorde, chaque matin, une nouvelle opportunité de me rapprocher de Lui et de progresser spirituellement."
+   "verse": "22:7",
+   "ask": [
+    "時は来る。御方は墓の中の者を蘇らせられる。私はそれを知って生きているか。",
+    "今日、墓地を訪ねる。かなわなければ、五分だけ立ち止まって本気でそれを思う。"
    ]
   },
   {
@@ -803,14 +655,10 @@
    "fr": "証人である御方",
    "desc": "すべての場に立ち会い、何ひとつ見逃さない御方。",
    "af": "050_ash-shahid",
-   "inv": {
-    "fr": "Ô Témoin ! Fais que je sois un témoin humble, rempli d'une crainte révérentielle face à Ta Présence et que je me contente à travers Ta science.",
-    "ar": "يَا شَهِيدُ، اجْعَلْنِي لِشَهَادَتِكَ مُتَّقِياً وَبِعِلْمِكَ مُكْتَفِيَاً",
-    "tr": "Yâ Shahîdu ! Ij'al-nî li-shâhidiyyati-ka muttaqiyan wa-bi-'ilmi-ka muktafiyan."
-   },
-   "intro": [
-    "Comment puis-je être plus conscient(e) de la présence d'Allâh dans ma vie quotidienne ?",
-    "Avant d'agir dans une situation donnée, je prends un moment pour me souvenir qu'Allâh est le Témoin de mes actions. Cela guide ma conduite et oriente mes choix."
+   "verse": "4:79",
+   "ask": [
+    "御方は証人として足りる。私はほかの誰の前で、身の証を立てようとしているか。",
+    "今日一度、自分を弁護するのをやめ、証しを御方だけに委ねる。"
    ]
   },
   {
@@ -820,14 +668,10 @@
    "fr": "真実そのものの御方",
    "desc": "その存在も言葉も約束も、いささかも揺るがない御方。",
    "af": "051_al-haqq",
-   "inv": {
-    "fr": "Ô Véridique ! Exauce mon souhait d'accéder à l'une des vérités de Ton unicité. Et permets-moi d'œuvrer au maintien de Ton droit et de rester en dehors des limites de Tes interdits.",
-    "ar": "يَا حَقُّ، حَقِّقْ رَجَائِي فِي بُلُوغِ حَقِيقَةٍ مِنْ حَقَائِقِ تَوْحِيدِكَ وَاسْتَعْمِلْنِي بِالقِيَامِ بِحَقِّكَ وَالوُقُوفِ عَلَى حُدُودِكَ",
-    "tr": "Yâ Haqqu ! Haqqiq rajâ'-î fî bulûghi haqîqatin min haqâ'iqi tawhîdi-ka wa-'sta'mil-nî bi-'l-qiyâmi bi-haqqi-ka wa-'l-wuqûfi 'alâ hudûdi-ka."
-   },
-   "intro": [
-    "Comment puis-je incorporer davantage la quête de vérité dans mes actions et mes décisions quotidiennes ?",
-    "À chaque prise de parole, je réfléchis, en amont, à mes paroles : sont-elles justes et alignées avec la vérité ?"
+   "verse": "22:62",
+   "ask": [
+    "御方こそ真理であり、御方のほかに呼ばれるものは空しい。私はどの幻にしがみついているか。",
+    "持たない力を私が与えているものを一つ名指し、今日それを取り上げる。"
    ]
   },
   {
@@ -837,14 +681,10 @@
    "fr": "すべてを託せる御方",
    "desc": "その手に委ねる者にとって、十分すぎる御方。",
    "af": "052_al-wakil",
-   "inv": {
-    "fr": "Ô Garant ! Fais que je sois parmi ceux qui se confient à Toi en toute occasion. Et ne m'abandonne pas à ma propre personne, fût-ce le temps d'un battement de cils.",
-    "ar": "يَا وَكِيلُ، اجْعَلْنِي مِنَ المُتَوَكِّلِينَ عَلَيْكَ فِي الأُمُورِ كُلِّهَا وَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ وَلَا أَقَلَّ مِنْهَا",
-    "tr": "Yâ Wakîlu ! Ij'al-nî mina 'l-mutawakkilîna 'alay-ka fî 'l-umûri kulli-hâ wa-lâ takil-nî ilâ nafs-î tarfata 'aynin wa-lâ aqalla min-hâ."
-   },
-   "intro": [
-    "Quels sont les aspects de ma vie sur lesquels j'ai du mal à lâcher prise ? Comment m'en remettre à Allâh ?",
-    "Chaque fois que je me sens inquiet(e) ou insatisfait(e), je répète « Hasbiya Allâhu wa ni'ma l-wakîl » (Allâh me suffit, Il est le Meilleur Garant), pour me rappeler qu'Il est mon soutien et qu'Il résoudra tous mes problèmes."
+   "verse": "3:173",
+   "ask": [
+    "「アッラーは我らに足りる。なんと良き御守護者か」。私はそれを口にしているだけか、本当にそう思っているか。",
+    "今日、次に不安が来たら、解決を探す前にこの言葉を言う。"
    ]
   },
   {
@@ -854,14 +694,10 @@
    "fr": "絶大な力を持つ御方",
    "desc": "その力に疲れも尽きもない御方。",
    "af": "053_al-qawiyy",
-   "inv": {
-    "fr": "Ô Puissant ! Donne-moi la force d'agir en toute obéissance et honorabilité. Et éloigne-moi du mal provenant de ma propre personne et du mal qui peut provenir de tout être malveillant.",
-    "ar": "يَا قَوِيُّ، قَوِّنِي عَلَى العَمَلِ بِكُلِّ طَاعَةٍ وَبِرٍّ وَقِنِي شَرَّ نَفْسِي وَشَرَّ كُلِّ ذِي شَرٍّ",
-    "tr": "Yâ Qawiyyu ! Qawwi-nî 'alâ 'l-'amali bi-kulli tâ'atin wa-birrin wa-qinî sharra nafs-î wa sharra kulli dhî sharrin."
-   },
-   "intro": [
-    "Quelles sont les situations où j'ai expérimenté la puissance d'Allâh me guidant à travers la difficulté ?",
-    "Je réfléchis à une situation actuelle qui nécessite de la force, de la persévérance et du courage de ma part. Je répète le nom Al-Qawiyy pour Lui demander Son aide."
+   "verse": "11:66",
+   "ask": [
+    "御方の力は、辱めの日に信じる者を救う。私は何について辱められることを恐れているか。",
+    "今日、笑われるのを恐れて先延ばしにしていた正しいことを一つ行う。"
    ]
   },
   {
@@ -871,14 +707,10 @@
    "fr": "揺るぎない御方",
    "desc": "その定めをやり遂げるに、確かで強い御方。",
    "af": "054_al-matin",
-   "inv": {
-    "fr": "Ô Inébranlable ! Fais que ma religion soit ferme et que ma certitude soit forte et constante.",
-    "ar": "يَا مَتِينُ، اجْعَلْ دِينِي مَتِيناً وَيَقِينِي قَوِيّاً مَكِيناً",
-    "tr": "Yâ Matînu ! Ij'al dîn-î matînan wa-yaqîn-î qawiyyan makînan."
-   },
-   "intro": [
-    "Ai-je tendance à éviter les défis par peur de l'échec ? Comment puis-je les aborder avec confiance ?",
-    "Avant de commencer une tâche exigeante, je vais méditer sur le nom Al-Matîn et me rappeler que je suis soutenu(e) par la Puissance d'Allâh."
+   "verse": "51:58",
+   "ask": [
+    "御方の力は揺るがず、疲れを知らない。私はどこで、独りで抱えて力尽きているか。",
+    "今日、意地で独りで背負っていることについて助けを求める。"
    ]
   },
   {
@@ -888,14 +720,10 @@
    "fr": "庇護する友たる御方",
    "desc": "信仰者を守り、その務めを引き受ける御方。",
    "af": "055_al-waliyy",
-   "inv": {
-    "fr": "Ô Protecteur ! Fais que, sous Ta protection, je sois protégé(e). Et que je maintienne l'accomplissement de Tes commandements.",
-    "ar": "يَا وَلِيُّ، اجْعَلْنِي بِوِلَايَتِكَ إِيَّايَ وَلِيّاً وَبِرِعَايَةِ حُقُوقِكَ وَفِيّاً",
-    "tr": "Yâ Walî ! Ij'al-nî bi-wilâyati-ka iyyâya waliyyan wa-bi-ri'âyati huqûqi-ka wafiyan."
-   },
-   "intro": [
-    "Quelles actions puis-je entreprendre pour renforcer cette amitié avec Allâh et sentir Sa proximité dans ma vie ?",
-    "Je prends un moment pour parler à Allâh comme si je m'adressais à un ami cher. Je partage avec Lui mes joies, mes peines, mes espoirs et mes préoccupations. Dans ces moments, je suis sincère et ouvert(e), convaincu(e) qu'Allâh m'écoute avec compassion et bienveillance."
+   "verse": "2:257",
+   "ask": [
+    "御方は信じる者を闇から光へ導き出される。今、私の影の部分はどこか。",
+    "隠していることを一つ名指し、今日それを御方に、細かに打ち明ける。"
    ]
   },
   {
@@ -905,14 +733,10 @@
    "fr": "讃美されるべき御方",
    "desc": "讃えられるにふさわしく、また讃えられている御方。",
    "af": "056_al-hamid",
-   "inv": {
-    "fr": "Ô Loué ! Fais que je sois parmi ceux qui Te louent et Te sont reconnaissants. Et place-moi sous la bannière de Ta louange, en compagnie des Prophètes, des véridiques, des témoins (martyrs) et des saints.",
-    "ar": "يَا حَمِيدُ، اجْعَلْنِي مِنَ الحَامِدِينَ لَكَ وَالشَّاكِرِينَ وَاحْشُرْنِي تَحْتَ لِوَاءِ الحَمْدِ فِي زُمْرَةِ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ وَالصَّالِحِينَ",
-    "tr": "Yâ Hamîdu ! Ij'al-nî mina 'l-hâmidîna la-ka wa-'sh-shakirîna wa-'hshur-nî tahta liwâ'î 'l-hamdi fî zumrati 'n-nabiyyîna wa-'s-siddîqîna wa-'sh-shuhadâ'î wa-'s-sâlihîn."
-   },
-   "intro": [
-    "Comment puis-je transformer les moments où je ressens la Grâce d'Allâh en instants de louanges ?",
-    "Chaque soir, je réfléchis aux bénédictions de ma journée, et je loue sincèrement Allâh, le Seul digne de louanges."
+   "verse": "31:26",
+   "ask": [
+    "御方は何ものをも必要とせず、すべての讃美に値される。私は得たときだけ御方を讃えていないか。",
+    "今日、望みどおりに運ばなかったことについて御方を讃える。"
    ]
   },
   {
@@ -922,14 +746,10 @@
    "fr": "すべてを数え上げる御方",
    "desc": "存在するすべてを、ひとつ残らず数える御方。",
    "af": "057_al-muhsi",
-   "inv": {
-    "fr": "Ô Celui qui dénombre toute chose en nombre, contenu et quantité ! Fais que je sois parmi ceux qui énumèrent Tes noms avec engagement et persévérance.",
-    "ar": "يَا مُحْصِيَ كُلِّ شَيْءٍ عَدَداً وَإِحَاطَةً وَقَدْراً، اجْعَلْنِي مِنَ المُحْصِينَ لِأَسْمَائِكَ عَقْداً وَإِطَاقَةً وَحَصْراً",
-    "tr": "Yâ Muhsiya kulli shay'in 'adadan wa-ihâtatan wa-qadran ! Ij'al-nî mina 'l-muhsîna li-asmâ'i-ka 'aqdan wa-itâqatan wa-hasran."
-   },
-   "intro": [
-    "Quels sont les moments où je peux être plus attentif à la manière dont chaque acte est enregistré par Al-Muhsî ?",
-    "Je prends quelques instants pour réfléchir à mes actions de la journée et à la manière dont Allâh les compte et les enregistre."
+   "verse": "19:94",
+   "ask": [
+    "御方はそれらをすべて、一つひとつ数えられた。私は「これは数に入らない」と思って何をしているか。",
+    "繰り返している小さな怠りを一つ——眼差し、ひと言、一分——見つけ、今日それを止める。"
    ]
   },
   {
@@ -939,14 +759,10 @@
    "fr": "初めに造り出す御方",
    "desc": "手本なしに、最初に存在させる御方。",
    "af": "058_al-mubdi",
-   "inv": {
-    "fr": "Ô Celui qui produit sans modèle ! Celui qui régénère ! Compte-moi parmi ceux qui donnent la prévalence à ce que Tu agrées, qui choisissent de Te satisfaire en astreignant leurs envies, et qui se tournent vers Ta porte, sincères, nécessiteux, submergés de confiance en Toi.",
-    "ar": "يَا مُبْدِئُ يَا مُعِيدُ، اجْعَلْنِي مِمَّنْ يَبْدَأُ بِمَحَابِّكَ عَلَى مُرَادِهِ وَاخْتِيَارِهِ وَيَعُودُ إِلَى بَابِكَ بِصِدْقِ اعْتِمَادِهِ وَافْتِقَارِهِ",
-    "tr": "Yâ Mubdi'u ! Yâ Mu'îdu ! Ij'al-nî mim-man yabda'u bi-mahâbbi-ka 'alâ murâdi-hi wa-'khtiyâri-hi wa-ya'ûdu ilâ bâbi-ka bi-sidq i'timâdi-hi wa-'ftiqâri-hi."
-   },
-   "intro": [
-    "En quoi puis-je reconnaître les nouvelles opportunités dans ma vie comme des dons d'Allâh ?",
-    "Je considère les opportunités qui se présentent à moi comme des nouveaux chapitres bénis par Allâh."
+   "verse": "85:13",
+   "ask": [
+    "御方は始め、そしてまた始められる。私は何を、決定的に失われたと思い込んでいるか。",
+    "続けていて手放した良い習慣を、今日ひとつ始め直す。"
    ]
   },
   {
@@ -956,14 +772,10 @@
    "fr": "再びよみがえらせる御方",
    "desc": "滅ぼしたのちに、もう一度造り直す御方。",
    "af": "059_al-muid",
-   "inv": {
-    "fr": "Ô Seigneur ! Du fait que Tu fais revenir, je T'implore de me compter parmi ceux qui retournent à Toi, repentants, le cœur sain.",
-    "ar": "اَللَّهُمَّ إِنِّي أَسْأَلُكَ بِاسْمِكَ يَا مُعِيدُ اِجْعَلْنِي مِمَّنْ يَعُودُ إِلَيْكَ تَائِبًا بِقَلبٍ سَلِيمٍ",
-    "tr": "Allâhumma innî as'aluka bismika yâ Mu'îdu ! Ij'al-nî mim-man ya'ûdu ilâyka tâ'iban bi-qalbin salîmin."
-   },
-   "intro": [
-    "Lorsque ma foi baisse, est-ce que j'ai tendance à abandonner ma pratique ? Comment puis-je mieux surmonter ces moments ?",
-    "Durant mes moments de découragement, je me rappelle qu'Allâh est Al-Mu'îd et qu'Il a le pouvoir de restaurer ma foi."
+   "verse": "85:13",
+   "ask": [
+    "御方が始められたものを、御方はもう一度なさる。私はこの生が唯一のものであるかのように生きていないか。",
+    "今日、この世ではなく来世を思って一つ決める。"
    ]
   },
   {
@@ -973,14 +785,10 @@
    "fr": "生命を与える御方",
    "desc": "死んだものに命を吹き込む御方。",
    "af": "060_al-muhyi",
-   "inv": {
-    "fr": "Ô Vivant qui précède tout être vivant, ô Vivant qui demeure après tout être vivant, ô Vivant auquel aucun être vivant n'est comparable ! Ravive mon cœur d'une lumière de Ta part.",
-    "ar": "يَا حَيّاً قَبْلَ كُلِّ حَيٍّ يَا حَيّاً بَعْدَ كُلِّ حَيٍّ أَحْيِ قَلْبِي بِنُورٍ مِنْ لَدُنْكَ",
-    "tr": "Yâ hayâ qabla kulli hayin, Yâ hayâ ba'da kulli hayin. Ahyi qalbî bi-nûrin min ladunka."
-   },
-   "intro": [
-    "Comment puis-je utiliser ma vitalité et ma santé pour accomplir des actions qui Lui plaisent ?",
-    "Je m'engage à vivre cette journée avec énergie et intention, en cherchant des moyens d'utiliser ma vitalité pour accomplir des actions qui honorent Allâh."
+   "verse": "30:50",
+   "ask": [
+    "御方は死んだ大地を生き返らせ、死者もまた同じである。私のどの部分が荒れたままか。",
+    "今日、捨て置いた行いを一つ蘇らせる——読誦、任意の礼拝、断食のいずれか。"
    ]
   },
   {
@@ -990,14 +798,10 @@
    "fr": "死をもたらす御方",
    "desc": "定めの時に、命を取り上げる御方。",
    "af": "061_al-mumit",
-   "inv": {
-    "fr": "Ô Celui qui donne la vie ! Ô Celui qui la retire ! Redonne vie à mon cœur par la conscience de Ton unicité et de Ta connaissance. Et fais mourir mon ego par la contemplation de Ta grandeur et la crainte révérentielle envers Toi.",
-    "ar": "يَا مُحْيِي يَا مُمِيتُ، أَحْيِ قَلْبِي بِوُجُودِ تَوْحِيدِكَ وَمَعْرِفَتِكَ وَأَمِتْ نَفْسِي بِشُهُودِ عَظَمَتِكَ وَهَيْبَتِكَ",
-    "tr": "Yâ Muhyî ! Yâ Mumîtu ! Ahyi qalb-î bi-wujûd tawhîdi-ka wa-ma'rifati-ka wa-amit nafs-î bi-shuhûdi 'azamati-ka wa-haybati-ka."
-   },
-   "intro": [
-    "Comment puis-je mieux me préparer, tant sur le plan spirituel que pratique, à accueillir la mort au sein de mon foyer ?",
-    "Je vis chaque jour avec gratitude, avec l'intention d'œuvrer dans le bien pour ma vie dans l'Au-delà. Je demande également à Allâh de m'accorder une bonne fin et de m'accueillir dans Sa miséricorde."
+   "verse": "2:258",
+   "ask": [
+    "イブラーヒームは、わが主は生を与え死を与えると答えた。私は自分の日々を数えているか。",
+    "今日、「あとで」と先送りにしていることを一つ取り上げ、始める。"
    ]
   },
   {
@@ -1007,14 +811,10 @@
    "fr": "永遠に生きる御方",
    "desc": "始まりも終わりもない命を持つ御方。",
    "af": "062_al-hayy",
-   "inv": {
-    "fr": "Ô Vivant ! Donne-moi une vie saine. Et abreuve-moi du plus doux des breuvages : Ton amour.",
-    "ar": "يَا حَيُّ، أَحْيِنِي حَيَاةً طَيِّبَةً وَاسْقِنِي مِنْ شَرَابِ مَحَبَّتِكَ أَعْذَبَهُ",
-    "tr": "Yâ Hayyu ! Ahyi-nî hayâtan tayyibatan wa-'sqi-nî min sharâbi mahabbati-ka a'dhaba-hu."
-   },
-   "intro": [
-    "Quels sont les moyens concrets par lesquels je peux exprimer ma dépendance envers Allâh dans la poursuite de mes objectifs ?",
-    "Je prends conscience de mon souffle, du battement de mon cœur et de l'énergie qui circule en moi. Je me rappelle qu'Allâh est le Vivant éternel, et je Lui exprime ma gratitude pour le don de la vie."
+   "verse": "40:65",
+   "ask": [
+    "御方は生きておられる。この節は、誠意をもって御方を呼べという命で結ばれる。私の誠意は満ちているか。",
+    "今日、誰にも言わずに、独りで祈る。"
    ]
   },
   {
