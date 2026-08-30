@@ -161,6 +161,98 @@ html[data-theme="marble"]{
    quand ça a du sens (sauf skins qui imposent leur propre palette).
    ══════════════════════════════════════════════════════════════════════ */
 
+
+/* ── ACCENTS : teintes déclarées dans catalog.js (BASE_THEMES/THEMES).
+   Elles étaient annoncées comme récompenses sans exister en CSS : faute
+   de règle, elles retombaient sur :root, c'est-à-dire l'or. ── */
+[data-accent="slate"]{--a:#64748B;--a2:#9AA4B3;--a-glow:rgba(100,116,139,0.28);--a-dim:rgba(100,116,139,0.12);--a-soft:rgba(100,116,139,0.06);--a-rgb:100,116,139;}
+[data-accent="stone"]{--a:#837E7B;--a2:#AEABA9;--a-glow:rgba(131,126,123,0.28);--a-dim:rgba(131,126,123,0.12);--a-soft:rgba(131,126,123,0.06);--a-rgb:131,126,123;}
+[data-accent="copper"]{--a:#B87333;--a2:#D0A47A;--a-glow:rgba(184,115,51,0.28);--a-dim:rgba(184,115,51,0.12);--a-soft:rgba(184,115,51,0.06);--a-rgb:184,115,51;}
+[data-accent="amber"]{--a:#BF7B08;--a2:#D5A95E;--a-glow:rgba(191,123,8,0.28);--a-dim:rgba(191,123,8,0.12);--a-soft:rgba(191,123,8,0.06);--a-rgb:191,123,8;}
+[data-accent="peach"]{--a:#C5915A;--a2:#D9B793;--a-glow:rgba(197,145,90,0.28);--a-dim:rgba(197,145,90,0.12);--a-soft:rgba(197,145,90,0.06);--a-rgb:197,145,90;}
+[data-accent="ice"]{--a:#7299C5;--a2:#A3BCD9;--a-glow:rgba(114,153,197,0.28);--a-dim:rgba(114,153,197,0.12);--a-soft:rgba(114,153,197,0.06);--a-rgb:114,153,197;}
+[data-accent="aqua"]{--a:#1AA4B9;--a2:#6AC3D1;--a-glow:rgba(26,164,185,0.28);--a-dim:rgba(26,164,185,0.12);--a-soft:rgba(26,164,185,0.06);--a-rgb:26,164,185;}
+[data-accent="silver"]{--a:#737F8F;--a2:#A4ABB6;--a-glow:rgba(115,127,143,0.28);--a-dim:rgba(115,127,143,0.12);--a-soft:rgba(115,127,143,0.06);--a-rgb:115,127,143;}
+
+/* ── AMBIANCES : mêmes teintes, même constat. Sans règle, les tokens
+   restaient sombres alors qu'applyTheme peignait déjà le fond avec la
+   teinte annoncée : les six ambiances claires donnaient un texte clair
+   sur fond clair. ── */
+html[data-theme="midnight"]{
+  --bg:#050716;--sur:#161826;--sur2:#232431;--sur3:#32333F;
+  --bor:rgba(255,255,255,0.10);--bor2:rgba(255,255,255,0.05);
+  --t1:#EBEBEC;--t2:#8E8F96;--t3:#555660;
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(var(--a-rgb),0.14) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(255,255,255,0.05) 0%,transparent 65%);
+}
+html[data-theme="carbon"]{
+  --bg:#14181D;--sur:#24282C;--sur2:#303338;--sur3:#3E4145;
+  --bor:rgba(255,255,255,0.10);--bor2:rgba(255,255,255,0.05);
+  --t1:#ECECEC;--t2:#959799;--t3:#5F6165;
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(var(--a-rgb),0.14) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(255,255,255,0.05) 0%,transparent 65%);
+}
+html[data-theme="porcelain"]{
+  --bg:#F8F5F0;--sur:#FBFAF8;--sur2:#EBE8E4;--sur3:#DAD7D3;
+  --bor:rgba(74,73,72,0.12);--bor2:rgba(74,73,72,0.06);
+  --shine:rgba(255,255,255,0.9);
+  --t1:#222221;--t2:#6F6E6C;--t3:#ADABA8;
+  --sh1:0 4px 20px rgba(74,73,72,0.10),inset 0 1px 0 rgba(255,255,255,0.8);
+  --sh2:0 10px 40px rgba(74,73,72,0.12),inset 0 1px 0 rgba(255,255,255,0.9);
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(var(--a-rgb),0.10) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(74,73,72,0.05) 0%,transparent 65%);
+}
+html[data-theme="linen"]{
+  --bg:#EFE7D8;--sur:#F7F4ED;--sur2:#E3DBCD;--sur3:#D2CBBE;
+  --bor:rgba(71,69,64,0.12);--bor2:rgba(71,69,64,0.06);
+  --shine:rgba(255,255,255,0.9);
+  --t1:#21201E;--t2:#6B6761;--t3:#A7A197;
+  --sh1:0 4px 20px rgba(71,69,64,0.10),inset 0 1px 0 rgba(255,255,255,0.8);
+  --sh2:0 10px 40px rgba(71,69,64,0.12),inset 0 1px 0 rgba(255,255,255,0.9);
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(var(--a-rgb),0.10) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(71,69,64,0.05) 0%,transparent 65%);
+}
+html[data-theme="mist"]{
+  --bg:#E8ECEF;--sur:#F4F6F7;--sur2:#DCE0E3;--sur3:#CCCFD2;
+  --bor:rgba(69,70,71,0.12);--bor2:rgba(69,70,71,0.06);
+  --shine:rgba(255,255,255,0.9);
+  --t1:#202121;--t2:#686A6B;--t3:#A2A5A7;
+  --sh1:0 4px 20px rgba(69,70,71,0.10),inset 0 1px 0 rgba(255,255,255,0.8);
+  --sh2:0 10px 40px rgba(69,70,71,0.12),inset 0 1px 0 rgba(255,255,255,0.9);
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(var(--a-rgb),0.10) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(69,70,71,0.05) 0%,transparent 65%);
+}
+html[data-theme="frost"]{
+  --bg:#E8F1F5;--sur:#F4F8FA;--sur2:#DCE4E8;--sur3:#CCD4D7;
+  --bor:rgba(69,72,73,0.12);--bor2:rgba(69,72,73,0.06);
+  --shine:rgba(255,255,255,0.9);
+  --t1:#202122;--t2:#686C6E;--t3:#A2A8AB;
+  --sh1:0 4px 20px rgba(69,72,73,0.10),inset 0 1px 0 rgba(255,255,255,0.8);
+  --sh2:0 10px 40px rgba(69,72,73,0.12),inset 0 1px 0 rgba(255,255,255,0.9);
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(var(--a-rgb),0.10) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(69,72,73,0.05) 0%,transparent 65%);
+}
+html[data-theme="peachlight"]{
+  --bg:#FFE9DA;--sur:#FFF5EE;--sur2:#F2DDCF;--sur3:#E0CDBF;
+  --bor:rgba(76,69,65,0.12);--bor2:rgba(76,69,65,0.06);
+  --shine:rgba(255,255,255,0.9);
+  --t1:#23201E;--t2:#726862;--t3:#B2A398;
+  --sh1:0 4px 20px rgba(76,69,65,0.10),inset 0 1px 0 rgba(255,255,255,0.8);
+  --sh2:0 10px 40px rgba(76,69,65,0.12),inset 0 1px 0 rgba(255,255,255,0.9);
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(var(--a-rgb),0.10) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(76,69,65,0.05) 0%,transparent 65%);
+}
+html[data-theme="mintlight"]{
+  --bg:#E7F5EE;--sur:#F4FAF7;--sur2:#DBE8E2;--sur3:#CBD7D1;
+  --bor:rgba(69,73,71,0.12);--bor2:rgba(69,73,71,0.06);
+  --shine:rgba(255,255,255,0.9);
+  --t1:#202221;--t2:#676E6B;--t3:#A1ABA6;
+  --sh1:0 4px 20px rgba(69,73,71,0.10),inset 0 1px 0 rgba(255,255,255,0.8);
+  --sh2:0 10px 40px rgba(69,73,71,0.12),inset 0 1px 0 rgba(255,255,255,0.9);
+  --orb1:radial-gradient(ellipse 70% 55% at 15% 8%,rgba(var(--a-rgb),0.10) 0%,transparent 70%);
+  --orb2:radial-gradient(ellipse 50% 45% at 85% 92%,rgba(69,73,71,0.05) 0%,transparent 65%);
+}
+
 /* ── LIQUID GLASS ─────────────────────────────────────────────────────
    iOS/visionOS : verre translucide, blur généreux, contours lumineux,
    radius fortement arrondis, halo coloré derrière chaque surface. */

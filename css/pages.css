@@ -166,8 +166,15 @@
 .dua-card.open .dua-body{max-height:1600px;opacity:1;}
 .dua-ar{font-family:var(--ff-a);font-size:1.45rem;line-height:2.3;color:var(--a);text-align:right;padding:18px 20px 12px;direction:rtl;letter-spacing:0.01em;}
 .dua-ph{font-size:0.82rem;color:var(--t2);line-height:1.85;font-style:italic;padding:10px 20px;border-top:1px solid var(--bor2);}
+/* L'italique dit « mot etranger » dans un texte latin ; sur des katakana ou
+   une devanagari elle ne dit rien et deforme le trace. */
+.dua-ph-script{font-style:normal;letter-spacing:0.01em;}
 .dua-tr{font-size:0.86rem;color:var(--t1);line-height:1.8;padding:12px 20px;border-top:1px solid var(--bor2);}
 .dua-ref{font-size:0.66rem;color:var(--t3);padding:6px 20px 14px;text-align:right;font-style:italic;}
+/* Marque la traduction servie dans une autre langue que celle qui est lue :
+   aucune edition publiee ne couvre les 28 invocations dans les 17 langues,
+   et un melange non signale se lit comme un oubli. */
+.dua-tr-lang{display:inline-block;margin-left:8px;padding:1px 6px;border-radius:var(--r-sm);background:var(--sur2);border:1px solid var(--bor);font-size:0.6rem;font-weight:700;letter-spacing:0.04em;color:var(--t3);vertical-align:middle;font-style:normal;}
 .dua-pause{display:block;background:rgba(251,146,60,0.1);border:1px dashed rgba(251,146,60,0.28);border-radius:var(--r-sm);padding:6px 12px;margin:6px 0;font-size:0.75rem;color:#fb923c;font-family:var(--ff-b);font-style:normal;}
 .dua-acts{display:flex;gap:8px;padding:4px 20px 16px;}
 .dua-act{flex:1;padding:10px;border-radius:var(--r-md);background:var(--sur2);border:1px solid var(--bor);font-size:0.72rem;font-weight:700;color:var(--t2);cursor:pointer;text-align:center;transition:all 0.18s;}
@@ -237,6 +244,11 @@
 #transl-ayah-ref{font-family:var(--ff-m);font-size:0.72rem;color:var(--a);font-weight:700;}
 #transl-arabic{font-family:var(--ff-a);font-size:1.2rem;color:var(--a);direction:rtl;text-align:right;line-height:1.9;padding:8px 0;border-bottom:1px solid var(--bor);margin-bottom:10px;}
 #transl-text{font-size:0.85rem;color:var(--t1);line-height:1.75;}
+/* Traductions multilingues : une entrée par langue active */
+.qtr-item + .qtr-item{margin-top:12px;padding-top:12px;border-top:1px solid var(--bor);}
+.qtr-lang{font-size:0.62rem;color:var(--a);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;}
+.qtr-text{font-size:0.85rem;color:var(--t1);line-height:1.75;}
+.qtr-text.qtr-rtl{text-align:right;font-size:0.95rem;line-height:2;}
 .surah-item{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid var(--bor2);cursor:pointer;transition:background 0.15s;gap:12px;}
 .surah-item:last-child{border-bottom:none;}
 .surah-item:active{background:rgba(var(--a-rgb),0.08);}
@@ -858,6 +870,9 @@
   border:1px solid var(--bord);border-radius:50%;background:rgba(var(--a-rgb),0.06);}
 .asma-ar{font-family:'Amiri Quran','Amiri',serif;font-size:1.75rem;line-height:1.4;color:var(--t1);}
 .asma-tr{font-family:var(--ff-s);font-size:1.05rem;font-weight:600;color:var(--t1);margin-top:4px;}
+/* Hors alphabet latin, la police à empattements du projet n'a pas les
+   glyphes voulus : on laisse la police du système rendre l'écriture. */
+.asma-tr-script{font-family:inherit;letter-spacing:0.01em;}
 .asma-fr{font-size:0.9rem;color:var(--a);font-style:italic;margin-top:2px;}
 .asma-desc{font-size:0.9rem;line-height:1.6;color:var(--t2);margin-top:8px;}
 /* Carte cliquable : joue la récitation du nom */
@@ -1022,3 +1037,42 @@
   border-bottom:none;padding:8px 0 0;margin-bottom:20px;}
 .book-read .book-chap-head::after{content:"";display:block;width:46px;height:2px;margin:12px auto 0;
   background:linear-gradient(90deg,transparent,var(--a),transparent);}
+
+/* ── Coran : mode lecture ────────────────────────────────────────────────
+   Le lecteur ordinaire sert a consulter : fond nuit, legende du tajwid,
+   barre d'action, navigation. Pour lire longtemps il faut l'inverse — du
+   papier et rien d'autre.
+
+   On redefinit les jetons sur la page : tout ce qui est dedans (versets,
+   numeros, en-tete, feuilles) suit sans qu'aucune regle de composant soit
+   reecrite. C'est un parti pris assume — un seul aspect, quel que soit le
+   theme choisi ailleurs. */
+#page-quran.reading{
+  --sur:#F1E7D3; --sur2:#E8DCC4; --bor:rgba(74,56,30,0.16); --bor2:rgba(74,56,30,0.08);
+  --t1:#2C2417; --t2:#6A5B42; --t3:#9A8B72;
+  --a:#8A6A2F; --a2:#6E5326; --a-rgb:138,106,47;
+  background:#F7F0E1;
+  /* La couleur du texte est heritee du body, donc calculee avant la
+     redefinition des jetons ci-dessus : sans cette ligne, les versets
+     restaient en clair sur le papier. */
+  color:var(--t1);
+}
+#page-quran.reading #quran-hd{background:transparent;border-bottom-color:var(--bor2);
+  backdrop-filter:none;-webkit-backdrop-filter:none;}
+#page-quran.reading #tajwid-legend{display:none;}
+#page-quran.reading #quran-basmala{text-shadow:none;padding:26px 8px 20px;}
+#page-quran.reading #quran-scroll{padding:0 clamp(16px,7vw,44px) 120px;}
+#page-quran.reading .qv-ayah{font-size:1.62rem;line-height:2.75;}
+#page-quran.reading .qv-num{opacity:.62;}
+#page-quran.reading .qv-ayah.selected{background:rgba(180,140,40,0.20);
+  outline-color:rgba(140,105,30,0.45);}
+/* Le bouton du mode reste lisible sur le papier. */
+#page-quran.reading #btn-quran-read{background:rgba(138,106,47,0.13);color:var(--a2);}
+
+/* ── Série d'invocations : la marque de sélection ───────────────────────
+   Le numero remplace l'icone une fois l'invocation ajoutee : l'ordre de la
+   serie est celui des ajouts, autant qu'il se voie. */
+.serie-mark{font-size:1rem;font-weight:800;color:var(--t3);width:24px;text-align:center;}
+#serie-bd .row.sel .serie-mark{color:var(--a);}
+#serie-bd .row.sel .row-ic{background:rgba(var(--a-rgb),0.16);color:var(--a);
+  font-size:0.85rem;font-weight:800;}

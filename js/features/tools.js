@@ -2,10 +2,18 @@
 import {S,save,emit} from '../core/store.js';
 import {toast,burst,openSheet,closeSheet,confirmDlg} from '../core/ui.js';
 import {playSound,vib} from '../core/audio.js';
+import {t,tf,n as num} from '../lib/i18n.js';
 import {QADA_PRAYERS} from '../data/catalog.js';
-import {toHijri,hijriLabelAr,hijriLabelFr,toArabicNum,HIJRI_MONTHS_FR,HIJRI_MONTHS_AR,HIJRI_SACRED,isRamadan,isWhiteDay,isAshura,isArafat} from '../lib/hijri.js';
+import {toHijri,hijriLabelAr,toArabicNum,HIJRI_MONTHS_FR,HIJRI_MONTHS_AR,HIJRI_SACRED,isRamadan,isWhiteDay,isAshura,isArafat} from '../lib/hijri.js';
 
 const $=id=>document.getElementById(id);
+
+/* Les mois hegiriens sont des noms propres arabes : chaque langue les
+   translittere dans son ecriture, le francais de hijri.js servant de repli.
+   Chiffres bruts volontairement : num() insererait un separateur de milliers
+   dans l'annee (1447 → « 1 447 »). */
+const hijMonth=i=>tf(`hij.${i}`,HIJRI_MONTHS_FR[i]);
+const hijriLabel=h=>`${h.day} ${hijMonth(h.month)} ${h.year}`;
 
 /* ══════════ QADÂ' ══════════ */
 let _qdaMode='jours';
@@ -19,23 +27,23 @@ function renderQada(){
   zone.innerHTML=`
     <div class="qada-hero gc">
       <div class="qada-total">${total}</div>
-      <div class="qada-total-lbl">Prières à rattraper</div>
+      <div class="qada-total-lbl">${t('tools.qadaTotal')}</div>
       <div class="qada-progress-wrap"><div class="qada-progress-bar" style="width:${pct}%"></div></div>
-      <div class="qada-note">${done} rattrapées · ${pct.toFixed(0)}% accompli</div>
+      <div class="qada-note">${t('tools.qadaNote',{done,pct:pct.toFixed(0)})}</div>
     </div>
     <div class="mode-seg">
-      <div class="mode-btn ${_qdaMode==='jours'?'active':''}" id="qdm-j">Jours</div>
-      <div class="mode-btn ${_qdaMode==='ans'?'active':''}" id="qdm-a">Années</div>
+      <div class="mode-btn ${_qdaMode==='jours'?'active':''}" id="qdm-j">${t('tools.days')}</div>
+      <div class="mode-btn ${_qdaMode==='ans'?'active':''}" id="qdm-a">${t('tools.years')}</div>
     </div>
     <div class="qada-input-row">
-      <input class="qada-inp" type="number" id="qda-inp" placeholder="${_qdaMode==='jours'?'Nb de jours':"Nb d'années"}" min="1">
-      <div class="qada-ok" id="qda-apply">Ajouter</div>
+      <input class="qada-inp" type="number" id="qda-inp" placeholder="${_qdaMode==='jours'?t('tools.phDays'):t('tools.phYears')}" min="1">
+      <div class="qada-ok" id="qda-apply">${t('tools.add')}</div>
     </div>
-    <div class="sl" style="margin:4px 0 8px">Prières manquées</div>
+    <div class="sl" style="margin:4px 0 8px">${t('tools.qadaMissed')}</div>
     <div class="qada-grid" id="qada-rows"></div>
     <div class="qada-reset-row">
-      <div class="qada-reset-btn" id="qda-reset-done">Reset rattrapées</div>
-      <div class="qada-reset-btn" id="qda-reset-all">Tout effacer</div>
+      <div class="qada-reset-btn" id="qda-reset-done">${t('tools.qadaResetDone')}</div>
+      <div class="qada-reset-btn" id="qda-reset-all">${t('com.clearAll')}</div>
     </div>
     <div style="height:8px"></div>`;
 
@@ -43,22 +51,22 @@ function renderQada(){
   $('qdm-a').addEventListener('click',()=>{_qdaMode='ans';renderQada();});
   $('qda-apply').addEventListener('click',()=>{
     const raw=parseInt($('qda-inp').value)||0;
-    if(raw<=0){toast('Entrez un nombre valide');return;}
+    if(raw<=0){toast(t('msg.badNumber'));return;}
     const days=_qdaMode==='ans'?Math.round(raw*354.37):raw; // année lunaire
     QADA_PRAYERS.forEach(p=>{S.qada[p.key]=(S.qada[p.key]||0)+days;});
     save();renderQada();emit('stats-changed');
-    toast(`+${days} jours ajoutés`);vib([40,20,40]);
+    toast(t('msg.daysAdded',{n:days}));vib([40,20,40]);
   });
   $('qda-reset-done').addEventListener('click',async()=>{
-    if(!await confirmDlg('Réinitialiser les prières rattrapées ?',{okLabel:'Réinitialiser'}))return;
+    if(!await confirmDlg(t('tools.qadaResetDoneAsk'),{okLabel:t('com.reset')}))return;
     QADA_PRAYERS.forEach(p=>{S.qdone[p.key]=0;});
-    save();renderQada();toast('Rattrapées réinitialisées');
+    save();renderQada();toast(t('msg.madeUpReset'));
   });
   $('qda-reset-all').addEventListener('click',async()=>{
-    if(!await confirmDlg('Effacer toutes les prières manquées ?',{okLabel:'Tout effacer'}))return;
+    if(!await confirmDlg(t('tools.qadaClearAsk'),{okLabel:t('com.clearAll')}))return;
     QADA_PRAYERS.forEach(p=>{S.qada[p.key]=0;S.qdone[p.key]=0;});
     save();renderQada();emit('stats-changed');
-    toast('Tout effacé');vib([60,30,60]);
+    toast(t('msg.allCleared'));vib([60,30,60]);
   });
 
   const rowsEl=$('qada-rows');
@@ -66,7 +74,7 @@ function renderQada(){
     const q=S.qada[p.key]||0,dn=S.qdone[p.key]||0,isDone=q===0;
     const row=document.createElement('div');row.className='qada-row gc';
     row.innerHTML=`<div class="qada-row-icon">${p.icon}</div>
-      <div class="qada-row-name"><div class="qada-row-title">${p.name}${isDone?' <span class="done-badge">✓ À jour</span>':''}</div><div class="qada-row-ar">${p.arabic}</div><div class="qada-done-count">${dn} rattrapées</div></div>
+      <div class="qada-row-name"><div class="qada-row-title">${t(`pr.${p.key}`)}${isDone?` <span class="done-badge">${t('tools.upToDateBadge')}</span>`:''}</div><div class="qada-row-ar">${p.arabic}</div><div class="qada-done-count">${dn} ${t('tools.madeUp')}</div></div>
       <div class="qada-ctrls"><div class="qada-btn minus">−</div><div class="qada-val${isDone?' done':''}">${q}</div><div class="qada-btn plus">+</div></div>`;
     row.querySelector('.qada-btn.plus').addEventListener('click',e=>{
       e.stopPropagation();
@@ -75,11 +83,11 @@ function renderQada(){
     });
     row.querySelector('.qada-btn.minus').addEventListener('click',e=>{
       e.stopPropagation();
-      if((S.qada[p.key]||0)<=0){toast('Déjà à jour !');return;}
+      if((S.qada[p.key]||0)<=0){toast(t('msg.upToDate'));return;}
       S.qada[p.key]--;S.qdone[p.key]=(S.qdone[p.key]||0)+1;
       playSound('drop');vib([30,10,30]);
-      if(S.qada[p.key]===0){toast(`🎉 ${p.name} — À jour !`);burst();}
-      else toast(`✓ ${p.name} — ${S.qada[p.key]} restantes`);
+      if(S.qada[p.key]===0){toast(t('msg.prayerDone',{name:p.name}));burst();}
+      else toast(t('msg.prayerLeft',{name:p.name,n:S.qada[p.key]}));
       save();renderQada();emit('stats-changed');
     });
     rowsEl.appendChild(row);
@@ -92,32 +100,44 @@ function calcZakat(){
   const nisab=parseFloat($('z-nisab').value)||0;
   const wealth=parseFloat($('z-wealth').value)||0;
   const amt=$('zakat-amount'),st=$('zakat-status');
-  if(wealth<=0){amt.textContent=`0 ${_zSym}`;st.textContent='Entrez votre patrimoine';return;}
-  if(wealth<nisab){amt.textContent=`0 ${_zSym}`;st.textContent=`✗ Patrimoine (${wealth.toLocaleString('fr-FR')} ${_zSym}) < Nisab (${nisab.toLocaleString('fr-FR')} ${_zSym}). Pas de Zakat due.`;return;}
-  const due=(wealth*0.025).toLocaleString('fr-FR',{maximumFractionDigits:2});
+  if(wealth<=0){amt.textContent=`0 ${_zSym}`;st.textContent=t('tools.zakatEnter');return;}
+  if(wealth<nisab){
+    amt.textContent=`0 ${_zSym}`;
+    st.textContent=t('tools.zakatBelow',{w:`${num(wealth)} ${_zSym}`,n:`${num(nisab)} ${_zSym}`});
+    return;
+  }
+  const due=Number(wealth*0.025).toLocaleString(S.lang||'fr',{maximumFractionDigits:2});
   amt.textContent=`${due} ${_zSym}`;
-  st.textContent=`✓ Patrimoine ≥ Nisab → Zakat due : 2.5%`;
+  st.textContent=t('tools.zakatDue');
 }
 
 /* ══════════ CONVERTISSEUR HÉGIRIEN ══════════ */
+/* Separe de l'ouverture pour pouvoir etre rejoue au changement de langue :
+   la date du jour et les douze mois sont ecrits en JS. */
+function renderHijriSheet(){
+  const ml=$('hijri-months-list');
+  if(!ml)return;
+  const now=new Date();
+  const h=toHijri(now);
+  $('hconv-hijri-today').textContent=hijriLabelAr(h);
+  $('hconv-greg-today').textContent=now.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+` · ${hijriLabel(h)}`;
+  ml.innerHTML='';
+  HIJRI_MONTHS_FR.forEach((_,i)=>{
+    const sacred=HIJRI_SACRED.includes(i);
+    const div=document.createElement('div');div.className='row';div.style.cursor='default';
+    div.innerHTML=`<div class="row-ic" style="font-family:var(--ff-a);font-size:0.85rem;width:42px;">${HIJRI_MONTHS_AR[i].split(' ')[0]}</div>
+      <div class="row-body"><div class="row-name">${hijMonth(i)}</div><div class="row-sub">${t('tools.monthN',{n:i+1})}${sacred?` · ${t('tools.sacredMonth')}`:''}</div></div>
+      ${sacred?`<div style="font-size:0.62rem;color:var(--a);font-weight:800;padding:2px 7px;border-radius:var(--r-pill);background:var(--a-dim);border:1px solid var(--a-glow);">${t('tools.sacred')}</div>`:''}`;
+    if(i===11)div.style.borderBottom='none';
+    ml.appendChild(div);
+  });
+}
+
 function openHijriSheet(){
   openSheet('sh-hijri',()=>{
+    renderHijriSheet();
     const now=new Date();
-    const h=toHijri(now);
-    $('hconv-hijri-today').textContent=hijriLabelAr(h);
-    $('hconv-greg-today').textContent=now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+` · ${hijriLabelFr(h)}`;
-    const inp=$('hconv-inp');
-    inp.value=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-    const ml=$('hijri-months-list');ml.innerHTML='';
-    HIJRI_MONTHS_FR.forEach((m,i)=>{
-      const sacred=HIJRI_SACRED.includes(i);
-      const div=document.createElement('div');div.className='row';div.style.cursor='default';
-      div.innerHTML=`<div class="row-ic" style="font-family:var(--ff-a);font-size:0.85rem;width:42px;">${HIJRI_MONTHS_AR[i].split(' ')[0]}</div>
-        <div class="row-body"><div class="row-name">${m}</div><div class="row-sub">Mois ${i+1}${sacred?' · Mois sacré':''}</div></div>
-        ${sacred?'<div style="font-size:0.62rem;color:var(--a);font-weight:800;padding:2px 7px;border-radius:var(--r-pill);background:var(--a-dim);border:1px solid var(--a-glow);">Sacré</div>':''}`;
-      if(i===11)div.style.borderBottom='none';
-      ml.appendChild(div);
-    });
+    $('hconv-inp').value=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
   });
 }
 
@@ -125,34 +145,44 @@ function openHijriSheet(){
 let _fastYear=new Date().getFullYear(),_fastMonth=new Date().getMonth();
 let _evtDate=null; // 'YYYY-MM-DD' en cours d'édition
 
+/* Jours de la semaine dans la langue de l'utilisateur, lundi en tete.
+   Intl les fournit pour les 18 langues : aucune cle a maintenir, et les
+   ecritures non latines sont servies correctement. */
+function weekdayLabels(){
+  const f=new Intl.DateTimeFormat(S.lang||'fr',{weekday:'short'});
+  // 2024-01-01 est un lundi : sept jours consecutifs a partir de la donnent
+  // la semaine complete dans le bon ordre.
+  return Array.from({length:7},(_,i)=>f.format(new Date(Date.UTC(2024,0,1+i))));
+}
+
 const dateKey=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
 /* ── Séries d'événements : générer tous les jours blancs / Achoura / Arafat /
    lundis-jeudis entre deux dates, puis exportables en .ics ── */
 let _serieType='blancs';
 const SERIES={
-  blancs:{label:'Jours blancs',evt:'🤍 Jeûne — jour blanc',test:h=>isWhiteDay(h)},
-  achoura:{label:'Achoura',evt:'💙 Jeûne — Achoura (10 Mouharram)',test:h=>isAshura(h)},
-  arafat:{label:'Arafat',evt:'🧡 Jeûne — Arafat (9 Dhou al-Hijja)',test:h=>isArafat(h)},
-  lunjeu:{label:'Lundis & jeudis',evt:'💚 Jeûne — sunna',test:(h,dow)=>dow===1||dow===4},
+  blancs:{lk:'fast.sBlancs', ek:'fast.eBlancs', test:h=>isWhiteDay(h)},
+  achoura:{lk:'fast.sAchoura',ek:'fast.eAchoura',test:h=>isAshura(h)},
+  arafat:{lk:'fast.sArafat', ek:'fast.eArafat', test:h=>isArafat(h)},
+  lunjeu:{lk:'fast.sLunjeu', ek:'fast.eLunjeu', test:(h,dow)=>dow===1||dow===4},
 };
 function generateSeries(){
   const start=$('serie-start').value,end=$('serie-end').value;
-  if(!start||!end){toast('Choisissez les deux dates');return;}
+  if(!start||!end){toast(t('tools.pickDates'));return;}
   const d0=new Date(start+'T12:00:00'),d1=new Date(end+'T12:00:00');
-  if(d1<d0){toast('La date de fin précède le début');return;}
-  if((d1-d0)/86400000>1100){toast('Période limitée à 3 ans maximum');return;}
+  if(d1<d0){toast(t('tools.endBeforeStart'));return;}
+  if((d1-d0)/86400000>1100){toast(t('tools.maxPeriod'));return;}
   const serie=SERIES[_serieType];
   let added=0;
   for(let d=new Date(d0);d<=d1;d.setDate(d.getDate()+1)){
     if(!serie.test(toHijri(d),d.getDay()))continue;
     const key=dateKey(d.getFullYear(),d.getMonth(),d.getDate());
     if(S.calEvents[key])continue; // ne pas écraser une note existante
-    S.calEvents[key]=serie.evt;
+    S.calEvents[key]=t(serie.ek);
     added++;
   }
   save();vib([40,20,40]);
-  toast(added?`✦ ${added} événement(s) « ${serie.label} » ajoutés`:'Aucun jour correspondant (ou déjà notés)');
+  toast(added?t('tools.evtAdded',{n:added,label:t(serie.lk)}):t('tools.evtNone'));
   renderFastingCalendar();
 }
 
@@ -180,15 +210,15 @@ function exportICS(){
   a.download='sakina-evenements.ics';
   a.click();
   URL.revokeObjectURL(a.href);
-  toast('📤 Calendrier exporté — ouvrez le fichier pour l\'importer');
+  toast(t('tools.icsExported'));
 }
 
 function openEventEditor(y,m,d){
   _evtDate=dateKey(y,m,d);
   const dt=new Date(y,m,d);
-  $('cal-event-title').textContent='Événement';
-  $('cal-event-date').textContent=dt.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-  $('cal-event-hijri').textContent=hijriLabelFr(toHijri(dt));
+  $('cal-event-title').textContent=t('tools.event');
+  $('cal-event-date').textContent=dt.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  $('cal-event-hijri').textContent=hijriLabel(toHijri(dt));
   $('cal-event-text').value=S.calEvents[_evtDate]||'';
   $('btn-del-cal-event').style.display=S.calEvents[_evtDate]?'block':'none';
   openSheet('sh-cal-event');
@@ -201,7 +231,7 @@ function renderFastingCalendar(){
   const first=new Date(y,m,1),last=new Date(y,m+1,0);
   const days=last.getDate();
   const startDow=(first.getDay()+6)%7; // Lundi=0
-  const mName=first.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  const mName=first.toLocaleDateString(S.lang||'fr',{month:'long',year:'numeric'});
 
   let fastCount=0,whiteCount=0,ramCount=0;
   const dayInfo=[];
@@ -216,18 +246,18 @@ function renderFastingCalendar(){
     if(info.ash||info.araf)fastCount++;
   }
 
-  let html=`<details class="help-fold"><summary class="help-fold-sum">💡 Comment ça marche</summary><div class="help-fold-bd">Les couleurs indiquent les jours de jeûne recommandés. <strong>Appuyez sur n'importe quel jour</strong> pour y écrire un événement ou une note — il sera marqué d'un point rouge. En bas : générez des séries entières (jours blancs, Achoura…) et exportez tout vers le calendrier de votre téléphone.</div></details>
+  let html=`<details class="help-fold"><summary class="help-fold-sum">${t('fast.how')}</summary><div class="help-fold-bd">${t('fast.howBody')}</div></details>
   <div class="fasting-stats">
-    <div class="fs-card"><div class="fs-val">${ramCount||'—'}</div><div class="fs-lbl">Ramadan</div></div>
-    <div class="fs-card"><div class="fs-val">${whiteCount}</div><div class="fs-lbl">Jours blancs</div></div>
-    <div class="fs-card"><div class="fs-val">${fastCount}</div><div class="fs-lbl">Recommandés</div></div>
+    <div class="fs-card"><div class="fs-val">${ramCount||'—'}</div><div class="fs-lbl">${t('fast.ramadan')}</div></div>
+    <div class="fs-card"><div class="fs-val">${whiteCount}</div><div class="fs-lbl">${t('fast.whiteDays')}</div></div>
+    <div class="fs-card"><div class="fs-val">${fastCount}</div><div class="fs-lbl">${t('fast.recommended')}</div></div>
   </div>
   <div id="fasting-cal-header">
     <div class="fasting-nav" id="fast-prev">&#8249;</div>
     <div id="fasting-month-title">${mName.charAt(0).toUpperCase()+mName.slice(1)}</div>
     <div class="fasting-nav" id="fast-next">&#8250;</div>
   </div>
-  <div class="fasting-grid-header">${['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].map(d=>`<div class="fasting-day-label">${d}</div>`).join('')}</div>
+  <div class="fasting-grid-header">${weekdayLabels().map(d=>`<div class="fasting-day-label">${d}</div>`).join('')}</div>
   <div class="fasting-grid">`;
   for(let i=0;i<startDow;i++)html+='<div class="fc-day empty"></div>';
   dayInfo.forEach(info=>{
@@ -244,30 +274,30 @@ function renderFastingCalendar(){
     else if(isThu)cls+=' thursday';
     if(isWE)cls+=' weekend';
     const dot=(info.ram||info.white||isMon||isThu||info.ash||info.araf)?'<div class="fc-dot"></div>':'';
-    html+=`<div class="${cls}" data-day="${info.d}" title="${hijriLabelFr(info.h)}">${hasEvt?'<div class="fc-evt">✦</div>':''}<span>${info.d}</span><span class="fc-hijri">${toArabicNum(info.h.day)}</span>${dot}</div>`;
+    html+=`<div class="${cls}" data-day="${info.d}" title="${hijriLabel(info.h)}">${hasEvt?'<div class="fc-evt">✦</div>':''}<span>${info.d}</span><span class="fc-hijri">${toArabicNum(info.h.day)}</span>${dot}</div>`;
   });
   html+=`</div>
-  <div style="font-size:0.68rem;color:var(--t3);text-align:center;margin-top:8px;">Appuyez sur un jour pour ajouter un événement ou une note ✦</div>`;
+  <div style="font-size:0.68rem;color:var(--t3);text-align:center;margin-top:8px;">${t('fast.tapDay')}</div>`;
 
   // Ajout en série (jours blancs, Achoura… entre deux dates)
   const today=new Date();
   const in1y=new Date();in1y.setMonth(in1y.getMonth()+1); // 1 mois par défaut
   const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-  html+=`<div class="sl" style="margin:16px 0 8px;">Ajouter une série de jeûnes</div>
+  html+=`<div class="sl" style="margin:16px 0 8px;">${t('fast.addSeries')}</div>
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="serie-types">
-    ${Object.entries(SERIES).map(([k,v])=>`<span class="chip${k===_serieType?' sel':''}" data-serie="${k}">${v.label}</span>`).join('')}
+    ${Object.entries(SERIES).map(([k,v])=>`<span class="chip${k===_serieType?' sel':''}" data-serie="${k}">${t(v.lk)}</span>`).join('')}
   </div>
   <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;">
     <input class="inp" type="date" id="serie-start" value="${iso(today)}" style="flex:1;min-width:0;">
     <span style="font-size:0.7rem;color:var(--t3);flex-shrink:0;">→</span>
     <input class="inp" type="date" id="serie-end" value="${iso(in1y)}" style="flex:1;min-width:0;">
   </div>
-  <div class="qada-ok" id="btn-gen-series" style="text-align:center;">✦ Générer la série</div>`;
+  <div class="qada-ok" id="btn-gen-series" style="text-align:center;">${t('fast.generate')}</div>`;
 
   const totalEvents=Object.keys(S.calEvents).length;
   if(totalEvents){
-    html+=`<div class="qada-ok" id="btn-export-ics" style="text-align:center;margin-top:12px;background:var(--sur3);color:var(--a);border:1px solid var(--a-glow);box-shadow:none;">📤 Exporter vers mon calendrier (.ics)</div>
-    <div style="font-size:0.66rem;color:var(--t3);text-align:center;margin-top:6px;">${totalEvents} événement(s) → fichier compatible iPhone, Android, Google Agenda…</div>`;
+    html+=`<div class="qada-ok" id="btn-export-ics" style="text-align:center;margin-top:12px;background:var(--sur3);color:var(--a);border:1px solid var(--a-glow);box-shadow:none;">${t('fast.exportIcs')}</div>
+    <div style="font-size:0.66rem;color:var(--t3);text-align:center;margin-top:6px;">${t('fast.exportSub',{n:totalEvents})}</div>`;
   }
 
   // Événements du mois affiché
@@ -275,7 +305,7 @@ function renderFastingCalendar(){
     .filter(([k])=>k.startsWith(`${y}-${String(m+1).padStart(2,'0')}-`))
     .sort(([a],[b])=>a.localeCompare(b));
   if(monthEvents.length){
-    html+=`<div class="sl" style="margin:14px 0 6px;">Événements du mois</div><div class="cal-events">`;
+    html+=`<div class="sl" style="margin:14px 0 6px;">${t('fast.monthEvents')}</div><div class="cal-events">`;
     monthEvents.forEach(([k,txt])=>{
       const d=parseInt(k.slice(8));
       html+=`<div class="cal-event-row" data-day="${d}"><div class="cal-event-day">${d}</div><div class="cal-event-txt">${txt.replace(/</g,'&lt;')}</div></div>`;
@@ -284,14 +314,14 @@ function renderFastingCalendar(){
   }
 
   html+=`<div class="fasting-legend">
-    <div class="fl-item"><div class="fl-dot" style="background:rgba(201,169,110,0.5)"></div>Ramadan</div>
-    <div class="fl-item"><div class="fl-dot" style="background:rgba(212,195,140,0.7)"></div>Jours blancs 13-14-15</div>
-    <div class="fl-item"><div class="fl-dot" style="background:rgba(22,163,74,0.5)"></div>Lundi / Jeudi</div>
-    <div class="fl-item"><div class="fl-dot" style="background:rgba(37,99,235,0.5)"></div>Achoura (10 Mouharram)</div>
-    <div class="fl-item"><div class="fl-dot" style="background:rgba(194,65,12,0.5)"></div>Arafat (9 Dhou al-Hijja)</div>
+    <div class="fl-item"><div class="fl-dot" style="background:rgba(201,169,110,0.5)"></div>${t('fast.ramadan')}</div>
+    <div class="fl-item"><div class="fl-dot" style="background:rgba(212,195,140,0.7)"></div>${t('fast.legWhite')}</div>
+    <div class="fl-item"><div class="fl-dot" style="background:rgba(22,163,74,0.5)"></div>${t('fast.legMonThu')}</div>
+    <div class="fl-item"><div class="fl-dot" style="background:rgba(37,99,235,0.5)"></div>${t('fast.legAshura')}</div>
+    <div class="fl-item"><div class="fl-dot" style="background:rgba(194,65,12,0.5)"></div>${t('fast.legArafat')}</div>
   </div>
   <div style="font-size:0.7rem;color:var(--t3);margin-top:12px;line-height:1.6;padding:10px;background:var(--sur2);border-radius:var(--r-md);border:1px solid var(--bor2);">
-    <strong style="color:var(--t2)">Note :</strong> Dates indicatives (calendrier tabulaire), peuvent varier selon l'observation de la lune. Consultez votre mosquée.
+    ${t('fast.note')}
   </div>`;
   bd.innerHTML=html;
   $('fast-prev').addEventListener('click',()=>{_fastMonth--;if(_fastMonth<0){_fastMonth=11;_fastYear--;}renderFastingCalendar();});
@@ -312,6 +342,16 @@ function renderFastingCalendar(){
 }
 
 /* ══════════ INIT ══════════ */
+/* Changement de langue : qadâ' et calendrier du jeûne sont bâtis en JS, donc
+   invisibles pour applyI18n. On ne les reconstruit que s'ils ont déjà servi —
+   inutile de peupler une zone que l'utilisateur n'a jamais ouverte. */
+export function refreshTools(){
+  if($('qada-zone')?.children.length)renderQada();
+  if($('fasting-bd')?.children.length)renderFastingCalendar();
+  if($('hijri-months-list')?.children.length)renderHijriSheet();
+  if($('z-wealth')?.value)calcZakat();
+}
+
 export function initTools(){
   // Qadâ'
   $('btn-open-qada').addEventListener('click',()=>openSheet('sh-qada',renderQada));
@@ -353,7 +393,7 @@ export function initTools(){
     const d=new Date(val+'T12:00:00');
     const h=toHijri(d);
     $('hconv-result-hijri').textContent=hijriLabelAr(h);
-    $('hconv-result-greg').textContent=`${d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})} · ${hijriLabelFr(h)}`;
+    $('hconv-result-greg').textContent=`${d.toLocaleDateString(S.lang||'fr',{weekday:'long',day:'numeric',month:'long',year:'numeric'})} · ${hijriLabel(h)}`;
     $('hconv-result').style.display='block';
   });
 
@@ -367,7 +407,7 @@ export function initTools(){
   $('btn-save-cal-event').addEventListener('click',()=>{
     if(!_evtDate)return;
     const txt=$('cal-event-text').value.trim();
-    if(txt){S.calEvents[_evtDate]=txt;toast('✦ Événement enregistré');}
+    if(txt){S.calEvents[_evtDate]=txt;toast(t('tools.evtSaved'));}
     else{delete S.calEvents[_evtDate];}
     save();vib([30,15,30]);
     openSheet('sh-fasting',renderFastingCalendar);
@@ -375,7 +415,7 @@ export function initTools(){
   $('btn-del-cal-event').addEventListener('click',()=>{
     if(!_evtDate)return;
     delete S.calEvents[_evtDate];
-    save();toast('Événement supprimé');vib(30);
+    save();toast(t('tools.evtDeleted'));vib(30);
     openSheet('sh-fasting',renderFastingCalendar);
   });
 }

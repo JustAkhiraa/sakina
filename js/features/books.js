@@ -12,97 +12,61 @@
    lecture (comportemental), avec une présentation soignée (viscéral). */
 import {openSheet} from '../core/ui.js';
 import {vib} from '../core/audio.js';
+import {t,tf} from '../lib/i18n.js';
+import {S} from '../core/store.js';
+
+import {BOOKS} from '../data/books.js';
+import {SURAHS} from '../data/surahs.js';
+import {SURAH_NAMES} from '../data/surah-names.js';
+import {PHONETICS} from '../data/phonetics.js';
+import {versesText,preloadTr} from './quran.js';
+/* Titres de chapitre et intertitres de rubrique, traduits. Indexes par un
+   slug de leur contenu francais : si le titre change, la cle change avec
+   lui plutot que de coller une traduction perimee sur un autre chapitre.
+   Le corps du chapitre, lui, reste en francais — c'est un autre chantier. */
+const slug=x=>(x||'').normalize('NFKD').replace(/[̀-ͯ]/g,'')
+  .replace(/[^A-Za-z0-9]+/g,'-').replace(/^-+|-+$/g,'').toLowerCase()
+  .replace(/-{2,}/g,'-').slice(0,34);
+const chapTitle=c=>tf(`bkc.${slug(c.title)}`,c.title);
+const chapCat  =c=>tf(`bkg.${slug(c.cat)}`,c.cat);
+
+/* La fiche d'un livre — titre, auteur, chiffres, presentation — etait la
+   seule partie de la bibliotheque restee en francais : la liste, elle,
+   etait traduite depuis longtemps. On reutilise ses cles pour le titre et
+   on en ajoute pour le reste. Le corps des chapitres demeure francais. */
+/* Un livre absent de cette table garde son titre francais dans toutes les
+   langues : c'est ce qui est arrive a « Comment faire la Salât » et
+   « Faire les ablutions », ajoutes a BOOKS mais pas ici, alors que leurs
+   cles existaient. La table est verifiee par check.py — il n'y a plus
+   moyen d'ajouter un livre en oubliant sa cle. */
+const BOOK_I18N={riyad:'books.riyad',citadelle:'books.citadelle',asma:'books.asma',
+                 fruits:'books.foods',miracles:'books.miracles',
+                 salat:'books.salatGuide',wudu:'books.wudu'};
+const bookTitle =b=>tf(BOOK_I18N[b.key]||'',b.title);
+const bookAuthor=b=>tf(`bk.${b.key}.a`,b.author);
+const bookDesc  =(b,i)=>tf(`bk.${b.key}.d${i+1}`,b.desc[i]);
+const statLabel =l=>tf(`bks.${slug(l)}`,l);
+/* Note de source et invitation de recherche : deux textes du catalogue qui
+   partaient bruts a l'ecran. Le premier explique d'ou vient le livre, le
+   second est le nom accessible du champ de recherche — un lecteur japonais
+   lisait « Chercher un aliment (datte, miel, nigelle…) ». */
+const bookSrcNote =(b,i,n)=>tf(`bkn.${b.key}.${i+1}`,n);
+const bookSearchPh=b=>b.searchPh?tf(`bkp.${b.key}`,b.searchPh):t('books.searchPh');
+/* Certaines valeurs sont des mots et non des nombres — « Intégral »,
+   « Pas à pas ». Un chiffre reste tel quel, un mot passe par i18n. */
+const statVal =v=>/^[\d+\s.,·—-]+$/.test(v)?v:tf(`bkv.${slug(v)}`,v);
+
+
 
 const $=id=>document.getElementById(id);
 
-const BOOKS={
-  riyad:{
-    key:'riyad',icon:'📗',type:'chapters',
-    title:'Riyad as-Salihin',titleAr:'رياض الصالحين',
-    author:"Imam an-Nawawi · traduction Salaheddine Kechrid",
-    stats:[{val:'373',label:'Chapitres'},{val:'1896',label:'Hadiths'},{val:'VIIIᵉ s.',label:'Hégire'}],
-    desc:[
-      "« Les Jardins des Vertueux » est un recueil de hadiths authentiques compilé au XIIIᵉ siècle par l'imam Yahya ibn Sharaf an-Nawawi, l'un des plus grands savants du hadith et du fiqh shafiite de l'histoire musulmane.",
-      "Organisé en 373 chapitres thématiques — sincérité, patience, bonté envers les parents, adab du quotidien, repentir — c'est l'un des recueils les plus lus au monde pour ancrer la foi dans le comportement de tous les jours.",
-    ],
-    src:'books/riyad.json',
-  },
-  citadelle:{
-    key:'citadelle',icon:'📘',type:'pages',
-    title:'La Citadelle du Musulman',titleAr:'حصن المسلم',
-    author:"Sa'id ibn Ali ibn Wahf Al-Qahtani",
-    stats:[{val:'146',label:'Sections'},{val:'Intégral',label:'Édition'}],
-    desc:[
-      "« Hisn al-Muslim » rassemble des invocations authentiques tirées du Coran et de la Sunna pour chaque instant du quotidien : réveil, repas, voyage, épreuves — afin que le rappel d'Allah accompagne le musulman à chaque moment.",
-      "Une lecture continue et soignée, du début à la fin, pensée pour un confort optimal — arabe, translittération et traduction mis en valeur.",
-    ],
-    textSrc:'books/citadelle.json',
-  },
-  asma:{
-    key:'asma',icon:'✨',type:'names',
-    title:"Les 99 Noms d'Allah",titleAr:'أسماء الله الحسنى',
-    author:"Al-Asma' al-Husna — tradition sunnite classique",
-    stats:[{val:'99',label:'Noms'},{val:'Ar → Fr',label:'Traduction'}],
-    desc:[
-      "« Les Plus Beaux Noms » d'Allah — 99 noms rapportés par la tradition, chacun révélant une facette de Sa majesté, de Sa miséricorde et de Sa perfection.",
-      "« À Allah appartiennent les plus beaux noms. Invoquez-Le par ces noms » (Coran 7:180). Cette lecture est un moyen d'accroître la connaissance d'Allah et l'attachement à Lui.",
-    ],
-    src:'books/asma.json',
-  },
-  fruits:{
-    key:'fruits',icon:'🌿',type:'chapters',md:true,
-    title:'Les Aliments dans le Coran et la Sunna',titleAr:'الأطعمة في القرآن والسنة',
-    author:'Guide original — versets, hadiths et recherche nutritionnelle actuelle',
-    searchPh:'Chercher un aliment (datte, miel, nigelle…)',
-    stats:[{val:'12',label:'Aliments'},{val:'Coran',label:'Versets exacts'},{val:'60+',label:'Sources'}],
-    desc:[
-      "Datte, raisin, figue, olive, grenade, banane, jujube, miel — les aliments que le Coran nomme. Puis les remèdes transmis par la Sunna : nigelle, orge, vinaigre, eau de Zamzam.",
-      "Pour chacun : les versets et hadiths cités intégralement avec leurs références, puis ce que dit la recherche — méta-analyses, essais randomisés, revues Cochrane — avec ses résultats comme ses limites. Toutes les sources sont rassemblées en fin de lecture.",
-    ],
-    src:'books/fruits.json',
-  },
-  salat:{
-    key:'salat',icon:'🧎',type:'guide',
-    title:'Comment faire la Salât',titleAr:'الصلاة',
-    author:'Guide pratique — apprentissage général',
-    stats:[{val:'5',label:'Prières'},{val:'Pas à pas',label:'Méthode'},{val:'Claire',label:'Lecture'}],
-    desc:[
-      "Une fiche d'apprentissage pour comprendre l'ordre général de la prière : intention, takbîr, récitation, inclinaison, prosternation, tashahhud et salâm.",
-      "Selon les écoles et les mosquées, certains détails peuvent varier. Gardez ce guide comme base de révision et suivez l'enseignement de votre imam pour les points précis.",
-    ],
-    sections:[
-      {icon:'🧭',title:'Avant de commencer',points:['Être en état de pureté avec les ablutions.','Prier dans un endroit propre, couvert correctement.','Se tourner vers la Qibla et savoir quelle prière on accomplit.','L’intention se fait dans le cœur, sans obligation de la prononcer.']},
-      {icon:'1',title:'Entrée en prière',points:['Lever les mains puis dire : Allahu Akbar.','Poser les mains et commencer avec calme.','Réciter Al-Fâtiha, puis une sourate ou quelques versets dans les deux premières unités.']},
-      {icon:'2',title:'Rukûʿ — inclinaison',points:['Dire Allahu Akbar puis s’incliner, dos posé et mains sur les genoux.','Dire plusieurs fois : Subhâna Rabbiyal ʿAzîm.','Se relever en disant : Samiʿa Allahu liman hamidah, puis Rabbana wa laka-l-hamd.']},
-      {icon:'3',title:'Sujûd — prosternation',points:['Dire Allahu Akbar puis se prosterner.','Poser le front, le nez, les mains, les genoux et les pieds.','Dire plusieurs fois : Subhâna Rabbiyal Aʿlâ.','S’asseoir brièvement, puis faire une deuxième prosternation.']},
-      {icon:'4',title:'Tashahhud & salâm',points:['À la fin, s’asseoir et réciter le tashahhud.','Ajouter la prière sur le Prophète ﷺ.','Clore par le salâm à droite puis à gauche : As-salâmu ʿalaykum wa rahmatullah.']},
-      {icon:'🧩',title:'Nombre d’unités',points:['Fajr : 2 rakʿât.','Dhuhr : 4 rakʿât.','ʿAsr : 4 rakʿât.','Maghrib : 3 rakʿât.','ʿIshâ : 4 rakʿât.']},
-    ],
-  },
-  wudu:{
-    key:'wudu',icon:'💧',type:'guide',
-    title:'Faire les ablutions',titleAr:'الوضوء',
-    author:'Wudû’ — purification avant la prière',
-    stats:[{val:'7',label:'Étapes'},{val:'Avant',label:'Salât'},{val:'Simple',label:'Mémo'}],
-    desc:[
-      "Les ablutions préparent à la prière et installent une intention de pureté, de concentration et de respect avant de se présenter devant Allah.",
-      "Cette fiche donne l'ordre pratique le plus courant. Pour les détails de votre école juridique, suivez l'avis enseigné par votre mosquée ou professeur.",
-    ],
-    sections:[
-      {icon:'🤲',title:'Intention & basmala',points:['Avoir l’intention de faire les ablutions pour la prière.','Dire : Bismillah.','Éviter le gaspillage d’eau, même si l’eau est disponible.']},
-      {icon:'1',title:'Mains',points:['Laver les deux mains jusqu’aux poignets.','Faire passer l’eau entre les doigts.','Répéter jusqu’à trois fois.']},
-      {icon:'2',title:'Bouche & nez',points:['Rincer la bouche.','Inspirer légèrement de l’eau dans le nez puis l’expulser.','Faire doucement si l’on jeûne.']},
-      {icon:'3',title:'Visage',points:['Laver tout le visage : du haut du front au menton, et d’une oreille à l’autre.','Veiller aux contours du nez, de la barbe et du menton.']},
-      {icon:'4',title:'Bras',points:['Laver le bras droit jusqu’au coude inclus.','Puis laver le bras gauche jusqu’au coude inclus.','Ne pas oublier l’arrière des coudes.']},
-      {icon:'5',title:'Tête & oreilles',points:['Passer les mains mouillées sur la tête.','Essuyer les oreilles avec les doigts humides.','Un seul passage suffit dans la pratique courante.']},
-      {icon:'6',title:'Pieds',points:['Laver le pied droit jusqu’à la cheville incluse, puis le gauche.','Passer entre les orteils.','Vérifier que le talon est bien mouillé.']},
-      {icon:'✨',title:'Après les ablutions',points:['Dire l’attestation de foi.','Garder le calme et partir vers la prière sans se précipiter.','Si les ablutions sont annulées, il faut les refaire avant de prier.']},
-    ],
-  },
-};
 
 let _current=null;   // clé du livre ouvert
-const _chaptersCache={};  // JSON des livres « chapitres », en cache par clé
+/* JSON des livres « chapitres ». Indexe par livre+langue pour les guides
+   traduisibles : sans cela, une bascule de langue reservirait la version
+   deja chargee. */
+const _chaptersCache={};
+const cacheKeyFor=key=>BOOKS[key].translatable?`${key}:${S.lang||'fr'}`:key;
 let _view='intro';   // intro | list | chapter | names | guide | pages
 
 /* ── En-tête commun ── */
@@ -110,25 +74,32 @@ function setHeader({title,back=false,search=false,searchPh=''}){
   $('book-title').textContent=title;
   $('btn-book-back').style.display=back?'flex':'none';
   $('book-search-wrap').style.display=search?'block':'none';
-  if(search&&searchPh)$('book-search').placeholder=searchPh;
+  /* Le champ porte data-i18n-ph : applyI18n y pose le placeholder generique
+     et en derive le nom accessible. Un livre qui propose sa propre invitation
+     doit refaire les deux, sinon un lecteur d'ecran annonce « chercher un
+     chapitre » au-dessus d'un champ qui dit « chercher un aliment ». */
+  if(search&&searchPh){
+    const el=$('book-search');
+    el.placeholder=searchPh;
+    el.setAttribute('aria-label',searchPh);
+  }
 }
 
 /* ── Écran d'introduction (commun à tous les livres) ── */
 function showIntro(){
   _view='intro';
   const b=BOOKS[_current];
-  setHeader({title:'Bibliothèque',back:true});
+  setHeader({title:t('nav.library'),back:true});
   const bd=$('book-bd');
   bd.innerHTML=`<div class="book-intro">
     <div class="book-intro-badge">${b.icon}</div>
-    <div class="book-intro-title">${b.title}</div>
+    <div class="book-intro-title">${bookTitle(b)}</div>
     ${b.titleAr?`<div class="book-intro-ar">${b.titleAr}</div>`:''}
-    <div class="book-intro-author">${b.author}</div>
-    <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${s.val}</b><span>${s.label}</span></div>`).join('')}</div>
-    ${b.desc.map(p=>`<p class="book-intro-desc">${p}</p>`).join('')}
-    <div class="book-intro-cta" id="book-start">✦ Commencer la lecture</div>
-    <div class="book-intro-src">${b.key==='riyad'?'Texte intégral, reproduit tel quel — édition riyad.fr.tc':b.key==='fruits'?"Versets et hadiths cités intégralement ; recherche et rédaction originales — sources en fin de lecture":b.type==='names'?"D'après la tradition classique — références coraniques et prophétiques":'Pages originales du livre imprimé'}</div>
-    ${b.key==='asma'?'<div class="book-intro-src">Invocation &amp; introspection de chaque nom : « Les Essentiels — Les 99 Noms d\'Allah » de Souad El Mansouri, éditions Al Bouraq</div>':''}
+    <div class="book-intro-author">${bookAuthor(b)}</div>
+    <div class="book-intro-stats">${b.stats.map(s=>`<div class="book-intro-stat"><b>${statVal(s.val)}</b><span>${statLabel(s.label)}</span></div>`).join('')}</div>
+    ${b.desc.map((p,i)=>`<p class="book-intro-desc">${bookDesc(b,i)}</p>`).join('')}
+    <div class="book-intro-cta" id="book-start">${t('books.start')}</div>
+    ${(b.srcNotes||[]).map((n,i)=>`<div class="book-intro-src">${bookSrcNote(b,i,n)}</div>`).join('')}
   </div>`;
   $('book-start').addEventListener('click',()=>{
     vib(16);
@@ -142,12 +113,37 @@ function showIntro(){
 
 /* ── Livres « chapitres » (Riyad as-Salihin, Les Aliments…) ──
    `_chaptersCache[key]` met en cache le JSON chargé, `key` = BOOKS[_current].key. */
+/* Les guides que nous avons ecrits peuvent exister traduits, un fichier par
+   langue : books/fruits.en.json a cote de content/books/fruits.json. On tente la
+   langue courante, puis l'anglais comme pivot, puis le francais d'origine.
+   Le cache est indexe par couple livre+langue pour ne pas servir la version
+   d'une autre langue apres une bascule. */
+function chapterSources(key){
+  const src=BOOKS[key].src;
+  if(!BOOKS[key].translatable)return[src];
+  const lang=S.lang||'fr';
+  const localized=p=>src.replace(/\.json$/,`.${p}.json`);
+  const tries=[];
+  if(lang!=='fr')tries.push(localized(lang));
+  if(lang!=='fr'&&lang!=='en')tries.push(localized('en'));
+  tries.push(src);
+  return tries;
+}
+
 async function loadChapters(key){
-  if(_chaptersCache[key])return _chaptersCache[key];
-  const res=await fetch(BOOKS[key].src);
-  if(!res.ok)throw new Error('load');
-  const data=await res.json();
-  _chaptersCache[key]=data;
+  const cacheKey=cacheKeyFor(key);
+  if(_chaptersCache[cacheKey])return _chaptersCache[cacheKey];
+  let data=null;
+  for(const url of chapterSources(key)){
+    try{
+      const res=await fetch(url);
+      if(!res.ok)continue;          // 404 : cette langue n'est pas traduite
+      data=await res.json();
+      break;
+    }catch{/* fichier absent ou JSON casse : on tente le repli suivant */}
+  }
+  if(!data)throw new Error('load');
+  _chaptersCache[cacheKey]=data;
   return data;
 }
 
@@ -155,11 +151,11 @@ async function openList(filter=''){
   _view='list';
   const key=_current;
   const b=BOOKS[key];
-  setHeader({title:b.title,back:true,search:true,searchPh:b.searchPh||'Chercher un chapitre…'});
-  if(!_chaptersCache[key]){
-    $('book-bd').innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement du livre…</div>';
+  setHeader({title:bookTitle(b),back:true,search:true,searchPh:bookSearchPh(b)});
+  if(!_chaptersCache[cacheKeyFor(key)]){
+    $('book-bd').innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
     try{await loadChapters(key);}
-    catch{$('book-bd').innerHTML='<div class="places-empty">Connexion requise pour le premier chargement du livre.</div>';return;}
+    catch{$('book-bd').innerHTML=`<div class="places-empty">${t('books.needNet')}</div>`;return;}
   }
   renderList(filter);
   if(!filter)$('book-search').focus({preventScroll:true});
@@ -167,11 +163,11 @@ async function openList(filter=''){
 
 function renderList(filter=''){
   const bd=$('book-bd');bd.innerHTML='';
-  const data=_chaptersCache[_current];
+  const data=_chaptersCache[cacheKeyFor(_current)];
   const f=filter.trim().toLowerCase();
-  const items=data.chapters.filter(c=>!f||c.title.toLowerCase().includes(f)||String(c.n)===f);
+  const items=data.chapters.filter(c=>!f||c.title.toLowerCase().includes(f)||chapTitle(c).toLowerCase().includes(f)||String(c.n)===f);
   if(!items.length){
-    bd.innerHTML='<div class="places-empty">Aucun chapitre trouvé.</div>';
+    bd.innerHTML=`<div class="places-empty">${t('books.noChapter')}</div>`;
     return;
   }
   // Les livres dont les chapitres portent un champ `cat` sont regroupés par
@@ -182,12 +178,12 @@ function renderList(filter=''){
       lastCat=c.cat;
       const h=document.createElement('div');
       h.className='book-cat-head';
-      h.textContent=c.cat;
+      h.textContent=chapCat(c);
       bd.appendChild(h);
     }
     const div=document.createElement('div');
     div.className='book-chap-row';
-    div.innerHTML=`<div class="book-chap-n">${c.n}</div><div class="book-chap-t">${c.title}</div>
+    div.innerHTML=`<div class="book-chap-n">${c.n}</div><div class="book-chap-t">${chapTitle(c)}</div>
       <svg class="row-chev" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
     div.addEventListener('click',()=>showChapter(c.n));
     bd.appendChild(div);
@@ -223,7 +219,7 @@ function formatChapter(text){
 
 function showChapter(n){
   const key=_current;
-  const data=_chaptersCache[key];
+  const data=_chaptersCache[cacheKeyFor(key)];
   const c=data.chapters.find(x=>x.n===n);
   if(!c)return;
   _view='chapter';
@@ -233,12 +229,12 @@ function showChapter(n){
   const bd=$('book-bd');
   const body=BOOKS[key].md?renderCitadelleMarkdown(c.text):formatChapter(c.text);
   bd.innerHTML=`<div class="book-chapter book-read${BOOKS[key].md?' book-md':''}">
-      <div class="book-chap-head">${c.n}. ${c.title}</div>
+      <div class="book-chap-head">${c.n}. ${chapTitle(c)}</div>
       ${body}
       <div class="book-src">${data.author} · ${data.source}</div>
       <div class="book-chap-nav">
-        <div class="book-chap-nav-btn${prev?'':' disabled'}" id="book-prev-chap">‹ Chapitre précédent</div>
-        <div class="book-chap-nav-btn${next?'':' disabled'}" id="book-next-chap">Chapitre suivant ›</div>
+        <div class="book-chap-nav-btn${prev?'':' disabled'}" id="book-prev-chap">${t('books.prevChap')}</div>
+        <div class="book-chap-nav-btn${next?'':' disabled'}" id="book-next-chap">${t('books.nextChap')}</div>
       </div>
     </div>`;
   bd.scrollTop=0;
@@ -262,11 +258,11 @@ async function loadCitadelleText(){
 async function openPages(){
   _view='pages';
   const b=BOOKS.citadelle;
-  setHeader({title:b.title,back:true});
+  setHeader({title:bookTitle(b),back:true});
   const bd=$('book-bd');
-  bd.innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement du livre…</div>';
+  bd.innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
   try{await loadCitadelleText();}
-  catch{bd.innerHTML='<div class="places-empty">Connexion requise pour le premier chargement du texte.</div>';return;}
+  catch{bd.innerHTML=`<div class="places-empty">${t('books.needNet')}</div>`;return;}
   // Chaque page est rendue individuellement (ses notes de bas de page restent
   // près de leur texte) puis tout est enchaîné en un seul flux de lecture.
   const html=_citadelleText.pages
@@ -274,7 +270,7 @@ async function openPages(){
     .map(p=>renderCitadelleMarkdown(p.text))
     .join('');
   bd.innerHTML=`<div class="book-chapter book-md book-read">${html}
-    <div class="book-src">Hisn al-Muslim — La Citadelle du Musulman · Sa'îd Ibn 'Alî Ibn Wahf Al-Qahtânî · texte intégral</div></div>`;
+    <div class="book-src">${t('books.citadelleSrc')}</div></div>`;
   foldToc(bd);
   bd.scrollTop=0;
 }
@@ -300,7 +296,7 @@ function foldToc(bd){
   const first=rows[0],last=rows[rows.length-1];
   const det=document.createElement('details');
   det.className='book-toc-fold';
-  det.innerHTML=`<summary class="book-toc-sum">Table des matières<span class="book-toc-count">${rows.length} sections</span></summary>`;
+  det.innerHTML=`<summary class="book-toc-sum">${t('books.toc')}<span class="book-toc-count">${rows.length} ${t('books.sections')}</span></summary>`;
   const box=document.createElement('div');
   box.className='book-toc-box';
   first.parentNode.insertBefore(det,first);
@@ -343,6 +339,8 @@ function gotoAnchor(bd,id){
 function renderCitadelleMarkdown(md){
   const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
   const inline=s=>esc(s)
+    // ***gras italique*** avant **gras**, sinon les balises s'imbriquent mal
+    .replace(/\*\*\*(.+?)\*\*\*/g,'<strong><em>$1</em></strong>')
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.+?)\*/g,'<em>$1</em>')
     .replace(/\[\^([^\]]+)\]/g,'<sup class="book-fn-ref">$1</sup>') // renvoi de note
@@ -383,13 +381,13 @@ function renderCitadelleMarkdown(md){
       const head=cells(s);i++;
       const body=[];
       while(i+1<lines.length&&/^\|.*\|$/.test(lines[i+1].trim())){i++;body.push(cells(lines[i]));}
-      let t='<table class="book-md-table"><thead><tr>'+head.map(h=>`<th>${inline(h)}</th>`).join('')+'</tr></thead><tbody>';
-      t+=body.map(r=>'<tr>'+r.map(c=>{
+      let tbl='<table class="book-md-table"><thead><tr>'+head.map(h=>`<th>${inline(h)}</th>`).join('')+'</tr></thead><tbody>';
+      tbl+=body.map(r=>'<tr>'+r.map(c=>{
         if(isHonorific(c))return `<td class="book-td-hon" dir="rtl" lang="ar">${inline(c)}</td>`;
         const ar=isArabic(c);
         return `<td${ar?' dir="rtl" lang="ar"':''}>${inline(c)}</td>`;
       }).join('')+'</tr>').join('');
-      out.push(t+'</tbody></table>');continue;
+      out.push(tbl+'</tbody></table>');continue;
     }
     if(/^#{1,6}\s+/.test(s)){
       closeList();
@@ -433,31 +431,45 @@ function renderCitadelleMarkdown(md){
 }
 
 /* ── 99 Noms d'Allah : chargement + rendu en cartes ── */
-let _asma=null;
+/* Les 99 Noms se chargent par langue, comme les guides : asma.ja.json a cote
+   de asma.json. Le chargeur allait auparavant chercher le fichier francais
+   en dur — le verset arrivait bien traduit depuis le corpus, mais le sens du
+   Nom, sa description et les questions restaient en francais, c'est-a-dire
+   la plus grande partie de la fiche. */
+let _asma=null,_asmaLang=null;
 async function loadAsma(){
-  if(_asma)return _asma;
-  const res=await fetch(BOOKS.asma.src);
-  if(!res.ok)throw new Error('load');
-  _asma=await res.json();
-  return _asma;
+  const lang=S.lang||'fr';
+  if(_asma&&_asmaLang===lang)return _asma;
+  for(const url of chapterSources('asma')){
+    try{
+      const res=await fetch(url);
+      if(!res.ok)continue;
+      _asma=await res.json();_asmaLang=lang;
+      return _asma;
+    }catch{/* fichier absent : on tente le repli suivant */}
+  }
+  throw new Error('load');
 }
 async function openNames(filter=''){
   _view='names';
-  setHeader({title:BOOKS.asma.title,back:true,search:true,searchPh:'Chercher un nom (Rahmân, Paix, n°…)'});
-  if(!_asma){
-    $('book-bd').innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Chargement des noms…</div>';
+  setHeader({title:bookTitle(BOOKS.asma),back:true,search:true,searchPh:t('books.searchName')});
+  // On teste la langue, pas seulement la presence du cache : sans cela, un
+  // retour au francais gardait les cent Noms en japonais, parce que
+  // loadAsma() — qui sait recharger — n'etait jamais rappele.
+  if(!_asma||_asmaLang!==(S.lang||'fr')){
+    $('book-bd').innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('books.loading')}</div>`;
     try{await loadAsma();}
-    catch{$('book-bd').innerHTML='<div class="places-empty">Connexion requise pour le premier chargement.</div>';return;}
+    catch{$('book-bd').innerHTML=`<div class="places-empty">${t('books.needNet')}</div>`;return;}
   }
   renderNames(filter);
 }
-/* Récitation d'un nom : fichiers locaux books/asma-audio/{af}.mp3, où `af`
+/* Récitation d'un nom : fichiers locaux content/audio/asma/{af}.mp3, où `af`
    (dans asma.json) est du type "001_ar-rahman" — triés par numéro, nom lisible.
    Récitations issues du dépôt MIT MohammedAbidNafi/99-Names-of-Allah (cf.
    `audioSource`), converties en MP3. Locaux = hors-ligne + cache SW. */
 function asmaAudioSrc(n){
   const nm=_asma&&_asma.names.find(x=>x.n===n);
-  return `books/asma-audio/${(nm&&nm.af)||String(n).padStart(3,'0')}.mp3`;
+  return `content/audio/asma/${(nm&&nm.af)||String(n).padStart(3,'0')}.mp3`;
 }
 let _asmaAudio=null,_asmaPlaying=null;   // null = rien en lecture (n=0 = Allah, donc pas 0 comme sentinelle)
 function playName(n,card){
@@ -469,14 +481,14 @@ function playName(n,card){
   _asmaAudio.src=asmaAudioSrc(n);_asmaPlaying=n;
   card.classList.add('playing');
   _asmaAudio.onended=()=>{card.classList.remove('playing');_asmaPlaying=null;};
-  _asmaAudio.onerror=()=>{card.classList.remove('playing');_asmaPlaying=null;toast('Récitation de ce nom bientôt disponible 🎧');};
+  _asmaAudio.onerror=()=>{card.classList.remove('playing');_asmaPlaying=null;toast(t('books.audioSoon'));};
   _asmaAudio.play().catch(()=>{});
 }
 
 /* ── Anachid des 99 Noms : lecture continue du chant ──
    Objet Audio persistant (hors DOM) : filtrer la liste re-render la bannière
    sans interrompre la lecture ; l'icône est restaurée depuis `_nasheedOn`. */
-const NASHEED_SRC='books/asma-audio/nasheed-99-noms.mp3';
+const NASHEED_SRC='content/audio/asma/nasheed-99-noms.mp3';
 let _nasheedAudio=null,_nasheedOn=false;
 function stopNasheed(){
   if(_nasheedAudio&&!_nasheedAudio.paused)_nasheedAudio.pause();
@@ -486,7 +498,7 @@ function stopNasheed(){
 function toggleNasheed(banner){
   if(!_nasheedAudio){_nasheedAudio=new Audio(NASHEED_SRC);
     _nasheedAudio.onended=()=>{_nasheedOn=false;document.querySelectorAll('.asma-nasheed.playing').forEach(b=>b.classList.remove('playing'));};
-    _nasheedAudio.onerror=()=>{_nasheedOn=false;banner.classList.remove('playing');toast('Anachid indisponible 🎧');};
+    _nasheedAudio.onerror=()=>{_nasheedOn=false;banner.classList.remove('playing');toast(t('books.asmaNasheedFail'));};
   }
   if(_nasheedOn){stopNasheed();return;}
   if(_asmaAudio&&!_asmaAudio.paused){_asmaAudio.pause();_asmaPlaying=null;
@@ -496,14 +508,14 @@ function toggleNasheed(banner){
 }
 
 function nasheedBanner(){
-  return `<div class="asma-nasheed${_nasheedOn?' playing':''}" role="button" tabindex="0" aria-label="Écouter l'anachid des 99 Noms">
+  return `<div class="asma-nasheed${_nasheedOn?' playing':''}" role="button" tabindex="0" aria-label="${t('books.asmaNasheedA11y')}">
     <div class="asma-nasheed-ic">
       <svg class="ic-play" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       <svg class="ic-stop" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
     </div>
     <div class="asma-nasheed-tx">
-      <div class="asma-nasheed-t">Anachid des 99 Noms</div>
-      <div class="asma-nasheed-s">Le chant en continu · récités dans l'ordre</div>
+      <div class="asma-nasheed-t">${t('books.asmaNasheed')}</div>
+      <div class="asma-nasheed-s">${t('books.asmaNasheedSub')}</div>
     </div>
     <div class="asma-nasheed-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
   </div>`;
@@ -518,9 +530,9 @@ function renderNames(filter=''){
   const bd=$('book-bd');
   const f=filter.trim().toLowerCase();
   const items=_asma.names.filter(x=>!f||x.tr.toLowerCase().includes(f)||x.fr.toLowerCase().includes(f)||String(x.n)===f||x.ar.includes(filter.trim()));
-  if(!items.length){bd.innerHTML=nasheedBanner()+'<div class="places-empty">Aucun nom trouvé.</div>';bindNasheed(bd);return;}
+  if(!items.length){bd.innerHTML=nasheedBanner()+`<div class="places-empty">${t('books.noName')}</div>`;bindNasheed(bd);return;}
   bd.innerHTML=nasheedBanner()+`<div class="asma-list">${items.map(x=>`
-    <div class="asma-card" data-n="${x.n}" role="button" tabindex="0" aria-label="Écouter ${x.tr}">
+    <div class="asma-card" data-n="${x.n}" role="button" tabindex="0" aria-label="${t('books.listenName',{name:x.tr})}">
       <div class="asma-head">
         <div class="asma-n">${x.n||'★'}</div>
         <div class="asma-ar" lang="ar" dir="rtl">${x.ar}</div>
@@ -529,7 +541,7 @@ function renderNames(filter=''){
           <svg class="ic-stop" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>
         </div>
       </div>
-      <div class="asma-tr">${x.tr}</div>
+      <div class="asma-tr${PHONETICS[S.lang]?' asma-tr-script':''}">${asmaTr(x)}</div>
       <div class="asma-fr">${x.fr}</div>
       <div class="asma-desc">${x.desc}</div>
       ${asmaDetail(x)}
@@ -547,42 +559,61 @@ function renderNames(filter=''){
 
 /* Dépliant « Invocation & introspection » d'un nom (si présent dans asma.json).
    Fermé par défaut : la liste reste compacte, un clic ouvre le détail. */
+/* « Ar-Rahmân » en lettres latines ne se lit pas plus qu'une phonetique
+   latine : meme reponse, la translitteration passe dans l'ecriture du
+   lecteur. La forme latine reste indexee pour la recherche. */
+const asmaTr=x=>(PHONETICS[S.lang]||{})[`asma.${x.n}`]||x.tr;
+
 function asmaDetail(x){
   const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
-  if(!x.inv&&!(x.intro&&x.intro.length))return'';
+  const ask=(x.ask||[]).map((q,i)=>tf(`ask.${x.n}.${i+1}`,q));
+  if(!x.verse&&!x.inv&&!ask.length&&!(x.intro&&x.intro.length))return'';
   let inner='';
+  // Le Nom dans le Coran. On ne cite pas un texte : on renvoie a un verset,
+  // que le corpus de la langue lue rend dans sa traduction publiee.
+  if(x.verse){
+    const n=parseInt(x.verse,10);
+    const s=SURAHS[n-1]||{};
+    const nom=S.lang==='ar'?(s.ar||''):((SURAH_NAMES[S.lang]||[])[n-1]||s.fr||'');
+    const txt=versesText(x.verse,S.lang)||versesText(x.verse,'fr')||'';
+    inner+=`<div class="asma-sec-t">${t('books.asmaVerse')}</div>`;
+    if(txt)inner+=`<p class="asma-inv-fr">${esc(txt)}</p>`;
+    inner+=`<p class="asma-inv-tr">${esc(t('duas.refQuran',{s:nom,v:x.verse}))}</p>`;
+  }
+  // Ancien contenu tiers, encore present sur les Noms pas encore repris.
   if(x.inv){
-    inner+=`<div class="asma-sec-t">Invocation</div>`;
+    inner+=`<div class="asma-sec-t">${t('books.asmaInv')}</div>`;
     if(x.inv.fr)inner+=`<p class="asma-inv-fr">${esc(x.inv.fr)}</p>`;
     if(x.inv.ar)inner+=`<p class="asma-inv-ar" lang="ar" dir="rtl">${esc(x.inv.ar)}</p>`;
     if(x.inv.tr)inner+=`<p class="asma-inv-tr">${esc(x.inv.tr)}</p>`;
   }
-  if(x.intro&&x.intro.length){
-    inner+=`<div class="asma-sec-t">Introspection</div><ul class="asma-intro">`+
-      x.intro.map(q=>`<li>${esc(q)}</li>`).join('')+`</ul>`;
+  const questions=ask.length?ask:(x.intro||[]);
+  if(questions.length){
+    inner+=`<div class="asma-sec-t">${t('books.asmaAsk')}</div><ul class="asma-intro">`+
+      questions.map(q=>`<li>${esc(q)}</li>`).join('')+`</ul>`;
   }
-  return `<details class="asma-detail"><summary class="asma-detail-sum">✦ Invocation &amp; introspection</summary><div class="asma-detail-bd">${inner}</div></details>`;
+  return `<details class="asma-detail"><summary class="asma-detail-sum">✦ ${t('books.asmaReflect')}</summary><div class="asma-detail-bd">${inner}</div></details>`;
 }
 
 /* ── Apprendre : fiches pratiques lisibles en étapes courtes ── */
 function openGuide(){
   _view='guide';
   const b=BOOKS[_current];
-  setHeader({title:b.title,back:true});
+  setHeader({title:bookTitle(b),back:true});
   const bd=$('book-bd');
   bd.innerHTML=`<div class="learn-reader">
     <div class="learn-hero">
       <div class="learn-mark">${b.icon}</div>
-      <div><div class="learn-title">${b.title}</div>${b.titleAr?`<div class="learn-ar">${b.titleAr}</div>`:''}</div>
+      <div><div class="learn-title">${tf(`books.${_current==='wudu'?'wudu':'salatGuide'}`,b.title)}</div>${b.titleAr?`<div class="learn-ar">${b.titleAr}</div>`:''}</div>
     </div>
     ${b.sections.map((sec,i)=>`<section class="learn-sec">
       <div class="learn-sec-head">
         <div class="learn-step">${sec.icon||i+1}</div>
-        <h3>${sec.title}</h3>
+        <h3>${sec.sk?tf(`gd.${sec.sk}.t`,sec.title):sec.title}</h3>
       </div>
-      <ul>${sec.points.map(p=>`<li>${p}</li>`).join('')}</ul>
+      <ul>${sec.points.map((p,j)=>`<li>${sec.sk?tf(`gd.${sec.sk}.p${j+1}`,p):p}</li>`).join('')}</ul>
     </section>`).join('')}
-    <div class="learn-note">Ces rappels sont une base simple d’apprentissage. Pour les divergences de détails, suivez une personne de science ou votre mosquée.</div>
+    <div class="learn-note">${t('books.learnNote')}</div>
   </div>`;
   bd.scrollTop=0;
 }
@@ -595,6 +626,24 @@ function openBook(key){
   });
 }
 
+/* Point d'entrée de la recherche globale : ouvrir un livre par sa clé. */
+export const showBook=key=>openBook(key);
+
+/* Redessine la bibliotheque apres un changement de langue.
+
+   La bibliotheque etait le seul module a ne pas figurer dans la liste de
+   app.js : la feuille restait telle qu'elle avait ete bâtie, et repasser
+   du japonais au francais laissait les cent Noms en japonais. */
+export function refreshBooks(){
+  const feuille=document.getElementById('sh-book');
+  if(!feuille||!feuille.classList.contains('open')||!_current)return;
+  if(_view==='intro')      showIntro();
+  else if(_view==='names') openNames($('book-search').value||'');
+  else if(_view==='list')  openList($('book-search').value||'');
+  else if(_view==='guide') openGuide();
+  else if(_view==='pages') openPages();
+}
+
 export function initBooks(){
   $('btn-open-riyad').addEventListener('click',()=>openBook('riyad'));
   $('btn-open-citadelle').addEventListener('click',()=>openBook('citadelle'));
@@ -602,6 +651,8 @@ export function initBooks(){
   if(btnAsma)btnAsma.addEventListener('click',()=>openBook('asma'));
   const btnFruits=$('btn-open-fruits');
   if(btnFruits)btnFruits.addEventListener('click',()=>openBook('fruits'));
+  const btnMiracles=$('btn-open-miracles');
+  if(btnMiracles)btnMiracles.addEventListener('click',()=>openBook('miracles'));
   const btnSalat=$('btn-open-learn-salat');
   if(btnSalat)btnSalat.addEventListener('click',()=>openBook('salat'));
   const btnWudu=$('btn-open-learn-wudu');

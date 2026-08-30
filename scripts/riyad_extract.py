@@ -16,10 +16,16 @@ v5 corrige trois problèmes découverts par comparaison directe avec le PDF :
 """
 import re, json, io, os
 from collections import defaultdict
+from pathlib import Path
 import fitz
 
-SRC = r'C:\Users\Aafif\Documents\Projets\tasbih\inspirations\pdf-sources\riyad-as-salihin-kechrid.pdf'
-OUT = r'C:\Users\Aafif\Documents\Projets\tasbih\books\riyad.json'
+# Chemins relatifs au depot. Ils etaient absolus et pointaient vers books/,
+# emplacement disparu lors de la restructuration : le script aurait ecrit a
+# cote, et il n'aurait tourne que sur une seule machine. Deux projets vivent
+# dans Projets/ — rien ici ne doit sortir de celui-la.
+ROOT = Path(__file__).resolve().parent.parent
+SRC = str(ROOT / "inspirations/pdf-sources/riyad-as-salihin-kechrid.pdf")
+OUT = str(ROOT / "content/books/riyad.json")
 
 doc = fitz.open(SRC)
 SALUTATION = 'ﷺ'  # ﷺ

@@ -23,9 +23,10 @@ export function renderTasbih(){
   // Voxel, sinon la traduction courante. Pur (aucune mémoïsation fragile),
   // donc il redevient « APPUYER » dès qu'on quitte le skin.
   const cl=$('clabel');
-  if(cl)cl.textContent=(S.skin==='voxel')?'MINÉ':t('tap.label');
+  if(cl)cl.textContent=(S.skin==='voxel')?t('tasbih.mined'):t('tap.label');
   const nxt=S.reminder>0?(S.reminder-(S.count%S.reminder)):0;
-  $('t-sub').textContent=S.reminder>0?`Dans ${nxt} · Rappel ${S.reminder}`:(S.goal>0?`Objectif ${S.goal}`:'Comptage libre');
+  $('t-sub').textContent=S.reminder>0?t('tasbih.inNext',{n:nxt,r:S.reminder})
+    :(S.goal>0?t('tasbih.goalIs',{n:S.goal}):t('tasbih.free'));
   $('sp-laps').textContent=S.lapCount;
   $('sp-total').textContent=S.sessTot;
   $('sp-goal').textContent=S.goal>0?S.goal:'∞';
@@ -33,7 +34,7 @@ export function renderTasbih(){
   $('prog-fill').style.width=pct+'%';
   updateRing(pct);
   const lb=$('lap-badge');
-  if(S.lapCount>0){lb.textContent=`Tour ${S.lapCount+1}`;lb.classList.add('show');}
+  if(S.lapCount>0){lb.textContent=t('tasbih.lap',{n:S.lapCount+1});lb.classList.add('show');}
   else lb.classList.remove('show');
 }
 
@@ -85,7 +86,7 @@ function increment(){
     tb.classList.add('flash');
     setTimeout(()=>{cn.classList.remove('gold');tb.classList.remove('flash');},650);
     if(S.goal>0&&S.count>=S.goal){
-      toast('🎉 Objectif atteint !');S.lapCount++;
+      toast(t('tsb.goalReached'));S.lapCount++;
       if(S.autoLoop)setTimeout(()=>{S.count=S.startVal;renderTasbih();save();},800);
     }else if(S.reminder>0){
       toast(`✦ ${S.count} — ${S.title}`);
@@ -101,7 +102,7 @@ let _immersiveOpen=false;
 function renderImmersive(milestone=false){
   $('imm-title').textContent=S.title;
   $('imm-count').textContent=S.count;
-  $('imm-sub').textContent=S.goal>0?`/ ${S.goal} · tour ${S.lapCount+1}`:'comptage libre';
+  $('imm-sub').textContent=S.goal>0?t('tasbih.immSub',{goal:S.goal,lap:S.lapCount+1}):t('tasbih.immFree');
   const c=$('imm-count');
   if(milestone){
     c.classList.add('gold');
@@ -131,17 +132,17 @@ function undo(){
 
 async function resetCounter(){
   const {confirmDlg}=await import('../core/ui.js');
-  if(!await confirmDlg('Remettre le compteur à la valeur de départ ?',{okLabel:'Remettre à zéro'}))return;
+  if(!await confirmDlg(t('tsb.resetAsk'),{okLabel:t('tsb.resetOk')}))return;
   if(S.count>S.startVal)pushHistory();
   S.count=S.startVal;S.lapCount=0;S.sessTot=0;
-  vib([60,30,60]);toast('Remis à zéro');save();renderTasbih();
+  vib([60,30,60]);toast(t('msg.reset'));save();renderTasbih();
 }
 
 function saveSession(){
-  if(S.count<=S.startVal){toast('Rien à sauvegarder');return;}
+  if(S.count<=S.startVal){toast(t('msg.nothingSave'));return;}
   pushHistory();S.sessCount++;
   S.count=S.startVal;S.lapCount=0;S.sessTot=0;   // une session sauvegardée repart proprement
-  vib([40,20,40]);toast('✓ Session sauvegardée');
+  vib([40,20,40]);toast(t('msg.sessionSaved'));
   save();renderTasbih();emit('stats-changed');
 }
 
@@ -184,14 +185,14 @@ export function buildDhikrBar(){
 function renderPresets(){
   const box=$('custom-presets');box.innerHTML='';
   if(!S.customDhikrs.length){
-    box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">Aucun préréglage — configurez un dhikr puis épinglez-le.</div>';
+    box.innerHTML=`<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">${t('tasbih.noPreset')}</div>`;
     return;
   }
   S.customDhikrs.forEach((p,i)=>{
     const row=document.createElement('div');row.className='preset-row';
-    row.innerHTML=`<div class="preset-name">★ ${p.name}</div><div class="preset-meta">obj ${p.goal} · rap ${p.reminder}</div><div class="preset-del">✕</div>`;
+    row.innerHTML=`<div class="preset-name">★ ${p.name}</div><div class="preset-meta">${t('tasbih.presetMeta',{goal:p.goal,rem:p.reminder})}</div><div class="preset-del">✕</div>`;
     row.querySelector('.preset-del').addEventListener('click',()=>{
-      S.customDhikrs.splice(i,1);save();renderPresets();buildDhikrBar();toast('Préréglage supprimé');
+      S.customDhikrs.splice(i,1);save();renderPresets();buildDhikrBar();toast(t('msg.presetDel'));
     });
     box.appendChild(row);
   });
@@ -217,13 +218,13 @@ function readEditForm(){
 
 /* ── Historique ── */
 function fmtTs(h){
-  if(h.ts)return new Date(h.ts).toLocaleString('fr-FR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+  if(h.ts)return new Date(h.ts).toLocaleString(S.lang||'fr',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
   return h.legacyTime||h.time||'';
 }
 function buildHistory(){
   const bd=$('hist-bd');
   if(!S.history.length){
-    bd.innerHTML='<div style="text-align:center;padding:40px 0;font-size:0.82rem;color:var(--t3);">Aucune session sauvegardée</div>';
+    bd.innerHTML=`<div style="text-align:center;padding:40px 0;font-size:0.82rem;color:var(--t3);">${t('tasbih.noSession')}</div>`;
     return;
   }
   bd.innerHTML='';
@@ -253,8 +254,8 @@ export function initTasbih(){
   $('btn-hlist').addEventListener('click',()=>openSheet('sh-hist',buildHistory));
   $('btn-clr-hist').addEventListener('click',async()=>{
     const {confirmDlg}=await import('../core/ui.js');
-    if(!await confirmDlg("Effacer tout l'historique ?",{okLabel:'Effacer'}))return;
-    S.history=[];save();buildHistory();vib(40);toast('Historique effacé');
+    if(!await confirmDlg(t('tsb.clearHistAsk'),{okLabel:t('com.clear')}))return;
+    S.history=[];save();buildHistory();vib(40);toast(t('tasbih.histCleared'));
   });
 
   $('btn-save-edit').addEventListener('click',()=>{
@@ -262,15 +263,15 @@ export function initTasbih(){
     S.title=f.title;S.startVal=f.startVal;S.reminder=f.reminder;S.goal=f.goal;
     if(S.count<S.startVal)S.count=S.startVal;
     save();renderTasbih();buildDhikrBar();closeSheet();
-    vib([40,20,40]);toast('✓ Sauvegardé');
+    vib([40,20,40]);toast(t('tasbih.saved'));
   });
 
   $('btn-pin-dhikr').addEventListener('click',()=>{
     const f=readEditForm();
-    if(S.customDhikrs.some(p=>p.name===f.title)){toast('Déjà épinglé');return;}
+    if(S.customDhikrs.some(p=>p.name===f.title)){toast(t('tasbih.alreadyPinned'));return;}
     S.customDhikrs.push({name:f.title,goal:f.goal,reminder:f.reminder});
     save();renderPresets();buildDhikrBar();
-    vib(24);toast(`★ « ${f.title} » épinglé`);
+    vib(24);toast(t('tasbih.pinned',{name:f.title}));
   });
 
   // Steppers de la sheet d'édition

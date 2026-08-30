@@ -3,6 +3,7 @@
    adresses comme halal engagerait notre responsabilité — la sensibilisation
    se fait dans Vérif' Halal → Comprendre. */
 import {S} from '../core/store.js';
+import {t} from '../lib/i18n.js';
 import {toast,openSheet} from '../core/ui.js';
 import {requestGPS} from './salat.js';
 
@@ -30,13 +31,13 @@ let _abort=null;
 async function search(){
   const list=$('places-list');
   if(S.lat===null){
-    list.innerHTML='<div class="places-empty">📍 Position requise — activez le GPS ou choisissez une ville dans l\'onglet Salat.</div>';
+    list.innerHTML=`<div class="places-empty">${t('places.needLoc')}</div>`;
     return;
   }
   if(_abort)_abort.abort();
   _abort=new AbortController();
   const signal=_abort.signal;
-  list.innerHTML='<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>Recherche dans un rayon de '+_radius+' km…</div>';
+  list.innerHTML=`<div class="places-empty"><div class="q-spinner" style="margin:0 auto 10px"></div>${t('places.searchingRadius',{km:_radius})}</div>`;
   try{
     const body='data='+encodeURIComponent(buildQuery());
     let data=null;
@@ -56,17 +57,17 @@ async function search(){
     const items=(data.elements||[]).map(e=>{
       const lat=e.lat??e.center?.lat,lon=e.lon??e.center?.lon;
       if(lat==null)return null;
-      const t=e.tags||{};
+      const tg=e.tags||{};   // pas `t` : masquerait la fonction de traduction
       return{
-        name:t.name||'Mosquée / salle de prière',
+        name:tg.name||t('places.unnamed'),
         lat,lon,
         dist:distKm(S.lat,S.lon,lat,lon),
-        street:[t['addr:housenumber'],t['addr:street'],t['addr:city']].filter(Boolean).join(' '),
+        street:[tg['addr:housenumber'],tg['addr:street'],tg['addr:city']].filter(Boolean).join(' '),
       };
     }).filter(Boolean).sort((a,b)=>a.dist-b.dist);
 
     if(!items.length){
-      list.innerHTML=`<div class="places-empty">Aucune mosquée référencée dans un rayon de ${_radius} km.<br>Essayez un rayon plus large — ou contribuez sur OpenStreetMap !</div>`;
+      list.innerHTML=`<div class="places-empty">${t('places.none',{km:_radius})}<br>${t('places.tryWider')}</div>`;
       return;
     }
     list.innerHTML='';
@@ -80,12 +81,12 @@ async function search(){
           <div class="place-name">${p.name}</div>
           <div class="place-sub">${p.street||''}</div>
         </div>
-        <div class="place-dist">${p.dist<1?Math.round(p.dist*1000)+' m':p.dist.toFixed(1)+' km'}<span class="place-go">Itinéraire ↗</span></div>`;
+        <div class="place-dist">${p.dist<1?Math.round(p.dist*1000)+' m':p.dist.toFixed(1)+' km'}<span class="place-go">${t('places.route')}</span></div>`;
       list.appendChild(el);
     });
   }catch(e){
     if(e.name==='AbortError')return;
-    list.innerHTML='<div class="places-empty">Erreur réseau — le service Overpass est peut-être saturé, réessayez dans un instant.</div>';
+    list.innerHTML=`<div class="places-empty">${t('places.overpassBusy')}</div>`;
   }
 }
 
@@ -93,10 +94,19 @@ function syncUI(){
   document.querySelectorAll('#places-radius .chip').forEach(c=>c.classList.toggle('sel',parseInt(c.dataset.km)===_radius));
 }
 
+/* Changement de langue pendant qu'Overpass repond : le message d'attente
+   resterait dans l'ancienne langue jusqu'a l'arrivee des resultats. On le
+   reecrit sans relancer la requete — les noms des lieux, eux, viennent
+   d'OpenStreetMap et restent tels quels. */
+export function refreshPlaces(){
+  const w=$('places-list')?.querySelector('.q-spinner')?.parentElement;
+  if(w)w.innerHTML=`<div class="q-spinner" style="margin:0 auto 10px"></div>${t('places.searchingRadius',{km:_radius})}`;
+}
+
 export function initPlaces(){
   $('btn-open-places').addEventListener('click',()=>{
     openSheet('sh-places',()=>{
-      if(S.lat===null){toast('Position requise');requestGPS();}
+      if(S.lat===null){toast(t('lbl.locNeeded'));requestGPS();}
       syncUI();search();
     });
   });

@@ -2,18 +2,21 @@
 import {initUI} from './core/ui.js';
 import {initRouter,registerPageHook,goPage} from './core/router.js';
 import {ensureNavState,renderNavbar,goToStartPage} from './core/nav.js';
-import {initTasbih} from './features/tasbih.js';
-import {initSalat,onSalatShow} from './features/salat.js';
+import {initTasbih,renderTasbih,buildDhikrBar} from './features/tasbih.js';
+import {initSalat,onSalatShow,renderPrayers,refreshSalat} from './features/salat.js';
 import {initQibla,onQiblaShow} from './features/qibla.js';
-import {initDuas} from './features/duas.js';
-import {initQuran,onQuranShow} from './features/quran.js';
-import {initSettings} from './features/settings.js';
-import {initTools} from './features/tools.js';
+import {initDuas,refreshDuas} from './features/duas.js';
+import {initQuran,onQuranShow,refreshQuranHeader} from './features/quran.js';
+import {initSettings,refreshSettings} from './features/settings.js';
+import {S,on} from './core/store.js';
+import {initNotifications} from './features/notifications.js';
+import {initTools,refreshTools} from './features/tools.js';
 import {initOnboarding} from './features/onboarding.js';
-import {initPlaces} from './features/places.js';
-import {initHalal,stopCamera} from './features/halal.js';
-import {initRoutines} from './features/routines.js';
-import {initBooks} from './features/books.js';
+import {initPlaces,refreshPlaces} from './features/places.js';
+import {initHalal,stopCamera,refreshHalal} from './features/halal.js';
+import {initRoutines,refreshRoutines} from './features/routines.js';
+import {initBooks,refreshBooks} from './features/books.js';
+import {initSearch as initGlobalSearch} from './features/search.js';
 import {initDevTools} from './core/devtools.js';
 
 initUI();
@@ -30,8 +33,20 @@ initQuran();
 initTools();
 initPlaces();
 initHalal();
+initNotifications();  // reprend les rappels programmés au démarrage
+
+/* Changement de langue : les pages bâties en JS doivent être reconstruites,
+   applyI18n ne touchant que les éléments marqués data-i18n. */
+on('lang-changed',()=>{
+  if(S.lat!==null)onQiblaShow();   // refreshSalat redessine la page Prière
+  renderTasbih();buildDhikrBar();
+  renderNavbar();
+  refreshDuas();refreshQuranHeader();refreshSettings();refreshRoutines();
+  refreshTools();refreshHalal();refreshPlaces();refreshSalat();refreshBooks();
+});
 initRoutines();
 initBooks();
+initGlobalSearch();
 
 // Engrenage (page Outils) → Réglages · flèche retour → Outils
 document.getElementById('btn-open-settings').addEventListener('click',()=>goPage('page-settings'));

@@ -1,15 +1,23 @@
 /* SAKINA — Outil développeur caché.
-   Séquence : dans la page Réglages, cliquer 5× sur le titre « Paramètres »
-   puis 5× sur son avatar de profil. La séquence doit être enchaînée
-   (chaque clic dans les 8 s). Une fois complétée, S.devUnlock bascule et
-   toutes les récompenses verrouillées deviennent accessibles. Refaire la
-   séquence désactive le mode. */
+
+   Séquence : dans « Profil & récompenses », cliquer 1× sur son titre de rang
+   (« Voyageur », « Fidèle »…) puis 10× sur son avatar. Les clics doivent
+   s'enchaîner — chacun dans les 8 s du précédent. Une fois la séquence
+   complétée, S.devUnlock bascule et toutes les récompenses verrouillées
+   deviennent accessibles. Refaire la séquence désactive le mode.
+
+   La séquence portait auparavant sur le titre de la page Réglages puis sur
+   l'avatar : deux écrans différents, à enchaîner en huit secondes. Elle
+   n'était pas cassée, elle était inatteignable — d'où l'impression qu'elle
+   ne marchait plus. Les deux cibles sont désormais côte à côte dans la même
+   feuille. */
 import {S,save,emit} from './store.js';
 import {toast} from './ui.js';
 import {vib} from './audio.js';
+import {t} from '../lib/i18n.js';
 
-const NEED_TITLE=5;
-const NEED_AVATAR=5;
+const NEED_TITLE=1;
+const NEED_AVATAR=10;
 const WINDOW_MS=8000;
 
 export function initDevTools(){
@@ -24,12 +32,12 @@ export function initDevTools(){
     reset();
     S.devUnlock=!S.devUnlock;save();
     vib([60,30,60,30,120]);
-    toast(S.devUnlock?'🛠️ Mode dev — tous les cadeaux débloqués':'Mode dev désactivé');
+    toast(S.devUnlock?t('dev.on'):t('dev.off'));
     emit('stats-changed');
   };
 
   const bind=()=>{
-    const title=document.querySelector('#page-settings .phd-title');
+    const title=document.getElementById('prof-name');
     const av=document.getElementById('prof-av');
     if(title&&!title._devWired){
       title._devWired=true;
@@ -43,17 +51,21 @@ export function initDevTools(){
     }
     if(av&&!av._devWired){
       av._devWired=true;
+      av.style.cursor='default';
       av.addEventListener('click',()=>{
         tick();
         if(phase!=='avatar'){reset();return;}
-        avatarHits++;vib(12);
+        avatarHits++;
+        // Une pulsation un peu plus marquee tous les cinq clics : sans
+        // retour, dix clics a l'aveugle ne se comptent pas.
+        vib(avatarHits%5===0?[20,40,20]:12);
         if(avatarHits>=NEED_AVATAR)finish();
       });
     }
   };
 
-  // Le page Réglages est déjà dans le DOM au chargement, mais on relance
-  // le binding après chaque re-render (au cas où le prof-av soit remplacé).
+  // Les deux cibles sont redessinees a chaque refreshSettings : on relance
+  // le cablage apres chaque clic, le drapeau _devWired evite le doublon.
   bind();
   document.addEventListener('click',bind,true);
 }

@@ -1,2 +1,13 @@
 .claude/settings.local.json
 inspirations/
+
+# Caches Python des scripts de verification
+scripts/__pycache__/
+__pycache__/
+
+# Artefacts produits par les scripts (regenerables)
+# Les relevés OCR vivent sous scripts/out/. La seconde règle est une
+# ceinture de sécurité : six d'entre eux étaient entrés dans le dépôt le
+# jour où hisn_ocr.py écrivait encore dans scripts/.
+scripts/out/
+scripts/hisn_ocr_*.txt

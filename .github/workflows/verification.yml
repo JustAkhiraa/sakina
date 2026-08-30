@@ -1,0 +1,33 @@
+# Les memes verifications que celles lancees en local, mais sur chaque
+# proposition de fusion. Le crochet PostToolUse protege ma session ; celle-ci
+# protege la branche principale, quel que soit l'auteur du changement.
+name: Vérification
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  coherence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Aucune dependance a installer : l'outillage du projet n'emploie que
+      # la bibliotheque standard, exprès pour que cette etape reste triviale.
+      - name: Intégrité du projet
+        run: python scripts/check.py
+
+      - name: Aucun français en dur dans le code d'affichage
+        run: python scripts/i18n_leaks.py
+
+      - name: Chaque thème proposé a son style
+        run: python scripts/theme_gaps.py
+
+      - name: Aucune entité HTML brute dans les corpus
+        run: python scripts/quran_entities.py

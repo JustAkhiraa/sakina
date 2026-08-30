@@ -5,29 +5,31 @@
 import {S} from './store.js';
 import {toast} from './ui.js';
 import {vib} from './audio.js';
+import {t} from '../lib/i18n.js';
 import {BASE_THEMES,SOUNDS,BONUS_DHIKRS,AVATARS,TITLES,SKINS} from '../data/catalog.js';
 
 export const isUnlocked=(item)=>!!S.devUnlock||!item.unlockAt||(S.allTime|0)>=item.unlockAt;
 export const remainingFor=(item)=>Math.max(0,(item.unlockAt||0)-(S.allTime|0));
-export const progressFor=(item)=>Math.min(S.allTime|0,item.unlockAt||0);
 
 /* Formate 1234 → "1 234", 12000 → "12 k" pour économiser l'espace visuel */
 export function fmtGoal(n){
   if(n>=10000)return Math.round(n/1000)+'k';
-  return n.toLocaleString('fr-FR');
+  return n.toLocaleString(S.lang||'fr');
 }
 
 /* Toutes les catégories réunies : sert au balayage des nouveaux paliers.
    Chaque item est enrichi avec `__cat` (id catégorie) et `__label` (nom lisible). */
 export function allRewards(){
-  const tag=(arr,cat,label)=>arr.filter(x=>x.unlockAt>0).map(x=>({...x,__cat:cat,__label:label}));
+  // __label porte la cle i18n de la categorie : le libelle lui-meme depend
+  // de la langue et ne peut pas etre fige ici.
+  const tag=(arr,cat)=>arr.filter(x=>x.unlockAt>0).map(x=>({...x,__cat:cat,__label:t(`rw.${cat}`)}));
   return [
-    ...tag(SKINS,'skin','Skin'),
-    ...tag(BASE_THEMES,'theme','Ambiance'),
-    ...tag(SOUNDS,'sound','Son'),
-    ...tag(BONUS_DHIKRS,'dhikr','Dhikr bonus'),
-    ...tag(AVATARS,'avatar','Avatar'),
-    ...tag(TITLES,'title','Titre'),
+    ...tag(SKINS,'skin'),
+    ...tag(BASE_THEMES,'theme'),
+    ...tag(SOUNDS,'sound'),
+    ...tag(BONUS_DHIKRS,'dhikr'),
+    ...tag(AVATARS,'avatar'),
+    ...tag(TITLES,'title'),
   ];
 }
 
@@ -58,7 +60,7 @@ export function checkUnlocks(beforeAll,afterAll){
   Object.entries(byTier).forEach(([tier,items],i)=>{
     setTimeout(()=>{
       const names=items.map(x=>x.__label).join(' · ');
-      toast(`✨ ${fmtGoal(+tier)} dhikr — ${names} débloqué${items.length>1?'s':''} !`);
+      toast(t(items.length>1?'msg.unlockedN':'msg.unlocked',{goal:fmtGoal(+tier),names}));
       vib([40,25,40,25,80]);
     },300+i*1400);
   });

@@ -8,6 +8,7 @@
 import {S,save} from './store.js';
 import {goPage} from './router.js';
 import {closeSheet,openSheet} from './ui.js';
+import {t} from '../lib/i18n.js';
 
 /* SVG stockés en chaînes pour rester copiables tels quels dans d'autres projets. */
 const SVG={
@@ -90,7 +91,9 @@ export function renderNavbar(){
     const el=document.createElement('div');
     el.className='nv'+(it.id===activeId?' active':'');
     el.dataset.page=it.id;
-    el.innerHTML=`${it.icon}<span class="nv-lbl" data-i18n="${it.i18n}">${it.label}</span>`;
+    // renderNavbar tourne APRES applyI18n au changement de langue : sans t()
+    // ici, la barre repartirait sur les libelles francais du catalogue.
+    el.innerHTML=`${it.icon}<span class="nv-lbl" data-i18n="${it.i18n}">${t(it.i18n)||it.label}</span>`;
     el.addEventListener('click',()=>goPage(it.id));
     bar.appendChild(el);
   });
@@ -99,7 +102,7 @@ export function renderNavbar(){
   // inatteignables même si l'utilisateur cache tout le reste.
   const el=document.createElement('div');
   el.className='nv nv-more';
-  el.innerHTML=`${SVG.more}<span class="nv-lbl">Plus</span>`;
+  el.innerHTML=`${SVG.more}<span class="nv-lbl" data-i18n="nav.plus">${t('nav.plus')}</span>`;
   el.addEventListener('click',()=>openMoreSheet(overflow,shown));
   bar.appendChild(el);
 }
@@ -121,10 +124,32 @@ function openMoreSheet(items,shown){
   const rows=[...items];
   if(settingsItem&&!shownIds.has('page-settings')&&!overflowIds.has('page-settings'))
     rows.push(settingsItem);
+  // La recherche globale n'a pas de page à elle : « Plus » est le seul point
+  // atteignable en un geste depuis n'importe où, elle se place donc en tête.
+  const sr=document.createElement('div');
+  sr.className='row';
+  sr.innerHTML=`<div class="row-ic">🔎</div><div class="row-body"><div class="row-name" data-i18n="search.title">${t('search.title')}</div><div class="row-sub" data-i18n="search.sub">${t('search.sub')}</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
+  // Import differé : search.js dépend du routeur, qui dépend de ce module.
+  // En statique le cycle se refermerait ; ici le module n'est chargé qu'au
+  // clic, et le service worker l'a déjà en cache.
+  sr.addEventListener('click',()=>{
+    closeSheet();
+    setTimeout(()=>import('../features/search.js').then(m=>m.openSearch()),220);
+  });
+  list.appendChild(sr);
+
+  // Profil & récompenses : ce n'est pas une page mais une feuille, et sa place
+  // n'était pas au milieu des réglages — on la sort ici, en tête.
+  const rw=document.createElement('div');
+  rw.className='row';
+  rw.innerHTML=`<div class="row-ic">🎁</div><div class="row-body"><div class="row-name" data-i18n="sec.rewards">${t('sec.rewards')}</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
+  rw.addEventListener('click',()=>{closeSheet();setTimeout(()=>openSheet('sh-rewards'),220);});
+  list.appendChild(rw);
+
   rows.forEach(it=>{
     const row=document.createElement('div');
     row.className='row';
-    row.innerHTML=`<div class="row-ic">${it.icon}</div><div class="row-body"><div class="row-name">${it.label}</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
+    row.innerHTML=`<div class="row-ic">${it.icon}</div><div class="row-body"><div class="row-name" data-i18n="${it.i18n}">${t(it.i18n)||it.label}</div></div><svg class="row-chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
     row.addEventListener('click',()=>{closeSheet();goPage(it.id);});
     list.appendChild(row);
   });

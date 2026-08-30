@@ -24,6 +24,7 @@ const DEFAULTS={
   hourFmt:'24',
   // Localisation & prières
   calcMethod:3,lat:null,lon:null,city:'',
+  calcMethodPicked:false,        // vrai dès que l'utilisateur choisit sa méthode lui-même
   madhab:'maliki',               // école juridique (hanafi → Asr ombre ×2)
   translit:'ar',                 // adhkâr des routines : 'ar' (arabe) ou 'ph' (phonétique)
   lang:'fr',                     // langue de l'interface
@@ -34,6 +35,18 @@ const DEFAULTS={
   // Coran
   quranLast:{surah:1},
   quranFavs:{},quranNotes:{},
+  quranTr:['fr'],                // traductions affichées, codes de js/data/translations.js
+  // Rappels de prière
+  notifEnabled:false,
+  notifOffset:0,                 // minutes d'avance sur l'heure de la prière
+  notifPrayers:{fajr:true,dhuhr:true,asr:true,maghrib:true,isha:true},
+  // Adhân — l'audio lui-même vit dans IndexedDB (trop lourd pour localStorage),
+  // seuls les choix de l'utilisateur sont ici.
+  adhanEnabled:false,
+  adhanVoice:'omar',             // id d'une entrée de js/features/adhan.js
+  adhanFajrVoice:'',             // vide = même appel qu'aux autres prières
+  adhanVolume:0.8,
+  adhanPrayers:{fajr:true,dhuhr:true,asr:true,maghrib:true,isha:true},
   // Navigation personnalisable (Lot 1) — ordre, items masqués, page d'ouverture
   nav:{order:[],hidden:[],startPage:'page-tasbih'},
 };
@@ -67,7 +80,7 @@ function load(){
 
 export const S=load();
 // Sécurise les sous-objets pour les anciennes sauvegardes
-for(const k of ['qada','qdone','daily','quranFavs','quranNotes','quranLast','calEvents'])
+for(const k of ['qada','qdone','daily','quranFavs','quranNotes','quranLast','calEvents','adhanPrayers'])
   if(!S[k]||typeof S[k]!=='object')S[k]=structuredClone(DEFAULTS[k]);
 if(!Array.isArray(S.customDhikrs))S.customDhikrs=[];
 if(!Array.isArray(S.history))S.history=[];

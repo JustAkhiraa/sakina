@@ -1,0 +1,1307 @@
+{
+ "title": "Les 99 Noms d'Allah",
+ "titleAr": "أسماء الله الحسنى",
+ "source": "Al-Asma' al-Husna — recensés d'après la tradition sunnite classique",
+ "names": [
+  {
+   "n": 0,
+   "ar": "اللّٰه",
+   "tr": "Allah",
+   "fr": "Le Nom suprême",
+   "desc": "Le nom propre de Dieu, le Nom suprême qui englobe tous les attributs de perfection. Les 99 « plus beaux noms » en sont les qualités.",
+   "af": "000_allah"
+  },
+  {
+   "n": 1,
+   "ar": "الرَّحْمَنُ",
+   "tr": "Ar-Rahmân",
+   "fr": "Le Tout Miséricordieux",
+   "desc": "Celui dont la miséricorde embrasse toute la création, croyants comme mécréants, en ce bas monde.",
+   "af": "001_ar-rahman",
+   "verse": "17:110",
+   "ask": [
+    "Allah se laisse appeler par ce Nom comme par le Nom d'Allah lui-même. Lequel me vient spontanément quand je L'invoque, et pourquoi celui-là ?",
+    "Je choisis aujourd'hui une personne envers qui ma patience s'épuise, et je lui accorde ce que j'attends d'Allah pour moi."
+   ]
+  },
+  {
+   "n": 2,
+   "ar": "الرَّحِيمُ",
+   "tr": "Ar-Rahîm",
+   "fr": "Le Très Miséricordieux",
+   "desc": "Celui qui réserve une miséricorde particulière aux croyants dans l'au-delà.",
+   "af": "002_ar-rahim",
+   "verse": "4:110",
+   "ask": [
+    "Ce verset lie la miséricorde au fait de reconnaître son tort. Qu'est-ce que je n'ai pas encore reconnu ?",
+    "Je nomme une faute précise, je demande pardon pour elle aujourd'hui, et je décide de ce que je change."
+   ]
+  },
+  {
+   "n": 3,
+   "ar": "الْمَلِكُ",
+   "tr": "Al-Malik",
+   "fr": "Le Souverain",
+   "desc": "Le Roi absolu, à qui appartient la royauté des cieux et de la terre, sans partenaire.",
+   "af": "003_al-malik",
+   "verse": "20:114",
+   "ask": [
+    "Si la royauté véritable appartient à Allah seul, sur quoi est-ce que je me crois souverain sans l'être ?",
+    "Je repère une chose que je tiens pour acquise — santé, temps, revenu — et je la traite aujourd'hui comme un prêt."
+   ]
+  },
+  {
+   "n": 4,
+   "ar": "الْقُدُّوسُ",
+   "tr": "Al-Quddûs",
+   "fr": "Le Très Saint",
+   "desc": "Le Pur, exempt de tout défaut, de tout manque et de toute imperfection.",
+   "af": "004_al-quddus",
+   "verse": "62:1",
+   "ask": [
+    "Tout ce qui est dans les cieux et sur terre Le glorifie. Qu'est-ce qui, dans ma journée, ne Le glorifie pas encore ?",
+    "Je choisis une tâche ordinaire et je la fais aujourd'hui avec l'intention qu'elle devienne adoration."
+   ]
+  },
+  {
+   "n": 5,
+   "ar": "السَّلَامُ",
+   "tr": "As-Salâm",
+   "fr": "La Paix",
+   "desc": "Celui qui est exempt de tout défaut et qui accorde la paix à Ses créatures.",
+   "af": "005_as-salam",
+   "verse": "59:23",
+   "ask": [
+    "La paix vient de Lui, elle ne se fabrique pas. Où est-ce que je la cherche ailleurs ?",
+    "Je désigne une inquiétude que je remâche, et je la Lui remets aujourd'hui, une fois, sans y revenir."
+   ]
+  },
+  {
+   "n": 6,
+   "ar": "الْمُؤْمِنُ",
+   "tr": "Al-Mu'min",
+   "fr": "Le Rassurant",
+   "desc": "Celui qui donne la sécurité et la foi, qui confirme la vérité par Ses signes.",
+   "af": "006_al-mumin",
+   "verse": "59:23",
+   "ask": [
+    "Il donne la sécurité. Qu'est-ce que je protège avec anxiété, comme si cela ne dépendait que de moi ?",
+    "Je rassure aujourd'hui quelqu'un qui a peur — d'un mot, d'un geste, d'une présence."
+   ]
+  },
+  {
+   "n": 7,
+   "ar": "الْمُهَيْمِنُ",
+   "tr": "Al-Muhaymin",
+   "fr": "Le Prépondérant",
+   "desc": "Le Témoin qui veille sur toute chose, le Gardien et le Protecteur.",
+   "af": "007_al-muhaymin",
+   "verse": "59:23",
+   "ask": [
+    "Rien ne Lui échappe et rien ne se fait sans qu'Il le veille. Cela me pèse-t-il ou me repose-t-il ?",
+    "Je fais aujourd'hui, seul et sans témoin, un bien que personne ne saura."
+   ]
+  },
+  {
+   "n": 8,
+   "ar": "الْعَزِيزُ",
+   "tr": "Al-'Azîz",
+   "fr": "Le Tout-Puissant",
+   "desc": "Le Puissant, l'Invincible, que rien ne peut atteindre ni contraindre.",
+   "af": "008_al-aziz",
+   "verse": "3:6",
+   "ask": [
+    "Sa puissance ne se discute pas. À quelle puissance humaine est-ce que j'accorde plus de poids qu'elle n'en a ?",
+    "Je repère une crainte du jugement des gens, et je fais aujourd'hui ce qui est juste malgré elle."
+   ]
+  },
+  {
+   "n": 9,
+   "ar": "الْجَبَّارُ",
+   "tr": "Al-Jabbâr",
+   "fr": "Le Contraignant",
+   "desc": "Celui dont la volonté s'impose à toute la création et qui répare toute chose brisée.",
+   "af": "009_al-jabbar",
+   "verse": "59:23",
+   "ask": [
+    "Il contraint ce que nul ne peut plier, et Il redresse ce qui est brisé. Qu'est-ce qui est brisé chez moi ?",
+    "Je porte aujourd'hui devant Lui une chose que je n'arrive pas à réparer par mes propres forces."
+   ]
+  },
+  {
+   "n": 10,
+   "ar": "الْمُتَكَبِّرُ",
+   "tr": "Al-Mutakabbir",
+   "fr": "Le Superbe",
+   "desc": "Celui à qui appartient la Grandeur véritable, à laquelle nulle autre ne peut prétendre.",
+   "af": "010_al-mutakabbir",
+   "verse": "59:23",
+   "ask": [
+    "La grandeur ne revient qu'à Lui. Sur quoi est-ce que je me hausse devant les autres ?",
+    "Je reconnais aujourd'hui un tort devant quelqu'un que je considère comme mon inférieur."
+   ]
+  },
+  {
+   "n": 11,
+   "ar": "الْخَالِقُ",
+   "tr": "Al-Khâliq",
+   "fr": "Le Créateur",
+   "desc": "Celui qui crée toute chose à partir du néant, sans modèle préalable.",
+   "af": "011_al-khaliq",
+   "verse": "6:102",
+   "ask": [
+    "Il est le Créateur de toute chose. Est-ce que je regarde encore ce qui m'entoure, ou est-ce que je ne le vois plus ?",
+    "Je m'arrête aujourd'hui une minute devant une chose créée — un visage, un arbre, le ciel — et je la regarde vraiment."
+   ]
+  },
+  {
+   "n": 12,
+   "ar": "الْبَارِئُ",
+   "tr": "Al-Bâri'",
+   "fr": "Le Producteur",
+   "desc": "Celui qui donne l'existence, distingue et façonne chaque créature.",
+   "af": "012_al-bari",
+   "verse": "59:24",
+   "ask": [
+    "Il produit sans modèle, à partir de rien. Qu'est-ce que je crois impossible à recommencer dans ma vie ?",
+    "Je reprends aujourd'hui une chose que j'avais abandonnée, ne serait-ce que par un premier geste."
+   ]
+  },
+  {
+   "n": 13,
+   "ar": "الْمُصَوِّرُ",
+   "tr": "Al-Musawwir",
+   "fr": "Le Formateur",
+   "desc": "Celui qui donne à chaque chose sa forme particulière, unique et harmonieuse.",
+   "af": "013_al-musawwir",
+   "verse": "59:24",
+   "ask": [
+    "Il a donné à chaque être sa forme propre. Qu'est-ce que je reproche à la mienne ?",
+    "Je repère aujourd'hui une chose que je critique chez quelqu'un et qu'il n'a pas choisie, et je me tais."
+   ]
+  },
+  {
+   "n": 14,
+   "ar": "الْغَفَّارُ",
+   "tr": "Al-Ghaffâr",
+   "fr": "Le Grand Pardonneur",
+   "desc": "Celui qui pardonne encore et encore, qui couvre les péchés de Ses serviteurs.",
+   "af": "014_al-ghaffar",
+   "verse": "20:82",
+   "ask": [
+    "Le pardon est promis à qui se repent, croit, agit bien, puis tient le cap. Où est-ce que je m'arrête en chemin ?",
+    "Je reprends aujourd'hui un repentir que j'avais formulé sans rien changer ensuite, et je change une chose."
+   ]
+  },
+  {
+   "n": 15,
+   "ar": "الْقَهَّارُ",
+   "tr": "Al-Qahhâr",
+   "fr": "Le Dominateur",
+   "desc": "Celui qui domine toute chose par Sa force, à qui rien ni personne ne résiste.",
+   "af": "015_al-qahhar",
+   "verse": "38:65",
+   "ask": [
+    "Rien ne résiste à Sa domination. À quoi est-ce que je me soumets qui ne le mérite pas ?",
+    "Je nomme une habitude qui me commande, et je lui désobéis une fois aujourd'hui."
+   ]
+  },
+  {
+   "n": 16,
+   "ar": "الْوَهَّابُ",
+   "tr": "Al-Wahhâb",
+   "fr": "Le Grand Donateur",
+   "desc": "Celui qui donne sans compter et sans attendre de retour.",
+   "af": "016_al-wahhab",
+   "verse": "3:8",
+   "ask": [
+    "Ce verset demande la constance après la guidée. Qu'est-ce qui menace la mienne en ce moment ?",
+    "Je fais aujourd'hui un don que personne n'attend de moi et dont je n'attends rien."
+   ]
+  },
+  {
+   "n": 17,
+   "ar": "الرَّزَّاقُ",
+   "tr": "Ar-Razzâq",
+   "fr": "Le Grand Pourvoyeur",
+   "desc": "Celui qui pourvoit à la subsistance de toutes Ses créatures.",
+   "af": "017_ar-razzaq",
+   "verse": "51:58",
+   "ask": [
+    "La subsistance vient de Lui, pas de mon effort seul. Mon effort est-il devenu ma confiance ?",
+    "Je partage aujourd'hui une part de ce que j'ai reçu, avant d'en avoir de trop."
+   ]
+  },
+  {
+   "n": 18,
+   "ar": "الْفَتَّاحُ",
+   "tr": "Al-Fattâh",
+   "fr": "Celui qui ouvre",
+   "desc": "Celui qui ouvre les portes de la miséricorde, de la victoire et de la connaissance.",
+   "af": "018_al-fattah",
+   "verse": "34:26",
+   "ask": [
+    "Il ouvre ce qui est fermé et tranche ce qui est embrouillé. Quelle situation ai-je cessé de Lui présenter ?",
+    "Je reprends aujourd'hui une porte que je croyais close — une démarche, une demande, une réconciliation."
+   ]
+  },
+  {
+   "n": 19,
+   "ar": "الْعَلِيمُ",
+   "tr": "Al-'Alîm",
+   "fr": "L'Omniscient",
+   "desc": "Celui dont la science embrasse tout : le visible, le caché, le passé et l'avenir.",
+   "af": "019_al-alim",
+   "verse": "2:32",
+   "ask": [
+    "Les anges reconnaissent ne savoir que ce qui leur fut enseigné. Où est-ce que je confonds mon avis et le savoir ?",
+    "Je dis aujourd'hui « je ne sais pas » là où j'aurais improvisé une réponse."
+   ]
+  },
+  {
+   "n": 20,
+   "ar": "الْقَابِضُ",
+   "tr": "Al-Qâbid",
+   "fr": "Celui qui retient",
+   "desc": "Celui qui restreint la subsistance ou les âmes selon Sa sagesse.",
+   "af": "020_al-qabid",
+   "verse": "2:245",
+   "ask": [
+    "Il resserre autant qu'Il étend, et les deux sont une faveur. Est-ce que je le crois quand Il resserre ?",
+    "Je repère un manque actuel et j'y cherche aujourd'hui une chose que l'abondance m'aurait cachée."
+   ]
+  },
+  {
+   "n": 21,
+   "ar": "الْبَاسِطُ",
+   "tr": "Al-Bâsit",
+   "fr": "Celui qui étend",
+   "desc": "Celui qui élargit la subsistance et ouvre les cœurs à Ses serviteurs.",
+   "af": "021_al-basit",
+   "verse": "2:245",
+   "ask": [
+    "Il étend Ses faveurs sans compter. Est-ce que je reçois large et donne étroit ?",
+    "Je donne aujourd'hui plus que ce qui m'est demandé, une seule fois, sans le dire."
+   ]
+  },
+  {
+   "n": 22,
+   "ar": "الْخَافِضُ",
+   "tr": "Al-Khâfid",
+   "fr": "Celui qui abaisse",
+   "desc": "Celui qui abaisse les orgueilleux et les injustes.",
+   "af": "022_al-khafid",
+   "verse": "56:3",
+   "ask": [
+    "Ce Jour abaissera les uns et élèvera les autres. Sur quel classement d'ici-bas est-ce que je m'appuie ?",
+    "Je renonce aujourd'hui à une occasion de me faire valoir."
+   ]
+  },
+  {
+   "n": 23,
+   "ar": "الرَّافِعُ",
+   "tr": "Ar-Râfi'",
+   "fr": "Celui qui élève",
+   "desc": "Celui qui élève en rang Ses saints et les croyants sincères.",
+   "af": "023_ar-rafi",
+   "verse": "58:11",
+   "ask": [
+    "Il élève en rang ceux qui croient et ceux à qui le savoir fut donné. Qu'ai-je appris cette semaine ?",
+    "J'apprends aujourd'hui une chose précise de ma religion, et je la mets en pratique une fois."
+   ]
+  },
+  {
+   "n": 24,
+   "ar": "الْمُعِزُّ",
+   "tr": "Al-Mu'izz",
+   "fr": "Celui qui donne la puissance",
+   "desc": "Celui qui accorde la gloire et l'honneur à qui Il veut.",
+   "af": "024_al-muizz",
+   "verse": "3:26",
+   "ask": [
+    "L'honneur vient de Lui et ne s'arrache pas. Auprès de qui est-ce que je cherche à être considéré ?",
+    "Je fais aujourd'hui honneur à quelqu'un que personne ne remarque."
+   ]
+  },
+  {
+   "n": 25,
+   "ar": "الْمُذِلُّ",
+   "tr": "Al-Mudhill",
+   "fr": "Celui qui humilie",
+   "desc": "Celui qui rabaisse et humilie qui Il veut, par justice.",
+   "af": "025_al-mudhill",
+   "verse": "3:26",
+   "ask": [
+    "Il abaisse qui Il veut. Qu'est-ce qui, chez moi, appelle cet abaissement ?",
+    "Je repère un mépris que je porte à quelqu'un, et je le laisse tomber aujourd'hui."
+   ]
+  },
+  {
+   "n": 26,
+   "ar": "السَّمِيعُ",
+   "tr": "As-Samî'",
+   "fr": "L'Audient",
+   "desc": "Celui qui entend tout, y compris le murmure le plus discret.",
+   "af": "026_as-sami",
+   "verse": "2:127",
+   "ask": [
+    "Abraham et Ismaël bâtissent, puis demandent que ce soit accepté. Est-ce que je demande cela de mes actes ?",
+    "Après ma prochaine prière, je demande aujourd'hui qu'elle soit acceptée — avant de passer à autre chose."
+   ]
+  },
+  {
+   "n": 27,
+   "ar": "الْبَصِيرُ",
+   "tr": "Al-Basîr",
+   "fr": "Le Clairvoyant",
+   "desc": "Celui qui voit tout, en tous lieux et en tout temps.",
+   "af": "027_al-basir",
+   "verse": "42:11",
+   "ask": [
+    "Rien ne Lui ressemble, et pourtant Il voit tout de moi. Qu'est-ce que je fais quand je me crois seul ?",
+    "Je choisis aujourd'hui un moment où personne ne me voit, et j'y agis comme si l'on me voyait."
+   ]
+  },
+  {
+   "n": 28,
+   "ar": "الْحَكَمُ",
+   "tr": "Al-Hakam",
+   "fr": "Le Juge",
+   "desc": "L'Arbitre suprême qui tranche entre Ses créatures avec justice.",
+   "af": "028_al-hakam",
+   "verse": "6:114",
+   "ask": [
+    "Chercherais-je un autre juge que Lui ? À quel tribunal est-ce que je porte mes affaires en premier ?",
+    "Je repère un différend que j'entretiens, et je cherche aujourd'hui ce que le droit y dit, non ce qui m'arrange."
+   ]
+  },
+  {
+   "n": 29,
+   "ar": "الْعَدْلُ",
+   "tr": "Al-'Adl",
+   "fr": "Le Juste",
+   "desc": "Celui qui est équité absolue, dont les jugements sont exempts de toute injustice.",
+   "af": "029_al-adl",
+   "verse": "16:90",
+   "ask": [
+    "Il ordonne l'équité et la bienfaisance — l'une est due, l'autre est en plus. Laquelle me manque le plus ?",
+    "Je rends aujourd'hui son dû à quelqu'un, puis j'y ajoute une chose qui n'était pas due."
+   ]
+  },
+  {
+   "n": 30,
+   "ar": "اللَّطِيفُ",
+   "tr": "Al-Latîf",
+   "fr": "Le Subtil, le Bienveillant",
+   "desc": "Celui dont la douceur atteint jusqu'aux détails les plus fins de Ses créatures.",
+   "af": "030_al-latif",
+   "verse": "6:103",
+   "ask": [
+    "Aucun regard ne L'atteint, et Il atteint tous les regards. Cela change-t-il ma manière de regarder ?",
+    "Je fais aujourd'hui attention à un détail que personne ne remarquera — un soin, une propreté, une exactitude."
+   ]
+  },
+  {
+   "n": 31,
+   "ar": "الْخَبِيرُ",
+   "tr": "Al-Khabîr",
+   "fr": "Le Parfaitement Informé",
+   "desc": "Celui à qui rien n'échappe, connaissant la réalité intime de toute chose.",
+   "af": "031_al-khabir",
+   "verse": "49:13",
+   "ask": [
+    "Le plus digne est le plus pieux, et Lui seul le sait. Sur quel autre classement est-ce que je juge les gens ?",
+    "Je repère un jugement que je porte sur quelqu'un d'après son origine ou son rang, et je l'abandonne."
+   ]
+  },
+  {
+   "n": 32,
+   "ar": "الْحَلِيمُ",
+   "tr": "Al-Halîm",
+   "fr": "Le Longanime",
+   "desc": "Celui qui use de patience et ne se hâte pas de châtier.",
+   "af": "032_al-halim",
+   "verse": "2:263",
+   "ask": [
+    "Une parole aimable vaut mieux qu'une aumône suivie d'un tort. Ai-je gâté un don par un reproche ?",
+    "Je donne aujourd'hui sans le rappeler, et je m'interdis d'y revenir même en pensée."
+   ]
+  },
+  {
+   "n": 33,
+   "ar": "الْعَظِيمُ",
+   "tr": "Al-'Azhîm",
+   "fr": "L'Immense",
+   "desc": "Celui dont la grandeur dépasse tout entendement.",
+   "af": "033_al-azhim",
+   "verse": "56:96",
+   "ask": [
+    "L'ordre est simple : glorifier Son Nom. Combien de fois l'ai-je fait hier sans y penser ?",
+    "Je dis aujourd'hui « Subhâna Rabbiyal 'Azhîm » dix fois, lentement, en comprenant chaque mot."
+   ]
+  },
+  {
+   "n": 34,
+   "ar": "الْغَفُورُ",
+   "tr": "Al-Ghafûr",
+   "fr": "Le Tout-Pardonnant",
+   "desc": "Celui qui pardonne largement à quiconque se repent sincèrement.",
+   "af": "034_al-ghafur",
+   "verse": "39:53",
+   "ask": [
+    "Il interdit de désespérer de Sa miséricorde. De quelle faute est-ce que je désespère ?",
+    "Je nomme aujourd'hui la faute que je crois impardonnable, et je demande pardon pour elle."
+   ]
+  },
+  {
+   "n": 35,
+   "ar": "الشَّكُورُ",
+   "tr": "Ash-Shakûr",
+   "fr": "Le Très Reconnaissant",
+   "desc": "Celui qui récompense généreusement les moindres bonnes actions.",
+   "af": "035_ash-shakur",
+   "verse": "42:23",
+   "ask": [
+    "Il rend meilleure la bonne action qu'on accomplit. Est-ce que j'attends de Lui à la mesure de cela ?",
+    "Je fais aujourd'hui un bien minuscule sans le juger trop petit pour compter."
+   ]
+  },
+  {
+   "n": 36,
+   "ar": "الْعَلِيُّ",
+   "tr": "Al-'Aliyy",
+   "fr": "Le Très Haut",
+   "desc": "Celui qui est au-dessus de toute chose par Son essence, Ses attributs et Sa puissance.",
+   "af": "036_al-aliyy",
+   "verse": "2:255",
+   "ask": [
+    "Il est le Très Haut, et rien ne Lui échappe. Qu'est-ce que je place au-dessus de Lui dans ma journée ?",
+    "Je repère la première chose à laquelle je pense au réveil, et demain je la fais passer après Lui."
+   ]
+  },
+  {
+   "n": 37,
+   "ar": "الْكَبِيرُ",
+   "tr": "Al-Kabîr",
+   "fr": "Le Très Grand",
+   "desc": "Celui dont la grandeur est absolue, à qui rien ne peut se comparer.",
+   "af": "037_al-kabir",
+   "verse": "31:30",
+   "ask": [
+    "Ce qu'on invoque en dehors de Lui n'est que vanité. Qu'est-ce que j'appelle au secours avant de L'appeler ?",
+    "Devant la prochaine difficulté, je L'invoque en premier — avant le téléphone, avant le calcul."
+   ]
+  },
+  {
+   "n": 38,
+   "ar": "الْحَفِيظُ",
+   "tr": "Al-Hafîz",
+   "fr": "Le Préservateur",
+   "desc": "Celui qui protège Ses créatures et préserve tous les actes.",
+   "af": "038_al-hafiz",
+   "verse": "11:57",
+   "ask": [
+    "Il veille à la sauvegarde de toute chose. Qu'est-ce que je crains de perdre ?",
+    "Je confie aujourd'hui à Sa garde une chose que je surveille avec angoisse, et je relâche ma prise."
+   ]
+  },
+  {
+   "n": 39,
+   "ar": "الْمُقِيتُ",
+   "tr": "Al-Muqît",
+   "fr": "Celui qui nourrit",
+   "desc": "Celui qui donne à chacun sa juste part de nourriture et de moyens.",
+   "af": "039_al-muqit",
+   "verse": "4:85",
+   "ask": [
+    "Il veille sur toute chose et en tient le compte. Quelle intercession ai-je faite dernièrement, et pour quoi ?",
+    "J'interviens aujourd'hui en faveur de quelqu'un qui ne peut pas parler pour lui-même."
+   ]
+  },
+  {
+   "n": 40,
+   "ar": "الْحَسِيبُ",
+   "tr": "Al-Hasîb",
+   "fr": "Celui qui suffit",
+   "desc": "Celui qui est le Compte suffisant, qui juge et rétribue Ses serviteurs.",
+   "af": "040_al-hasib",
+   "verse": "4:86",
+   "ask": [
+    "Le verset demande de rendre mieux que le salut reçu. Où est-ce que je rends tout juste l'équivalent ?",
+    "Je réponds aujourd'hui à une politesse par mieux qu'elle — un salut plus complet, un mot de plus."
+   ]
+  },
+  {
+   "n": 41,
+   "ar": "الْجَلِيلُ",
+   "tr": "Al-Jalîl",
+   "fr": "Le Majestueux",
+   "desc": "Celui qui possède la majesté et la magnificence absolues.",
+   "af": "041_al-jalil",
+   "verse": "55:78",
+   "ask": [
+    "Majesté et générosité vont ensemble en Lui. Est-ce que je sépare la crainte et l'espoir ?",
+    "Je nomme aujourd'hui une chose que je crains de Lui et une chose que j'espère de Lui, à voix haute."
+   ]
+  },
+  {
+   "n": 42,
+   "ar": "الْكَرِيمُ",
+   "tr": "Al-Karîm",
+   "fr": "Le Généreux",
+   "desc": "Celui qui accorde le bien même à qui ne le mérite pas.",
+   "af": "042_al-karim",
+   "verse": "82:6",
+   "ask": [
+    "« Qu'est-ce qui t'a leurré au sujet de ton Noble Seigneur ? » Que répondrais-je honnêtement ?",
+    "Je repère la facilité dont j'abuse en me disant qu'Il pardonnera, et je l'arrête aujourd'hui."
+   ]
+  },
+  {
+   "n": 43,
+   "ar": "الرَّقِيبُ",
+   "tr": "Ar-Raqîb",
+   "fr": "L'Observateur",
+   "desc": "Celui qui veille sur toute chose, dont rien n'est ignoré.",
+   "af": "043_ar-raqib",
+   "verse": "4:1",
+   "ask": [
+    "Il est l'Observateur, et le verset lie cette veille aux liens de parenté. Lequel ai-je laissé se rompre ?",
+    "Je reprends aujourd'hui contact avec un proche que j'évite, ne serait-ce que par un message."
+   ]
+  },
+  {
+   "n": 44,
+   "ar": "الْمُجِيبُ",
+   "tr": "Al-Mujîb",
+   "fr": "Celui qui exauce",
+   "desc": "Celui qui répond aux invocations de Ses serviteurs.",
+   "af": "044_al-mujib",
+   "verse": "11:61",
+   "ask": [
+    "Il est proche et Il répond. Depuis combien de temps ne Lui ai-je rien demandé de précis ?",
+    "Je formule aujourd'hui une demande claire, nommée, et non une prière vague."
+   ]
+  },
+  {
+   "n": 45,
+   "ar": "الْوَاسِعُ",
+   "tr": "Al-Wâsi'",
+   "fr": "L'Immense",
+   "desc": "Celui dont la miséricorde, la science et les dons embrassent toute chose.",
+   "af": "045_al-wasi",
+   "verse": "2:268",
+   "ask": [
+    "Le Diable promet la pauvreté, Allah promet le pardon et l'abondance. Laquelle des deux voix est-ce que j'écoute ?",
+    "Je donne aujourd'hui une somme qui me coûte un peu, précisément parce qu'elle me coûte."
+   ]
+  },
+  {
+   "n": 46,
+   "ar": "الْحَكِيمُ",
+   "tr": "Al-Hakîm",
+   "fr": "Le Sage",
+   "desc": "Celui qui place chaque chose à sa juste place par une sagesse infinie.",
+   "af": "046_al-hakim",
+   "verse": "34:27",
+   "ask": [
+    "Sa sagesse met chaque chose à sa place. Quelle décision de Lui est-ce que je n'accepte pas ?",
+    "Je repense à un refus que j'ai reçu, et je cherche aujourd'hui ce qu'il m'a évité."
+   ]
+  },
+  {
+   "n": 47,
+   "ar": "الْوَدُودُ",
+   "tr": "Al-Wadûd",
+   "fr": "Le Très Aimant",
+   "desc": "Celui qui aime Ses serviteurs vertueux et est aimé d'eux.",
+   "af": "047_al-wadud",
+   "verse": "85:14",
+   "ask": [
+    "Il pardonne et Il aime — les deux ensemble. Est-ce que je crois qu'Il m'aime, ou seulement qu'Il me supporte ?",
+    "Je dis aujourd'hui à quelqu'un que je l'aime pour Allah, sans autre raison."
+   ]
+  },
+  {
+   "n": 48,
+   "ar": "الْمَجِيدُ",
+   "tr": "Al-Majîd",
+   "fr": "Le Très Glorieux",
+   "desc": "Celui dont la gloire est parfaite et dont les bienfaits sont infinis.",
+   "af": "048_al-majid",
+   "verse": "11:73",
+   "ask": [
+    "Louange et gloire Lui reviennent, et les anges le rappellent à une famille. Ma maison le rappelle-t-elle ?",
+    "Je prononce aujourd'hui une parole de louange à voix haute chez moi, devant les miens."
+   ]
+  },
+  {
+   "n": 49,
+   "ar": "الْبَاعِثُ",
+   "tr": "Al-Bâ'ith",
+   "fr": "Le Ressusciteur",
+   "desc": "Celui qui ressuscitera les morts au Jour du Jugement.",
+   "af": "049_al-baith",
+   "verse": "22:7",
+   "ask": [
+    "L'Heure viendra, et Il ressuscitera ceux qui sont dans les tombes. Est-ce que je vis en le sachant ?",
+    "Je visite aujourd'hui un cimetière, ou à défaut je m'arrête cinq minutes à y penser vraiment."
+   ]
+  },
+  {
+   "n": 50,
+   "ar": "الشَّهِيدُ",
+   "tr": "Ash-Shahîd",
+   "fr": "Le Témoin",
+   "desc": "Celui qui est présent en tout lieu et témoin de toute chose.",
+   "af": "050_ash-shahid",
+   "verse": "4:79",
+   "ask": [
+    "Il suffit comme Témoin. Devant qui d'autre est-ce que je cherche à me justifier ?",
+    "Je renonce aujourd'hui à me défendre une fois, en laissant le témoignage à Lui seul."
+   ]
+  },
+  {
+   "n": 51,
+   "ar": "الْحَقُّ",
+   "tr": "Al-Haqq",
+   "fr": "La Vérité",
+   "desc": "La Vérité en Lui-même ; Son existence, Sa parole et Sa promesse sont vraies.",
+   "af": "051_al-haqq",
+   "verse": "22:62",
+   "ask": [
+    "Il est la Vérité, et ce qu'on invoque hors de Lui est vanité. À quelle illusion est-ce que je tiens ?",
+    "Je nomme aujourd'hui une chose à laquelle je donne un pouvoir qu'elle n'a pas, et je le lui retire."
+   ]
+  },
+  {
+   "n": 52,
+   "ar": "الْوَكِيلُ",
+   "tr": "Al-Wakîl",
+   "fr": "Le Garant",
+   "desc": "Celui à qui on s'en remet totalement, qui gère les affaires de Ses serviteurs.",
+   "af": "052_al-wakil",
+   "verse": "3:173",
+   "ask": [
+    "« Allah nous suffit, quel excellent Garant. » Est-ce que je le dis, ou est-ce que je le pense vraiment ?",
+    "Devant la prochaine inquiétude d'aujourd'hui, je dis cette phrase avant de chercher une solution."
+   ]
+  },
+  {
+   "n": 53,
+   "ar": "الْقَوِيُّ",
+   "tr": "Al-Qawiyy",
+   "fr": "Le Très Fort",
+   "desc": "Celui dont la force est parfaite, absolue et sans faiblesse.",
+   "af": "053_al-qawiyy",
+   "verse": "11:66",
+   "ask": [
+    "Sa force sauve ceux qui croient au jour de l'humiliation. De quoi est-ce que je crains d'être humilié ?",
+    "Je fais aujourd'hui une chose juste que je repoussais par peur du ridicule."
+   ]
+  },
+  {
+   "n": 54,
+   "ar": "الْمَتِينُ",
+   "tr": "Al-Matîn",
+   "fr": "L'Inébranlable",
+   "desc": "Celui dont la puissance est ferme et solide, sans lassitude ni fatigue.",
+   "af": "054_al-matin",
+   "verse": "51:58",
+   "ask": [
+    "Sa force est inébranlable et ne connaît pas la fatigue. Où est-ce que je m'épuise à tenir seul ?",
+    "Je demande aujourd'hui de l'aide pour une chose que je porte seul par orgueil."
+   ]
+  },
+  {
+   "n": 55,
+   "ar": "الْوَلِيُّ",
+   "tr": "Al-Waliyy",
+   "fr": "Le Protecteur",
+   "desc": "L'Ami et le Protecteur des croyants.",
+   "af": "055_al-waliyy",
+   "verse": "2:257",
+   "ask": [
+    "Il fait sortir les croyants des ténèbres vers la lumière. Quelle est ma part d'ombre en ce moment ?",
+    "Je nomme une chose que je cache, et j'en parle aujourd'hui à Lui, en détail."
+   ]
+  },
+  {
+   "n": 56,
+   "ar": "الْحَمِيدُ",
+   "tr": "Al-Hamîd",
+   "fr": "Le Très Digne de louanges",
+   "desc": "Celui qui mérite toute louange pour ce qu'Il est et ce qu'Il fait.",
+   "af": "056_al-hamid",
+   "verse": "31:26",
+   "ask": [
+    "Il se passe de tout et mérite toute louange. Est-ce que je Le loue seulement quand j'obtiens ?",
+    "Je Le loue aujourd'hui pour une chose qui ne s'est pas passée comme je voulais."
+   ]
+  },
+  {
+   "n": 57,
+   "ar": "الْمُحْصِي",
+   "tr": "Al-Muhsî",
+   "fr": "Celui qui recense",
+   "desc": "Celui qui dénombre chaque chose, jusqu'au plus infime détail.",
+   "af": "057_al-muhsi",
+   "verse": "19:94",
+   "ask": [
+    "Il les a tous comptés, un par un. Qu'est-ce que je fais en croyant que cela ne compte pas ?",
+    "Je repère un petit manquement répété — un regard, un mot, une minute — et je l'arrête aujourd'hui."
+   ]
+  },
+  {
+   "n": 58,
+   "ar": "الْمُبْدِئُ",
+   "tr": "Al-Mubdi'",
+   "fr": "Celui qui initie",
+   "desc": "Celui qui commence toute chose, l'Initiateur de la création.",
+   "af": "058_al-mubdi",
+   "verse": "85:13",
+   "ask": [
+    "Il commence puis recommence. Qu'est-ce que je crois définitivement perdu ?",
+    "Je recommence aujourd'hui une bonne habitude que j'avais tenue puis lâchée."
+   ]
+  },
+  {
+   "n": 59,
+   "ar": "الْمُعِيدُ",
+   "tr": "Al-Mu'îd",
+   "fr": "Celui qui recommence",
+   "desc": "Celui qui recrée après la mort, qui refait toute chose.",
+   "af": "059_al-muid",
+   "verse": "85:13",
+   "ask": [
+    "Ce qu'Il a commencé, Il le refera. Est-ce que je vis comme si cette vie était la seule ?",
+    "Je prends aujourd'hui une décision en pensant à l'autre vie plutôt qu'à celle-ci."
+   ]
+  },
+  {
+   "n": 60,
+   "ar": "الْمُحْيِي",
+   "tr": "Al-Muhyî",
+   "fr": "Celui qui donne la vie",
+   "desc": "Celui qui insuffle la vie et fait sortir le vivant du non-vivant.",
+   "af": "060_al-muhyi",
+   "verse": "30:50",
+   "ask": [
+    "Il fait revivre la terre morte, et de même les morts. Quelle part de moi est en friche ?",
+    "Je ranime aujourd'hui une pratique abandonnée — une lecture, une prière surérogatoire, un jeûne."
+   ]
+  },
+  {
+   "n": 61,
+   "ar": "الْمُمِيتُ",
+   "tr": "Al-Mumît",
+   "fr": "Celui qui donne la mort",
+   "desc": "Celui qui fait mourir toute âme au terme fixé.",
+   "af": "061_al-mumit",
+   "verse": "2:258",
+   "ask": [
+    "Abraham répond que son Seigneur donne la vie et la mort. Est-ce que je compte mes jours ?",
+    "Je considère aujourd'hui une chose que je remets « à plus tard », et je la commence."
+   ]
+  },
+  {
+   "n": 62,
+   "ar": "الْحَيُّ",
+   "tr": "Al-Hayy",
+   "fr": "Le Vivant",
+   "desc": "Celui qui possède la vie parfaite, éternelle, sans début ni fin.",
+   "af": "062_al-hayy",
+   "verse": "40:65",
+   "ask": [
+    "Il est le Vivant : le verset conclut par l'ordre de L'invoquer sincèrement. Ma sincérité est-elle entière ?",
+    "Je fais aujourd'hui une invocation seul, sans rien en dire à personne."
+   ]
+  },
+  {
+   "n": 63,
+   "ar": "الْقَيُّومُ",
+   "tr": "Al-Qayyûm",
+   "fr": "Le Subsistant par Lui-même",
+   "desc": "Celui qui subsiste par Lui-même et par qui subsiste toute chose.",
+   "af": "063_al-qayyum",
+   "verse": "2:255",
+   "ask": [
+    "Rien ne Le tient debout que Lui-même, et ni assoupissement ni sommeil ne Le prennent. Sur quel appui est-ce que je m'endors ?",
+    "Je repère une chose que je porte comme si elle tenait à ma seule vigilance, et je dors dessus ce soir."
+   ]
+  },
+  {
+   "n": 64,
+   "ar": "الْوَاجِدُ",
+   "tr": "Al-Wâjid",
+   "fr": "Celui qui trouve",
+   "desc": "Celui à qui rien n'échappe, qui possède tout ce qu'Il veut sans effort.",
+   "af": "064_al-wajid",
+   "verse": "93:7",
+   "ask": [
+    "Il l'a trouvé avant qu'il ne Le cherche. Où en étais-je, la fois où cela m'est arrivé ?",
+    "Je raconte aujourd'hui à quelqu'un une fois où j'ai été retrouvé, sans en faire une leçon."
+   ]
+  },
+  {
+   "n": 65,
+   "ar": "الْمَاجِدُ",
+   "tr": "Al-Mâjid",
+   "fr": "Le Très Noble",
+   "desc": "Celui qui possède la noblesse, la générosité et la gloire absolues.",
+   "af": "065_al-majid",
+   "verse": "11:73",
+   "ask": [
+    "Cette noblesse est dite à une famille dans l'embarras, pas dans la gloire. Est-ce que je la reconnais dans mes moments étroits ?",
+    "Je Le loue aujourd'hui à voix haute dans une circonstance banale, pas seulement dans l'épreuve."
+   ]
+  },
+  {
+   "n": 66,
+   "ar": "الْوَاحِدُ",
+   "tr": "Al-Wâhid",
+   "fr": "L'Unique",
+   "desc": "Celui qui est Un dans Son essence, Ses attributs et Ses actes.",
+   "af": "066_al-wahid",
+   "verse": "13:16",
+   "ask": [
+    "Le verset oppose ceux qui ne peuvent rien pour eux-mêmes à Celui qui crée tout. À qui est-ce que je prête un pouvoir qu'il n'a pas ?",
+    "Je nomme une personne dont j'attends ce que Lui seul donne, et je remets ma demande à sa place."
+   ]
+  },
+  {
+   "n": 67,
+   "ar": "الْأَحَدُ",
+   "tr": "Al-Ahad",
+   "fr": "L'Un",
+   "desc": "L'Unique absolu, sans partenaire, sans semblable ni équivalent.",
+   "af": "067_al-ahad",
+   "verse": "112:1",
+   "ask": [
+    "« Il est Allah, l'Un. » Est-ce que je Le pense un, ou est-ce que je me Le représente ?",
+    "Je récite aujourd'hui Al-Ikhlas trois fois, lentement, en m'arrêtant sur chaque mot."
+   ]
+  },
+  {
+   "n": 68,
+   "ar": "الصَّمَدُ",
+   "tr": "As-Samad",
+   "fr": "Le Recours suprême",
+   "desc": "Celui vers qui se tourne toute créature dans le besoin, qui n'a besoin de rien.",
+   "af": "068_as-samad",
+   "verse": "112:2",
+   "ask": [
+    "Tout se tourne vers Lui, et Lui ne se tourne vers rien. Vers quoi est-ce que je me tourne en premier ?",
+    "La prochaine fois que je manque de quelque chose aujourd'hui, je Le demande avant de demander à un homme."
+   ]
+  },
+  {
+   "n": 69,
+   "ar": "الْقَادِرُ",
+   "tr": "Al-Qâdir",
+   "fr": "Le Détenteur du pouvoir",
+   "desc": "Celui qui a le pouvoir absolu sur toute chose.",
+   "af": "069_al-qadir",
+   "verse": "6:65",
+   "ask": [
+    "Il peut faire venir l'épreuve d'en haut, d'en bas, ou de nous les uns contre les autres. Laquelle des trois est-ce que j'oublie ?",
+    "Je repère une division que j'entretiens avec un musulman, et je fais un pas vers lui aujourd'hui."
+   ]
+  },
+  {
+   "n": 70,
+   "ar": "الْمُقْتَدِرُ",
+   "tr": "Al-Muqtadir",
+   "fr": "Le Puissant Déterminant",
+   "desc": "Celui dont la puissance s'exerce sans obstacle, avec une maîtrise parfaite.",
+   "af": "070_al-muqtadir",
+   "verse": "18:45",
+   "ask": [
+    "Cette vie est décrite comme une herbe sèche que le vent disperse. Qu'est-ce que je bâtis dessus ?",
+    "Je donne aujourd'hui à une chose qui restera autant de temps qu'à une chose qui passe."
+   ]
+  },
+  {
+   "n": 71,
+   "ar": "الْمُقَدِّمُ",
+   "tr": "Al-Muqaddim",
+   "fr": "Celui qui avance",
+   "desc": "Celui qui met en avant qui Il veut par Sa sagesse.",
+   "af": "071_al-muqaddim",
+   "verse": "16:61",
+   "ask": [
+    "Nul ne peut avancer son terme d'une heure. Qu'est-ce que je crois pouvoir hâter ?",
+    "Je cesse aujourd'hui de forcer une chose qui n'avance pas, et je la Lui remets."
+   ]
+  },
+  {
+   "n": 72,
+   "ar": "الْمُؤَخِّرُ",
+   "tr": "Al-Mu'akhkhir",
+   "fr": "Celui qui recule",
+   "desc": "Celui qui retarde ou repousse qui Il veut selon Sa sagesse.",
+   "af": "072_al-muakhkhir",
+   "verse": "71:4",
+   "ask": [
+    "Il diffère, et le sursis est une faveur, non un oubli. Qu'est-ce que je fais du mien ?",
+    "Je nomme une chose que je remettrais volontiers à demain, et je la fais aujourd'hui."
+   ]
+  },
+  {
+   "n": 73,
+   "ar": "الْأَوَّلُ",
+   "tr": "Al-Awwal",
+   "fr": "Le Premier",
+   "desc": "Celui qui n'a pas de commencement, avant qui il n'y a rien.",
+   "af": "073_al-awwal",
+   "verse": "57:3",
+   "ask": [
+    "Il est le Premier : rien ne Le précède. Qu'est-ce qui passe avant Lui dans l'ordre de ma journée ?",
+    "Je fais aujourd'hui de ma première pensée au réveil un rappel de Lui, avant tout le reste."
+   ]
+  },
+  {
+   "n": 74,
+   "ar": "الْآخِرُ",
+   "tr": "Al-Âkhir",
+   "fr": "Le Dernier",
+   "desc": "Celui qui n'a pas de fin, après qui il n'y a rien.",
+   "af": "074_al-akhir",
+   "verse": "57:3",
+   "ask": [
+    "Il est le Dernier : tout finit, Il demeure. Qu'est-ce que je traite comme si cela durait ?",
+    "Je choisis une chose à laquelle je tiens, et je m'exerce aujourd'hui à la voir comme prêtée."
+   ]
+  },
+  {
+   "n": 75,
+   "ar": "الظَّاهِرُ",
+   "tr": "Az-Zâhir",
+   "fr": "L'Apparent",
+   "desc": "Celui dont l'existence est manifeste par les signes de Sa création.",
+   "af": "075_az-zahir",
+   "verse": "57:3",
+   "ask": [
+    "Il est le Patent : Ses signes sont partout. Lequel ai-je cessé de voir à force de le voir ?",
+    "Je m'arrête aujourd'hui devant une chose ordinaire — un arbre, une main, un souffle — et j'y lis un signe."
+   ]
+  },
+  {
+   "n": 76,
+   "ar": "الْبَاطِنُ",
+   "tr": "Al-Bâtin",
+   "fr": "Le Caché",
+   "desc": "Celui dont la réalité échappe à la perception des créatures.",
+   "af": "076_al-batin",
+   "verse": "57:3",
+   "ask": [
+    "Il est le Latent : rien de moi ne Lui échappe. Qu'est-ce que je garde caché de tous ?",
+    "Je Lui dis aujourd'hui, en détail, une chose que je n'ai dite à personne."
+   ]
+  },
+  {
+   "n": 77,
+   "ar": "الْوَالِي",
+   "tr": "Al-Wâlî",
+   "fr": "Le Maître souverain",
+   "desc": "Celui qui gouverne toute chose et dispose de la création.",
+   "af": "077_al-wali",
+   "verse": "13:11",
+   "ask": [
+    "Le verset dit qu'Il ne change rien à un peuple tant qu'il ne change ce qui est en lui. Qu'est-ce que j'attends de Lui sans y avoir mis ma part ?",
+    "Je nomme une chose que je demande depuis longtemps, et je fais aujourd'hui le premier geste qui me revient."
+   ]
+  },
+  {
+   "n": 78,
+   "ar": "الْمُتَعَالِي",
+   "tr": "Al-Muta'âlî",
+   "fr": "Le Très Sublime",
+   "desc": "Celui qui transcende tout ce que les créatures peuvent Lui attribuer d'imparfait.",
+   "af": "078_al-mutaali",
+   "verse": "13:9",
+   "ask": [
+    "Il connaît l'insondable aussi bien que l'observable. Qu'est-ce que je soigne devant les autres et néglige seul ?",
+    "Je choisis aujourd'hui un acte que personne ne verra, et je le fais avec le même soin qu'un acte vu."
+   ]
+  },
+  {
+   "n": 79,
+   "ar": "الْبَرُّ",
+   "tr": "Al-Barr",
+   "fr": "Le Bienfaiteur",
+   "desc": "Celui qui répand Sa bonté sur toute Sa création.",
+   "af": "079_al-barr",
+   "verse": "52:28",
+   "ask": [
+    "Ceux du Paradis disent l'avoir invoqué avant, dans la vie d'ici-bas. Qu'est-ce que je remets à plus tard ?",
+    "Je prends aujourd'hui l'habitude que je comptais prendre « quand j'aurai le temps », en commençant petit."
+   ]
+  },
+  {
+   "n": 80,
+   "ar": "التَّوَّابُ",
+   "tr": "At-Tawwâb",
+   "fr": "Celui qui accueille le repentir",
+   "desc": "Celui qui accepte sans cesse le retour de Ses serviteurs vers Lui.",
+   "af": "080_at-tawwab",
+   "verse": "9:104",
+   "ask": [
+    "C'est Lui qui accueille le repentir, pas moi qui l'arrache. Est-ce que je me repens, ou est-ce que je négocie ?",
+    "Je reviens aujourd'hui sur une faute pour laquelle j'ai demandé pardon sans rien changer, et je change une chose."
+   ]
+  },
+  {
+   "n": 81,
+   "ar": "الْمُنْتَقِمُ",
+   "tr": "Al-Muntaqim",
+   "fr": "Le Vengeur",
+   "desc": "Celui qui punit les oppresseurs et rend justice après avoir laissé un délai.",
+   "af": "081_al-muntaqim",
+   "verse": "32:22",
+   "ask": [
+    "La vengeance annoncée vise celui qui se détourne après avoir été rappelé. De quel rappel me suis-je détourné ?",
+    "Je reprends aujourd'hui un conseil que j'ai reçu et écarté, et j'en applique une part."
+   ]
+  },
+  {
+   "n": 82,
+   "ar": "الْعَفُوُّ",
+   "tr": "Al-'Afuww",
+   "fr": "Celui qui efface",
+   "desc": "Celui qui efface totalement les péchés, comme s'ils n'avaient jamais été.",
+   "af": "082_al-afuww",
+   "verse": "4:149",
+   "ask": [
+    "Le verset met le pardon d'un tort à côté de la puissance de Dieu. Quel tort est-ce que je garde ?",
+    "Je pardonne aujourd'hui une chose sans le dire à celui qui me l'a faite."
+   ]
+  },
+  {
+   "n": 83,
+   "ar": "الرَّءُوفُ",
+   "tr": "Ar-Ra'ûf",
+   "fr": "Le Très Doux",
+   "desc": "Celui dont la compassion et la bienveillance sont infinies.",
+   "af": "083_ar-rauf",
+   "verse": "59:10",
+   "ask": [
+    "Ceux qui viennent après demandent à n'avoir aucune rancune envers ceux qui ont cru. Envers qui en ai-je ?",
+    "Je fais aujourd'hui une invocation pour un musulman avec qui je suis en froid, en le nommant."
+   ]
+  },
+  {
+   "n": 84,
+   "ar": "مَالِكُ الْمُلْكِ",
+   "tr": "Mâlik al-Mulk",
+   "fr": "Le Souverain absolu",
+   "desc": "Celui à qui appartient toute la royauté, qu'Il donne à qui Il veut.",
+   "af": "084_malik-al-mulk",
+   "verse": "3:26",
+   "ask": [
+    "Il donne la souveraineté et la reprend, élève et abaisse. Quelle place est-ce que je crois avoir gagnée seul ?",
+    "Je remercie aujourd'hui, nommément, quelqu'un par qui m'est venu ce que je croyais tenir de moi."
+   ]
+  },
+  {
+   "n": 85,
+   "ar": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+   "tr": "Dhûl-Jalâli wal-Ikrâm",
+   "fr": "Détenteur de la majesté et de la générosité",
+   "desc": "Celui qui réunit toute grandeur et toute générosité.",
+   "af": "085_dhul-jalali-wal-ikram",
+   "verse": "55:78",
+   "ask": [
+    "Majesté et générosité sont dites d'un même souffle. Est-ce que je sépare la crainte de l'espoir ?",
+    "Je dis aujourd'hui à voix haute une chose que je crains de Lui, puis une chose que j'espère de Lui."
+   ]
+  },
+  {
+   "n": 86,
+   "ar": "الْمُقْسِطُ",
+   "tr": "Al-Muqsit",
+   "fr": "L'Équitable",
+   "desc": "Celui qui juge et agit avec la plus parfaite équité.",
+   "af": "086_al-muqsit",
+   "verse": "3:18",
+   "ask": [
+    "Il maintient la justice, et les anges et les savants en témoignent avec Lui. Où est-ce que je penche du côté qui m'arrange ?",
+    "Je tranche aujourd'hui une affaire contre mon propre intérêt, parce qu'elle est juste."
+   ]
+  },
+  {
+   "n": 87,
+   "ar": "الْجَامِعُ",
+   "tr": "Al-Jâmi'",
+   "fr": "Celui qui rassemble",
+   "desc": "Celui qui rassemblera les créatures au Jour de la Résurrection.",
+   "af": "087_al-jami",
+   "verse": "3:9",
+   "ask": [
+    "Il rassemblera les hommes pour un jour sans doute possible. Est-ce que j'y pense en choisissant mes compagnies ?",
+    "Je passe aujourd'hui un moment avec quelqu'un qui me rapproche de Lui, plutôt qu'avec ce qui m'en distrait."
+   ]
+  },
+  {
+   "n": 88,
+   "ar": "الْغَنِيُّ",
+   "tr": "Al-Ghaniyy",
+   "fr": "Le Riche par Lui-même",
+   "desc": "Celui qui se suffit à Lui-même et dont toute chose dépend.",
+   "af": "088_al-ghaniyy",
+   "verse": "35:15",
+   "ask": [
+    "Le verset renverse les rôles : les pauvres, c'est nous. De quoi est-ce que je me crois riche ?",
+    "Je nomme aujourd'hui trois choses que je n'ai pas produites et sans lesquelles ma journée s'arrêterait."
+   ]
+  },
+  {
+   "n": 89,
+   "ar": "الْمُغْنِي",
+   "tr": "Al-Mughnî",
+   "fr": "Celui qui enrichit",
+   "desc": "Celui qui accorde la richesse et la suffisance à qui Il veut.",
+   "af": "089_al-mughni",
+   "verse": "53:48",
+   "ask": [
+    "C'est Lui qui enrichit et qui pourvoit. Qu'est-ce que je crois devoir à mon seul travail ?",
+    "Je donne aujourd'hui une part de ce que je viens de recevoir, avant de l'avoir rangée avec le reste."
+   ]
+  },
+  {
+   "n": 90,
+   "ar": "الْمَانِعُ",
+   "tr": "Al-Mâni'",
+   "fr": "Celui qui préserve",
+   "desc": "Celui qui empêche ce qui doit être empêché par sagesse.",
+   "af": "090_al-mani",
+   "verse": "59:2",
+   "ask": [
+    "Ils croyaient leurs forteresses imprenables, et elles n'ont rien empêché. Quelle est la mienne ?",
+    "Je nomme la sécurité sur laquelle je m'appuie — un compte, un statut, une santé — et je Lui confie aujourd'hui ce qu'elle protège."
+   ]
+  },
+  {
+   "n": 91,
+   "ar": "الضَّارُّ",
+   "tr": "Ad-Dârr",
+   "fr": "Celui qui peut nuire",
+   "desc": "Celui qui décrète l'épreuve à qui Il veut, selon Sa sagesse.",
+   "af": "091_ad-darr",
+   "verse": "10:107",
+   "ask": [
+    "S'Il atteint d'un mal, nul autre ne l'écarte. Auprès de qui est-ce que je cours d'abord ?",
+    "Devant la prochaine contrariété d'aujourd'hui, je L'invoque avant de chercher qui blâmer."
+   ]
+  },
+  {
+   "n": 92,
+   "ar": "النَّافِعُ",
+   "tr": "An-Nâfi'",
+   "fr": "Le Bienfaiteur",
+   "desc": "Celui qui apporte le bien et le profit à qui Il veut.",
+   "af": "092_an-nafi",
+   "verse": "6:17",
+   "ask": [
+    "S'Il accorde un bien, nul ne l'arrête. Est-ce que je crains les hommes autant que je Le crains ?",
+    "Je fais aujourd'hui une chose juste que je repoussais par peur de ce qu'on en dirait."
+   ]
+  },
+  {
+   "n": 93,
+   "ar": "النُّورُ",
+   "tr": "An-Nûr",
+   "fr": "La Lumière",
+   "desc": "Celui qui illumine les cieux et la terre, et guide les cœurs.",
+   "af": "093_an-nur",
+   "verse": "24:35",
+   "ask": [
+    "Il est la lumière des cieux et de la terre. Qu'est-ce qui, chez moi, reste dans l'ombre ?",
+    "Je nomme une chose que je cache, et je la Lui expose aujourd'hui, en détail."
+   ]
+  },
+  {
+   "n": 94,
+   "ar": "الْهَادِي",
+   "tr": "Al-Hâdî",
+   "fr": "Le Guide",
+   "desc": "Celui qui guide vers la vérité et vers le droit chemin.",
+   "af": "094_al-hadi",
+   "verse": "25:31",
+   "ask": [
+    "Il suffit comme guide et comme soutien. À quel autre guide est-ce que je demande ma route ?",
+    "Avant la prochaine décision d'aujourd'hui, je consulte ce qui vient de Lui avant de consulter mon envie."
+   ]
+  },
+  {
+   "n": 95,
+   "ar": "الْبَدِيعُ",
+   "tr": "Al-Badî'",
+   "fr": "L'Inventeur",
+   "desc": "Celui qui crée sans modèle préalable, l'Auteur incomparable de la création.",
+   "af": "095_al-badi",
+   "verse": "2:117",
+   "ask": [
+    "Il crée sans modèle : « Sois », et cela est. Qu'est-ce que je crois impossible à recommencer ?",
+    "Je reprends aujourd'hui une chose que j'avais abandonnée, ne serait-ce que par le premier geste."
+   ]
+  },
+  {
+   "n": 96,
+   "ar": "الْبَاقِي",
+   "tr": "Al-Bâqî",
+   "fr": "L'Éternel",
+   "desc": "Celui qui subsiste à jamais, alors que toute autre chose périt.",
+   "af": "096_al-baqi",
+   "verse": "55:27",
+   "ask": [
+    "Tout passe, et seule demeure la Face de ton Seigneur. À quoi est-ce que je m'accroche comme si cela restait ?",
+    "Je consacre aujourd'hui un moment à une chose qui me suivra, et je le prends sur ce qui ne me suivra pas."
+   ]
+  },
+  {
+   "n": 97,
+   "ar": "الْوَارِثُ",
+   "tr": "Al-Wârith",
+   "fr": "L'Héritier",
+   "desc": "Celui qui demeure après la disparition de toutes les créatures.",
+   "af": "097_al-warith",
+   "verse": "15:23",
+   "ask": [
+    "C'est Lui qui hérite de toute chose. À qui est-ce que je destine ce que je bâtis ?",
+    "Je mets aujourd'hui en ordre une chose que je laisserai — un écrit, une dette, une parole due."
+   ]
+  },
+  {
+   "n": 98,
+   "ar": "الرَّشِيدُ",
+   "tr": "Ar-Rashîd",
+   "fr": "Le Guide de la rectitude",
+   "desc": "Celui qui mène toute chose à sa perfection par une sagesse infaillible.",
+   "af": "098_ar-rashid",
+   "verse": "72:2",
+   "ask": [
+    "Ce qu'ils ont entendu conduit à la rectitude, et ils y ont cru. Qu'est-ce que je sais juste sans encore le suivre ?",
+    "Je prends aujourd'hui une chose que je sais droite et que je diffère, et je m'y tiens une fois."
+   ]
+  },
+  {
+   "n": 99,
+   "ar": "الصَّبُورُ",
+   "tr": "As-Sabûr",
+   "fr": "Le Très Patient",
+   "desc": "Celui qui use de patience et ne se hâte pas de punir les fautifs.",
+   "af": "099_as-sabur",
+   "verse": "35:45",
+   "ask": [
+    "S'Il devait reprendre les hommes sur-le-champ, il ne resterait rien de vivant. De quel sursis est-ce que je vis ?",
+    "Je supporte aujourd'hui, sans le relever, un tort que j'aurais relevé — comme il m'est supporté."
+   ]
+  }
+ ],
+ "audioSource": {
+  "name": "MohammedAbidNafi/99-Names-of-Allah",
+  "license": "MIT",
+  "note": "Récitations locales dans books/asma-audio/ (converties en MP3, renommées {n}_{nom}.mp3)"
+ }
+}

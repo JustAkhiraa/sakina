@@ -1,13 +1,14 @@
 /* SAKINA — Assistant de première configuration (bienvenue).
    Affiché une seule fois : apparence, méthode de calcul, position.
    Les utilisateurs migrés depuis l'ancienne app ne le voient pas. */
-import {S,save,emit} from '../core/store.js';
+import {S,save,emit,on} from '../core/store.js';
 import {toast} from '../core/ui.js';
 import {vib} from '../core/audio.js';
 import {THEMES,CALC_METHODS,MADHABS,LANGS,LANG_REGIONS,CALC_BY_LANG,MADHAB_BY_LANG} from '../data/catalog.js';
-import {t,applyI18n} from '../lib/i18n.js';
+import {t,tf,applyI18n,setLang} from '../lib/i18n.js';
+import {hasLang} from '../i18n/index.js';
 import {applyTheme,buildBaseThemeGrid} from './settings.js';
-import {renderPrayers,reverseGeocode,geocodeCity} from './salat.js';
+import {renderPrayers,reverseGeocode,geocodeCity,calcName,calcDesc} from './salat.js';
 
 const $=id=>document.getElementById(id);
 const STEPS=5;
@@ -57,11 +58,11 @@ function buildLangGrid(){
   const grid=$('ob-lang-grid');grid.innerHTML='';
   grid.style.textAlign='left';
   LANG_REGIONS.forEach(reg=>{
-    const langs=LANGS.filter(l=>l.region===reg.id);
+    const langs=LANGS.filter(l=>l.region===reg.id&&hasLang(l.code));
     if(!langs.length)return;
     const h=document.createElement('div');
     h.className='sl';h.style.cssText='margin:10px 4px 6px;text-align:left;';
-    h.textContent=reg.label;
+    h.textContent=t(reg.i18n)||reg.label;
     grid.appendChild(h);
     const row=document.createElement('div');
     row.style.cssText='display:flex;flex-wrap:wrap;justify-content:center;gap:4px;';
@@ -71,10 +72,10 @@ function buildLangGrid(){
       el.style.cssText='margin:2px;';
       el.textContent=`${l.flag} ${l.name}`;
       el.addEventListener('click',()=>{
-        S.lang=l.code;
         if(!S._calcTouched){const m=CALC_BY_LANG[l.code];if(m)S.calcMethod=m;}
         if(!S._madhabTouched){const md=MADHAB_BY_LANG[l.code];if(md)S.madhab=md;}
-        save();applyI18n();buildLangGrid();buildMethodList();buildMadhabRow();showStep(_step);vib(16);
+        vib(16);
+        setLang(l.code).then(()=>{save();redessine();});
       });
       row.appendChild(el);
     });
@@ -88,8 +89,8 @@ function buildMadhabRow(){
   MADHABS.forEach(m=>{
     const el=document.createElement('div');
     el.className='chip'+(S.madhab===m.id?' sel':'');
-    el.textContent=`${m.name}`;
-    el.title=m.asrFactor===2?'Asr : ombre ×2':'Asr : ombre ×1';
+    el.textContent=tf(`mdh.${m.id}`,m.name);
+    el.title=m.asrFactor===2?t('set.asr2'):t('set.asr1');
     el.addEventListener('click',()=>{S.madhab=m.id;S._madhabTouched=true;save();buildMadhabRow();vib(14);});
     row.appendChild(el);
   });
@@ -98,12 +99,12 @@ function buildMadhabRow(){
 /* ── Étape 1 : apparence ── (uniquement les accents de base, pas les bonus verrouillés) */
 function buildAccentGrid(){
   const grid=$('ob-accent-grid');grid.innerHTML='';
-  THEMES.filter(x=>!x.unlockAt).forEach(t=>{
+  THEMES.filter(x=>!x.unlockAt).forEach(th=>{
     const el=document.createElement('div');
-    el.className='tsw'+(S.accent===t.key?' active':'');
-    el.innerHTML=`<div class="sdot" style="background:${t.color}"></div><div class="sname">${t.name}</div>`;
+    el.className='tsw'+(S.accent===th.key?' active':'');
+    el.innerHTML=`<div class="sdot" style="background:${th.color}"></div><div class="sname">${tf(`thm.${th.key}`,th.name)}</div>`;
     el.addEventListener('click',()=>{
-      S.accent=t.key;save();applyTheme();buildAccentGrid();vib(18);
+      S.accent=th.key;save();applyTheme();buildAccentGrid();vib(18);
     });
     grid.appendChild(el);
   });
@@ -115,7 +116,7 @@ function buildMethodList(){
   CALC_METHODS.forEach(m=>{
     const row=document.createElement('div');
     row.className='ob-method-row'+(S.calcMethod===m.id?' sel':'');
-    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${m.name}</div><div class="ob-method-desc">${m.desc}</div></div>`;
+    row.innerHTML=`<div class="ob-method-radio"></div><div style="flex:1"><div class="ob-method-name">${calcName(m)}</div><div class="ob-method-desc">${calcDesc(m)}</div></div>`;
     row.addEventListener('click',()=>{
       S.calcMethod=m.id;S._calcTouched=true;save();buildMethodList();vib(16);
     });
@@ -132,33 +133,33 @@ function syncFmtSeg(){
 function wireLocation(){
   $('ob-gps').addEventListener('click',()=>{
     const st=$('ob-loc-status');
-    if(!navigator.geolocation){st.textContent='✗ Géolocalisation non disponible sur cet appareil';return;}
-    st.textContent='⟳ Détection en cours…';
+    if(!navigator.geolocation){st.textContent=t('ob.noGeo');return;}
+    st.textContent=t('salat.detecting');
     navigator.geolocation.getCurrentPosition(
       async pos=>{
         S.lat=pos.coords.latitude;S.lon=pos.coords.longitude;
-        S.city=await reverseGeocode(S.lat,S.lon);
+        S.city=(await reverseGeocode(S.lat,S.lon)).city;
         save();emit('location-changed');
-        st.textContent=`✓ ${S.city||'Position détectée'}`;
+        st.textContent=`✓ ${S.city||t('salat.located')}`;
         vib([40,20,40]);
       },
-      ()=>{st.textContent='✗ GPS refusé — cherchez votre ville ci-dessous';},
+      ()=>{st.textContent=t('ob.gpsDenied');},
       {enableHighAccuracy:true,timeout:10000,maximumAge:300000}
     );
   });
 
-  let t=null;
+  let searchT=null;
   $('ob-city-inp').addEventListener('input',e=>{
-    clearTimeout(t);
-    t=setTimeout(async()=>{
+    clearTimeout(searchT);
+    searchT=setTimeout(async()=>{
       const q=e.target.value;
       const box=$('ob-city-results');
       if(!q.trim()){box.innerHTML='';return;}
-      box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">Recherche…</div>';
+      box.innerHTML=`<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">${t('com.searching')}</div>`;
       try{
         const items=await geocodeCity(q);
         box.innerHTML='';
-        if(!items.length){box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">Aucun résultat</div>';return;}
+        if(!items.length){box.innerHTML=`<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">${t('com.noResult')}</div>`;return;}
         items.forEach(it=>{
           const div=document.createElement('div');div.className='city-result';
           const name=it.display_name.split(',')[0];
@@ -174,7 +175,7 @@ function wireLocation(){
           box.appendChild(div);
         });
       }catch{
-        box.innerHTML='<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">Erreur réseau</div>';
+        box.innerHTML=`<div style="font-size:0.75rem;color:var(--t3);padding:8px 0;">${t('msg.netError')}</div>`;
       }
     },450);
   });
@@ -187,8 +188,23 @@ function finish(){
   const ob=$('onboard');
   ob.classList.add('hidden');
   setTimeout(()=>ob.remove(),500);
-  toast('✦ Bienvenue sur Sakina');
+  toast(t('msg.welcome'));
   vib([50,30,50]);
+}
+
+/* Tout ce que l'assistant batit en JS, au meme endroit.
+
+   Le changement de langue redessinait trois grilles sur cinq : les deux
+   grilles de themes gardaient la langue du demarrage. Tenir la liste a la
+   main etait la cause — la voici tenue une seule fois. */
+function redessine(){
+  buildLangGrid();
+  buildAccentGrid();
+  buildBaseThemeGrid('ob-base-theme-grid');
+  buildMethodList();
+  buildMadhabRow();
+  syncFmtSeg();
+  showStep(_step);
 }
 
 export function initOnboarding(){
@@ -196,14 +212,11 @@ export function initOnboarding(){
   if(!ob)return;
   if(S.onboarded){ob.remove();return;}
 
-  buildLangGrid();
-  buildAccentGrid();
-  buildBaseThemeGrid('ob-base-theme-grid');
-  buildMethodList();
-  buildMadhabRow();
-  syncFmtSeg();
   wireLocation();
+  redessine();
   showStep(0);
+  // Si la langue change ailleurs pendant que l'assistant est ouvert.
+  on('lang-changed',redessine);
 
   document.querySelectorAll('#ob-translit-seg .seg-opt').forEach(opt=>{
     opt.classList.toggle('active',opt.dataset.tr===S.translit);
