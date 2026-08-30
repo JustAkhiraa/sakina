@@ -296,7 +296,9 @@ export function openComposer(id){
 
 function enregistre(){
   if(!_brouillon.length){toast(t('serie.empty'));return;}
-  const nom=($('serie-nom').value||'').trim()||t('serie.defaultName');
+  // Le champ limite la saisie a 40 caracteres, mais une donnee restauree
+  // ou importee ne passe pas par le champ. On borne ici aussi.
+  const nom=($('serie-nom').value||'').trim().slice(0,40)||t('serie.defaultName');
   const l=sets();
   if(_edit){
     const s0=setById(_edit);

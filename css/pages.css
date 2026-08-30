@@ -1132,3 +1132,8 @@
   font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;}
 .serie-new::before{content:"＋";font-size:1.05rem;line-height:1;}
 .serie-new:active{border-color:var(--a);color:var(--a);}
+
+/* Le nom d'une serie tient sur une ligne : on la parcourt du regard, on ne la
+   lit pas. Un nom d'un seul tenant — sans espace — deborderait sinon de sa
+   ligne, la coupure automatique n'ayant nulle part ou couper. */
+#series-bd .row-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
