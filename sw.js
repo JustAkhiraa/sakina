@@ -1,5 +1,5 @@
 /* SAKINA — Service worker : app shell en cache-first, APIs en réseau avec repli cache */
-const VERSION='sakina-v110';
+const VERSION='sakina-v111';
 const SHELL=[
   './',
   './index.html',
@@ -87,8 +87,10 @@ self.addEventListener('fetch',e=>{
   if(url.hostname==='api.quran.com'){
     e.respondWith(
       fetch(e.request).then(res=>{
-        const copy=res.clone();
-        caches.open(VERSION+'-api').then(c=>c.put(e.request,copy));
+        // Ne mettre en cache qu'une reponse saine. Sans ce test — que le cache
+        // audio faisait deja — une reponse alteree une seule fois etait
+        // resservie hors ligne ensuite, y compris apres correction en amont.
+        if(res.ok){const copy=res.clone();caches.open(VERSION+'-api').then(c=>c.put(e.request,copy));}
         return res;
       }).catch(()=>caches.match(e.request))
     );

@@ -1,5 +1,5 @@
 /* SAKINA — Invocations : catégories, recherche, copie, envoi vers le tasbih */
-import {toast,openSheet,closeSheet,confirmDlg} from '../core/ui.js';
+import {toast,openSheet,closeSheet,confirmDlg,esc} from '../core/ui.js';
 import {t,tf,tfSrc,tfSrcLang} from '../lib/i18n.js';
 import {DUAS} from '../data/duas.js';
 import {LANGS} from '../data/catalog.js';
@@ -339,7 +339,7 @@ function buildSeries(){
     const row=document.createElement('div');
     row.className='row';
     row.innerHTML=`<div class="row-ic" style="color:var(--a);">✦</div>`
-      +`<div class="row-body"><div class="row-name">${s0.nom}</div>`
+      +`<div class="row-body"><div class="row-name">${esc(s0.nom)}</div>`
       +`<div class="row-sub">${t('serie.count',{n:s0.ids.length})}`
       +`${noms?' · '+noms:''}</div></div>`
       +`<button class="serie-edit" data-edit="${s0.id}" aria-label="${t('serie.edit')}">`

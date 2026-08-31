@@ -2,6 +2,27 @@
 <html lang="fr" data-theme="dark" style="background:#08090C;">
 <head>
 <meta charset="UTF-8">
+<!-- Politique de securite du contenu.
+
+     Sans elle, toute valeur non echappee qui atteint innerHTML devient du
+     code : l'audit a montre qu'un nom de mosquee edite dans OpenStreetMap, ou
+     un fichier de sauvegarde importe, suffisait a lire tout le stockage local
+     — dont les coordonnees du domicile.
+
+     Trois choix expliques :
+     · script-src ne porte que 'self' et l'empreinte du script de theme
+       ci-dessous. Aucun gestionnaire en ligne n'existe dans ces pages, donc
+       'unsafe-inline' n'est pas necessaire — et surtout, l'ajouter annulerait
+       toute la protection.
+     · style-src garde 'unsafe-inline' : 274 attributs `style=` vivent dans
+       le balisage. Le CSS en ligne n'execute pas de script ; le retirer serait
+       une refonte sans rapport.
+     · connect-src enumere les quatre services distants. Un script injecte ne
+       peut donc plus rien exfiltrer ailleurs.
+
+     L'empreinte doit etre recalculee a chaque modification du script de theme.
+     scripts/check.py le verifie. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-A3vMEAHaWxtwP5h1TbvCTIzV0zd8d3jOsDVs83vw98w='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://images.openfoodfacts.org https://cdn.islamic.network; connect-src 'self' https://api.quran.com https://nominatim.openstreetmap.org https://overpass-api.de https://overpass.kumi.systems https://overpass.private.coffee https://world.openfoodfacts.org; media-src 'self' blob: https://cdn.islamic.network; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="color-scheme" content="dark">
 <title>Sakina ✦ — Compagnon spirituel</title>

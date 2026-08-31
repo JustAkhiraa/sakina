@@ -4,7 +4,7 @@
    se fait dans Vérif' Halal → Comprendre. */
 import {S} from '../core/store.js';
 import {t} from '../lib/i18n.js';
-import {toast,openSheet} from '../core/ui.js';
+import {toast,openSheet,esc} from '../core/ui.js';
 import {requestGPS} from './salat.js';
 
 const $=id=>document.getElementById(id);
@@ -57,6 +57,8 @@ async function search(){
     const items=(data.elements||[]).map(e=>{
       const lat=e.lat??e.center?.lat,lon=e.lon??e.center?.lon;
       if(lat==null)return null;
+      /* Les tags viennent d'OpenStreetMap : n'importe qui peut renommer une
+         mosquee. On les traite comme une saisie hostile. */
       const tg=e.tags||{};   // pas `t` : masquerait la fonction de traduction
       return{
         name:tg.name||t('places.unnamed'),
@@ -78,8 +80,8 @@ async function search(){
       el.target='_blank';el.rel='noopener';
       el.innerHTML=`<div class="place-ic">🕌</div>
         <div class="place-body">
-          <div class="place-name">${p.name}</div>
-          <div class="place-sub">${p.street||''}</div>
+          <div class="place-name">${esc(p.name)}</div>
+          <div class="place-sub">${esc(p.street||'')}</div>
         </div>
         <div class="place-dist">${p.dist<1?Math.round(p.dist*1000)+' m':p.dist.toFixed(1)+' km'}<span class="place-go">${t('places.route')}</span></div>`;
       list.appendChild(el);

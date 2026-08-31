@@ -928,17 +928,76 @@ export function initSettings(){
       const data=JSON.parse(await f.text());
       if(!data||typeof data!=='object')throw new Error('format');
       if(!await confirmDlg(t('set.importAsk'),{okLabel:t('com.import')})){fileImport.value='';return;}
-      const maxKeys=new Set(['allTime','sessCount','sessTot']);
-      const mergeObj=new Set(['daily','quranFavs','quranNotes','calEvents','qada','qdone']);
+      /* Liste blanche. La version precedente finissait par `S[k]=data[k]`,
+         c'est-a-dire : n'importe quelle cle, n'importe quelle valeur, ecrite
+         dans l'etat puis rendue par des gabarits. Un fichier de sauvegarde
+         partage suffisait a executer du script dans l'application et a lire
+         tout le stockage local — dont les coordonnees du domicile.
+
+         Ce qui n'est pas nomme ici n'entre pas. Une cle inconnue est ignoree,
+         jamais ecrite : c'est la seule regle qui tienne quand l'etat grandit. */
+      const NOMBRE=new Set(['allTime','sessCount','sessTot','count','lapCount',
+        'startVal','reminder','goal','lat','lon','calcMethod','asrFactor']);
+      const BOOLEEN=new Set(['soundOn','vibOn','nightMode','lightMode','immDark',
+        'quranReading','hourFmt12']);
+      const TEXTE=new Set(['title','titleKey','lang','theme','baseTheme','accent',
+        'sound','translit','city','country','titleId','hourFmt','skin']);
+      const CUMUL=new Set(['allTime','sessCount','sessTot']);
+      const DICO=new Set(['daily','quranFavs','quranNotes','calEvents','qada',
+        'qdone','quranLast','adhanPrayers']);
+      const LISTE=new Set(['history','customDhikrs','quranTr','duaSets','navOrder']);
+
+      const nb=(v,max)=>Number.isFinite(+v)?Math.min(Math.max(+v,-max),max):0;
+      /* Strict : ce qui n'est pas une chaine ne devient pas une chaine. Un
+         premier jet convertissait tout, si bien qu'un `lang` valant un objet
+         arrivait dans l'etat sous la forme « [object Object] » et cassait le
+         chargement des traductions. Refuser vaut mieux que convertir. */
+      const txt=(v,n=60)=>typeof v==='string'?v.slice(0,n):'';
+
       for(const k of Object.keys(data)){
-        if(maxKeys.has(k))S[k]=Math.max(S[k]|0,data[k]|0);
-        else if(mergeObj.has(k))S[k]={...(S[k]||{}),...(data[k]||{})};
-        else if(k==='history'&&Array.isArray(data.history))S.history=[...data.history,...S.history].slice(0,500);
-        else if(k==='customDhikrs'&&Array.isArray(data.customDhikrs)){
-          const seen=new Set(S.customDhikrs.map(d=>d.name));
-          data.customDhikrs.forEach(d=>{if(!seen.has(d.name))S.customDhikrs.push(d);});
+        const v=data[k];
+        if(CUMUL.has(k))       S[k]=Math.max(S[k]|0,nb(v,1e9));
+        else if(NOMBRE.has(k)) S[k]=nb(v,1e9);
+        else if(BOOLEEN.has(k))S[k]=!!v;
+        else if(TEXTE.has(k)){
+          // Un reglage de mauvais type est ignore, pas ecrase : la valeur
+          // en place reste valide.
+          if(typeof v==='string')S[k]=v.slice(0,60);
         }
-        else S[k]=data[k];
+        else if(DICO.has(k)){
+          if(!v||typeof v!=='object'||Array.isArray(v))continue;
+          // Bornee en cardinalite : un dictionnaire de cent mille entrees
+          // faisait sauter le quota, et save() avale l'echec en silence.
+          const fusion={...(S[k]||{})};
+          Object.entries(v).slice(0,5000).forEach(([kk,vv])=>{
+            fusion[txt(kk,40)]=typeof vv==='number'?nb(vv,1e9):txt(vv,2000);
+          });
+          S[k]=fusion;
+        }
+        else if(LISTE.has(k)){
+          if(!Array.isArray(v))continue;
+          if(k==='customDhikrs'){
+            // On reconstruit chaque entree champ par champ au lieu de recopier
+            // l'objet : un objet importe pouvait porter ce qu'il voulait.
+            const seen=new Set(S.customDhikrs.map(d=>d.name));
+            v.slice(0,200).forEach(d=>{
+              const nom=txt(d&&d.name,60);
+              if(!nom||seen.has(nom))return;
+              seen.add(nom);
+              S.customDhikrs.push({name:nom,goal:nb(d.goal,100000),
+                                   reminder:nb(d.reminder,100000)});
+            });
+          }else if(k==='history'){
+            const propre=v.slice(0,500).map(h=>({
+              title:txt(h&&h.title,60),count:nb(h&&h.count,1e9),
+              goal:nb(h&&h.goal,1e9),ts:nb(h&&h.ts,1e15),
+            }));
+            S.history=[...propre,...S.history].slice(0,500);
+          }else{
+            S[k]=v.slice(0,200).map(x=>txt(x,60));
+          }
+        }
+        // Toute autre cle — y compris __proto__ et constructor — est ignoree.
       }
       save();location.reload();
     }catch{toast('⚠️ Fichier invalide');}

@@ -1,7 +1,7 @@
 /* SAKINA — Horaires de prière : calculs précis, compte à rebours auto-rafraîchi,
    géolocalisation GPS + recherche manuelle de ville. */
 import {S,save,emit} from '../core/store.js';
-import {toast,openSheet,closeSheet} from '../core/ui.js';
+import {toast,openSheet,closeSheet,esc} from '../core/ui.js';
 import {computeTimes,fmtTime} from '../lib/astro.js';
 import {toHijri,hijriLabelAr} from '../lib/hijri.js';
 import {CALC_METHODS,MADHABS,CALC_BY_COUNTRY} from '../data/catalog.js';
@@ -189,7 +189,9 @@ async function searchCity(q){
     items.forEach(it=>{
       const div=document.createElement('div');div.className='city-result';
       const name=it.display_name.split(',')[0];
-      div.innerHTML=`${name}<div class="city-result-sub">${it.display_name}</div>`;
+      /* display_name vient de Nominatim, donc d'OpenStreetMap : le nom d'un
+         lieu s'y modifie librement. */
+      div.innerHTML=`${esc(name)}<div class="city-result-sub">${esc(it.display_name)}</div>`;
       div.addEventListener('click',()=>{
         S.lat=parseFloat(it.lat);S.lon=parseFloat(it.lon);S.city=name;
         save();closeSheet();renderPrayers();emit('location-changed');
