@@ -27,6 +27,7 @@ const DEFAULTS={
   calcMethodPicked:false,        // vrai dès que l'utilisateur choisit sa méthode lui-même
   madhab:'maliki',               // école juridique (hanafi → Asr ombre ×2)
   translit:'ar',                 // adhkâr des routines : 'ar' (arabe) ou 'ph' (phonétique)
+  immDark:false,                 // plein écran : noir vrai plutôt que le fond du thème
   lang:'fr',                     // langue de l'interface
   calEvents:{},                  // { 'YYYY-MM-DD': 'texte de l'événement' }
   // Qadâ'

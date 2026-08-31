@@ -80,10 +80,36 @@
   cursor:pointer;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;}
 #immersive.open{display:flex;}
 #immersive::before{content:"";position:absolute;inset:0;background:var(--orb1);pointer-events:none;}
-#imm-exit{position:absolute;top:calc(env(safe-area-inset-top,20px) + 14px);right:18px;
+#imm-exit,#imm-reset,#imm-dark{position:absolute;
+  top:calc(env(safe-area-inset-top,20px) + 14px);
   width:44px;height:44px;border-radius:var(--r-pill);background:var(--sur2);
   border:1px solid var(--bor);color:var(--t2);font-size:1.1rem;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;z-index:2;}
+  display:flex;align-items:center;justify-content:center;z-index:2;
+  transition:color 0.2s,border-color 0.2s,background 0.2s;}
+#imm-exit{right:18px;}
+#imm-reset{right:70px;}
+#imm-dark{left:18px;}
+#imm-dark[aria-pressed="true"]{color:var(--a);border-color:rgba(var(--a-rgb),0.45);}
+
+/* Mode ultra sombre : pour compter la nuit sans s'eblouir, et pour les ecrans
+   OLED ou un noir vrai n'allume aucun pixel. Le fond du theme, meme sombre,
+   reste un gris clair a cote.
+
+   Les couleurs sont ecrites en dur et non prises aux jetons : c'est le propos
+   meme du mode — il ne suit pas le theme, il s'en affranchit. */
+#immersive.ultra{background:#000;}
+#immersive.ultra::before{background:none;}
+#immersive.ultra #imm-count{color:#DCD7CC;}
+#immersive.ultra #imm-title{color:#8C7549;}
+#immersive.ultra #imm-sub{color:#5E5951;}
+#immersive.ultra #imm-hint{color:#3E3B36;}
+#immersive.ultra #imm-exit,#immersive.ultra #imm-reset,#immersive.ultra #imm-dark{
+  background:#0C0C0D;border-color:rgba(255,255,255,0.10);color:#6B6660;}
+#immersive.ultra #imm-dark[aria-pressed="true"]{color:#8C7549;border-color:rgba(140,117,73,0.4);}
+/* L'animation de palier repart du noir : sans cette regle elle revenait au
+   fond du theme a chaque centaine, et le mode sautait. */
+#immersive.ultra.pulse{animation:immpulseultra 0.5s ease;}
+@keyframes immpulseultra{0%{background:#000;}35%{background:rgba(140,117,73,0.16);}100%{background:#000;}}
 #imm-title{font-family:var(--ff-d);font-size:1.15rem;color:var(--a);letter-spacing:0.05em;}
 #imm-count{font-family:var(--ff-m);font-size:clamp(6rem,28vw,9rem);color:var(--t1);line-height:1;transition:color 0.25s;}
 #imm-count.gold{color:var(--a);text-shadow:0 0 30px rgba(var(--a-rgb),0.6);}

@@ -114,8 +114,17 @@ function renderImmersive(milestone=false){
 function openImmersive(){
   _immersiveOpen=true;
   renderImmersive();
+  appliqueUltra();
   $('immersive').classList.add('open');
   vib(20);
+}
+
+/* Mode ultra sombre : un noir vrai, choisi et retenu. Le fond du theme, meme
+   sombre, reste un gris clair a cote — et sur un ecran OLED il allume des
+   pixels que le noir n'allume pas. */
+function appliqueUltra(){
+  $('immersive').classList.toggle('ultra',!!S.immDark);
+  $('imm-dark').setAttribute('aria-pressed',S.immDark?'true':'false');
 }
 function closeImmersive(){
   _immersiveOpen=false;
@@ -128,6 +137,7 @@ function undo(){
   const tk=todayKey();
   if(S.daily[tk])S.daily[tk]=Math.max(0,S.daily[tk]-1);
   playSound('click');vib(14);save();renderTasbih();emit('stats-changed');
+  if(_immersiveOpen)renderImmersive();
 }
 
 async function resetCounter(){
@@ -136,6 +146,7 @@ async function resetCounter(){
   if(S.count>S.startVal)pushHistory();
   S.count=S.startVal;S.lapCount=0;S.sessTot=0;
   vib([60,30,60]);toast(t('msg.reset'));save();renderTasbih();
+  if(_immersiveOpen)renderImmersive();
 }
 
 function saveSession(){
@@ -245,6 +256,13 @@ export function initTasbih(){
   $('btn-immersive').addEventListener('click',openImmersive);
   $('immersive').addEventListener('click',increment);
   $('imm-exit').addEventListener('click',e=>{e.stopPropagation();closeImmersive();});
+  /* Toute la surface compte : sans arreter la propagation, appuyer sur l'un de
+     ces boutons incrementerait aussi le compteur. */
+  $('imm-dark').addEventListener('click',e=>{
+    e.stopPropagation();
+    S.immDark=!S.immDark;save();appliqueUltra();vib(14);
+  });
+  $('imm-reset').addEventListener('click',e=>{e.stopPropagation();resetCounter();});
   $('btn-undo').addEventListener('click',undo);
   $('btn-reset').addEventListener('click',resetCounter);
   $('btn-save-s').addEventListener('click',saveSession);
