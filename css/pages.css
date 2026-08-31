@@ -1076,3 +1076,64 @@
 #serie-bd .row.sel .serie-mark{color:var(--a);}
 #serie-bd .row.sel .row-ic{background:rgba(var(--a-rgb),0.16);color:var(--a);
   font-size:0.85rem;font-weight:800;}
+
+/* ════════ SÉRIE D'INVOCATIONS ════════
+   Deux etats, une seule carte. Vide, elle invite ; composee, elle rappelle ce
+   qu'on a bati et se lance d'un tap. Le liséré d'or n'apparait qu'a l'etat
+   composee : il marque ce qui est a soi, il ne decore pas. */
+.serie-card{margin:0 16px 12px;border-radius:var(--r-lg);padding:12px 15px;
+  display:flex;align-items:center;gap:12px;cursor:pointer;
+  transition:transform .16s,border-color .2s;}
+.serie-card:active{transform:scale(0.98);}
+.serie-card.composee{border-color:rgba(var(--a-rgb),0.38);}
+
+/* Medaillon : la meme grammaire que .row-ic, teinte d'accent parce que cette
+   carte est personnelle et non catalogue. */
+.serie-ic{width:38px;height:38px;flex-shrink:0;border-radius:var(--r-sm);
+  display:flex;align-items:center;justify-content:center;font-size:1.02rem;
+  background:var(--sur2);color:var(--t3);transition:background .2s,color .2s;}
+.serie-card.composee .serie-ic{background:rgba(var(--a-rgb),0.15);color:var(--a);}
+
+.serie-body{flex:1;min-width:0;}
+.serie-t{font-size:0.85rem;font-weight:700;color:var(--t1);}
+.serie-s{font-size:0.67rem;color:var(--t2);margin-top:1px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.serie-card.composee .serie-s{color:var(--t2);}
+
+/* Lancer : l'action premiere quand la serie existe. Un seul geste separe de la
+   pratique — c'est le point, pas l'ornement. */
+.serie-go{display:inline-flex;align-items:center;gap:5px;flex-shrink:0;
+  background:rgba(var(--a-rgb),0.16);color:var(--a);border:none;
+  border-radius:var(--r-pill);padding:7px 13px;cursor:pointer;
+  font-family:inherit;font-size:0.71rem;font-weight:800;letter-spacing:0.02em;}
+.serie-go:active{background:rgba(var(--a-rgb),0.26);}
+.serie-edit{flex-shrink:0;background:none;border:none;color:var(--t3);
+  padding:6px;cursor:pointer;display:flex;border-radius:var(--r-sm);}
+.serie-edit:active{background:var(--sur2);color:var(--a);}
+.serie-card [hidden]{display:none;}
+
+/* Le champ du nom : c'est lui qui fait d'une selection une pratique qu'on
+   retrouve. Il vient donc en premier, pas en dernier. */
+#serie-nom{width:100%;background:var(--sur2);border:1px solid var(--bor);
+  border-radius:var(--r-md);padding:11px 14px;color:var(--t1);
+  font-family:inherit;font-size:0.86rem;margin-bottom:10px;}
+#serie-nom:focus{outline:none;border-color:var(--a);}
+#serie-nom::placeholder{color:var(--t3);}
+.serie-barre{display:flex;align-items:center;justify-content:space-between;
+  gap:12px;margin:0 0 2px;}
+.serie-barre>span{font-size:0.67rem;color:var(--t3);letter-spacing:0.06em;
+  text-transform:uppercase;font-weight:700;}
+.serie-del{background:none;border:none;color:var(--t3);font-family:inherit;
+  font-size:0.72rem;font-weight:700;cursor:pointer;padding:6px 2px;}
+.serie-del:active{color:var(--a);}
+.serie-new{display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;margin-top:14px;padding:13px;background:var(--sur2);
+  border:1px dashed var(--bor);border-radius:var(--r-lg);color:var(--t2);
+  font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;}
+.serie-new::before{content:"＋";font-size:1.05rem;line-height:1;}
+.serie-new:active{border-color:var(--a);color:var(--a);}
+
+/* Le nom d'une serie tient sur une ligne : on la parcourt du regard, on ne la
+   lit pas. Un nom d'un seul tenant — sans espace — deborderait sinon de sa
+   ligne, la coupure automatique n'ayant nulle part ou couper. */
+#series-bd .row-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}

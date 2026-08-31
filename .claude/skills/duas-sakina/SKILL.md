@@ -29,15 +29,18 @@ python scripts/i18n_scan.py --missing fa # ce qui manque dans une langue
 
 ### 1. Trouver l'édition
 
-Dans `inspirations/docs trad/`. **Sonder les trois voies dans cet ordre** —
-c'est le pas qui a été sauté, et trois éditions sont restées classées « sans
-source » des mois durant alors qu'elles étaient lisibles :
+Dans `inspirations/docs trad/`. **Sonder avant tout** — c'est le pas qui a
+été sauté, et trois éditions sont restées classées « sans source » des mois
+durant alors qu'elles étaient lisibles.
 
-```python
-import fitz
-d = fitz.open(chemin)
-print(sum(len(d[i].get_text()) for i in range(min(d.page_count, 40))) // 40)
+```bash
+python scripts/sonder_pdf.py "inspirations/docs trad/le_fichier.pdf"
 ```
+
+Il rend un verdict et la voie à suivre. Il sait reconnaître une police
+héritée écriture par écriture — en devanagari, si `ब` l'emporte sur `ि`, les
+deux points de code ont été échangés — et il ne confond pas l'arabe cité par
+une édition latine avec un texte en désordre.
 
 1. **Plus de 500 caractères par page, texte juste** — on lit directement.
    C'est le cas du chinois et du hindi ; personne n'avait regardé.

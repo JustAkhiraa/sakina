@@ -562,6 +562,34 @@ def check_onboarding_redraw() -> None:
                      f"au changement de langue")
 
 
+# ── 7 nonies. `data-i18n-js` qui nomme une clé inexistante ───────────────
+def check_i18n_js() -> None:
+    """`data-i18n-js` dit : « ce texte est posé par le script, qui passe par
+    t() ». Sa valeur nomme la clé employée — c'est ce qui rend l'attribut
+    lisible plutôt que magique.
+
+    Encore faut-il qu'elle existe. Deux des neuf premiers marquages nommaient
+    une clé fausse — `cal.event` pour `tools.event`, `tasbih.reminder` pour
+    `tasbih.inNext` — et rien ne le disait. Un attribut qui documente sans
+    être vérifié documente de travers.
+
+    L'attribut nu reste permis : la langue courante est un endonyme, le
+    sous-titre du profil assemble plusieurs clés. Rien à nommer là."""
+    fr = read("js/i18n/fr.js")
+    html = chr(10).join(read(f) for f in ("index.html", "privacy-policy.html"))
+    fautes = 0
+    for m in re.finditer(r'data-i18n-js="([^"]+)"', html):
+        cle = m.group(1)
+        if '"%s"' % cle in fr:
+            continue
+        fautes += 1
+        ERRORS.append(
+            f"index.html : data-i18n-js=\"{cle}\" nomme une clé qui n'existe "
+            f"pas dans fr.js")
+    if not fautes:
+        NOTES.append("data-i18n-js : chaque valeur nomme une clé réelle")
+
+
 # ── 7 quater. Thèmes annoncés sans style ─────────────────────────────────
 def check_themes() -> None:
     """Le catalogue annonce des récompenses, les tokens leur donnent leurs
@@ -652,6 +680,7 @@ def main() -> int:
         check_i18n_strays,
         check_books_raw,
         check_onboarding_redraw,
+        check_i18n_js,
         check_themes,
         check_i18n_inventory,
     ):

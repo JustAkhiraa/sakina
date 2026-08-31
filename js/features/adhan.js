@@ -35,12 +35,17 @@ import {putBlob,getBlob,delBlob} from '../lib/blobstore.js';
    (« Allāhu akbar » ×2) va de 1,05 s à 11,1 s, suivi d'un silence net de
    1,35 s — mesuré sur l'enveloppe du fichier, pas estimé. Couper à 12,4 s
    laisse la phrase entière respirer sans mordre sur la suivante. */
+/* Une seule voix embarquee, et c'est deliberé.
+
+   Trois autres etaient declarees — Makkah, Madinah, un appel de Fajr — sans
+   que les fichiers existent. Le sondage HEAD les ecartait donc a l'affichage :
+   personne ne les voyait, mais le catalogue promettait ce qu'il n'avait pas.
+
+   Qui veut une autre voix l'importe : l'import personnel existe, il accepte un
+   fichier different pour le Fajr, et il est garde hors ligne comme le reste. */
 export const BUILTIN_ADHANS=[
   {id:'omar',       file:'content/audio/adhan/omar-hisham.mp3', i18n:'adhan.vOmar'},
   {id:'omar-takbir',file:'content/audio/adhan/omar-hisham.mp3', i18n:'adhan.vOmarTakbir', clip:12.4},
-  {id:'makkah',     file:'content/audio/adhan/makkah.mp3',      i18n:'adhan.vMakkah'},
-  {id:'madinah',    file:'content/audio/adhan/madinah.mp3',     i18n:'adhan.vMadinah'},
-  {id:'fajr',       file:'content/audio/adhan/fajr.mp3',        i18n:'adhan.vFajr', fajrOnly:true},
 ];
 
 export const CUSTOM_KEY='adhan-custom';

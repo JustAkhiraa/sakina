@@ -72,18 +72,77 @@ def js_strings(src: str):
         yield line, "".join(buf)
 
 
+# Tables indexees par code de langue : chaque langue y a sa colonne, francais
+# compris. Il n'y a donc rien de « restant » a y trouver — et hors du bloc
+# francais ce n'est meme pas du francais : « La Apertura » est espagnol,
+# « Pande la damu » swahili.
+MULTILINGUES = {"surah-names.js", "phonetics.js"}
+
+
+def bloc_francais(src):
+    """Le seul bloc `fr:` d'un fichier multilingue, accolades equilibrees."""
+    i = src.find("fr:")
+    if i < 0:
+        return src
+    j, prof = i, 0
+    ouvre = {"[": "]", "{": "}"}
+    while j < len(src):
+        c = src[j]
+        if c in ouvre:
+            prof += 1
+        elif c in "]}":
+            prof -= 1
+            if prof == 0:
+                return src[i:j + 1]
+        j += 1
+    return src[i:]
+
+
+def couvertes():
+    """Les valeurs presentes dans fr.js : elles ont une cle, donc des
+    traductions. Les signaler reviendrait a signaler le systeme lui-meme."""
+    fr = (ROOT / "js/i18n/fr.js").read_text(encoding="utf-8")
+    return {m for m in re.findall(r'^\s*"[\w.-]+"\s*:\s*"((?:[^"\\]|\\.)*)"',
+                                  fr, re.M)}
+
+
+def sans_douas_coraniques(src):
+    """Retire la traduction francaise des douas servies par le corpus.
+
+    Une doua qui porte `verses:` tire son texte de content/quran/quran-<langue>
+    dans la traduction publiee de la langue lue ; son champ `translation:`
+    francais n'est qu'un repli, jamais un manque. Les signaler faisait
+    cinquante-deux fausses pistes a lui seul."""
+    out, i = [], 0
+    for m in re.finditer(r"\{[^{}]*\}", src):
+        bloc = m.group(0)
+        out.append(src[i:m.start()])
+        out.append(re.sub(r'translation:"(?:[^"\\]|\\.)*"', "", bloc)
+                   if "verses:" in bloc else bloc)
+        i = m.end()
+    out.append(src[i:])
+    return "".join(out)
+
+
 def scan_js():
     out = {}
     for f in sorted(ROOT.glob("js/**/*.js")):
         if f.parent.name == "i18n":
             continue
         src = strip_comments(f.read_text(encoding="utf-8"))
+        if f.name in MULTILINGUES:
+            continue   # table multilingue : le francais y est une colonne
+        if f.name == "duas.js":
+            src = sans_douas_coraniques(src)
+        deja = couvertes()
         hits, seen = [], set()
         for line, s in js_strings(src):
             s = s.strip()
             if len(s) < 3 or SKIP.match(s) or not FRENCH.search(s):
                 continue
-            if s in seen:
+            # Une chaine deja dans fr.js porte une cle : ses traductions
+            # existent, ce n'est pas du francais « restant ».
+            if s in deja or s in seen:
                 continue
             seen.add(s)
             hits.append((line, s))

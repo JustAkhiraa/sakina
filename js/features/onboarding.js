@@ -198,6 +198,13 @@ function finish(){
    grilles de themes gardaient la langue du demarrage. Tenir la liste a la
    main etait la cause — la voici tenue une seule fois. */
 function redessine(){
+  // L'assistant est retire du DOM une fois termine, mais l'abonnement a
+  // `lang-changed` lui survit : sans cette garde, changer de langue dans les
+  // Reglages levait une exception a chaque fois. Elle ne cassait rien de
+  // visible — les autres abonnes tournaient quand meme — et c'est bien le
+  // probleme : une erreur silencieuse dans la console de tous les
+  // utilisateurs.
+  if(!document.getElementById('onboard'))return;
   buildLangGrid();
   buildAccentGrid();
   buildBaseThemeGrid('ob-base-theme-grid');
