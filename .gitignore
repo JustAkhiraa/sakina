@@ -11,3 +11,11 @@ __pycache__/
 # jour où hisn_ocr.py écrivait encore dans scripts/.
 scripts/out/
 scripts/hisn_ocr_*.txt
+
+# Outillage personnel : ce qui sert a fabriquer Sakina, pas ce qui la compose.
+# Retire du depot le 31 aout 2026 — ces fichiers restent sur le disque, ils ne
+# sont simplement plus publies.
+CLAUDE.md
+.claude/
+docs/PUBLISH.html
+assets/icon-generator.html
