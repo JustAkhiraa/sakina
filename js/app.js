@@ -72,7 +72,11 @@ goToStartPage();
   if(!('serviceWorker' in navigator))return;
   if(location.protocol!=='https:')return;
   if(window.top!==window.self)return; // pas dans une iframe d'aperçu
-  if(location.search.includes('sw=off')){
+  /* Interrupteur de mise au point, restreint au poste de developpement : sur
+     un site publie, un lien `?sw=off` retirait la couche de cache a quiconque
+     savait le tendre. */
+  const local=['localhost','127.0.0.1','[::1]'].includes(location.hostname);
+  if(local&&location.search.includes('sw=off')){
     navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister()));
     return;
   }

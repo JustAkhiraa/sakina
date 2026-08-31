@@ -5,7 +5,7 @@
    Seule la récitation audio reste distante (CDN islamic.network). */
 import {S,save} from '../core/store.js';
 import {t} from '../lib/i18n.js';
-import {toast,burst,openSheet,closeSheet,confirmDlg} from '../core/ui.js';
+import {toast,burst,openSheet,closeSheet,confirmDlg,esc} from '../core/ui.js';
 import {SURAHS,JUZ_STARTS} from '../data/surahs.js';
 import {SURAH_NAMES} from '../data/surah-names.js';
 import {TR_BY_CODE} from '../data/translations.js';
@@ -195,6 +195,12 @@ async function fetchTranslation(n){
 
 /* ── Tajwid (heuristique Unicode, sans altérer le texte) ── */
 function applyTajwid(text){
+  /* On echappe AVANT de poser les balises de coloration, jamais apres : les
+     expressions ci-dessous ne reconnaissent que des lettres arabes, donc du
+     HTML injecte dans `text_uthmani` les traversait intact. Les entites
+     produites ici (&amp;, &lt;…) ne contiennent aucun caractere arabe et ne
+     peuvent donc pas etre coupees par les regles de tajwid. */
+  text=esc(text);
   // Madd : voyelle brève suivie de sa lettre de prolongation
   text=text.replace(/([َُِ])([اوي])(?![ً-ِْ])/g,'$1<span class="tj-madd">$2</span>');
   // Ghunna : ن ou م portant une shadda
@@ -347,7 +353,7 @@ function buildBookmarks(){
     favs.forEach(f=>{
       const[s,a]=f.key.split(':');
       const div=document.createElement('div');div.className='bk-item';
-      div.innerHTML=`<div class="bk-item-ref">${t('quran.ayahRef',{s,a})}</div><div class="bk-item-ar">${f.text}</div>`;
+      div.innerHTML=`<div class="bk-item-ref">${t('quran.ayahRef',{s,a})}</div><div class="bk-item-ar">${esc(f.text)}</div>`;
       div.addEventListener('click',()=>{closeSheet();renderSurah(parseInt(s));});
       fl.appendChild(div);
     });
@@ -361,7 +367,7 @@ function buildBookmarks(){
       const[s,a]=key.split(':');
       const v=_verses.find(x=>x.verse_key===key);
       const div=document.createElement('div');div.className='bk-item';
-      div.innerHTML=`<div class="bk-item-ref">${t('quran.ayahRef',{s,a})}</div>${v?`<div class="bk-item-ar">${v.text_uthmani}</div>`:''}<div class="bk-item-note">✏️ ${txt}</div>`;
+      div.innerHTML=`<div class="bk-item-ref">${t('quran.ayahRef',{s,a})}</div>${v?`<div class="bk-item-ar">${esc(v.text_uthmani)}</div>`:''}<div class="bk-item-note">✏️ ${esc(txt)}</div>`;
       div.addEventListener('click',()=>{closeSheet();renderSurah(parseInt(s));});
       nl.appendChild(div);
     });

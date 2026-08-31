@@ -2,7 +2,7 @@
    additifs E. Analyse indicative : détecte les indicateurs haram/douteux dans
    la composition. ⚠ Ne remplace jamais une certification — l'utilisateur reste
    responsable de sa vérification (abattage, étourdissement, traçabilité…). */
-import {openSheet} from '../core/ui.js';
+import {openSheet,esc,escUrl} from '../core/ui.js';
 import {vib} from '../core/audio.js';
 import {t,tf} from '../lib/i18n.js';
 import {ADDITIVES,ADD_STATUS,HARAM_KEYWORDS} from '../data/additives.js';
@@ -92,17 +92,22 @@ async function lookupBarcode(code){
       box.innerHTML=`<div class="places-empty">${t('halal.notFound')}<br>${t('halal.notFoundSub')}</div>`;
       return;
     }
+    /* Tout ce qui suit vient d'OpenFoodFacts, une base collaborative : le
+       nom d'un produit se modifie comme un article de wiki. On ne fait donc
+       aucune confiance a ces champs, et `image_front_small_url` moins encore
+       que les autres — il atterrissait dans un attribut, ou un simple
+       guillemet suffisait a sortir du contexte. */
     const p=data.product;
     const a=analyzeProduct(p);
     box.innerHTML=`
       <div class="hp-card">
         <div class="hp-head">
-          ${p.image_front_small_url?`<img class="hp-img" src="${p.image_front_small_url}" alt="">`:'<div class="hp-img hp-img-ph">🛒</div>'}
-          <div><div class="hp-name">${p.product_name||'Produit '+code}</div><div class="hp-brand">${p.brands||''}</div></div>
+          ${escUrl(p.image_front_small_url)?`<img class="hp-img" src="${escUrl(p.image_front_small_url)}" alt="">`:'<div class="hp-img hp-img-ph">🛒</div>'}
+          <div><div class="hp-name">${esc(p.product_name||('Produit '+code))}</div><div class="hp-brand">${esc(p.brands||'')}</div></div>
         </div>
         <div class="hp-verdict ${a.cls}">${a.verdict}</div>
-        ${a.problems.length?`<div class="hp-findings">${a.problems.map(f=>`<div class="hp-finding ${f.status==='haram'?'err':'warn'}"><strong>${f.status==='haram'?'✗':'?'} ${f.label}</strong>${f.note?`<div class="hp-fnote">${f.note}</div>`:''}</div>`).join('')}</div>`:''}
-        ${a.ingredients?`<details class="hp-ing"><summary>${t('halal.fullComp')}</summary><div>${a.ingredients}</div></details>`:''}
+        ${a.problems.length?`<div class="hp-findings">${a.problems.map(f=>`<div class="hp-finding ${f.status==='haram'?'err':'warn'}"><strong>${f.status==='haram'?'✗':'?'} ${esc(f.label)}</strong>${f.note?`<div class="hp-fnote">${esc(f.note)}</div>`:''}</div>`).join('')}</div>`:''}
+        ${a.ingredients?`<details class="hp-ing"><summary>${t('halal.fullComp')}</summary><div>${esc(a.ingredients)}</div></details>`:''}
       </div>`;
   }catch{
     box.innerHTML=`<div class="places-empty">${t('halal.netError')}</div>`;

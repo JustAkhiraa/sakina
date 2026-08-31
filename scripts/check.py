@@ -22,6 +22,8 @@ Sortie : 0 si tout va bien, 1 sinon.
 """
 import json
 import os
+import base64
+import hashlib
 import re
 import sys
 from pathlib import Path
@@ -591,6 +593,188 @@ def check_i18n_js() -> None:
 
 
 # ── 7 quater. Thèmes annoncés sans style ─────────────────────────────────
+# Ce qui, dans chaque fichier, vient d'ailleurs que du depot. Nommer le
+# fichier autant que l'expression evite les rapprochements de hasard : une
+# premiere version cherchait « h.title » partout et signalait
+# `t('search.title')`, ou la sous-chaine apparait par accident.
+_HOSTILES = {
+    "js/features/halal.js": ("product_name", "brands", "image_front_small_url",
+                             "a.ingredients", "f.label", "f.note"),
+    "js/features/places.js": ("p.name", "p.street"),
+    "js/features/salat.js": ("it.display_name", "name"),
+    "js/features/onboarding.js": ("it.display_name", "name"),
+    "js/features/quran.js": ("f.text", "v.text_uthmani", "txt"),
+    "js/features/tasbih.js": ("d.arabic", "p.name", "h.title"),
+    "js/features/duas.js": ("s0.nom",),
+}
+# Ce qui rend une valeur sure. applyTajwid en fait partie parce qu'il echappe
+# lui-meme son entree avant de poser ses balises — verifie ci-dessous.
+_LAVEURS = ("esc(", "escUrl(", "applyTajwid(")
+
+
+# Les seuls motifs qui designent une variable locale, et non une propriete.
+# Pour eux, un point devant disqualifie : « name » vise le `const name` tire de
+# display_name, pas `th.name` qui vient du catalogue des themes.
+_LOCAUX = {"name", "txt"}
+
+
+def _vise(expr: str, motifs) -> bool:
+    """Le motif doit etre le nom lui-meme, pas une sous-chaine.
+
+    Sans borne, « name » attrapait `th.name` et « h.title » attrapait
+    `t('search.title')`. Avec une borne trop stricte — interdire le point
+    devant — « product_name » ne reconnaissait plus `p.product_name`, et le
+    controle laissait passer l'injection meme qu'il devait surveiller. Il a
+    fallu l'eprouver pour s'en apercevoir.
+    """
+    for m in motifs:
+        avant = r"(?<![\w.])" if m in _LOCAUX else r"(?<![\w])"
+        if re.search(avant + re.escape(m) + r"(?![\w])", expr):
+            return True
+    return False
+
+
+def check_html_echappe() -> None:
+    """Aucune source non fiable n'atteint innerHTML sans passer par esc().
+
+    Cent quatre-vingt-trois valeurs partaient dans `innerHTML` sans qu'aucune
+    règle ne l'interdise. Trois venaient de bases éditables par le public —
+    les noms de lieux d'OpenStreetMap, les fiches d'OpenFoodFacts — et une
+    d'un fichier de sauvegarde importé. Renommer une mosquée dans OSM
+    suffisait à exécuter du script chez tous ceux qui la cherchaient.
+
+    La règle ne surveille pas les cent quatre-vingt-trois : la plupart
+    viennent de catalogues du dépôt, sains par construction. Elle surveille,
+    fichier par fichier, celles dont on sait qu'elles échappent au projet.
+
+    Éprouvée : en retirant esc() autour de `p.product_name` dans halal.js,
+    elle signale la ligne ; remis, elle se tait.
+    """
+    fautes = []
+    for rel, motifs in _HOSTILES.items():
+        f = ROOT / rel
+        if not f.exists():
+            fautes.append(f"{rel} — fichier absent, la règle ne surveille plus rien")
+            continue
+        src = f.read_text(encoding="utf-8")
+        lignes = src.split(chr(10))
+        # Un gabarit `innerHTML` court souvent sur plusieurs lignes, et le
+        # puits est rarement sur la premiere. Une premiere version n'examinait
+        # que la ligne portant `innerHTML` : elle laissait passer halal.js et
+        # places.js, c'est-a-dire les deux injections que l'audit avait
+        # prouvees. Un crochet qu'on n'eprouve pas garde ce genre de trou.
+        for i, ligne in enumerate(lignes):
+            if "innerHTML" not in ligne:
+                continue
+            # `innerHTML=''` n'ouvre aucun gabarit : ouvrir une fenetre dessus
+            # faisait attraper un `textContent` situe vingt lignes plus bas.
+            apres = ligne.split("innerHTML", 1)[1]
+            if "`" not in apres:
+                continue
+            bloc, fin = [], min(i + 20, len(lignes))
+            for j in range(i, fin):
+                bloc.append((j + 1, lignes[j]))
+                if j > i and "`;" in lignes[j]:
+                    break
+                if j == i and lignes[j].count("`") >= 2 and "`;" in lignes[j]:
+                    break
+            for n, l in bloc:
+                for expr in re.findall(r"\$\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}", l):
+                    if not _vise(expr, motifs):
+                        continue
+                    if any(v in expr for v in _LAVEURS):
+                        continue
+                    fautes.append(
+                        f"{rel}:{n} — « {expr.strip()[:52]} » vient d'une "
+                        "source non fiable et n'est pas échappée")
+
+    # applyTajwid ne compte comme laveur que s'il lave vraiment.
+    q = (ROOT / "js/features/quran.js").read_text(encoding="utf-8")
+    corps = q[q.find("function applyTajwid("):]
+    corps = corps[:corps.find(chr(10) + "}")]
+    if "esc(text)" not in corps:
+        fautes.append(
+            "quran.js — applyTajwid() n'échappe plus son entrée ; il est "
+            "pourtant compté comme sûr par cette règle")
+
+    if fautes:
+        # Les fenetres de lecture se chevauchent : une meme ligne peut etre
+        # vue plusieurs fois.
+        ERRORS.extend(sorted(set(fautes)))
+    else:
+        NOTES.append("échappement HTML : aucune source non fiable interpolée nue")
+
+
+def check_csp() -> None:
+    """La CSP existe, script-src reste strict, et l'empreinte est à jour.
+
+    Le script en ligne d'index.html applique le thème avant le premier rendu,
+    pour éviter un flash sombre sur Chrome Android. Sous CSP il n'est autorisé
+    que par empreinte : modifier ce bloc sans la recalculer casserait le
+    démarrage en silence.
+
+    On lit l'attribut `content` de la balise, jamais le fichier entier : une
+    première version lisait tout et se signalait elle-même, le commentaire qui
+    explique la directive contenant les mots qu'elle cherchait.
+    """
+    fautes = []
+    for nom in ("index.html", "privacy-policy.html"):
+        src = (ROOT / nom).read_text(encoding="utf-8")
+        m = re.search(r'<meta http-equiv="Content-Security-Policy"\s+content="([^"]*)"',
+                      src)
+        if not m:
+            fautes.append(f"{nom} — aucune politique de sécurité du contenu")
+            continue
+        directives = dict()
+        for part in m.group(1).split(";"):
+            part = part.strip().split()
+            if part:
+                directives[part[0]] = part[1:]
+        script = directives.get("script-src", [])
+        if "'unsafe-inline'" in script:
+            fautes.append(f"{nom} — script-src porte 'unsafe-inline', "
+                          "ce qui annule la protection")
+        if "object-src" not in directives or directives["object-src"] != ["'none'"]:
+            fautes.append(f"{nom} — object-src devrait être 'none'")
+
+    src = (ROOT / "index.html").read_text(encoding="utf-8")
+    bloc = re.search(r"<script>(.*?)</script>", src, re.S)
+    if bloc:
+        attendu = "sha256-" + base64.b64encode(
+            hashlib.sha256(bloc.group(1).encode("utf-8")).digest()).decode()
+        if attendu not in src:
+            fautes.append(
+                "index.html — le script de thème a changé sans que son empreinte "
+                f"soit recalculée ; attendue : '{attendu}'")
+
+    if fautes:
+        ERRORS.extend(fautes)
+    else:
+        NOTES.append("CSP : présente, script-src strict, empreinte à jour")
+
+
+def check_import_liste_blanche() -> None:
+    """L'import de sauvegarde n'ecrit que des cles nommees.
+
+    La version d'avant finissait par `S[k]=data[k]` : n'importe quelle cle,
+    n'importe quelle valeur, ecrite dans l'etat puis rendue par des gabarits.
+    Un fichier partage suffisait a executer du script et a lire tout le
+    stockage local — dont les coordonnees du domicile.
+    """
+    src = (ROOT / "js" / "features" / "settings.js").read_text(encoding="utf-8")
+    zone = src[src.find("fileImport.addEventListener"):]
+    zone = zone[:zone.find("btn-reset-all")]
+    # On ignore les commentaires, qui citent volontairement l'ancienne forme.
+    code = "\n".join(l for l in zone.split("\n")
+                     if not l.strip().startswith(("//", "*", "/*")))
+    if re.search(r"S\[k\]\s*=\s*data\[k\]", code):
+        ERRORS.append(
+            "settings.js — `S[k]=data[k]` écrit n'importe quelle clé venue du "
+            "fichier importé. Passer par la liste blanche.")
+    else:
+        NOTES.append("import de sauvegarde : sous liste blanche")
+
+
 def check_themes() -> None:
     """Le catalogue annonce des récompenses, les tokens leur donnent leurs
     couleurs, et rien ne vérifiait que les deux listes se correspondent.
@@ -681,6 +865,9 @@ def main() -> int:
         check_books_raw,
         check_onboarding_redraw,
         check_i18n_js,
+        check_html_echappe,
+        check_csp,
+        check_import_liste_blanche,
         check_themes,
         check_i18n_inventory,
     ):

@@ -1,4 +1,31 @@
-/* SAKINA — Primitives UI : toast, burst, sheets, confirmation */
+/* SAKINA — Primitives UI : toast, burst, sheets, confirmation, echappement */
+
+/* Rend une valeur inoffensive dans du HTML.
+
+   L'application batit son DOM par gabarits : cent quatre-vingt-trois valeurs
+   etaient interpolees dans du innerHTML sans qu'aucune regle ne l'interdise.
+   Trois d'entre elles venaient de bases editables par le public — les noms de
+   lieux d'OpenStreetMap, les fiches produit d'OpenFoodFacts — et une
+   quatrieme d'un fichier de sauvegarde importe.
+
+   Les cinq caracteres sont necessaires, pas quatre : les deux fonctions
+   maison qui existaient n'echappaient que & et <, ce qui laisse intacte une
+   sortie de contexte d'attribut par un simple guillemet. C'est exactement par
+   la que passait l'injection dans halal.js.
+
+   Prefere `textContent` quand c'est possible ; `esc()` est pour les cas ou le
+   gabarit doit rester. */
+export const esc=v=>String(v??'')
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+  .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
+/* Une URL destinee a un attribut src ou href. Tout ce qui n'est pas
+   explicitement http(s) ou une donnee d'image est refuse — `javascript:` et
+   `data:text/html` en particulier. */
+export const escUrl=v=>{
+  const u=String(v??'').trim();
+  return /^(https?:\/\/|data:image\/)/i.test(u)?esc(u):'';
+};
 
 let _tt;
 export function toast(msg){

@@ -1,6 +1,6 @@
 /* SAKINA — Module Tasbih : compteur, dhikr bar, préréglages, historique */
 import {S,save,todayKey,emit} from '../core/store.js';
-import {toast,burst,openSheet,closeSheet,sheetOpen} from '../core/ui.js';
+import {toast,burst,openSheet,closeSheet,sheetOpen,esc} from '../core/ui.js';
 import {playSound,vib,getAC} from '../core/audio.js';
 import {DHIKRS,BONUS_DHIKRS} from '../data/catalog.js';
 import {isUnlocked,remainingFor,fmtGoal,checkUnlocks} from '../core/rewards.js';
@@ -195,7 +195,7 @@ export function buildDhikrBar(){
     // S.title y suffit, et une invocation lancee depuis les Douas n'a de toute
     // facon pas de pastille ici.
     el.className='dchip'+(!S.titleKey&&S.title===d.name?' active':'')+(d.bonus?' bonus':'');
-    el.innerHTML=`<span class="dchip-ar">${d.arabic||d.name}</span><span class="dchip-n">${d.goal}×</span>${d.custom?'<span class="dchip-star">★</span>':''}${d.bonus?'<span class="dchip-star">✦</span>':''}`;
+    el.innerHTML=`<span class="dchip-ar">${esc(d.arabic||d.name)}</span><span class="dchip-n">${esc(d.goal)}×</span>${d.custom?'<span class="dchip-star">★</span>':''}${d.bonus?'<span class="dchip-star">✦</span>':''}`;
     el.addEventListener('click',()=>{
       setDhikr({title:d.name,goal:d.goal,reminder:d.reminder});
       toast(`✦ ${d.name}`);vib(20);
@@ -213,7 +213,7 @@ function renderPresets(){
   }
   S.customDhikrs.forEach((p,i)=>{
     const row=document.createElement('div');row.className='preset-row';
-    row.innerHTML=`<div class="preset-name">★ ${p.name}</div><div class="preset-meta">${t('tasbih.presetMeta',{goal:p.goal,rem:p.reminder})}</div><div class="preset-del">✕</div>`;
+    row.innerHTML=`<div class="preset-name">★ ${esc(p.name)}</div><div class="preset-meta">${t('tasbih.presetMeta',{goal:p.goal,rem:p.reminder})}</div><div class="preset-del">✕</div>`;
     row.querySelector('.preset-del').addEventListener('click',()=>{
       S.customDhikrs.splice(i,1);save();renderPresets();buildDhikrBar();toast(t('msg.presetDel'));
     });
@@ -256,7 +256,7 @@ function buildHistory(){
     el.style.cssText='display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--bor2);gap:12px;';
     el.innerHTML=`<div style="width:7px;height:7px;border-radius:50%;background:var(--a);flex-shrink:0;box-shadow:0 0 6px rgba(var(--a-rgb),0.6)"></div>
       <div style="font-family:var(--ff-m);font-size:1rem;color:var(--t1);min-width:42px;">${h.count}</div>
-      <div style="flex:1;font-size:0.82rem;color:var(--t2);">${h.title}${h.goal?' / '+h.goal:''}</div>
+      <div style="flex:1;font-size:0.82rem;color:var(--t2);">${esc(h.title)}${h.goal?' / '+esc(h.goal):''}</div>
       <div style="font-size:0.61rem;color:var(--t3);">${fmtTs(h)}</div>`;
     bd.appendChild(el);
   });

@@ -2,7 +2,7 @@
    Affiché une seule fois : apparence, méthode de calcul, position.
    Les utilisateurs migrés depuis l'ancienne app ne le voient pas. */
 import {S,save,emit,on} from '../core/store.js';
-import {toast} from '../core/ui.js';
+import {toast,esc} from '../core/ui.js';
 import {vib} from '../core/audio.js';
 import {THEMES,CALC_METHODS,MADHABS,LANGS,LANG_REGIONS,CALC_BY_LANG,MADHAB_BY_LANG} from '../data/catalog.js';
 import {t,tf,applyI18n,setLang} from '../lib/i18n.js';
@@ -163,7 +163,9 @@ function wireLocation(){
         items.forEach(it=>{
           const div=document.createElement('div');div.className='city-result';
           const name=it.display_name.split(',')[0];
-          div.innerHTML=`${name}<div class="city-result-sub">${it.display_name}</div>`;
+          /* display_name vient de Nominatim, donc d'OpenStreetMap : le nom
+             d'un lieu s'y modifie librement. */
+          div.innerHTML=`${esc(name)}<div class="city-result-sub">${esc(it.display_name)}</div>`;
           div.addEventListener('click',()=>{
             S.lat=parseFloat(it.lat);S.lon=parseFloat(it.lon);S.city=name;
             save();emit('location-changed');
