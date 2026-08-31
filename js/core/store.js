@@ -11,6 +11,7 @@ const DEFAULTS={
   // Compteur
   count:0,lapCount:0,sessTot:0,allTime:0,sessCount:0,
   title:'Subhanallah',startVal:0,reminder:33,goal:33,
+  titleKey:null,                 // d'où vient le titre, quand il vient d'un texte traduit
   customDhikrs:[],
   daily:{},                      // { 'YYYY-MM-DD': nb de dhikrs }
   history:[],                    // [{title,count,goal,ts}]
