@@ -174,7 +174,7 @@ function renderDuas(){
     });
     card.querySelector('.dua-act-use').addEventListener('click',e=>{
       e.stopPropagation();
-      setDhikr({title:duaTitle(d),goal:33,reminder:33});
+      setDhikr({title:duaTitle(d),src:`dua.${d.id}.t`,goal:33,reminder:33});
       goPage('page-tasbih');toast(`📿 ${duaTitle(d)}`);
     });
     list.appendChild(card);

@@ -81,6 +81,9 @@ export function closeSheet(){
     try{_avant.focus({preventScroll:true});}catch{}
   }
   _avant=null;
+  // Une feuille peut laisser tourner quelque chose derriere elle — un
+  // minuteur, par exemple. On l'annonce plutot que d'aller le chercher ici.
+  document.dispatchEvent(new CustomEvent('sheet-closed'));
 }
 export const sheetOpen=()=>_sh!==null;
 

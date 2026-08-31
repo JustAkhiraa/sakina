@@ -4,10 +4,17 @@ import {toast,burst,openSheet,closeSheet,sheetOpen} from '../core/ui.js';
 import {playSound,vib,getAC} from '../core/audio.js';
 import {DHIKRS,BONUS_DHIKRS} from '../data/catalog.js';
 import {isUnlocked,remainingFor,fmtGoal,checkUnlocks} from '../core/rewards.js';
-import {t} from '../lib/i18n.js';
+import {t,tf} from '../lib/i18n.js';
 
 const $=id=>document.getElementById(id);
 const CIRC=2*Math.PI*104;
+
+/* Le titre du compteur pouvait venir d'une invocation — et on enregistrait
+   alors sa *traduction*, pas l'invocation. Changer de langue ensuite laissait
+   le compteur en espagnol sous une interface francaise, definitivement.
+   On retient donc la cle, et le libelle se recalcule a chaque rendu. Un titre
+   saisi a la main n'a pas de cle : `S.title` reste sa seule verite. */
+const titreAffiche=()=>S.titleKey?tf(S.titleKey,S.title):S.title;
 
 /* ── Rendu ── */
 function updateRing(pct){
@@ -18,7 +25,7 @@ function updateRing(pct){
 
 export function renderTasbih(){
   $('cnum').textContent=S.count;
-  $('t-title').textContent=S.title;
+  $('t-title').textContent=titreAffiche();
   // Le libellé du bouton dérive uniquement de l'état : « MINÉ » sur le skin
   // Voxel, sinon la traduction courante. Pur (aucune mémoïsation fragile),
   // donc il redevient « APPUYER » dès qu'on quitte le skin.
@@ -89,7 +96,7 @@ function increment(){
       toast(t('tsb.goalReached'));S.lapCount++;
       if(S.autoLoop)setTimeout(()=>{S.count=S.startVal;renderTasbih();save();},800);
     }else if(S.reminder>0){
-      toast(`✦ ${S.count} — ${S.title}`);
+      toast(`✦ ${S.count} — ${titreAffiche()}`);
     }
   }
   save();renderTasbih();emit('stats-changed');
@@ -100,7 +107,7 @@ function increment(){
    aux paliers → utilisable téléphone en poche, sans regarder ── */
 let _immersiveOpen=false;
 function renderImmersive(milestone=false){
-  $('imm-title').textContent=S.title;
+  $('imm-title').textContent=titreAffiche();
   $('imm-count').textContent=S.count;
   $('imm-sub').textContent=S.goal>0?t('tasbih.immSub',{goal:S.goal,lap:S.lapCount+1}):t('tasbih.immFree');
   const c=$('imm-count');
@@ -114,8 +121,17 @@ function renderImmersive(milestone=false){
 function openImmersive(){
   _immersiveOpen=true;
   renderImmersive();
+  appliqueUltra();
   $('immersive').classList.add('open');
   vib(20);
+}
+
+/* Mode ultra sombre : un noir vrai, choisi et retenu. Le fond du theme, meme
+   sombre, reste un gris clair a cote — et sur un ecran OLED il allume des
+   pixels que le noir n'allume pas. */
+function appliqueUltra(){
+  $('immersive').classList.toggle('ultra',!!S.immDark);
+  $('imm-dark').setAttribute('aria-pressed',S.immDark?'true':'false');
 }
 function closeImmersive(){
   _immersiveOpen=false;
@@ -128,6 +144,7 @@ function undo(){
   const tk=todayKey();
   if(S.daily[tk])S.daily[tk]=Math.max(0,S.daily[tk]-1);
   playSound('click');vib(14);save();renderTasbih();emit('stats-changed');
+  if(_immersiveOpen)renderImmersive();
 }
 
 async function resetCounter(){
@@ -136,6 +153,7 @@ async function resetCounter(){
   if(S.count>S.startVal)pushHistory();
   S.count=S.startVal;S.lapCount=0;S.sessTot=0;
   vib([60,30,60]);toast(t('msg.reset'));save();renderTasbih();
+  if(_immersiveOpen)renderImmersive();
 }
 
 function saveSession(){
@@ -147,13 +165,15 @@ function saveSession(){
 }
 
 function pushHistory(){
-  S.history.unshift({title:S.title,count:S.count,goal:S.goal,ts:Date.now()});
+  // L'historique garde une trace de ce qui a ete compté : on y fige le libellé
+  // tel qu'il se lisait alors, une seance passee n'ayant pas a suivre la langue.
+  S.history.unshift({title:titreAffiche(),count:S.count,goal:S.goal,ts:Date.now()});
   if(S.history.length>60)S.history.pop();
 }
 
 /* ── Dhikr bar (catalogue + préréglages personnels) ── */
-export function setDhikr({title,goal,reminder,resetCount=true}){
-  S.title=title;
+export function setDhikr({title,src=null,goal,reminder,resetCount=true}){
+  S.title=title;S.titleKey=src;
   if(goal!==undefined)S.goal=goal;
   if(reminder!==undefined)S.reminder=reminder;
   if(resetCount){S.count=S.startVal;S.lapCount=0;S.sessTot=0;}
@@ -171,7 +191,10 @@ export function buildDhikrBar(){
   ];
   all.forEach(d=>{
     const el=document.createElement('div');
-    el.className='dchip'+(S.title===d.name?' active':'')+(d.bonus?' bonus':'');
+    // Le catalogue porte des translitterations, jamais traduites : comparer sur
+    // S.title y suffit, et une invocation lancee depuis les Douas n'a de toute
+    // facon pas de pastille ici.
+    el.className='dchip'+(!S.titleKey&&S.title===d.name?' active':'')+(d.bonus?' bonus':'');
     el.innerHTML=`<span class="dchip-ar">${d.arabic||d.name}</span><span class="dchip-n">${d.goal}×</span>${d.custom?'<span class="dchip-star">★</span>':''}${d.bonus?'<span class="dchip-star">✦</span>':''}`;
     el.addEventListener('click',()=>{
       setDhikr({title:d.name,goal:d.goal,reminder:d.reminder});
@@ -199,7 +222,7 @@ function renderPresets(){
 }
 
 function openEdit(){
-  $('inp-title').value=S.title;
+  $('inp-title').value=titreAffiche();
   $('inp-start').value=S.startVal;
   $('inp-rem').value=S.reminder;
   $('inp-goal').value=S.goal;
@@ -245,6 +268,13 @@ export function initTasbih(){
   $('btn-immersive').addEventListener('click',openImmersive);
   $('immersive').addEventListener('click',increment);
   $('imm-exit').addEventListener('click',e=>{e.stopPropagation();closeImmersive();});
+  /* Toute la surface compte : sans arreter la propagation, appuyer sur l'un de
+     ces boutons incrementerait aussi le compteur. */
+  $('imm-dark').addEventListener('click',e=>{
+    e.stopPropagation();
+    S.immDark=!S.immDark;save();appliqueUltra();vib(14);
+  });
+  $('imm-reset').addEventListener('click',e=>{e.stopPropagation();resetCounter();});
   $('btn-undo').addEventListener('click',undo);
   $('btn-reset').addEventListener('click',resetCounter);
   $('btn-save-s').addEventListener('click',saveSession);
@@ -260,7 +290,7 @@ export function initTasbih(){
 
   $('btn-save-edit').addEventListener('click',()=>{
     const f=readEditForm();
-    S.title=f.title;S.startVal=f.startVal;S.reminder=f.reminder;S.goal=f.goal;
+    S.title=f.title;S.titleKey=null;S.startVal=f.startVal;S.reminder=f.reminder;S.goal=f.goal;
     if(S.count<S.startVal)S.count=S.startVal;
     save();renderTasbih();buildDhikrBar();closeSheet();
     vib([40,20,40]);toast(t('tasbih.saved'));

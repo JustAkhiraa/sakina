@@ -11,6 +11,7 @@ const DEFAULTS={
   // Compteur
   count:0,lapCount:0,sessTot:0,allTime:0,sessCount:0,
   title:'Subhanallah',startVal:0,reminder:33,goal:33,
+  titleKey:null,                 // d'où vient le titre, quand il vient d'un texte traduit
   customDhikrs:[],
   daily:{},                      // { 'YYYY-MM-DD': nb de dhikrs }
   history:[],                    // [{title,count,goal,ts}]
@@ -27,6 +28,7 @@ const DEFAULTS={
   calcMethodPicked:false,        // vrai dès que l'utilisateur choisit sa méthode lui-même
   madhab:'maliki',               // école juridique (hanafi → Asr ombre ×2)
   translit:'ar',                 // adhkâr des routines : 'ar' (arabe) ou 'ph' (phonétique)
+  immDark:false,                 // plein écran : noir vrai plutôt que le fond du thème
   lang:'fr',                     // langue de l'interface
   calEvents:{},                  // { 'YYYY-MM-DD': 'texte de l'événement' }
   // Qadâ'

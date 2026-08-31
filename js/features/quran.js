@@ -238,7 +238,12 @@ async function renderSurah(n){
   const mean=surahMeaning(n);
   $('quran-surah-name').textContent=`${surah.ar} — ${surahName(surah)}`+(surahSub(surah)?` · ${surahSub(surah)}`:'');
   $('quran-surah-info').textContent=t('quran.surahMeta',{n,v:surah.v,origin:surah.t==='Makki'?t('quran.makki'):t('quran.madani')});
-  $('quran-basmala').style.display=(n===9)?'none':'block';
+  /* La basmala en en-tete ouvre la sourate sans etre numerotee. Deux
+     exceptions, et pour des raisons opposees :
+       · At-Tawba (9) n'en a pas — c'est la seule sourate dans ce cas ;
+       · Al-Fatiha (1) l'a pour verset 1, comptee dans ses sept versets.
+         L'afficher en en-tete la donnait donc deux fois de suite. */
+  $('quran-basmala').style.display=(n===9||n===1)?'none':'block';
 
   const loading=$('quran-loading'),errEl=$('quran-error'),versesEl=$('quran-verses');
   loading.style.display='block';errEl.style.display='none';versesEl.innerHTML='';

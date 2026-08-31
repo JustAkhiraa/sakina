@@ -185,7 +185,7 @@ input,textarea,select{font-size:16px;}
   background:var(--sur3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border:1px solid var(--bor);border-radius:var(--r-pill);
   padding:10px 20px;font-size:0.8rem;font-weight:700;color:var(--t1);
-  pointer-events:none;opacity:0;z-index:200;transition:all 0.32s var(--ease);white-space:nowrap;
+  pointer-events:none;opacity:0;z-index:310;transition:all 0.32s var(--ease);white-space:nowrap;
   box-shadow:0 8px 24px rgba(0,0,0,0.4);}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 @keyframes burst{0%{transform:translate(-50%,-50%) scale(0.5);opacity:0.9;}100%{transform:translate(-50%,-50%) scale(3);opacity:0;}}
@@ -195,7 +195,7 @@ input,textarea,select{font-size:16px;}
 #confirm-box{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);
   width:calc(100% - 64px);max-width:340px;background:var(--sur);
   border:1px solid var(--bor);border-radius:var(--r-xl);padding:22px 20px 16px;
-  z-index:210;opacity:0;pointer-events:none;transition:all 0.25s var(--ease);
+  z-index:320;opacity:0;pointer-events:none;transition:all 0.25s var(--ease);
   box-shadow:var(--sh2);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);}
 #confirm-box.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1);}
 #confirm-msg{font-size:0.88rem;color:var(--t1);line-height:1.5;text-align:center;margin-bottom:18px;}

@@ -58,7 +58,7 @@ export const ROUTINES=[
        ar:'قُلْ هُوَ ٱللَّهُ أَحَدٌ ۝ ٱللَّهُ ٱلصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ',
        ph:"Qul huwa-llāhu aḥad. Allāhu ṣ-ṣamad. Lam yalid wa lam yūlad. Wa lam yakun lahu kufuwan aḥad.",
        note:'10× : une maison construite au Paradis (rapporté par Ahmad)'},
-      {title:'Istighfâr ×100',count:100,
+      {title:'Istighfâr',secs:300,
        ar:'أَسْتَغْفِرُ ٱللَّهَ',
        ph:"Astaghfiru-llāh.",
        note:'≈ 5 minutes de demande de pardon, avec présence du cœur'},

@@ -31,10 +31,30 @@ const stepNote =st=>st.note?tf(`rtn.${slug(st.note)}`,st.note):'';
 let _routine=null;
 let _stepIdx=0;
 let _count=0;
+/* Etapes minutees : certaines adorations se mesurent en temps, pas en
+   repetitions — « cinq minutes d'istighfar » n'est pas « cent istighfar ».
+   L'etape porte alors `secs` au lieu de `count`, et la carte devient un
+   minuteur qu'on demarre et met en pause du meme geste. */
+let _timer=null;
+let _reste=0;
+let _enMarche=false;
 
-function totalTaps(r){return r.steps.reduce((s,x)=>s+x.count,0);}
-function doneTaps(){
-  return _routine.steps.slice(0,_stepIdx).reduce((s,x)=>s+x.count,0)+_count;
+const estMinutee=st=>!!st.secs;
+const mmss=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
+
+/* Les repetitions annoncees dans le catalogue : une etape minutee n'en a
+   aucune, et en inventer fausserait le resume. */
+function totalTaps(r){return r.steps.reduce((s,x)=>s+(x.count||0),0);}
+
+/* La barre globale, elle, doit avancer aussi pendant une etape minutee. On
+   compte une invocation toutes les trois secondes — la cadence ordinaire d'un
+   dhikr pose. C'est une convention d'affichage : rien d'autre n'en depend. */
+const poids=st=>estMinutee(st)?Math.max(1,Math.round(st.secs/3)):st.count;
+function totalPoids(r){return r.steps.reduce((s,x)=>s+poids(x),0);}
+function faitPoids(){
+  const st=_routine.steps[_stepIdx];
+  const enCours=estMinutee(st)?poids(st)*(1-_reste/st.secs):_count;
+  return _routine.steps.slice(0,_stepIdx).reduce((s,x)=>s+poids(x),0)+enCours;
 }
 
 function buildPicker(){
@@ -62,9 +82,9 @@ export function refreshRoutines(){
 }
 
 function startRoutine(r){
-  _routine=r;_stepIdx=0;_count=0;
+  _routine=r;
   $('routine-title').textContent=`${r.icon} ${rtName(r)}`;
-  renderStep();
+  entre(0);
   openSheet('sh-routine');
 }
 
@@ -91,17 +111,65 @@ function renderStep(){
   $('rt-translit').textContent=S.translit==='ph'?t('routines.toArabic'):t('routines.toPhonetic');
   $('rt-note').textContent=stepNote(step);
   $('rt-note').style.display=step.note?'block':'none';
-  $('rt-count').textContent=_count;
-  $('rt-target').textContent='/ '+step.count;
-  $('rt-step-fill').style.width=(_count/step.count*100)+'%';
-  $('rt-total-fill').style.width=(doneTaps()/totalTaps(_routine)*100)+'%';
+  const minutee=estMinutee(step);
+  $('rt-count').textContent=minutee?mmss(_reste):_count;
+  $('rt-target').textContent='/ '+(minutee?mmss(step.secs):step.count);
+  $('rt-hint').textContent=minutee
+    ?t(_enMarche?'routines.tapToPause':'routines.tapToStart')
+    :t('routines.tapToCount');
+  $('rt-step-fill').style.width=
+    ((minutee?1-_reste/step.secs:_count/step.count)*100)+'%';
+  $('rt-total-fill').style.width=(faitPoids()/totalPoids(_routine)*100)+'%';
   $('rt-prev').style.visibility=_stepIdx>0?'visible':'hidden';
   $('rt-next').textContent=_stepIdx<_routine.steps.length-1?t('routines.nextStep'):t('routines.finish');
 }
 
-function tap(){
+/* Entrer dans une etape : c'est le seul endroit ou `_count` et le minuteur
+   sont remis a zero, pour qu'aucun chemin ne puisse en oublier un. */
+function entre(idx){
+  arreteTimer();
+  _stepIdx=idx;_count=0;
+  _reste=_routine.steps[idx].secs||0;
+  renderStep();
+}
+
+function arreteTimer(){
+  if(_timer){clearInterval(_timer);_timer=null;}
+  _enMarche=false;
+}
+
+/* Le minuteur s'arrete des que la feuille se ferme : sans cela il continue de
+   courir en fond, et l'etape se termine toute seule dans le vide. */
+export function stopRoutineTimer(){
+  if(_timer){arreteTimer();renderStep();}
+}
+
+function basculeMinuteur(){
+  if(_enMarche){arreteTimer();renderStep();vib(14);return;}
   getAC();
-  const step=_routine.steps[_stepIdx];
+  _enMarche=true;
+  _timer=setInterval(()=>{
+    _reste=Math.max(0,_reste-1);
+    if(_reste===0){
+      arreteTimer();
+      playSound(S.sound,true);vib([70,35,70]);
+      if(_stepIdx<_routine.steps.length-1){
+        burst();
+        setTimeout(()=>entre(_stepIdx+1),450);
+      }else{
+        finishRoutine();
+      }
+    }
+    renderStep();
+  },1000);
+  renderStep();vib(14);
+}
+
+function tap(){
+  const st=_routine.steps[_stepIdx];
+  if(estMinutee(st)){basculeMinuteur();return;}
+  getAC();
+  const step=st;
   if(_count>=step.count)return;
   _count++;
   S.allTime++;
@@ -118,7 +186,7 @@ function tap(){
   if(done){
     if(_stepIdx<_routine.steps.length-1){
       burst();
-      setTimeout(()=>{_stepIdx++;_count=0;renderStep();},450);
+      setTimeout(()=>entre(_stepIdx+1),450);
     }else{
       finishRoutine();
     }
@@ -127,6 +195,7 @@ function tap(){
 }
 
 function finishRoutine(){
+  arreteTimer();
   burst();
   toast(t('rt.done',{name:rtName(_routine)}));
   vib([80,40,80,40,120]);
@@ -149,11 +218,12 @@ export function initRoutines(){
     document.querySelectorAll('#translit-seg .seg-opt').forEach(o=>o.classList.toggle('active',o.dataset.tr===S.translit));
   });
   $('rt-tap').addEventListener('click',tap);
+  document.addEventListener('sheet-closed',stopRoutineTimer);
   $('rt-prev').addEventListener('click',()=>{
-    if(_stepIdx>0){_stepIdx--;_count=0;renderStep();vib(14);}
+    if(_stepIdx>0){entre(_stepIdx-1);vib(14);}
   });
   $('rt-next').addEventListener('click',()=>{
-    if(_stepIdx<_routine.steps.length-1){_stepIdx++;_count=0;renderStep();vib(14);}
+    if(_stepIdx<_routine.steps.length-1){entre(_stepIdx+1);vib(14);}
     else finishRoutine();
   });
 }
