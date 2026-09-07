@@ -156,7 +156,13 @@ input,textarea,select{font-size:16px;}
   z-index:100;opacity:0;pointer-events:none;transition:opacity 0.3s;}
 .overlay.open{opacity:1;pointer-events:auto;}
 .sheet{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(105%);
-  width:100%;max-width:430px;max-height:92vh;
+  width:100%;max-width:430px;
+  /* La hauteur ne doit jamais mordre sur la zone systeme : 96vh d'un ecran de
+     852px laisse 34px en haut, alors que l'encoche en occupe une soixantaine.
+     L'en-tete de la feuille se retrouvait donc sous l'heure et la batterie.
+     On borne par la hauteur reellement disponible plutot que par un
+     pourcentage, et les feuilles n'ont plus besoin de padding de rattrapage. */
+  max-height:min(92vh, calc(100dvh - env(safe-area-inset-top,0px) - 12px));
   background:var(--sur);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);
   border-top:1px solid var(--bor);border-radius:var(--r-xl) var(--r-xl) 0 0;
   box-shadow:0 -8px 40px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.10);
@@ -167,6 +173,7 @@ input,textarea,select{font-size:16px;}
   transition:transform 0.38s var(--ease),visibility 0s linear 0.38s;}
 .sheet.open{transform:translateX(-50%) translateY(0);visibility:visible;
   transition:transform 0.38s var(--ease),visibility 0s;}
+.sheet.sh-haute{max-height:min(96vh, calc(100dvh - env(safe-area-inset-top,0px) - 12px));}
 .sh-grip{width:36px;height:4px;background:var(--bor);border-radius:var(--r-pill);margin:12px auto 0;flex-shrink:0;}
 .sh-hd{display:flex;align-items:center;justify-content:space-between;padding:13px 20px 9px;flex-shrink:0;}
 .sh-title{font-family:var(--ff-d);font-size:1.05rem;letter-spacing:0.04em;color:var(--t1);}

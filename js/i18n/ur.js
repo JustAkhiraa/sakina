@@ -687,6 +687,7 @@ export default {
   "adhan.vOmarTakbir": "صرف تکبیر — عمر ہشام",
   "adhan.vOmarTakbirSub": "«اللہ اکبر» ×۲ — ۱۲ سیکنڈ",
   "pr.fajr": "فجر",
+  "pr.sunrise": "طلوع آفتاب",
   "pr.dhuhr": "ظہر",
   "pr.asr": "عصر",
   "pr.maghrib": "مغرب",

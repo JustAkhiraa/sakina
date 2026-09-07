@@ -688,6 +688,7 @@ export default {
   "adhan.vOmarTakbir": "Takbir seul — Omar Hisham",
   "adhan.vOmarTakbirSub": "« Allāhu akbar » ×2 — 12 s",
   "pr.fajr": "Fajr",
+  "pr.sunrise": "Shourouk",
   "pr.dhuhr": "Dhouhr",
   "pr.asr": "Asr",
   "pr.maghrib": "Maghrib",

@@ -25,6 +25,12 @@ const asrFactor=()=>(MADHABS.find(m=>m.id===S.madhab)||MADHABS[0]).asrFactor;
    calendrier de priere. */
 const PRAYER_KEYS=[
   {key:'fajr',   arabic:'الفجر'},
+  /* Le lever du soleil n'est pas une priere — aucune ne s'y accomplit, c'est
+     meme un moment ou elle est deconseillee. Mais c'est lui qui ferme la
+     fenetre du Fajr, et c'est pour cela qu'on le cherche. Il figure donc dans
+     la grille comme repere : `repere` le tient hors de « prochaine priere »,
+     hors du compte a rebours et hors des rappels d'adhan. */
+  {key:'sunrise',arabic:'الشروق', repere:true},
   {key:'dhuhr',  arabic:'الظهر'},
   {key:'asr',    arabic:'العصر'},
   {key:'maghrib',arabic:'المغرب'},
@@ -49,6 +55,7 @@ function findNext(now){
   const m=methodById(S.calcMethod);
   const today=computeTimes(S.lat,S.lon,now,m,asrFactor());
   for(const p of prayerDefs()){
+    if(p.repere)continue;          // le lever du soleil n'est pas une priere
     const hr=today[p.key];
     if(hr!==null){
       const dt=timeToDate(now,hr);
@@ -57,7 +64,8 @@ function findNext(now){
   }
   const tomorrow=new Date(now);tomorrow.setDate(tomorrow.getDate()+1);
   const t2=computeTimes(S.lat,S.lon,tomorrow,m,asrFactor());
-  if(t2.fajr!==null)return{...prayerDefs()[0],at:timeToDate(tomorrow,t2.fajr),today:false};
+  const fajr=prayerDefs().find(p=>p.key==='fajr');
+  if(t2.fajr!==null)return{...fajr,at:timeToDate(tomorrow,t2.fajr),today:false};
   return null;
 }
 
@@ -98,7 +106,7 @@ export function renderPrayers(){
     const isNext=next&&next.today&&p.key===next.key;
     const isPast=!isNext&&hr!==null&&timeToDate(now,hr)<now;
     const div=document.createElement('div');
-    div.className='pcard gc'+(isNext?' next':'')+(isPast?' passed':'');
+    div.className='pcard gc'+(isNext?' next':'')+(isPast?' passed':'')+(p.repere?' repere':'');
     div.innerHTML=`<div class="pc-name">${p.name}</div><div class="pc-ar">${p.arabic}</div><div class="pc-time">${fmtTime(hr,S.hourFmt)}</div>`;
     grid.appendChild(div);
   });

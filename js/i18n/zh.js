@@ -687,6 +687,7 @@ export default {
   "adhan.vOmarTakbir": "仅念大赞词 — 欧麦尔·希沙姆",
   "adhan.vOmarTakbirSub": "「安拉至大」×2 — 12 秒",
   "pr.fajr": "晨礼",
+  "pr.sunrise": "日出",
   "pr.dhuhr": "晌礼",
   "pr.asr": "晡礼",
   "pr.maghrib": "昏礼",

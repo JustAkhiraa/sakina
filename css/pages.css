@@ -49,7 +49,12 @@
 .sp{background:var(--sur2);border:1px solid var(--bor);border-radius:var(--r-pill);padding:7px 14px;display:flex;align-items:center;gap:7px;box-shadow:var(--sh1);}
 .sp-lbl{font-size:0.57rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;font-weight:800;}
 .sp-val{font-family:var(--ff-m);font-size:0.82rem;color:var(--t1);}
-#ctrls{display:flex;align-items:center;gap:14px;}
+/* flex-wrap : avec le reglage « texte plus grand » d'iOS, les cinq controles
+   depassaient la largeur de l'ecran et « Annuler » comme « Historique » se
+   retrouvaient coupes par le bord. Mesure a 19px de base : la rangee
+   commencait a -16px. Elle passe desormais a la ligne plutot que de sortir. */
+#ctrls{display:flex;align-items:flex-start;justify-content:center;
+  flex-wrap:wrap;gap:14px 12px;width:100%;max-width:100%;}
 .ctrl{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;}
 .ctrl-ic{width:52px;height:52px;border-radius:var(--r-pill);background:var(--sur2);border:1px solid var(--bor);
   display:flex;align-items:center;justify-content:center;color:var(--t2);transition:all 0.18s;box-shadow:var(--sh1);}
@@ -151,7 +156,11 @@
 .city-result-sub{font-size:0.67rem;color:var(--t2);margin-top:2px;}
 
 /* ════════ QIBLA ════════ */
-#qibla-zone{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:12px;}
+/* padding-bas : la zone centre son contenu sur toute sa hauteur. Sans reserve
+   pour la navbar fixe, le centre tombe trop bas et le bas de la carte passe
+   derriere elle — c'est ce qui coupait « Direction calculee ». */
+#qibla-zone{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  padding:12px 12px calc(env(safe-area-inset-bottom,0px) + 88px);}
 #compass-ring{width:min(230px,66vw);height:min(230px,66vw);max-width:100%;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;}
 .cd{position:absolute;font-size:0.7rem;font-weight:800;color:var(--t2);letter-spacing:0.06em;}
 .cd.n{top:14px;left:50%;transform:translateX(-50%);color:var(--a);}
@@ -166,6 +175,11 @@
 #q-deg{font-family:var(--ff-m);font-size:2rem;color:var(--a);}
 #q-lbl{font-size:0.7rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;}
 #q-city{font-size:0.82rem;color:var(--t1);margin-top:8px;}
+/* Un repere se lit dans la grille comme les prieres, mais sans leur poids :
+   il n'appelle pas a l'action, il situe. */
+.pcard.repere{border-style:dashed;}
+.pcard.repere .pc-name{color:var(--t3);}
+.pcard.repere .pc-ar{opacity:0.75;}
 #q-status{margin-top:10px;padding:7px 16px;border-radius:var(--r-pill);font-size:0.73rem;font-weight:700;display:inline-block;}
 #q-status.ok{background:rgba(var(--ok-rgb),0.12);color:var(--ok);border:1px solid rgba(var(--ok-rgb),0.22);}
 #q-status.searching{background:var(--a-dim);color:var(--a);border:1px solid var(--a-glow);animation:blink 1.4s infinite;}
@@ -971,6 +985,13 @@
 .book-md-h4,.book-md-h5,.book-md-h6{font-size:0.95rem;color:var(--t1);
   margin:14px 0 6px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;}
 .book-md-p{font-size:0.98rem;line-height:1.78;color:var(--t1);margin:0 0 12px;text-align:justify;}
+/* Sur une colonne etroite, justifier creuse des rivieres blanches entre les
+   mots — le francais a des mots longs et peu d'occasions de couper. En
+   dessous de 560px on aligne a gauche : c'est moins « imprime », c'est
+   nettement plus lisible. */
+@media(max-width:560px){
+  .book-md-p,.book-par,.book-read .book-md-p{text-align:left;}
+}
 .book-md-p strong{color:var(--a);font-weight:700;}
 .book-md-p em{color:var(--t2);font-style:italic;}
 .book-md-ar{font-family:var(--ff-a);font-size:1.4rem;line-height:2.05;color:var(--a);

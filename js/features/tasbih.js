@@ -313,9 +313,22 @@ export function initTasbih(){
     c.addEventListener('click',()=>{$(c.dataset.for).value=c.dataset.val;});
   });
 
-  // Clavier : espace/entrée = +1, retour/z = annuler (page tasbih uniquement)
+  /* Clavier : espace/entrée = +1, retour/z = annuler (page tasbih uniquement)
+
+     Ces raccourcis ne doivent jamais s'appliquer a quelqu'un qui ecrit. La
+     garde ne testait que `sheetOpen()`, or l'assistant de demarrage n'est pas
+     une feuille et laisse `page-tasbih` active dessous : dans le champ de
+     ville, Retour arriere annulait le compteur au lieu d'effacer la lettre,
+     l'espace et Entree comptaient, et « z » aussi. On ne pouvait tout
+     simplement pas corriger une faute de frappe au premier lancement.
+
+     La cause n'etait pas l'assistant : c'etait un raccourci global qui ne
+     regardait pas ou allait la frappe. C'est donc cela qu'on corrige. */
   document.addEventListener('keydown',e=>{
     if(sheetOpen())return;
+    const c=e.target;
+    if(c&&(c.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(c.tagName)))return;
+    if(document.getElementById('onboard'))return;
     const active=document.querySelector('.page.active');
     if(!active||active.id!=='page-tasbih')return;
     if(e.key===' '||e.key==='Enter'){e.preventDefault();increment();}

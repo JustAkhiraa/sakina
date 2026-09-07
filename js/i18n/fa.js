@@ -687,6 +687,7 @@ export default {
   "adhan.vOmarTakbir": "فقط تکبیر — عمر هشام",
   "adhan.vOmarTakbirSub": "«الله اکبر» ×۲ — ۱۲ ث",
   "pr.fajr": "صبح",
+  "pr.sunrise": "طلوع",
   "pr.dhuhr": "ظهر",
   "pr.asr": "عصر",
   "pr.maghrib": "مغرب",
