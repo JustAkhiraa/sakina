@@ -687,6 +687,7 @@ export default {
   "adhan.vOmarTakbir": "Takbiri kaɗai — Umar Hisham",
   "adhan.vOmarTakbirSub": "«Allahu akbar» ×2 — daƙiƙa 12",
   "pr.fajr": "Asuba",
+  "pr.sunrise": "Fitowar rana",
   "pr.dhuhr": "Azahar",
   "pr.asr": "La'asar",
   "pr.maghrib": "Magariba",

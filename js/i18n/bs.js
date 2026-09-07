@@ -687,6 +687,7 @@ export default {
   "adhan.vOmarTakbir": "Samo tekbir — Omar Hisham",
   "adhan.vOmarTakbirSub": "„Allahu ekber“ ×2 — 12 s",
   "pr.fajr": "Sabah",
+  "pr.sunrise": "Izlazak",
   "pr.dhuhr": "Podne",
   "pr.asr": "Ikindija",
   "pr.maghrib": "Akšam",

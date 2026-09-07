@@ -687,6 +687,7 @@ export default {
   "adhan.vOmarTakbir": "শুধু তাকবির — ওমর হিশাম",
   "adhan.vOmarTakbirSub": "«আল্লাহু আকবার» ×২ — ১২ সে.",
   "pr.fajr": "ফজর",
+  "pr.sunrise": "শুরুক",
   "pr.dhuhr": "জোহর",
   "pr.asr": "আসর",
   "pr.maghrib": "মাগরিব",

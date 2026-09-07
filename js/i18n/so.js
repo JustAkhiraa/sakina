@@ -687,6 +687,7 @@ export default {
   "adhan.vOmarTakbir": "Takbiirka oo kaliya — Cumar Hishaam",
   "adhan.vOmarTakbirSub": "«Allaahu akbar» ×2 — 12 il",
   "pr.fajr": "Subax",
+  "pr.sunrise": "Qorrax-soo-bax",
   "pr.dhuhr": "Duhur",
   "pr.asr": "Casar",
   "pr.maghrib": "Maqrib",

@@ -687,6 +687,7 @@ export default {
   "adhan.vOmarTakbir": "केवल तकबीर — उमर हिशाम",
   "adhan.vOmarTakbirSub": "«अल्लाहु अकबर» ×2 — 12 से.",
   "pr.fajr": "फ़ज्र",
+  "pr.sunrise": "शुरूक़",
   "pr.dhuhr": "ज़ुहर",
   "pr.asr": "अस्र",
   "pr.maghrib": "मग़रिब",

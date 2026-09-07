@@ -687,6 +687,7 @@ export default {
   "adhan.vOmarTakbir": "タクビールのみ — オマル・ヒシャーム",
   "adhan.vOmarTakbirSub": "「アッラーフ・アクバル」×2 — 12秒",
   "pr.fajr": "ファジュル",
+  "pr.sunrise": "日の出",
   "pr.dhuhr": "ズフル",
   "pr.asr": "アスル",
   "pr.maghrib": "マグリブ",
